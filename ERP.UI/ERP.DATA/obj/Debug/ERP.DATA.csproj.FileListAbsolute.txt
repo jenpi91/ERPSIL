@@ -1,0 +1,17 @@
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ERP.DATA.dll
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ERP.DATA.pdb
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ServiceStack.Common.dll
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ServiceStack.Interfaces.dll
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ServiceStack.OrmLite.dll
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ServiceStack.OrmLite.SqlServer.dll
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ServiceStack.Text.dll
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\obj\Debug\ERP.DATA.csprojAssemblyReference.cache
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\obj\Debug\ERP.DATA.csproj.CoreCompileInputs.cache
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\obj\Debug\ERP.DATA.csproj.CopyComplete
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\obj\Debug\ERP.DATA.dll
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\obj\Debug\ERP.DATA.pdb
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ServiceStack.Common.xml
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ServiceStack.Interfaces.xml
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ServiceStack.OrmLite.xml
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ServiceStack.OrmLite.SqlServer.xml
+C:\Users\doyol\Desktop\ERP\ERP.UI\ERP.DATA\bin\Debug\ServiceStack.Text.xml
