@@ -69,7 +69,9 @@
       <DependentUpon>BD.settings</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IEmpleado.cs" />
+    <Compile Include="Interfaces\IInventario.cs" />
     <Compile Include="Metodos\MEmpleado.cs" />
+    <Compile Include="Metodos\MInventario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
