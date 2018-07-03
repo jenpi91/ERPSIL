@@ -18,6 +18,9 @@ namespace ERP.UI
                 cfg.CreateMap<Models.Tbl_Inventario, DATA.Inventario>();
                 cfg.CreateMap<DATA.Inventario, Models.Tbl_Inventario>();
 
+                cfg.CreateMap<Models.Tbl_Proveedor, DATA.Proveedor>();
+                cfg.CreateMap<DATA.Proveedor, Models.Tbl_Proveedor>();
+
             });
         }
     }
