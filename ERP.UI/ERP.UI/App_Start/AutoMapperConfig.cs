@@ -18,8 +18,30 @@ namespace ERP.UI
                 cfg.CreateMap<Models.Tbl_Inventario, DATA.Inventario>();
                 cfg.CreateMap<DATA.Inventario, Models.Tbl_Inventario>();
 
-                cfg.CreateMap<Models.Tbl_Proveedor, DATA.Proveedor>();
-                cfg.CreateMap<DATA.Proveedor, Models.Tbl_Proveedor>();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                cfg.CreateMap<Models.Tbl_Cliente, DATA.Cliente>();
+                cfg.CreateMap<DATA.Cliente, Models.Tbl_Cliente>();
+
+                cfg.CreateMap<Models.Tbl_Cliente, DATA.Cliente>();
+                cfg.CreateMap<DATA.Cliente, Models.Tbl_Cliente>();
 
             });
         }
