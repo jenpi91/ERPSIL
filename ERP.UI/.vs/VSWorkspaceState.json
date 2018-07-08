@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ERP.DATA",
+    "\\ERP.UI",
+    "\\ERP.UI\\App_Start",
+    "\\ERP.UI\\Controllers",
+    "\\ERP.UI\\Models",
+    "\\ERP.UI\\Views",
+    "\\ERP.UI\\Views\\Cliente"
+  ],
+  "SelectedNode": "\\ERP.UI\\Views\\Cliente\\Index.cshtml",
+  "PreviewInSolutionExplorer": false
+}

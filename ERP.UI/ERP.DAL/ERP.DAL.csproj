@@ -71,9 +71,11 @@
     <Compile Include="Interfaces\ICliente.cs" />
     <Compile Include="Interfaces\IEmpleado.cs" />
     <Compile Include="Interfaces\IInventario.cs" />
+    <Compile Include="Interfaces\IProveedor.cs" />
     <Compile Include="Metodos\MCliente.cs" />
     <Compile Include="Metodos\MEmpleado.cs" />
     <Compile Include="Metodos\MInventario.cs" />
+    <Compile Include="Metodos\MProveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
