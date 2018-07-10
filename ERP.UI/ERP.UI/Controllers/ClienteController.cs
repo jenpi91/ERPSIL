@@ -22,7 +22,9 @@ namespace ERP.UI.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            return View();
+            var lista = cli.ListarCliente();
+            var cliente = Mapper.Map<List<Models.Tbl_Cliente>>(lista);
+            return View(cliente);
         }
 
         //crear
