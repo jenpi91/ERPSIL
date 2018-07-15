@@ -172,6 +172,7 @@
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventarioController.cs" />
+    <Compile Include="Controllers\PlanillaController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Encriptacion.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,6 +181,7 @@
     <Compile Include="Models\Tbl_Cliente.cs" />
     <Compile Include="Models\Tbl_Empleados.cs" />
     <Compile Include="Models\Tbl_Inventario.cs" />
+    <Compile Include="Models\Tbl_Planilla.cs" />
     <Compile Include="Models\Tbl_Proveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -242,6 +244,10 @@
     <Content Include="Views\Proveedor\Edit.cshtml" />
     <Content Include="Views\Proveedor\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Planilla\Index.cshtml" />
+    <Content Include="Views\Planilla\Details.cshtml" />
+    <Content Include="Views\Planilla\Edit.cshtml" />
+    <Content Include="Views\Planilla\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

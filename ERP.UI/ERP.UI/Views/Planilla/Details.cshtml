@@ -1,0 +1,52 @@
+﻿@model ERP.UI.Models.Tbl_Planilla
+
+<div>
+    <h4>Tbl_Planilla</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Planilla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Planilla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vacaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vacaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horas_Laboradas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horas_Laboradas)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.Id_Planilla}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

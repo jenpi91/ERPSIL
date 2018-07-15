@@ -24,7 +24,8 @@ namespace ERP.UI
                 cfg.CreateMap<Models.Tbl_Cliente, DATA.Cliente>();
                 cfg.CreateMap<DATA.Cliente, Models.Tbl_Cliente>();
 
-
+                cfg.CreateMap<Models.Tbl_Planilla, DATA.Planilla>();
+                cfg.CreateMap<DATA.Planilla, Models.Tbl_Planilla>();
 
 
 
