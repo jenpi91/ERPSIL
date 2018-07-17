@@ -13,9 +13,11 @@ namespace ERP.UI.Controllers
     public class PlanillaController : Controller
     {
         IPlanilla pla;
+        IEmpleado emp;
         public PlanillaController()
         {
             pla = new MPlanilla();
+            emp = new MEmpleado();
         }
         // GET: Planilla
         public ActionResult Index()
@@ -26,6 +28,8 @@ namespace ERP.UI.Controllers
         }
         public ActionResult Create()
         {
+            ViewBag.ddlEmpleados = new SelectList(emp.ListarEmpleado(),
+                "Id_Empleado", "Nombre");
             return View();
         }
 

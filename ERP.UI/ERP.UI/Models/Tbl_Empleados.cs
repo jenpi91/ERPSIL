@@ -16,6 +16,7 @@ namespace ERP.UI.Models
         public string Apellido2 { get; set; }
         public int Cedula { get; set; }
         public int Telefono { get; set; }
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "El formato de la fecha debe ser YYYY-MM-DD")]
         public DateTime Fecha_Ingreso { get; set; }
         public string Observaciones { get; set; }
         public string Rol { get; set; }
