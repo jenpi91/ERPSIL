@@ -14,5 +14,6 @@ namespace ERP.DAL.Interfaces
         void InsertarPlanilla(Planilla planilla);
         void ActualizarPlanilla(Planilla planilla);
         void EliminarPlanilla(int Id_Planilla);
+        void EliminarPlanillaEmpleado(int Id_Empleado);
     }
 }

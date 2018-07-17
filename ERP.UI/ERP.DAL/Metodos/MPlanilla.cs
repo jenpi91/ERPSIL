@@ -36,6 +36,11 @@ namespace ERP.DAL.Metodos
             _db.Delete<Planilla>(x => x.Id_Planilla == Id_Planilla);
         }
 
+        public void EliminarPlanillaEmpleado(int Id_Empleado)
+        {
+            _db.Delete<Planilla>(x => x.Id_Empleado == Id_Empleado);
+        }
+
         public void InsertarPlanilla(Planilla planilla)
         {
             _db.Insert(planilla);

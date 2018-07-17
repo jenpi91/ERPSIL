@@ -31,6 +31,11 @@ namespace ERP.BLL.Metodos
             Pla.BuscarPlanilla(Id_Planilla);
         }
 
+        public void EliminarPlanillaEmpleado(int Id_Empleado)
+        {
+            Pla.EliminarPlanillaEmpleado(Id_Empleado);
+        }
+
         public void InsertarPlanilla(Planilla planilla)
         {
             Pla.InsertarPlanilla(planilla);

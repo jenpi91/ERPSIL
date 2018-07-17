@@ -16,6 +16,8 @@ namespace ERP.UI.Controllers
         public ClienteController()
         {
             cli = new MCliente();
+            
+
         }
 
 

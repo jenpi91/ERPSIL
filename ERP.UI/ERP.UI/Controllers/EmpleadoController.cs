@@ -13,9 +13,11 @@ namespace ERP.UI.Controllers
     public class EmpleadoController : Controller
     {
         IEmpleado emp;
+        IPlanilla pla;
         public EmpleadoController()
         {
             emp = new MEmpleado();
+            pla = new MPlanilla();
         }
 
         // GET: Empleado
@@ -68,6 +70,7 @@ namespace ERP.UI.Controllers
         //Eliminar Empleado
         public ActionResult Delete(int id)
         {
+            pla.EliminarPlanillaEmpleado(id);
             emp.EliminarEmpleado(id);
             return RedirectToAction("Index");
         }
