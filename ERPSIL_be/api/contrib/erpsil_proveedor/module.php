@@ -17,7 +17,7 @@
 /**
  * Boot up procedure
  */
-function MODULENAME_bootMeUp(){
+function erpsil_proveedor_bootMeUp(){
 	// Just booting up
 }
 
@@ -26,12 +26,12 @@ function MODULENAME_bootMeUp(){
  */
 
 
-function MODULE_NAME_init(){
+function erpsil_proveedor_init(){
 
 	$paths = array(
 		array(
 			'r' => 'agregar_proveedor',
-			'action' => 'agregarproveedor',
+			'action' => 'agregarProveedor',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
@@ -47,23 +47,17 @@ function MODULE_NAME_init(){
 		),
 		array(
 			'r' => 'eliminar_proveedor',
-			'action' => 'eliminarproveedor',
+			'action' => 'eliminarProveedor',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
-				array("key" => "nombre", "def" => "", "req" => true),
-				array("key" => "apellido1", "def" => "", "req" => true),
-				array("key" => "apellido2", "def" => "", "req" => true),
-				array("key" => "cedula", "def" => "", "req" => true),
-				array("key" => "direccion", "def" => "", "req" => true),
-				array("key" => "telefono", "def" => "", "req" => true),
-				array("key" => "descripcion", "def" => "", "req" => true),
+				array("key" => "id", "def" => "", "req" => true),
 			),
 			'file' => 'erpsil_proveedor.php'
 		),		
 		array(
 			'r' => 'editar_proveedor',
-			'action' => 'editarproveedor',
+			'action' => 'editarProveedor',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
@@ -79,23 +73,40 @@ function MODULE_NAME_init(){
 		),
 		array(
 			'r' => 'mostrar_proveedor',
-			'action' => 'mostrarproveedor',
+			'action' => 'mostrarProveedor',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			'file' => 'erpsil_proveedor.php'
+		),
+		array(
+			'r' => 'obtener_proveedor',
+			'action' => 'obtenerProveedor',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
-				array("key" => "nombre", "def" => "", "req" => true),
-				array("key" => "apellido1", "def" => "", "req" => true),
-				array("key" => "apellido2", "def" => "", "req" => true),
+				array("key" => "id", "def" => "", "req" => true)
+			),
+			'file' => 'erpsil_proveedor.php'
+		),
+		array(
+			'r' => 'agregarEditar_proveedor',
+			'action' => 'editarProveedor',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			'params' => array(
+                array("key" => "nombre", "def" => "", "req" => true),
+                array("key" => "apellido1", "def" => "", "req" => true),
+                array("key" => "apellido2", "def" => "", "req" => true),
 				array("key" => "cedula", "def" => "", "req" => true),
 				array("key" => "direccion", "def" => "", "req" => true),
 				array("key" => "telefono", "def" => "", "req" => true),
 				array("key" => "descripcion", "def" => "", "req" => true),
 			),
 			'file' => 'erpsil_proveedor.php'
-		)
+	),
 	);
 
-	return $paths;
+return $paths;
 }
 
 
@@ -109,7 +120,7 @@ function MODULE_NAME_init(){
 /**
  * Get the perms for this module
  */
-function MODULENAME_access(){
+function erpsil_proveedor_access(){
 
 	$perms = array(
 		array(
@@ -129,4 +140,3 @@ function MODULENAME_access(){
 
 /**@}*/
 /** @}*/
-+

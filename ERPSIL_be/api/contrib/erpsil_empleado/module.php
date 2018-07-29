@@ -17,7 +17,7 @@
 /**
  * Boot up procedure
  */
-function MODULENAME_bootMeUp(){
+function erpsil_empleado_bootMeUp(){
 	// Just booting up
 }
 
@@ -26,7 +26,7 @@ function MODULENAME_bootMeUp(){
  */
 
 
-function MODULE_NAME_init(){
+function erpsil_empleado_init(){
 
 	$paths = array(
 		array(
@@ -54,21 +54,12 @@ function MODULE_NAME_init(){
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
-                array("key" => "nombre", "def" => "", "req" => true),
-                array("key" => "apellido1", "def" => "", "req" => true),
-                array("key" => "apellido2", "def" => "", "req" => true),
-				array("key" => "telefono", "def" => "", "req" => true),
-				array("key" => "cedula", "def" => "", "req" => true),
-				array("key" => "direccion", "def" => "", "req" => true),
-				array("key" => "ingreso", "def" => "", "req" => true),
-				array("key" => "observacion", "def" => "", "req" => true),
-				array("key" => "puesto", "def" => "", "req" => true),
-				array("key" => "jornada", "def" => "", "req" => true),
-			),
+                array("key" => "id", "def" => "", "req" => true),
+                ),
 			'file' => 'erpsil_empleado.php'
 		),		
 		array(
-			'r' => 'editar_mpleado',
+			'r' => 'editar_empleado',
 			'action' => 'editarEmpleado',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
@@ -87,8 +78,25 @@ function MODULE_NAME_init(){
 			'file' => 'erpsil_empleado.php'
 		),
 		array(
-			'r' => 'mostrar_mpleado',
+			'r' => 'mostrar_empleado',
 			'action' => 'mostrarEmpleado',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			'file' => 'erpsil_empleado.php'
+			),
+		array(
+			'r' => 'obtener_empleado',
+			'action' => 'obtenerEmpleado',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			'params' => array(
+				array("key" => "id", "def" => "", "req" => true)
+			),
+			'file' => 'erpsil_empleado.php'
+		),
+		array(
+			'r' => 'agregarEditar_empleado',
+			'action' => 'editarEmpleado',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
@@ -104,11 +112,12 @@ function MODULE_NAME_init(){
 				array("key" => "jornada", "def" => "", "req" => true),
 			),
 			'file' => 'erpsil_empleado.php'
-		)
+	),
 	);
 
-	return $paths;
+return $paths;
 }
+
 
 
 /**************************************************/
@@ -117,11 +126,10 @@ function MODULE_NAME_init(){
 /**************************************************/
 
 
-
 /**
  * Get the perms for this module
  */
-function MODULENAME_access(){
+ function erpsil_empleado_access(){
 
 	$perms = array(
 		array(

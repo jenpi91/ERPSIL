@@ -18,6 +18,7 @@ function agregarCliente(){
 }
 
 function editarCliente(){
+    $id = params_get("id");
     $nombre = params_get("nombre");
     $cedula = params_get("cedula");
     $email = params_get("email");
@@ -37,11 +38,10 @@ function editarCliente(){
     `descripcion` = '$descripcion',
     `saldo_maximo` = '$saldo_maximo',
     `saldo` = '$saldo',
-    `saldo` = '$tipo',
-     WHERE `tbl_cliente`.`id_cliente` = 5";
+    `saldo` = '$tipo' 
+     WHERE `id_cliente` = $id";
 
     return db_query($q, 0);
-
 }
 
 function mostrarCliente(){
@@ -52,4 +52,24 @@ function mostrarCliente(){
 
 }
 
+function eliminarCliente(){
+    $id = params_get("id");
 
+    $q = "DELETE FROM `tbl_cliente` 
+          WHERE `id_cliente` = $id";
+
+    return db_query($q, 0);
+}
+
+
+function obtenerCliente(){
+    $id = params_get("id");
+    $q = "SELECT * FROM `tbl_cliente`
+    WHERE `id_cliente` =  $id";
+
+    return db_query($q, 1);
+}
+
+function editarGuardarCliente(){
+    
+}

@@ -81,8 +81,37 @@ function erpsil_cliente_init(){
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'file' => 'erpsil_cliente.php'
-		)
-	);
+		),
+		array(
+			'r' => 'obtener_cliente',
+			'action' => 'obtenerCliente',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			'params' => array(
+				array("key" => "id", "def" => "", "req" => true)
+			),
+			'file' => 'erpsil_cliente.php'
+		),
+			array(
+				'r' => 'agregarEditar_cliente',
+				'action' => 'editarCliente',
+				'access' => 'users_loggedIn', 
+				'access_params' => 'accessName',
+				'params' => array(
+					array("key" => "id", "def" => "", "req" => true),
+					array("key" => "nombre", "def" => "", "req" => true),
+					array("key" => "cedula", "def" => "", "req" => true),
+					array("key" => "email", "def" => "", "req" => true),
+					array("key" => "direccion", "def" => "", "req" => true),
+					array("key" => "telefono", "def" => "", "req" => true),
+					array("key" => "descripcion", "def" => "", "req" => true),
+					array("key" => "saldo_maximo", "def" => "", "req" => true),
+					array("key" => "saldo", "def" => "", "req" => true),
+					array("key" => "tipo", "def" => "", "req" => true),
+				),
+				'file' => 'erpsil_cliente.php'
+		),
+		);
 
 	return $paths;
 }

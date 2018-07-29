@@ -17,7 +17,7 @@
 /**
  * Boot up procedure
  */
-function MODULENAME_bootMeUp(){
+function erpsil_inventario_bootMeUp(){
 	// Just booting up
 }
 
@@ -26,7 +26,7 @@ function MODULENAME_bootMeUp(){
  */
 
 
-function MODULE_NAME_init(){
+function erpsil_inventario_init(){
 
 	$paths = array(
 		array(
@@ -55,17 +55,7 @@ function MODULE_NAME_init(){
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
-				array("key" => "cantidad", "def" => "", "req" => true),
-				array("key" => "unidad", "def" => "", "req" => true),
-				array("key" => "codigo_interno", "def" => "", "req" => true),
-				array("key" => "codigo_barras", "def" => "", "req" => true),
-				array("key" => "categoria", "def" => "", "req" => true),
-				array("key" => "cantidad_minima", "def" => "", "req" => true),
-                array("key" => "descripcion", "def" => "", "req" => true),
-                array("key" => "impuesto_venta", "def" => "", "req" => true),
-                array("key" => "ganancia_minima", "def" => "", "req" => true),
-                array("key" => "costo", "def" => "", "req" => true),
-                array("key" => "status", "def" => "", "req" => true),   
+				array("key" => "id", "def" => "", "req" => true),  
 			),
 			'file' => 'erpsil_inventario.php'
 		),		
@@ -94,24 +84,41 @@ function MODULE_NAME_init(){
 			'action' => 'mostrarInventario',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
+			'file' => 'erpsil_inventario.php'
+		),
+		array(
+			'r' => 'agregarEditar_inventario',
+			'action' => 'editarInventario',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
 			'params' => array(
-				array("key" => "cantidad", "def" => "", "req" => true),
-				array("key" => "unidad", "def" => "", "req" => true),
-				array("key" => "codigo_interno", "def" => "", "req" => true),
+                array("key" => "cantidad", "def" => "", "req" => true),
+                array("key" => "unidad", "def" => "", "req" => true),
+                array("key" => "codigo_interno", "def" => "", "req" => true),
 				array("key" => "codigo_barras", "def" => "", "req" => true),
 				array("key" => "categoria", "def" => "", "req" => true),
 				array("key" => "cantidad_minima", "def" => "", "req" => true),
-                array("key" => "descripcion", "def" => "", "req" => true),
-                array("key" => "impuesto_venta", "def" => "", "req" => true),
-                array("key" => "ganancia_minima", "def" => "", "req" => true),
-                array("key" => "costo", "def" => "", "req" => true),
-                array("key" => "status", "def" => "", "req" => true),   
+				array("key" => "descripcion", "def" => "", "req" => true),
+				array("key" => "impuesto_venta", "def" => "", "req" => true),
+				array("key" => "ganancia_minima", "def" => "", "req" => true),
+				array("key" => "costo", "def" => "", "req" => true),
+				array("key" => "status", "def" => "", "req" => true),
 			),
 			'file' => 'erpsil_inventario.php'
-		)
+	),
+	array(
+		'r' => 'obtener_inventario',
+		'action' => 'obtenerInventario',
+		'access' => 'users_loggedIn', 
+		'access_params' => 'accessName',
+		'params' => array(
+			array("key" => "id", "def" => "", "req" => true)
+		),
+		'file' => 'erpsil_inventario.php'
+	),
 	);
 
-	return $paths;
+return $paths;
 }
 
 
@@ -125,7 +132,7 @@ function MODULE_NAME_init(){
 /**
  * Get the perms for this module
  */
-function MODULENAME_access(){
+function erpsil_inventario_access(){
 
 	$perms = array(
 		array(
@@ -145,4 +152,3 @@ function MODULENAME_access(){
 
 /**@}*/
 /** @}*/
-+

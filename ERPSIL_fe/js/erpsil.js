@@ -1,22 +1,38 @@
 var debug = true;
+var cache = "";
 
 function boot_erpsil() {
     calaApi_checkLogin(function (d) {
         erpsil_debug("Estamos log");
         //erpsil_debug(d);
         //erpsil_agregarClienteWindow();
-        erpsil_listarCliente();
+        //erpsil_listarCliente();
+        //erpsil_agregarEmpleadoWindow();
+        //erpsil_listarEmpleado();      
+        //erpsil_agregarProveedorWindow();
+        //erpsil_listarProveedor();
+        erpsil_listarInventario();
+        //erpsil_agregarInventarioWindow();
+ 
     }, function () {
        // erpsil_debug("No estamos log");
         /* Mostrar paginas */
         //agregarUsuario();
         erpsil_loginWindow();
-
+        //erpsil_listarCliente();
         /*********Cliente********/
-        //erpsil_agregarCliente();
-        //erpsil_mostrarCliente();
+        //erpsil_agregarClienteWindow();
+        //erpsil_listarCliente();
+        //erpsil_mostrarClienteWindow();
         //erpsil_editarCliente();
         //erpsil_detalleCliente();
+       
+        /*********Proveedor********/
+        //erpsil_agregarProveedor();
+        //erpsil_mostrarProveedor();
+        //erpsil_editarProveedor();
+        //erpsil_detalleProveedor();
+        //erpsil_listarProveedor();
 
         /*********Tipo Cliente*******/
         //erpsil_agregarTipoCliente();
@@ -25,16 +41,12 @@ function boot_erpsil() {
         //erpsil_detalleTipoCliente();
 
         /*********Empleado********/
+        //erpsil_agregarEmpleadoWindow();
         //erpsil_agregarEmpleado();
-        //erpsil_mostrarEmpleado();
+        //erpsil_listarEmpleado();
         //erpsil_editarEmpleado();
         //erpsil_detalleEmpleado();
         
-        /*********Proveedor********/
-        //erpsil_agregarProveedor();
-        //erpsil_mostrarProveedor();
-        //erpsil_editarProveedor();
-        //erpsil_detalleProveedor();
         
         /*********Inventario*******/
         //erpsil_agregarInventario();
@@ -45,9 +57,40 @@ function boot_erpsil() {
     });
     //success, error, timeout
 }
+
 /*********************************************************/
-/*                       Login                           */
+/*                 Gestion login                         */
 /*********************************************************/
+
+function erpsil_login(){
+    var userName = $("#inputUser").val();
+    var passUser = $("#inputPassword").val();
+
+    //(userData, success, error
+    var userData = {
+        userName:userName, 
+        pwd:passUser
+    };
+
+    calaApiApi_login(userData, function(a){
+        //console.log(a);
+        //erpsil_menuWindow();
+        //erpsil_listarCliente();
+        //erpsil_agregarEmpleado();
+        //erpsil_agregarEmpleadoWindow();
+        //erpsil_listarEmpleado();
+        //erpsil_listarProveedor();
+        //erpsil_agregarInventarioWindow();
+
+    }, function(b){
+        console.log(b);    
+    });
+
+    //console.log("Antes de algo");
+    //erpsil_debug(userName);
+    //erpsil_debug(passUser);
+}
+
 function erpsil_loginWindow() {
     //var loginWindow = "Aca va la ventana de login";
     var loginWindow = ""
@@ -84,10 +127,154 @@ function erpsil_menuWindow() {
 }
 
 /*********************************************************/
+/*               Gestion del tipo cliente                */
+/*********************************************************/
+
+function erpsil_agregarTipoCliente() {
+    //var loginWindow = "Aca va la ventana de login";
+    var agregarTipoClienteWindow = ""
+
+    +    "<div class='login-form'>"
+    +        "<h2 class='text-center'>Tipo de cliente</h2>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNombre'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<input type='password' class='form-control' placeholder='Descripcion' required='required' id='inpu'Descripcion'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' id='inputGananciaG'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Dias de Credito'' required='required' id='inputDiasCredito'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<button onClick='erpsil_registrarProveedor()' class='btn btn-primary btn-block'>Agregar</button>"
+    +        "</div>"
+    +   " </div>"
+                       
+    erpsil_setContent(agregarTipoClienteWindow);
+}
+
+function erpsil_mostrarTipoCliente() {
+
+    var MostrarTipoClienteWindow = ""
+
++      "<div class='table-responsive'>"
++         "<table class='table table-striped table-hover'>"
++            "<tr>"
++                "<th>ID</th>"
++                "<th>Nombre</th>"
++                "<th>Descripcion</th>"
++                "<th>Ganancia global</th>"
++                "<th>Dias de credito</th>"
++            "</tr>"
++            "<tr>"
++                "<td>'.$id_tipoCliente.'</td>"
++                "<td>'.$row['nombre'].'</td>"
++                "<td>'$row['descripcion']</td>"
++                "<td>'.$row['ganancia_global'].'</td>"
++                "<td>'.$row['dias_credito'].'</td>"
++                "<td>"
++            "</td>"
++            "</tr>"
++                "<td>"
++                    "<a href='' title='Editar' onclick='' class='btn btn-warning btn-sm'><span class='' aria-hidden='true'>Editar</span></a>"
++                    "</br>"
++                    "</br>"
++                    "<a href='' title='Eliminar' onclick='' class='btn btn-danger btn-sm'><span class='' aria-hidden='true'>Eliminar</span></a>"
++                "</td>"
++         "</table>"
++      "</div>"
+
+
+    erpsil_setContent(MostrarTipoClienteWindow);
+}
+
+function erpsil_editarTipoCliente() {
+
+    var editarProveedorWindow = ""
++        "<div class='container'>"
++        "<h2 class='text-center'>Editar cliente</h2>"
++       "<form class='form-horizontal' action='' method='post'>"
++              "<label class='col-sm-3 control-label'>ID</label>"
++              "<div class='col-sm-2'>"
++                   "<input type='text' name='id_tipoCliente' value='' class='form-control' placeholder='ID' required>"
++             "</div>"
++           "<label class='col-sm-3 control-label'>Nombre</label>"
++           "<div class='col-sm-4'>"
++                "<input type='text' name='nombre' value='' class='form-control' placeholder='Nombre' required>"
++           "</div>"
++           "<label class='col-sm-3 control-label'>Descripcion</label>"
++           "<div class='col-sm-4'>"
++               "<input type='text' name='descripcion' value='' class='form-control' placeholder='Descripcion' required>"
++           "</div>"
++       "<label class='col-sm-3 control-label'>Ganancia global</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' name='ganancia_global' value='' class='form-control' placeholder='Ganancia global' required>"
++        "</div>"
++        "<label class='col-sm-3 control-label'>Dias de credito</label>"
++        "<div class='col-sm-4'>"
++               "<input type='text' name='dias_credito' value='' class='form-control' placeholder='Dias de credito' required>"
++        "</div>"
++            "<label class='col-sm-3 control-label'>&nbsp;</label>"
++           " <div class='col-sm-6'>"
++               "<input type='submit' name=' ' class='btn btn-sm btn-primary' value='Guardar datos'>"
++               "</br>"  
++                "<a href=' ' class='btn btn-sm btn-danger'>Cancelar</a>"
++           "</div>"
++         "</form>"
++        "</div>"
++       "</div>"
++       "</div>"
+
+
+    erpsil_setContent(editarProveedorWindow);
+}
+
+function erpsil_detalleTipoCliente() {
+
+    var detalleProveedorWindow = ""
++     "<div class= 'container'>"
++        "<table class='table table-striped table-condensed'>"
++            "<tr>"
++                "<th width='20%'>ID del cliente</th>"
++               "<td><?php echo $row['id_tipoCliente']; ?></td>"
++           "</tr>"
++           "<tr>"
++                "<th>Nombre del cliente</th>"
++                "<td><?php echo $row['nombre']; ?></td>"
++            "</tr>"
++            "<tr>"
++                "<th>Descripcion</th>"
++               "<td><?php echo $row['descripcion']; ?></td>"
++           "</tr>"
++            "<tr>"
++                "<th>Ganancia global</th>"
++               "<td><?php echo $row['ganancia_global']; ?></td>"
++           "</tr>"
++            "<tr>"
++                "<th>Dias de credito </th>"
++               "<td><?php echo $row['dias_credito']; ?></td>"
++           "</tr>"
++        "</table >"
++                "<a href='' class='btn btn-sm btn-info'><span class='glyphicon glyphicon-refresh' aria-hidden='true'></span> Regresar</a>"
++                "</br>"
++                "<a href='' class='btn btn-sm btn-success'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> Editar datos</a>"
++                "</br>"
++                "<a href='' class='btn btn-sm btn-danger' onclick='return confirm('Esta seguro de borrar los datos <?php echo $row['nombres']; ?><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> Eliminar</a>"
++        "</div>"
++    "</div>"
++    "</div>"
+
+
+    erpsil_setContent(detalleProveedorWindow);
+}
+
+/*********************************************************/
 /*                  Gestion Cliente                      */
 /*********************************************************/
 
-/*****************Agregar cliente*************************/
 function erpsil_agregarClienteWindow() {
     //var loginWindow = "Aca va la ventana de login";
     var agregarClienteWindow = ""
@@ -129,7 +316,6 @@ function erpsil_agregarClienteWindow() {
     erpsil_setContent(agregarClienteWindow);
 }
 
-/******************Mostrar cliente*************************/
 function erpsil_mostrarClienteWindow() {
 
     var MostrarClienteWindow = ""
@@ -173,685 +359,76 @@ function erpsil_mostrarClienteWindow() {
 
     erpsil_setContent(MostrarClienteWindow);
 }
-
-/*******************Editar Cliente*************************/
-function erpsil_editarCliente() {
-
-    var editarClienteWindow = ""
-+        "<div class='container'>"
-+        "<h2 class='text-center'>Editar cliente</h2>"
-+       "<form class='form-horizontal' action='' method='post'>"
-+              "<label class='col-sm-3 control-label'>ID</label>"
-+              "<div class='col-sm-2'>"
-+                   "<input type='text' name='id_cliente' value='' class='form-control' placeholder='ID' required>"
-+             "</div>"
-+           "<label class='col-sm-3 control-label'>Nombres</label>"
-+           "<div class='col-sm-4'>"
-+                "<input type='text' name='nombre' value='' class='form-control' placeholder='Nombre' required>"
-+           "</div>"
-+           "<label class='col-sm-3 control-label'>Cedula</label>"
-+           "<div class='col-sm-4'>"
-+               "<input type='text' name='cedula' value='' class='form-control' placeholder='Cedula' required>"
-+           "</div>"
-+       "<label class='col-sm-3 control-label'>Email</label>"
-+        "<div class='col-sm-4'>"
-+            "<input type='text' name='email' value='' class='form-control' placeholder='Email' required>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Direccion</label>"
-+        "<div class='col-sm-4'>"
-+            "<textarea name='direccion' class='form-control' placeholder='Dirección'></textarea>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Telefono</label>"
-+        "<div class='col-sm-4'>"
-+            "<input type='text' name='telefono' value='' class='form-control' placeholder='Telefono' required>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Descripcion</label>"
-+        "<div class='col-sm-4'>"
-+            "<textarea name='direccion' class='form-control' placeholder='Descripcion'></textarea>"
-+        "</div>"
-+        "<label class='col-sm-3 control-label'>Saldo Maximo</label>"
-+        "<div class='col-sm-3'>"
-+            "<textarea name='saldo_maximo' class='form-control' placeholder='Saldo Maximo'></textarea>"
-+        "</div>"
-+        "<label class='col-sm-3 control-label'>Saldo</label>"
-+        "<div class='col-sm-3'>"
-+            "<input type='text' name='saldo' value='' class='form-control' placeholder='Saldo' required>"
-+        "</div>"
-+        "<label class='col-sm-3 control-label'>Tipo</label>"
-+       " <div class='col-sm-3'>"           
-+            "<input type='text' name='tipo' value='' class='form-control' placeholder='Tipo' required>"
-+        "</div>"    
-+            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-+           " <div class='col-sm-6'>"
-+               "<input type='submit' name=' ' class='btn btn-sm btn-primary' value='Guardar datos'>"
-+                "<a href=' ' class='btn btn-sm btn-danger'>Cancelar</a>"
-+                 "</div>"
-+            "</form>"
-+        "</div>"
-+       "</div>"
-+       "</div>"
-
-
-    erpsil_setContent(editarClienteWindow);
-}
-
-/*******************Detalles Cliente***********************/
-function erpsil_detalleCliente() {
-
-    var detalleClienteWindow = ""
-
-+        "<table class='table table-striped table-condensed'>"
-+            "<tr>"
-+                "<th width='20%'>ID del cliente</th>"
-+               "<td><?php echo $row['id_cliente']; ?></td>"
-+           "</tr>"
-+           "<tr>"
-+                "<th>Nombre del cliente</th>"
-+                "<td><?php echo $row['nombres']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Cedula</th>"
-+               "<td><?php echo $row['cedula']; ?></td>"
-+           "</tr>"
-+           "<tr>"
-+               "<th>Email</th>"
-+                "<td><?php echo $row['email']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+            "<th>Direccion</th>"
-+            "<td><?php echo $row['direccion']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+               "<th>Teléfono</th>"
-+                "<td><?php echo $row['telefono']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Descripcion</th>"
-+                "<td><?php echo $row['descripcion']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+               "<th>Saldo Maximo</th>"
-+                "<td><?php echo $row['saldo_maximo']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+                "<th>Saldo</th>"
-+                "<td><?php echo $row['saldo']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Tipo</th>"
-+                "<td><?php echo $row['tipo']; ?></td>"
-+            "</tr>"
-+        "</table >"
-+                "<a href='' class='btn btn-sm btn-info'><span class='glyphicon glyphicon-refresh' aria-hidden='true'></span> Regresar</a>"
-+                "<a href='' class='btn btn-sm btn-success'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> Editar datos</a>"
-+                "<a href='' class='btn btn-sm btn-danger' onclick='return confirm('Esta seguro de borrar los datos <?php echo $row['nombres']; ?><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> Eliminar</a>"
-+        "</div>"
-+    "</div>"
-
-
-    erpsil_setContent(detalleClienteWindow);
-}
-
-
 /*********************************************************/
-/*               Gestion del tipo cliente                */
+/*                 Gestion inventario                    */
 /*********************************************************/
 
-/*****************Agregar tipo cliente***********************/
-function erpsil_agregarTipoCliente() {
-    //var loginWindow = "Aca va la ventana de login";
-    var agregarTipoClienteWindow = ""
+function erpsil_listarInventario(){
 
-    +    "<div class='login-form'>"
-    +        "<h2 class='text-center'>Tipo de cliente</h2>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNombre'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<input type='password' class='form-control' placeholder='Descripcion' required='required' id='inpu'Descripcion'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' id='inputGananciaG'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Dias de Credito'' required='required' id='inputDiasCredito'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<button onClick='erpsil_registrarProveedor()' class='btn btn-primary btn-block'>Agregar</button>"
-    +        "</div>"
-    +   " </div>"
-                       
-    erpsil_setContent(agregarTipoClienteWindow);
+    var inventarioData = {
+        w: "erpsil_inventario",
+        r: "mostrar_inventario"
+    };
+
+    calaApi_postRequest(inventarioData, function (d) {
+        
+        var MostrarInventarioWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +            "<tr>"
+        +                "<th>ID</th>"
+        +                "<th>Cantidad</th>"
+        +                "<th>Unidad</th>"
+        +                "<th>Codigo interno</th>"
+        +                "<th>Codigo barras</th>"
+        +                "<th>Categoria</th>"
+        +                "<th>Cantidad minima</th>"
+        +                "<th>Descripcion</th>"
+        +                "<th>I.V</th>"
+        +                "<th>Ganancia minima</th>"
+        +                "<th>Costo</th>"
+        +                "<th>Status</th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+            for(x in d.resp){
+                var a = d.resp[x];
+                MostrarInventarioWindow += ""
+
+        +    "<tr>"
+        +        "<td> "+ a.id_inventario +" </td>"
+        +        "<td> "+ a.cantidad +" </td>"
+        +        "<td> "+ a.unidad +" </td>"
+        +        "<td> "+ a.codigo_interno +" </td>"
+        +        "<td> "+ a.codigo_barras +" </td>"
+        +        "<td> "+ a.categoria +" </td>"
+        +        "<td> "+ a.cantidad_minima +" </td>"
+        +        "<td> "+ a.descripcion +" </td>"
+        +        "<td> "+ a.impuesto_venta +" </td>"
+        +        "<td> "+ a.ganancia_minima +" </td>"
+        +        "<td> "+ a.costo +" </td>"
+        +        "<td> "+ a.status +" </td>"
+
+        +        "<td> <div id='editar_cliente' onclick='erpsil_editarInventario(" + a.id_inventario + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +        "<td> <div onclick='erpsil_eliminarInventario("+ a.id_inventario +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +    "</tr>";        
+            }
+        }
+        MostrarInventarioWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +      "</div>";
+        erpsil_setContent(MostrarInventarioWindow);
+    }, function (d) {
+        console.log(d);
+    });
 }
 
-/******************Mostrar tipo cliente*************************/
-function erpsil_mostrarTipoCliente() {
-
-    var MostrarTipoClienteWindow = ""
-
-+      "<div class='table-responsive'>"
-+         "<table class='table table-striped table-hover'>"
-+            "<tr>"
-+                "<th>ID</th>"
-+                "<th>Nombre</th>"
-+                "<th>Descripcion</th>"
-+                "<th>Ganancia global</th>"
-+                "<th>Dias de credito</th>"
-+            "</tr>"
-+            "<tr>"
-+                "<td>'.$id_tipoCliente.'</td>"
-+                "<td>'.$row['nombre'].'</td>"
-+                "<td>'$row['descripcion']</td>"
-+                "<td>'.$row['ganancia_global'].'</td>"
-+                "<td>'.$row['dias_credito'].'</td>"
-+                "<td>"
-+            "</td>"
-+            "</tr>"
-+                "<td>"
-+                    "<a href='' title='Editar' onclick='' class='btn btn-warning btn-sm'><span class='' aria-hidden='true'>Editar</span></a>"
-+                    "</br>"
-+                    "</br>"
-+                    "<a href='' title='Eliminar' onclick='' class='btn btn-danger btn-sm'><span class='' aria-hidden='true'>Eliminar</span></a>"
-+                "</td>"
-+         "</table>"
-+      "</div>"
-
-
-    erpsil_setContent(MostrarTipoClienteWindow);
-}
-
-/*******************Editar tipo clienter*************************/
-function erpsil_editarTipoCliente() {
-
-    var editarProveedorWindow = ""
-+        "<div class='container'>"
-+        "<h2 class='text-center'>Editar cliente</h2>"
-+       "<form class='form-horizontal' action='' method='post'>"
-+              "<label class='col-sm-3 control-label'>ID</label>"
-+              "<div class='col-sm-2'>"
-+                   "<input type='text' name='id_tipoCliente' value='' class='form-control' placeholder='ID' required>"
-+             "</div>"
-+           "<label class='col-sm-3 control-label'>Nombre</label>"
-+           "<div class='col-sm-4'>"
-+                "<input type='text' name='nombre' value='' class='form-control' placeholder='Nombre' required>"
-+           "</div>"
-+           "<label class='col-sm-3 control-label'>Descripcion</label>"
-+           "<div class='col-sm-4'>"
-+               "<input type='text' name='descripcion' value='' class='form-control' placeholder='Descripcion' required>"
-+           "</div>"
-+       "<label class='col-sm-3 control-label'>Ganancia global</label>"
-+        "<div class='col-sm-4'>"
-+            "<input type='text' name='ganancia_global' value='' class='form-control' placeholder='Ganancia global' required>"
-+        "</div>"
-+        "<label class='col-sm-3 control-label'>Dias de credito</label>"
-+        "<div class='col-sm-4'>"
-+               "<input type='text' name='dias_credito' value='' class='form-control' placeholder='Dias de credito' required>"
-+        "</div>"
-+            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-+           " <div class='col-sm-6'>"
-+               "<input type='submit' name=' ' class='btn btn-sm btn-primary' value='Guardar datos'>"
-+               "</br>"  
-+                "<a href=' ' class='btn btn-sm btn-danger'>Cancelar</a>"
-+           "</div>"
-+         "</form>"
-+        "</div>"
-+       "</div>"
-+       "</div>"
-
-
-    erpsil_setContent(editarProveedorWindow);
-}
-
-/*******************Detalles tipo clienter***********************/
-function erpsil_detalleTipoCliente() {
-
-    var detalleProveedorWindow = ""
-+     "<div class= 'container'>"
-+        "<table class='table table-striped table-condensed'>"
-+            "<tr>"
-+                "<th width='20%'>ID del cliente</th>"
-+               "<td><?php echo $row['id_tipoCliente']; ?></td>"
-+           "</tr>"
-+           "<tr>"
-+                "<th>Nombre del cliente</th>"
-+                "<td><?php echo $row['nombre']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Descripcion</th>"
-+               "<td><?php echo $row['descripcion']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+                "<th>Ganancia global</th>"
-+               "<td><?php echo $row['ganancia_global']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+                "<th>Dias de credito </th>"
-+               "<td><?php echo $row['dias_credito']; ?></td>"
-+           "</tr>"
-+        "</table >"
-+                "<a href='' class='btn btn-sm btn-info'><span class='glyphicon glyphicon-refresh' aria-hidden='true'></span> Regresar</a>"
-+                "</br>"
-+                "<a href='' class='btn btn-sm btn-success'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> Editar datos</a>"
-+                "</br>"
-+                "<a href='' class='btn btn-sm btn-danger' onclick='return confirm('Esta seguro de borrar los datos <?php echo $row['nombres']; ?><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> Eliminar</a>"
-+        "</div>"
-+    "</div>"
-+    "</div>"
-
-
-    erpsil_setContent(detalleProveedorWindow);
-}
-
-/*********************************************************/
-/*                 Gestion Proveedor                     */
-/*********************************************************/
-
-/*******************Agregar proveedor*******************************/
-function erpsil_agregarProveedor() {
-    //var loginWindow = "Aca va la ventana de login";
-    var agregarProveedorWindow = ""
-
-    +    "<div class='login-form'>"
-    +        "<h2 class='text-center'>Agregar proveedor</h2>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' id='inputApe1'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Segundo Apellido'' required='required' id='inputApe2'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Direccion' required='required' id='inputDireccion'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<input type='password' class='form-control' placeholder='Descripcion' required='required' id='inpu'Descripcion'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<button onClick='erpsil_registrarProveedor()' class='btn btn-primary btn-block'>Agregar</button>"
-    +        "</div>"
-    +   " </div>"
-                       
-    erpsil_setContent(agregarProveedorWindow);
-}
-
-/******************Mostrar Proveedor*************************/
-function erpsil_mostrarProveedor() {
-
-    var MostrarProveedorWindow = ""
-
-+      "<div class='table-responsive'>"
-+         "<table class='table table-striped table-hover'>"
-+            "<tr>"
-+                "<th>ID </th>"
-+                "<th>Nombre</th>"
-+                "<th>Primer Apellido</th>"
-+                "<th>Segundo Apellido</th>"
-+                "<th>Direccion</th>"
-+                "<th>Teléfono</th>"
-+                "<th>Descripcion</th>"
-+                "<th>Cedula</th>"
-+            "</tr>"
-+            "<tr>"
-+                "<td>'.$id_proveedor.'</td>"
-+                "<td>'.$row['Nombre'].'</td>"
-+                "<td>'$row['apellido1']</td>"
-+                "<td>'.$row['apellido2'].'</td>"
-+                "<td>'.$row['direccion'].'</td>"
-+                "<td>'.$row['telefono'].'</td>"
-+                "<td>'.$row['descripcion'].'</td>"
-+                "<td>'.$row['cedula'].'</td>"
-+                "<td>"
-+            "</td>"
-+                "<td>"
-+                    "<a href='' title='Editar' onclick='' class='btn btn-warning btn-sm'><span class='' aria-hidden='true'>Editar</span></a>"
-+                    "<a href='' title='Eliminar' onclick='' class='btn btn-danger btn-sm'><span class='' aria-hidden='true'>Eliminar</span></a>"
-+                "</td>"
-+            "</tr>"
-+         "</table>"
-+      "</div>"
-
-
-    erpsil_setContent(MostrarProveedorWindow);
-}
-
-/*******************Editar Proveedor*************************/
-function erpsil_editarProveedor() {
-
-    var editarProveedorWindow = ""
-+        "<div class='container'>"
-+        "<h2 class='text-center'>Editar cliente</h2>"
-+       "<form class='form-horizontal' action='' method='post'>"
-+              "<label class='col-sm-3 control-label'>ID</label>"
-+              "<div class='col-sm-2'>"
-+                   "<input type='text' name='id_proveedor' value='' class='form-control' placeholder='ID' required>"
-+             "</div>"
-+           "<label class='col-sm-3 control-label'>Nombre</label>"
-+           "<div class='col-sm-4'>"
-+                "<input type='text' name='nombre' value='' class='form-control' placeholder='Nombre' required>"
-+           "</div>"
-+           "<label class='col-sm-3 control-label'>Primer Apellido</label>"
-+           "<div class='col-sm-4'>"
-+               "<input type='text' name='apellido1' value='' class='form-control' placeholder='Primer Apellido' required>"
-+           "</div>"
-+       "<label class='col-sm-3 control-label'>Segudo Apellido</label>"
-+        "<div class='col-sm-4'>"
-+            "<input type='text' name='apellido2' value='' class='form-control' placeholder='Segudo Apellido' required>"
-+        "</div>"
-+        "<label class='col-sm-3 control-label'>Cedula</label>"
-+        "<div class='col-sm-4'>"
-+               "<input type='text' name='cedula' value='' class='form-control' placeholder='Cedula' required>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Direccion</label>"
-+        "<div class='col-sm-4'>"
-+            "<textarea name='direccion' class='form-control' placeholder='Dirección'></textarea>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Telefono</label>"
-+        "<div class='col-sm-4'>"
-+            "<input type='text' name='telefono' value='' class='form-control' placeholder='Telefono' required>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Descripcion</label>"
-+        "<div class='col-sm-4'>"
-+            "<textarea name='direccion' class='form-control' placeholder='Descripcion'></textarea>"
-+        "</div>"
-+            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-+           " <div class='col-sm-6'>"
-+               "<input type='submit' name=' ' class='btn btn-sm btn-primary' value='Guardar datos'>"
-+                "<a href=' ' class='btn btn-sm btn-danger'>Cancelar</a>"
-+                 "</div>"
-+            "</form>"
-+        "</div>"
-+       "</div>"
-+       "</div>"
-
-
-    erpsil_setContent(editarProveedorWindow);
-}
-
-/*******************Detalles Proveedor***********************/
-function erpsil_detalleProveedor() {
-
-    var detalleProveedorWindow = ""
-
-+        "<table class='table table-striped table-condensed'>"
-+            "<tr>"
-+                "<th width='20%'>ID del proveedor</th>"
-+               "<td><?php echo $row['id_proveedor']; ?></td>"
-+           "</tr>"
-+           "<tr>"
-+                "<th>Nombre del proveedor</th>"
-+                "<td><?php echo $row['nombre']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Primer Apellido</th>"
-+               "<td><?php echo $row['apellido1']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+                "<th>Segundo Apellido</th>"
-+               "<td><?php echo $row['apellido2']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+                "<th>Celdula </th>"
-+               "<td><?php echo $row['cedula']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+            "<th>Direccion</th>"
-+            "<td><?php echo $row['direccion']; ?></td>"
-+            "</tr>"
-+           "<tr>"
-+               "<th>Teléfono</th>"
-+                "<td><?php echo $row['telefono']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Descripcion</th>"
-+                "<td><?php echo $row['descripcion']; ?></td>"
-+            "</tr>"
-+        "</table >"
-+                "<a href='' class='btn btn-sm btn-info'><span class='glyphicon glyphicon-refresh' aria-hidden='true'></span> Regresar</a>"
-+                "</br>"
-+                "<a href='' class='btn btn-sm btn-success'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> Editar datos</a>"
-+                "</br>"
-+                "<a href='' class='btn btn-sm btn-danger' onclick='return confirm('Esta seguro de borrar los datos <?php echo $row['nombres']; ?><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> Eliminar</a>"
-+        "</div>"
-+    "</div>"
-
-    erpsil_setContent(detalleProveedorWindow);
-}
-
-/*********************************************************/
-/*                 Gestion empleado                     */
-/*********************************************************/
-
-/***************Agregar empleado*********************/
-function erpsil_agregarEmpleado(){
-    var agregarEmpleadoWindow = ""
-
-    +    "<div class='login-form'>"
-    +        "<h2 class='text-center'>Agregar empleado</h2>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' id='inputApellido1'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' id='inputApellido2'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<input type='password' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Dirección' required='required' id='inputDireccion'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Ingreso' required='required' id='inputIngreso'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Observacion' required='required' id='inputObservacion'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Puesto' required='required' id='inputPuesto'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Jornada' required='required' id='inputJornada'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<button onClick='erpsil_registrarEmpleado()' class='btn btn-primary btn-block'>Agregar</button>"
-    +        "</div>"
-    +   " </div>"
-                       
-    erpsil_setContent(agregarEmpleadoWindow);
-}
-
-/******************Mostrar Empleado*************************/
-function erpsil_mostrarEmpleado() {
-
-    var MostrarEmpleadoWindow = ""
-
-+      "<div class='table-responsive'>"
-+         "<table class='table table-striped table-hover'>"
-+            "<tr>"
-+                "<th>ID</th>"
-+                "<th>Nombre</th>"
-+                "<th>Primer Apellido</th>"
-+                "<th>Segundo Apellido</th>"
-+                "<th>Teléfono</th>"
-+                "<th>Cedula</th>"
-+                "<th>Ingreso</th>"
-+                "<th>Direccion</th>"
-+                "<th>Descripcion</th>"
-+                "<th>Observaciones</th>"
-+                "<th>Puesto</th>"
-+                "<th>Jornada</th>"
-+            "</tr>"
-+            "<tr>"
-+                "<td>'.$row[$'id_empleado'].</td>"
-+                "<td>'.$row['nombre'].'</td>"
-+                "<td>'.$row['apellido1']</td>"
-+                "<td>'.$row['apellido2'].'</td>"
-+                "<td>'.$row['telefono'].'</td>"
-+                "<td>'.$row['cedula'].'</td>"
-+                "<td>'.$row['direccion'].'</td>"
-+                "<td>'.$row['ingreso'].'</td>"
-+                "<td>'.$row['observaciones'].'</td>"
-+                "<td>'.$row['Puesto'].'</td>"
-+                "<td>'.$row['Jornada'].'</td>"
-+                "<td>"
-+            "</td>"
-+                "<td>"
-+                    "<a href='' title='Editar' onclick='' class='btn btn-warning btn-sm'><span class='' aria-hidden='true'>Editar</span></a>"
-+                    "<a href='' title='Eliminar' onclick='' class='btn btn-danger btn-sm'><span class='' aria-hidden='true'>Eliminar</span></a>"
-+                "</td>"
-+            "</tr>"
-+         "</table>"
-+      "</div>"
-
-
-    erpsil_setContent(MostrarEmpleadoWindow);
-}
-
-/*******************Editar Proveedor*************************/
-function erpsil_editarEmpleado() {
-
-    var editarEmpleadoWindow = ""
-+        "<div class='container'>"
-+        "<h2 class='text-center'>Editar cliente</h2>"
-+       "<form class='form-horizontal' action='' method='post'>"
-+              "<label class='col-sm-3 control-label'>ID</label>"
-+              "<div class='col-sm-2'>"
-+                   "<input type='text' name='id_proveedor' value='' class='form-control' placeholder='ID' required>"
-+             "</div>"
-+           "<label class='col-sm-3 control-label'>Nombre</label>"
-+           "<div class='col-sm-4'>"
-+                "<input type='text' name='nombre' value='' class='form-control' placeholder='Nombre' required>"
-+           "</div>"
-+           "<label class='col-sm-3 control-label'>Primer Apellido</label>"
-+           "<div class='col-sm-4'>"
-+               "<input type='text' name='apellido1' value='' class='form-control' placeholder='Primer Apellido' required>"
-+           "</div>"
-+       "<label class='col-sm-3 control-label'>Segudo Apellido</label>"
-+        "<div class='col-sm-4'>"
-+            "<input type='text' name='apellido2' value='' class='form-control' placeholder='Segudo Apellido' required>"
-+        "</div>"
-+        "<label class='col-sm-3 control-label'>Telefono</label>"
-+        "<div class='col-sm-4'>"
-+            "<input type='text' name='telefono' value='' class='form-control' placeholder='Telefono' required>"
-+        "</div>"
-+        "<label class='col-sm-3 control-label'>Cedula</label>"
-+        "<div class='col-sm-4'>"
-+               "<input type='text' name='cedula' value='' class='form-control' placeholder='Cedula' required>"
-+        "</div>"     
-+       "<label class='col-sm-3 control-label'>Direccion</label>"
-+        "<div class='col-sm-4'>"
-+            "<textarea name='direccion' class='form-control' placeholder='Dirección'></textarea>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Ingreso</label>"
-+        "<div class='col-sm-4'>"
-+               "<input type='text' name='ingreso' value='' class='form-control' placeholder='Ingreso' required>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Observaciones</label>"
-+        "<div class='col-sm-4'>"
-+            "<textarea name='observaciones' class='form-control' placeholder='Observaciones'></textarea>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Puesto</label>"
-+        "<div class='col-sm-4'>"
-+            "<input type='text' name='puesto' value='' class='form-control' placeholder='Puesto' required>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Jornada</label>"
-+        "<div class='col-sm-4'>"
-+             "<input type='text' name='jornada' value='' class='form-control' placeholder='Jornada' required>"
-+        "</div>"
-+           "<label class='col-sm-3 control-label'>&nbsp;</label>"
-+           " <div class='col-sm-6'>"
-+               "<input type='submit' name=' ' class='btn btn-sm btn-primary' value='Guardar datos'>"
-+                "<a href=' ' class='btn btn-sm btn-danger'>Cancelar</a>"
-+                 "</div>"
-+            "</form>"
-+        "</div>"
-+       "</div>"
-+       "</div>"
-
-
-    erpsil_setContent(editarEmpleadoWindow);
-}
-
-/*******************Detalles Empleado***********************/
-function erpsil_detalleEmpleado() {
-
-    var detalleEmpleadoWindow = ""
-
-+        "<table class='table table-striped table-condensed'>"
-+            "<tr>"
-+                "<th width='20%'>ID del empleado</th>"
-+               "<td><?php echo $row['empleado']; ?></td>"
-+           "</tr>"
-+           "<tr>"
-+                "<th>Nombre del empleado</th>"
-+                "<td><?php echo $row['nombre']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Primer Apellido</th>"
-+               "<td><?php echo $row['apellido1']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+                "<th>Segundo Apellido</th>"
-+               "<td><?php echo $row['apellido2']; ?></td>"
-+           "</tr>"
-+           "<tr>"
-+               "<th>Teléfono</th>"
-+                "<td><?php echo $row['telefono']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Cedula</th>"
-+               "<td><?php echo $row['cedula']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+            "<th>Direccion</th>"
-+            "<td><?php echo $row['direccion']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Ingreso</th>"
-+                "<td><?php echo $row['ingreso']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Puesto</th>"
-+                "<td><?php echo $row['puesto']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Jornada</th>"
-+                "<td><?php echo $row['jornada']; ?></td>"
-+            "</tr>"
-+        "</table >"
-+                "<a href='' class='btn btn-sm btn-info'><span class='glyphicon glyphicon-refresh' aria-hidden='true'></span> Regresar</a>"
-+                "</br>"
-+                "<a href='' class='btn btn-sm btn-success'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> Editar datos</a>"
-+                "</br>"
-+                "<a href='' class='btn btn-sm btn-danger' onclick='return confirm('Esta seguro de borrar los datos <?php echo $row['nombres']; ?><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> Eliminar</a>"
-+        "</div>"
-+    "</div>"
-
-    erpsil_setContent(detalleEmpleadoWindow);
-}
-
-/************************************************************/
-
-/***************Agregar inventario*********************/
-
-function erpsil_agregarInventario(){
+function erpsil_agregarInventarioWindow(){
     //var loginWindow = "Aca va la ventana de login";
     var agregarInventarioWindow = ""
     +    "<div class='login-form'>"
     +        "<h2 class='text-center'>Agregar Inventario</h2>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNomvre'>"
-    +        "</div>"
 
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Cantidad' required='required' id='inputCantidad'>"
@@ -894,68 +471,79 @@ function erpsil_agregarInventario(){
     +        "</div>"
 
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Estatus' required='required' id='inputEstatus'>"
+    +           " <input type='text' class='form-control' placeholder='Estatus' required='required' id='inputStatus'>"
     +        "</div>"
 
     +        "<div class='form-group'>"
-    +            "<button onClick='erpsil_registrarInventario()' class='btn btn-primary btn-block'>Agregar</button>"
+    +            "<div onclick='erpsil_agregarInventario()' class='btn btn-primary btn-block'>Agregar</div>"
     +        "</div>"
     +   " </div>"
                        
     erpsil_setContent(agregarInventarioWindow);
 }
 
-/******************Mostrar Empleado*************************/
-function erpsil_mostrarInventario() {
+function erpsil_agregarInventario(){
 
-    var MostrarEInventarioWindow = ""
+    var cantidadInventario = $("#inputCantidad").val();
+    var unidadInventario = $("#inputUnidad").val();
+    var codigoIntInventario = $("#inputCodigoInter").val();
+    var codigoBarrasInventario = $("#inputCodigoBarra").val();
+    var categoriaInventario = $("#inputCategoria").val();
+    var cantidadMinimaInventario = $("#inputCantidadMin").val();
+    var descripcionInventario = $("#inputDescripcion").val();
+    var impuestoInventario = $("#inputImpuestoVenta").val();
+    var gananciaInventario = $("#inputGananciaMin").val();
+    var costoInventario = $("#inputCosto").val();
+    var statusInventario = $("#inputStatus").val();
 
-+      "<div class='table-responsive'>"
-+         "<table class='table table-striped table-hover'>"
-+            "<tr>"
-+                "<th>ID</th>"
-+                "<th>Nombre</th>"
-+                "<th>Cantidad</th>"
-+                "<th>Unidad</th>"
-+                "<th>Codigo interno</th>"
-+                "<th>Codigo de barras</th>"
-+                "<th>Categoria</th>"
-+                "<th>Cantidad minina</th>"
-+                "<th>Descripcion</th>"
-+                "<th>Impuesto de venta</th>"
-+                "<th>Ganancia minima</th>"
-+                "<th>Costo</th>"
-+                "<th>Estatus</th>"
-+            "</tr>"
-+            "<tr>"
-+                "<td>'.$row[$'id_inventario'].</td>"
-+                "<td>'.$row['cantidad'].'</td>"
-+                "<td>'.$row['unidad']</td>"
-+                "<td>'.$row['codigo_intern'].'</td>"
-+                "<td>'.$row['codigo_barras'].'</td>"
-+                "<td>'.$row['categoria'].'</td>"
-+                "<td>'.$row['cantidad_minima'].'</td>"
-+                "<td>'.$row['descripcion'].'</td>"
-+                "<td>'.$row['impuesto_venta'].'</td>"
-+                "<td>'.$row['ganancia_minima'].'</td>"
-+                "<td>'.$row['costo'].'</td>"
-+                "<td>'.$row['status'].'</td>"
-+                "<td>"
-+            "</td>"
-+                "<td>"
-+                    "<a href='' title='Editar' onclick='' class='btn btn-warning btn-sm'><span class='' aria-hidden='true'>Editar</span></a>"
-+                    "<a href='' title='Eliminar' onclick='' class='btn btn-danger btn-sm'><span class='' aria-hidden='true'>Eliminar</span></a>"
-+                "</td>"
-+            "</tr>"
-+         "</table>"
-+      "</div>"
+    if(cantidadInventario != "" && unidadInventario != "" && codigoIntInventario != "" &&
+    codigoBarrasInventario != "" && categoriaInventario != "" && cantidadMinimaInventario != "" &&
+    descripcionInventario != "" && impuestoInventario != "" && gananciaInventario != "" &&
+    costoInventario != "" && statusInventario != ""){
+    
+        var inventarioData = {
+            w:"erpsil_inventario",
+            r:"agregar_inventario",
+            cantidad:cantidadInventario,
+            unidad:unidadInventario,
+            codigo_interno:codigoIntInventario,
+            codigo_barras:codigoBarrasInventario,
+            categoria:categoriaInventario,
+            cantidad_minima:cantidadMinimaInventario,
+            descripcion:descripcionInventario,
+            impuesto_venta:impuestoInventario,
+            ganancia_minima:gananciaInventario,
+            costo:costoInventario,
+            status:statusInventario
+        };
+    calaApi_postRequest(inventarioData, function (d) {
+        console.log("Inventario agregado" + d);
+        erpsil_listarInventario();
+    }, function (d) {
+        console.log("Inventario no agregado" + d);
 
-
-    erpsil_setContent(MostrarEInventarioWindow);
+    });
+    }else{
+        console.log("Error!");
+    }
 }
 
-/*******************Editar Inventario*************************/
-function erpsil_editarInventario() {
+function erpsil_eliminarInventario(id){
+
+    var req = {
+        w: "erpsil_inventario",
+        r: "eliminar_inventario",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        erpsil_listarInventario();
+        }, function(){
+        console.log("Inventario no eliminarado");
+    });
+}
+
+function erpsil_editarInventarioWindow(data) {
 
     var editarInventarioWindow = ""
 +        "<div class='container'>"
@@ -963,55 +551,67 @@ function erpsil_editarInventario() {
 +       "<form class='form-horizontal' action='' method='post'>"
 +              "<label class='col-sm-3 control-label'>ID</label>"
 +              "<div class='col-sm-2'>"
-+                   "<input type='text' name='id_inventario' value='' class='form-control' placeholder='ID' required>"
++                   "<input type='text' id='id_inventario' value='" +data.id_inventario+ "' class='form-control' placeholder='ID' required>"
 +             "</div>"
+
 +           "<label class='col-sm-3 control-label'>Cantidad</label>"
 +           "<div class='col-sm-4'>"
-+                "<input type='text' name='cantidad' value='' class='form-control' placeholder='Cantidad' required>"
++                "<input type='text' id='cantidad' value='" +data.cantidad+ "' class='form-control' placeholder='Cantidad' required>"
 +           "</div>"
+
 +           "<label class='col-sm-3 control-label'>Unidad</label>"
 +           "<div class='col-sm-4'>"
-+               "<input type='text' name='unidad' value='' class='form-control' placeholder='Unidad' required>"
++               "<input type='text' id='unidad'  value='" +data.unidad+ "' class='form-control' placeholder='Unidad' required>"
 +           "</div>"
-+       "<label class='col-sm-3 control-label'>Codigo interno</label>"
-+        "<div class='col-sm-4'>"
-+            "<input type='text' name='codigo_interno' value='' class='form-control' placeholder='Codigo interno' required>"
-+        "</div>"
-+        "<label class='col-sm-3 control-label'>Codigo de barras</label>"
-+        "<div class='col-sm-4'>"
-+            "<input type='text' name='codigo_barras' value='' class='form-control' placeholder='Codigo de barras' required>"
-+        "</div>"
-+        "<label class='col-sm-3 control-label'>Categoria</label>"
-+        "<div class='col-sm-4'>"
-+               "<input type='text' name='Categoria' value='' class='form-control' placeholder='Categoria' required>"
-+        "</div>"     
+
++           "<label class='col-sm-3 control-label'>Codigo interno</label>"
++            "<div class='col-sm-4'>"
++            "<input type='text' id='codigo_interno' value='" +data.codigo_interno+ "' class='form-control' placeholder='Codigo interno' required>"
++            "</div>"
+
++         "<label class='col-sm-3 control-label'>Codigo de barras</label>"
++         "<div class='col-sm-4'>"
++            "<input type='text' id='codigo_barras' value='" +data.codigo_barras+ "' class='form-control' placeholder='Codigo de barras' required>"
++          "</div>"
+
++         "<label class='col-sm-3 control-label'>Categoria</label>"
++          "<div class='col-sm-4'>"
++               "<input type='text' id='categoria' value='" +data.categoria+ "' class='form-control' placeholder='Categoria' required>"
++        "</div>"  
+
 +        "<label class='col-sm-3 control-label'>Cantidad minima</label>"
 +        "<div class='col-sm-4'>"
-+               "<input type='text' name='cantidad_minima' value='' class='form-control' placeholder='Cantidad minima' required>"
-+        "</div>"     
++               "<input type='text' id='cantidad_minima' value='" +data.cantidad_minima+ "' class='form-control' placeholder='Cantidad minima' required>"
++        "</div>"  
+
 +       "<label class='col-sm-3 control-label'>Descripcion</label>"
 +        "<div class='col-sm-4'>"
-+            "<textarea name='descripcion' class='form-control' placeholder='Descripcion'></textarea>"
++            "<input type='text' id='descripcion' value='" +data.descripcion+ "' class='form-control' placeholder='Descripcion'></input>"
 +        "</div>"
+
 +       "<label class='col-sm-3 control-label'>Impuesto de venta</label>"
 +        "<div class='col-sm-4'>"
-+               "<input type='text' name='impuesto_venta' value='' class='form-control' placeholder='Impuesto de venta' required>"
++               "<input type='text' id='impuesto_venta' value='" +data.impuesto_venta+ "' class='form-control' placeholder='Impuesto de venta' required>"
 +        "</div>"
-+       "<label class='col-sm-3 control-label'>Ganancia minima</label>"
+
++        "<label class='col-sm-3 control-label'>Ganancia minima</label>"
 +        "<div class='col-sm-4'>"
-+            "<textarea name='ganancia_minima' class='form-control' placeholder='Ganancia minima'></textarea>"
++               "<input type='text' id='ganancia_minima' value='" +data.ganancia_minima+ "' class='form-control' placeholder='Ganancia minima' required>"
 +        "</div>"
+
 +       "<label class='col-sm-3 control-label'>Costo</label>"
 +        "<div class='col-sm-4'>"
-+            "<input type='text' name='costo' value='' class='form-control' placeholder='Costo' required>"
++            "<input type='text' id='costo' value='" +data.costo+ "' class='form-control' placeholder='Costo' required>"
 +        "</div>"
+
 +       "<label class='col-sm-3 control-label'>Estatus</label>"
 +        "<div class='col-sm-4'>"
-+             "<input type='text' name='estatus' value='' class='form-control' placeholder='Estatus' required>"
++             "<input type='text' id='status' value='" + data.status + "' class='form-control' placeholder='Estatus' required>"
 +        "</div>"
+
 +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
 +           " <div class='col-sm-6'>"
-+               "<input type='submit' name=' ' class='btn btn-sm btn-primary' value='Guardar datos'>"
++               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarInventario()'>Guardar inventario</div>"
 +                "<a href=' ' class='btn btn-sm btn-danger'>Cancelar</a>"
 +                 "</div>"
 +            "</form>"
@@ -1023,7 +623,71 @@ function erpsil_editarInventario() {
     erpsil_setContent(editarInventarioWindow);
 }
 
-/*******************Detalles Inventario***********************/
+function erpsil_editarInventario(id){
+
+    var req = {
+        w: "erpsil_inventario",
+        r: "obtener_inventario",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(d){
+        //console.log(d.req);
+        erpsil_editarInventarioWindow(d.resp);
+    }, function(){
+        console.log("Inventario no agregado");
+    });
+}
+
+function erpsil_guardarEditarInventario(){
+
+    var idInventario = $("#id_inventario").val();
+    var cantidadInventario = $("#cantidad").val();
+    var unidadInventario = $("#unidad").val();
+    var codigoInternoInventario = $("#codigo_interno").val();
+    var codigoBarrasInventario = $("#codigo_barras").val();
+    var categoriaInventario = $("#categoria").val();
+    var cantidadMinimaInventario = $("#cantidad_minima").val();
+    var descripcionInventario = $("#descripcion").val();
+    var impuestoVentaInventario = $("#impuesto_venta").val();
+    var gananciaMinimaInventario = $("#ganancia_minima").val();
+    var costoInventario = $("#costo").val();
+    var statusInventario = $("#status").val();
+
+    if(cantidadInventario != "" && unidadInventario != "" && codigoInternoInventario != "" &&
+        codigoBarrasInventario != "" && categoriaInventario != "" && cantidadMinimaInventario != "" &&
+        descripcionInventario != "" && impuestoVentaInventario != "" && gananciaMinimaInventario != "" &&
+        costoInventario != "" && statusInventario != ""){
+
+        var inventarioData = {
+            w:"erpsil_inventario",
+            r:"agregarEditar_inventario",
+            id:idInventario,
+            cantidad:cantidadInventario,
+            unidad:unidadInventario,
+            codigo_interno:codigoInternoInventario,
+            codigo_barras:codigoBarrasInventario,
+            categoria:categoriaInventario,
+            cantidad_minima:cantidadMinimaInventario,
+            descripcion:descripcionInventario,
+            impuesto_venta:impuestoVentaInventario,
+            ganancia_minima:gananciaMinimaInventario,
+            costo:costoInventario,
+            status:statusInventario
+        };
+
+        calaApi_postRequest(inventarioData, function (d) {
+            //console.log(d);
+            erpsil_listarInventario();
+        }, function (d) {
+            console.log("Inventario no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+
+}
+
 function erpsil_detalleInventario() {
 
     var detalleInventarioWindow = ""
@@ -1089,31 +753,318 @@ function erpsil_detalleInventario() {
     erpsil_setContent(detalleInventarioWindow);
 }
 
-/*************funciones de agregados****************/
+/*********************************************************/
+/*                 Gestion proveedor                     */
+/*********************************************************/
 
-function erpsil_login(){
-    var userName = $("#inputUser").val();
-    var passUser = $("#inputPassword").val();
+function erpsil_agregarProveedorWindow() {
+    //var loginWindow = "Aca va la ventana de login";
+    var agregarProveedorWindow = ""
 
-    //(userData, success, error
-    var userData = {
-        userName:userName, 
-        pwd:passUser
-    };
-
-    calaApiApi_login(userData, function(a){
-        //console.log(a);
-        erpsil_menuWindow();
-    }, function(b){
-        console.log(b);    
-    });
-
-    //console.log("Antes de algo");
-    //erpsil_debug(userName);
-    //erpsil_debug(passUser);
+    +    "<div class='login-form'>"
+    +        "<h2 class='text-center'>Agregar proveedor</h2>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' id='inputApe1'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' id='inputApe2'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Direccion' required='required' id='inputDireccion'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<input type='password' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<div onClick='erpsil_agregarProveedor()' class='btn btn-primary btn-block'>Agregar</div>"
+    +        "</div>"
+    +   " </div>"
+                       
+    erpsil_setContent(agregarProveedorWindow);
 }
 
-/**************Agregar cliente**********************/
+function erpsil_agregarProveedor(){
+
+    var nombreProveedor = $("#inputName").val();
+    var apellido1Proveedor = $("#inputApe1").val();
+    var apellido2Proveedor = $("#inputApe2").val();
+    var cedulaProveedor = $("#inputCedula").val();
+    var telefonoProveedor = $("#inputTelefono").val();
+    var direccionProveedor = $("#inputDireccion").val();
+    var descripcionProveedor = $("#inputDescripcion").val();
+
+    if(nombreProveedor != "" && apellido1Proveedor != "" && apellido2Proveedor != "" 
+    && direccionProveedor != "" && descripcionProveedor != "" && cedulaProveedor != "" && telefonoProveedor != ""){
+
+        var proveedorData = {
+            w: "erpsil_proveedor",
+            r: "agregar_proveedor",
+            nombre:nombreProveedor,
+            apellido1:apellido1Proveedor,
+            apellido2:apellido2Proveedor,
+            cedula:cedulaProveedor,
+            telefono:telefonoProveedor,
+            direccion:direccionProveedor,
+            descripcion:descripcionProveedor
+        };
+
+        calaApi_postRequest(proveedorData, function (d) {
+            console.log("nuevos agregado" + d);
+        }, function (d) {
+            console.log("No agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+function erpsil_listarProveedor(){
+    var proveedorData = {
+        w: "erpsil_proveedor",
+        r: "mostrar_proveedor"
+    };
+
+    calaApi_postRequest(proveedorData, function (d) {
+ 
+        var MostrarProveedorWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +            "<tr>"
+        +                "<th>ID</th>"
+        +                "<th>Nombre</th>"
+        +                "<th>Primer apellido</th>"
+        +                "<th>Segundo apellido</th>"
+        +                "<th>Cedula</th>"
+        +                "<th>Teléfono</th>"
+        +                "<th>Direccion</th>"
+        +                "<th>Descripcion</th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarProveedorWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_proveedor +" </td>"
+        +                "<td> "+ a.nombre +" </td>"
+        +                "<td> "+ a.apellido1 +" </td>"
+        +                "<td> "+ a.apellido2 +" </td>"
+        +                "<td> "+ a.cedula +" </td>"
+        +                "<td> "+ a.direccion +" </td>"
+        +                "<td> "+ a.telefono +" </td>"
+        +                "<td> "+ a.descripcion +" </td>"
+
+        +                "<td> <div id='editar_cliente' onclick='erpsil_editarProveedor(" + a.id_proveedor + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarProveedor("+ a.id_proveedor +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+                }
+                MostrarProveedorWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarProveedorWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
+
+function erpsil_eliminarProveedor(id){
+    var req = {
+        w: "erpsil_proveedor",
+        r: "eliminar_proveedor",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        erpsil_listarProveedor();
+    }, function(){
+        console.log("Proveedor no eliminarado");
+    });
+}
+
+function erpsil_editarProveedor(id){
+
+    var req = {
+        w: "erpsil_proveedor",
+        r: "obtener_proveedor",
+        id:id
+    };
+    
+    calaApi_postRequest(req, function(d){
+        //console.log(d.req);
+        erpsil_editarProveedorWindow(d.resp);
+    }, function(){
+        console.log("Proveedor no editado");
+    });
+}
+
+function erpsil_guadarEditarProveedor(){
+
+    var id_proveedor = $("#inputIdProveedor").val();
+    var nombreProveedor = $("#inputNombre").val();
+    var apellido1Proveedor = $("#inputApellido1").val();
+    var apellido2Proveedor = $("#inputApellido2").val();
+    var cedulaProveedor = $("#inputCedula").val();
+    var direccionProveedor = $("#inputDireccion").val();
+    var telefonoProveedor = $("#inputTelefono").val();
+    var descripcionProveedor = $("#inputDescripcion").val();
+
+    if(nombreProveedor != "" && apellido1Proveedor != "" && apellido2Proveedor != "" && cedulaProveedor != "" 
+    && direccionProveedor != "" && telefonoProveedor != "" && descripcionProveedor != ""){
+
+        var proveedorData = {
+            w: "erpsil_proveedor",
+            r: "agregarEditar_proveedor",
+            id:id_proveedor,
+            nombre:nombreProveedor,
+            apellido1:apellido1Proveedor,
+            apellido2:apellido2Proveedor,
+            cedula:cedulaProveedor,
+            direccion:direccionProveedor,
+            telefono:telefonoProveedor,
+            descripcion:descripcionProveedor
+        };
+
+        calaApi_postRequest(proveedorData, function (d) {       
+            erpsil_listarProveedor();
+        }, function (d) {
+            console.log("No agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+
+}
+
+function erpsil_editarProveedorWindow(data) {
+
+    var editarProveedorWindow = ""
++        "<div class='container'>"
++        "<h2 class='text-center'>Editar cliente</h2>"
++       "<form class='form-horizontal' action='' method='post'>"
++              "<label class='col-sm-3 control-label'>ID</label>"
++              "<div class='col-sm-2'>"
++                   "<input type='text' id='inputIdProveedor' value='" +data.id_proveedor+ "' class='form-control' placeholder='ID' required>"
++             "</div>"
++           "<label class='col-sm-3 control-label'>Nombre</label>"
++           "<div class='col-sm-4'>"
++                "<input type='text' id='inputNombre' value='" +data.nombre+ "' class='form-control' placeholder='Nombre' required>"
++           "</div>"
++           "<label class='col-sm-3 control-label'>Primer Apellido</label>"
++           "<div class='col-sm-4'>"
++               "<input type='text' id='inputApellido1' value='" +data.apellido1+ "' class='form-control' placeholder='Primer Apellido' required>"
++           "</div>"
++       "<label class='col-sm-3 control-label'>Segudo Apellido</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputApellido2' value='" +data.apellido2+ "' class='form-control' placeholder='Segudo Apellido' required>"
++        "</div>"
++        "<label class='col-sm-3 control-label'>Cedula</label>"
++        "<div class='col-sm-4'>"
++               "<input type='text' id='inputCedula' value='" +data.cedula+ "' class='form-control' placeholder='Cedula' required>"
++        "</div>"
++       "<label class='col-sm-3 control-label'>Telefono</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputTelefono' value='" +data.telefono+ "' class='form-control' placeholder='Telefono' required>"
++        "</div>"
++       "<label class='col-sm-3 control-label'>Direccion</label>"
++        "<div class='col-sm-4'>"
++            "<input id='inputDireccion' class='form-control' value='" +data.direccion+ "' placeholder='Dirección'></input>"
++        "</div>"
++       "<label class='col-sm-3 control-label'>Descripcion</label>"
++        "<div class='col-sm-4'>"
++            "<input id='inputDescripcion' class='form-control' value='" +data.descripcion + "' placeholder='Descripcion'></input>"
++        "</div>"
++            "<label class='col-sm-3 control-label'>&nbsp;</label>"
++           " <div class='col-sm-6'>"
++               "<div class='btn btn-sm btn-primary' onclick='erpsil_guadarEditarProveedor()'>Guardar Proveedor</div>"
++                "<div class='btn btn-sm btn-danger'>Cancelar</div>"
++                 "</div>"
++            "</form>"
++        "</div>"
++       "</div>"
++       "</div>"
+
+
+    erpsil_setContent(editarProveedorWindow);
+}
+
+/*********************************************************/
+/*                 Gestion cliente                       */
+/*********************************************************/
+
+function erpsil_editarClienteWindow(data) {
+
+    var editarClienteWindow = ""
++        "<div class='container'>"
++        "<h2 class='text-center'>Editar cliente</h2>"
++       "<form class='form-horizontal' action='' method='post'>"
++              "<label class='col-sm-3 control-label'>ID</label>"
++              "<div class='col-sm-2'>"
++                   "<input type='text' id='inputId_cliente' value='" + data.id_cliente + "' class='form-control' placeholder='ID' required>"
++             "</div>"
++           "<label class='col-sm-3 control-label'>Nombres</label>"
++           "<div class='col-sm-4'>"
++                "<input type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
++           "</div>"
++           "<label class='col-sm-3 control-label'>Cedula</label>"
++           "<div class='col-sm-4'>"
++               "<input type='text' id='inputCedula' value='" + data.cedula  + "' class='form-control' placeholder='Cedula' required>"
++           "</div>"
++       "<label class='col-sm-3 control-label'>Email</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputEmail' value='" +data.email  + "' class='form-control' placeholder='Email' required>"
++        "</div>"
++       "<label class='col-sm-3 control-label'>Direccion</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputDireccion' value='" +data.direccion  + "' class='form-control' placeholder='Dirección' required>"
++        "</div>"
++       "<label class='col-sm-3 control-label'>Telefono</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputTelefono' value='" + data.telefono  + "' class='form-control' placeholder='Telefono' required>"
++        "</div>"
++       "<label class='col-sm-3 control-label'>Descripcion</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputDescripcion' value='" + data.descripcion  + "' class='form-control' placeholder='Descripcion' required>"
++        "</div>"
++        "<label class='col-sm-3 control-label'>Saldo Maximo</label>"
++        "<div class='col-sm-4'>"
++            "<input type='textarea' id='inputSaldo_maximo' value='" + data.saldo_maximo  + "' class='form-control' placeholder='Saldo Maximo'></textarea>"
++        "</div>"
++        "<label class='col-sm-3 control-label'>Saldo</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputSaldo' value='" + data.saldo  + "' class='form-control' placeholder='Saldo' required>"
++        "</div>"
++        "<label class='col-sm-3 control-label'>Tipo</label>"
++       " <div class='col-sm-4'>"           
++            "<input type='text' id='inputTipo' value='" + data.tipo  + "' class='form-control' placeholder='Tipo' required>"
++        "</div>"    
++            "<label class='col-sm-3 control-label'>&nbsp;</label>"
++           " <div class='col-sm-6'>"
++               "<div class='btn btn-sm btn-primary' onclick='guadarEditarCliente()' >Guardar</div>"
++                "<div class='btn btn-sm btn-danger'>Cancelar</div>"
++                 "</div>"
++          "</form>"
++        "</div>"
++       "</div>"
++       "</div>"
+
+
+    erpsil_setContent(editarClienteWindow);
+}
+
 function erpsil_agregarCliente(){
     var nombreCliente = $("#inputName").val();
     var cedulaCliente = $("#inputCedula").val();
@@ -1160,13 +1111,7 @@ function erpsil_listarCliente() {
     };
 
     calaApi_postRequest(clienteData, function (d) {
-        console.log(d);
-
-
-
-
-
-
+ 
         var MostrarClienteWindow = ""
 
         +      "<div class='table-responsive'>"
@@ -1182,40 +1127,406 @@ function erpsil_listarCliente() {
         +                "<th>Saldo Maximo </th>"
         +                "<th>Saldo</th>"
         +                "<th>Tipo</th>"
+        +                "<th>Editar</th>"
+        +                "<th>Eliminar</th>"
         +            "</tr>";
-for(x in d.resp){
-    var a = d.resp[x];
-    MostrarClienteWindow += ""
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarClienteWindow += ""
     
-       +            "<tr>"
-        +                "<td> "+ d.id_cliente +" </td>"
-        +                "<td> "+ d.nombre +" </td>"
-        +                "<td> "+ d.cedula +" </td>"
-        +                "<td> "+ d.email +" </td>"
-        +                "<td> "+ d.direccion +" </td>"
-        +                "<td> "+ d.telefono +" </td>"
-        +                "<td> "+ d.descripcion +" </td>"
-        +                "<td> "+ d.saldo_maximo +" </td>"
-        +                "<td> "+ d.saldo +" </td>"
-        +                "<td> "+ d.tipo +" </td>"
+        +            "<tr>"
+        +                "<td> "+ a.id_cliente +" </td>"
+        +                "<td> "+ a.nombre +" </td>"
+        +                "<td> "+ a.cedula +" </td>"
+        +                "<td> "+ a.email +" </td>"
+        +                "<td> "+ a.direccion +" </td>"
+        +                "<td> "+ a.telefono +" </td>"
+        +                "<td> "+ a.descripcion +" </td>"
+        +                "<td> "+ a.saldo_maximo +" </td>"
+        +                "<td> "+ a.saldo +" </td>"
+        +                "<td> "+ a.tipo +" </td>"
+        +                "<td> <div id='editar_cliente' onclick='erpsil_editarCliente(" + a.id_cliente + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarCliente("+ a.id_cliente +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
         +            "</tr>";
-}
-            MostrarClienteWindow += ""
-        +                "<td>"
-        +                    "<a href='' title='Editar' onclick='' class='btn btn-warning btn-sm'><span class='' aria-hidden='true'>Editar</span></a>"
-        +                    "<a href='' title='Eliminar' onclick='' class='btn btn-danger btn-sm'><span class='' aria-hidden='true'>Eliminar</span></a>"
-        +                "</td>"
+                    }
+        }
+                MostrarClienteWindow += ""
         +            "</tr>"
         +         "</table>"
         +      "</div>";
-
-
 
         erpsil_setContent(MostrarClienteWindow);
 
     }, function (d) {
         console.log(d);
     });
+}
+
+function erpsil_eliminarCliente(id){
+    console.log(id);
+
+    var req = {
+        w: "erpsil_cliente",
+        r: "eliminar_cliente",
+        id:id
+    };
+    calaApi_postRequest(req, function(){
+        erpsil_listarCliente();
+    }, function(){
+        console.log("no eliminar");
+    });
+}
+
+function erpsil_editarCliente(id){
+    var req = {
+        w: "erpsil_cliente",
+        r: "obtener_cliente",
+        id:id
+    };
+
+    $("#editar_cliente").empty();
+    $("#editar_cliente").append("Cargando...");
+
+    calaApi_postRequest(req, function(d){
+        erpsil_editarClienteWindow(d.resp);
+    }, function(){
+        console.log("Cliente no editado");
+    });
+}
+
+//cambie a erpsil, si no funciona cambiarlo/quitarlo
+function erpsil_guadarEditarCliente(){
+    
+    var idCliente = $("#inputId_cliente").val();
+    var nombreCliente = $("#inputNombre").val();
+    var cedulaCliente = $("#inputCedula").val();
+    var emailCliente = $("#inputEmail").val();
+    var direccionCliente = $("#inputDireccion").val();
+    var telefonoCliente = $("#inputTelefono").val();
+    var descripcionCliente = $("#inputDescripcion").val();
+    var saldoMaCliente = $("#inputSaldoMa").val();
+    var saldoCliente = $("#inputSaldo").val();
+    var tipoCliente = $("#inputTipo").val();
+
+    if(nombreCliente != "" && cedulaCliente != "" && emailCliente != "" && direccionCliente != "" 
+    && telefonoCliente != "" && descripcionCliente != "" && saldoMaCliente != "" && saldoMaCliente != ""
+    && tipoCliente != ""){
+
+        var clienteData = {
+            w:"erpsil_cliente",
+            r:"agregarEditar_cliente",
+            id:idCliente,
+            nombre:nombreCliente, 
+            cedula:cedulaCliente,
+            email:emailCliente,
+            direccion:direccionCliente,
+            telefono:telefonoCliente,
+            descripcion:descripcionCliente,
+            saldo_maximo:saldoMaCliente,
+            saldo:saldoCliente,
+            tipo:tipoCliente
+        };
+    
+        calaApi_postRequest(clienteData, function (d) {
+            erpsil_listarCliente();
+        }, function (d) {
+            console.log("No agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+/*********************************************************/
+/*                 Gestion empleado                      */
+/*********************************************************/
+
+//este creo que no
+function erpsil_agregarEmpleadoWindow(){
+    var agregarEmpleadoWindow = ""
+    
+    +    "<div class='login-form'>"
+    +        "<h2 class='text-center'>Agregar empleado</h2>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' id='inputApellido1'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' id='inputApellido2'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<input type='password' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Dirección' required='required' id='inputDireccion'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Ingreso' required='required' id='inputIngreso'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Observacion' required='required' id='inputObservacion'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Puesto' required='required' id='inputPuesto'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Jornada' required='required' id='inputJornada'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<button onClick='erpsil_agregarEmpleado()' class='btn btn-primary btn-block'>Agregar</button>"
+    +        "</div>"
+    +   " </div>"
+    
+    erpsil_setContent(agregarEmpleadoWindow);
+}
+
+function erpsil_editarEmpleadoWindow(data) {
+    
+    var editarEmpleadoWindow = ""
++        "<div class='container'>"
++        "<h2 class='text-center'>Editar Empleado</h2>"
++       "<form class='form-horizontal' action='' method='post'>"
++              "<label class='col-sm-3 control-label'>ID</label>"
++              "<div class='col-sm-2'>"
++                   "<input type='text' id='inputId_empleado' value='" + data.id_empleado + "'  class='form-control' placeholder='ID' required>"
++             "</div>"
++           "<label class='col-sm-3 control-label'>Nombre</label>"
++           "<div class='col-sm-4'>"
++                "<input type='text'  id='inputName' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
++           "</div>"
++           "<label class='col-sm-3 control-label'>Primer Apellido</label>"
++           "<div class='col-sm-4'>"
++               "<input type='text' id='inputApellido1' value='" + data.apellido1 + "' class='form-control' placeholder='Primer Apellido' required>"
++           "</div>"
++       "<label class='col-sm-3 control-label'>Segudo Apellido</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputApellido2' value='" + data.apellido2 + "' class='form-control' placeholder='Segudo Apellido' required>"
++        "</div>"
++        "<label class='col-sm-3 control-label'>Telefono</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputTelefono' value='" + data.telefono + "' class='form-control' placeholder='Telefono' required>"
++        "</div>"
++        "<label class='col-sm-3 control-label'>Cedula</label>"
++        "<div class='col-sm-4'>"
++               "<input type='text' id='inputCedula' value='" + data.cedula + "' class='form-control' placeholder='Cedula' required>"
++        "</div>"     
++       "<label class='col-sm-3 control-label'>Direccion</label>"
++        "<div class='col-sm-4'>"
++            "<input id='inputDireccion' value='" + data.direccion + "' class='form-control' placeholder='Dirección'></textarea>"
++        "</div>"
++       "<label class='col-sm-3 control-label'>Ingreso</label>"
++        "<div class='col-sm-4'>"
++               "<input type='text' id='inputIngreso' value='" + data.ingreso + "' class='form-control' placeholder='Ingreso' required>"
++        "</div>"
++       "<label class='col-sm-3 control-label'>Observaciones</label>"
++        "<div class='col-sm-4'>"
++            "<input id='inputObservacion' value='" + data.observacion + "' class='form-control' placeholder='Observaciones'></textarea>"
++        "</div>"
++       "<label class='col-sm-3 control-label'>Puesto</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputPuesto' value='" + data.puesto + "' class='form-control' placeholder='Puesto' required>"
++        "</div>"
++       "<label class='col-sm-3 control-label'>Jornada</label>"
++        "<div class='col-sm-4'>"
++             "<input type='text' id='inputJornada' value='" + data.jornada + "' class='form-control' placeholder='Jornada' required>"
++        "</div>"
++           "<label class='col-sm-3 control-label'>&nbsp;</label>"
++           " <div class='col-sm-6'>"
++               "<div type='submit' class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarEmpleado()' >Guardar</div>"
++                "<div class='btn btn-sm btn-danger'>Cancelar</div>"
++                 "</div>"
++            "</form>"
++        "</div>"
++       "</div>"
++       "</div>"
+
+
+erpsil_setContent(editarEmpleadoWindow);
+}
+
+function erpsil_agregarEmpleado(){
+
+    var nombreEmpleado = $("#inputName").val();
+    var apellido1Empleado = $("#inputApellido1").val();
+    var apellido2Empleado = $("#inputApellido2").val();
+    var telefonoEmpleado = $("#inputTelefono").val();
+    var cedulaEmpleado = $("#inputCedula").val();
+    var direccionEmpleado = $("#inputDireccion").val();
+    var ingresoEmpleado = $("#inputIngreso").val();
+    var observacionEmpleado = $("#inputObservacion").val();
+    var puestoEmpleado= $("#inputPuesto").val();
+    var jornadaEmpleado = $("#inputJornada").val();
+
+    if(nombreEmpleado != "" && apellido1Empleado != "" && apellido2Empleado != "" && telefonoEmpleado != "" 
+    && cedulaEmpleado != "" && direccionEmpleado != "" && ingresoEmpleado != "" && observacionEmpleado != ""
+    && puestoEmpleado != "" && jornadaEmpleado != ""){
+
+        var empleadoData = {
+            w:"erpsil_empleado",
+            r:"agregar_empleado",
+            nombre:nombreEmpleado, 
+            apellido1:apellido1Empleado,
+            apellido2:apellido2Empleado,
+            telefono:telefonoEmpleado,
+            cedula:cedulaEmpleado,
+            direccion:direccionEmpleado,
+            ingreso:ingresoEmpleado,
+            observacion:observacionEmpleado,
+            puesto:puestoEmpleado,
+            jornada:jornadaEmpleado
+        };
+    
+        calaApi_postRequest(empleadoData, function (d) {
+            console.log("empleado agregado" + d);
+        }, function (d) {
+            console.log("empleado no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+function erpsil_listarEmpleado() {
+    var empleadoData = {
+        w: "erpsil_empleado",
+        r: "mostrar_empleado"
+    };
+
+    calaApi_postRequest(empleadoData, function (d) {
+ 
+        var MostrarEmpleadoWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +            "<tr>"
+        +                "<th>ID </th>"
+        +                "<th>Nombre </th>"
+        +                "<th>Apellido1 </th>"
+        +                "<th>Apellido2 </th>"
+        +                "<th>Telefono </th>"
+        +                "<th>Cedula </th>"
+        +                "<th>Direccion </th>"
+        +                "<th>Ingreso </th>"
+        +                "<th>Obseracion</th>"
+        +                "<th>Puesto</th>"
+        +                "<th>Jornada</th>"
+        +                "<th>Editar</th>"
+        +                "<th>Eliminar</th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarEmpleadoWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_empleado +" </td>"
+        +                "<td> "+ a.nombre +" </td>"
+        +                "<td> "+ a.apellido1 +" </td>"
+        +                "<td> "+ a.apellido1 +" </td>"
+        +                "<td> "+ a.telefono +" </td>"
+        +                "<td> "+ a.cedula +" </td>"
+        +                "<td> "+ a.direccion +" </td>"
+        +                "<td> "+ a.ingreso +" </td>"
+        +                "<td> "+ a.observacion +" </td>"
+        +                "<td> "+ a.puesto +" </td>"
+        +                "<td> "+ a.jornada +" </td>"
+        +                "<td> <div id='editar_empleado' onClick='erpsil_editarEmpleado(" + a.id_empleado + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onClick='erpsil_eliminarEmpleado("+ a.id_empleado +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+        }
+                        MostrarEmpleadoWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarEmpleadoWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
+
+function erpsil_eliminarEmpleado(id){
+    console.log(id);
+    var req = {
+        w: "erpsil_empleado",
+        r: "eliminar_empleado",
+        id:id
+    };
+    calaApi_postRequest(req, function(){
+        erpsil_listarEmpleado();
+    }, function(){
+        console.log("no eliminar");
+    });
+}
+
+function erpsil_editarEmpleado(id){
+    var req = {
+        w: "erpsil_empleado",
+        r: "obtener_empleado",
+        id:id
+    };
+
+    $("#editar_empleado").empty();
+    $("#editar_empleado").append("Cargando...");
+
+    calaApi_postRequest(req, function(d){
+        erpsil_editarEmpleadoWindow(d.resp);
+    }, function(){
+        console.log("no eliminar");
+    });
+}
+
+function erpsil_guardarEditarEmpleado(){
+
+    var idEmpleado = $("#inputId_empleado").val();
+    var nombreEmpleado = $("#inputName").val();
+    var apellido1Empleado = $("#inputApellido1").val();
+    var apellido2Empleado = $("#inputApellido2").val();
+    var telefonoEmpleado = $("#inputTelefono").val();
+    var cedulaEmpleado = $("#inputCedula").val();
+    var direccionEmpleado = $("#inputDireccion").val();
+    var ingresoEmpleado = $("#inputIngreso").val();
+    var observacionEmpleado = $("#inputObservacion").val();
+    var puestoEmpleado= $("#inputPuesto").val();
+    var jornadaEmpleado = $("#inputJornada").val();
+
+    if(nombreEmpleado != "" && apellido1Empleado != "" && apellido2Empleado != "" && telefonoEmpleado != "" 
+    && cedulaEmpleado != "" && direccionEmpleado != "" && ingresoEmpleado != "" && observacionEmpleado != ""
+    && puestoEmpleado != "" && jornadaEmpleado != ""){
+
+    var empleadoData = {
+        w: "erpsil_empleado",
+        r: "agregarEditar_empleado",
+            id:idEmpleado,
+            nombre:nombreEmpleado, 
+            apellido1:apellido1Empleado,
+            apellido2:apellido2Empleado,
+            telefono:telefonoEmpleado,
+            cedula:cedulaEmpleado,
+            direccion:direccionEmpleado,
+            ingreso:ingresoEmpleado,
+            observacion:observacionEmpleado,
+            puesto:puestoEmpleado,
+            jornada:jornadaEmpleado
+    };
+    calaApi_postRequest(empleadoData, function (d) {
+        erpsil_listarEmpleado();
+    }, function (d) {
+        console.log("No agregado" + d);
+    });
+    } else {
+        console.log("Error!");
+    }
+
+
 }
 
 
@@ -1250,4 +1561,3 @@ function erpsil_debug(mensaje) {
         console.log("erpsil >> " + mensaje);
     }
 }
-
