@@ -1,0 +1,60 @@
+function erpsil_listarEmpleado() {
+    var empleadoData = {
+        w: "erpsil_empleado",
+        r: "mostrar_empleado"
+    };
+
+    calaApi_postRequest(empleadoData, function (d) {
+ 
+        var MostrarEmpleadoWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +            "<tr>"
+        +                "<th>ID </th>"
+        +                "<th>Nombre </th>"
+        +                "<th>Apellido1 </th>"
+        +                "<th>Apellido2 </th>"
+        +                "<th>Telefono </th>"
+        +                "<th>Cedula </th>"
+        +                "<th>Direccion </th>"
+        +                "<th>Ingreso </th>"
+        +                "<th>Obseracion</th>"
+        +                "<th>Puesto</th>"
+        +                "<th>Jornada</th>"
+        +                "<th>Editar</th>"
+        +                "<th>Eliminar</th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarEmpleadoWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_empleado +" </td>"
+        +                "<td> "+ a.nombre +" </td>"
+        +                "<td> "+ a.apellido1 +" </td>"
+        +                "<td> "+ a.apellido1 +" </td>"
+        +                "<td> "+ a.telefono +" </td>"
+        +                "<td> "+ a.cedula +" </td>"
+        +                "<td> "+ a.direccion +" </td>"
+        +                "<td> "+ a.ingreso +" </td>"
+        +                "<td> "+ a.observacion +" </td>"
+        +                "<td> "+ a.puesto +" </td>"
+        +                "<td> "+ a.jornada +" </td>"
+        +                "<td> <div id='editar_empleado' onClick='erpsil_editarEmpleado(" + a.id_empleado + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onClick='erpsil_eliminarEmpleado("+ a.id_empleado +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+        }
+                        MostrarEmpleadoWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarEmpleadoWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}

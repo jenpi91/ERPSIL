@@ -1,0 +1,79 @@
+function erpsil_editarInventarioWindow(data) {
+
+    var editarInventarioWindow = ""
++        "<div class='container'>"
++        "<h2 class='text-center'>Editar inventario</h2>"
++       "<form class='form-horizontal' action='' method='post'>"
++              "<label class='col-sm-3 control-label'>ID</label>"
++              "<div class='col-sm-2'>"
++                   "<input type='text' id='id_inventario' value='" +data.id_inventario+ "' class='form-control' placeholder='ID' required>"
++             "</div>"
+
++           "<label class='col-sm-3 control-label'>Cantidad</label>"
++           "<div class='col-sm-4'>"
++                "<input type='text' id='cantidad' value='" +data.cantidad+ "' class='form-control' placeholder='Cantidad' required>"
++           "</div>"
+
++           "<label class='col-sm-3 control-label'>Unidad</label>"
++           "<div class='col-sm-4'>"
++               "<input type='text' id='unidad'  value='" +data.unidad+ "' class='form-control' placeholder='Unidad' required>"
++           "</div>"
+
++           "<label class='col-sm-3 control-label'>Codigo interno</label>"
++            "<div class='col-sm-4'>"
++            "<input type='text' id='codigo_interno' value='" +data.codigo_interno+ "' class='form-control' placeholder='Codigo interno' required>"
++            "</div>"
+
++         "<label class='col-sm-3 control-label'>Codigo de barras</label>"
++         "<div class='col-sm-4'>"
++            "<input type='text' id='codigo_barras' value='" +data.codigo_barras+ "' class='form-control' placeholder='Codigo de barras' required>"
++          "</div>"
+
++         "<label class='col-sm-3 control-label'>Categoria</label>"
++          "<div class='col-sm-4'>"
++               "<input type='text' id='categoria' value='" +data.categoria+ "' class='form-control' placeholder='Categoria' required>"
++        "</div>"  
+
++        "<label class='col-sm-3 control-label'>Cantidad minima</label>"
++        "<div class='col-sm-4'>"
++               "<input type='text' id='cantidad_minima' value='" +data.cantidad_minima+ "' class='form-control' placeholder='Cantidad minima' required>"
++        "</div>"  
+
++       "<label class='col-sm-3 control-label'>Descripcion</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='descripcion' value='" +data.descripcion+ "' class='form-control' placeholder='Descripcion'></input>"
++        "</div>"
+
++       "<label class='col-sm-3 control-label'>Impuesto de venta</label>"
++        "<div class='col-sm-4'>"
++               "<input type='text' id='impuesto_venta' value='" +data.impuesto_venta+ "' class='form-control' placeholder='Impuesto de venta' required>"
++        "</div>"
+
++        "<label class='col-sm-3 control-label'>Ganancia minima</label>"
++        "<div class='col-sm-4'>"
++               "<input type='text' id='ganancia_minima' value='" +data.ganancia_minima+ "' class='form-control' placeholder='Ganancia minima' required>"
++        "</div>"
+
++       "<label class='col-sm-3 control-label'>Costo</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='costo' value='" +data.costo+ "' class='form-control' placeholder='Costo' required>"
++        "</div>"
+
++       "<label class='col-sm-3 control-label'>Estatus</label>"
++        "<div class='col-sm-4'>"
++             "<input type='text' id='status' value='" + data.status + "' class='form-control' placeholder='Estatus' required>"
++        "</div>"
+
++           "<label class='col-sm-3 control-label'>&nbsp;</label>"
++           " <div class='col-sm-6'>"
++               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarInventario()'>Guardar inventario</div>"
++                "<a href=' ' class='btn btn-sm btn-danger'>Cancelar</a>"
++                 "</div>"
++            "</form>"
++        "</div>"
++       "</div>"
++       "</div>"
+
+
+    erpsil_setContent(editarInventarioWindow);
+}

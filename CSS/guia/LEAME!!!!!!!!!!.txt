@@ -1,0 +1,12 @@
+Esta carpeta es para guiarla con la informacion que debe modificar para el CSS, 
+los bloques deben conservarse asi como estan para no alterar las conexiones y el JS.
+
+para agregar los estilos solamente puede utilizar las clases (class = ''), 
+esto es para asegurarnos que no se alteraran los id ya que estos son utilizados
+para conexiones de PHP y JS.
+
+Tener cuidado en borrar los signos importantes como: + , "", # 
+Cualquier consulta solo me dice.
+
+Muchas gracias!
+Atte: Daniel

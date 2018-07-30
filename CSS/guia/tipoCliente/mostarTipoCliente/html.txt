@@ -1,0 +1,34 @@
+function erpsil_mostrarTipoCliente() {
+
+    var MostrarTipoClienteWindow = ""
+
++      "<div class='table-responsive'>"
++         "<table class='table table-striped table-hover'>"
++            "<tr>"
++                "<th>ID</th>"
++                "<th>Nombre</th>"
++                "<th>Descripcion</th>"
++                "<th>Ganancia global</th>"
++                "<th>Dias de credito</th>"
++            "</tr>"
++            "<tr>"
++                "<td>'.$id_tipoCliente.'</td>"
++                "<td>'.$row['nombre'].'</td>"
++                "<td>'$row['descripcion']</td>"
++                "<td>'.$row['ganancia_global'].'</td>"
++                "<td>'.$row['dias_credito'].'</td>"
++                "<td>"
++            "</td>"
++            "</tr>"
++                "<td>"
++                    "<a href='' title='Editar' onclick='' class='btn btn-warning btn-sm'><span class='' aria-hidden='true'>Editar</span></a>"
++                    "</br>"
++                    "</br>"
++                    "<a href='' title='Eliminar' onclick='' class='btn btn-danger btn-sm'><span class='' aria-hidden='true'>Eliminar</span></a>"
++                "</td>"
++         "</table>"
++      "</div>"
+
+
+    erpsil_setContent(MostrarTipoClienteWindow);
+}

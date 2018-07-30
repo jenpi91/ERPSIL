@@ -1,0 +1,25 @@
+
+function erpsil_agregarTipoClienteWindow() {
+    var agregarTipoClienteWindow = ""
+
+    +    "<div class='login-form'>"
+    +        "<h2 class='text-center'>Tipo de cliente</h2>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNombre'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<input type='password' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' id='inputGanancia'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Dias de Credito'' required='required' id='inputDiasCredito'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<div onClick='erpsil_agregarTipoCliente()' class='btn btn-primary btn-block'>Agregar</div>"
+    +        "</div>"
+    +   " </div>"
+                       
+    erpsil_setContent(agregarTipoClienteWindow);
+}
