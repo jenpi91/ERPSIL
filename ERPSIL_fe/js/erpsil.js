@@ -11,8 +11,11 @@ function boot_erpsil() {
         //erpsil_listarEmpleado();      
         //erpsil_agregarProveedorWindow();
         //erpsil_listarProveedor();
-        erpsil_listarInventario();
+        //erpsil_listarInventario();
         //erpsil_agregarInventarioWindow();
+        erpsil_listarTipoCliente();
+        //erpsil_agregarTipoClienteWindow();
+
  
     }, function () {
        // erpsil_debug("No estamos log");
@@ -130,8 +133,55 @@ function erpsil_menuWindow() {
 /*               Gestion del tipo cliente                */
 /*********************************************************/
 
-function erpsil_agregarTipoCliente() {
-    //var loginWindow = "Aca va la ventana de login";
+function erpsil_listarTipoCliente(){
+    var tipoClienteData = {
+        w: "erpsil_tipoCliente",
+        r: "mostrar_tipoCliente"
+    };
+
+    calaApi_postRequest(tipoClienteData, function (d) {
+ 
+        var MostrarTipoClienteWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +            "<tr>"
+        +                "<th>ID</th>"
+        +                "<th>Nombre</th>"
+        +                "<th>Descripcion</th>"
+        +                "<th>Ganancia global</th>"
+        +                "<th>Dias de credito</th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarTipoClienteWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_tipoCliente +" </td>"
+        +                "<td> "+ a.nombre +" </td>"
+        +                "<td> "+ a.descripcion +" </td>"
+        +                "<td> "+ a.ganancia_global +" </td>"
+        +                "<td> "+ a.dias_credito +" </td>"
+
+        +                "<td> <div id='editar_tipoCliente' onclick='erpsil_editarTipoCliente(" + a.id_tipoCliente + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarTipoCliente("+ a.id_tipoCliente +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+                }
+                MostrarTipoClienteWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarTipoClienteWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
+
+function erpsil_agregarTipoClienteWindow() {
     var agregarTipoClienteWindow = ""
 
     +    "<div class='login-form'>"
@@ -140,88 +190,95 @@ function erpsil_agregarTipoCliente() {
     +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNombre'>"
     +        "</div>"
     +        "<div class='form-group'>"
-    +            "<input type='password' class='form-control' placeholder='Descripcion' required='required' id='inpu'Descripcion'>"
+    +            "<input type='password' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
     +        "</div>"
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' id='inputGananciaG'>"
+    +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' id='inputGanancia'>"
     +        "</div>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Dias de Credito'' required='required' id='inputDiasCredito'>"
     +        "</div>"
     +        "<div class='form-group'>"
-    +            "<button onClick='erpsil_registrarProveedor()' class='btn btn-primary btn-block'>Agregar</button>"
+    +            "<div onClick='erpsil_agregarTipoCliente()' class='btn btn-primary btn-block'>Agregar</div>"
     +        "</div>"
     +   " </div>"
                        
     erpsil_setContent(agregarTipoClienteWindow);
 }
 
-function erpsil_mostrarTipoCliente() {
+function erpsil_agregarTipoCliente(){
+    var nombreTipoCliente = $("#inputNombre").val();
+    var descripcionTipoCliente = $("#inputDescripcion").val();
+    var gananciaTipoCliente = $("#inputGanancia").val();
+    var diasTipoCliente = $("#inputDiasCredito").val();
 
-    var MostrarTipoClienteWindow = ""
-
-+      "<div class='table-responsive'>"
-+         "<table class='table table-striped table-hover'>"
-+            "<tr>"
-+                "<th>ID</th>"
-+                "<th>Nombre</th>"
-+                "<th>Descripcion</th>"
-+                "<th>Ganancia global</th>"
-+                "<th>Dias de credito</th>"
-+            "</tr>"
-+            "<tr>"
-+                "<td>'.$id_tipoCliente.'</td>"
-+                "<td>'.$row['nombre'].'</td>"
-+                "<td>'$row['descripcion']</td>"
-+                "<td>'.$row['ganancia_global'].'</td>"
-+                "<td>'.$row['dias_credito'].'</td>"
-+                "<td>"
-+            "</td>"
-+            "</tr>"
-+                "<td>"
-+                    "<a href='' title='Editar' onclick='' class='btn btn-warning btn-sm'><span class='' aria-hidden='true'>Editar</span></a>"
-+                    "</br>"
-+                    "</br>"
-+                    "<a href='' title='Eliminar' onclick='' class='btn btn-danger btn-sm'><span class='' aria-hidden='true'>Eliminar</span></a>"
-+                "</td>"
-+         "</table>"
-+      "</div>"
-
-
-    erpsil_setContent(MostrarTipoClienteWindow);
+    if(nombreTipoCliente != "" && descripcionTipoCliente != "" && gananciaTipoCliente != "" && diasTipoCliente != "" ){
+        
+        var tipoClienteData = {
+            w: "erpsil_tipoCliente",
+            r: "agregar_tipoCliente",
+            nombre:nombreTipoCliente,
+            descripcion:descripcionTipoCliente,
+            ganancia_global:gananciaTipoCliente,
+            dias_credito:diasTipoCliente
+        };  
+        
+        calaApi_postRequest(tipoClienteData, function (d) {
+            console.log(tipoClienteData);
+            //console.log("Tipo de cliente agregado" + d);
+        }, function (d) {
+            console.log("Tipo de cliente no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
 }
 
-function erpsil_editarTipoCliente() {
+function erpsil_eliminarTipoCliente(id) {
+    var req = {
+        w: "erpsil_tipoCliente",
+        r: "eliminar_tipoCliente",
+        id:id
+    };
 
-    var editarProveedorWindow = ""
+    calaApi_postRequest(req, function(){
+        erpsil_listarTipoCliente();
+    }, function(){
+        console.log("Tipo cliente no eliminarado");
+    });
+    
+}
+
+function erpsil_editarTipoClienteWindow(data) {
+
+    var editartipoClienteWindow = ""
 +        "<div class='container'>"
 +        "<h2 class='text-center'>Editar cliente</h2>"
 +       "<form class='form-horizontal' action='' method='post'>"
 +              "<label class='col-sm-3 control-label'>ID</label>"
 +              "<div class='col-sm-2'>"
-+                   "<input type='text' name='id_tipoCliente' value='' class='form-control' placeholder='ID' required>"
++                   "<input type='text' id='inputId_tipoCliente' value='" + data.id_tipoCliente + "' class='form-control' placeholder='ID' required>"
 +             "</div>"
 +           "<label class='col-sm-3 control-label'>Nombre</label>"
 +           "<div class='col-sm-4'>"
-+                "<input type='text' name='nombre' value='' class='form-control' placeholder='Nombre' required>"
++                "<input type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
 +           "</div>"
 +           "<label class='col-sm-3 control-label'>Descripcion</label>"
 +           "<div class='col-sm-4'>"
-+               "<input type='text' name='descripcion' value='' class='form-control' placeholder='Descripcion' required>"
++               "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='form-control' placeholder='Descripcion' required>"
 +           "</div>"
 +       "<label class='col-sm-3 control-label'>Ganancia global</label>"
 +        "<div class='col-sm-4'>"
-+            "<input type='text' name='ganancia_global' value='' class='form-control' placeholder='Ganancia global' required>"
++            "<input type='text' id='inputGanancia_global' value='" + data.ganancia_global + "' class='form-control' placeholder='Ganancia global' required>"
 +        "</div>"
 +        "<label class='col-sm-3 control-label'>Dias de credito</label>"
 +        "<div class='col-sm-4'>"
-+               "<input type='text' name='dias_credito' value='' class='form-control' placeholder='Dias de credito' required>"
++               "<input type='text' id='inputDias_credito' value='" + data.dias_credito + "' class='form-control' placeholder='Dias de credito' required>"
 +        "</div>"
 +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
 +           " <div class='col-sm-6'>"
-+               "<input type='submit' name=' ' class='btn btn-sm btn-primary' value='Guardar datos'>"
-+               "</br>"  
-+                "<a href=' ' class='btn btn-sm btn-danger'>Cancelar</a>"
++               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarTipoCliente()' >Guardar</div>"
++                "<div class='btn btn-sm btn-danger'>Cancelar</div>"
 +           "</div>"
 +         "</form>"
 +        "</div>"
@@ -229,46 +286,53 @@ function erpsil_editarTipoCliente() {
 +       "</div>"
 
 
-    erpsil_setContent(editarProveedorWindow);
+    erpsil_setContent(editartipoClienteWindow);
 }
 
-function erpsil_detalleTipoCliente() {
+function erpsil_editarTipoCliente(id){
+    var req = {
+        w: "erpsil_tipoCliente",
+        r: "obtener_tipoCliente",
+        id:id
+    };
+    
+    calaApi_postRequest(req, function(d){
+        //console.log(req);
+        erpsil_editarTipoClienteWindow(d.resp);
+    }, function(){
+        console.log("Tipo cliente no editado");
+    });
+}
 
-    var detalleProveedorWindow = ""
-+     "<div class= 'container'>"
-+        "<table class='table table-striped table-condensed'>"
-+            "<tr>"
-+                "<th width='20%'>ID del cliente</th>"
-+               "<td><?php echo $row['id_tipoCliente']; ?></td>"
-+           "</tr>"
-+           "<tr>"
-+                "<th>Nombre del cliente</th>"
-+                "<td><?php echo $row['nombre']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Descripcion</th>"
-+               "<td><?php echo $row['descripcion']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+                "<th>Ganancia global</th>"
-+               "<td><?php echo $row['ganancia_global']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+                "<th>Dias de credito </th>"
-+               "<td><?php echo $row['dias_credito']; ?></td>"
-+           "</tr>"
-+        "</table >"
-+                "<a href='' class='btn btn-sm btn-info'><span class='glyphicon glyphicon-refresh' aria-hidden='true'></span> Regresar</a>"
-+                "</br>"
-+                "<a href='' class='btn btn-sm btn-success'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> Editar datos</a>"
-+                "</br>"
-+                "<a href='' class='btn btn-sm btn-danger' onclick='return confirm('Esta seguro de borrar los datos <?php echo $row['nombres']; ?><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> Eliminar</a>"
-+        "</div>"
-+    "</div>"
-+    "</div>"
+function erpsil_guardarEditarTipoCliente() {
 
+    var id_tipoCliente = $("#inputId_tipoCliente").val();
+    var nombreTipoCliente = $("#inputNombre").val();
+    var descripcionTipoCliente = $("#inputDescripcion").val();
+    var ganancia_localTipoCliente = $("#inputGanancia_global").val();
+    var dias_creditoTipoCliente = $("#inputDias_credito").val();
 
-    erpsil_setContent(detalleProveedorWindow);
+    if(nombreTipoCliente != "" && descripcionTipoCliente != "" && ganancia_localTipoCliente != "" && dias_creditoTipoCliente != "" ){
+        
+        var tipoClienteData = {
+            w: "erpsil_tipoCliente",
+            r: "agregarEditar_tipoCliente",
+            id:id_tipoCliente,
+            nombre:nombreTipoCliente,
+            descripcion:descripcionTipoCliente,
+            ganancia_global:ganancia_localTipoCliente,
+            dias_credito:dias_creditoTipoCliente
+        };  
+        
+        calaApi_postRequest(tipoClienteData, function (d) {
+            erpsil_listarTipoCliente();
+            //console.log(tipoClienteData);
+        }, function (d) {
+            console.log("Tipo de cliente no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
 }
 
 /*********************************************************/
@@ -316,49 +380,6 @@ function erpsil_agregarClienteWindow() {
     erpsil_setContent(agregarClienteWindow);
 }
 
-function erpsil_mostrarClienteWindow() {
-
-    var MostrarClienteWindow = ""
-
-+      "<div class='table-responsive'>"
-+         "<table class='table table-striped table-hover'>"
-+            "<tr>"
-+                "<th>ID </th>"
-+                "<th>Nombre </th>"
-+                "<th>Cedula </th>"
-+                "<th>Email </th>"
-+                "<th>Direccion </th>"
-+                "<th>Teléfono </th>"
-+                "<th>Descripcion </th>"
-+                "<th>Saldo Maximo </th>"
-+                "<th>Saldo</th>"
-+                "<th>Tipo</th>"
-+            "</tr>"
-+            "<tr>"
-+                "<td> </td>"
-+                "<td> </td>"
-+                "<td> </td>"
-+                "<td> </td>"
-+                "<td> </td>"
-+                "<td> </td>"
-+                "<td> </td>"
-+                "<td> </td>"
-+                "<td> </td>"
-+                "<td> </td>"
-+                
-+            "</td>"
-
-+                "<td>"
-+                    "<a href='' title='Editar' onclick='' class='btn btn-warning btn-sm'><span class='' aria-hidden='true'>Editar</span></a>"
-+                    "<a href='' title='Eliminar' onclick='' class='btn btn-danger btn-sm'><span class='' aria-hidden='true'>Eliminar</span></a>"
-+                "</td>"
-+            "</tr>"
-+         "</table>"
-+      "</div>"
-
-
-    erpsil_setContent(MostrarClienteWindow);
-}
 /*********************************************************/
 /*                 Gestion inventario                    */
 /*********************************************************/
@@ -677,7 +698,6 @@ function erpsil_guardarEditarInventario(){
         };
 
         calaApi_postRequest(inventarioData, function (d) {
-            //console.log(d);
             erpsil_listarInventario();
         }, function (d) {
             console.log("Inventario no agregado" + d);
@@ -686,71 +706,6 @@ function erpsil_guardarEditarInventario(){
         console.log("Error!");
     }
 
-}
-
-function erpsil_detalleInventario() {
-
-    var detalleInventarioWindow = ""
-
-+        "<table class='table table-striped table-condensed'>"
-+            "<tr>"
-+                "<th width='20%'>ID del inventarioo</th>"
-+               "<td><?php echo $row['id_inventario']; ?></td>"
-+           "</tr>"
-+           "<tr>"
-+                "<th>Cantidad inventario</th>"
-+                "<td><?php echo $row['cantidad']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Unidad</th>"
-+               "<td><?php echo $row['unidad']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+                "<th>Codigo interno</th>"
-+               "<td><?php echo $row['codigo_interno']; ?></td>"
-+           "</tr>"
-+           "<tr>"
-+               "<th>Codigo de barras</th>"
-+                "<td><?php echo $row['codigo_barras']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Categoria</th>"
-+               "<td><?php echo $row['categoria']; ?></td>"
-+           "</tr>"
-+            "<tr>"
-+            "<th>Cantidad minima</th>"
-+            "<td><?php echo $row['cantidad_minima']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Descripcion</th>"
-+                "<td><?php echo $row['descripcion']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Impuesto de venta</th>"
-+                "<td><?php echo $row['impuesto_venta']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Ganancia minima</th>"
-+                "<td><?php echo $row['ganancia_minima']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Costo</th>"
-+                "<td><?php echo $row['costo']; ?></td>"
-+            "</tr>"
-+            "<tr>"
-+                "<th>Estatus</th>"
-+                "<td><?php echo $row['status']; ?></td>"
-+            "</tr>"
-+        "</table >"
-+                "<a href='' class='btn btn-sm btn-info'><span class='glyphicon glyphicon-refresh' aria-hidden='true'></span> Regresar</a>"
-+                "</br>"
-+                "<a href='' class='btn btn-sm btn-success'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> Editar datos</a>"
-+                "</br>"
-+                "<a href='' class='btn btn-sm btn-danger' onclick='return confirm('Esta seguro de borrar los datos <?php echo $row['nombres']; ?><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> Eliminar</a>"
-+        "</div>"
-+    "</div>"
-
-    erpsil_setContent(detalleInventarioWindow);
 }
 
 /*********************************************************/
@@ -1053,7 +1008,7 @@ function erpsil_editarClienteWindow(data) {
 +        "</div>"    
 +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
 +           " <div class='col-sm-6'>"
-+               "<div class='btn btn-sm btn-primary' onclick='guadarEditarCliente()' >Guardar</div>"
++               "<div class='btn btn-sm btn-primary' onclick='erpsil_guadarEditarCliente()' >Guardar</div>"
 +                "<div class='btn btn-sm btn-danger'>Cancelar</div>"
 +                 "</div>"
 +          "</form>"
@@ -1529,8 +1484,9 @@ function erpsil_guardarEditarEmpleado(){
 
 }
 
-
-/*****************Agregar un usuario******************/
+/*********************************************************/
+/*                 Gestion Usuario                       */
+/*********************************************************/
 function agregarUsuario(){
     var req = {
 
@@ -1549,7 +1505,9 @@ function agregarUsuario(){
     });
 }
 
-/******************Redireccion a otra pag**********************/
+/*********************************************************/
+/*                 Otras funciones                       */
+/*********************************************************/
 
 function erpsil_setContent(content) {
     $("#erpsil_content").empty();

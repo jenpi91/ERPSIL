@@ -17,7 +17,7 @@
 /**
  * Boot up procedure
  */
-function MODULENAME_bootMeUp(){
+function erpsil_tipoCliente_bootMeUp(){
 	// Just booting up
 }
 
@@ -26,7 +26,7 @@ function MODULENAME_bootMeUp(){
  */
 
 
-function MODULE_NAME_init(){
+function erpsil_tipoCliente_init(){
 
 	$paths = array(
 		array(
@@ -38,7 +38,7 @@ function MODULE_NAME_init(){
 				array("key" => "nombre", "def" => "", "req" => true),
 				array("key" => "descripcion", "def" => "", "req" => true),
 				array("key" => "ganancia_global", "def" => "", "req" => true),
-				array("key" => "dias_Credito", "def" => "", "req" => true),
+				array("key" => "dias_credito", "def" => "", "req" => true),
 			),
 			'file' => 'erpsil_tipoCliente.php'
 		),
@@ -48,10 +48,7 @@ function MODULE_NAME_init(){
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
-				array("key" => "nombre", "def" => "", "req" => true),
-				array("key" => "descripcion", "def" => "", "req" => true),
-				array("key" => "ganancia_global", "def" => "", "req" => true),
-				array("key" => "dias_Credito", "def" => "", "req" => true),
+				array("key" => "id", "def" => "", "req" => true),
 			),
 			'file' => 'erpsil_tipoCliente.php'
 		),		
@@ -73,14 +70,31 @@ function MODULE_NAME_init(){
 			'action' => 'mostrarTipoCliente',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
-			'params' => array(
-				array("key" => "nombre", "def" => "", "req" => true),
-				array("key" => "descripcion", "def" => "", "req" => true),
-				array("key" => "ganancia_global", "def" => "", "req" => true),
-				array("key" => "dias_Credito", "def" => "", "req" => true),
-			),
 			'file' => 'erpsil_tipoCliente.php'
-		)
+		),
+		array(
+			'r' => 'agregarEditar_tipoCliente',
+			'action' => 'editarTipoCliente',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			'params' => array(
+                array("key" => "nombre", "def" => "", "req" => true),
+                array("key" => "descripcion", "def" => "", "req" => true),
+                array("key" => "ganancia_global", "def" => "", "req" => true),
+				array("key" => "dias_credito", "def" => "", "req" => true),
+		),
+		'file' => 'erpsil_tipoCliente.php'
+	),
+	array(
+		'r' => 'obtener_tipoCliente',
+		'action' => 'obtenerTipoCliente',
+		'access' => 'users_loggedIn', 
+		'access_params' => 'accessName',
+		'params' => array(
+			array("key" => "id", "def" => "", "req" => true)
+		),
+		'file' => 'erpsil_tipoCliente.php'
+	),
 	);
 
 	return $paths;
@@ -97,7 +111,7 @@ function MODULE_NAME_init(){
 /**
  * Get the perms for this module
  */
-function MODULENAME_access(){
+function erpsil_tipoCliente_access(){
 
 	$perms = array(
 		array(
@@ -117,4 +131,3 @@ function MODULENAME_access(){
 
 /**@}*/
 /** @}*/
-+
