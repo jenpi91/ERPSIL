@@ -18,7 +18,6 @@ function agregarTipoCliente(){
     
     //return($q);
     return db_query($q, 0);
-
 }
 
 function eliminarTipoCliente(){

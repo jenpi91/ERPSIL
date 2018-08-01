@@ -13,8 +13,10 @@ function boot_erpsil() {
         //erpsil_listarProveedor();
         //erpsil_listarInventario();
         //erpsil_agregarInventarioWindow();
-        erpsil_listarTipoCliente();
+        //erpsil_listarTipoCliente();
         //erpsil_agregarTipoClienteWindow();
+        //erpsil_agregarActivosWindow();
+        erpsil_listarActivos();
 
  
     }, function () {
@@ -134,6 +136,7 @@ function erpsil_menuWindow() {
 /*********************************************************/
 
 function erpsil_listarTipoCliente(){
+
     var tipoClienteData = {
         w: "erpsil_tipoCliente",
         r: "mostrar_tipoCliente"
@@ -336,49 +339,214 @@ function erpsil_guardarEditarTipoCliente() {
 }
 
 /*********************************************************/
-/*                  Gestion Cliente                      */
+/*                  Gestion activos                      */
 /*********************************************************/
 
-function erpsil_agregarClienteWindow() {
-    //var loginWindow = "Aca va la ventana de login";
-    var agregarClienteWindow = ""
+function erpsil_agregarActivosWindow() {
+    var agregarActivosWindow = ""
 
     +    "<div class='login-form'>"
-    +        "<h2 class='text-center'>Agregar cliente</h2>"
+    +        "<h2 class='text-center'>Activo</h2>"
+
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNombre'>"
+    +        "</div>"
+
+    +        "<div class='form-group'>"
+    +            "<input type='text' class='form-control' placeholder='Cantidad' required='required' id='inputCantidad'>"
+    +        "</div>"
+
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Vencimiento' required='required' id='inputVecimiento'>"
     +        "</div>"
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Email' required='required' id='inputEmail'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<input type='password' class='form-control' placeholder='Direccion' required='required' id='inputDireccion'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Saldo Maximo' required='required' id='inputSaldoMa'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='saldo' required='required' id='inputSaldo'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Tipo' required='required' id='inputTipo'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<button onClick='erpsil_agregarCliente()' class='btn btn-primary btn-block'>Agregar</button>"
+    +            "<div onClick='erpsil_agregarActivos()' class='btn btn-primary btn-block'>Agregar</div>"
+    +            "<div onClick='erpsil_listarActivos()' class='btn btn-primary btn-block'>Volver</div>"
     +        "</div>"
     +   " </div>"
-
-    erpsil_setContent(agregarClienteWindow);
+                       
+    erpsil_setContent(agregarActivosWindow);
 }
+
+function erpsil_agregarActivos(){
+
+    var nombreActivos = $("#inputNombre").val();
+    var cantidadActivos = $("#inputCantidad").val();
+    var vencimientoActivos = $("#inputVecimiento").val();
+
+    if(nombreActivos != "" && cantidadActivos != "" && vencimientoActivos != ""){
+        
+        var activosData = {
+            w: "erpsil_activos",
+            r: "agregar_activos",
+            nombre:nombreActivos,
+            cantidad:cantidadActivos,
+            vence:vencimientoActivos
+        };  
+        
+        calaApi_postRequest(activosData, function (d) {
+            //console.log(activosData);
+            console.log("Tipo de cliente agregado" + d);
+            erpsil_listarActivos();
+        }, function (d) {
+            console.log("Tipo de cliente no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+function erpsil_listarActivos(){
+
+    var ActivosData = {
+        w: "erpsil_activos",
+        r: "mostrar_Activos"
+    };
+
+    calaApi_postRequest(ActivosData, function (d) {
+ 
+        var MostrarActivosWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +            "<tr>"
+        +                "<th>ID</th>"
+        +                "<th>Nombre</th>"
+        +                "<th>Cantidad</th>"
+        +                "<th>Vencimiento</th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarActivosWindow += ""
+
+        +            "<tr>"
+        +                "<td> "+ a.id_activo +" </td>"
+        +                "<td> "+ a.nombre +" </td>"
+        +                "<td> "+ a.cantidad +" </td>"
+        +                "<td> "+ a.vence +" </td>"
+
+        +                "<td> <div id='editar_activos' onclick='erpsil_editarActivos(" + a.id_activo + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarActivos("+ a.id_activo +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+                }
+                MostrarActivosWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +                "<td> <div id='editar_activos' onclick='erpsil_agregarActivosWindow()' class='btn btn-warning btn-sm'>Agregar</div></td>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarActivosWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
+
+function erpsil_eliminarActivos(id) {
+    var req = {
+        w: "erpsil_activos",
+        r: "eliminar_activos",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        //console.log(req);
+        erpsil_listarActivos();
+    }, function(){
+        console.log("Tipo cliente no eliminarado");
+    });
+    
+}
+
+function erpsil_editarActivosWindow(data) {
+
+    var editarActivosWindow = ""
++        "<div class='container'>"
++        "<h2 class='text-center'>Editar cliente</h2>"
++       "<form class='form-horizontal' action='' method='post'>"
++              "<label class='col-sm-3 control-label'>ID</label>"
++              "<div class='col-sm-2'>"
++                   "<input type='text' id='inputId_activos' value='" + data.id_activo + "' class='form-control' placeholder='ID' required>"
++             "</div>"
++           "<label class='col-sm-3 control-label'>Nombre</label>"
++           "<div class='col-sm-4'>"
++                "<input type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
++           "</div>"
++           "<label class='col-sm-3 control-label'>Cantidad</label>"
++           "<div class='col-sm-4'>"
++               "<input type='text' id='inputCantidad' value='" + data.cantidad + "' class='form-control' placeholder='Cantidad' required>"
++           "</div>"
++       "<label class='col-sm-3 control-label'>Ganancia global</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputVencimiento' value='" + data.vence + "' class='form-control' placeholder='Vencimiento' required>"
++        "</div>"
++            "<label class='col-sm-3 control-label'>&nbsp;</label>"
++           " <div class='col-sm-6'>"
++               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarActivos()' >Guardar</div>"
++               "<div class='btn btn-sm btn-danger' onclick='erpsil_listarActivos()'>Cancelar</div>"
++           "</div>"
++         "</form>"
++        "</div>"
++       "</div>"
++       "</div>"
+
+
+    erpsil_setContent(editarActivosWindow);
+}
+
+function erpsil_editarActivos(id){
+    var req = {
+        w: "erpsil_activos",
+        r: "obtener_activos",
+        id:id
+    };
+    
+    calaApi_postRequest(req, function(d){
+        //console.log(req);
+        erpsil_editarActivosWindow(d.resp);
+    }, function(){
+        console.log("Activos no editado");
+    });
+}
+
+function erpsil_guardarEditarActivos() {
+
+    var id_activos = $("#inputId_activos").val();
+    var nombreActivos = $("#inputNombre").val();
+    var cantidadActivos = $("#inputCantidad").val();
+    var vencimientoActivos = $("#inputVencimiento").val();
+
+    if(nombreActivos != "" && cantidadActivos != "" && vencimientoActivos != "" ){
+        
+        var tipoClienteData = {
+            w: "erpsil_activos",
+            r: "agregarEditar_activos",
+            id:id_activos,
+            nombre:nombreActivos,
+            cantidad:cantidadActivos,
+            vencimiento:vencimientoActivos,
+        };  
+        
+        calaApi_postRequest(tipoClienteData, function (d) {
+            erpsil_listarActivos();
+        }, function (d) {
+            console.log("Activo no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+/*********************************************************/
+/*                  Gestion roles                        */
+/*********************************************************/
+
+
+
+
+
 
 /*********************************************************/
 /*                 Gestion inventario                    */
@@ -959,6 +1127,47 @@ function erpsil_editarProveedorWindow(data) {
 /*********************************************************/
 /*                 Gestion cliente                       */
 /*********************************************************/
+
+function erpsil_agregarClienteWindow() {
+    //var loginWindow = "Aca va la ventana de login";
+    var agregarClienteWindow = ""
+
+    +    "<div class='login-form'>"
+    +        "<h2 class='text-center'>Agregar cliente</h2>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Email' required='required' id='inputEmail'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<input type='password' class='form-control' placeholder='Direccion' required='required' id='inputDireccion'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Saldo Maximo' required='required' id='inputSaldoMa'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='saldo' required='required' id='inputSaldo'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Tipo' required='required' id='inputTipo'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<button onClick='erpsil_agregarCliente()' class='btn btn-primary btn-block'>Agregar</button>"
+    +        "</div>"
+    +   " </div>"
+
+    erpsil_setContent(agregarClienteWindow);
+}
 
 function erpsil_editarClienteWindow(data) {
 
