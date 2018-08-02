@@ -16,9 +16,10 @@ function boot_erpsil() {
         //erpsil_listarTipoCliente();
         //erpsil_agregarTipoClienteWindow();
         //erpsil_agregarActivosWindow();
-        erpsil_listarActivos();
-
- 
+        //erpsil_listarActivos();
+        //erpsil_agregarRolWindow();
+        //erpsil_listarRoles();
+        erpsil_menuWindow();
     }, function () {
        // erpsil_debug("No estamos log");
         /* Mostrar paginas */
@@ -122,14 +123,21 @@ function erpsil_menuWindow() {
 +    "<h2>Menu</h2>"
 
 +    "<ul>"
-+    "  <li><a href='#home'>Home</a></li>"
-+    "  <li><a href=''>Agregar Cliente</a></li>"
-+    "  <li><a href='#contact'>Contact</a></li>"
-+    "  <li><a href='#abou'>About</a></li>"
++    "  <div class='form-control' onClick='erpsil_menuWindow()'Menu</div>"
++    "  <div class='form-control' onClick='erpsil_listarCliente()'>Cliente</div>"
++    "  <div class='form-control' onClick='erpsil_listarProveedor()'>Proveedor</div>"
++    "  <div class='form-control' onClick='erpsil_agregarTipoCliente()'>Empleado</div>"
++    "  <div class='form-control' onClick='erpsil_listarRoles()'>Roles</div>"
++    "  <div class='form-control' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>"
++    "  <div class='form-control' onClick='erpsil_listarInventario()'>Inventario</div>"
++    "  <div class='form-control' onClick='erpsil_listarActivos()'>Activos</div>"
++    "  <div class='form-control' onClick='erpsil_listarActivos()'>Usuario</div>"
+
 +    "</ul>"
                            
     erpsil_setContent(menuWindow);
 }
+
 
 /*********************************************************/
 /*               Gestion del tipo cliente                */
@@ -199,7 +207,7 @@ function erpsil_agregarTipoClienteWindow() {
     +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' id='inputGanancia'>"
     +        "</div>"
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Dias de Credito'' required='required' id='inputDiasCredito'>"
+    +           " <input type='text' class='form-control' placeholder='Dias de Credito' required='required' id='inputDiasCredito'>"
     +        "</div>"
     +        "<div class='form-group'>"
     +            "<div onClick='erpsil_agregarTipoCliente()' class='btn btn-primary btn-block'>Agregar</div>"
@@ -543,10 +551,184 @@ function erpsil_guardarEditarActivos() {
 /*                  Gestion roles                        */
 /*********************************************************/
 
+function erpsil_agregarRolWindow(){
+    var agregarRolesWindow = ""
 
+    +    "<div class='login-form'>"
+    +        "<h2 class='text-center'>Activo</h2>"
 
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre de Rol' required='required' id='inputNombre'>"
+    +        "</div>"
 
+    +        "<div class='form-group'>"
+    +            "<input type='text' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
+    +        "</div>"
 
+    +        "<div class='form-group'>"
+    +            "<div onClick='erpsil_agregarRoles()' class='btn btn-primary btn-block'>Agregar</div>"
+    +            "<div onClick='()' class='btn btn-primary btn-block'>Volver</div>"
+    +        "</div>"
+    +   " </div>"
+                       
+    erpsil_setContent(agregarRolesWindow);
+}
+
+function erpsil_agregarRoles(){
+
+    var nombreRoles = $("#inputNombre").val();
+    var descripcionRoles = $("#inputDescripcion").val();
+
+    if(nombreRoles != "" && descripcionRoles != "" ){
+        var rolesData = {
+            w: "erpsil_roles",
+            r: "agregar_roles",
+            nombre:nombreRoles,
+            descripcion:descripcionRoles,
+        };  
+        calaApi_postRequest(rolesData, function (d) {
+            //console.log(activosData);
+            console.log("Rol agregado" + d);
+            erpsil_listarRoles();
+        }, function (d) {
+            console.log("Rol no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+function erpsil_listarRoles(){
+
+    var RolesData = {
+        w: "erpsil_roles",
+        r: "mostrar_roles"
+    };
+
+    calaApi_postRequest(RolesData, function (d) {
+ 
+        var MostrarRolesWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +            "<tr>"
+        +                "<th>ID</th>"
+        +                "<th>Nombre</th>"
+        +                "<th>Descripcion</th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarRolesWindow += ""
+
+        +            "<tr>"
+        +                "<td> "+ a.id_roles +" </td>"
+        +                "<td> "+ a.nombre +" </td>"
+        +                "<td> "+ a.descripcion +" </td>"
+        +                "<td> <div id='editar_activos' onclick='erpsil_editarRoles(" + a.id_roles + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarRoles("+ a.id_roles +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+                }
+                MostrarRolesWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +                "<td> <div id='editar_activos' onclick='erpsil_agregarRolesWindow()' class='btn btn-warning btn-sm'>Agregar</div></td>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarRolesWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
+
+function erpsil_eliminarRoles(id) {
+    var req = {
+        w: "erpsil_roles",
+        r: "eliminar_roles",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        erpsil_listarRoles();
+    }, function(){
+        console.log("Roles no eliminarado");
+    });
+    
+}
+
+function erpsil_editarRolesWindow(data) {
+
+    var editarRolesWindow = ""
++        "<div class='container'>"
++        "<h2 class='text-center'>Editar Roles</h2>"
++       "<form class='form-horizontal' action='' method='post'>"
++              "<label class='col-sm-3 control-label'>ID</label>"
++              "<div class='col-sm-2'>"
++                   "<input type='text' id='inputId_roles' value='" + data.id_roles + "' class='form-control' placeholder='ID' required>"
++             "</div>"
++           "<label class='col-sm-3 control-label'>Nombre</label>"
++           "<div class='col-sm-4'>"
++                "<input type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
++           "</div>"
++           "<label class='col-sm-3 control-label'>Cantidad</label>"
++           "<div class='col-sm-4'>"
++               "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='form-control' placeholder='Cantidad' required>"
++           "</div>"
++            "<label class='col-sm-3 control-label'>&nbsp;</label>"
++           " <div class='col-sm-6'>"
++               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarRoles()' >Guardar</div>"
++               "<div class='btn btn-sm btn-danger' onclick='erpsil_listarRoles()'>Vover</div>"
++           "</div>"
++         "</form>"
++        "</div>"
++       "</div>"
++       "</div>"
+
+    erpsil_setContent(editarRolesWindow);
+}
+
+function erpsil_editarRoles(id){
+    var req = {
+        w: "erpsil_roles",
+        r: "obtener_roles",
+        id:id
+    };
+    
+    calaApi_postRequest(req, function(d){
+        erpsil_editarRolesWindow(d.resp);
+    }, function(){
+        console.log("Rol no editado");
+    });
+}
+
+function erpsil_guardarEditarRoles() {
+
+    var id_Roles = $("#inputId_roles").val();
+    var nombreRoles = $("#inputNombre").val();
+    var descripcionRoles = $("#inputDescripcion").val();
+
+    if(nombreRoles != "" && descripcionRoles != ""){
+        
+        var rolesData = {
+            w: "erpsil_roles",
+            r: "agregarEditar_roles",
+            id:id_Roles,
+            nombre:nombreRoles,
+            descripcion:descripcionRoles,
+        };  
+        
+        calaApi_postRequest(rolesData, function (d) {
+            console.log(rolesData);
+            erpsil_listarRoles();
+        }, function (d) {
+            console.log("Activo no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+}
 
 /*********************************************************/
 /*                 Gestion inventario                    */
