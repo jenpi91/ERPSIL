@@ -16,8 +16,8 @@ function boot_erpsil() {
         //erpsil_listarTipoCliente();
         //erpsil_agregarTipoClienteWindow();
         //erpsil_agregarActivosWindow();
-        erpsil_listarActivos();
-
+        //erpsil_listarActivos();
+        erpsil_agregarUsuarioWindow();
  
     }, function () {
        // erpsil_debug("No estamos log");
@@ -175,6 +175,7 @@ function erpsil_listarTipoCliente(){
                 MostrarTipoClienteWindow += ""
         +            "</tr>"
         +         "</table>"
+        +          "<td> <div onclick='erpsil_agregarTipoClienteWindow()' class='btn btn-danger btn-sm'>Agregar</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarTipoClienteWindow);
@@ -189,21 +190,26 @@ function erpsil_agregarTipoClienteWindow() {
 
     +    "<div class='login-form'>"
     +        "<h2 class='text-center'>Tipo de cliente</h2>"
+    +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNombre'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Descripción</label>"
     +        "<div class='form-group'>"
     +            "<input type='password' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Ganancias</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' id='inputGanancia'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Dias de Credito</label>"
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Dias de Credito'' required='required' id='inputDiasCredito'>"
+    +           " <input type='text' class='form-control' placeholder='Dias de Credito' required='required' id='inputDiasCredito'>"
     +        "</div>"
     +        "<div class='form-group'>"
     +            "<div onClick='erpsil_agregarTipoCliente()' class='btn btn-primary btn-block'>Agregar</div>"
-    +        "</div>"
+    +            "<div onClick='erpsil_listarTipoCliente()' class='btn btn-primary btn-block'>Volver</div>"           
+    +         "</div>"
     +   " </div>"
                        
     erpsil_setContent(agregarTipoClienteWindow);
@@ -281,7 +287,7 @@ function erpsil_editarTipoClienteWindow(data) {
 +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
 +           " <div class='col-sm-6'>"
 +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarTipoCliente()' >Guardar</div>"
-+                "<div class='btn btn-sm btn-danger'>Cancelar</div>"
++                "<div onclick='erpsil_listarTipoCliente()' class='btn btn-sm btn-danger'>Cancelar</div>"
 +           "</div>"
 +         "</form>"
 +        "</div>"
@@ -347,15 +353,15 @@ function erpsil_agregarActivosWindow() {
 
     +    "<div class='login-form'>"
     +        "<h2 class='text-center'>Activo</h2>"
-
+    +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNombre'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Cantidad</label>"
     +        "<div class='form-group'>"
     +            "<input type='text' class='form-control' placeholder='Cantidad' required='required' id='inputCantidad'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Vencimiento</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Vencimiento' required='required' id='inputVecimiento'>"
     +        "</div>"
@@ -618,51 +624,50 @@ function erpsil_agregarInventarioWindow(){
     var agregarInventarioWindow = ""
     +    "<div class='login-form'>"
     +        "<h2 class='text-center'>Agregar Inventario</h2>"
-
+    +        "<label class='col-sm-3 control-label'>Cantidad</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Cantidad' required='required' id='inputCantidad'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Unidad</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Unidad' required='required' id='inputUnidad'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Interno</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Código Interno' required='required' id='inputCodigoInter'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Código de Barras</label>"
     +        "<div class='form-group'>"
     +            "<input type='password' class='form-control' placeholder='Código de Barras' required='required' id='inputCodigoBarra'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Categoria</label>"
     +        "<div class='form-group'>"
     +           "<input type='text' class='form-control' placeholder='Categoria' required='required' id='inputCategoria'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Cantidad Minima</label>"
     +        "<div class='form-group'>"
     +           "<input type='text' class='form-control' placeholder='Cantidad Minima' required='required' id='inputCantidadMin'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Descripción</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Descripción' required='required' id='inputDescripcion'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Impuesto de Venta</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Impuesto Venta' required='required' id='inputImpuestoVenta'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Ganacia Minima</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Ganacia Minima' required='required' id='inputGananciaMin'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Costo</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Costo' required='required' id='inputCosto'>"
     +        "</div>"
-
+    +        "<label class='col-sm-3 control-label'>Estatus</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Estatus' required='required' id='inputStatus'>"
     +        "</div>"
-
     +        "<div class='form-group'>"
     +            "<div onclick='erpsil_agregarInventario()' class='btn btn-primary btn-block'>Agregar</div>"
     +        "</div>"
@@ -886,24 +891,31 @@ function erpsil_agregarProveedorWindow() {
 
     +    "<div class='login-form'>"
     +        "<h2 class='text-center'>Agregar proveedor</h2>"
+    +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Primer Apellido</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' id='inputApe1'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Segundo Apellido</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' id='inputApe2'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Cedula</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Telefono</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Direccion</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Direccion' required='required' id='inputDireccion'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Descripcion</label>"
     +        "<div class='form-group'>"
     +            "<input type='password' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
     +        "</div>"
@@ -1134,30 +1146,39 @@ function erpsil_agregarClienteWindow() {
 
     +    "<div class='login-form'>"
     +        "<h2 class='text-center'>Agregar cliente</h2>"
+    +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Cedula</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Email</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Email' required='required' id='inputEmail'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Direccion</label>"
     +        "<div class='form-group'>"
     +            "<input type='password' class='form-control' placeholder='Direccion' required='required' id='inputDireccion'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Telefono</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Descripcion</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Saldo Maximo</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Saldo Maximo' required='required' id='inputSaldoMa'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Saldo</label>"
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='saldo' required='required' id='inputSaldo'>"
+    +           " <input type='text' class='form-control' placeholder='Saldo' required='required' id='inputSaldo'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Tipo</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Tipo' required='required' id='inputTipo'>"
     +        "</div>"
@@ -1412,33 +1433,43 @@ function erpsil_agregarEmpleadoWindow(){
     
     +    "<div class='login-form'>"
     +        "<h2 class='text-center'>Agregar empleado</h2>"
+    +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Primer Apellido</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' id='inputApellido1'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Segundo Apellido</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' id='inputApellido2'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Telefono</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Cedula</label>"
     +        "<div class='form-group'>"
     +            "<input type='password' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Direccion</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Dirección' required='required' id='inputDireccion'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Ingreso</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Ingreso' required='required' id='inputIngreso'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Observación</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Observacion' required='required' id='inputObservacion'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Puesto</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Puesto' required='required' id='inputPuesto'>"
     +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Jornada</label>"    
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Jornada' required='required' id='inputJornada'>"
     +        "</div>"
@@ -1602,6 +1633,7 @@ function erpsil_listarEmpleado() {
         +                "<td> "+ a.jornada +" </td>"
         +                "<td> <div id='editar_empleado' onClick='erpsil_editarEmpleado(" + a.id_empleado + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
         +                "<td> <div onClick='erpsil_eliminarEmpleado("+ a.id_empleado +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_listarEmpleado()' class='btn btn-danger btn-sm'>Volver</div></td>"
         +            "</tr>";
                     }
         }
@@ -1713,7 +1745,74 @@ function agregarUsuario(){
         console.log(b + "Falla del log");
     });
 }
+function erpsil_agregarUsuarioWindow(){
+    //var loginWindow = "Aca va la ventana de login";
+    var agregarUsuarioWindow = ""
 
+    +    "<div class='login-form'>"
+    +        "<h2 class='text-center'>Agregar usuario</h2>"
+    +        "<label class='col-sm-3 control-label'>Nombre</label>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputFullName'>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Nombre de usuario</label>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre usuario' required='required' id='inputUserName'>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Email</label>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Email' required='required' id='inputUserEmail'>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Contrasena</label>"
+    +        "<div class='form-group'>"
+    +           " <input type='password' class='form-control' placeholder='Contrasena' required='required' id='inputPwd'>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Acerca de</label>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Acerca de' required='required' id='inputAbout'>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Pais</label>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Pais' required='required' id='inputUserCountry'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<div onClick='erpsil_agregarUsuario()' class='btn btn-primary btn-block'>Agregar</div>"
+    +        "</div>"
+    +   " </div>"
+                       
+    erpsil_setContent(agregarUsuarioWindow);
+}
+
+function erpsil_agregarUsuario(){
+    var nombreUsuario = $("#inputFullName").val();
+    var userUsuario = $("#inputUserName").val();
+    var emailUsuario = $("#inputUserEmail").val();
+    var pwdUsuario = $("#inputPwd").val();
+    var acercaUsuario = $("#inputAbout").val();
+    var countryUsuario = $("#inputUserCountry").val();
+
+    if(nombreUsuario != "" && userUsuario != "" && emailUsuario != "" && 
+    pwdUsuario != "" && acercaUsuario != "" && countryUsuario != ""){
+        var usuarioData = {
+            w: "erpsil_usuario", 
+            r: "agregar_Usuario",
+            fullName:nombreUsuario, 
+            userName:userUsuario,
+            email:emailUsuario,
+            pwd:pwdUsuario,
+            about:acercaUsuario,
+            country:countryUsuario
+        };
+        calaApi_postRequest(usuarioData, function(d){
+            console.log("usuario Agregado" + d); 
+
+        }, function(d){
+            console.log("Error al agregar usuario" + d);
+        })
+    }else{
+        console.log("Error");
+    }
+}
 /*********************************************************/
 /*                 Otras funciones                       */
 /*********************************************************/
