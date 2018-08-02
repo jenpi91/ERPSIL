@@ -17,47 +17,15 @@ function boot_erpsil() {
         //erpsil_agregarTipoClienteWindow();
         //erpsil_agregarActivosWindow();
         //erpsil_listarActivos();
-        erpsil_agregarUsuarioWindow();
- 
+        //erpsil_agregarUsuarioWindow();
+        erpsil_menuWindow();
+        //agregarUsuario();
+
     }, function () {
        // erpsil_debug("No estamos log");
         /* Mostrar paginas */
         //agregarUsuario();
         erpsil_loginWindow();
-        //erpsil_listarCliente();
-        /*********Cliente********/
-        //erpsil_agregarClienteWindow();
-        //erpsil_listarCliente();
-        //erpsil_mostrarClienteWindow();
-        //erpsil_editarCliente();
-        //erpsil_detalleCliente();
-       
-        /*********Proveedor********/
-        //erpsil_agregarProveedor();
-        //erpsil_mostrarProveedor();
-        //erpsil_editarProveedor();
-        //erpsil_detalleProveedor();
-        //erpsil_listarProveedor();
-
-        /*********Tipo Cliente*******/
-        //erpsil_agregarTipoCliente();
-        //erpsil_mostrarTipoCliente();
-        //erpsil_editarTipoCliente();
-        //erpsil_detalleTipoCliente();
-
-        /*********Empleado********/
-        //erpsil_agregarEmpleadoWindow();
-        //erpsil_agregarEmpleado();
-        //erpsil_listarEmpleado();
-        //erpsil_editarEmpleado();
-        //erpsil_detalleEmpleado();
-        
-        
-        /*********Inventario*******/
-        //erpsil_agregarInventario();
-        //erpsil_mostrarInventario();
-        //erpsil_editarInventario();
-        //erpsil_detalleInventario();
 
     });
     //success, error, timeout
@@ -79,7 +47,7 @@ function erpsil_login(){
 
     calaApiApi_login(userData, function(a){
         //console.log(a);
-        //erpsil_menuWindow();
+        erpsil_menuWindow();
         //erpsil_listarCliente();
         //erpsil_agregarEmpleado();
         //erpsil_agregarEmpleadoWindow();
@@ -130,13 +98,12 @@ function erpsil_menuWindow() {
 +    "  <div class='form-control' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>"
 +    "  <div class='form-control' onClick='erpsil_listarInventario()'>Inventario</div>"
 +    "  <div class='form-control' onClick='erpsil_listarActivos()'>Activos</div>"
-+    "  <div class='form-control' onClick='erpsil_listarActivos()'>Usuario</div>"
++    "  <div class='form-control' onClick='erpsil_listarUsuario()'>Usuario</div>"
 
 +    "</ul>"
                            
     erpsil_setContent(menuWindow);
 }
-
 
 /*********************************************************/
 /*               Gestion del tipo cliente                */
@@ -1909,11 +1876,12 @@ function erpsil_guardarEditarEmpleado(){
 /*********************************************************/
 /*                 Gestion Usuario                       */
 /*********************************************************/
+
 function agregarUsuario(){
     var req = {
 
         fullName: "Daniel",
-        userName: "olsen",
+        userName: "ol",
         userEmail: "algkkkoff@aa.com",
         pwd: "123",
         about: "abc",
@@ -1926,6 +1894,7 @@ function agregarUsuario(){
         console.log(b + "Falla del log");
     });
 }
+
 function erpsil_agregarUsuarioWindow(){
     //var loginWindow = "Aca va la ventana de login";
     var agregarUsuarioWindow = ""
@@ -1936,7 +1905,7 @@ function erpsil_agregarUsuarioWindow(){
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputFullName'>"
     +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Nombre de usuario</label>"
+    +        "<label class='col-sm-3 control-label'>Username</label>"
     +        "<div class='form-group'>"
     +           " <input type='text' class='form-control' placeholder='Nombre usuario' required='required' id='inputUserName'>"
     +        "</div>"
@@ -1950,7 +1919,7 @@ function erpsil_agregarUsuarioWindow(){
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Acerca de</label>"
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Acerca de' required='required' id='inputAbout'>"
+    +           " <input type='text' class='form-control' placeholder='Acerca' required='required' id='inputAbout'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Pais</label>"
     +        "<div class='form-group'>"
@@ -1984,7 +1953,7 @@ function erpsil_agregarUsuario(){
             about:acercaUsuario,
             country:countryUsuario
         };
-        calaApi_postRequest(usuarioData, function(d){
+        calaApi_registerUser(usuarioData, function(d){
             console.log("usuario Agregado" + d); 
 
         }, function(d){
@@ -1994,6 +1963,76 @@ function erpsil_agregarUsuario(){
         console.log("Error");
     }
 }
+
+function erpsil_listarUsuario(){
+    var UsuarioData = {
+        w: "erpsil_usuario",
+        r: "mostrar_usuario"
+    };
+
+    calaApi_postRequest(UsuarioData, function (d) {
+ 
+        var MostrarUsuarioWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +            "<tr>"
+        +                "<th>ID</th>"
+        +                "<th>Nombre</th>"
+        +                "<th>Username</th>"
+        +                "<th>Email</th>"
+        +                "<th>Acerca</th>"
+        +                "<th>Pais</th>"
+        +                "<th>Status</th>"
+
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarUsuarioWindow += ""
+
+        +            "<tr>"
+        +                "<td> "+ a.idUser +" </td>"
+        +                "<td> "+ a.fullName +" </td>"
+        +                "<td> "+ a.userName +" </td>"
+        +                "<td> "+ a.email +" </td>"
+        +                "<td> "+ a.about +" </td>"
+        +                "<td> "+ a.country +" </td>"
+        +                "<td> "+ a.status +" </td>"
+
+        +                "<td> <div id='editar_activos' onclick='erpsil_editarUsuario(" + a.idUser + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarUsuario("+ a.idUser +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+                }
+                MostrarUsuarioWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +                "<td> <div id='editar_activos' onclick='erpsil_agregarUsuarioWindow()' class='btn btn-warning btn-sm'>Agregar</div></td>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarUsuarioWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
+
+function erpsil_eliminarUsuario(id){
+    var req = {
+        w: "erpsil_usuario",
+        r: "eliminar_usuario",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        console.log(req);
+        erpsil_listarUsuario();
+    }, function(){
+        console.log("Usuario no eliminarado");
+    });
+}
+
 /*********************************************************/
 /*                 Otras funciones                       */
 /*********************************************************/

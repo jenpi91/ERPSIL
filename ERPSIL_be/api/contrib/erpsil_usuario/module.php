@@ -45,14 +45,14 @@ function erpsil_usuario_init(){
 			'file' => 'erpsil_usuario.php'
 		),
 		array(
-			'r' => 'eliminar_proveedor',
-			'action' => 'eliminarProveedor',
+			'r' => 'eliminar_usuario',
+			'action' => 'eliminarUsuario',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
 				array("key" => "id", "def" => "", "req" => true),
 			),
-			'file' => 'erpsil_proveedor.php'
+			'file' => 'erpsil_usuario.php'
 		),		
 		array(
 			'r' => 'editar_proveedor',
@@ -68,14 +68,14 @@ function erpsil_usuario_init(){
 				array("key" => "telefono", "def" => "", "req" => true),
 				array("key" => "descripcion", "def" => "", "req" => true),
 			),
-			'file' => 'erpsil_proveedor.php'
+			'file' => 'erpsil_usuario.php'
 		),
 		array(
-			'r' => 'mostrar_proveedor',
-			'action' => 'mostrarProveedor',
+			'r' => 'mostrar_usuario',
+			'action' => 'mostrarUsuario',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
-			'file' => 'erpsil_proveedor.php'
+			'file' => 'erpsil_usuario.php'
 		),
 		array(
 			'r' => 'obtener_proveedor',
@@ -85,7 +85,7 @@ function erpsil_usuario_init(){
 			'params' => array(
 				array("key" => "id", "def" => "", "req" => true)
 			),
-			'file' => 'erpsil_proveedor.php'
+			'file' => 'erpsil_usuario.php'
 		),
 		array(
 			'r' => 'agregarEditar_proveedor',
@@ -101,7 +101,7 @@ function erpsil_usuario_init(){
 				array("key" => "telefono", "def" => "", "req" => true),
 				array("key" => "descripcion", "def" => "", "req" => true),
 			),
-			'file' => 'erpsil_proveedor.php'
+			'file' => 'erpsil_usuario.php'
 	),
 	);
 

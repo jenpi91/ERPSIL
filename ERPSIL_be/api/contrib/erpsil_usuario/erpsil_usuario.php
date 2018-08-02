@@ -17,18 +17,18 @@ function agregarUsuario(){
 
 }
 
-function mostrarProveedor(){
-    $q = "SELECT * FROM `tbl_proveedor`";
+function mostrarUsuario(){
+    $q = "SELECT * FROM `users`";
 
     //return "mostrar proveedor";
     return db_query($q, 2);
 }
 
-function eliminarProveedor(){
+function eliminarUsuario(){
     $id = params_get("id");
 
-    $q = "DELETE FROM `tbl_proveedor` 
-    WHERE `id_proveedor` = $id";
+    $q = "DELETE FROM `users` 
+    WHERE `idUser` = $id";
 
     //return "Eliminar Proveedor!";
     return db_query($q, 0);

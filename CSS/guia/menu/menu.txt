@@ -5,20 +5,29 @@ function erpsil_menuWindow() {
 +    "<h2>Menu</h2>"
 
 +    "<ul>"
-+    "  <li><a href='#home'>Home</a></li>"
-+    "  <li><a href=''>Agregar Cliente</a></li>"
-+    "  <li><a href='#contact'>Contact</a></li>"
-+    "  <li><a href='#abou'>About</a></li>"
++    "  <div class='form-control' onClick='erpsil_menuWindow()'Menu</div>"
++    "  <div class='form-control' onClick='erpsil_listarCliente()'>Cliente</div>"
++    "  <div class='form-control' onClick='erpsil_listarProveedor()'>Proveedor</div>"
++    "  <div class='form-control' onClick='erpsil_agregarTipoCliente()'>Empleado</div>"
++    "  <div class='form-control' onClick='erpsil_listarRoles()'>Roles</div>"
++    "  <div class='form-control' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>"
++    "  <div class='form-control' onClick='erpsil_listarInventario()'>Inventario</div>"
++    "  <div class='form-control' onClick='erpsil_listarActivos()'>Activos</div>"
++    "  <div class='form-control' onClick='erpsil_listarUsuario()'>Usuario</div>"
+
 +    "</ul>"
                            
     erpsil_setContent(menuWindow);
 }
 
-/********************************************/
-/*******/IMPORTANTE/**************************/
-//////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+/*********************************************/
+/***************/IMPORTANTE/*****************/
+/////////////////////////////////////////////
 
 Los botones deben de ser div's
 
 como por ejemplo:
-<div onclick='' class=''>Algo</div>
+<div class='' onclick='' class=''>Algo</div>
