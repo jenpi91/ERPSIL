@@ -1,0 +1,44 @@
+function erpsil_listarPermisoRol(){
+    var permisoRolData = {
+        w: "erpsil_clientetickets",
+        r: "mostrar_clientetickets"
+    };
+
+    calaApi_postRequest(permisoRolData, function (d) {
+ 
+        var MostrarPermisoRolWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +            "<tr>"
+        +                "<th>Id permiso</th>"
+        +                "<th>id rol</th>"
+        +                "<th>Estado</th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarPermisoRolWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_permiso +" </td>"
+        +                "<td> "+ a.id_rol +" </td>"
+        +                "<td> "+ a.estado +" </td>"
+
+        +                "<td> <div id='editar_tipoCliente' onclick='erpsil_editarPermisoRol(" + a.id_permiso + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarPermisoRol("+ a.id_permiso +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+                }
+                MostrarPermisoRolWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +          "<td> <div onclick='erpsil_agregarPermisoRolWindow()' class='btn btn-danger btn-sm'>Agregar</div></td>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarPermisoRolWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}

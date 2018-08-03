@@ -1,0 +1,31 @@
+function erpsil_editarHistorialPreciosWindow(data) {
+
+    var editarHistorialPreciosWindow = ""
++        "<div class='container'>"
++        "<h2 class='text-center'>Editar historial de precios</h2>"
++       "<form class='form-horizontal' action='' method='post'>"
++              "<label class='col-sm-3 control-label'>Costo</label>"
++              "<div class='col-sm-2'>"
++                   "<input type='text' id='inputCosto' value='" + data.costo + "' class='form-control' placeholder='Costo' required>"
++             "</div>"
++           "<label class='col-sm-3 control-label'>Fecha</label>"
++           "<div class='col-sm-4'>"
++                "<input type='text' id='inpuFecha' value='" + data.fecha + "' class='form-control' placeholder='Fecha' required>"
++           "</div>"
++           "<label class='col-sm-3 control-label'>ID proveedor</label>"
++           "<div class='col-sm-4'>"
++               "<input type='text' id='inputId_proveedor' value='" + data.Id_proveedor + "' class='form-control' placeholder='ID proveedor' required>"
++           "</div>"
++            "<label class='col-sm-3 control-label'>&nbsp;</label>"
++           " <div class='col-sm-6'>"
++               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarHistorialPrecios()' >Guardar</div>"
++                "<div onclick='erpsil_listarHistorialPrecios()' class='btn btn-sm btn-danger'>Cancelar</div>"
++           "</div>"
++         "</form>"
++        "</div>"
++       "</div>"
++       "</div>"
+
+
+    erpsil_setContent(editarHistorialPreciosWindow);
+} m m

@@ -1,0 +1,31 @@
+function erpsil_editarPermisoRolWindow(data) {
+ 
+    var editarPermisoRolWindow = ""
+ +        "<div class='container'>"
+ +        "<h2 class='text-center'>Editar cuentas por pagar</h2>"
+ +       "<form class='form-horizontal' action='' method='post'>"
+ +              "<label class='col-sm-3 control-label'>Id permisos</label>"
+ +              "<div class='col-sm-2'>"
+ +                   "<input type='text' id='inputCodigoReferencia' value='" + data.id_permiso + "' class='form-control' placeholder='ID' required>"
+ +             "</div>"
+ +           "<label class='col-sm-3 control-label'>Id Ro</label>"
+ +           "<div class='col-sm-4'>"
+ +                "<input type='text' id='inputSaldo' value='" + data.id_rol + "' class='form-control' placeholder='Saldo' required>"
+ +           "</div>"
+ +           "<label class='col-sm-3 control-label'>Estado</label>"
+ +           "<div class='col-sm-4'>"
+ +               "<input type='text' id='inputEstado' value='" + data.estado + "' class='form-control' placeholder='Estado' required>"
+ +           "</div>"
+ +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
+ +           " <div class='col-sm-6'>"
+ +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarPermisoRol()' >Guardar</div>"
+ +                "<div onclick='erpsil_listarPermisoRol()' class='btn btn-sm btn-danger'>Cancelar</div>"
+ +           "</div>"
+ +         "</form>"
+ +        "</div>"
+ +       "</div>"
+ +       "</div>"
+ 
+ 
+    erpsil_setContent(editarPermisoRolWindow);
+ }

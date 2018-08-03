@@ -1,0 +1,25 @@
+function erpsil_agregarActivosWindow() {
+    var agregarActivosWindow = ""
+
+    +    "<div class='login-form'>"
+    +        "<h2 class='text-center'>Activo</h2>"
+    +        "<label class='col-sm-3 control-label'>Nombre</label>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNombre'>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Cantidad</label>"
+    +        "<div class='form-group'>"
+    +            "<input type='text' class='form-control' placeholder='Cantidad' required='required' id='inputCantidad'>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Vencimiento</label>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Vencimiento' required='required' id='inputVecimiento'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<div onClick='erpsil_agregarActivos()' class='btn btn-primary btn-block'>Agregar</div>"
+    +            "<div onClick='erpsil_listarActivos()' class='btn btn-primary btn-block'>Volver</div>"
+    +        "</div>"
+    +   " </div>"
+                       
+    erpsil_setContent(agregarActivosWindow);
+}

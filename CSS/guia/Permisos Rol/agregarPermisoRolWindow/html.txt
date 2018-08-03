@@ -1,0 +1,25 @@
+function erpsil_agregarPermisoRolWindow() {
+    var agregarPermisoRolWindow = ""
+ 
+    +    "<div class='login-form'>"
+    +        "<h2 class='text-center'>Permisos rol</h2>"
+    +        "<label class='col-sm-3 control-label'>Id Permiso</label>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Codigo referencia' required='required' id='inputIdPermiso'>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Id rol</label>"
+    +        "<div class='form-group'>"
+    +            "<input type='password' class='form-control' placeholder='Id Rol' required='required' id='inputIdRol'>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Estado</label>"
+    +        "<div class='form-group'>"
+    +           " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputEstado'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            "<div onClick='erpsil_agregarPermisoRol()' class='btn btn-primary btn-block'>Agregar</div>"
+    +            "<div onClick='erpsil_listarPermisoRol()' class='btn btn-primary btn-block'>Volver</div>"          
+    +         "</div>"
+    +   " </div>"
+                      
+    erpsil_setContent(agregarPermisoRolWindow);
+}

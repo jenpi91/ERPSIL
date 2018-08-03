@@ -1,0 +1,35 @@
+function erpsil_editarActivosWindow(data) {
+
+    var editarActivosWindow = ""
++        "<div class='container'>"
++        "<h2 class='text-center'>Editar cliente</h2>"
++       "<form class='form-horizontal' action='' method='post'>"
++              "<label class='col-sm-3 control-label'>ID</label>"
++              "<div class='col-sm-2'>"
++                   "<input type='text' id='inputId_activos' value='" + data.id_activo + "' class='form-control' placeholder='ID' required>"
++             "</div>"
++           "<label class='col-sm-3 control-label'>Nombre</label>"
++           "<div class='col-sm-4'>"
++                "<input type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
++           "</div>"
++           "<label class='col-sm-3 control-label'>Cantidad</label>"
++           "<div class='col-sm-4'>"
++               "<input type='text' id='inputCantidad' value='" + data.cantidad + "' class='form-control' placeholder='Cantidad' required>"
++           "</div>"
++       "<label class='col-sm-3 control-label'>Ganancia global</label>"
++        "<div class='col-sm-4'>"
++            "<input type='text' id='inputVencimiento' value='" + data.vence + "' class='form-control' placeholder='Vencimiento' required>"
++        "</div>"
++            "<label class='col-sm-3 control-label'>&nbsp;</label>"
++           " <div class='col-sm-6'>"
++               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarActivos()' >Guardar</div>"
++               "<div class='btn btn-sm btn-danger' onclick='erpsil_listarActivos()'>Cancelar</div>"
++           "</div>"
++         "</form>"
++        "</div>"
++       "</div>"
++       "</div>"
+
+
+    erpsil_setContent(editarActivosWindow);
+}
