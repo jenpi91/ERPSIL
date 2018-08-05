@@ -45,7 +45,7 @@ function erpsil_inventario_init(){
                 array("key" => "impuesto_venta", "def" => "", "req" => true),
                 array("key" => "ganancia_minima", "def" => "", "req" => true),
                 array("key" => "costo", "def" => "", "req" => true),
-                array("key" => "status", "def" => "", "req" => true),            
+                array("key" => "status", "def" => "", "req" => true)            
             ),
 			'file' => 'erpsil_inventario.php'
 		),
@@ -55,7 +55,7 @@ function erpsil_inventario_init(){
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
-				array("key" => "id", "def" => "", "req" => true),  
+				array("key" => "id", "def" => "", "req" => true)  
 			),
 			'file' => 'erpsil_inventario.php'
 		),		
@@ -75,7 +75,7 @@ function erpsil_inventario_init(){
                 array("key" => "impuesto_venta", "def" => "", "req" => true),
                 array("key" => "ganancia_minima", "def" => "", "req" => true),
                 array("key" => "costo", "def" => "", "req" => true),
-                array("key" => "status", "def" => "", "req" => true),   
+                array("key" => "status", "def" => "", "req" => true)   
 			),
 			'file' => 'erpsil_inventario.php'
 		),
@@ -102,21 +102,35 @@ function erpsil_inventario_init(){
 				array("key" => "impuesto_venta", "def" => "", "req" => true),
 				array("key" => "ganancia_minima", "def" => "", "req" => true),
 				array("key" => "costo", "def" => "", "req" => true),
-				array("key" => "status", "def" => "", "req" => true),
+				array("key" => "status", "def" => "", "req" => true)
 			),
 			'file' => 'erpsil_inventario.php'
-	),
-	array(
-		'r' => 'obtener_inventario',
-		'action' => 'obtenerInventario',
-		'access' => 'users_loggedIn', 
-		'access_params' => 'accessName',
-		'params' => array(
-			array("key" => "id", "def" => "", "req" => true)
 		),
-		'file' => 'erpsil_inventario.php'
+		array(
+			'r' => 'obtener_inventario',
+			'action' => 'obtenerInventario',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			'params' => array(
+				array("key" => "id", "def" => "", "req" => true)
+			),
+			'file' => 'erpsil_inventario.php'
+		),
+		array(
+			'r' => 'erp',
+			'action' => 'test',
+			'access' => 'users_openAccess', 
+			'access_params' => 'accessName',
+			'file' => 'erpsil_historialPrecio.php'
 	),
-	);
+		array(
+			'r' => 'mostrar_clientetickets',
+			'action' => 'mostrarhistorialPrecios',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			'file' => 'erpsil_historialPrecio.php'
+		),
+);
 
 return $paths;
 }
@@ -126,7 +140,6 @@ return $paths;
 //In the access you can use users_openAccess if you want anyone can use the function
 // or users_loggedIn if the user must be logged in
 /**************************************************/
-
 
 
 /**
