@@ -100,8 +100,10 @@ function erpsil_menuWindow() {
 +    "  <div class='form-control' onClick='erpsil_listarActivos()'>Activos</div>"
 +    "  <div class='form-control' onClick='erpsil_listarClientesTickets()'>listar ticketes</div>"
 +    "  <div class='form-control' onClick='erpsil_agregarClientesTicketsWindow()'>Usuario</div>"
-+    "  <div class='form-control' onClick='erpsil_listarActivos()'>Activos</div>"
-
++    "  <div class='form-control' onClick='erpsil_listarPermisoRol()'>Permisos rol</div>"
++    "  <div class='form-control' onClick='erpsil_listarCuentasPagar()'>Cuentas pagar</div>"
++    "  <div class='form-control' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>"
++    "  <div class='form-control' onClick='erpsil_listarPagos()'> Pagos</div>"
 
 +    "</ul>"
                            
@@ -109,7 +111,7 @@ function erpsil_menuWindow() {
 }
 
 /*********************************************************/
-/*           Gestion del tbl_clientesTickets             */  //Falta eliminar
+/*           Gestion del tbl_clientesTickets             */
 /*********************************************************/
 
 function erpsil_listarClientesTickets(){
@@ -146,7 +148,7 @@ function erpsil_listarClientesTickets(){
         +                "<td> "+ a.status +" </td>"
 
         +                "<td> <div id='editar_activos' onclick='erpsil_editarClientesTickets(" + a.id_ticket + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarUsuario("+ a.id_ticket +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarClienteTicket("+ a.id_ticket +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -176,7 +178,7 @@ function erpsil_agregarClientesTicketsWindow() {
         var i = 1;
         for(a in d.resp){ 
             var x = d.resp[a];
-            selectD += "<option>" + i + " - " + x.nombre + "id = (" + x.id_cliente + ")</option>";
+            selectD += "<option>" + i + " - " + x.nombre + " - id = (" + x.id_cliente + ")</option>";
             i++;
         }
 
@@ -186,21 +188,19 @@ function erpsil_agregarClientesTicketsWindow() {
         var agregarClientesTicketsWindow = ""
 
         +    "<div class='login-form'>"
-        +        "<h2 class='text-center'>Tipo de cliente</h2>"
-        +        "<label class='col-sm-3 control-label'>Id ticket</label>"
-        +        "<div class='form-group'>"
-        +        "</div>"
+        +        "<h2 class='text-center'>Ticket de cliente</h2>"
+
         +        "<label class='col-sm-3 control-label'>Id cliente</label>"
         +        "<div class='form-group'>"
         +        selectD
         +        "</div>"
-        +        "<label class='col-sm-3 control-label'>Stamp</label>"
-        +        "<div class='form-group'>"
-        +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' id='inputStamp'>"
-        +        "</div>"
+        //+        "<label class='col-sm-3 control-label'>Stamp</label>"
+        //+        "<div class='form-group'>"
+        //+           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' id='inputStamp'>"
+        //+        "</div>"
         +        "<label class='col-sm-3 control-label'>Titulo</label>"
         +        "<div class='form-group'>"
-        +           " <input type='text' class='form-control' placeholder='Dias de Credito' required='required' id='inputTitulo'>"
+        +           " <input type='text' class='form-control' placeholder='Titulo' required='required' id='inputTitulo'>"
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Comentario</label>"
         +        "<div class='form-group'>"
@@ -252,6 +252,7 @@ function erpsil_agregarClientesTickets(){
         
         calaApi_postRequest(tipoClientesTicketsData, function (d) {
             console.log(tipoClientesTicketsData);
+            erpsil_listarClientesTickets();
         }, function (d) {
             console.log("Tipo de cliente ticket no agregado" + d);
         });
@@ -351,14 +352,30 @@ function erpsil_guadarEditarClienteTicket(){
     }
 }
 
+function erpsil_eliminarClienteTicket(id){
+    var req = {
+        w: "erpsil_clientesTickets",
+        r: "eliminar_clientesTickets",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        //console.log(req);
+        erpsil_listarClientesTickets();
+    }, function(){
+        console.log("Cliente  ticket no eliminarado");
+    });
+    
+}
+
 /*********************************************************/
 /*               Gestion del Permisos Rol                */
 /*********************************************************/
 
 function erpsil_listarPermisoRol(){
     var permisoRolData = {
-        w: "erpsil_clientetickets",
-        r: "mostrar_clientetickets"
+        w: "erpsil_permisosRol",
+        r: "mostrar_permisosRol"
     };
 
     calaApi_postRequest(permisoRolData, function (d) {
@@ -401,29 +418,76 @@ function erpsil_listarPermisoRol(){
 }
 
 function erpsil_agregarPermisoRolWindow() {
-    var agregarPermisoRolWindow = ""
- 
-    +    "<div class='login-form'>"
-    +        "<h2 class='text-center'>Permisos rol</h2>"
-    +        "<label class='col-sm-3 control-label'>Id Permiso</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Codigo referencia' required='required' id='inputIdPermiso'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Id rol</label>"
-    +        "<div class='form-group'>"
-    +            "<input type='password' class='form-control' placeholder='Id Rol' required='required' id='inputIdRol'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Estado</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputEstado'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<div onClick='erpsil_agregarPermisoRol()' class='btn btn-primary btn-block'>Agregar</div>"
-    +            "<div onClick='erpsil_listarPermisoRol()' class='btn btn-primary btn-block'>Volver</div>"          
-    +         "</div>"
-    +   " </div>"
-                      
-    erpsil_setContent(agregarPermisoRolWindow);
+
+    var permisoRolData = {
+        w: "erpsil_roles",
+        r: "mostrar_roles"
+    };
+
+     calaApi_postRequest(permisoRolData, function(d){
+
+        var selectR = "<select class='custom-select' id='inputDown'> "
+        var i = 1;
+        for(a in d.resp){
+            var x = d.resp[a];
+            selectR += "<option>" + i + " - " + x.nombre + " id = (" + x.id_roles + ")</option>";
+            i++;
+        }
+
+        selectR += "</select>";
+
+        console.log(d);
+
+        var agregarPermisoRolWindow = ""
+
+            + "<div class='login-form'>"
+            + "<h2 class='text-center'>Permisos rol</h2>"
+            +"<label class='col-sm-3 control-label'>Id cliente</label>"
+            +"<div class='form-group'>"
+            +selectR
+            +"</div>"
+            + "<label class='col-sm-3 control-label'>Estado</label>"
+            + "<div class='form-group'>"
+            + " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputEstado'>"
+            + "</div>"
+            + "<div class='form-group'>"
+            + "<div onClick='erpsil_agregarPermisoRol()' class='btn btn-primary btn-block'>Agregar</div>"
+            + "<div onClick='erpsil_listarPermisoRol()' class='btn btn-primary btn-block'>Volver</div>"
+            + "</div>"
+            + " </div>"
+
+        erpsil_setContent(agregarPermisoRolWindow);
+
+    }, function () {
+        console.log("Error!");
+    });
+}
+
+function erpsil_agregarPermisoRol(){
+    var d = $("#inputDown");
+    var id = d[0].value;
+    id = id.split("(")[1].split(")")[0];
+
+    var id_rol = id;
+    var estadoPermisoRol = $("#inputEstado").val();
+
+    if(id_rol != "" && estadoPermisoRol != "" ){
+        
+        var permosoRolData = {
+            w: "erpsil_permisosRol",
+            r: "agregar_permisosRol",
+            id_rol:id_rol,
+            estado:estadoPermisoRol
+        };  
+        
+        calaApi_postRequest(permosoRolData, function (d) {
+            console.log(permosoRolData);
+        }, function (d) {
+            console.log("Tipo de cliente ticket no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
 }
 
 function erpsil_editarPermisoRolWindow(data) {
@@ -434,11 +498,11 @@ function erpsil_editarPermisoRolWindow(data) {
  +       "<form class='form-horizontal' action='' method='post'>"
  +              "<label class='col-sm-3 control-label'>Id permisos</label>"
  +              "<div class='col-sm-2'>"
- +                   "<input type='text' id='inputCodigoReferencia' value='" + data.id_permiso + "' class='form-control' placeholder='ID' required>"
+ +                   "<input type='text' id='inputIdPermiso' value='" + data.id_permiso + "' class='form-control' placeholder='ID' required>"
  +             "</div>"
- +           "<label class='col-sm-3 control-label'>Id Ro</label>"
+ +           "<label class='col-sm-3 control-label'>Id Rol</label>"
  +           "<div class='col-sm-4'>"
- +                "<input type='text' id='inputSaldo' value='" + data.id_rol + "' class='form-control' placeholder='Saldo' required>"
+ +                "<input type='text' id='inputIdRol' value='" + data.id_rol + "' class='form-control' placeholder='Saldo' required>"
  +           "</div>"
  +           "<label class='col-sm-3 control-label'>Estado</label>"
  +           "<div class='col-sm-4'>"
@@ -446,7 +510,7 @@ function erpsil_editarPermisoRolWindow(data) {
  +           "</div>"
  +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
  +           " <div class='col-sm-6'>"
- +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarPermisoRol()' >Guardar</div>"
+ +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarPermisoRol()' >Guardar</div>"
  +                "<div onclick='erpsil_listarPermisoRol()' class='btn btn-sm btn-danger'>Cancelar</div>"
  +           "</div>"
  +         "</form>"
@@ -456,8 +520,65 @@ function erpsil_editarPermisoRolWindow(data) {
  
  
     erpsil_setContent(editarPermisoRolWindow);
- }
+}
 
+function erpsil_editarPermisoRol(id) {
+    var req = {
+        w: "erpsil_permisosRol",
+        r: "obtener_permisosRol",
+        id: id
+    }
+
+    calaApi_postRequest(req, function (d) {
+        //console.log(req);
+        erpsil_editarPermisoRolWindow(d.resp);
+    }, function () {
+        console.log("Rol no editado");
+    });
+}
+
+function erpsil_guardarEditarPermisoRol(){
+
+    var id_permiso = $("#inputIdPermiso").val();
+    var id_Rol = $("#inputIdRol").val();
+    var estado = $("#inputEstado").val();
+
+    if(id_permiso != "" && id_Rol != "" && estado != "" ){
+        
+        var permisoRol = {
+            w:"erpsil_permisosRol",
+            r:"agregar_EditarPermisoRol",
+            id_permiso:id_permiso,
+            id_Rol:id_Rol,
+            estado:estado,
+        };
+
+        calaApi_postRequest(permisoRol, function (d) {
+            console.log(permisoRol);
+            erpsil_listarPermisoRol();
+        }, function (d) {
+            console.log("clienteTicket no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+function erpsil_eliminarPermisoRol(id){
+    var req = {
+        w:"erpsil_permisosRol",
+        r:"eliminar_permisoRol",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        //console.log(req);
+        erpsil_listarPermisoRol();
+    }, function(){
+        console.log("Tipo cliente no eliminarado");
+    });
+
+}
 
 /*********************************************************/
 /*                 Gestion de tbl_cuentasPagar           */
@@ -468,10 +589,8 @@ function erpsil_listarCuentasPagar(){
         w: "erpsil_cuentasPagar",
         r: "mostrar_cuentasPagar"
     };
- 
     calaApi_postRequest(cuentasPagarData, function (d) {
         var MostrarCuentasPagarWindow = ""
- 
         +      "<div class='table-responsive'>"
         +         "<table class='table table-striped table-hover'>"
         +            "<tr>"
@@ -488,7 +607,7 @@ function erpsil_listarCuentasPagar(){
                     for(x in d.resp){
                             var a = d.resp[x];
                             MostrarCuentasPagarWindow += ""
-   
+  
         +            "<tr>"
         +                "<td> "+ a.id_cuentasPagar +" </td>"
         +                "<td> "+ a.id_proveedor +" </td>"
@@ -498,7 +617,7 @@ function erpsil_listarCuentasPagar(){
         +                "<td> "+ a.vence +" </td>"
         +                "<td> "+ a.descripcion +" </td>"
         +                "<td> "+ a.stampfecha +" </td>"
-       
+      
         +                "<td> <div id='editar_cuentasPagar' onclick='erpsil_editarCuentasPagar(" + a.id_cuentasPagar + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
         +                "<td> <div onclick='erpsil_eliminarCuentasPagar("+ a.id_cuentasPagar +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
         +            "</tr>";
@@ -509,15 +628,13 @@ function erpsil_listarCuentasPagar(){
         +         "</table>"
         +          "<td> <div onclick='erpsil_agregarCuentasPagarWindow()' class='btn btn-danger btn-sm'>Agregar</div></td>"
         +      "</div>";
- 
         erpsil_setContent(MostrarCuentasPagarWindow);
- 
     }, function (d) {
         console.log(d);
     });
- }
+}
  
- function erpsil_agregarCuentasPagarWindow() {
+function erpsil_agregarCuentasPagarWindow() {
     var agregarCuentasPagarWindow = ""
  
     +    "<div class='login-form'>"
@@ -553,9 +670,9 @@ function erpsil_listarCuentasPagar(){
     +   " </div>"
                       
     erpsil_setContent(agregarCuentasPagarWindow);
- }
+}
  
- function erpsil_editarCuentasPagarWindow(data) {
+function erpsil_editarCuentasPagarWindow(data) {
  
     var editarCuentasPagarWindow = ""
  +        "<div class='container'>"
@@ -597,15 +714,15 @@ function erpsil_listarCuentasPagar(){
  
  
     erpsil_setContent(editarCuentasPagarWindow);
- }
+}
 
- /*********************************************************/
- /*             Gestion de tbl_historialPrecios           */
- /*********************************************************/
+/*********************************************************/
+/*             Gestion de tbl_historialPrecios           */ //falta editar****
+/*********************************************************/
  
- function erpsil_listarHistorialPrecio(){
+function erpsil_listarHistorialPrecio(){
     var historialPreciosData = {
-        w: "erpsil_inventario",
+        w: "erpsil_historialPrecios",
         r: "mostrar_historialPrecios"
     };
  
@@ -615,7 +732,8 @@ function erpsil_listarCuentasPagar(){
         +      "<div class='table-responsive'>"
         +         "<table class='table table-striped table-hover'>"
         +            "<tr>"
-        +                "<th>ID</th>"
+        +                "<th>Id historial</th>"
+        +                "<th>Id inventario</th>"
         +                "<th>Costo</th>"
         +                "<th>Fecha</th>"
         +                "<th>ID provedor</th>"
@@ -626,20 +744,20 @@ function erpsil_listarCuentasPagar(){
                             MostrarHistorialPreciosWindow += ""
    
         +            "<tr>"
-        +                "<td> "+ a.id_producto +" </td>"
+        +                "<td> "+ a.id_historialPrecio +" </td>"
+        +                "<td> "+ a.id_inventario +" </td>"
         +                "<td> "+ a.costo +" </td>"
         +                "<td> "+ a.fecha +" </td>"
         +                "<td> "+ a.id_proveedor +" </td>"
        
-        +                "<td> <div id='editar_historialPrecios' onclick='erpsil_editarHistorialPrecios(" + a.id_producto + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarHistorialPrecios("+ a.id_producto +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
-        +            "</tr>";
+        +                "<td> <div id='editar_historialPrecios' onclick='erpsil_editarHistorialPrecios(" + a.id_historialPrecio + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarHistorialPrecio("+ a.id_historialPrecio +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"        +            "</tr>";
                     }
                 }
                 MostrarHistorialPreciosWindow += ""
         +            "</tr>"
         +         "</table>"
-        +          "<td> <div onclick='erpsil_agregarHistorialPreciosWindow()' class='btn btn-danger btn-sm'>Agregar</div></td>"
+        +          "<td> <div onclick='erpsil_agregarHistorialPrecioWindow()' class='btn btn-danger btn-sm'>Agregar</div></td>"
         +      "</div>";
  
         erpsil_setContent(MostrarHistorialPreciosWindow);
@@ -647,35 +765,119 @@ function erpsil_listarCuentasPagar(){
     }, function (d) {
         console.log(d);
     });
- }
+}
  
- function erpsil_agregarHistorialPrecioWindow() {
-    var agregarHistorialPreciosWindow = ""
+function erpsil_agregarHistorialPrecioWindow() {
+    var historialPrecioData = {
+       w: "erpsil_inventario",
+       r: "mostrar_inventario"
+    };
+    var proveedorData = {
+       w: "erpsil_proveedor",
+       r: "mostrar_proveedor"
+    };
+
+    calaApi_postRequest(historialPrecioData, function(d){
+       
+       var selectH = "<select class='custom-select' id='inputDown1'>"  
+       var i = 1;
+       for(a in d.resp){
+           var x = d.resp[a];
+           selectH += "<option>" + i + " - " + x.unidad + " id = (" + x.id_inventario + ")</option>";
+           i++;
+       }
+       selectH += "</select>";
+       console.log(d);
+
+
+       calaApi_postRequest(proveedorData, function(p){
+       
+           var selectP = "<select class='custom-select' id='inputDown2'>"  
+           var i = 1;
+           for(a in p.resp){
+               var y = p.resp[a];
+               selectP += "<option>" + i + " - " + y.nombre + " id = (" + y.id_proveedor + ")</option>";
+               i++;
+           }
+           selectP += "</select>";
+
+           var agregarHistorialPreciosWindow = ""
+     
+           +    "<div class='login-form'>"
+           +        "<h2 class='text-center'>Historial de precios</h2>"
+           +        "<label class='col-sm-3 control-label'>Id inventario</label>"
+           +        "<div class='form-group'>"
+           +       selectH
+           +        "</div>"
+           +        "<label class='col-sm-3 control-label'>Costo</label>"
+           +        "<div class='form-group'>"
+           +           " <input type='text' class='form-control' placeholder='Costo' required='required' id='inputCosto'>"
+           +        "</div>"
+           // +        "<label class='col-sm-3 control-label'>Fecha</label>"
+           //+        "<div class='form-group'>"
+           // +            "<input type='text' class='form-control' placeholder='Fecha' required='required' id='inputFecha'>"
+           // +        "</div>"
+            +        "<label class='col-sm-3 control-label'>ID preveedor</label>"
+            +        "<div class='form-group'>"
+            +        selectP
+            +        "</div>"
+
+            +        "<div class='form-group'>"
+            +            "<div onClick='erpsil_agregarHistorialPrecio()' class='btn btn-primary btn-block'>Agregar</div>"
+            +            "<div onClick='erpsil_listarHistorialPrecios()' class='btn btn-primary btn-block'>Volver</div>"          
+            +         "</div>"
+            +   " </div>"
+                             
+           erpsil_setContent(agregarHistorialPreciosWindow);
+           console.log(d);
+        }, function(){
+            console.log("error");
+        });
+    }, function(){
+        console.log("error");
+    });
+
+}
  
-    +    "<div class='login-form'>"
-    +        "<h2 class='text-center'>Historial de precios</h2>"
-    +        "<label class='col-sm-3 control-label'>Costo</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Costo' required='required' id='inputCosto'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Fecha</label>"
-    +        "<div class='form-group'>"
-    +            "<input type='text' class='form-control' placeholder='Fecha' required='required' id='inputFecha'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>ID Proveedor</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='ID Proveedor' required='required' id='inputID_provedor'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<div onClick='erpsil_agregarHistorialPrecios()' class='btn btn-primary btn-block'>Agregar</div>"
-    +            "<div onClick='erpsil_listarHistorialPrecios()' class='btn btn-primary btn-block'>Volver</div>"          
-    +         "</div>"
-    +   " </div>"
-                      
-    erpsil_setContent(agregarHistorialPreciosWindow);
- }
- 
- function erpsil_editarHistorialPrecioWindow(data) {
+function erpsil_agregarHistorialPrecio(){
+    var d = $("#inputDown1");
+    var id = d[0].value;
+   id = id.split("(")[1].split(")")[0];
+
+    var d2 = $("#inputDown2");
+    var id2 = d[0].value;
+   id2 = id2.split("(")[1].split(")")[0];
+
+   var id_inventario = id;
+   var id_proveedor = id2;
+   var costo = $("#inputCosto").val();
+   var fecha = $("#inputFecha").val();
+
+       if(id_inventario != "" && id_proveedor != "" &&  costo != "" && fecha != ""){
+
+           var permosoHistorialPrecio = {
+               w: "erpsil_historialPrecios",
+               r: "agregar_historialPrecio",
+               id_inventario:id_inventario,
+               id_proveedor:id_proveedor,
+               costo:costo,
+               fecha:fecha
+           };
+
+           calaApi_postRequest(permosoHistorialPrecio, function (d) {
+               console.log(permosoHistorialPrecio);
+               erpsil_listarHistorialPrecio();
+           }, function (d) {
+               console.log("Historial precio no agregado" + d);
+           });
+       } else {
+           console.log("Error!");
+       }
+
+   
+}
+
+function erpsil_editarHistorialPrecioWindow(data) {
  
     var editarHistorialPreciosWindow = ""
  +        "<div class='container'>"
@@ -705,13 +907,27 @@ function erpsil_listarCuentasPagar(){
  
  
     erpsil_setContent(editarHistorialPreciosWindow);
- }
+}
 
- /*********************************************************/
- /*             Gestion de tbl_Pagos                      */
- /*********************************************************/
+function erpsil_eliminarHistorialPrecio(id){
+    var req = {
+       w: "erpsil_historialPrecios",
+       r: "eliminar_historialPrecio",
+       id:id
+    };
+
+    calaApi_postRequest(req, function(){
+       //console.log(req);
+       erpsil_listarHistorialPrecio();
+   }, function(){
+       console.log("Historial precio no eliminarado");
+   });
+}
+/*********************************************************/
+/*             Gestion de tbl_Pagos                      */
+/*********************************************************/
  
- function erpsil_listarPagos(){
+function erpsil_listarPagos(){
     var pagosData = {
         w: "erpsil_pagos",
         r: "mostrar_pagos"
@@ -759,43 +975,125 @@ function erpsil_listarCuentasPagar(){
     }, function (d) {
         console.log(d);
     });
- }
+}
  
- function erpsil_agregarPagosWindow() {
-    var agregarPagosWindow = ""
+function erpsil_agregarPagosWindow() {
+
+    var cuentasPagarData = {
+        w: "erpsil_cuentasPagar",
+        r: "mostrar_cuentasPagar"
+    };
+
+    var usuarioData = {
+        w: "erpsil_usuario",
+        r: "mostrar_usuario"
+    };
+
+    calaApi_postRequest(cuentasPagarData, function(d){
+
+        var selectCuentasPagar = "<select class='custom-select' id='inputDown1'>"  
+        var i = 1;
+        for(a in d.resp){
+            var x = d.resp[a];
+            selectCuentasPagar += "<option>" + i + " - id de la cuenta a pagar = (" + x.id_cuentasPagar + ")</option>";
+            i++;
+        }
+        selectCuentasPagar += "</select>";
+
+        console.log(d);
+
+        calaApi_postRequest(usuarioData, function(p){
+
+            var selectPUsuario= "<select class='custom-select' id='inputDown2'>"  
+            var i = 1;
+            for(a in p.resp){
+                var y = p.resp[a];
+                selectPUsuario += "<option>" + i + " - " + y.fullName +  " - "  + " id = (" + y.idUser + ")</option>";
+                i++;
+            }
+            selectPUsuario += "</select>";
  
-    +    "<div class='login-form'>"
-    +        "<h2 class='text-center'>Pagos</h2>"
-    +        "<label class='col-sm-3 control-label'>ID cuentas</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='ID cuenta' required='required' id='inputId_cuenta'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>ID Usuario</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='ID usuarios' required='required' id='inputId_usuarios'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Fecha</label>"
-    +        "<div class='form-group'>"
-    +            "<input type='text' class='form-control' placeholder='Fecha' required='required' id='inputFecha'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Pago</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Pago' required='required' id='inputPago'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Actual</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Actual' required='required' id='inputActual'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<div onClick='erpsil_agregarPagos()' class='btn btn-primary btn-block'>Agregar</div>"
-    +            "<div onClick='erpsil_listarPagos()' class='btn btn-primary btn-block'>Volver</div>"          
-    +         "</div>"
-    +   " </div>"
-                      
-    erpsil_setContent(agregarPagosWindow);
- }
+
+        var agregarPagosWindow = ""
  
- function erpsil_editarPagosWindow(data) {
+        +    "<div class='login-form'>"
+        +        "<h2 class='text-center'>Pagos</h2>"
+        +        "<label class='col-sm-3 control-label'>ID cuentas</label>"
+        +        "<div class='form-group'>"
+        +         selectCuentasPagar
+        //+           " <input type='text' class='form-control' placeholder='ID cuenta' required='required' id='inputId_cuenta'>"
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>ID Usuario</label>"
+        +        "<div class='form-group'>"
+        +           " <input type='text' class='form-control' placeholder='ID usuarios' required='required' id='inputId_usuarios'>"
+        +        "</div>"
+        +         selectPUsuario
+
+        +        "<label class='col-sm-3 control-label'>Pago</label>"
+        +        "<div class='form-group'>"
+        +           " <input type='text' class='form-control' placeholder='Pago' required='required' id='inputPago'>"
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Actual</label>"
+        +        "<div class='form-group'>"
+        +           " <input type='text' class='form-control' placeholder='Actual' required='required' id='inputActual'>"
+        +        "</div>"
+        +        "<div class='form-group'>"
+        +            "<div onClick='erpsil_agregarPagos()' class='btn btn-primary btn-block'>Agregar</div>"
+        +            "<div onClick='erpsil_listarPagos()' class='btn btn-primary btn-block'>Volver</div>"          
+        +         "</div>"
+        +   " </div>"
+                          
+        erpsil_setContent(agregarPagosWindow);
+        console.log(d);
+    }, function(){
+        console.log("error");
+    });
+}, function(){
+    console.log("error");
+});
+
+}
+
+function erpsil_agregarPagos(){
+
+    var d = $("#inputDown1");
+    var id = d[0].value;
+    id = id.split("(")[1].split(")")[0];
+
+    var d2 = $("#inputDown2");
+    var id2 = d[0].value;
+    id2 = id2.split("(")[1].split(")")[0];
+
+    var id_cuenta = id;
+    var id_usuarios = id2;
+    var pago = $("#inputPago").val();
+    var actual = $("#inputActual").val();
+
+    if(id_cuenta != "" && id_usuarios != "" && pago != "" && actual != "" ){
+
+        var pago = {
+            w: "erpsil_pagos",
+            r: "agregar_pagos",
+            id_cuenta:id_cuenta,
+            id_usuarios:id_usuarios,
+            pago:pago,
+            actual:actual
+        }
+        calaApi_postRequest(pago, function (d) {
+            console.log(pago);
+            erpsil_listarPagos();
+        }, function (d) {
+            console.log("Pago no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+
+
+
+function erpsil_editarPagosWindow(data) {
  
     var editarPagosWindow = ""
  +        "<div class='container'>"
@@ -833,13 +1131,13 @@ function erpsil_listarCuentasPagar(){
  
  
     erpsil_setContent(editarPagosWindow);
- }
+}
  
- /*********************************************************/
- /*             Gestion de movimiento Inventario          */
- /*********************************************************/
+/*********************************************************/
+/*             Gestion de movimiento Inventario          */
+/*********************************************************/
  
- function erpsil_listarMovimientoInventario(){
+function erpsil_listarMovimientoInventario(){
     var movimientoInventarioData = {
         w: "erpsil_movimientoInventario",
         r: "mostrar_movimientoInventario"
@@ -891,9 +1189,9 @@ function erpsil_listarCuentasPagar(){
     }, function (d) {
         console.log(d);
     });
- }
+}
  
- function erpsil_agregarMovimientoInventarioWindow() {
+function erpsil_agregarMovimientoInventarioWindow() {
     var agregarMovimientoInventarioWindow = ""
  
     +    "<div class='login-form'>"
@@ -933,9 +1231,9 @@ function erpsil_listarCuentasPagar(){
     +   " </div>"
                       
     erpsil_setContent(agregarMovimientoInventarioWindow);
- }
+}
  
- function erpsil_editarMovimientoInventarioWindow(data) {
+function erpsil_editarMovimientoInventarioWindow(data) {
  
     var editarMovimientoInventarioWindow = ""
  +        "<div class='container'>"
@@ -981,7 +1279,7 @@ function erpsil_listarCuentasPagar(){
  
  
     erpsil_setContent(editarMovimientoInventarioWindow);
- }
+}
 
 /*********************************************************/
 /*               Gestion del tipo cliente                */
@@ -2407,7 +2705,6 @@ function erpsil_editarCliente(id){
     });
 }
 
-//cambie a erpsil, si no funciona cambiarlo/quitarlo
 function erpsil_guadarEditarCliente(){
     
     var idCliente = $("#inputId_cliente").val();

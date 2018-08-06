@@ -9,8 +9,10 @@ function mostrarClienteTickets(){
 
 function agregarClienteTickets(){
 
+    $stamp = time();
+
     $id_cliente = params_get("id_cliente");
-    $stamp = params_get("stamp");
+    //$stamp = params_get("stamp");
     $titulo = params_get("titulo");
     $comentario = params_get("comentario");
     $status = params_get("status");
@@ -54,3 +56,11 @@ function obtenerClientesTickets(){
     return db_query($q, 1);
 }
 
+function eliminarClientesTickets(){
+    $id = params_get("id");
+
+    $q = "DELETE FROM `tbl_clientetickets` 
+          WHERE `id_ticket` = $id";
+
+    return db_query($q, 0);
+}

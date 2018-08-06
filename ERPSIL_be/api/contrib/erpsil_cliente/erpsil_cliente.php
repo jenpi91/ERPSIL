@@ -61,7 +61,6 @@ function eliminarCliente(){
     return db_query($q, 0);
 }
 
-
 function obtenerCliente(){
     $id = params_get("id");
     $q = "SELECT * FROM `tbl_cliente`

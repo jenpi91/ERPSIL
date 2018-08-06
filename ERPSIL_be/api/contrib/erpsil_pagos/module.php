@@ -17,7 +17,7 @@
 /**
  * Boot up procedure
  */
-function erpsil_clientesTickets_bootMeUp(){
+function erpsil_pagos_bootMeUp(){
 
 }
 
@@ -26,25 +26,38 @@ function erpsil_clientesTickets_bootMeUp(){
  */
 
 
-function erpsil_clientesTickets_init(){
+function erpsil_pagos_init(){
 
 	$paths = array(
 		array(
-			'r' => 'mostrar_clientesTickets',
-			'action' => 'mostrarClienteTickets',
+			'r' => 'mostrar_pagos',
+			'action' => 'mostrarPagos',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
-			'file' => 'erpsil_clientesTickets.php'
+			'file' => 'erpsil_pagos.php'
 		),
 		array(
-			'r' => 'eliminar_clientesTickets',
-			'action' => 'eliminarClientesTickets',
+			'r' => 'agregar_pagos',
+			'action' => 'editarPagos',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			array(
+			array("key" => "id_cuenta", "def" => "", "req" => true),
+			array("key" => "id_usuarios", "def" => "", "req" => true),
+			array("key" => "pago", "def" => "", "req" => true),
+			array("key" => "pago", "def" => "", "req" => true)
+			),
+			'file' => 'erpsil_permisosRol.php'
+		),
+		array(
+			'r' => 'eliminar_permisoRol',
+			'action' => 'eliminarPermisoRol',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
 				array("key" => "id", "def" => "", "req" => true)  
 			),
-			'file' => 'erpsil_clientesTickets.php'
+			'file' => 'erpsil_permisosRol.php'
 		),		
 		array(
 			'r' => 'editar_clientesTickets',
@@ -62,43 +75,26 @@ function erpsil_clientesTickets_init(){
 			'file' => 'erpsil_clientesTickets.php'
 		),
 		array(
-			'r' => 'agregar_clientesTickets',
-			'action' => 'agregarClienteTickets',
+			'r' => 'agregar_permisosRol',
+			'action' => 'agregarPermisosRol',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
-                array("key" => "id_cliente", "def" => "", "req" => true),
-				array("key" => "stamp", "def" => "", "req" => true),
-				array("key" => "titulo", "def" => "", "req" => true),
-                array("key" => "comentario", "def" => "", "req" => true),
-				array("key" => "status", "def" => "", "req" => true)
+                array("key" => "id_rol", "def" => "", "req" => true),
+				array("key" => "estado", "def" => "", "req" => true)
 			),
-			'file' => 'erpsil_clientesTickets.php'
+			'file' => 'erpsil_permisosRol.php'
 		),
 		array(
-			'r' => 'obtener_clientesTickets',
-			'action' => 'obtenerClientesTickets',
+			'r' => 'obtener_permisosRol',
+			'action' => 'obtenerPermisosRol',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
 				array("key" => "id", "def" => "", "req" => true)
 			),
-			'file' => 'erpsil_clientesTickets.php'
+			'file' => 'erpsil_permisosRol.php'
 		),
-		array(
-			'r' => 'agregar_EditarclientesTickets',
-			'action' => 'editarClientesTickets',
-			'access' => 'users_loggedIn', 
-			'access_params' => 'accessName',
-			'params' => array(
-                array("key" => "id_cliente", "def" => "", "req" => true),
-				array("key" => "stamp", "def" => "", "req" => true),
-				array("key" => "titulo", "def" => "", "req" => true),
-                array("key" => "comentario", "def" => "", "req" => true),
-				array("key" => "status", "def" => "", "req" => true)
-			),
-				'file' => 'erpsil_clientesTickets.php'
-			),
 		array(
 			'r' => 'erp',
 			'action' => 'test',
@@ -128,7 +124,7 @@ return $paths;
 /**
  * Get the perms for this module
  */
-function erpsil_clientesTickets_access(){
+function erpsil_pagos_access(){
 /*
 	$perms = array(
 		array(
