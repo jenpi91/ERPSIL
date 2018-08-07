@@ -1,114 +1,95 @@
 <?php
 /** @file module.php
- * A brief file description.
- * A more elaborated file description.
- */
+* A brief file description.
+* A more elaborated file description.
+*/
 
-/** \addtogroup Core 
- *  @{
- */
-
-/**
- * \defgroup Module
- * @{
- */
-
+/** \addtogroup Core
+*  @{
+*/
 
 /**
- * Boot up procedure
- */
+* \defgroup Module
+* @{
+*/
+
+
+/**
+* Boot up procedure
+*/
 function erpsil_cuentasPagar_bootMeUp(){
-	// Just booting up
+    // Just booting up
 }
 
 /**
- * Init function
- */
+* Init function
+*/
 
 //mismo nombre de la carpeta
 function erpsil_cuentasPagar_init(){
 
-	$paths = array(
-		array(
-			'r' => 'agregar_historialPrecio',
-			'action' => 'agregarhistorialPrecio',
-			'access' => 'users_loggedIn', 
-			'access_params' => 'accessName',
-			'params' => array(
-				array("key" => "id_inventario", "def" => "", "req" => true),
-				array("key" => "id_proveedor", "def" => "", "req" => true),
-				array("key" => "costo", "def" => "", "req" => true),
-				array("key" => "fecha", "def" => "", "req" => true),
-			),
-			'file' => 'erpsil_historialPrecios.php'
-		),
-		array(
-			'r' => 'eliminar_historialPrecio',
-			'action' => 'eliminarHistorialPrecio',
-			'access' => 'users_loggedIn', 
-			'access_params' => 'accessName',
-			'params' => array(
-				array("key" => "id", "def" => "", "req" => true)
-			),
-			'file' => 'erpsil_historialPrecios.php'
-		),		
-		array(
-			'r' => 'editar_cliente',
-			'action' => 'editarCliente',
-			'access' => 'users_loggedIn', 
-			'access_params' => 'accessName',
-			'params' => array(
-				array("key" => "nombre", "def" => "", "req" => true),
-				array("key" => "cedula", "def" => "", "req" => true),
-				array("key" => "email", "def" => "", "req" => true),
-				array("key" => "direccion", "def" => "", "req" => true),
-				array("key" => "telefono", "def" => "", "req" => true),
-				array("key" => "descripcion", "def" => "", "req" => true),
-				array("key" => "saldo_maximo", "def" => "", "req" => true),
-				array("key" => "saldo", "def" => "", "req" => true),
-				array("key" => "tipo", "def" => "", "req" => true),
-			),
-			'file' => 'erpsil_cliente.php'
-		),
-		array(
-			'r' => 'mostrar_cuentasPagar',
-			'action' => 'mostrarCuentasPagar',
-			'access' => 'users_loggedIn', 
-			'access_params' => 'accessName',
-			'file' => 'erpsil_cuentasPagar.php'
-		),
-		array(
-			'r' => 'obtener_historialPrecios',
-			'action' => 'obtenerHistorialPrecios',
-			'access' => 'users_loggedIn', 
-			'access_params' => 'accessName',
-			'params' => array(
-				array("key" => "id", "def" => "", "req" => true)
-			),
-			'file' => 'erpsil_cliente.php'
-		),
-			array(
-				'r' => 'agregarEditar_cliente',
-				'action' => 'editarCliente',
-				'access' => 'users_loggedIn', 
-				'access_params' => 'accessName',
-				'params' => array(
-					array("key" => "id", "def" => "", "req" => true),
-					array("key" => "nombre", "def" => "", "req" => true),
-					array("key" => "cedula", "def" => "", "req" => true),
-					array("key" => "email", "def" => "", "req" => true),
-					array("key" => "direccion", "def" => "", "req" => true),
-					array("key" => "telefono", "def" => "", "req" => true),
-					array("key" => "descripcion", "def" => "", "req" => true),
-					array("key" => "saldo_maximo", "def" => "", "req" => true),
-					array("key" => "saldo", "def" => "", "req" => true),
-					array("key" => "tipo", "def" => "", "req" => true),
-				),
-				'file' => 'erpsil_cliente.php'
-		),
-		);
+    $paths = array(
+        array(
+            'r' => 'agregar_cuentasPagar',
+            'action' => 'agregarCuentasPagar',
+            'access' => 'users_loggedIn',
+            'access_params' => 'accessName',
+            'params' => array(
+                array("key" => "id_proveedor", "def" => "", "req" => true),
+                array("key" => "codigoReferencia", "def" => "", "req" => true),
+                array("key" => "saldo", "def" => "", "req" => true),
+                array("key" => "estado", "def" => "", "req" => true),
+                array("key" => "vence", "def" => "", "req" => true),
+                array("key" => "descripcion", "def" => "", "req" => true),
+            ),
+            'file' => 'erpsil_cuentasPagar.php'
+        ),
+        array(
+            'r' => 'agregarEditar_cuentasPagar',
+            'action' => 'agregarCuentasPagar',
+            'access' => 'users_loggedIn',
+            'access_params' => 'accessName',
+            'params' => array(
+                array("key" => "id", "def" => "", "req" => true),
+                array("key" => "id_proveedor", "def" => "", "req" => true),
+                array("key" => "codigoReferencia", "def" => "", "req" => true),
+                array("key" => "saldo", "def" => "", "req" => true),
+                array("key" => "estado", "def" => "", "req" => true),
+                array("key" => "vence", "def" => "", "req" => true),
+                array("key" => "descripcion", "def" => "", "req" => true)
+            ),
+            'file' => 'erpsil_cuentasPagar.php'
+        ),
+        array(
+            'r' => 'eliminar_cuentasPagar',
+            'action' => 'eliminarCuentasPagar',
+            'access' => 'users_loggedIn',
+            'access_params' => 'accessName',
+            'params' => array(
+                array("key" => "id", "def" => "", "req" => true)
+            ),
+            'file' => 'erpsil_cuentasPagar.php'
+        ),      
+        array(
+            'r' => 'mostrar_cuentasPagar',
+            'action' => 'mostrarCuentasPagar',
+            'access' => 'users_loggedIn',
+            'access_params' => 'accessName',
+            'file' => 'erpsil_cuentasPagar.php'
+        ),
+        array(
+            'r' => 'obtener_cuentasPagar',
+            'action' => 'obtenerCuentasPagar',
+            'access' => 'users_loggedIn',
+            'access_params' => 'accessName',
+            'params' => array(
+                array("key" => "id", "def" => "", "req" => true)
+            ),
+            'file' => 'erpsil_cuentasPagar.php'
+        ),
+        );
 
-	return $paths;
+    return $paths;
 }
 
 
@@ -120,25 +101,27 @@ function erpsil_cuentasPagar_init(){
 
 
 /**
- * Get the perms for this module
- */
+* Get the perms for this module
+*/
 function erpsil_cuentasPagar_access(){
 
-	$perms = array(
-		array(
-			# A human readable name
-			'name'        => 'Do something with this module',
-			# Something to remember what it is for
-			'description' => 'What can be achieved with this permission',
-			# Internal machine name, no spaces, no funny symbols, same rules as a variable
-			# Use yourmodule_ prefix
-			'code'        => 'mymodule_access_one',
-			# Default value in case it is not set
-			'def'        => false, //Or true, you decide
-		),
-	);
+    $perms = array(
+        array(
+            # A human readable name
+            'name'        => 'Do something with this module',
+            # Something to remember what it is for
+            'description' => 'What can be achieved with this permission',
+            # Internal machine name, no spaces, no funny symbols, same rules as a variable
+            # Use yourmodule_ prefix
+            'code'        => 'mymodule_access_one',
+            # Default value in case it is not set
+            'def'        => false, //Or true, you decide
+        ),
+    );
 
 }
 
 /**@}*/
 /** @}*/
+
+

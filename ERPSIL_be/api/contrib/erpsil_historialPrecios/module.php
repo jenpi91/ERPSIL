@@ -30,15 +30,24 @@ function erpsil_historialPrecios_init(){
 
 	$paths = array(
 		array(
-			'r' => 'agregar_historialPrecio',
-			'action' => 'agregarhistorialPrecio',
+            'r' => 'agregar_historialPrecio',
+            'action' => 'agregarhistorialPrecio',
+            'access' => 'users_loggedIn', 
+            'access_params' => 'accessName',
+            'params' => array(
+                array("key" => "id_inventario", "def" => "", "req" => true),
+                array("key" => "id_proveedor", "def" => "", "req" => true),
+                array("key" => "costo", "def" => "", "req" => true),
+            ),
+            'file' => 'erpsil_historialPrecios.php'
+        ),
+		array(
+			'r' => 'obtener_historialPrecio',
+			'action' => 'obtenerHistorialPrecios',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
-				array("key" => "id_inventario", "def" => "", "req" => true),
-				array("key" => "id_proveedor", "def" => "", "req" => true),
-				array("key" => "costo", "def" => "", "req" => true),
-				array("key" => "fecha", "def" => "", "req" => true),
+				array("key" => "id", "def" => "", "req" => true)
 			),
 			'file' => 'erpsil_historialPrecios.php'
 		),
@@ -68,7 +77,7 @@ function erpsil_historialPrecios_init(){
 				array("key" => "saldo", "def" => "", "req" => true),
 				array("key" => "tipo", "def" => "", "req" => true),
 			),
-			'file' => 'erpsil_cliente.php'
+			'file' => 'erpsil_historialPrecios.php'
 		),
 		array(
 			'r' => 'mostrar_historialPrecios',
@@ -77,34 +86,19 @@ function erpsil_historialPrecios_init(){
 			'access_params' => 'accessName',
 			'file' => 'erpsil_historialPrecios.php'
 		),
-		array(
-			'r' => 'obtener_historialPrecios',
-			'action' => 'obtenerHistorialPrecios',
-			'access' => 'users_loggedIn', 
-			'access_params' => 'accessName',
-			'params' => array(
-				array("key" => "id", "def" => "", "req" => true)
-			),
-			'file' => 'erpsil_cliente.php'
-		),
 			array(
-				'r' => 'agregarEditar_cliente',
-				'action' => 'editarCliente',
+				'r' => 'agregarEditar_Historialpagos',
+				'action' => 'editarHistorialpagos',
 				'access' => 'users_loggedIn', 
 				'access_params' => 'accessName',
 				'params' => array(
 					array("key" => "id", "def" => "", "req" => true),
-					array("key" => "nombre", "def" => "", "req" => true),
-					array("key" => "cedula", "def" => "", "req" => true),
-					array("key" => "email", "def" => "", "req" => true),
-					array("key" => "direccion", "def" => "", "req" => true),
-					array("key" => "telefono", "def" => "", "req" => true),
-					array("key" => "descripcion", "def" => "", "req" => true),
-					array("key" => "saldo_maximo", "def" => "", "req" => true),
-					array("key" => "saldo", "def" => "", "req" => true),
-					array("key" => "tipo", "def" => "", "req" => true),
+					array("key" => "id_inventario", "def" => "", "req" => true),
+					array("key" => "costo", "def" => "", "req" => true),
+					array("key" => "fecha", "def" => "", "req" => true),
+					array("key" => "id_proveedor", "def" => "", "req" => true),
 				),
-				'file' => 'erpsil_cliente.php'
+				'file' => 'erpsil_historialPrecios.php'
 		),
 		);
 

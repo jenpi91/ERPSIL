@@ -69,6 +69,3 @@ function obtenerCliente(){
     return db_query($q, 1);
 }
 
-function editarGuardarCliente(){
-    
-}

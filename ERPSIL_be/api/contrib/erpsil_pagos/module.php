@@ -37,77 +37,52 @@ function erpsil_pagos_init(){
 			'file' => 'erpsil_pagos.php'
 		),
 		array(
-			'r' => 'agregar_pagos',
+			'r' => 'agregarEditar_pagos',
 			'action' => 'editarPagos',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			array(
+				array("key" => "id", "def" => "", "req" => true),
+				array("key" => "id_cuenta", "def" => "", "req" => true),
+				array("key" => "id_usuarios", "def" => "", "req" => true),
+				array("key" => "fecha", "def" => "", "req" => true),
+				array("key" => "pago", "def" => "", "req" => true),
+				array("key" => "actual", "def" => "", "req" => true)
+			),
+			'file' => 'erpsil_pagos.php'
+		),
+		array(
+			'r' => 'agregar_pagos',
+			'action' => 'agregarPagos',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			array(
 			array("key" => "id_cuenta", "def" => "", "req" => true),
 			array("key" => "id_usuarios", "def" => "", "req" => true),
 			array("key" => "pago", "def" => "", "req" => true),
-			array("key" => "pago", "def" => "", "req" => true)
+			array("key" => "actual", "def" => "", "req" => true)
 			),
-			'file' => 'erpsil_permisosRol.php'
+			'file' => 'erpsil_pagos.php'
 		),
 		array(
-			'r' => 'eliminar_permisoRol',
-			'action' => 'eliminarPermisoRol',
+			'r' => 'eliminar_pagos',
+			'action' => 'eliminarPago',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
 				array("key" => "id", "def" => "", "req" => true)  
 			),
-			'file' => 'erpsil_permisosRol.php'
+			'file' => 'erpsil_pagos.php'
 		),		
 		array(
-			'r' => 'editar_clientesTickets',
-			'action' => 'editarClientesTickets',
-			'access' => 'users_loggedIn', 
-			'access_params' => 'accessName',
-			'params' => array(
-				array("key" => "id_ticket", "def" => "", "req" => true),
-				array("key" => "id_cliente", "def" => "", "req" => true),
-				array("key" => "stamp", "def" => "", "req" => true),
-				array("key" => "titulo", "def" => "", "req" => true),
-				array("key" => "comentario", "def" => "", "req" => true),
-				array("key" => "status", "def" => "", "req" => true)
-			),
-			'file' => 'erpsil_clientesTickets.php'
-		),
-		array(
-			'r' => 'agregar_permisosRol',
-			'action' => 'agregarPermisosRol',
-			'access' => 'users_loggedIn', 
-			'access_params' => 'accessName',
-			'params' => array(
-                array("key" => "id_rol", "def" => "", "req" => true),
-				array("key" => "estado", "def" => "", "req" => true)
-			),
-			'file' => 'erpsil_permisosRol.php'
-		),
-		array(
-			'r' => 'obtener_permisosRol',
-			'action' => 'obtenerPermisosRol',
+			'r' => 'obtener_pagos',
+			'action' => 'obtenerPagos',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
 				array("key" => "id", "def" => "", "req" => true)
 			),
-			'file' => 'erpsil_permisosRol.php'
-		),
-		array(
-			'r' => 'erp',
-			'action' => 'test',
-			'access' => 'users_openAccess', 
-			'access_params' => 'accessName',
-			'file' => 'erpsil_historialPrecio.php'
-	),
-		array(
-			'r' => 'mostrar_clientetickets',
-			'action' => 'mostrarhistorialPrecios',
-			'access' => 'users_loggedIn', 
-			'access_params' => 'accessName',
-			'file' => 'erpsil_historialPrecio.php'
+			'file' => 'erpsil_pagos.php'
 		),
 );
 

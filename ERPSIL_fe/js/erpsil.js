@@ -581,7 +581,7 @@ function erpsil_eliminarPermisoRol(id){
 }
 
 /*********************************************************/
-/*                 Gestion de tbl_cuentasPagar           */
+/*                 Gestion de tbl_cuentasPagar           */ //FAlla el editar
 /*********************************************************/
 
 function erpsil_listarCuentasPagar(){
@@ -633,91 +633,234 @@ function erpsil_listarCuentasPagar(){
         console.log(d);
     });
 }
- 
+
 function erpsil_agregarCuentasPagarWindow() {
-    var agregarCuentasPagarWindow = ""
+    var  proveedorData = {
+        w: "erpsil_proveedor",
+        r: "mostrar_proveedor"
+    }
+    calaApi_postRequest(proveedorData, function(p){
+        var selectP = "<select class='custom-select' id='inputDown'>" 
+        var i = 1;
+        for(a in p.resp){
+            var y = p.resp[a];
+            selectP += "<option>" + i + " - " + y.nombre + " id = (" + y.id_proveedor + ")</option>";
+            i++;
+        }
+        selectP += "</select>";
+        console.log(p);
  
-    +    "<div class='login-form'>"
-    +        "<h2 class='text-center'>Cuentas por pagar</h2>"
-    +        "<label class='col-sm-3 control-label'>Codigo referencia</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Codigo referencia' required='required' id='inputCodigo_Referencia'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Saldo</label>"
-    +        "<div class='form-group'>"
-    +            "<input type='password' class='form-control' placeholder='Saldo' required='required' id='inputSaldo'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Estado</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputEstado'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Vencimiento</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Vencimiento' required='required' id='inputVence'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Descripcion</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>stampfecha</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='stampfecha' required='required' id='inputStampfecha'>"
-    +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<div onClick='erpsil_agregarCuentasPagar()' class='btn btn-primary btn-block'>Agregar</div>"
-    +            "<div onClick='erpsil_listarCuentasPagar()' class='btn btn-primary btn-block'>Volver</div>"          
-    +         "</div>"
-    +   " </div>"
-                      
-    erpsil_setContent(agregarCuentasPagarWindow);
+        var agregarCuentasPagarWindow = ""
+        +    "<div class='login-form'>"
+        +        "<h2 class='text-center'>Cuentas por pagar</h2>"
+        +        "<label class='col-sm-3 control-label'>Id proveedor</label>"
+        +        "<div class='form-group'>"
+        +          selectP
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Codigo referencia</label>"
+        +        "<div class='form-group'>"
+        +           " <input type='text' class='form-control' placeholder='Codigo referencia' required='required' id='inputCodigo_Referencia'>"
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Saldo</label>"
+        +        "<div class='form-group'>"
+        +            "<input type='text' class='form-control' placeholder='Saldo' required='required' id='inputSaldo'>"
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Estado</label>"
+        +        "<div class='form-group'>"
+        +           " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputEstado'>"
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Vencimiento</label>"
+        +        "<div class='form-group'>"
+        +           " <input type='text' class='form-control' placeholder='Vencimiento' required='required' id='inputVence'>"
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Descripcion</label>"
+        +        "<div class='form-group'>"
+        +           " <input type='text' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
+        +        "</div>"
+        +        "<div class='form-group'>"
+        +            "<div onClick='erpsil_agregarCuentasPagar()' class='btn btn-primary btn-block'>Agregar</div>"
+        +            "<div onClick='erpsil_listarCuentasPagar()' class='btn btn-primary btn-block'>Volver</div>"         
+        +         "</div>"
+        +   " </div>"
+                         
+        erpsil_setContent(agregarCuentasPagarWindow);
+        console.log(p);
+    },function(){
+        console.log("Cuentas pagar no agregado.");
+    });
+ 
+}
+
+function erpsil_agregarCuentasPagar(){
+    var d = $("#inputDown");
+    var id = d[0].value;
+    id = id.split("(")[1].split(")")[0];
+ 
+    var id_proveedor = id;
+    var codigoReferencia = $("#inputCodigo_Referencia").val();
+    var saldo = $("#inputSaldo").val();
+    var estado = $("#inputEstado").val();
+    var vence = $("#inputVence").val();
+    var descripcion = $("#inputDescripcion").val();
+   
+ 
+    if(id_proveedor != "" && codigoReferencia != "" && saldo != "" &&
+        estado != "" && vence != "" && descripcion != ""){
+        var permisoCuentasPagar = {
+            w: "erpsil_cuentasPagar",
+            r: "agregar_cuentasPagar",
+            id_proveedor:id_proveedor,
+            codigoReferencia:codigoReferencia,
+            saldo:saldo,
+            estado:estado,
+            vence:vence,
+            descripcion:descripcion
+        };
+ 
+        calaApi_postRequest(permisoCuentasPagar, function (d) {
+            console.log(permisoCuentasPagar);
+            erpsil_listarCuentasPagar();
+        }, function (d) {
+            console.log("Historial precio no agregado" + d);
+        });
+    }
+ 
 }
  
 function erpsil_editarCuentasPagarWindow(data) {
+    var  proveedorData = {
+        w: "erpsil_proveedor",
+        r: "mostrar_proveedor"
+    }
+    calaApi_postRequest(proveedorData, function(p){
+        var selectP = "<select class='custom-select' id='inputDown'>" 
+        var i = 1;
+        for(a in p.resp){
+            var y = p.resp[a];
+            selectP += "<option>" + i + " - " + y.nombre + " id = (" + y.id_proveedor + ")</option>";
+            i++;
+        }
+        selectP += "</select>";
+        console.log(p);
  
-    var editarCuentasPagarWindow = ""
- +        "<div class='container'>"
- +        "<h2 class='text-center'>Editar cuentas por pagar</h2>"
- +       "<form class='form-horizontal' action='' method='post'>"
- +              "<label class='col-sm-3 control-label'>Codigo referencia</label>"
- +              "<div class='col-sm-2'>"
- +                   "<input type='text' id='inputCodigoReferencia' value='" + data.codigo_referencia + "' class='form-control' placeholder='ID' required>"
- +             "</div>"
- +           "<label class='col-sm-3 control-label'>Saldo</label>"
- +           "<div class='col-sm-4'>"
- +                "<input type='text' id='inputSaldo' value='" + data.saldo + "' class='form-control' placeholder='Saldo' required>"
- +           "</div>"
- +           "<label class='col-sm-3 control-label'>Estado</label>"
- +           "<div class='col-sm-4'>"
- +               "<input type='text' id='inputEstado' value='" + data.estado + "' class='form-control' placeholder='Estado' required>"
- +           "</div>"
- +       "<label class='col-sm-3 control-label'>Vence</label>"
- +        "<div class='col-sm-4'>"
- +            "<input type='text' id='inpuVence' value='" + data.vence + "' class='form-control' placeholder='Vence' required>"
- +        "</div>"
- +        "<label class='col-sm-3 control-label'>Descripcion</label>"
- +        "<div class='col-sm-4'>"
- +               "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='form-control' placeholder='Descripcion' required>"
- +        "</div>"
- +        "<label class='col-sm-3 control-label'>stampfecha</label>"
- +        "<div class='col-sm-4'>"
- +               "<input type='text' id='inputStampfecha' value='" + data.stampfecha + "' class='form-control' placeholder='stampfecha' required>"
- +        "</div>"
- +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
- +           " <div class='col-sm-6'>"
- +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarCuentasPagar()' >Guardar</div>"
- +                "<div onclick='erpsil_listarCuentasPagar()' class='btn btn-sm btn-danger'>Cancelar</div>"
- +           "</div>"
- +         "</form>"
- +        "</div>"
- +       "</div>"
- +       "</div>"
+        var editarCuentasPagarWindow = ""
  
+        +        "<div class='container'>"
+        +        "<h2 class='text-center'>Editar cuentas por pagar</h2>"
+        +       "<form class='form-horizontal' action='' method='post'>"
+        +              "<label class='col-sm-3 control-label'>Codigo referencia</label>"
+        +              "<div class='col-sm-2'>"
+        +               selectP
+        +             "</div>"
+        +              "<label class='col-sm-3 control-label'>Codigo referencia</label>"
+        +              "<div class='col-sm-2'>"
+        +                   "<input type='text' id='inputCodigo_Referencia' value='" + data.codigo_referencia + "' class='form-control' placeholder='ID' required>"
+        +             "</div>"
+        +           "<label class='col-sm-3 control-label'>Saldo</label>"
+        +           "<div class='col-sm-4'>"
+        +                "<input type='text' id='inputSaldo' value='" + data.saldo + "' class='form-control' placeholder='Saldo' required>"
+        +           "</div>"
+        +           "<label class='col-sm-3 control-label'>Estado</label>"
+        +           "<div class='col-sm-4'>"
+        +               "<input type='text' id='inputEstado' value='" + data.estado + "' class='form-control' placeholder='Estado' required>"
+        +           "</div>"
+        +       "<label class='col-sm-3 control-label'>Vence</label>"
+        +        "<div class='col-sm-4'>"
+        +            "<input type='text' id='inputVence' value='" + data.vence + "' class='form-control' placeholder='Vence' required>"
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Descripcion</label>"
+        +        "<div class='col-sm-4'>"
+        +               "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='form-control' placeholder='Descripcion' required>"
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>stampfecha</label>"
+        +        "<div class='col-sm-4'>"
+        +               "<input type='text' id='inputStampfecha' value='" + data.stampfecha + "' class='form-control' placeholder='stampfecha' required>"
+        +        "</div>"
+        +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
+        +           " <div class='col-sm-6'>"
+        +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarCuentasPagar()' >Guardar</div>"
+        +                "<div onclick='erpsil_listarCuentasPagar()' class='btn btn-sm btn-danger'>Cancelar</div>"
+        +           "</div>"
+        +         "</form>"
+        +        "</div>"
+        +       "</div>"
+        +       "</div>"
+       
+                         
+        erpsil_setContent(editarCuentasPagarWindow);
+        console.log(p);
+    },function(){
+        console.log("Cuentas pagar no actualizado.");
+    });
  
-    erpsil_setContent(editarCuentasPagarWindow);
 }
-
+ 
+function erpsil_editarCuentasPagar(id){
+    var req = {
+        w: "erpsil_cuentasPagar",
+        r: "obtener_cuentasPagar",
+        id:id
+     };
+ 
+     calaApi_postRequest(req, function(d){
+        //console.log(req);
+        erpsil_editarCuentasPagarWindow(d.resp);
+    }, function(){
+        console.log("Cuentas pagar no editado");
+    });
+}
+ 
+function erpsil_guardarEditarCuentasPagar(){
+    var d = $("#inputDown");
+    var id = d[0].value;
+    id = id.split("(")[1].split(")")[0];
+ 
+    var id_proveedor = id;
+    var codigoReferencia = $("#inputCodigo_Referencia").val();
+    var saldo = $("#inputSaldo").val();
+    var estado = $("#inputEstado").val();
+    var vence = $("#inputVence").val();
+    var descripcion = $("#inputDescripcion").val();
+ 
+    if(id_proveedor != "" && codigoReferencia != "" && saldo != "" &&
+        estado != "" && vence != "" && descripcion != ""){
+        var permisoCuentasPagar = {
+            w: "erpsil_cuentasPagar",
+            r: "agregarEditar_cuentasPagar",
+            id_proveedor:id_proveedor,
+            codigoReferencia:codigoReferencia,
+            saldo:saldo,
+            estado:estado,
+            vence:vence,
+            descripcion:descripcion
+        };
+ 
+        calaApi_postRequest(permisoCuentasPagar, function (d) {
+            console.log(permisoCuentasPagar);
+           // erpsil_listarCuentasPagar();
+        }, function (d) {
+            console.log("Historial precio no actualizado" + d);
+        });
+    }
+}
+ 
+function erpsil_eliminarCuentasPagar(id){
+    var req = {
+        w: "erpsil_cuentasPagar",
+        r: "eliminar_cuentasPagar",
+        id:id
+     };
+ 
+     calaApi_postRequest(req, function(){
+        //console.log(req);
+        erpsil_listarCuentasPagar();
+    }, function(){
+        console.log("Cuentas pagar no eliminado");
+    });
+}
+ 
 /*********************************************************/
-/*             Gestion de tbl_historialPrecios           */ //falta editar****
+/*             Gestion de tbl_historialPrecios           */ 
 /*********************************************************/
  
 function erpsil_listarHistorialPrecio(){
@@ -750,7 +893,7 @@ function erpsil_listarHistorialPrecio(){
         +                "<td> "+ a.fecha +" </td>"
         +                "<td> "+ a.id_proveedor +" </td>"
        
-        +                "<td> <div id='editar_historialPrecios' onclick='erpsil_editarHistorialPrecios(" + a.id_historialPrecio + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div id='editar_historialPrecios' onclick='erpsil_editarHistorialPrecio(" + a.id_historialPrecio + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
         +                "<td> <div onclick='erpsil_eliminarHistorialPrecio("+ a.id_historialPrecio +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"        +            "</tr>";
                     }
                 }
@@ -777,6 +920,7 @@ function erpsil_agregarHistorialPrecioWindow() {
        r: "mostrar_proveedor"
     };
 
+   
     calaApi_postRequest(historialPrecioData, function(d){
        
        var selectH = "<select class='custom-select' id='inputDown1'>"  
@@ -805,40 +949,44 @@ function erpsil_agregarHistorialPrecioWindow() {
      
            +    "<div class='login-form'>"
            +        "<h2 class='text-center'>Historial de precios</h2>"
-           +        "<label class='col-sm-3 control-label'>Id inventario</label>"
-           +        "<div class='form-group'>"
-           +       selectH
-           +        "</div>"
+          +        "<label class='col-sm-3 control-label'>Id inventario</label>"
+          +        "<div class='form-group'>"
+               +       selectH
+           
+          +        "</div>"
            +        "<label class='col-sm-3 control-label'>Costo</label>"
            +        "<div class='form-group'>"
            +           " <input type='text' class='form-control' placeholder='Costo' required='required' id='inputCosto'>"
            +        "</div>"
-           // +        "<label class='col-sm-3 control-label'>Fecha</label>"
+          // +        "<label class='col-sm-3 control-label'>Fecha</label>"
            //+        "<div class='form-group'>"
-           // +            "<input type='text' class='form-control' placeholder='Fecha' required='required' id='inputFecha'>"
-           // +        "</div>"
-            +        "<label class='col-sm-3 control-label'>ID preveedor</label>"
-            +        "<div class='form-group'>"
-            +        selectP
-            +        "</div>"
+          // +            "<input type='text' class='form-control' placeholder='Fecha' required='required' id='inputFecha'>"
+          // +        "</div>"
+          +        "<label class='col-sm-3 control-label'>ID preveedor</label>"
+          +        "<div class='form-group'>"
+          +            selectP
+          +        "</div>"
 
-            +        "<div class='form-group'>"
-            +            "<div onClick='erpsil_agregarHistorialPrecio()' class='btn btn-primary btn-block'>Agregar</div>"
-            +            "<div onClick='erpsil_listarHistorialPrecios()' class='btn btn-primary btn-block'>Volver</div>"          
-            +         "</div>"
-            +   " </div>"
+           +        "<div class='form-group'>"
+           +            "<div onClick='erpsil_agregarHistorialPrecio()' class='btn btn-primary btn-block'>Agregar</div>"
+           +            "<div onClick='erpsil_listarHistorialPrecios()' class='btn btn-primary btn-block'>Volver</div>"          
+           +         "</div>"
+           +   " </div>"
                              
            erpsil_setContent(agregarHistorialPreciosWindow);
            console.log(d);
         }, function(){
             console.log("error");
         });
+
+       
+
     }, function(){
         console.log("error");
     });
 
 }
- 
+
 function erpsil_agregarHistorialPrecio(){
     var d = $("#inputDown1");
     var id = d[0].value;
@@ -851,9 +999,8 @@ function erpsil_agregarHistorialPrecio(){
    var id_inventario = id;
    var id_proveedor = id2;
    var costo = $("#inputCosto").val();
-   var fecha = $("#inputFecha").val();
 
-       if(id_inventario != "" && id_proveedor != "" &&  costo != "" && fecha != ""){
+       if(id_inventario != "" && id_proveedor != "" &&  costo != ""){
 
            var permosoHistorialPrecio = {
                w: "erpsil_historialPrecios",
@@ -861,7 +1008,6 @@ function erpsil_agregarHistorialPrecio(){
                id_inventario:id_inventario,
                id_proveedor:id_proveedor,
                costo:costo,
-               fecha:fecha
            };
 
            calaApi_postRequest(permosoHistorialPrecio, function (d) {
@@ -879,34 +1025,99 @@ function erpsil_agregarHistorialPrecio(){
 
 function erpsil_editarHistorialPrecioWindow(data) {
  
-    var editarHistorialPreciosWindow = ""
- +        "<div class='container'>"
- +        "<h2 class='text-center'>Editar historial de precios</h2>"
- +       "<form class='form-horizontal' action='' method='post'>"
- +              "<label class='col-sm-3 control-label'>Costo</label>"
- +              "<div class='col-sm-2'>"
- +                   "<input type='text' id='inputCosto' value='" + data.costo + "' class='form-control' placeholder='Costo' required>"
- +             "</div>"
- +           "<label class='col-sm-3 control-label'>Fecha</label>"
- +           "<div class='col-sm-4'>"
- +                "<input type='text' id='inpuFecha' value='" + data.fecha + "' class='form-control' placeholder='Fecha' required>"
- +           "</div>"
- +           "<label class='col-sm-3 control-label'>ID proveedor</label>"
- +           "<div class='col-sm-4'>"
- +               "<input type='text' id='inputId_proveedor' value='" + data.Id_proveedor + "' class='form-control' placeholder='ID proveedor' required>"
- +           "</div>"
- +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
- +           " <div class='col-sm-6'>"
- +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarHistorialPrecios()' >Guardar</div>"
- +                "<div onclick='erpsil_listarHistorialPrecios()' class='btn btn-sm btn-danger'>Cancelar</div>"
- +           "</div>"
- +         "</form>"
- +        "</div>"
- +       "</div>"
- +       "</div>"
+    var historialPrecioData = {
+        w: "erpsil_inventario",
+        r: "mostrar_inventario"
+     };
+     var proveedorData = {
+        w: "erpsil_proveedor",
+        r: "mostrar_proveedor"
+     };
+ 
+     calaApi_postRequest(historialPrecioData, function(d){
+        
+        var selectH = "<select class='custom-select' id='inputDown1'>"  
+        var i = 1;
+        for(a in d.resp){
+            var x = d.resp[a];
+            selectH += "<option>" + i + " - " + x.unidad + " id = (" + x.id_inventario + ")</option>";
+            i++;
+        }
+        selectH += "</select>";
+        console.log(d);
  
  
-    erpsil_setContent(editarHistorialPreciosWindow);
+        calaApi_postRequest(proveedorData, function(p){
+        
+            var selectP = "<select class='custom-select' id='inputDown2'>"  
+            var i = 1;
+            for(a in p.resp){
+                var y = p.resp[a];
+                selectP += "<option>" + i + " - " + y.nombre + " id = (" + y.id_proveedor + ")</option>";
+                i++;
+            }
+            selectP += "</select>";
+ 
+            var editarHistorialPreciosWindow = ""
+            +        "<div class='container'>"
+            +        "<h2 class='text-center'>Editar historial de precios</h2>"
+            +       "<form class='form-horizontal' action='' method='post'>"
+            +              "<label class='col-sm-3 control-label'>id historial</label>"
+            +              "<div class='col-sm-2'>"
+            +                   "<input type='text' id='inputIdHistorial' value='" + data.id_historialPrecio + "' class='form-control' placeholder='Costo' required>"
+            +             "</div>"
+            +              "<label class='col-sm-3 control-label'>id Inventario</label>"
+            +              "<div class='col-sm-2'>"
+            +               selectH
+            //+                   "<input type='text' id='inputInventario' value='" + data.id_inventario + "' class='form-control' placeholder='Costo' required>"
+            +             "</div>"
+            +           "<label class='col-sm-3 control-label'>Costo</label>"
+            +           "<div class='col-sm-4'>"
+            +                "<input type='text' id='inputCosto' value='" + data.costo + "' class='form-control' placeholder='Fecha' required>"
+            +           "</div>"
+            +           "<label class='col-sm-3 control-label'>Fecha</label>"
+            +           "<div class='col-sm-4'>"
+            +                "<input type='text' id='inputFecha' value='" + data.fecha + "' class='form-control' placeholder='Fecha' required>"
+            +           "</div>"
+            +           "<label class='col-sm-3 control-label'>ID proveedor</label>"
+            +           "<div class='col-sm-4'>"
+            +           selectP
+            //+               "<input type='text' id='inputId_proveedor' value='" + data.Id_proveedor + "' class='form-control' placeholder='ID proveedor' required>"
+            +           "</div>"
+            +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
+            +           " <div class='col-sm-6'>"
+            +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarHistorialPago()' >Guardar</div>"
+            +                "<div onclick='erpsil_listarHistorialPrecios()' class='btn btn-sm btn-danger'>Cancelar</div>"
+            +           "</div>"
+            +         "</form>"
+            +        "</div>"
+            +       "</div>"
+            +       "</div>"
+            
+            
+               erpsil_setContent(editarHistorialPreciosWindow);
+            console.log(d);
+         }, function(){
+             console.log("error");
+         });
+     }, function(){
+         console.log("error");
+     });
+}
+
+function erpsil_editarHistorialPrecio(id){
+    var req = {
+        w: "erpsil_historialPrecios",
+        r: "obtener_historialPrecio",
+        id:id
+     };
+
+     calaApi_postRequest(req, function (d) {
+        console.log(req);
+        erpsil_editarHistorialPrecioWindow(d.resp);
+    }, function () {
+        console.log("Historial Precio no editado");
+    });
 }
 
 function erpsil_eliminarHistorialPrecio(id){
@@ -923,6 +1134,46 @@ function erpsil_eliminarHistorialPrecio(id){
        console.log("Historial precio no eliminarado");
    });
 }
+
+function erpsil_guardarEditarHistorialPago(){
+
+    var d = $("#inputDown1");
+    var id = d[0].value;
+    id = id.split("(")[1].split(")")[0];
+
+    var d2 = $("#inputDown2");
+    var id2 = d2[0].value;
+    id2 = id2.split("(")[1].split(")")[0];
+
+    var id_historial = $("#inputIdHistorial").val();
+    var id_inventario = id;
+    var costo = $("#inputCosto").val();
+    var fecha = $("#inputFecha").val();
+    var id_proveedor = id2;
+
+    if(id_historial != "", id_inventario != "", costo != "", fecha != "", id_proveedor != ""){
+        
+        var historialPago = {
+            w: "erpsil_historialPrecios",
+            r: "agregarEditar_Historialpagos",
+            id:id_historial,
+            id_inventario:id_inventario,
+            costo:costo,
+            fecha:fecha,
+            id_proveedor:id_proveedor
+        }
+        calaApi_postRequest(historialPago, function (d) {
+            console.log(historialPago);
+            erpsil_listarHistorialPrecio();
+        }, function (d) {
+            console.log("Pago no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+
 /*********************************************************/
 /*             Gestion de tbl_Pagos                      */
 /*********************************************************/
@@ -960,7 +1211,7 @@ function erpsil_listarPagos(){
         +                "<td> "+ a.actual +" </td>"
        
         +                "<td> <div id='editar_pagos' onclick='erpsil_editarPagos(" + a.id_pago + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarPagos("+ a.id_pago +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarPago("+ a.id_pago +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -1025,9 +1276,9 @@ function erpsil_agregarPagosWindow() {
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>ID Usuario</label>"
         +        "<div class='form-group'>"
-        +           " <input type='text' class='form-control' placeholder='ID usuarios' required='required' id='inputId_usuarios'>"
-        +        "</div>"
         +         selectPUsuario
+        //+           " <input type='text' class='form-control' placeholder='ID usuarios' required='required' id='inputId_usuarios'>"
+        +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Pago</label>"
         +        "<div class='form-group'>"
@@ -1051,7 +1302,6 @@ function erpsil_agregarPagosWindow() {
 }, function(){
     console.log("error");
 });
-
 }
 
 function erpsil_agregarPagos(){
@@ -1061,7 +1311,7 @@ function erpsil_agregarPagos(){
     id = id.split("(")[1].split(")")[0];
 
     var d2 = $("#inputDown2");
-    var id2 = d[0].value;
+    var id2 = d2[0].value;
     id2 = id2.split("(")[1].split(")")[0];
 
     var id_cuenta = id;
@@ -1090,47 +1340,163 @@ function erpsil_agregarPagos(){
     }
 }
 
+function erpsil_eliminarPago(id){
 
+    var req = {
+        w: "erpsil_pagos",
+        r: "eliminar_pagos",
+        id:id
+     };
+ 
+     calaApi_postRequest(req, function(){
+        //console.log(req);
+        erpsil_listarPagos();
+    }, function(){
+        console.log("Pago no agregado");
+    });
+}
 
+function erpsil_editarPagos(id){
+    var req = {
+        w: "erpsil_pagos",
+        r: "obtener_pagos",
+        id:id
+    };
+    
+    calaApi_postRequest(req, function(d){
+        //console.log(req);
+        erpsil_editarPagosWindow(d.resp);
+    }, function(){
+        console.log("Pago no editado");
+    });
+}
 
 function erpsil_editarPagosWindow(data) {
- 
-    var editarPagosWindow = ""
- +        "<div class='container'>"
- +        "<h2 class='text-center'>Editar pago</h2>"
- +       "<form class='form-horizontal' action='' method='post'>"
- +              "<label class='col-sm-3 control-label'>id cuenta</label>"
- +              "<div class='col-sm-2'>"
- +                   "<input type='text' id='inputId_cuenta' value='" + data.id_cuenta + "' class='form-control' placeholder='ID cuenta' required>"
- +             "</div>"
- +           "<label class='col-sm-3 control-label'>Id usuario</label>"
- +           "<div class='col-sm-4'>"
- +                "<input type='text' id='inpuId_usuarios' value='" + data.id_usuarios + "' class='form-control' placeholder='ID usuario' required>"
- +           "</div>"
- +           "<label class='col-sm-3 control-label'>Fecha</label>"
- +           "<div class='col-sm-4'>"
- +               "<input type='text' id='inputFecha' value='" + data.fecha + "' class='form-control' placeholder='Fecha' required>"
- +           "</div>"
- +           "<label class='col-sm-3 control-label'>pago</label>"
- +           "<div class='col-sm-4'>"
- +               "<input type='text' id='inputPago' value='" + data.pago + "' class='form-control' placeholder='pago' required>"
- +           "</div>"
- +           "<label class='col-sm-3 control-label'>Actual</label>"
- +           "<div class='col-sm-4'>"
- +               "<input type='text' id='inpuActual' value='" + data.actual + "' class='form-control' placeholder='Actual' required>"
- +           "</div>"
- +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
- +           " <div class='col-sm-6'>"
- +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarPagos()' >Guardar</div>"
- +                "<div onclick='erpsil_listarPagos()' class='btn btn-sm btn-danger'>Cancelar</div>"
- +           "</div>"
- +         "</form>"
- +        "</div>"
- +       "</div>"
- +       "</div>"
- 
- 
-    erpsil_setContent(editarPagosWindow);
+
+    var cuentasPagarData = {
+        w: "erpsil_cuentasPagar",
+        r: "mostrar_cuentasPagar"
+    };
+
+    var usuarioData = {
+        w: "erpsil_usuario",
+        r: "mostrar_usuario"
+    };
+
+    calaApi_postRequest(cuentasPagarData, function(d){
+
+        var selectCuentasPagar = "<select class='custom-select' id='inputDown1'>"  
+        var i = 1;
+        for(a in d.resp){
+            var x = d.resp[a];
+            selectCuentasPagar += "<option>" + i + " - id de la cuenta a pagar = (" + x.id_cuentasPagar + ")</option>";
+            i++;
+        }
+        selectCuentasPagar += "</select>";
+
+        console.log(d);
+
+        calaApi_postRequest(usuarioData, function(p){
+
+            var selectPUsuario= "<select class='custom-select' id='inputDown2'>"  
+            var i = 1;
+            for(a in p.resp){
+                var y = p.resp[a];
+                selectPUsuario += "<option>" + i + " - " + y.fullName +  " - "  + " id = (" + y.idUser + ")</option>";
+                i++;
+            }
+            selectPUsuario += "</select>";
+
+        var editarPagosWindow = ""
+        +        "<div class='container'>"
+        +        "<h2 class='text-center'>Editar pago</h2>"
+        +       "<form class='form-horizontal' action='' method='post'>"
+        +           "<label class='col-sm-3 control-label'>id pago</label>"
+        +           "<div class='col-sm-4'>"
+        +               "<input type='text' id='inputId_Pago' value='" + data.id_pago + "' class='form-control' placeholder='pago' required>"
+        +           "</div>"
+        +              "<label class='col-sm-3 control-label'>id cuenta</label>"
+        +              "<div class='col-sm-2'>"
+        +         selectCuentasPagar
+        //+                   "<input type='text' id='inputId_cuenta' value='" + data.id_cuenta + "' class='form-control' placeholder='ID cuenta' required>"
+        +             "</div>"
+        +           "<label class='col-sm-3 control-label'>Id usuario</label>"
+        +           "<div class='col-sm-4'>"
+        +         selectPUsuario
+        //+                "<input type='text' id='inpuId_usuarios' value='" + data.id_usuarios + "' class='form-control' placeholder='ID usuario' required>"
+        +           "</div>"
+        +           "<label class='col-sm-3 control-label'>Fecha</label>"
+        +           "<div class='col-sm-4'>"
+        +               "<input type='text' id='inputFecha' value='" + data.fecha + "' class='form-control' placeholder='Fecha' required>"
+        +           "</div>"
+        +           "<label class='col-sm-3 control-label'>pago</label>"
+        +           "<div class='col-sm-4'>"
+        +               "<input type='text' id='inputPago' value='" + data.pago + "' class='form-control' placeholder='pago' required>"
+        +           "</div>"
+        +           "<label class='col-sm-3 control-label'>Actual</label>"
+        +           "<div class='col-sm-4'>"
+        +               "<input type='text' id='inputActual' value='" + data.actual + "' class='form-control' placeholder='Actual' required>"
+        +           "</div>"
+        +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
+        +           " <div class='col-sm-6'>"
+        +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarPago()' >Guardar</div>"
+        +                "<div onclick='erpsil_listarPagos()' class='btn btn-sm btn-danger'>Cancelar</div>"
+        +           "</div>"
+        +         "</form>"
+        +        "</div>"
+        +       "</div>"
+        +       "</div>"
+        
+        
+        erpsil_setContent(editarPagosWindow);
+                          
+        console.log(d);
+    }, function(){
+        console.log("error");
+    });
+}, function(){
+    console.log("error");
+});
+}
+
+function erpsil_guardarEditarPago(){
+
+    var d = $("#inputDown1");
+    var id = d[0].value;
+    id = id.split("(")[1].split(")")[0];
+
+    var d2 = $("#inputDown2");
+    var id2 = d2[0].value;
+    id2 = id2.split("(")[1].split(")")[0];
+
+    var id_pagos = $("#inputId_Pago").val();
+    var id_cuenta = id;
+    var id_usuarios = id2;
+    var pago = $("#inputPago").val();
+    var fecha = $("#inputFecha").val();
+    var actual = $("#inputActual").val();
+
+    if(id_cuenta != "" && id_usuarios != "" && pago != "" && actual != "" ){
+
+    var pago = {
+            w: "erpsil_pagos",
+            r: "agregarEditar_pagos",
+            id:id_pagos,
+            id_cuenta:id_cuenta,
+            id_usuarios:id_usuarios,
+            fecha:fecha,
+            pago:pago,
+            actual:actual
+        }
+        calaApi_postRequest(pago, function (d) {
+            console.log(pago);
+            erpsil_listarPagos();
+        }, function (d) {
+            console.log("Pago no agregado" + d);
+        });
+    } else {
+        console.log("Error!");
+    }
 }
  
 /*********************************************************/
