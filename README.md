@@ -18,16 +18,16 @@ Las áreas de contabilidad y de recursos humanos se reorganizarán en módulos a
 Este software tendrá la facilidad de impresiones de reportes de cada uno de los módulos, facilitando el acceso a la información con mayor rapidez en caso de una auditoría o simples informes brindados al dueño de la empresa.
 Como parte de un plus dentro del ERP también se implementará la facturación digital, la cual es parte de la actualización anteriormente mencionada.
 
-Prerequisitos de instalacion: 
+#Prerequisitos de instalacion: 
 + Descargar e instalar Xampp.
 + Descargar e instsalar phpMyAdmin.
 + Clonar el proyecto del repositorio.
 
-Instalacion del sistema:
+#Instalacion del sistema:
 +Ingresar las carpetas ERPSIL_fe y ERPSIL_be dentro de htdocs.
 +Importarla base de datos a phpMyAdmin.
 +Correr el sistema en http://localhost:8080/ERPSIL_fe
 +En caso de no correr el sistema verificar la posicion correcta de la carpeta api, dentro de ERPSIL_be/www/settings.php, linea 36.
 
-Despliegue:
+#Despliegue:
 +En caso de querer desplegar una nueva version puede hacerla siemper y cuando genere pull request en el branch dev_merges.
