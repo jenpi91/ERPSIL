@@ -1,11 +1,11 @@
 # ERPSIL
 Trabajo Universitario de Sistema de Planificación de Recursos Empresariales
 
-Compañeros de trabajo:
-Jenniffer Pérez
-Daniel Olsen Yu
-Roberto Wong
-Sofía Tenorio
+# Compañeros de trabajo:
++ Jenniffer Pérez
++ Daniel Olsen Yu
++ Roberto Wong
++ Sofía Tenorio
 
 Descripción del proyecto:
 Para la automatización de un sistema ERP de la empresa Flores de Relleno San Isidro Labrador, se implementara un sistema, con bases de datos y que sea manejable por los empleados de la PYMES como usuarios finales, que les permita el control y manejo de un inventario centralizado de los materiales tanto que entran como salen del almacén, además de la automatización de la parte de recursos humanos, planillas y otros que le brinden a la empresa mayor flexibilidad, orden y actualización, con facilidades propias de la época actual y el lugar.
