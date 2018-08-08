@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset ="utf-8">
+    <title>ERPSIL</title>
+    <link href="estilos.css" rel="stylesheet">    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+         <link href="../../../styles.css" rel="stylesheet">
+        <link href="../../../stylos.css" rel="stylesheet">   
+    <link rel="icon" href="G1.ico" type="image/gif" sizes="16x16">
+    </head>
+    <body>
+       <header id="main-header">
+		
+           <a id="logo-header">
+           <div class="container" onclick="myFunction(this)">
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
+</div>
+		</a> 
+           <a id="logo-header" href="#">
+			<span class="site-name">ERPSIL</span>
+		</a> 
+        
+ 
+		<nav >
+			<ul>
+				
+                <li><a href="#"><i class="far fa-user-circle"></i></a></li>
+				<li><a href="#"><i class="fas fa-cog"></i></a></li>
+                <li><a  href="#l">Log Out<i class="fas fa-sign-out-alt"></i></a></li>
+               
+            
+			</ul>
+		</nav>
+           
+	</header>
+        
+        <h1>Agregar Proveedor</h1>
+        
+  <div class='login-form'>
+    <div class='form-group'>
+    <input class='entrada' type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>
+    </div>
+    <div class='form-group'>
+    <input class='entrada'type='text' class='form-control' placeholder='Primer Apellido' required='required' id='inputApe1'>
+    </div>
+    <div class='form-group'>
+    <input class='entrada'type='text' class='form-control' placeholder='Segundo Apellido' required='required' id='inputApe2'>
+    </div>
+    <div class='form-group'><input class='entrada'type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'></div>
+    <div class='form-group'>
+    <input class='entrada'type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>
+    </div>
+    <div class='form-group'>
+    <input class='entrada'type='text' class='form-control' placeholder='Direccion' required='required' id='inputDireccion'>
+    </div>
+    <div class='form-group'>
+    <input class='entrada'type='text' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>
+    </div>
+    <div class='form-group'>
+    <button class='Boton_proveedores' onClick='erpsil_agregarProveedor()' class='btn btn-primary btn-block'>Agregar</button>
+    </div>
+</div> 
+
+        
+        
+
+       <script>
+function myFunction(x) {
+    x.classList.toggle("change");
+}
+</script>        
+    </body>
+         
+</html>

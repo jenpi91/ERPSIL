@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Bad+Script|Gochi+Hand|Rock+Salt|Sacramento');
+
+
+#main-header {
+	background: #A7DBD8;
+	color:beige;
+	height: 60px;
+    font-family: "Comfortaa";
+}	
+	#main-header a {
+		color: white;
+        font-family: "Comfortaa";
+	}
+#logo-header {
+	float: left;
+	padding: 10px 0 5px 10px;
+	text-decoration: none;
+}
+	#logo-header:hover {
+		color: #0b76a6;
+	}
+	
+	#logo-header .site-name {
+		display: block;
+		font-weight: 700;
+		font-size: 1.2em;
+        margin-top: 7%;
+	}
+	
+	#logo-header .site-desc {
+		display: block;
+		font-weight: 300;
+		font-size: 0.5em;
+		color: #999;
+	}
+#main-header {
+	background: Black;
+	color: beige;
+	height: 60px;
+	
+	width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
+	left: 0; /* Posicionamos la cabecera al lado izquierdo */
+	top: 0; /* Posicionamos la cabecera pegada arriba */
+	position: fixed; /* Hacemos que la cabecera tenga una posición fija */
+    
+}
+nav {
+	float: right;
+}
+	nav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		padding-right: 20px;
+	}
+	
+		nav ul li {
+			display: inline-block;
+			line-height: 60px;
+            font-family: "Comfortaa";
+		}
+			
+			nav ul li a {
+				display: block;
+				padding: 0 5px;
+				text-decoration: none;
+			}
+			
+				nav ul li a:hover {
+					background: #0b76a6;
+				}
+
+
+
+
+body {
+    font-size: 20px;
+  
+	margin: 0;
+	padding: 0;
+	font-family: "Pacifico";
+	color: #666;
+	background: #f2f2f2; 
+
+	line-height: 1.5em;
+	
+	padding-top: 80px; /* Relleno superior igual a la altura de la cabecera*/
+}
+
+/*lAS TRES BARRAS*/
+
+.container {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+    background: #0b76a6;
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+     background: #0b76a6;
+}
+
+/*Seach box*/
+
+* {
+    box-sizing: border-box;
+}
+
+input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    width: 80%;
+    height: 10%;
+    font-family: "Comfortaa";
+}
+.button_search {
+  width: 20%;
+    height: 30px;
+  padding: 10px;
+  color: white;
+  font-size: 18.5px;
+  border: none;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+    
+}
+
+.button_search:hover {
+    background: #0b76a6;
+}
+
+/**/
+
+.far fa-user-circle, .fas fa-cog, fas fa-sign-out-alt{
+    color: white;
+}
