@@ -1,0 +1,44 @@
+function erpsil_agregarUsuarioWindow(){
+    //var loginWindow = "Aca va la ventana de login";
+    var agregarUsuarioWindow = "
+            
+    +   "<div class='AgregarUsuario'>"
+    +		"<h2 class='AgregarUsuarioTitulo'>Agregar usuario</h2><br><br>
+
+    +		"<label class='col-sm-3 control-label'>Nombre</label>
+    +		"<div class='form-group'>
+    +			"<input type='text' class='form-control2' placeholder='Nombre' required='required' id='inputFullName'>
+    +		"</div>
+
+    +		"<label class='col-sm-3 control-label'>Nombre de usuario</label>
+    +		"<div class='form-group'>
+    +			"<input type='text' class='form-control2' placeholder='Nombre usuario' required='required' id='inputUserName'>
+    +		"</div>
+
+    +           "<label class='col-sm-3 control-label'>Email</label>
+    +		"<div class='form-group'>
+    +			"<input type='text' class='form-control2' placeholder='Email' required='required' id='inputUserEmail'>
+    +		"</div>
+
+    +		"<label class='col-sm-3 control-label'>Contraseña</label>
+    + 		"<div class='form-group'>
+    +			"<input type='password' class='form-control2' placeholder='Contraseña' required='required' id='inputPwd'>
+    +		"</div>
+
+    +		"<label class='col-sm-3 control-label'>Acerca de</label>
+    +		"<div class='form-group'>
+    +			"<input type='text' class='form-control2' placeholder='Acerca de' required='required' id='inputAbout'>
+    +		"</div>
+
+    +		"<label class='col-sm-3 control-label'>País</label>
+    +		"<div class='form-group'>
+    +			"<input type='text' class='form-control2' placeholder='País' required='required' id='inputUserCountry'>
+    +		"</div>
+
+    +		"<div class='AgregarUsuarioBtnVerde'>
+    +			"<div onClick='erpsil_agregarUsuario()' class='btn btn-primary btn-block'>Agregar</div>
+    +		"</div>
+    +	"</div>
+ 
+erpsil_setContent(agregarUsuarioWindow);
+}
