@@ -1,40 +1,57 @@
 function erpsil_agregarClienteWindow() {
     //var loginWindow = "Aca va la ventana de login";
     var agregarClienteWindow = ""
+        +"<link rel="stylesheet" href="C:\Users\rober\Documents\Repo\ERPSIL\CSS\styles_ro.css">"
+
+    +   "<div class="contenedor">" 
 
     +    "<div class='login-form'>"
+
     +        "<h2 class='text-center'>Agregar cliente</h2>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
+
+    +        "<div>"
+    +           " <input type='text'  placeholder='Nombre' required='required' id='inputName'>"
     +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
+
+    +        "<div>"
+    +           " <input type='text'  placeholder='Cedula' required='required' id='inputCedula'>"
     +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Email' required='required' id='inputEmail'>"
+
+    +        "<div>"
+    +           " <input type='text'  placeholder='Email' required='required' id='inputEmail'>"
     +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<input type='password' class='form-control' placeholder='Direccion' required='required' id='inputDireccion'>"
+
+    +        "<div>"
+    +            "<input type='password'  placeholder='Direccion' required='required' id='inputDireccion'>"
     +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
+
+    +        "<div>"
+    +           " <input type='text'  placeholder='Telefono' required='required' id='inputTelefono'>"
     +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Descripcion' required='required' id='inputDescripcion'>"
+
+    +        "<div>"
+    +           " <input type='text'  placeholder='Descripcion' required='required' id='inputDescripcion'>"
     +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Saldo Maximo' required='required' id='inputSaldoMa'>"
+
+    +        "<div>"
+    +           " <input type='text'  placeholder='Saldo Maximo' required='required' id='inputSaldoMa'>"
     +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='saldo' required='required' id='inputSaldo'>"
+
+    +        "<div>"
+    +           " <input type='text'  placeholder='saldo' required='required' id='inputSaldo'>"
     +        "</div>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Tipo' required='required' id='inputTipo'>"
+
+    +        "<div>"
+    +           " <input type='text'  placeholder='Tipo' required='required' id='inputTipo'>"
     +        "</div>"
-    +        "<div class='form-group'>"
-    +            "<button onClick='erpsil_agregarCliente()' class='btn btn-primary btn-block'>Agregar</button>"
+
+    +        "<div>"
+    +            "<button onClick='erpsil_agregarCliente()' class='buttonVerde'>Agregar</button>"
     +        "</div>"
+
     +   " </div>"
+
+    + "</div>"
 
     erpsil_setContent(agregarClienteWindow);
 }
