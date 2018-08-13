@@ -251,7 +251,7 @@ input[type=text],[type=password], select {
     
 }
 
-.contenedor_interno_editar_proveedores{
+.contenedor_interno_editar_proveedores,.contenedor-empleados{
      /* Flexbox */
     
     display: flex;
@@ -354,6 +354,7 @@ th, td {
     text-align: left;
     padding: 8px;
     border-radius: 8px;
+    font-size: 50%;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
@@ -366,6 +367,7 @@ th {
 .form-horizontal,.login-form{
     font-size: 50%;
     width: 414.563px;
+    padding: 5% !important;
 }
 
 
@@ -377,3 +379,136 @@ th {
 .form-group{
     padding: 4%;
 }
+.table-responsive{
+
+    /* Flexbox */
+    
+    display: flex;
+    flex-direction: row;
+
+    /* fin de Flexbox */
+
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    justify-content: center;
+    background-color:white;
+    width: 100%;
+    
+
+    
+}/*
+.articulo_listar_proveedores{
+		background: #FFF;
+		width: 103%;
+		height: 845px;
+		color:#000;
+		margin: 0px;
+		padding: 18px;
+		font-size: 40px;
+		text-align: center;
+    display: flex;
+    flex-direction: column;
+	}
+
+	.articulo-interno-listar-proveedores{
+		background: #456;
+		width: 103 %;
+		height: 987px;
+		color:#000;
+		margin: -10px;
+		padding: 30px;
+		font-size: 40px;
+		text-align: center;
+		border-radius: 4px 4px 4px 4px;
+	}
+    */
+
+
+.articulo-interno-empleados{
+    background: #456;
+		width: 103 %;
+		height: 1250px;
+		color:#000;
+		margin: -10px;
+		padding: 30px;
+		font-size: 40px;
+		text-align: center;
+		border-radius: 4px 4px 4px 4px;
+}
+	.articulo-empleados{
+		background: #FFF;
+		width: 80%;
+		height: 1250px;
+		color:#000;
+		margin: 0px;
+		padding: 18px;
+		font-size: 40px;
+		text-align: center;
+		
+		
+		/*FLEX*/
+	}
+
+	.menu-empleados{
+		background: #333;
+		width: 20%;
+		height: 1258px;
+		color:#FFF;
+		margin: 0px;
+		padding: 20px;
+		font-size: 15px;
+		text-align: center;
+	
+		
+		
+		/*FLEX*/
+		align-items: flex-start;
+		flex-direction:column;
+		flex-wrap:wrap;
+	
+	}
+
+
+.articulo-interno-empleados-editar{
+    background: #456;
+		width: 103 %;
+		height: 1400px;
+		color:#000;
+		margin: -10px;
+		padding: 30px;
+		font-size: 40px;
+		text-align: center;
+		border-radius: 4px 4px 4px 4px;
+}
+	.articulo-empleados-editar{
+		background: #FFF;
+		width: 80%;
+		height: 1400px;
+		color:#000;
+		margin: 0px;
+		padding: 18px;
+		font-size: 40px;
+		text-align: center;
+		
+		
+		/*FLEX*/
+	}
+
+	.menu-empleados-editar{
+		background: #333;
+		width: 20%;
+		height: 1408px;
+		color:#FFF;
+		margin: 0px;
+		padding: 20px;
+		font-size: 15px;
+		text-align: center;
+	
+		
+		
+		/*FLEX*/
+		align-items: flex-start;
+		flex-direction:column;
+		flex-wrap:wrap;
+	
+	}
