@@ -5,7 +5,7 @@
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
-	.contenedor{
+	.contenedorPrincipal{
 		width: 100%;
 		height: 900px;
 		background: #333;
@@ -17,11 +17,11 @@
 		
 	}
 	@media screen and (max-width: 1000px){
-		.articulo{width:100%;}
-		.menu{width:100%;}
+		.main{width:100%;}
+		.menuNav{width:100%;}
 	}
 	@media screen and (max-width: 600px){
-		.menu{
+		.menuNav{
 			left:0%;
 			top:0;
 			margin-left:-300px;
@@ -29,8 +29,8 @@
 		}
 		
 	}
-	/*CSS Titulo*/
-	.header1{
+	/*CSS Titulo (header1)*/
+	.tituloPrincipal{
 		background: #FFF;
 		width: 20%;
 		height: 60px;
@@ -45,7 +45,7 @@
 	}
 	
 	
-	.header1-interno{
+	.formatoInterno-tituloPrincipal{
 		background: #456;
 		width: 100%;
 		height: 50px;
@@ -58,7 +58,7 @@
 		box-sizing:border-box;
 	}
 	
-	/*CSS franja despues del Titulo*/
+	/*CSS espacio despues del Titulo,(header2)*/
 	.header2{
 		background: #333;
 		width: 80%;
@@ -77,8 +77,8 @@
 	}
 	
 	
-	/*CSS Menu*/
-	.menu{
+	/*CSS Contenedor del Menu de Navegacion*/
+	.menuNav{
 		background: #333;
 		width: 20%;
 		height: 1000px;
@@ -93,7 +93,8 @@
 		flex-wrap:wrap;
 	}
 	
-	.form-control{
+	/*CSS del menú de Navegación*/
+	.formato-MenuNav{
 		width:100%;
 		height:40px;
 		margin-top:3%;
@@ -107,8 +108,8 @@
 		padding:20px;
 	}
 	
-	
-	.form-control:hover{
+	/*CSS Efecto que se le da al formato del menú*/
+	.formato-MenuNav:hover{
 			width:100%;
 			height:40px;
 			background-color:#930;
@@ -118,10 +119,11 @@
 			text-align:left;
 			border-radius: 4px 4px 4px 4px;
 			
-		}   
+	}   
 	
-	/*CSS Central*/
-	.articulo{
+	/*CSS Contenedor Principal Parte Central*/
+
+	.main{
 		background: #FFF;
 		width: 80%;
 		height: 845px;
@@ -134,8 +136,9 @@
 		
 		/*FLEX*/
 	}
-
-	.articulo-interno{
+	
+	/*CSS contenido principal de la parte central*/
+	.main-interno{
 		background: #456;
 		width: 103 %;
 		height: 987px;
@@ -147,8 +150,8 @@
 		border-radius: 4px 4px 4px 4px;
 	 }	
 	
-	/*CSS Agregar Usuario*/	
-	.AgregarUsuario{
+	/*CSS formularios y tablas generales*/	
+	.formularios, .tablas{
 		background: #FFF;
 		width: 40 %;
 		height: 950px;
@@ -161,14 +164,47 @@
 		font-family:Arial, Helvetica, sans-serif;
 		/*FLEX*/
 	}
-	/*CSS Agregar Usuario:Titulo*/	
-	.AgregarUsuarioTitulo, .menuTitulo{
+	
+	/*CSS formularios y tablas más grandes*/	
+	.tablas2{
+		background: #FFF;
+		width: 40 %;
+		height: 950px;
+		color:#000;
+		margin: -10px;
+		padding: 30px;
+		font-size: 20px;
+		text-align: center;
+		border-radius: 4px 4px 4px 4px;	
+		font-family:Arial, Helvetica, sans-serif;
+		/*FLEX*/
+	}
+
+	/*Antiguo form-horizontal, aplicado a los <form>*/	
+	.formularios2{
+		background: #FFF;
+		width: 40 %;
+		height: 600px;
+		color:#000;
+		margin: -10px;
+		padding: 50px;
+		font-size: 20px;
+		text-align: center;
+		border-radius: 4px 4px 4px 4px;	
+		font-family:Arial, Helvetica, sans-serif;
+		/*FLEX*/
+	}
+
+
+	
+	/*CSS Titulos*/	
+	.tituloFormularios, .tituloMenuNav, .tituloTablas{
 		font-family:Arial, Helvetica, sans-serif;
 		font-size: 35px;
 	}
 	
 	
-	/*CSS Agregar Usuario:espacio en donde el usuario escribe los datos, Clase tomada de Roberto*/	
+	/*CSS Espacio para campos de texto*/	
 	input[type=text],[type=password], select {
 		width: 40%;
 		padding: 15px;
@@ -182,7 +218,7 @@
 
     }
 	
-	.form-control2{
+	.camposTexto{
 	    width: 40%;
 		padding: 15px;
 		margin: 5px 0 22px 0;
@@ -192,20 +228,41 @@
 		border-radius: 8px;
 		opacity: 0.9;
 		font-family:Arial, Helvetica, sans-serif;
-		}
+	}
+		
 	
-	.form-control2:hover{
+	/*Efecto campos de Texto*/
+	.camposTexto:hover{
 		background-color: #CCC;
 	}
+
+	.label {
+		font-family:Arial, Helvetica, sans-serif;
+	}	
 	
-	/*CSS Agregar Usuario:boton agregar, clase de boton verde Roberto*/	
-    .AgregarUsuarioBtnVerde{
+	/* CSS para espaciado entre títulos y campos de imput con formularios pequeños*/
+	.form-group{
+    	padding: 2%;
+	}		
+	
+	/* CSS para espaciado entre títulos y campos de imput con formularios medianos*/
+	.form-group2{
+    	padding: 1%;
+	}
+	
+	/* CSS para espaciado entre títulos y campos de imput con formularios grandes*/
+	.form-group3{
+    	padding: 0.5%;
+	}
+	
+	/*CSS Botones Agregar/Editar/Eliminar/Volver/Cancelar/Guardar*/	
+    .agregar-BtnVerde{
 		font-family:Arial, Helvetica, sans-serif;
 		font-size: 20px;
 		background-color: #4CAF50; 
 		border: none;
 		color: white;
-		padding: 15px 32px;
+		padding: 15px 15px;
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
@@ -214,10 +271,205 @@
 		margin: 20px;
 		cursor: pointer;
 	}
-	.AgregarUsuarioBtnVerde:hover{
+	
+	.editar-BtnAzul{
+		font-family:Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		background-color: blue; 
+		border: none;
+		color: white;
+		padding: 15px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		border-radius: 8px;
+		margin: 20px;
+		cursor: pointer;
+	}
+	
+	.cancelar-BtnAqua{
+		font-family:Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		background-color: #1AE6B8; 
+		border: none;
+		color: white;
+		padding: 15px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		border-radius: 8px;
+		margin: 20px;
+		cursor: pointer;
+	}
+
+	.guardar-BtnNaranja{
+		font-family:Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		background-color: #F60; 
+		border: none;
+		color: white;
+		padding: 15px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		border-radius: 8px;
+		margin: 20px;
+		cursor: pointer;
+	}
+
+
+	.eliminar-BtnRojo{
+		font-family:Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		background-color: red; 
+		border: none;
+		color: white;
+		padding: 15px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		border-radius: 8px;
+		margin: 20px;
+		cursor: pointer;
+	}
+	
+	.volver-BtnMorado{
+		font-family:Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		background-color: #609; 
+		border: none;
+		color: white;
+		padding: 15px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		border-radius: 8px;
+		margin: 20px;
+		cursor: pointer;
+	}
+	
+	/*Efecto Botones*/
+	.agregar-BtnVerde:hover,.editar-BtnAzul:hover,.eliminar-BtnRojo:hover,.volver-BtnMorado:hover,.guardar-BtnNaranja:hover,.cancelar-BtnAqua:hover {
 		background-color: #930; 
 	}
 	
+	th, td {
+    	text-align: center;
+    	padding: 6px;
+    	border-radius: 8px;
+		font-family:Arial, Helvetica, sans-serif;
+		
+	}
+
+	tr:nth-child(even){background-color: #f2f2f2}
+
+	th {
+    	background-color: #155E63;
+    	color: white;
+    	border-radius:8px;
+		font-size: 18px;	
+	}
+
+/****************Sofí*******************/
+.header2-interno{
+		background: #fff;
+		width: 100%;
+		height: 50px;
+		color:#FFF !important;
+		margin: 0px;
+		padding: 10px;
+		font-size: 20px;
+		text-align: center;
+		border-radius: 4px 4px 4px 4px;
+		box-sizing:border-box;
+	}
+    .form-control2{
+			width:100%;
+			height:40px;
+			margin-top:3%;
+			margin-bottom:3%;
+			background-color:#fff;
+			font-family:Arial, Helvetica, sans-serif;
+			color:#444;
+			text-align:left;
+			border-radius: 4px 4px 4px 4px;
+			line-height:5%;
+			padding:20px;
+    border-bottom-color: #445566;
+    
+		}
+	.contenedor_proveedores{
+		width: 100%;
+		height: 1000px;
+		background: #333;
+        margin: auto;
+		
+		/*FLEX*/
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+	}
+	.menu_proveedores{
+		background: #333;
+		width: 20%;
+		color:#FFF;
+		padding: 20px;
+		font-size: 15px;
+	
+		
+		
+		/*FLEX*/
+		align-items: flex-start;
+		flex-direction:column;
+		flex-wrap:wrap;
+	
+	}
+
+
+.contenedor_interno_editar_proveedores{
+     /* Flexbox */
+    
+    display: flex;
+    flex-direction: row;
+
+    /* fin de Flexbox */
+
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    justify-content: center;
+    background-color:white;
+    height: 101%;
+    
+
+    
+}
+
+
+.objeto{
+    
+    border: 5px solid #333;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+
+
+
+/*.form-horizontal,.login-form{
+    font-size: 50%;
+    width: 414.563px;
+}*/
+
+
+
+
+
 	/*.footer{
 		background: #00B285;
 		width: 100%;
@@ -229,10 +481,10 @@
 		text-align: center;
 	
 	
-		FLEX*/
+		FLEX
 		display:flex;
 		flex-direction:;
 		flex-wrap:wrap;
-		justify-content: flex-end;*/
+		justify-content: flex-end;
 	
-	}
+	}*/

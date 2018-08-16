@@ -962,7 +962,7 @@ function erpsil_agregarHistorialPrecioWindow() {
            //+        "<div class='form-group'>"
           // +            "<input type='text' class='form-control' placeholder='Fecha' required='required' id='inputFecha'>"
           // +        "</div>"
-          +        "<label class='col-sm-3 control-label'>ID preveedor</label>"
+          +        "<label class='col-sm-3 control-label'>ID proveedor</label>"
           +        "<div class='form-group'>"
           +            selectP
           +        "</div>"
@@ -1002,7 +1002,7 @@ function erpsil_agregarHistorialPrecio(){
 
        if(id_inventario != "" && id_proveedor != "" &&  costo != ""){
 
-           var permosoHistorialPrecio = {
+           var permisoHistorialPrecio = {
                w: "erpsil_historialPrecios",
                r: "agregar_historialPrecio",
                id_inventario:id_inventario,
