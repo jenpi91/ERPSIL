@@ -10,9 +10,9 @@
     
 </head>
 <body>
-	<div class='contenedor'>
-    	<div class='header1'> 
-        	<div class="header1-interno">Sistema <b>ERPSIL</b></div>
+	<div class='contenedorPrincipal'>
+    	<div class='tituloPrincipal'> 
+        	<div class="formatoInterno-tituloPrincipal">Sistema <b>ERPSIL</b></div>
         </div>
         
         
@@ -20,34 +20,426 @@
         	<!--Barra de Búsqueda y Login-->
         </div>
         
-    	<div class='menu' >
-        	 
+    	<div class='menuNav' >
         	 <ul>
-                <div class='form-control' onClick='erpsil_menuWindow()' > Menu</div>
-                <div class='form-control' onClick='erpsil_listarCliente()'>Cliente</div>
-                <div class='form-control' onClick='erpsil_listarProveedor()'>Proveedor</div>
-                <div class='form-control' onClick='erpsil_agregarTipoCliente()'>Empleado</div>
-                <div class='form-control' onClick='erpsil_listarRoles()'>Roles</div>
-                <div class='form-control' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>
-                <div class='form-control' onClick='erpsil_listarInventario()'>Inventario</div>
-                <div class='form-control' onClick='erpsil_listarActivos()'>Activos</div>
-                <div class='form-control' onClick='erpsil_listarClientesTickets()'>Listar Ticketes</div>
-                <div class='form-control' onClick='erpsil_agregarClientesTicketsWindow()'>Usuario</div>
-                <div class='form-control' onClick='erpsil_listarPermisoRol()'>Permisos Rol</div>
-                <div class='form-control' onClick='erpsil_listarCuentasPagar()'>Cuentas Pagar</div>
-                <div class='form-control' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>
-                <div class='form-control' onClick='erpsil_listarPagos()'> Pagos</div>
-             </ul>
-                             
+                <div class='tituloMenuNav' onClick='erpsil_menuWindow()' > Menu</div><br><br>
+                <div class='formato-MenuNav' onClick='erpsil_listarCliente()'>Cliente</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarProveedor()'>Proveedor</div>
+                <div class='formato-MenuNav' onClick='erpsil_agregarTipoCliente()'>Empleado</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarRoles()'>Roles</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarInventario()'>Inventario</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarActivos()'>Activos</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarClientesTickets()'>Listar Ticketes</div>
+                <div class='formato-MenuNav' onClick='erpsil_agregarClientesTicketsWindow()'>Usuario</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarPermisoRol()'>Permisos Rol</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarCuentasPagar()'>Cuentas Pagar</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarPagos()'> Pagos</div>
+             </ul>	                           
+        </div>
+		
+        <div class='main'> 
+        	<div class='main-interno'>
+            	
+                <!--Agregar Usuario-->
+                <!--<div class='formularios'>
+    				<h2 class='tituloFormularios'>Agregar Usuario</h2><br><br>
 
-        </div>
-		<div class='articulo'> 
-        	<div class='articulo-interno'>
+    				<label class='label'>Nombre</label>
+    				<div class='form-group'>
+    					<input type='text' class='camposTexto' placeholder='Nombre' required='required' id='inputFullName'>
+    				</div>
+
+    				<label class='label'>Nombre de usuario</label>
+    				<div class='form-group'>
+    					<input type='text' class='camposTexto' placeholder='Nombre usuario' required='required' id=		'inputUserName'>
+		    		</div>
+
+        	        <label class='label'>Email</label>
+    				<div class='form-group'>
+    					<input type='text' class='camposTexto' placeholder='Email' required='required' id='inputUserEmail'>
+    				</div>
+
+    				<label class='label'>Contraseña</label>
+     				<div class='form-group'>
+    					<input type='password' class='camposTexto' placeholder='Contraseña' required='required' id='inputPwd'>
+    				</div>
+
+    				<label class='label'>Acerca de</label>
+    				<div class='form-group'>
+    					<input type='text' class='camposTexto' placeholder='Acerca de' required='required' id='inputAbout'>
+    				</div>
+
+    				<label class='label'>País</label>
+    				<div class='form-group'>
+    					<input type='text' class='camposTexto' placeholder='País' required='required' id='inputUserCountry'>
+    				</div>
+
+    				<div class='agregar-BtnVerde'>
+						<div onClick='erpsil_agregarUsuario()'>Agregar</div>
+					</div>
+            	</div>-->                    
+        
+
+
+                <!--Listar Usuario-->
+                <!--<div class='tablas'>
+                <h2 class='tituloTablas'>Listar Usuario</h2><br><br>
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Acerca</th>
+                            <th>Pais</th>
+                            <th>Status</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+
+                        </tr>
+                
+                        <!--if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                                    for(x in d.resp){
+                                            var a = d.resp[x];
+                                            MostrarUsuarioWindow += ""-->
+                
+                                            <!--<tr>
+                                                <td>"+ a.idUser +"</td>
+                                                <td>"+ a.fullName +"</td>
+                                                <td>"+ a.userName +"</td>
+                                                <td>"+ a.email +"</td>
+                                                <td>"+ a.about +"</td>
+                                                <td>"+ a.country +"</td>
+                                                <td>"+ a.status +"</td>
+                                                <td> <div id='editar_activos' onclick='erpsil_editarUsuario(" + a.idUser + ")' class='editar-BtnAzul'>Editar</div></td>
+                                                <td> <div onclick='erpsil_eliminarUsuario(<!--"+ a.idUser +")' class='eliminar-BtnRojo'>Eliminar</div></td>
+                                            </tr>
+                                        }
+				                    }
+                				    MostrarUsuarioWindow += ""
+    	                
+        	        </table>
+                    <td><div id='editar_activos' onclick='erpsil_agregarUsuarioWindow()' class='agregar-BtnVerde'>Agregar</div></td>
+                </div>-->
+
+
+
+				<!--agregarPermisoRolWindow-->
+				<!--<div class='formularios'>
+                    <h2 class='tituloFormularios'>Permisos Rol</h2><br><br>
+                        <label class='label'>Id Permiso</label>
+                    <div class='form-group'>
+                        <!--selectR
+                        <input type='text' class='camposTexto' placeholder='Codigo Referencia' required='required' id='inputIdPermiso'>
+                    </div>
+    
+                    <label class='label'>Id Rol</label>
+                    <div class='form-group'>
+                        <input type='password' class='camposTexto' placeholder='Id Rol' required='required' id='inputIdRol'>
+                    </div>
+                    
+                    <label class='label'>Estado</label>
+                    <div class='form-group'>
+                        <input type='text' class='camposTexto' placeholder='Estado' required='required' id='inputEstado'>
+                    </div>
+                                                    
+                    <div class='form-group'>
+                        <div onClick='erpsil_agregarPermisoRol()' class='agregar-BtnVerde'>Agregar</div>
+                        <div onClick='erpsil_listarPermisoRol()' class='volver-BtnMorado'>Volver</div>
+                    </div>
+	                </div>-->
+
+
+
+
+				<!--editarPermisoRolWindow-->
+				<!--<div class='formularios'>
+ 		        	<h2 class='titulosFormularios'>Editar Permisos de Rol</h2><br><br>
+        			<form class='formularios2' action='' method='post'>
             
-            <!--CONTENIDO-->
+                        <label class='label'>Id Permisos</label>
+                        <div class='form-group'>
+                            <input type='text' id='inputIdPermiso' value=' + data.id_permiso + ' class='camposTexto' placeholder='ID' required>
+                        </div>
+                        
+                        <label class='label'>Id Rol</label>
+                        <div class='form-group'>
+                        	<input type='text' id='inputSaldo' value=' + data.id_rol + ' class='camposTexto' placeholder='Saldo' required>
+                        </div>
+                        
+                        <label class='label'>Estado</label>
+                        <div class='form-group'>
+                        	<input type='text' id='inputEstado' value=' + data.estado + ' class='camposTexto' placeholder='Estado' required>
+                        </div>
+                        
+                        <label class='label'>&nbsp;</label>
+                        <div class='form-group'>
+                            <div onclick='erpsil_guardarPermisoRol()' class='guardar-BtnNaranja'>Guardar</div>
+                            <div onclick='erpsil_listarPermisoRol()' class='cancelar-BtnAqua'>Cancelar</div>
+                        </div>
+	              	</form>
+         		</div>-->
+                
+                <!--listarPermisoRolWindow-->
+                <!--<div class='tablas'>
+                <h2 class='tituloTablas'>Listar Permisos de Rol</h2><br><br>
+              		<table>
+                        <tr>
+                            <th>Id Permiso</th>
+                            <th>Id Rol</th>
+                            <th>Estado</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                        <!--if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                                    for(x in d.resp){
+                                            var a = d.resp[x];
+                                            MostrarPermisoRolWindow += ""
+                
+                        <tr>
+                            <td> "+ a.id_permiso +" </td>
+                            <td> "+ a.id_rol +" </td>
+                            <td> "+ a.estado +" </td>
+        
+                            <td> <div id='editar_tipoCliente' onclick='erpsil_editarPermisoRol(" + a.id_permiso + ")' class='editar-BtnAzul'>Editar</div></td>
+                            <td> <div onclick='erpsil_eliminarPermisoRol("+ a.id_permiso +")' class='eliminar-BtnRojo'>Eliminar</div></td>
+                        </tr>
+                    	<!--}
+                    	}
+                    	MostrarPermisoRolWindow += ""
+              		</table>
+              		<td><div onclick='erpsil_agregarPermisoRolWindow()' class='agregar-BtnVerde'>Agregar</div></td>
+              	</div>-->
+                
+                
+                <!--agregarHistorialPrecios-->
+                <!--<div class='formularios'>
+	                <h2 class='tituloFormularios'>Historial de precios</h2><br><br>
+                
+                    <label class='label'>Costo</label>
+                    <div class='form-group'>
+                        <input type='text' class='camposTexto' placeholder='Costo' required='required' id='inputCosto'>
+                    </div>
+                    
+                    <label class='label'>Fecha</label>
+                    <div class='form-group'>
+                        <input type='text' class='camposTexto' placeholder='Fecha' required='required' id='inputFecha'>
+                    </div>
+                    
+                    <label class='label'>ID Proveedor</label>
+                    <div class='form-group'>
+                        <input type='text' class='camposTexto' placeholder='ID Proveedor' required='required' id='inputID_provedor'>
+                    </div>
+                    
+                    <div class='form-group'>
+                        <div onClick='erpsil_agregarHistorialPrecios()' class='agregar-BtnVerde'>Agregar</div>
+                        <div onClick='erpsil_listarHistorialPrecios()' class='volver-BtnMorado'>Volver</div>          
+                    </div>
+                </div>-->
+                
+                
+                
+                <!--editar historial precios -->		   
+                <!--<div class='formularios'>
+                    <h2 class='tituloFormularios'>Editar Historial de Precios</h2><br><br>
+                    <form class='formularios2' action='' method='post'>
+    
+                        <label class='label'>Id Historial</label>
+                        <div class='form-group'>
+	                        <input type='text' id='inputIdHistorial' value='" + data.id_historialPrecio + "' class='camposTexto' placeholder='Costo' required>
+             			</div>
+                        
+                        <label class='label'>Id Inventario</label>
+                        <div class='form-group'>
+	                        <input type='text' id='inputIdHistorial' value='" + data.id_inventario + "' class='camposTexto' placeholder='Costo' required>
+             			</div>
+		
+                        <label class='label'>Costo</label>
+                        <div class='form-group'>
+	                        <input type='text' id='inputCosto' value='" + data.costo + "' class='camposTexto' placeholder='Costo' required>
+                        </div>
+                        
+                        <label class='label'>Fecha</label>
+                        <div class='form-group'>
+    	                    <input type='text' id='inputFecha' value='" + data.fecha + "' class='camposTexto' placeholder='Fecha' required>
+                        </div>
+
+                        <label class='label'>&nbsp;</label>
+                        <div class='form-group'>
+                            <div onclick='erpsil_guardarHistorialPrecios()' class='guardar-BtnNaranja'>Guardar</div>
+                            <div onclick='erpsil_listarHistorialPrecios()' class='cancelar-BtnAqua'>Cancelar</div>
+                        </div>
+                    </form>
+                </div>-->
+                
+                
+				<!--listarHistorialPrecios -->		   
+                <!--<div class='tablas'>
+                <h2 class='tituloTablas'>Listar Historial de Precios</h2><br><br>
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Costo</th>
+                            <th>Fecha</th>
+                            <th>ID proveedor</th>
+							<th>Editar</th>
+                            <th>Eliminar</th>
+
+
+                        </tr>
+
+                        <!--if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+            	                for(x in d.resp){
+                                    var a = d.resp[x];
+                                    MostrarHistorialPreciosWindow += ""
+        
+                                <tr>
+                                    <td> "+ a.id_producto +" </td>
+                                    <td> "+ a.costo +" </td>
+                                    <td> "+ a.fecha +" </td>
+                                    <td> "+ a.id_proveedor +" </td>
+                                    <td> <div id='editar_historialPrecios' onclick='erpsil_editarHistorialPrecios(" + a.id_producto + ")' class='editar-BtnAzul'>Editar</div></td>
+                                    <td> <div onclick='erpsil_eliminarHistorialPrecios("+ a.id_producto +")' class='eliminar-BtnRojo'>Eliminar</div></td>
+                                </tr>
+						   }
+							}
+                         	MostrarHistorialPreciosWindow += ""
+                    </table>
+                    <td> <div onclick='erpsil_agregarHistorialPreciosWindow()' class='agregar-BtnVerde'>Agregar</div></td>
+            	</div>--> 
+                
+                <!--agregarCuentasPagar -->  
+               <div class='formularios'>
+                    <h2 class='tituloFormularios'>Cuentas Por Pagar</h2><br><br>
+                    	
+                        <label class='label'>Id Proveedor</label>
+                        <div class='form-group2'>
+                            <input type='text' class='camposTexto' placeholder='Id Proveedor' required='required' id='inputID_Proveedor'>
+                        </div>
+                    
+                        <label class='label'>Codigo Referencia</label>
+                        <div class='form-group2'>
+                            <input type='text' class='camposTexto' placeholder='Codigo Referencia' required='required' id='inputCodigo_Referencia'>
+                        </div>
+                        
+                        <label class='label'>Saldo</label>
+                        <div class='form-group2'>
+                            <input type='password' class='camposTexto' placeholder='Saldo' required='required' id='inputSaldo'>
+                        </div>
+                        
+                        <label class='label'>Estado</label>
+                        <div class='form-group2'>
+                            <input type='text' class='camposTexto' placeholder='Estado' required='required' id='inputEstado'>
+                        </div>
+                        
+                        <label class='label'>Vencimiento</label>
+                        <div class='form-group2'>
+                            <input type='text' class='camposTexto' placeholder='Vencimiento' required='required' id='inputVence'>
+                        </div>
+                        
+                        <label class='label'>Descripción</label>
+                        <div class='form-group2'>
+                            <input type='text' class='camposTexto' placeholder='Descripción' required='required' id='inputDescripcion'>
+                        </div>
+                        
+                        <div class='form-group2'>
+                            <div onClick='erpsil_agregarCuentasPagar()' class='agregar-BtnVerde'>Agregar</div>
+                            <div onClick='erpsil_listarCuentasPagar()' class='volver-BtnMorado'>Volver</div>
+                        </div>
+                </div>
+                
+                
+                <!--editarCuentasPagar --> 
+                <!--<div class='formularios'>
+                    <h2 class='tituloFormularios'>Editar Cuentas por Pagar</h2><br><br>
+                    <form class='formularios2' action='' method='post'>
+                        
+                        <label class='label'>Código Referencia</label>
+                        <div class='form-group3'>
+                        	<input type='text' id='inputCodigoReferencia' value='" + data.codigo_referencia + "' class='camposTexto' placeholder='Código Referencia' required>
+                        </div>
+                        
+                        <label class='label'>Saldo</label>
+                        <div class='form-group3'>
+                        	<input type='text' id='inputSaldo' value='" + data.saldo + "' class='camposTexto' placeholder='Saldo' required>
+                        </div>
+                        
+                        <label class='label'>Estado</label>
+                        <div class='form-group3'>
+                        	<input type='text' id='inputEstado' value='" + data.estado + "' class='camposTexto' placeholder='Estado' required>
+                        </div>
+                        
+                        <label class='label'>Vence</label>
+                        <div class='form-group3'>
+                        	<input type='text' id='inpuVence' value='" + data.vence + "' class='camposTexto' placeholder='Vence' required>
+                        </div>
+                        
+                        <label class='label'>Descripción</label>
+                        <div class='form-group3'>
+                        	<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='camposTexto' placeholder='Descripción' required>
+                        </div>
+        
+                        <label class='label'>Fecha</label>
+                        <div class='form-group3'>
+        	                <input type='text' id='inputStampfecha' value='" + data.stampfecha + "' class='camposTexto' placeholder='Fecha' required>
+                        </div>
             
-            </div>
-        </div>
-       	 <!--<div class='footer'> 2</div>-->
+                        <label class='label'>&nbsp;</label>
+                        <div class='form-group3'>
+                            <div onclick='erpsil_guardarCuentasPagar()' class='guardar-BtnNaranja'>Guardar</div>
+                            <div onclick='erpsil_listarCuentasPagar()' class='cancelar-BtnAqua'>Cancelar</div>
+                        </div>
+                    </form>
+                </div>-->
+                
+                
+                <!--listarCuentasPagar--> 
+                <!--<div class='tablas2'>
+                <h2 class='tituloTablas'>Listar Cuentas por Pagar</h2><br><br>
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>ID Proveedor</th>
+                            <th>Código de Referencia</th>
+                            <th>Saldo</th>
+                            <th>Estado</th>
+                            <th>Vence</th>
+                            <th>Descripción</th>
+                            <th>Fecha</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                        <!--if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                                for(x in d.resp){
+                                    var a = d.resp[x];
+                                    MostrarCuentasPagarWindow += ""
+                            
+                        <tr>
+                            <td> "+ a.id_cuentasPagar +" </td>
+                            <td> "+ a.id_proveedor +" </td>
+                            <td> "+ a.codigo_referencia +" </td>
+                            <td> "+ a.saldo +" </td>
+                            <td> "+ a.estado +" </td>
+                            <td> "+ a.vence +" </td>
+                            <td> "+ a.descripcion +" </td>
+                            <td> "+ a.stampfecha +" </td>
+                                    
+                            <td> <div id='editar_cuentasPagar' onclick='erpsil_editarCuentasPagar(" + a.id_cuentasPagar + ")' class='editar-BtnAzul'>Editar</div></td>
+                            <td> <div onclick='erpsil_eliminarCuentasPagar("+ a.id_cuentasPagar +")' class='eliminar-BtnRojo'>Eliminar</div></td>
+                        </tr>
+                        <!--    }
+                        }
+                        MostrarCuentasPagarWindow += ""
+                    
+                    </table>
+                	<td> <div onclick='erpsil_agregarCuentasPagarWindow()' class='agregar-BtnVerde'>Agregar</div></td>
+                </div>-->
+                     
+        	</div>
+        </div>   
+        
+       	<!--<div class='footer'> 2</div>-->
     </div>  
 </body>
