@@ -36,7 +36,7 @@ function editarPermisoRol(){
 
 
     $q = "UPDATE `tbl_permisosrol` 
-          SET `id_rol` = '$id_rol', `estado` = '$estado' WHERE `id_permiso` = $id_permiso";
+          SET `estado` = '$estado' WHERE `id_permiso` = $id_permiso";
 
     return db_query($q, 0);
 
