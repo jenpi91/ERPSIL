@@ -1,3 +1,8 @@
+        +                "<td> <div id='editar_activos' onclick='erpsil_menuWindow()' class='btn btn-success btn-sm'>Volver</div></td>"
+
+
+
+
 +"<div class='contenedor'>"
 +   	"<div class='header1'>" 
 +        	"<div class="header1-interno">Sistema <b>ERPSIL</b></div>"
