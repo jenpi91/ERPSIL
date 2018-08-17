@@ -1,67 +1,67 @@
 function erpsil_editarClienteWindow(data) {
 
     var editarClienteWindow = ""
-+"<link rel="stylesheet" href="C:\Users\rober\Documents\Repo\ERPSIL\CSS\styles_ro.css">"
-+        "<div class='contenedor'>"
++"<link rel="stylesheet" href="C:\Users\rober\Documents\Repo\ERPSIL\CSS\styles.css">"
++        "<div class='formularios'>"
 
-+       "<form class='form-horizontal' action='' method='post'>"
++       "<form class='formularios2' action='' method='post'>"
 
-+        "<h2 class='text-center'>Editar cliente</h2>"
++        "<h2 class='tituloFormularios'>Editar cliente</h2>"
 
 +              "<label class='label'>ID</label>"
 +              "<div>"
-+                   "<input type='text' id='inputId_cliente' value='" + data.id_cliente + "' class='form-control' placeholder='ID' required>"
++                   "<input  class="camposTexto" type='text' id='inputId_cliente' value='" + data.id_cliente + "' class='form-control' placeholder='ID' required>"
 +             "</div>"
 
 +           "<label class='label'>Nombres</label>"
 +           "<div>"
-+                "<input type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
++                "<input class="camposTexto" type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
 +           "</div>"
 
 +           "<label class='label'>Cedula</label>"
 +           "<div>"
-+               "<input type='text' id='inputCedula' value='" + data.cedula  + "' class='form-control' placeholder='Cedula' required>"
++               "<input class="camposTexto" type='text' id='inputCedula' value='" + data.cedula  + "' class='form-control' placeholder='Cedula' required>"
 +           "</div>"
 
 +       "<label class='label'>Email</label>"
 +        "<div>"
-+            "<input type='text' id='inputEmail' value='" +data.email  + "' class='form-control' placeholder='Email' required>"
++            "<input class="camposTexto" type='text' id='inputEmail' value='" +data.email  + "' class='form-control' placeholder='Email' required>"
 +        "</div>"
 
 +       "<label class='label'>Direccion</label>"
 +        "<div>"
-+            "<input type='text' id='inputDireccion' value='" +data.direccion  + "' class='form-control' placeholder='Direcci�n' required>"
++            "<input class="camposTexto" type='text' id='inputDireccion' value='" +data.direccion  + "' class='form-control' placeholder='Direcci�n' required>"
 +        "</div>"
 
 +       "<label class='label'>Telefono</label>"
 +        "<div>"
-+            "<input type='text' id='inputTelefono' value='" + data.telefono  + "' class='form-control' placeholder='Telefono' required>"
++            "<input class="camposTexto" type='text' id='inputTelefono' value='" + data.telefono  + "' class='form-control' placeholder='Telefono' required>"
 +        "</div>"
 
 +       "<label class='clabel'>Descripcion</label>"
 +        "<div>"
-+            "<input type='text' id='inputDescripcion' value='" + data.descripcion  + "' class='form-control' placeholder='Descripcion' required>"
++            "<input class="camposTexto" type='text' id='inputDescripcion' value='" + data.descripcion  + "' class='form-control' placeholder='Descripcion' required>"
 +        "</div>"
 
 +        "<label class='label'>Saldo Maximo</label>"
 +        "<div>"
-+            "<input type='text' id='inputSaldo_maximo' value='" + data.saldo_maximo  + "' class='form-control' placeholder='Saldo Maximo'></textarea>"
++            "<input class="camposTexto" type='text' id='inputSaldo_maximo' value='" + data.saldo_maximo  + "' class='form-control' placeholder='Saldo Maximo'></textarea>"
 +        "</div>"
 
 +        "<label class='label'>Saldo</label>"
 +        "<div>"
-+            "<input type='text' id='inputSaldo' value='" + data.saldo  + "' class='form-control' placeholder='Saldo' required>"
++            "<input class="camposTexto" type='text' id='inputSaldo' value='" + data.saldo  + "' class='form-control' placeholder='Saldo' required>"
 +        "</div>"
 
-+        "<label class='clabel'>Tipo</label>"
++        "<label class='label'>Tipo</label>"
 +       " <div>"           
-+            "<input type='text' id='inputTipo' value='" + data.tipo  + "' class='form-control' placeholder='Tipo' required>"
++            "<input class="camposTexto" type='text' id='inputTipo' value='" + data.tipo  + "' class='form-control' placeholder='Tipo' required>"
 +        "</div>"  
 
 +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
 
-+               "<div class='buttonVerde' onclick='guadarEditarCliente()' >Guardar</div>"
-+                "<div class='buttonRojo'>Cancelar</div>"
++               "<div class='editar-BtnAzul' onclick='guadarEditarCliente()' >Guardar</div>"
++                "<div class='eliminar-BtnRojo'>Cancelar</div>"
 
 +          "</form>"
 +        "</div>"

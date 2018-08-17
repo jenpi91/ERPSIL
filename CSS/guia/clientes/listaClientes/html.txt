@@ -7,8 +7,8 @@ function erpsil_listarCliente() {
     calaApi_postRequest(clienteData, function (d) {
  
         var MostrarClienteWindow = ""
-        +"<link rel="stylesheet" href="C:\Users\rober\Documents\Repo\ERPSIL\CSS\styles_ro.css">"
-        +      "<div class='contenedor'>"
+        +"<link rel="stylesheet" href="C:\Users\rober\Documents\Repo\ERPSIL\CSS\styles.css">"
+        +      "<div class='table-responsive'>"
         +         "<table>"
         +            "<tr>"
         +                "<th>ID </th>"
@@ -40,8 +40,8 @@ function erpsil_listarCliente() {
         +                "<td> "+ a.saldo_maximo +" </td>"
         +                "<td> "+ a.saldo +" </td>"
         +                "<td> "+ a.tipo +" </td>"
-        +                "<td> <div id='editar_cliente' onclick='erpsil_editarCliente(" + a.id_cliente + ")' class='buttonVerde'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarCliente("+ a.id_cliente +")' class='buttonRojo'>Eliminar</div></td>"
+        +                "<td> <div id='editar_cliente' onclick='erpsil_editarCliente(" + a.id_cliente + ")' class='editar-BtnAzul'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarCliente("+ a.id_cliente +")' class='eliminar-BtnRojo'>Eliminar</div></td>"
         +            "</tr>";
                     }
         }
