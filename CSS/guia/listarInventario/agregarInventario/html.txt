@@ -1,4 +1,4 @@
-function erpsil_agregarInventarioWindow(){
+﻿function erpsil_agregarInventarioWindow(){
     //var loginWindow = "Aca va la ventana de login";
     var agregarInventarioWindow = ""
     +"<link rel="stylesheet" href="C:\Users\rober\Documents\Repo\ERPSIL\CSS\styles.css">"
@@ -49,6 +49,7 @@ function erpsil_agregarInventarioWindow(){
     +           " <input class="camposTexto" type='text' class='form-control' placeholder='Estatus' required='required' id='inputStatus'>"
     +        "</div>"
     +            "<div onclick='erpsil_agregarInventario()' class='agregar-BtnVerde'>Agregar</div>"
+
     +   " </div>"
                        
     erpsil_setContent(agregarInventarioWindow);
