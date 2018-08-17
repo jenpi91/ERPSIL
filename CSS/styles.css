@@ -459,3 +459,45 @@
 		flex-direction:column;
 		flex-wrap:wrap;
 }
+
+
+/*Se utiliza en aquellas pantallas en el cual los formularios son mas largos que los extendidos 2 : Editar Empleado, */
+.main-interno-extendido3{
+   background: #456;
+		width: 103 %;
+		height: 201.5%;
+		color:#000;
+		margin: -10px;
+		padding: 30px;
+		font-size: 40px;
+		text-align: center;
+		border-radius: 4px 4px 4px 4px; 
+}
+
+.formularios-extendido3{
+    background: #FFF;
+		width: 40 %;
+		height: 101.5%;
+		color:#000;
+		margin: -10px;
+		padding: 50px;
+		font-size: 20px;
+		text-align: center;
+		border-radius: 4px 4px 4px 4px;	
+		font-family:Arial, Helvetica, sans-serif;
+}
+.menuNav-extendido3{
+    background: #333;
+		width: 20%;
+		height: 182%;
+		color:#FFF;
+		margin: 0px;
+		padding: 20px;
+		font-size: 15px;
+		text-align: center;
+		/*FLEX*/
+		align-items: flex-start;
+		flex-direction:column;
+		flex-wrap:wrap;
+}
+
