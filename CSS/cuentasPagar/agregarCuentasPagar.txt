@@ -1,0 +1,38 @@
+function erpsil_agregarCuentasPagarWindow() {
+    var agregarCuentasPagarWindow = ""
+
+    +    "<div class='formularios'>"
+    +        "<h2 class='tituloFormularios'>Cuentas por Pagar</h2><br><br>"
+
+    +        "<label class='label'>Código Referencia</label>"
+    +        "<div class='form-group2'>"
+    +           " <input type='text' class='camposTexto' placeholder='Código Referencia' required='required' id='inputCodigo_Referencia'>"
+    +        "</div>"
+    +        "<label class='label'>Saldo</label>"
+    +        "<div class='form-group2'>"
+    +            "<input type='password' class='camposTexto' placeholder='Saldo' required='required' id='inputSaldo'>"
+    +        "</div>"
+    +        "<label class='label'>Estado</label>"
+    +        "<div class='form-group2'>"
+    +           " <input type='text' class='camposTexto' placeholder='Estado' required='required' id='inputEstado'>"
+    +        "</div>"
+    +        "<label class='label'>Vencimiento</label>"
+    +        "<div class='form-group2'>"
+    +           " <input type='text' class='camposTexto' placeholder='Vencimiento' required='required' id='inputVence'>"
+    +        "</div>"
+    +        "<label class='label'>Descripción</label>"
+    +        "<div class='form-group2'>"
+    +           " <input type='text' class='camposTexto' placeholder='Descripción' required='required' id='inputDescripcion'>"
+    +        "</div>"
+    +        "<label class='label'>Fecha</label>"
+    +        "<div class='form-group2'>"
+    +        	"<input type='text' class='camposTexto' placeholder='Fecha' required='required' id='inputStampfecha'>"
+    +        "</div>"
+    +        "<div class='form-group2'>"
+    +            "<div onClick='erpsil_agregarCuentasPagar()' class='agregar-BtnVerde'>Agregar</div>"
+    +            "<div onClick='erpsil_listarCuentasPagar()' class='volver-BtnMorado'>Volver</div>"           
+    +        "</div>"
+    +   "</div>"
+                       
+    erpsil_setContent(agregarCuentasPagarWindow);
+}
