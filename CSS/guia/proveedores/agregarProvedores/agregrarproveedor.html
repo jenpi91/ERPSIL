@@ -6,52 +6,43 @@
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
     <meta name='description' content=''>
     <meta name='author' content=''>
-    <link href='../../../styles_S.css' type='text/css' rel='stylesheet'>
-    
+    <link href='../../../styles.css' type='text/css' rel='stylesheet'>
 </head>
 <body>
-	<div class='contenedor'>
-    	<div class='header1'> 
-        	<div class="header1-interno">Sistema <b>ERPSIL</b></div>
+	<div class='contenedorPrincipal'>
+    	<div class='tituloPrincipal'> 
+        	<div class="formatoInterno-tituloPrincipal">Sistema <b>ERPSIL</b></div>
         </div>
-        
-        
         <div class='header2'>
         	<!--Barra de Búsqueda y Login-->
         </div>
-        
-    	<div class='menu' >
-        	 
+    	<div class='menuNav' >
         	 <ul>
-                <div class='form-control' onClick='erpsil_menuWindow()' > Menu</div>
-                <div class='form-control' onClick='erpsil_listarCliente()'>Cliente</div>
-                <div class='form-control' onClick='erpsil_listarProveedor()'>Proveedor</div>
-                <div class='form-control' onClick='erpsil_agregarTipoCliente()'>Empleado</div>
-                <div class='form-control' onClick='erpsil_listarRoles()'>Roles</div>
-                <div class='form-control' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>
-                <div class='form-control' onClick='erpsil_listarInventario()'>Inventario</div>
-                <div class='form-control' onClick='erpsil_listarActivos()'>Activos</div>
-                <div class='form-control' onClick='erpsil_listarClientesTickets()'>Listar Ticketes</div>
-                <div class='form-control' onClick='erpsil_agregarClientesTicketsWindow()'>Usuario</div>
-                <div class='form-control' onClick='erpsil_listarPermisoRol()'>Permisos Rol</div>
-                <div class='form-control' onClick='erpsil_listarCuentasPagar()'>Cuentas Pagar</div>
-                <div class='form-control' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>
-                <div class='form-control' onClick='erpsil_listarPagos()'> Pagos</div>
-             </ul>
-                             
-
+                <div class='tituloMenuNav' onClick='erpsil_menuWindow()' > Menu</div><br><br>
+                <div class='formato-MenuNav' onClick='erpsil_listarCliente()'>Cliente</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarProveedor()'>Proveedor</div>
+                <div class='formato-MenuNav' onClick='erpsil_agregarTipoCliente()'>Empleado</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarRoles()'>Roles</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarInventario()'>Inventario</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarActivos()'>Activos</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarClientesTickets()'>Listar Ticketes</div>
+                <div class='formato-MenuNav' onClick='erpsil_agregarClientesTicketsWindow()'>Usuario</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarPermisoRol()'>Permisos Rol</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarCuentasPagar()'>Cuentas Pagar</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>
+                <div class='formato-MenuNav' onClick='erpsil_listarPagos()'> Pagos</div>
+             </ul>	                           
         </div>
-		<div class='articulo'> 
-        	<div class='articulo-interno'>
-            <div class='contenedor'>
-               <div class='login-form'>
-                   <h2 class='text-center'>Agregar proveedor</h2>
+        <div class='main'> 
+        	<div class='main-interno'>
+               <div class='formularios'>
+                   <h2 class='tituloFormularios'>Agregar proveedor</h2>
                     <div class='form-group'>
                         <input type='text' class='form-control2' placeholder='Nombre' required='required' id='inputName'>
                     </div>
                     <div class='form-group'>
                         <input type='text' class='form-control2' placeholder='Primer Apellido' required='required' id='inputApe1'>
-                        
                     </div>
                     <div class='form-group'>
                         <input type='text' class='form-control2' placeholder='Segundo Apellido' required='required' id='inputApe2'>
@@ -69,12 +60,10 @@
                         <input type='password' placeholder='Descripcion' required='required' id='inputDescripcion'>
                     </div>
                     <div class='form-group'>
-                        <div class='buttonVerde' onClick='erpsil_agregarProveedor()' >Agregar</div>
+                        <div class='agregar-BtnVerde' onClick='erpsil_agregarProveedor()' >Agregar</div>
                     </div>
                 </div>
              </div>
             </div>
-        </div>
-       	 <!--<div class='footer'> 2</div>-->
-    </div>  
+        </div> 
 </body>
