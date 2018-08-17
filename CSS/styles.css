@@ -376,115 +376,86 @@
 	}
 
 /****************Sofí*******************/
-.header2-interno{
-		background: #fff;
-		width: 100%;
-		height: 50px;
-		color:#FFF !important;
-		margin: 0px;
-		padding: 10px;
+
+
+/*Se utiliza en aquellas pantallas en el cual los formularios son muy largos: Agregar Empleados, */
+.main-interno-extendido{
+   background: #456;
+		width: 103 %;
+		height: 151%;
+		color:#000;
+		margin: -10px;
+		padding: 30px;
+		font-size: 40px;
+		text-align: center;
+		border-radius: 4px 4px 4px 4px; 
+}
+
+.formularios-extendido{
+    background: #FFF;
+		width: 40 %;
+		height: 102.5%;
+		color:#000;
+		margin: -10px;
+		padding: 50px;
 		font-size: 20px;
 		text-align: center;
-		border-radius: 4px 4px 4px 4px;
-		box-sizing:border-box;
-	}
-    .form-control2{
-			width:100%;
-			height:40px;
-			margin-top:3%;
-			margin-bottom:3%;
-			background-color:#fff;
-			font-family:Arial, Helvetica, sans-serif;
-			color:#444;
-			text-align:left;
-			border-radius: 4px 4px 4px 4px;
-			line-height:5%;
-			padding:20px;
-    border-bottom-color: #445566;
-    
-		}
-	.contenedor_proveedores{
-		width: 100%;
-		height: 1000px;
-		background: #333;
-        margin: auto;
-		
-		/*FLEX*/
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		
-	}
-	.menu_proveedores{
-		background: #333;
+		border-radius: 4px 4px 4px 4px;	
+		font-family:Arial, Helvetica, sans-serif;
+}
+.menuNav-extendido{
+    background: #333;
 		width: 20%;
+		height: 136.5%;
 		color:#FFF;
+		margin: 0px;
 		padding: 20px;
 		font-size: 15px;
-	
-		
-		
+		text-align: center;
 		/*FLEX*/
 		align-items: flex-start;
 		flex-direction:column;
 		flex-wrap:wrap;
-	
-	}
-
-
-.contenedor_interno_editar_proveedores{
-     /* Flexbox */
-    
-    display: flex;
-    flex-direction: row;
-
-    /* fin de Flexbox */
-
-    font-family:Arial, Helvetica, sans-serif;
-    text-align: center;
-    justify-content: center;
-    background-color:white;
-    height: 101%;
-    
-
-    
-}
-
-
-.objeto{
-    
-    border: 5px solid #333;
-    border-radius: 8px;
-    box-sizing: border-box;
 }
 
 
 
-
-/*.form-horizontal,.login-form{
-    font-size: 50%;
-    width: 414.563px;
-}*/
-
-
-
-
-
-	/*.footer{
-		background: #00B285;
-		width: 100%;
-		height: 100px;
-		color:#CCC;
-		margin: 0px;
-		padding: 20px;
+/*Se utiliza en aquellas pantallas en el cual los formularios son mas largos que los extendidos largos: Agregar Proovedor, */
+.main-interno-extendido2{
+   background: #456;
+		width: 103 %;
+		height: 156.5%;
+		color:#000;
+		margin: -10px;
+		padding: 30px;
 		font-size: 40px;
 		text-align: center;
-	
-	
-		FLEX
-		display:flex;
-		flex-direction:;
+		border-radius: 4px 4px 4px 4px; 
+}
+
+.formularios-extendido2{
+    background: #FFF;
+		width: 40 %;
+		height: 102.3%;
+		color:#000;
+		margin: -10px;
+		padding: 50px;
+		font-size: 20px;
+		text-align: center;
+		border-radius: 4px 4px 4px 4px;	
+		font-family:Arial, Helvetica, sans-serif;
+}
+.menuNav-extendido2{
+    background: #333;
+		width: 20%;
+		height: 141.3%;
+		color:#FFF;
+		margin: 0px;
+		padding: 20px;
+		font-size: 15px;
+		text-align: center;
+		/*FLEX*/
+		align-items: flex-start;
+		flex-direction:column;
 		flex-wrap:wrap;
-		justify-content: flex-end;
-	
-	}*/
+}
