@@ -1,8 +1,8 @@
 function erpsil_mostrarTipoCliente() {
 
     var MostrarTipoClienteWindow = ""
-
-+      "<div class='table-responsive'>"
++"<link rel="stylesheet" href="C:\Users\rober\Documents\Repo\ERPSIL\CSS\styles.css">"
++      "<div class='tablas'>"
 +         "<table class='table table-striped table-hover'>"
 +            "<tr>"
 +                "<th>ID</th>"
@@ -10,6 +10,8 @@ function erpsil_mostrarTipoCliente() {
 +                "<th>Descripcion</th>"
 +                "<th>Ganancia global</th>"
 +                "<th>Dias de credito</th>"
++                "<th>Editar</th>"
++                "<th>Eliminar</th>"
 +            "</tr>"
 +            "<tr>"
 +                "<td>'.$id_tipoCliente.'</td>"
@@ -17,15 +19,9 @@ function erpsil_mostrarTipoCliente() {
 +                "<td>'$row['descripcion']</td>"
 +                "<td>'.$row['ganancia_global'].'</td>"
 +                "<td>'.$row['dias_credito'].'</td>"
-+                "<td>"
-+            "</td>"
++                "<td><a  href='' title='Editar' onclick='' class='editar-BtnAzul'><span class='' aria-hidden='true'>Editar</span></a> </td>"
++                "<td><a href='' title='Eliminar' onclick='' class='eliminar-BtnRojo'><span class='' aria-hidden='true'>Eliminar</span></a> </td>"
 +            "</tr>"
-+                "<td>"
-+                    "<a href='' title='Editar' onclick='' class='btn btn-warning btn-sm'><span class='' aria-hidden='true'>Editar</span></a>"
-+                    "</br>"
-+                    "</br>"
-+                    "<a href='' title='Eliminar' onclick='' class='btn btn-danger btn-sm'><span class='' aria-hidden='true'>Eliminar</span></a>"
-+                "</td>"
 +         "</table>"
 +      "</div>"
 
