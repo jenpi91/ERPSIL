@@ -1,8 +1,8 @@
 function erpsil_mostrarClienteWindow() {
 
     var MostrarClienteWindow = ""
-+  "<link rel="stylesheet" href="C:\Users\rober\Documents\Repo\ERPSIL\CSS\styles_ro.css">"
-+      "<div class='contenedor'>"
++  "<link rel="stylesheet" href="C:\Users\rober\Documents\Repo\ERPSIL\CSS\styles.css">"
++      "<div class='table-responsive'>"
 +         "<table>"
 +            "<tr>"
 +                "<th>ID </th>"
@@ -29,8 +29,8 @@ function erpsil_mostrarClienteWindow() {
 +                "<td> </td>"
 +                "<td> </td>"
 +                "<td> </td>"
-+                "<td><a href='' title='Editar' onclick='' class='buttonVerde'><span class='' aria-hidden='true'>Editar</span></a> </td>"
-+                "<td><a href='' title='Eliminar' onclick='' class='buttonRojo'><span class='' aria-hidden='true'>Eliminar</span></a> </td>"
++                "<td><a href='' title='Editar' onclick='' class='editar-BtnAzul'><span class='' aria-hidden='true'>Editar</span></a> </td>"
++                "<td><a href='' title='Eliminar' onclick='' class='eliminar-BtnRojo'><span class='' aria-hidden='true'>Eliminar</span></a> </td>"
 +                
 +            "</td>"
 +            "</tr>"
