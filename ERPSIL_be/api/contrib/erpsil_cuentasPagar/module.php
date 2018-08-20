@@ -34,7 +34,7 @@ function erpsil_cuentasPagar_init(){
             'action' => 'agregarCuentasPagar',
             'access' => 'users_loggedIn',
             'access_params' => 'accessName',
-            'params' => array(
+             array(
                 array("key" => "id_proveedor", "def" => "", "req" => true),
                 array("key" => "codigoReferencia", "def" => "", "req" => true),
                 array("key" => "saldo", "def" => "", "req" => true),
@@ -46,17 +46,18 @@ function erpsil_cuentasPagar_init(){
         ),
         array(
             'r' => 'agregarEditar_cuentasPagar',
-            'action' => 'agregarCuentasPagar',
+            'action' => 'agregarEditarCuentasPagar',
             'access' => 'users_loggedIn',
             'access_params' => 'accessName',
-            'params' => array(
-                array("key" => "id", "def" => "", "req" => true),
+            array(
+                array("key" => "id_cuentasPagar", "def" => "", "req" => true),
                 array("key" => "id_proveedor", "def" => "", "req" => true),
-                array("key" => "codigoReferencia", "def" => "", "req" => true),
+                array("key" => "codigo_referencia", "def" => "", "req" => true),
                 array("key" => "saldo", "def" => "", "req" => true),
                 array("key" => "estado", "def" => "", "req" => true),
                 array("key" => "vence", "def" => "", "req" => true),
-                array("key" => "descripcion", "def" => "", "req" => true)
+                array("key" => "descripcion", "def" => "", "req" => true),
+                array("key" => "stampfecha", "def" => "", "req" => true)
             ),
             'file' => 'erpsil_cuentasPagar.php'
         ),
@@ -86,7 +87,7 @@ function erpsil_cuentasPagar_init(){
                 array("key" => "id", "def" => "", "req" => true)
             ),
             'file' => 'erpsil_cuentasPagar.php'
-        ),
+        )
         );
 
     return $paths;

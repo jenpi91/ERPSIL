@@ -12,7 +12,7 @@ function agregarUsuario(){
           VALUES ('$fullName', '$userName', '$email', '$pwd', '$about', '$country')";
       
        
-   // return $q;
+    //return $q;
     return db_query($q, 0);
 
 }

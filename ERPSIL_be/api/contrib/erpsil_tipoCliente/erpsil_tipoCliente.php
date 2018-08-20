@@ -35,12 +35,12 @@ function editarTipoCliente(){
     $id = params_get("id");
     $nombre = params_get("nombre");
     $descripcion = params_get("descripcion");
-    $$descripcion = params_get("ganancia_global");
+    $ganancia_global = params_get("ganancia_global");
     $dias_credito = params_get("dias_credito");
 
     $q = "UPDATE `tbl_tipocliente` SET `nombre` = '$nombre',
     `descripcion` = '$descripcion',
-    `ganancia_global` = '$descripcion',
+    `ganancia_global` = '$ganancia_global',
     `dias_credito` = '$dias_credito'
     
     WHERE `id_tipoCliente` = $id";
