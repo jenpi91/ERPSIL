@@ -38,24 +38,29 @@ function obtenerCuentasPagar(){
    return db_query($q, 1);
 }
 
-function editarCuentasPagar(){
-   $id = params_get("id");
+function agregarEditarCuentasPagar(){
+
+   $id_cuentasPagar = params_get("id_cuentasPagar");
    $id_proveedor = params_get("id_proveedor");
-   $codigo_referencia = params_get("codigoReferencia");
+   $codigo_referencia = params_get("codigo_referencia");
    $saldo = params_get("saldo");
    $estado = params_get("estado");
    $vence = params_get("vence");
    $descripcion = params_get("descripcion");
-   $stampfecha = time();
+   $stampfecha = params_get("stampfecha");
 
-   $q = "UPDATE `tbl_cuentaspagar` SET `id_proveedor` = $id_proveedor,
-   `codigoReferencia`= $codigo_referencia,
-   `saldo`= $saldo,
-   `estado` = $estado,
-   `vence` = $vence
-   `descripcion` = $descripcion,
-   `stampfecha` = $stampfecha,
+   $q = "UPDATE `tbl_cuentaspagar` 
+   SET `id_proveedor` = '$id_proveedor',
+   `codigo_referencia` = '$codigo_referencia',
+   `saldo`= '$saldo',
+   `estado` = '$estado',
+   `vence` = '$vence',
+   `descripcion` = '$descripcion',
+   `stampfecha` = '$stampfecha'
 
-   WHERE `tbl_cuentaspagar`.`id_cuentasPagar` = $id";
+   WHERE `id_cuentasPagar` = $id_cuentasPagar";
+
+    //return $q;
+    return db_query($q, 0);
 }
 
