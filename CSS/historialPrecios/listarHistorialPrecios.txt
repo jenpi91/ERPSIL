@@ -1,0 +1,50 @@
+function erpsil_listarHistorialPrecios(){
+    var historialPreciosData = {
+        w: "erpsil_historialPrecios",
+        r: "mostrar_historialPrecios"
+    };
+
+    calaApi_postRequest(historialPreciosData, function (d) {
+ 
+        var MostrarHistorialPreciosWindow = ""
+
+        +      "<div class='formularios'>"
+	+      "<h2 class='tituloTablas'>Listar Historial de Precios</h2><br><br>"
+        +         "<table>"
+        +            "<tr>"
+        +                "<th>ID</th>"
+        +                "<th>Costo</th>"
+        +                "<th>Fecha</th>"
+        +                "<th>ID proveedor</th>"
+	+		 "<th>Editar</th>"
+	+		 "<th>Eliminar</th>"
+	
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarHistorialPreciosWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_producto +" </td>"
+        +                "<td> "+ a.costo +" </td>"
+        +                "<td> "+ a.fecha +" </td>"
+        +                "<td> "+ a.id_proveedor +" </td>"
+        
+        +                "<td> <div id='editar_historialPrecios' onclick='erpsil_editarHistorialPrecios(" + a.id_producto + ")' class='editar-BtnAzul'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarHistorialPrecios("+ a.id_producto +")' class='eliminar-BtnRojo'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+                }
+                MostrarHistorialPreciosWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +          "<td> <div onclick='erpsil_agregarHistorialPreciosWindow()' class='agregar-BtnVerde'>Agregar</div></td>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarHistorialPreciosWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}

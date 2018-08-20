@@ -1,0 +1,28 @@
+function erpsil_agregarHistorialPreciosWindow() {
+    var agregarHistorialPreciosWindow = ""
+
+    +    "<div class='formularios'>"
+    +        "<h2 class='tituloFormularios'>Historial de Precios</h2><br><br>"
+    +        "<label class='label'>Costo</label>"
+    +        "<div class='form-group'>"
+    		selectH
+    +           " <input type='text' class='camposTexto' placeholder='Costo' required='required' id='inputCosto'>"
+    +        "</div>"
+    +        "<label class='label'>Fecha</label>"
+    +        "<div class='form-group'>"
+    +            "<input type='text' class='camposTexto' placeholder='Fecha' required='required' id='inputFecha'>"
+    +        "</div>"
+    +        "<label class='label'>ID Proveedor</label>"
+    +        "<div class='form-group'>"
+		selectP
+    +           " <input type='text' class='camposTexto' placeholder='ID Proveedor' required='required' id='inputID_provedor'>"
+    +        "</div>"
+    +        "<div class='form-group'>"
+    +            
+    +		"<div onClick='erpsil_agregarHistorialPrecios()' class='agregar-BtnVerde'>Agregar</div>"
+    +            "<div onClick='erpsil_listarHistorialPrecios()' class='volver-BtnMorado'>Volver</div>"           
+    +         "</div>"
+    +   " </div>"
+                       
+    erpsil_setContent(agregarHistorialPreciosWindow);
+}
