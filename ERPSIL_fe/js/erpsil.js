@@ -69,16 +69,16 @@ function erpsil_login(){
 function erpsil_loginWindow() {
     //var loginWindow = "Aca va la ventana de login";
     var loginWindow = ""
-+    "<div class='login-form'>"
++    "<div class='container centrarDivTxt'>"
 +        "<h2 class='text-center'>Log in</h2>"
-+        "<div class='form-group'>"
++        "<div class='col-sm'>"
 +           " <input type='text' class='form-control' placeholder='Username' required='required' id='inputUser'>"
 +        "</div>"
-+        "<div class='form-group'>"
-+            "<input type='password' class='form-control' placeholder='Password' required='required' id='inputPassword'>"
++        "<div class='col-sm'>"
++            "<input type='password' class='' placeholder='Password' required='required' id='inputPassword'>"
 +        "</div>"
-+        "<div class='form-group'>"
-+            "<button onClick='erpsil_login()' class='btn btn-primary btn-block'>Log in</button>"
++        "<div class='col-sm'>"
++            "<button onClick='erpsil_login()' class='btn btn-primary btn_central'>Log in</button>"
 +        "</div>"
 +   " </div>"
                            
@@ -91,7 +91,7 @@ function erpsil_menuWindow() {
 
     +  "<div class='contenedor'>"
     +   	"<div class='header1'>" 
-    +        	"<div class='header1-interno'>Sistema <b>ERPSIL</b></div>"
+    //+        	"<div class='header1-interno'>Sistema <b>ERPSIL</b></div>"
     +       "</div>"
             
             
@@ -554,7 +554,6 @@ function erpsil_agregarClientesTickets(){
     var comentariosClientesTickets = $("#inputComentario").val();
     var statusClientesTickets = $("#inputStatus").val();
 
-
     if(idClientesTickets != "" && fechaClientesTickets != "" && tituloClientesTickets != "" && comentariosClientesTickets != "" && statusClientesTickets != "" ){
         
         var tipoClientesTicketsData = {
@@ -565,7 +564,6 @@ function erpsil_agregarClientesTickets(){
             titulo:tituloClientesTickets,
             comentario:comentariosClientesTickets,
             status:statusClientesTickets
-
         };  
         
         calaApi_postRequest(tipoClientesTicketsData, function (d) {
