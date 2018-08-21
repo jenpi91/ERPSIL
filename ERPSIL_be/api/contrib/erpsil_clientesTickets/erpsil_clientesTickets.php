@@ -20,7 +20,6 @@ function agregarClienteTickets(){
     $q = "INSERT INTO `tbl_clientetickets` (`id_cliente`, `stamp`, `titulo`, `comentario`, `status`) 
           VALUES ('$id_cliente', '$stamp', '$titulo', '$comentario', '$status')";
 
-    
     //return $q;
     return db_query($q, 0);
 }
