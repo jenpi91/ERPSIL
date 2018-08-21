@@ -69,6 +69,7 @@ function erpsil_login(){
 function erpsil_loginWindow() {
     //var loginWindow = "Aca va la ventana de login";
     var loginWindow = ""
+
 +    "<div class='formularios'>"
 +        "<h2 class='tituloFormularios'>SISTEMA ERPSIL</h2><br>"
 +        "<div class='col-sm'>"
@@ -79,6 +80,7 @@ function erpsil_loginWindow() {
 +        "</div>"
 +        "<div class='col-sm'>"
 +            "<button onClick='erpsil_login()' class='login-BtnVerdeOscuro'>Login</button>"
+
 +        "</div>"
 +   " </div>"
                            
@@ -89,7 +91,9 @@ function erpsil_menuWindow() {
     //var loginWindow = "Aca va la ventana de login";
     var menuWindow = ""
 
-    +  "<div class='contenedor'>"            
+
+    +  "<div class='contenedor'>"                       
+
             
 //    +       "<div class='header2'>"
 //    +        	"<!--Barra de Búsqueda y Login-->"
