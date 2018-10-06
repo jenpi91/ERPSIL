@@ -154,7 +154,11 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`idSession`, `idUser`, `sessionKey`, `ip`, `lastAccess`) VALUES
+<<<<<<< HEAD
 (33, 141, 'QjRmTFZFL2hFenRRSHdaYmVaNzBDdz09OjrkAbGBdXLJR4HobVooPWAE', '::1', 1537927807);
+=======
+(22, 141, 'anIySnNOc0RNUUtMVUNBQW52QWU4Zz09Ojo80a0lwPY6wins5/hjUaNn', '::1', 1534899384);
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 
 -- --------------------------------------------------------
 
@@ -225,7 +229,11 @@ CREATE TABLE `tbl_clientetickets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+<<<<<<< HEAD
 -- Dumping data for table `tbl_clientetickets`
+=======
+-- Volcado de datos para la tabla `tbl_clientetickets`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 
 INSERT INTO `tbl_clientetickets` (`id_ticket`, `id_cliente`, `stamp`, `titulo`, `comentario`, `status`) VALUES
@@ -234,6 +242,7 @@ INSERT INTO `tbl_clientetickets` (`id_ticket`, `id_cliente`, `stamp`, `titulo`, 
 (18, 5, 1533518172, 'nuevo', 'nuevo', 'n'),
 (21, 8, 1534394818, 'canelos', 'canelossssss', '9');
 
+<<<<<<< HEAD
 -- --------------------------------------------------------
 
 --
@@ -247,6 +256,8 @@ CREATE TABLE `tbl_contabilidad` (
   `total_planilla` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+=======
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 -- --------------------------------------------------------
 
 --
@@ -265,7 +276,11 @@ CREATE TABLE `tbl_cuentaspagar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+<<<<<<< HEAD
 -- Dumping data for table `tbl_cuentaspagar`
+=======
+-- Volcado de datos para la tabla `tbl_cuentaspagar`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 
 INSERT INTO `tbl_cuentaspagar` (`id_cuentasPagar`, `id_proveedor`, `codigo_referencia`, `saldo`, `estado`, `vence`, `descripcion`, `stampfecha`) VALUES
@@ -334,7 +349,11 @@ CREATE TABLE `tbl_historialprecios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+<<<<<<< HEAD
 -- Dumping data for table `tbl_historialprecios`
+=======
+-- Volcado de datos para la tabla `tbl_historialprecios`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 
 INSERT INTO `tbl_historialprecios` (`id_historialPrecio`, `id_inventario`, `costo`, `fecha`, `id_proveedor`) VALUES
@@ -390,7 +409,11 @@ CREATE TABLE `tbl_movimientoinventario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+<<<<<<< HEAD
 -- Dumping data for table `tbl_movimientoinventario`
+=======
+-- Volcado de datos para la tabla `tbl_movimientoinventario`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 
 INSERT INTO `tbl_movimientoinventario` (`id_movInv`, `id_usuario`, `id_caja`, `id_producto`, `fecha`, `razon`, `descripcion`, `costo`) VALUES
@@ -416,13 +439,45 @@ CREATE TABLE `tbl_pagos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+<<<<<<< HEAD
 -- Dumping data for table `tbl_pagos`
+=======
+-- Volcado de datos para la tabla `tbl_pagos`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 
 INSERT INTO `tbl_pagos` (`id_pago`, `id_cuenta`, `id_usuarios`, `fecha`, `pago`, `actual`) VALUES
 (1, 1, 1, 123, '123', '123'),
 (2, 1, 107, 123, '1234', '12355');
 
+<<<<<<< HEAD
+=======
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_pedidos`
+--
+
+CREATE TABLE `tbl_pedidos` (
+  `id_pedido` int(4) NOT NULL,
+  `id_cliente` int(4) NOT NULL,
+  `stamp_pedido` int(11) NOT NULL,
+  `stamp_entrega` int(11) NOT NULL,
+  `cant_rollos` int(5) NOT NULL,
+  `status` int(1) NOT NULL,
+  `descripcion` varchar(200) NOT NULL,
+  `precio` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_pedidos`
+--
+
+INSERT INTO `tbl_pedidos` (`id_pedido`, `id_cliente`, `stamp_pedido`, `stamp_entrega`, `cant_rollos`, `status`, `descripcion`, `precio`) VALUES
+(1, 3, 3, 3, 3, 3, '3', '4000'),
+(3, 6, 123, 321, 123, 1, 'rosas', '10002');
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 -- --------------------------------------------------------
 
 --
@@ -461,7 +516,11 @@ CREATE TABLE `tbl_permisosrol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+<<<<<<< HEAD
 -- Dumping data for table `tbl_permisosrol`
+=======
+-- Volcado de datos para la tabla `tbl_permisosrol`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 
 INSERT INTO `tbl_permisosrol` (`id_permiso`, `id_rol`, `estado`) VALUES
@@ -470,6 +529,7 @@ INSERT INTO `tbl_permisosrol` (`id_permiso`, `id_rol`, `estado`) VALUES
 (3, 0, '7'),
 (6, 1, 'buenos');
 
+<<<<<<< HEAD
 -- --------------------------------------------------------
 
 --
@@ -485,6 +545,8 @@ CREATE TABLE `tbl_planilla` (
   `salario_neto` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+=======
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 -- --------------------------------------------------------
 
 --
@@ -554,10 +616,18 @@ CREATE TABLE `tbl_tipocliente` (
 
 INSERT INTO `tbl_tipocliente` (`id_tipoCliente`, `nombre`, `descripcion`, `ganancia_global`, `dias_credito`) VALUES
 (1, 'nombre', '1', 1, 1),
+<<<<<<< HEAD
 (2, 'Daniel', '1', 1, 1),
 (3, '3', '3', 0, 0),
 (4, '3', '3', 3, 3),
 (5, 'd', 'd', 4, 4);
+=======
+(2, '22', '1', 1, 1),
+(3, '3', '3', 0, 0),
+(4, '3', '3', 3, 3),
+(5, 'd', 'd', 4, 4),
+(6, 'e', 'e', 2, 2);
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 
 -- --------------------------------------------------------
 
@@ -598,7 +668,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUser`, `fullName`, `userName`, `email`, `about`, `country`, `status`, `timestamp`, `lastAccess`, `pwd`, `avatar`, `settings`) VALUES
+<<<<<<< HEAD
 (141, 'Daniel', 'ol', 'algo@aa.com', 'abc', 'cr', '1', 1534828112, 1537927807, 'VkZFeE0zSnliM0ZZVkhwMlZHNWhNRGd5ZFdVdk4wODBjSEZ5YlZwS1dYVXlkRXBxWjBFeVVITnZRVFozVEdzNU9FaERRMWxsUkd0a1RreEpSRFYyUTBWUFlUbDBhRWwxVFRGb2VqSmhSbFZwT0ZoVVZYYzlQVG82cjd3YmpaOU1ETXlCZnE3cWswdm5zUT09', '0', '');
+=======
+(141, 'Daniel', 'ol', 'algo@aa.com', 'abc', 'cr', '1', 1534828112, 1534899384, 'VkZFeE0zSnliM0ZZVkhwMlZHNWhNRGd5ZFdVdk4wODBjSEZ5YlZwS1dYVXlkRXBxWjBFeVVITnZRVFozVEdzNU9FaERRMWxsUkd0a1RreEpSRFYyUTBWUFlUbDBhRWwxVFRGb2VqSmhSbFZwT0ZoVVZYYzlQVG82cjd3YmpaOU1ETXlCZnE3cWswdm5zUT09', '0', '');
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 
 --
 -- Indexes for dumped tables
@@ -687,6 +761,7 @@ ALTER TABLE `tbl_empleado`
   ADD PRIMARY KEY (`id_empleado`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `tbl_factura`
 --
 ALTER TABLE `tbl_factura`
@@ -694,12 +769,19 @@ ALTER TABLE `tbl_factura`
 
 --
 -- Indexes for table `tbl_historialprecios`
+=======
+-- Indices de la tabla `tbl_historialprecios`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 ALTER TABLE `tbl_historialprecios`
   ADD PRIMARY KEY (`id_historialPrecio`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `tbl_inventario`
+=======
+-- Indices de la tabla `tbl_inventario`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 ALTER TABLE `tbl_inventario`
   ADD PRIMARY KEY (`id_inventario`);
@@ -717,18 +799,27 @@ ALTER TABLE `tbl_pagos`
   ADD PRIMARY KEY (`id_pago`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `tbl_pedidos`
+=======
+-- Indices de la tabla `tbl_pedidos`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 ALTER TABLE `tbl_pedidos`
   ADD PRIMARY KEY (`id_pedido`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `tbl_permisosrol`
+=======
+-- Indices de la tabla `tbl_permisosrol`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 ALTER TABLE `tbl_permisosrol`
   ADD PRIMARY KEY (`id_permiso`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `tbl_planilla`
 --
 ALTER TABLE `tbl_planilla`
@@ -736,6 +827,9 @@ ALTER TABLE `tbl_planilla`
 
 --
 -- Indexes for table `tbl_proveedor`
+=======
+-- Indices de la tabla `tbl_proveedor`
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 ALTER TABLE `tbl_proveedor`
   ADD PRIMARY KEY (`id_proveedor`);
@@ -769,6 +863,7 @@ ALTER TABLE `users`
 --
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `conversations`
 --
 ALTER TABLE `conversations`
@@ -793,18 +888,57 @@ ALTER TABLE `sessions`
 --
 ALTER TABLE `tbl_activo`
   MODIFY `id_activo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+=======
+-- AUTO_INCREMENT de la tabla `conversations`
+--
+ALTER TABLE `conversations`
+  MODIFY `idConversation` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `files`
+--
+ALTER TABLE `files`
+  MODIFY `idFile` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `lestatz_domains`
+--
+ALTER TABLE `lestatz_domains`
+  MODIFY `idDomain` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `sessions`
+--
+ALTER TABLE `sessions`
+  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_activo`
+--
+ALTER TABLE `tbl_activo`
+  MODIFY `id_activo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 -- AUTO_INCREMENT for table `tbl_cliente`
 --
 ALTER TABLE `tbl_cliente`
   MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 -- AUTO_INCREMENT for table `tbl_clientetickets`
 --
 ALTER TABLE `tbl_clientetickets`
   MODIFY `id_ticket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+<<<<<<< HEAD
 --
 -- AUTO_INCREMENT for table `tbl_contabilidad`
+=======
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 ALTER TABLE `tbl_contabilidad`
   MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT;
@@ -813,11 +947,16 @@ ALTER TABLE `tbl_contabilidad`
 --
 ALTER TABLE `tbl_cuentaspagar`
   MODIFY `id_cuentasPagar` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 -- AUTO_INCREMENT for table `tbl_empleado`
 --
 ALTER TABLE `tbl_empleado`
   MODIFY `id_empleado` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+<<<<<<< HEAD
 --
 -- AUTO_INCREMENT for table `tbl_factura`
 --
@@ -828,6 +967,15 @@ ALTER TABLE `tbl_factura`
 --
 ALTER TABLE `tbl_historialprecios`
   MODIFY `id_historialPrecio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+=======
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_historialprecios`
+--
+ALTER TABLE `tbl_historialprecios`
+  MODIFY `id_historialPrecio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 -- AUTO_INCREMENT for table `tbl_inventario`
 --
@@ -838,11 +986,16 @@ ALTER TABLE `tbl_inventario`
 --
 ALTER TABLE `tbl_movimientoinventario`
   MODIFY `id_movInv` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 -- AUTO_INCREMENT for table `tbl_pagos`
 --
 ALTER TABLE `tbl_pagos`
   MODIFY `id_pago` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+<<<<<<< HEAD
 --
 -- AUTO_INCREMENT for table `tbl_pedidos`
 --
@@ -853,6 +1006,21 @@ ALTER TABLE `tbl_pedidos`
 --
 ALTER TABLE `tbl_permisosrol`
   MODIFY `id_permiso` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+=======
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_pedidos`
+--
+ALTER TABLE `tbl_pedidos`
+  MODIFY `id_pedido` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_permisosrol`
+--
+ALTER TABLE `tbl_permisosrol`
+  MODIFY `id_permiso` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 -- AUTO_INCREMENT for table `tbl_planilla`
 --
@@ -863,16 +1031,29 @@ ALTER TABLE `tbl_planilla`
 --
 ALTER TABLE `tbl_proveedor`
   MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 -- AUTO_INCREMENT for table `tbl_roles`
 --
 ALTER TABLE `tbl_roles`
   MODIFY `id_roles` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 -- AUTO_INCREMENT for table `tbl_tipocliente`
 --
 ALTER TABLE `tbl_tipocliente`
+<<<<<<< HEAD
   MODIFY `id_tipoCliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+=======
+  MODIFY `id_tipoCliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 --
 -- AUTO_INCREMENT for table `tbl_usuarios`
 --
@@ -882,7 +1063,12 @@ ALTER TABLE `tbl_usuarios`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+<<<<<<< HEAD
   MODIFY `idUser` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;COMMIT;
+=======
+  MODIFY `idUser` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+COMMIT;
+>>>>>>> 8c7fa21ee2cf23054d69bcd720516ed4f117e7e0
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

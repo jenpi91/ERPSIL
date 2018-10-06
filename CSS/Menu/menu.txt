@@ -1,0 +1,51 @@
+<<<<<<< HEAD
+        +                "<td> <div id='editar_activos' onclick='erpsil_menuWindow()' class='btn btn-success btn-sm'>Volver</div></td>"
+
+
+
+
++"<div class='contenedor'>"
++   	"<div class='header1'>" 
++        	"<div class="header1-interno">Sistema <b>ERPSIL</b></div>"
+=======
++"<div class='contenedorPrincipal'>"
++   	"<div class='tituloPrincipal'>" 
++        	"<div class="formatoInterno-tituloPrincipal">Sistema <b>ERPSIL</b></div>"
+>>>>>>> 6ba2656b993404f403690f64409e67cdeafbc4db
++       "</div>"
+        
+        
++       "<div class='header2'>"
++        	"<!--Barra de Búsqueda y Login-->"
++       "</div>"
+        
++    	"<div class='menuNav' >"
+        	 
++        	 "<ul>"
++                "<div class='tituloMenuNav' onClick='erpsil_menuWindow()' > Menu</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarCliente()'>Cliente</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarProveedor()'>Proveedor</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_agregarTipoCliente()'>Empleado</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarRoles()'>Roles</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarInventario()'>Inventario</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarActivos()'>Activos</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarClientesTickets()'>Listar Ticketes</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_agregarClientesTicketsWindow()'>Usuario</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarPermisoRol()'>Permisos Rol</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarCuentasPagar()'>Cuentas Pagar</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>"
++                "<div class='formato-MenuNav' onClick='erpsil_listarPagos()'> Pagos</div>"
++             "</ul>"
+                             
+
++        "</div>"
++		"<div class='main'>" 
++        	"<div class='main-interno'>"
+            
++            		"<!--CONTENIDO-->"
+            
++            	"</div>"
++        "</div>"
++        "<!--<div class='footer'> 2</div>-->"
++    "</div>"  
