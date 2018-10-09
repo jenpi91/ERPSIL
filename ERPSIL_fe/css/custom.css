@@ -11,7 +11,7 @@
 /*******************************/
 
 .divCentral{
-    margin-left: 20%;
+    margin-left: 11%;
     top: 0;
 }
 
@@ -58,7 +58,6 @@
 }
 /*CSS Titulo (header1)*/
 .tituloPrincipal{
-    background: #FFF;
     width: 20%;
     height: 60px;
     color:#900;
@@ -107,11 +106,11 @@
 /*CSS Contenedor del Menu de Navegacion*/
 .menuNav{
     background: #333;
-    width: 20%;
+    width: 10%;
     height: 1000px;
     color:#FFF;
     margin: 0px;
-    padding: 20px;
+    padding-right: 5px;
     font-size: 15px;
     text-align: center;
     /*FLEX*/
@@ -180,11 +179,11 @@
 /*CSS formularios y tablas generales*/	
 .formularios, .tablas{
     background: #FFF;
-    width: 75%;
+    width: 40%;
     height: 950px;
     color:#000;
     margin: -10px;
-    padding: 200px;
+    padding: 50px;
     font-size: 20px;
     text-align: center;
     border-radius: 4px 4px 4px 4px;	
@@ -225,21 +224,11 @@
 
 
 /*CSS Titulos*/	
-.tituloFormularios{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 4px;
-    font-size: 40px;
-    color: darkgreen;
+.tituloFormularios, .tituloMenuNav, .tituloTablas{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 35px;
 }
 
-.tituloTablas{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 4px;
-    margin: 2px;
-    font-size: 40px;
-    color:#456;
-    text-align: center;
-}
 
 /*CSS Espacio para campos de texto*/	
 input[type=text],[type=password], select {
@@ -292,29 +281,14 @@ input[type=text],[type=password], select {
     padding: 0.5%;
 }
 
-/*CSS Botones Login/Agregar/Editar/Eliminar/Volver/Cancelar/Guardar*/	
-
-.login-BtnVerdeOscuro{
-    font-family:Arial, Helvetica, sans-serif;
-    width: 20%;
-    font-size: 20px;
-    background-color: rgb(68, 102, 69); 
-    border: none;
-    color: white;
-    padding: 15px 15px;
-    margin: 50px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
+/*CSS Botones Agregar/Editar/Eliminar/Volver/Cancelar/Guardar*/	
 .agregar-BtnVerde{
     font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
     background-color: #4CAF50; 
     border: none;
     color: white;
-    padding: 8px 8px;
+    padding: 15px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -326,82 +300,87 @@ input[type=text],[type=password], select {
 
 .editar-BtnAzul{
     font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
     background-color: blue; 
     border: none;
     color: white;
-    padding: 8px 8px;
+    padding: 15px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     border-radius: 8px;
-    margin: 12px;
+    margin: 20px;
     cursor: pointer;
 }
 
 .cancelar-BtnAqua{
     font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
     background-color: #1AE6B8; 
     border: none;
     color: white;
-    padding: 8px 8px;
+    padding: 15px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     border-radius: 8px;
-    margin: 12px;
+    margin: 20px;
     cursor: pointer;
 }
 
 .guardar-BtnNaranja{
     font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
     background-color: #F60; 
     border: none;
     color: white;
-    padding: 8px 8px;
+    padding: 15px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     border-radius: 8px;
-    margin: 12px;
+    margin: 20px;
     cursor: pointer;
 }
 
 
 .eliminar-BtnRojo{
     font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
     background-color: red; 
     border: none;
     color: white;
-    padding: 8px 8px;
+    padding: 15px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     border-radius: 8px;
-    margin: 12px;
+    margin: 20px;
     cursor: pointer;
 }
 
 .volver-BtnMorado{
     font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
     background-color: #609; 
     border: none;
     color: white;
-    padding: 8px 8px;
+    padding: 15px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border-radius: 8px;
-    margin: 12px;
+    /*border-radius: 8px;*/
+    margin: 20px;
     cursor: pointer;
 }
 
 /*Efecto Botones*/
-.login-BtnVerdeOscuro:hover,.agregar-BtnVerde:hover,.editar-BtnAzul:hover,.eliminar-BtnRojo:hover,.volver-BtnMorado:hover,.guardar-BtnNaranja:hover,.cancelar-BtnAqua:hover {
+.agregar-BtnVerde:hover,.editar-BtnAzul:hover,.eliminar-BtnRojo:hover,.volver-BtnMorado:hover,.guardar-BtnNaranja:hover,.cancelar-BtnAqua:hover {
     background-color: #930; 
 }
 
