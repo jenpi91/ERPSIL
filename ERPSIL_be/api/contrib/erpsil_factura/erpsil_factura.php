@@ -16,7 +16,7 @@ function obtenerFactura(){
 
     return db_query($q, 1);
 }
-function editarEmpleado(){
+function editarFactura(){
     $cantidad = params_get("cantidad");
     $descripcion = params_get("descripcion");
     $id_cliente = params_get("id_cliente");

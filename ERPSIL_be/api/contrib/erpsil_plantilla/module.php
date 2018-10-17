@@ -17,7 +17,7 @@
 /**
  * Boot up procedure
  */
-function erpsil_factura_bootMeUp(){
+function erpsil_planilla_bootMeUp(){
 	// Just booting up
 }
 
@@ -26,41 +26,41 @@ function erpsil_factura_bootMeUp(){
  */
 
 
-function erpsil_factura_init(){
+function erpsil_planilla_init(){
 
 	$paths = array(
         array(
-			'r' => 'editar_factura',
-			'action' => 'editarFactura',
+			'r' => 'editar_planilla',
+			'action' => 'editarPlanilla',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
-                array("key" => "cantidad", "def" => "", "req" => true),
-                array("key" => "descripcion", "def" => "", "req" => true),
-                array("key" => "id_cliente", "def" => "", "req" => true),
-				array("key" => "id_factura", "def" => "", "req" => true),
-				array("key" => "stamp", "def" => "", "req" => true),
-				array("key" => "total", "def" => "", "req" => true),
+                array("key" => "id_planilla", "def" => "", "req" => true),
+                array("key" => "id_empleado", "def" => "", "req" => true),
+                array("key" => "salario_bruto", "def" => "", "req" => true),
+				array("key" => "ccss", "def" => "", "req" => true),
+				array("key" => "rebaja", "def" => "", "req" => true),
+				array("key" => "salario_neto", "def" => "", "req" => true),
 			),
-			'file' => 'erpsil_factura.php'
+			'file' => 'erpsil_planilla.php'
 		),
 		
 		array(
-			'r' => 'mostrar_factura',
-			'action' => 'mostrarFactura',
+			'r' => 'mostrar_planilla',
+			'action' => 'mostrarPlanilla',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
-			'file' => 'erpsil_factura.php'
+			'file' => 'erpsil_planilla.php'
 			),
 		array(
-			'r' => 'obtener_factura',
-			'action' => 'obtenerFactura',
+			'r' => 'obtener_planilla',
+			'action' => 'obtenerPlanilla',
 			'access' => 'users_loggedIn', 
 			'access_params' => 'accessName',
 			'params' => array(
 				array("key" => "id", "def" => "", "req" => true)
 			),
-			'file' => 'erpsil_factura.php'
+			'file' => 'erpsil_planilla.php'
 		),
 	);
 
@@ -78,7 +78,7 @@ return $paths;
 /**
  * Get the perms for this module
  */
- function erpsil_factura_access(){
+ function erpsil_planilla_access(){
 
 	$perms = array(
 		array(
