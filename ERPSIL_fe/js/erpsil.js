@@ -109,6 +109,7 @@ function erpsil_setMenu() {
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarCliente()'>Cliente</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarProveedor()'>Proveedor</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarEmpleado()'>Empleado</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarFactura()'>Facturas</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarRoles()'>Roles</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarInventario()'>Inventario</div>"
@@ -116,6 +117,7 @@ function erpsil_setMenu() {
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarClientesTickets()'>Listar Ticketes</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarUsuario()'>Usuario</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPermisoRol()'>Permisos Rol</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPlanilla()'>Planilla</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarCuentasPagar()'>Cuentas Pagar</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPagos()'> Pagos</div>"
@@ -4094,7 +4096,300 @@ function erpsil_guardarEditarEmpleado(){
 
 
 }
+/*********************************************************/
+/*           Gestion Factura                             */
+/*********************************************************/
+function erpsil_listarFactura() {
+    var facturaData = {
+        w: "erpsil_factura",
+        r: "mostrar_factura"
+    };
 
+    calaApi_postRequest(facturaData, function (d) {
+ 
+        var MostrarFacturaWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +         "<h2 class='tituloTablas'>Lista de facturas</h2><br><br>"
+        +            "<tr>"
+        +                "<th>ID </th>"
+        +                "<th>Cliente </th>"
+        +                "<th>Descripcion </th>"
+        +                "<th>Cantidad </th>"
+        +                "<th>Stamp </th>"
+        +                "<th>Total </th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarFacturaWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_factura +" </td>"
+        +                "<td> "+ a.id_cliente +" </td>"
+        +                "<td> "+ a.descripcion +" </td>"
+        +                "<td> "+ a.cantidad +" </td>"
+        +                "<td> "+ a.stamp +" </td>"
+        +                "<td> "+ a.total +" </td>"
+        +                "<td> <div id='editar_factura' onClick='erpsil_editarFactura(" + a.id_factura + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onClick='erpsil_eliminarFactura("+ a.id_factura +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+    }
+}
+MostrarFacturaWindow += ""
++            "</tr>"
++         "</table>"
++                "<td> <div id='editar_activos' onclick='erpsil_menuWindow()' class='btn btn-success btn-sm'>Volver</div></td>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarFacturaWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
+function erpsil_editarFacturaWindow(data) {
+    
+    var editarFacturaWindow = ""
+    +        "<div class='container centrarDivTxt'>"
+    +        "<h2 class='text-center'>Editar Factura</h2>"
+    +       "<form class='form-horizontal' action='' method='post'>"
+    +              "<label class='col-sm-3 control-label'>ID</label>"
+    +              "<div class='col-sm'>"
+    +                   "<input type='text' id='inputId_factura' value='" + data.id_factura + "'  class='form-control' placeholder='ID' disabled>"
+    +             "</div>"
+    +           "<label class='col-sm-3 control-label'>Cliente</label>"
+    +           "<div class='col-sm'>"
+    +                "<input type='text'  id='inputCliente' value='" + data.id_cliente + "' class='form-control' placeholder='Cliente' required>"
+    +           "</div>"
+    +           "<label class='col-sm-3 control-label'>Descripcion</label>"
+    +           "<div class='col-sm'>"
+    +               "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='form-control' placeholder='Descripcion' required>"
+    +           "</div>"
+    +       "<label class='col-sm-3 control-label'>Cantidad</label>"
+    +        "<div class='col-sm'>"
+    +            "<input type='text' id='inputCantidad' value='" + data.cantidad + "' class='form-control' placeholder='Cantidad' required>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Total</label>"
+    +        "<div class='col-sm'>"
+    +            "<input type='text' id='inputTotal' value='" + data.total + "' class='form-control' placeholder='Total' required>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>stamp</label>"
+    +        "<div class='col-sm'>"
+    +               "<input type='text' id='inputstamp' value='" + data.stamp + "' class='form-control' placeholder='stamp' required>"
+    +        "</div>"
+    +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
+    +           " <div class='col-sm centrarDivTxt'>"
+    +               "<div type='submit' class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarFactura()' >Guardar</div>"
+    +                "<div class='btn btn-sm btn-danger btn_central' onclick='erpsil_listarFactura()'>Cancelar</div>"
+    +                 "</div>"
+    +            "</form>"
+    +        "</div>"
+    +       "</div>"
+    +       "</div>"
+
+
+erpsil_setContent(editarFacturaWindow);
+}
+
+function erpsil_editarFactura(id){
+    var req = {
+        w: "erpsil_factura",
+        r: "obtener_factura",
+        id:id
+    };
+
+    $("#editar_factura").empty();
+    $("#editar_factura").append("Cargando...");
+
+    calaApi_postRequest(req, function(d){
+        erpsil_editarFacturaWindow(d.resp);
+    }, function(){
+        console.log("no eliminar");
+    });
+}
+
+function erpsil_guardarEditarFactura(){
+
+    var idFactura = $("#inputId_factura").val();
+    var idCliente = $("#inputCliente").val();
+    var descripcionFactura = $("#inputDescripcion").val();
+    var cantidadFactura = $("#inputCantidad").val();
+    var totalFactura = $("#inputTotal").val();
+    var stampFactura = $("#inputstamp").val();
+
+    if(idFactura != "" && idCliente != "" && descripcionFactura != "" && cantidadFactura != "" 
+    && totalFactura != "" && stampFactura != ""){
+
+    var facturaData = {
+        w: "erpsil_factura",
+        r: "agregarEditar_factura",
+        id_factura:idFactura,
+        id_cliente:idCliente, 
+        descripcion:descripcionFactura,
+        cantidad:cantidadFactura,
+        total:totalFactura,
+        stamp:stampFactura
+    };
+    calaApi_postRequest(facturaData, function (d) {
+        erpsil_listarFactura();
+    }, function (d) {
+        console.log("No agregado" + d);
+    });
+    } else {
+        console.log("Error!");
+    }
+
+
+}
+/*********************************************************/
+/*           Gestion Planilla                            */
+/*********************************************************/
+function erpsil_listarPlanilla() {
+    var planillaData = {
+        w: "erpsil_planilla",
+        r: "mostrar_planilla"
+    };
+
+    calaApi_postRequest(planillaData, function (d) {
+ 
+        var MostrarPlanillaWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +         "<h2 class='tituloTablas'>Lista de Planillas</h2><br><br>"
+        +            "<tr>"
+        +                "<th>ID </th>"
+        +                "<th>Empleado</th>"
+        +                "<th>Salabrio bruto </th>"
+        +                "<th>CCSS </th>"
+        +                "<th>Rebajas </th>"
+        +                "<th>Salario neto </th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarPlanillaWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_planilla +" </td>"
+        +                "<td> "+ a.id_empleado +" </td>"
+        +                "<td> "+ a.salario_bruto +" </td>"
+        +                "<td> "+ a.ccss +" </td>"
+        +                "<td> "+ a.rebaja +" </td>"
+        +                "<td> "+ a.salario_neto +" </td>"
+        +                "<td> <div id='editar_planilla' onClick='erpsil_editarPlanilla(" + a.id_planilla + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onClick='erpsil_eliminarPlanilla("+ a.id_planilla +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+    }
+}
+MostrarPlanillaWindow += ""
++            "</tr>"
++         "</table>"
++                "<td> <div id='editar_planilla' onclick='erpsil_menuWindow()' class='btn btn-success btn-sm'>Volver</div></td>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarPlanillaWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
+function erpsil_editarPlanillaWindow(data) {
+    
+    var editarPlanillaWindow = ""
+    +        "<div class='container centrarDivTxt'>"
+    +        "<h2 class='text-center'>Editar ¨Planilla</h2>"
+    +       "<form class='form-horizontal' action='' method='post'>"
+    +              "<label class='col-sm-3 control-label'>ID</label>"
+    +              "<div class='col-sm'>"
+    +                   "<input type='text' id='inputId_planilla' value='" + data.id_planilla + "'  class='form-control' placeholder='ID' disabled>"
+    +             "</div>"
+    +           "<label class='col-sm-3 control-label'>Empleado</label>"
+    +           "<div class='col-sm'>"
+    +                "<input type='text'  id='inputEmpleado' value='" + data.id_empleado + "' class='form-control' placeholder='Cliente' required>"
+    +           "</div>"
+    +           "<label class='col-sm-3 control-label'>Salario Bruto</label>"
+    +           "<div class='col-sm'>"
+    +               "<input type='text' id='inputSalariobruto' value='" + data.salario_bruto + "' class='form-control' placeholder='Descripcion' required>"
+    +           "</div>"
+    +       "<label class='col-sm-3 control-label'>CCSS</label>"
+    +        "<div class='col-sm'>"
+    +            "<input type='text' id='inputCcss' value='" + data.ccss + "' class='form-control' placeholder='Cantidad' required>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Rebajas</label>"
+    +        "<div class='col-sm'>"
+    +            "<input type='text' id='inputRebaja' value='" + data.rebaja + "' class='form-control' placeholder='Total' required>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Salario neto</label>"
+    +        "<div class='col-sm'>"
+    +               "<input type='text' id='inputSalarioneto' value='" + data.salario_neto + "' class='form-control' placeholder='stamp' required>"
+    +        "</div>"
+    +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
+    +           " <div class='col-sm centrarDivTxt'>"
+    +               "<div type='submit' class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarPlanilla()' >Guardar</div>"
+    +                "<div class='btn btn-sm btn-danger btn_central' onclick='erpsil_listarPlanilla()'>Cancelar</div>"
+    +                 "</div>"
+    +            "</form>"
+    +        "</div>"
+    +       "</div>"
+    +       "</div>"
+
+
+erpsil_setContent(editarPlanillaWindow);
+}
+
+function erpsil_editarPlanilla(id){
+    var req = {
+        w: "erpsil_planilla",
+        r: "obtener_planilla",
+        id:id
+    };
+
+    $("#editar_planilla").empty();
+    $("#editar_planilla").append("Cargando...");
+
+    calaApi_postRequest(req, function(d){
+        erpsil_editarPlanillaWindow(d.resp);
+    }, function(){
+        console.log("no eliminar");
+    });
+}
+
+function erpsil_guardarEditarPlanilla(){
+
+    var idPlanilla = $("#inputId_planilla").val();
+    var idEmpleado = $("#inputEmpleado").val();
+    var salariobrutoPlanilla = $("#inputSalariobruto").val();
+    var ccssPlanilla = $("#inputCcss").val();
+    var rebajaPlanilla = $("#inputRebaja").val();
+    var salarionetoPlanilla = $("#inputSalarioneto").val();
+
+    if(idPlanilla != "" && idEmpleado != "" && salariobrutoPlanilla != "" && ccssPlanilla != "" 
+    && rebajaPlanilla != "" && salarionetoPlanilla != ""){
+
+    var planillaData = {
+        w: "erpsil_planilla",
+        r: "agregarEditar_planilla",
+        id_planilla:idPlanilla,
+        id_empleado:idEmpleado, 
+        salario_bruto:salariobrutoPlanilla,
+        ccss:ccssPlanilla,
+        rebaja:rebajaPlanilla,
+        salario_neto:salarionetoPlanilla
+    };
+    calaApi_postRequest(planillaData, function (d) {
+        erpsil_listarPlanilla();
+    }, function (d) {
+        console.log("No agregado" + d);
+    });
+    } else {
+        console.log("Error!");
+    }
+
+
+}
 /*********************************************************/
 /*                 Gestion Usuario                       */ // Falta editar
 /*********************************************************/
