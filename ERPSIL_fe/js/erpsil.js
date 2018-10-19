@@ -2262,6 +2262,8 @@ function erpsil_listarTipoCliente(){
 
         erpsil_setContent(MostrarTipoClienteWindow);
 
+                erpsil_CleanChart();
+
     }, function (d) {
         console.log(d);
     });
