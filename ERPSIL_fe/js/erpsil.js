@@ -1,5 +1,3 @@
-
-
 var debug = true;
 var cache = "";
 
@@ -186,8 +184,6 @@ function erpsil_listarPedido(){
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarPedidoWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
         +      "</div>";
 
-        $("#myChart").empty();
-        $("#myChart").append(content);
         erpsil_setContent(pedidoWindow);
 
     }, function (d) {
@@ -1940,10 +1936,6 @@ function erpsil_listarMovimientoInventario(){
         +          "<td> <div onclick='erpsil_agregarMovimientoInventarioWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
         +      "</div>";
         erpsil_setContent(MostrarMovimientoInventarioWindow);
-
-        $("#myChart").empty();
-        $("#myChart").append(content);
-
     }, function (d) {
         console.log(d);
     });
@@ -2269,9 +2261,7 @@ function erpsil_listarTipoCliente(){
         +      "</div>";
 
         erpsil_setContent(MostrarTipoClienteWindow);
-        //
-        erpsil_CleanChart();
-        //
+
     }, function (d) {
         console.log(d);
     });
@@ -2891,7 +2881,6 @@ function erpsil_listarInventario(){
         +      "<div class='table-responsive'>"
         +         "<table class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de inventario</h2><br><br>"
-        +           "<div id='chart_div'></div>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Cantidad</th>"
@@ -2935,8 +2924,6 @@ function erpsil_listarInventario(){
         +         "</table>"
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarInventarioWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
         +      "</div>";
-        +   "<canvas id='myChart' width='400' height='400'></canvas>";
-
         erpsil_setContent(MostrarInventarioWindow);
 
 
@@ -4152,6 +4139,371 @@ function erpsil_guardarEditarEmpleado(){
 
 }
 
+function erpsil_editarFacturaWindow(data) {
+    
+    var editarFacturaWindow = ""
+    +        "<div class='container centrarDivTxt'>"
+    +        "<h2 class='text-center'>Editar Factura</h2>"
+    +       "<form class='form-horizontal' action='' method='post'>"
+    +              "<label class='col-sm-3 control-label'>ID</label>"
+    +              "<div class='col-sm'>"
+    +                   "<input type='text' id='inputId_factura' value='" + data.id_factura + "'  class='form-control' placeholder='ID' disabled>"
+    +             "</div>"
+    +           "<label class='col-sm-3 control-label'>Cliente</label>"
+    +           "<div class='col-sm'>"
+    +                "<input type='text'  id='inputCliente' value='" + data.id_cliente + "' class='form-control' placeholder='Cliente' required>"
+    +           "</div>"
+    +           "<label class='col-sm-3 control-label'>Descripcion</label>"
+    +           "<div class='col-sm'>"
+    +               "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='form-control' placeholder='Descripcion' required>"
+    +           "</div>"
+    +       "<label class='col-sm-3 control-label'>Cantidad</label>"
+    +        "<div class='col-sm'>"
+    +            "<input type='text' id='inputCantidad' value='" + data.cantidad + "' class='form-control' placeholder='Cantidad' required>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Total</label>"
+    +        "<div class='col-sm'>"
+    +            "<input type='text' id='inputTotal' value='" + data.total + "' class='form-control' placeholder='Total' required>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>stamp</label>"
+    +        "<div class='col-sm'>"
+    +               "<input type='text' id='inputstamp' value='" + data.stamp + "' class='form-control' placeholder='stamp' required>"
+    +        "</div>"
+    +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
+    +           " <div class='col-sm centrarDivTxt'>"
+    +               "<div type='submit' class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarFactura()' >Guardar</div>"
+    +                "<div class='btn btn-sm btn-danger btn_central' onclick='erpsil_listarFactura()'>Cancelar</div>"
+    +                 "</div>"
+    +            "</form>"
+    +        "</div>"
+    +       "</div>"
+    +       "</div>"
+
+
+erpsil_setContent(editarFacturaWindow);
+}
+
+function erpsil_editarFactura(id){
+    var req = {
+        w: "erpsil_factura",
+        r: "obtener_factura",
+        id:id
+    };
+
+    $("#editar_factura").empty();
+    $("#editar_factura").append("Cargando...");
+
+    calaApi_postRequest(req, function(d){
+        erpsil_editarFacturaWindow(d.resp);
+    }, function(){
+        console.log("no eliminar");
+    });
+}
+
+function erpsil_guardarEditarFactura(){
+
+    var idFactura = $("#inputId_factura").val();
+    var idCliente = $("#inputCliente").val();
+    var descripcionFactura = $("#inputDescripcion").val();
+    var cantidadFactura = $("#inputCantidad").val();
+    var totalFactura = $("#inputTotal").val();
+    var stampFactura = $("#inputstamp").val();
+
+    if(idFactura != "" && idCliente != "" && descripcionFactura != "" && cantidadFactura != "" 
+    && totalFactura != "" && stampFactura != ""){
+
+    var facturaData = {
+        w: "erpsil_factura",
+        r: "agregarEditar_factura",
+        id_factura:idFactura,
+        id_cliente:idCliente, 
+        descripcion:descripcionFactura,
+        cantidad:cantidadFactura,
+        total:totalFactura,
+        stamp:stampFactura
+    };
+    calaApi_postRequest(facturaData, function (d) {
+        erpsil_listarFactura();
+    }, function (d) {
+        console.log("No agregado" + d);
+    });
+    } else {
+        console.log("Error!");
+    }
+
+
+}
+
+/*********************************************************/
+/*           Gestion Planilla                            */
+/*********************************************************/
+function erpsil_listarPlanilla() {
+    var planillaData = {
+        w: "erpsil_planilla",
+        r: "mostrar_planilla"
+    };
+
+    calaApi_postRequest(planillaData, function (d) {
+ 
+        var MostrarPlanillaWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +         "<h2 class='tituloTablas'>Lista de Planillas</h2><br><br>"
+        +            "<tr>"
+        +                "<th>ID </th>"
+        +                "<th>Empleado</th>"
+        +                "<th>Salabrio bruto </th>"
+        +                "<th>CCSS </th>"
+        +                "<th>Rebajas </th>"
+        +                "<th>Salario neto </th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarPlanillaWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_planilla +" </td>"
+        +                "<td> "+ a.id_empleado +" </td>"
+        +                "<td> "+ a.salario_bruto +" </td>"
+        +                "<td> "+ a.ccss +" </td>"
+        +                "<td> "+ a.rebaja +" </td>"
+        +                "<td> "+ a.salario_neto +" </td>"
+        +                "<td> <div id='editar_planilla' onClick='erpsil_editarPlanilla(" + a.id_planilla + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onClick='erpsil_eliminarPlanilla("+ a.id_planilla +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+    }
+}
+MostrarPlanillaWindow += ""
++            "</tr>"
++         "</table>"
++                "<td> <div id='agregar_planilla' onclick='erpsil_agregarPlanillaWindow()' class='btn btn-success btn-sm'>agregar</div></td>"
+        +      "</div>";
+
+        erpsil_setContent(MostrarPlanillaWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
+
+function erpsil_agregarPlanillaWindow() {
+
+    var planillaData = {
+        w: "erpsil_planilla",
+        r: "mostrar_planilla"
+    };
+
+    calaApi_postRequest(planillaData, function(d){
+
+        var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
+        var i = 1;
+        for(a in d.resp){ 
+            var x = d.resp[a];
+            selectD += "<option>" + i + " - Nombre de Empleado: " + x.nombre + " - id = (" + x.id_empleado + ")</option>";
+            i++;
+        }
+
+        selectD += "</select>";
+
+        console.log(d);
+        var agregarPlanillaWindow = ""
+
+        +    "<div class='container centrarDivTxt'>"
+        +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Planilla</h2>"
+
+        +        "<label class='col-sm-3 control-label'>Id Planilla</label>"
+        +        "<div class='col-sm'>"
+        +        selectD
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Id Empleado</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Id Empleado' required='required' id='inputEmpleado'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>Salario Bruto</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Salario Bruto' required='required' id='inputSalaB'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>CCSS</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='CCSS' required='required' id='inputccss'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>Rebaja</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Rebaja' required='required' id='inputRebaja'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>Salario Neto</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Salario Neto' required='required' id='inputSalaN'>"
+        +        "</div>"
+
+        +        "<div class='col-sm centrarDivTxt'>"
+        +            "<div onClick='erpsil_agregarPlanilla()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
+        +            "<div onClick='erpsil_listarPlanilla()' class='btn btn-sm btn-danger btn_central'>Regresar</div>"
+        +         "</div>"
+        +   " </div>"
+        //console.log(selectD);  
+        erpsil_setContent(agregarPlanillaWindow);
+    }, function(){
+        console.log("Error!");
+    });
+
+}
+
+function erpsil_agregarPlanilla(){
+
+    var d = $("#inputDrow");
+    var id = d[0].value;
+    id = id.split("(")[1].split(")")[0];
+
+    var id_planilla = id;
+    var idEmpleado = $("#inputEmpleado").val();
+    var salarioBruto = $("#inputSalaB").val();
+    var ccss = $("#inputccss").val();
+    var Rebaja = $("#inputRebaja").val();
+    var SalarioNeto = $("#inputSalaN").val();
+    
+
+    if(id_planilla != "" && idEmpleado != "" && salarioBruto != "" && ccss != "" && Rebaja != "" && SalarioNeto != ""  ){
+        
+        var planillaData = {
+            w: "erpsil_planilla",
+            r: "agregar_planilla",
+            id_empleado:idEmpleado,
+            salario_bruto:salarioBruto,
+            ccss:ccss,
+            rebaja:Rebaja,
+            salario_neto:SalarioNeto
+
+        };  
+        
+        calaApi_postRequest(planillaData, function (d) {
+            console.log(planillaData);
+            erpsil_listarPlanilla();
+        }, function (d) {
+            console.log("Planilla no agregada");
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+function erpsil_eliminarPlanilla(id){
+    var req = {
+        w: "erpsil_planilla",
+        r: "eliminar_planilla",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        //console.log(req);
+        erpsil_listarPlanilla();
+    }, function(){
+        console.log("Planilla no eliminada");
+    });
+    
+}
+
+
+function erpsil_editarPlanillaWindow(data) {
+    
+    var editarPlanillaWindow = ""
+    +        "<div class='container centrarDivTxt'>"
+    +        "<h2 class='text-center'>Editar ¨Planilla</h2>"
+    +       "<form class='form-horizontal' action='' method='post'>"
+    +              "<label class='col-sm-3 control-label'>ID</label>"
+    +              "<div class='col-sm'>"
+    +                   "<input type='text' id='inputId_planilla' value='" + data.id_planilla + "'  class='form-control' placeholder='ID' disabled>"
+    +             "</div>"
+    +           "<label class='col-sm-3 control-label'>Empleado</label>"
+    +           "<div class='col-sm'>"
+    +                "<input type='text'  id='inputEmpleado' value='" + data.id_empleado + "' class='form-control' placeholder='Cliente' required>"
+    +           "</div>"
+    +           "<label class='col-sm-3 control-label'>Salario Bruto</label>"
+    +           "<div class='col-sm'>"
+    +               "<input type='text' id='inputSalariobruto' value='" + data.salario_bruto + "' class='form-control' placeholder='Descripcion' required>"
+    +           "</div>"
+    +       "<label class='col-sm-3 control-label'>CCSS</label>"
+    +        "<div class='col-sm'>"
+    +            "<input type='text' id='inputCcss' value='" + data.ccss + "' class='form-control' placeholder='Cantidad' required>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Rebajas</label>"
+    +        "<div class='col-sm'>"
+    +            "<input type='text' id='inputRebaja' value='" + data.rebaja + "' class='form-control' placeholder='Total' required>"
+    +        "</div>"
+    +        "<label class='col-sm-3 control-label'>Salario neto</label>"
+    +        "<div class='col-sm'>"
+    +               "<input type='text' id='inputSalarioneto' value='" + data.salario_neto + "' class='form-control' placeholder='stamp' required>"
+    +        "</div>"
+    +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
+    +           " <div class='col-sm centrarDivTxt'>"
+    +               "<div type='submit' class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarPlanilla()' >Guardar</div>"
+    +                "<div class='btn btn-sm btn-danger btn_central' onclick='erpsil_listarPlanilla()'>Cancelar</div>"
+    +                 "</div>"
+    +            "</form>"
+    +        "</div>"
+    +       "</div>"
+    +       "</div>"
+
+
+erpsil_setContent(editarPlanillaWindow);
+}
+
+function erpsil_editarPlanilla(id){
+    var req = {
+        w: "erpsil_planilla",
+        r: "obtener_planilla",
+        id:id
+    };
+
+    $("#editar_planilla").empty();
+    $("#editar_planilla").append("Cargando...");
+
+    calaApi_postRequest(req, function(d){
+        erpsil_editarPlanillaWindow(d.resp);
+    }, function(){
+        console.log("no eliminar");
+    });
+}
+
+function erpsil_guardarEditarPlanilla(){
+
+    var idPlanilla = $("#inputId_planilla").val();
+    var idEmpleado = $("#inputEmpleado").val();
+    var salariobrutoPlanilla = $("#inputSalariobruto").val();
+    var ccssPlanilla = $("#inputCcss").val();
+    var rebajaPlanilla = $("#inputRebaja").val();
+    var salarionetoPlanilla = $("#inputSalarioneto").val();
+
+    if(idPlanilla != "" && idEmpleado != "" && salariobrutoPlanilla != "" && ccssPlanilla != "" 
+    && rebajaPlanilla != "" && salarionetoPlanilla != ""){
+
+    var planillaData = {
+        w: "erpsil_planilla",
+        r: "agregarEditar_planilla",
+        id_planilla:idPlanilla,
+        id_empleado:idEmpleado, 
+        salario_bruto:salariobrutoPlanilla,
+        ccss:ccssPlanilla,
+        rebaja:rebajaPlanilla,
+        salario_neto:salarionetoPlanilla
+    };
+    calaApi_postRequest(planillaData, function (d) {
+        erpsil_listarPlanilla();
+    }, function (d) {
+        console.log("No agregado" + d);
+    });
+    } else {
+        console.log("Error!");
+    }
+
+
+}
 /*********************************************************/
 /*                 Gestion Usuario                       */ // Falta editar
 /*********************************************************/

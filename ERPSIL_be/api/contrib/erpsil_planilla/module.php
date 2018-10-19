@@ -53,6 +53,31 @@ function erpsil_planilla_init(){
 			'file' => 'erpsil_planilla.php'
 			),
 		array(
+				'r' => 'agregar_planilla',
+				'action' => 'agregarPlanilla',
+				'access' => 'users_loggedIn', 
+				'access_params' => 'accessName',
+				array(
+					array("key" => "id_empleado", "def" => "", "req" => true),
+					array("key" => "salario_bruto", "def" => "", "req" => true),
+					array("key" => "ccss", "def" => "", "req" => true),
+					array("key" => "rebaja", "def" => "", "req" => true),
+					array("key" => "salario_neto", "def" => "", "req" => true)
+				),
+				'file' => 'erpsil_planilla.php'
+			),
+		array(
+				'r' => 'eliminar_planilla',
+				'action' => 'eliminarPlanilla',
+				'access' => 'users_loggedIn', 
+				'access_params' => 'accessName',
+				array(
+					array("key" => "id", "def" => "", "req" => true)  
+				),
+				'file' => 'erpsil_planilla.php'
+			),
+
+		array(
 			'r' => 'obtener_planilla',
 			'action' => 'obtenerPlanilla',
 			'access' => 'users_loggedIn', 
