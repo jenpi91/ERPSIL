@@ -4145,6 +4145,7 @@ function erpsil_guardarEditarFactura(){
 
 
 }
+
 /*********************************************************/
 /*           Gestion Planilla                            */
 /*********************************************************/
@@ -4189,7 +4190,7 @@ function erpsil_listarPlanilla() {
 MostrarPlanillaWindow += ""
 +            "</tr>"
 +         "</table>"
-+                "<td> <div id='editar_planilla' onclick='erpsil_menuWindow()' class='btn btn-success btn-sm'>Volver</div></td>"
++                "<td> <div id='agregar_planilla' onclick='erpsil_agregarPlanillaWindow()' class='btn btn-success btn-sm'>agregar</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarPlanillaWindow);
@@ -4198,6 +4199,129 @@ MostrarPlanillaWindow += ""
         console.log(d);
     });
 }
+
+function erpsil_agregarPlanillaWindow() {
+
+    var planillaData = {
+        w: "erpsil_planilla",
+        r: "mostrar_planilla"
+    };
+
+    calaApi_postRequest(planillaData, function(d){
+
+        var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
+        var i = 1;
+        for(a in d.resp){ 
+            var x = d.resp[a];
+            selectD += "<option>" + i + " - Nombre de Empleado: " + x.nombre + " - id = (" + x.id_empleado + ")</option>";
+            i++;
+        }
+
+        selectD += "</select>";
+
+        console.log(d);
+        var agregarPlanillaWindow = ""
+
+        +    "<div class='container centrarDivTxt'>"
+        +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Planilla</h2>"
+
+        +        "<label class='col-sm-3 control-label'>Id Planilla</label>"
+        +        "<div class='col-sm'>"
+        +        selectD
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Id Empleado</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Id Empleado' required='required' id='inputEmpleado'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>Salario Bruto</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Salario Bruto' required='required' id='inputSalaB'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>CCSS</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='CCSS' required='required' id='inputccss'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>Rebaja</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Rebaja' required='required' id='inputRebaja'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>Salario Neto</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Salario Neto' required='required' id='inputSalaN'>"
+        +        "</div>"
+
+        +        "<div class='col-sm centrarDivTxt'>"
+        +            "<div onClick='erpsil_agregarPlanilla()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
+        +            "<div onClick='erpsil_listarPlanilla()' class='btn btn-sm btn-danger btn_central'>Regresar</div>"
+        +         "</div>"
+        +   " </div>"
+        //console.log(selectD);  
+        erpsil_setContent(agregarPlanillaWindow);
+    }, function(){
+        console.log("Error!");
+    });
+
+}
+
+function erpsil_agregarPlanilla(){
+
+    var d = $("#inputDrow");
+    var id = d[0].value;
+    id = id.split("(")[1].split(")")[0];
+
+    var id_planilla = id;
+    var idEmpleado = $("#inputEmpleado").val();
+    var salarioBruto = $("#inputSalaB").val();
+    var ccss = $("#inputccss").val();
+    var Rebaja = $("#inputRebaja").val();
+    var SalarioNeto = $("#inputSalaN").val();
+    
+
+    if(id_planilla != "" && idEmpleado != "" && salarioBruto != "" && ccss != "" && Rebaja != "" && SalarioNeto != ""  ){
+        
+        var planillaData = {
+            w: "erpsil_planilla",
+            r: "agregar_planilla",
+            id_empleado:idEmpleado,
+            salario_bruto:salarioBruto,
+            ccss:ccss,
+            rebaja:Rebaja,
+            salario_neto:SalarioNeto
+
+        };  
+        
+        calaApi_postRequest(planillaData, function (d) {
+            console.log(planillaData);
+            erpsil_listarPlanilla();
+        }, function (d) {
+            console.log("Planilla no agregada");
+        });
+    } else {
+        console.log("Error!");
+    }
+}
+
+function erpsil_eliminarPlanilla(id){
+    var req = {
+        w: "erpsil_planilla",
+        r: "eliminar_planilla",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        //console.log(req);
+        erpsil_listarPlanilla();
+    }, function(){
+        console.log("Planilla no eliminada");
+    });
+    
+}
+
+
 function erpsil_editarPlanillaWindow(data) {
     
     var editarPlanillaWindow = ""
