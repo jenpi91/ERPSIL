@@ -1,5 +1,3 @@
-
-
 var debug = true;
 var cache = "";
 
@@ -188,8 +186,6 @@ function erpsil_listarPedido(){
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarPedidoWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
         +      "</div>";
 
-        $("#myChart").empty();
-        $("#myChart").append(content);
         erpsil_setContent(pedidoWindow);
 
     }, function (d) {
@@ -1942,10 +1938,6 @@ function erpsil_listarMovimientoInventario(){
         +          "<td> <div onclick='erpsil_agregarMovimientoInventarioWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
         +      "</div>";
         erpsil_setContent(MostrarMovimientoInventarioWindow);
-
-        $("#myChart").empty();
-        $("#myChart").append(content);
-
     }, function (d) {
         console.log(d);
     });
@@ -2271,16 +2263,10 @@ function erpsil_listarTipoCliente(){
         +      "</div>";
 
         erpsil_setContent(MostrarTipoClienteWindow);
-        //
-        erpsil_CleanChart();
-        //
+
     }, function (d) {
         console.log(d);
     });
-}
-
-function erpsil_cleanCanvas(can){
-    can.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function erpsil_agregarTipoClienteWindow() {
@@ -2546,41 +2532,7 @@ function erpsil_listarActivos(){
         +      "</div>";
 
         erpsil_setContent(MostrarActivosWindow);
-        var cantidad = a.cantidad;
-        console.log(cantidad);
 
-        ////////////////////////////////////////
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["caca", "Blue"],
-            datasets: [{
-                label: 'Gastos',
-                data: [cantidad, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
-            }
-        }
-    });
-    $("#myChart").empty();
-    $("#myChart").append(myChart);
     }, function (d) {
         console.log(d);
     });
@@ -2869,6 +2821,7 @@ function erpsil_guardarEditarRoles() {
 /*********************************************************/
 
 function erpsil_listarInventario(){
+
     var inventarioData = {
         w: "erpsil_inventario",
         r: "mostrar_inventario"
@@ -2881,7 +2834,6 @@ function erpsil_listarInventario(){
         +      "<div class='table-responsive'>"
         +         "<table class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de inventario</h2><br><br>"
-        +           "<div id='chart_div'></div>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Cantidad</th>"
@@ -2925,60 +2877,10 @@ function erpsil_listarInventario(){
         +         "</table>"
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarInventarioWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
         +      "</div>";
-        +   "<canvas id='myChart' width='400' height='400'></canvas>";
-
         erpsil_setContent(MostrarInventarioWindow);
-        
-
-        var cantidad = a.cantidad;
-        console.log(cantidad);
-
-        ////////////////////////////////////////
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["caca", "Blue", "algo", "Green", "Purple", "Orange"],
-            datasets: [{
-                label: 'Gastos',
-                data: [cantidad, 0.5, 0.5, 0.5, 0.5, 0.5],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)', 
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
-            }
-        }
-    });
-            //myChart();
-            $("#myChart").empty();
-            $("#myChart").append(myChart);
     }, function (d) {
         console.log(d);
-        
-
-});
+    });
 }
 
 function erpsil_agregarInventarioWindow(){
@@ -4701,15 +4603,6 @@ function erpsil_eliminarUsuario(id){
 function erpsil_setContent(content) {
     $("#erpsil_content").empty();
     $("#erpsil_content").append(content);
-}
-
-function erpsil_CleanChart(){
-    var pieChartContent = document.getElementById('myChart');
-    pieChartContent.innerHTML = '&nbsp;';
-    $('#myChart').append('<canvas id="myChart" width="300" height="300"><canvas>');
-
-    ctx = $("#myChart").get(0).getContext("2d");        
-    var myPieChart = new Chart(ctx);
 }
 
 function erpsil_debug(mensaje) {
