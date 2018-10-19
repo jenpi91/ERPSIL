@@ -15,6 +15,11 @@
     top: 0;
 }
 
+.div_canvas{
+    width: 770px;
+    height: 385px;
+}
+
 .centrarDivTxt{
     text-align: center;
     margin: auto;
@@ -22,7 +27,6 @@
 
 .btn_central{
     margin: 10px;
-
 }
 
 .dropdown{
