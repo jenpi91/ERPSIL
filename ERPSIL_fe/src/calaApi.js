@@ -207,7 +207,7 @@ function calaApi_getLocalStorage(k){
 /* Function to make post reqs                */
 /* Req request data, func success, func error*/
 /*********************************************/
-function calaApi_postRequest(req, success, error, timeout = 800, times = 0){
+function calaApi_postRequest(req, success, error, timeout = 10000, times = 0){
     calaApi_debug("Making a post request to " + calaApi_url);
     /*generate the form*/
     var _data = new FormData();

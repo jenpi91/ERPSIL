@@ -119,6 +119,7 @@ function erpsil_setMenu() {
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPagos()'> Pagos</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPedido()'> Pedidos</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarMovimientoInventario()'> Movimiento Inventario</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_logout()'> Salir </div>"
     +             "</ul>"
 
     +        "</div>"
@@ -128,6 +129,29 @@ function erpsil_setMenu() {
     $("#erpsil_content").empty();
     $("#erpsil_menu").empty();
     $("#erpsil_menu").append(content);
+}
+
+/*********************************************************/
+/*                       logOut                          */
+/*********************************************************/
+
+function erpsil_logout(){
+console.log("Salir");
+
+var logOut = {
+    w: "users",
+    r: "users_log_me_out"
+}
+
+calaApi_postRequest(logOut, function (d) {
+ console.log("si funcionó");
+
+}, function (d) {
+    console.log("No funcionó");
+});
+
+
+
 }
 
 /*********************************************************/
@@ -4411,7 +4435,6 @@ function erpsil_eliminarPlanilla(id){
     
 }
 
-
 function erpsil_editarPlanillaWindow(data) {
     
     var editarPlanillaWindow = ""
@@ -4597,14 +4620,11 @@ function erpsil_agregarUsuario(){
             userCountry:countryUsuario
         };
 
-        //alert(usuarioData.email);
-
         calaApi_registerUser(usuarioData, function(d){
             console.log("***********************************************************"); 
-            console.log(usuarioData); 
-            console.log(d); 
+            //console.log(usuarioData); 
+            //console.log(d); 
             erpsil_listarUsuario();
-
 
         }, function(d){
             console.log("Error al agregar usuario" + d);
