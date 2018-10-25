@@ -59,6 +59,7 @@ function erpsil_login(){
         //erpsil_agregarInventarioWindow();
 
     }, function(b){
+        erpsil_modalMalo();
         console.log(b);    
     });
 
@@ -103,7 +104,7 @@ function erpsil_setMenu() {
     +    	"<div class='menuNav' >"
 
     +        	 "<ul>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='' >Grafica (pronto)</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()' >Grafica (pronto)</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarCliente()'>Cliente</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarProveedor()'>Proveedor</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarEmpleado()'>Empleado</div>"
@@ -120,15 +121,42 @@ function erpsil_setMenu() {
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPedido()'> Pedidos</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarMovimientoInventario()'> Movimiento Inventario</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_logout()'> Salir </div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()'> modal </div>"
     +             "</ul>"
 
     +        "</div>"
 
     +   "</div>";
 
+    $("#erpsil_modal").empty();
     $("#erpsil_content").empty();
     $("#erpsil_menu").empty();
     $("#erpsil_menu").append(content);
+}
+
+/*********************************************************/
+/*                       Alertas                         */
+/*********************************************************/
+function erpsil_modalBueno(){
+
+    var modal = ""
++      "<div class='alert alert-success' role='alert'>Proceso correctamente</div>"
+    erpsil_setModal(modal);
+
+    calaApi_doSomethingAfter(function(){
+        $("#erpsil_modal").empty();
+    }, 5000);
+}
+
+function erpsil_modalMalo(){
+
+    var modal = ""
++      "<div class='alert alert-danger' role='alert'>Error en el proceso</div>"
+    erpsil_setModal(modal);
+
+    calaApi_doSomethingAfter(function(){
+        $("#erpsil_modal").empty();
+    }, 5000);
 }
 
 /*********************************************************/
@@ -145,8 +173,12 @@ var logOut = {
 
 calaApi_postRequest(logOut, function (d) {
  console.log("si funcionó");
+ $("#erpsil_content").empty();
+ $("#erpsil_menu").empty();
+ erpsil_loginWindow();
 
 }, function (d) {
+    erpsil_modalMalo();
     console.log("No funcionó");
 });
 
@@ -212,6 +244,7 @@ function erpsil_listarPedido(){
 
     }, function (d) {
         console.log(d);
+        erpsil_modalMalo();
     });
 }
 
@@ -234,7 +267,6 @@ function erpsil_agregarPedidoWindow() {
 
         selectD += "</select>";
 
-        console.log(d);
         var agregarPedidoWindow = ""
 
         +    "<div class='container centrarDivTxt'>"
@@ -280,9 +312,9 @@ function erpsil_agregarPedidoWindow() {
         +            "<div onClick='erpsil_listarPedido()' class='btn btn-sm btn-danger btn_central'>Agregar</div>"
         +         "</div>"
         +   " </div>"
-        //console.log(selectD);  
         erpsil_setContent(agregarPedidoWindow);
     }, function(){
+        erpsil_modalMalo();
         console.log("Error!");
     });
 
@@ -319,12 +351,13 @@ function erpsil_agregarPedido(){
         };  
         
         calaApi_postRequest(pedidoData, function (d) {
-            console.log(pedidoData);
             erpsil_listarPedido();
         }, function (d) {
+            erpsil_modalBueno();
             console.log("Pedido no agregado");
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -337,9 +370,10 @@ function erpsil_eliminarPedido(id){
     };
 
     calaApi_postRequest(req, function(){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_listarPedido();
     }, function(){
+        erpsil_modalMalo();
         console.log("Pedido no eliminarado");
     });
     
@@ -405,9 +439,10 @@ function erpsil_editarPedido(id){
     }
 
     calaApi_postRequest(req, function(d){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_editarPedidoWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Pedidos no editado");
     });
 }
@@ -438,12 +473,13 @@ function erpsil_guadarEditarPedido(){
             precio:precio
         };
         calaApi_postRequest(editarPedido, function (d) {
-            //console.log(editarPedido);
+            erpsil_modalBueno();
             erpsil_listarPedido();
         }, function (d) {
             console.log("Pedido no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -501,6 +537,7 @@ function erpsil_listarClientesTickets(){
         erpsil_setContent(ClientesTicketsWindow);
 
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
@@ -591,9 +628,11 @@ function erpsil_agregarClientesTickets(){
             console.log(tipoClientesTicketsData);
             erpsil_listarClientesTickets();
         }, function (d) {
+            erpsil_modalBueno();
             console.log("Tipo de cliente ticket no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -650,9 +689,10 @@ function erpsil_editarClientesTickets(id){
     }
 
     calaApi_postRequest(req, function(d){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_editarClienteTicketsWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Activos no editado");
     });
 }
@@ -679,12 +719,13 @@ function erpsil_guadarEditarClienteTicket(){
             status:status,
         };
         calaApi_postRequest(clienteTicket, function (d) {
-            //console.log(clienteTicket);
+            erpsil_modalBueno();
             erpsil_listarClientesTickets();
         }, function (d) {
             console.log("clienteTicket no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -697,9 +738,10 @@ function erpsil_eliminarClienteTicket(id){
     };
 
     calaApi_postRequest(req, function(){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_listarClientesTickets();
     }, function(){
+        erpsil_modalMalo();
         console.log("Cliente  ticket no eliminarado");
     });
     
@@ -749,9 +791,9 @@ function erpsil_listarPermisoRol(){
         +      "</div>";
 
         erpsil_setContent(MostrarPermisoRolWindow);
-
+        console.log("bueno POR ACA!!!");
     }, function (d) {
-        console.log(d);
+        erpsil_modalMalo();
     });
 }
 
@@ -796,6 +838,7 @@ function erpsil_agregarPermisoRolWindow() {
         erpsil_setContent(agregarPermisoRolWindow);
 
     }, function () {
+        erpsil_modalMalo();
         console.log("Error!");
     });
 }
@@ -819,11 +862,14 @@ function erpsil_agregarPermisoRol(){
         
         calaApi_postRequest(permosoRolData, function (d) {
             console.log(permosoRolData);
+            erpsil_modalBueno();
             erpsil_listarPermisoRol();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Tipo de cliente ticket no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -868,9 +914,10 @@ function erpsil_editarPermisoRol(id) {
     }
 
     calaApi_postRequest(req, function (d) {
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_editarPermisoRolWindow(d.resp);
     }, function () {
+        erpsil_modalMalo();
         console.log("Rol no editado");
     });
 }
@@ -892,12 +939,14 @@ function erpsil_guardarEditarPermisoRol(){
         };
 
         calaApi_postRequest(permisoRol, function (d) {
-            console.log(permisoRol);
+            erpsil_modalBueno();
             erpsil_listarPermisoRol();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("clienteTicket no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -910,10 +959,11 @@ function erpsil_eliminarPermisoRol(id){
     };
 
     calaApi_postRequest(req, function(){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_listarPermisoRol();
     }, function(){
-        console.log("Tipo cliente no eliminarado");
+        erpsil_modalMalo();
+        console.log("Permiso rol no eliminarado");
     });
 
 }
@@ -1027,6 +1077,7 @@ function erpsil_listarCuentasPagar(){
         erpsil_setContent(MostrarCuentasPagarWindow);
 
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
@@ -1081,6 +1132,7 @@ function erpsil_agregarCuentasPagarWindow() {
         erpsil_setContent(agregarCuentasPagarWindow);
         console.log(p);
     },function(){
+        erpsil_modalMalo();
         console.log("Cuentas pagar no agregado.");
     });
  
@@ -1114,8 +1166,10 @@ function erpsil_agregarCuentasPagar(){
  
         calaApi_postRequest(permisoCuentasPagar, function (d) {
             console.log(permisoCuentasPagar);
+            erpsil_modalBueno();
             erpsil_listarCuentasPagar();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Historial precio no agregado" + d);
         });
     }
@@ -1197,6 +1251,7 @@ function erpsil_editarCuentasPagarWindow(data) {
         erpsil_setContent(editarCuentasPagarWindow);
         console.log(p);
     },function(){
+        erpsil_modalMalo();
         console.log("Cuentas pagar no actualizado.");
     });
  
@@ -1210,8 +1265,10 @@ function erpsil_editarCuentasPagar(id){
      };
  
      calaApi_postRequest(req, function(d){
+        erpsil_modalBueno();
         erpsil_editarCuentasPagarWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Cuentas pagar no editado");
     });
 }
@@ -1247,7 +1304,9 @@ function erpsil_guardarEditarCuentasPagar(){
  
         calaApi_postRequest(permisoCuentasPagar, function (d) {
             erpsil_listarCuentasPagar();
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Historial precio no actualizado" + d);
         });
     }
@@ -1261,9 +1320,10 @@ function erpsil_eliminarCuentasPagar(id){
      };
  
      calaApi_postRequest(req, function(){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_listarCuentasPagar();
     }, function(){
+        erpsil_modalMalo();
         console.log("Cuentas pagar no eliminado");
     });
 }
@@ -1316,6 +1376,7 @@ function erpsil_listarHistorialPrecio(){
         erpsil_setContent(MostrarHistorialPreciosWindow);
  
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
@@ -1330,7 +1391,6 @@ function erpsil_agregarHistorialPrecioWindow() {
        r: "mostrar_proveedor"
     };
 
-   
     calaApi_postRequest(historialPrecioData, function(d){
        
        var selectH = "<select class='custom-select' id='inputDown1'>"  
@@ -1341,8 +1401,6 @@ function erpsil_agregarHistorialPrecioWindow() {
            i++;
        }
        selectH += "</select>";
-       console.log(d);
-
 
        calaApi_postRequest(proveedorData, function(p){
        
@@ -1386,12 +1444,11 @@ function erpsil_agregarHistorialPrecioWindow() {
            erpsil_setContent(agregarHistorialPreciosWindow);
            console.log(d);
         }, function(){
+            erpsil_modalMalo();
             console.log("error");
         });
-
-       
-
     }, function(){
+        erpsil_modalMalo();
         console.log("error");
     });
 
@@ -1421,13 +1478,14 @@ function erpsil_agregarHistorialPrecio(){
            };
 
            calaApi_postRequest(permosoHistorialPrecio, function (d) {
-               console.log(permosoHistorialPrecio);
+               erpsil_modalBueno();
                erpsil_listarHistorialPrecio();
            }, function (d) {
                console.log("Historial precio no agregado" + d);
            });
        } else {
-           console.log("Error!");
+        erpsil_modalMalo();
+        console.log("Error!");
        }
 
    
@@ -1454,9 +1512,7 @@ function erpsil_editarHistorialPrecioWindow(data) {
             i++;
         }
         selectH += "</select>";
-        console.log(d);
- 
- 
+
         calaApi_postRequest(proveedorData, function(p){
         
             var selectP = "<select class='custom-select' id='inputDown2'>"  
@@ -1503,16 +1559,16 @@ function erpsil_editarHistorialPrecioWindow(data) {
             +        "</div>"
             +       "</div>"
             +       "</div>"
-            
-            
-               erpsil_setContent(editarHistorialPreciosWindow);
+            erpsil_setContent(editarHistorialPreciosWindow);
             console.log(d);
-         }, function(){
-             console.log("error");
-         });
-     }, function(){
-         console.log("error");
-     });
+        }, function () {
+            erpsil_modalMalo();
+            console.log("Error!!");
+        });
+    }, function () {
+        erpsil_modalMalo();
+        console.log("Error!!");
+    });
 }
 
 function erpsil_editarHistorialPrecio(id){
@@ -1523,9 +1579,9 @@ function erpsil_editarHistorialPrecio(id){
      };
 
      calaApi_postRequest(req, function (d) {
-        console.log(req);
         erpsil_editarHistorialPrecioWindow(d.resp);
     }, function () {
+        erpsil_modalMalo();
         console.log("Historial Precio no editado");
     });
 }
@@ -1538,9 +1594,10 @@ function erpsil_eliminarHistorialPrecio(id){
     };
 
     calaApi_postRequest(req, function(){
-       //console.log(req);
-       erpsil_listarHistorialPrecio();
+        erpsil_modalBueno();
+        erpsil_listarHistorialPrecio();
    }, function(){
+       erpsil_modalMalo();
        console.log("Historial precio no eliminarado");
    });
 }
@@ -1574,11 +1631,14 @@ function erpsil_guardarEditarHistorialPago(){
         }
         calaApi_postRequest(historialPago, function (d) {
             console.log(historialPago);
+            erpsil_modalBueno();
             erpsil_listarHistorialPrecio();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Pago no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -1635,6 +1695,7 @@ function erpsil_listarPagos(){
         erpsil_setContent(MostrarPagosWindow);
  
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
@@ -1708,9 +1769,11 @@ function erpsil_agregarPagosWindow() {
         erpsil_setContent(agregarPagosWindow);
         console.log(d);
     }, function(){
+        erpsil_modalMalo();
         console.log("error");
     });
 }, function(){
+    erpsil_modalMalo();
     console.log("error");
 });
 }
@@ -1741,12 +1804,14 @@ function erpsil_agregarPagos(){
             actual:actual
         }
         calaApi_postRequest(pago, function (d) {
-            console.log(pago);
+            erpsil_modalBueno();
             erpsil_listarPagos();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Pago no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -1760,9 +1825,10 @@ function erpsil_eliminarPago(id){
      };
  
      calaApi_postRequest(req, function(){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_listarPagos();
     }, function(){
+        erpsil_modalMalo();
         console.log("Pago no agregado");
     });
 }
@@ -1775,9 +1841,10 @@ function erpsil_editarPagos(id){
     };
     
     calaApi_postRequest(req, function(d){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_editarPagosWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Pago no editado");
     });
 }
@@ -1863,9 +1930,11 @@ function erpsil_editarPagosWindow(data) {
                           
         console.log(d);
     }, function(){
+        erpsil_modalMalo();
         console.log("error");
     });
 }, function(){
+    erpsil_modalMalo();
     console.log("error");
 });
 }
@@ -1900,12 +1969,14 @@ function erpsil_guardarEditarPago(){
             actual:actual
         }
         calaApi_postRequest(pago, function (d) {
-            console.log(pago);
+            erpsil_modalBueno();
             erpsil_listarPagos();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Pago no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -1985,10 +2056,7 @@ function erpsil_agregarMovimientoInventarioWindow() {
             i++;
         }
         selectIn += "</select>";
- 
-        console.log(inv);
- 
- 
+
         calaApi_postRequest(usuarioData, function(usu){
             var selectUsu = "<select class='custom-select' id='inputDown2'>" 
             var i = 1;
@@ -1998,9 +2066,7 @@ function erpsil_agregarMovimientoInventarioWindow() {
             i++;
             }
             selectUsu += "</select>";
- 
-            console.log(usu);
- 
+
             var agregarMovimientoInventarioWindow = ""
         
             +    "<div class='container centrarDivTxt'>"
@@ -2034,11 +2100,11 @@ function erpsil_agregarMovimientoInventarioWindow() {
             erpsil_setContent(agregarMovimientoInventarioWindow);
         }, function(){
             console.log("error");
-            console.log(selectUsu);
+            erpsil_modalMalo();
         });
     }, function(){
         console.log("error");
-        console.log(selectUsu);
+        erpsil_modalMalo();
 
     });
 }
@@ -2071,11 +2137,14 @@ function erpsil_agregarMovimientoInventario(){
             costo:costo
         }
         calaApi_postRequest(movimientoInventario, function (d) {
+            erpsil_modalBueno();
             erpsil_listarMovimientoInventario();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("movimiento inventario no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2158,9 +2227,11 @@ function erpsil_editarMovimientoInventarioWindow(data) {
                              
             erpsil_setContent(editarMovimientoInventarioWindow);
         }, function(){
+            erpsil_modalMalo();
             console.log("error");
         });
     }, function(){
+        erpsil_modalMalo();
         console.log("error");
     });
 }
@@ -2173,9 +2244,10 @@ function erpsil_editarMovimientoInventario(id){
     };
    
     calaApi_postRequest(req, function(d){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_editarMovimientoInventarioWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Movimiento inventario no editado");
     });
 }
@@ -2213,10 +2285,12 @@ function erpsil_guardarEditarMovimientoInventario(){
         }
         calaApi_postRequest(movimientoInventario, function (d) {
             erpsil_listarMovimientoInventario();
+            erpsil_modalBueno();
         }, function (d) {
             console.log("movimiento inventario no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2229,9 +2303,10 @@ function erpsil_eliminarMovimientoInventario(id){
         id:id
      };
      calaApi_postRequest(req, function(){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_listarMovimientoInventario();
     }, function(){
+        erpsil_modalMalo();
         console.log("Movimiento de inventario no eliminado");
     });
 }
@@ -2285,10 +2360,10 @@ function erpsil_listarTipoCliente(){
         +      "</div>";
 
         erpsil_setContent(MostrarTipoClienteWindow);
-
-                erpsil_CleanChart();
-
+        //Eliminar el grafico
+        erpsil_CleanChart();
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
@@ -2344,12 +2419,14 @@ function erpsil_agregarTipoCliente(){
         };  
         
         calaApi_postRequest(tipoClienteData, function (d) {
-            console.log(tipoClienteData);
+            erpsil_modalBueno();
             erpsil_listarTipoCliente();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Tipo de cliente no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2362,8 +2439,10 @@ function erpsil_eliminarTipoCliente(id) {
     };
 
     calaApi_postRequest(req, function(){
+        erpsil_modalBueno();
         erpsil_listarTipoCliente();
     }, function(){
+        erpsil_modalMalo();
         console.log("Tipo cliente no eliminarado");
     });
     
@@ -2404,8 +2483,6 @@ function erpsil_editarTipoClienteWindow(data) {
     +        "</div>"
     +       "</div>"
     +       "</div>"
-
-
     erpsil_setContent(editartipoClienteWindow);
 }
 
@@ -2417,9 +2494,10 @@ function erpsil_editarTipoCliente(id){
     };
     
     calaApi_postRequest(req, function(d){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_editarTipoClienteWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Tipo cliente no editado");
     });
 }
@@ -2446,11 +2524,13 @@ function erpsil_guardarEditarTipoCliente() {
         
         calaApi_postRequest(tipoClienteData, function (d) {
             erpsil_listarTipoCliente();
-            console.log(tipoClienteData);
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Tipo de cliente no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2502,10 +2582,11 @@ function erpsil_agregarActivos(){
         };  
         
         calaApi_postRequest(activosData, function (d) {
-            //console.log(activosData);
+            erpsil_modalBueno();
             console.log("Tipo de cliente agregado" + d);
             erpsil_listarActivos();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Tipo de cliente no agregado" + d);
         });
     } else {
@@ -2560,7 +2641,8 @@ function erpsil_listarActivos(){
         var cantidad = a.cantidad;
         console.log(cantidad);
 
-        ////////////////////////////////////////
+        /*******************************************************/
+
         var ctx = document.getElementById("myChart").getContext('2d');
         if (window.grafica) {
             window.grafica.clear();
@@ -2603,7 +2685,7 @@ function erpsil_listarActivos(){
             }
         });
 
-        ////////////////////////////////////////
+        /*******************************************************/
             
 
     }, function (d) {
@@ -2619,9 +2701,10 @@ function erpsil_eliminarActivos(id) {
     };
 
     calaApi_postRequest(req, function(){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_listarActivos();
     }, function(){
+        erpsil_modalMalo();
         console.log("Tipo cliente no eliminarado");
     });
     
@@ -2670,9 +2753,10 @@ function erpsil_editarActivos(id){
     };
     
     calaApi_postRequest(req, function(d){
-        //console.log(req);
+        erpsil_modalBueno();
         erpsil_editarActivosWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Activos no editado");
     });
 }
@@ -2697,10 +2781,13 @@ function erpsil_guardarEditarActivos() {
         
         calaApi_postRequest(tipoClienteData, function (d) {
             erpsil_listarActivos();
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Activo no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2745,13 +2832,15 @@ function erpsil_agregarRoles(){
             descripcion:descripcionRoles,
         };  
         calaApi_postRequest(rolesData, function (d) {
-            //console.log(activosData);
+            erpsil_modalBueno();
             console.log("Rol agregado" + d);
             erpsil_listarRoles();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Rol no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2798,6 +2887,7 @@ function erpsil_listarRoles(){
         erpsil_setContent(MostrarRolesWindow);
 
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
@@ -2811,7 +2901,9 @@ function erpsil_eliminarRoles(id) {
 
     calaApi_postRequest(req, function(){
         erpsil_listarRoles();
+        erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("Roles no eliminarado");
     });
     
@@ -2857,7 +2949,9 @@ function erpsil_editarRoles(id){
     
     calaApi_postRequest(req, function(d){
         erpsil_editarRolesWindow(d.resp);
+        erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("Rol no editado");
     });
 }
@@ -2880,11 +2974,14 @@ function erpsil_guardarEditarRoles() {
         
         calaApi_postRequest(rolesData, function (d) {
             console.log(rolesData);
+            erpsil_modalBueno();
             erpsil_listarRoles();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Activo no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -3005,51 +3102,6 @@ function erpsil_listarInventario(){
 });
 }
 
-function barra(){
-    
-    var ctx = document.getElementById("myChart").getContext('2d');
-    if (window.grafica) {
-        window.grafica.clear();
-        window.grafica.destroy();
-    }
-    window.grafica  = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["lunes", "martes", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-}
-
 function erpsil_agregarInventarioWindow(){
     var agregarInventarioWindow = ""
     +    "<div class='container centrarDivTxt'>"
@@ -3143,12 +3195,15 @@ function erpsil_agregarInventario(){
         };
     calaApi_postRequest(inventarioData, function (d) {
         console.log("Inventario agregado" + d);
+        erpsil_modalBueno();
         erpsil_listarInventario();
     }, function (d) {
+        erpsil_modalMalo();
         console.log("Inventario no agregado" + d);
 
     });
     }else{
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -3162,8 +3217,10 @@ function erpsil_eliminarInventario(id){
     };
 
     calaApi_postRequest(req, function(){
+        erpsil_modalBueno();
         erpsil_listarInventario();
         }, function(){
+        erpsil_modalMalo();
         console.log("Inventario no eliminarado");
     });
 }
@@ -3257,9 +3314,10 @@ function erpsil_editarInventario(id){
     };
 
     calaApi_postRequest(req, function(d){
-        //console.log(d.req);
+        erpsil_modalBueno();
         erpsil_editarInventarioWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Inventario no agregado");
     });
 }
@@ -3303,7 +3361,9 @@ function erpsil_guardarEditarInventario(){
 
         calaApi_postRequest(inventarioData, function (d) {
             erpsil_listarInventario();
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Inventario no agregado" + d);
         });
     } else {
@@ -3317,7 +3377,7 @@ function erpsil_guardarEditarInventario(){
 /*********************************************************/
 
 function erpsil_agregarProveedorWindow() {
-    //var loginWindow = "Aca va la ventana de login";
+
     var agregarProveedorWindow = ""
 
     +    "<div class='container centrarDivTxt'>"
@@ -3386,11 +3446,14 @@ function erpsil_agregarProveedor(){
 
         calaApi_postRequest(proveedorData, function (d) {
             console.log("nuevos agregado" + d);
+            erpsil_modalBueno();
             erpsil_listarProveedor();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("No agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -3460,7 +3523,9 @@ function erpsil_eliminarProveedor(id){
 
     calaApi_postRequest(req, function(){
         erpsil_listarProveedor();
+        erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("Proveedor no eliminarado");
     });
 }
@@ -3474,9 +3539,10 @@ function erpsil_editarProveedor(id){
     };
     
     calaApi_postRequest(req, function(d){
-        //console.log(d.req);
+        erpsil_modalBueno();
         erpsil_editarProveedorWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Proveedor no editado");
     });
 }
@@ -3510,7 +3576,9 @@ function erpsil_guadarEditarProveedor(){
 
         calaApi_postRequest(proveedorData, function (d) {       
             erpsil_listarProveedor();
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("No agregado" + d);
         });
     } else {
@@ -3718,8 +3786,10 @@ function erpsil_agregarCliente(){
     
         calaApi_postRequest(clienteData, function (d) {
             console.log("agregado" + d);
+            erpsil_modalBueno();
             erpsil_listarCliente();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("No agregado" + d);
         });
     } else {
@@ -3797,7 +3867,9 @@ function erpsil_eliminarCliente(id){
     };
     calaApi_postRequest(req, function(){
         erpsil_listarCliente();
+        erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("no eliminar");
     });
 }
@@ -3814,7 +3886,9 @@ function erpsil_editarCliente(id){
 
     calaApi_postRequest(req, function(d){
         erpsil_editarClienteWindow(d.resp);
+        erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("Cliente no editado");
     });
 }
@@ -3853,7 +3927,9 @@ function erpsil_guadarEditarCliente(){
     
         calaApi_postRequest(clienteData, function (d) {
             erpsil_listarCliente();
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("No agregado" + d);
         });
     } else {
@@ -4016,12 +4092,14 @@ function erpsil_agregarEmpleado(){
         };
     
         calaApi_postRequest(empleadoData, function (d) {
-            console.log("empleado agregado" + d);
+            erpsil_modalBueno();
             erpsil_listarEmpleado();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("empleado no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -4098,7 +4176,9 @@ function erpsil_eliminarEmpleado(id){
     };
     calaApi_postRequest(req, function(){
         erpsil_listarEmpleado();
+        erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("no eliminar");
     });
 }
@@ -4114,8 +4194,10 @@ function erpsil_editarEmpleado(id){
     $("#editar_empleado").append("Cargando...");
 
     calaApi_postRequest(req, function(d){
+        erpsil_modalBueno();
         erpsil_editarEmpleadoWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("no eliminar");
     });
 }
@@ -4155,10 +4237,13 @@ function erpsil_guardarEditarEmpleado(){
     };
     calaApi_postRequest(empleadoData, function (d) {
         erpsil_listarEmpleado();
+        erpsil_modalBueno();
     }, function (d) {
+        erpsil_modalMalo();
         console.log("No agregado" + d);
     });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 
@@ -4221,7 +4306,9 @@ function erpsil_editarFactura(id){
 
     calaApi_postRequest(req, function(d){
         erpsil_editarFacturaWindow(d.resp);
+        erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("no eliminar");
     });
 }
@@ -4250,10 +4337,13 @@ function erpsil_guardarEditarFactura(){
     };
     calaApi_postRequest(facturaData, function (d) {
         erpsil_listarFactura();
+        erpsil_modalBueno();
     }, function (d) {
+        erpsil_modalMalo();
         console.log("No agregado" + d);
     });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 
@@ -4409,12 +4499,14 @@ function erpsil_agregarPlanilla(){
         };  
         
         calaApi_postRequest(planillaData, function (d) {
-            console.log(planillaData);
+            erpsil_modalBueno();
             erpsil_listarPlanilla();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Planilla no agregada");
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -4428,8 +4520,10 @@ function erpsil_eliminarPlanilla(id){
 
     calaApi_postRequest(req, function(){
         //console.log(req);
+        erpsil_modalbu();
         erpsil_listarPlanilla();
     }, function(){
+        erpsil_modalMalo();
         console.log("Planilla no eliminada");
     });
     
@@ -4491,7 +4585,9 @@ function erpsil_editarPlanilla(id){
 
     calaApi_postRequest(req, function(d){
         erpsil_editarPlanillaWindow(d.resp);
+        erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("no eliminar");
     });
 }
@@ -4520,10 +4616,13 @@ function erpsil_guardarEditarPlanilla(){
     };
     calaApi_postRequest(planillaData, function (d) {
         erpsil_listarPlanilla();
+        erpsil_modalBueno();
     }, function (d) {
+        erpsil_modalMalo();
         console.log("No agregado" + d);
     });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 
@@ -4532,7 +4631,6 @@ function erpsil_guardarEditarPlanilla(){
 /*********************************************************/
 /*                 Gestion Usuario                       */ // Falta editar
 /*********************************************************/
-
 //Req directa
 function agregarUsuario(){
     var req = {
@@ -4621,12 +4719,10 @@ function erpsil_agregarUsuario(){
         };
 
         calaApi_registerUser(usuarioData, function(d){
-            console.log("***********************************************************"); 
-            //console.log(usuarioData); 
-            //console.log(d); 
+            erpsil_modalBueno(); 
             erpsil_listarUsuario();
-
         }, function(d){
+            erpsil_modalMalo();
             console.log("Error al agregar usuario" + d);
         })
 
@@ -4699,9 +4795,10 @@ function erpsil_eliminarUsuario(id){
     };
 
     calaApi_postRequest(req, function(){
-        console.log(req);
+        erpsil_modalBueno();
         erpsil_listarUsuario();
     }, function(){
+        erpsil_modalMalo();
         console.log("Usuario no eliminarado");
     });
 }
@@ -4713,6 +4810,11 @@ function erpsil_eliminarUsuario(id){
 function erpsil_setContent(content) {
     $("#erpsil_content").empty();
     $("#erpsil_content").append(content);
+}
+
+function erpsil_setModal(content) {
+    $("#erpsil_modal").empty();
+    $("#erpsil_modal").append(content);
 }
 
 function erpsil_CleanChart(){
@@ -4734,8 +4836,6 @@ function erpsil_CleanChart(){
        window.grafica.destroy();
    }
    window.grafica = new Chart(ctx, {});
-
-
 }
 
 function erpsil_debug(mensaje) {
