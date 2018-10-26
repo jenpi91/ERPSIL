@@ -11,12 +11,8 @@
 /*******************************/
 
 .ventanaModal{
-    margin: auto;
-    width: 50%;
-    height: 100%;
-    color: white;
-    background-color: #000;
-    opacity: 0.5;
+    width: 99%;
+    text-align: center;
 }
 
 .cont{

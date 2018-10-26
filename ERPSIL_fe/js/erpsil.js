@@ -81,6 +81,7 @@ function erpsil_loginWindow() {
 +        "</div>"
 +        "<div class='col-sm'>"
 +            "<button onClick='erpsil_login()' class='btn btn-primary btn_central'>Log in</button>"
++            "<button onClick='erpsil_registrarUsuarioWindow()' class='btn btn-primary btn_central'>Registrarse</button>"
 +        "</div>"
 +   " </div>"
      
@@ -121,7 +122,7 @@ function erpsil_setMenu() {
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPedido()'> Pedidos</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarMovimientoInventario()'> Movimiento Inventario</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_logout()'> Salir </div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()'> modal </div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_validacion()'> modal </div>"
     +             "</ul>"
 
     +        "</div>"
@@ -138,25 +139,67 @@ function erpsil_setMenu() {
 /*                       Alertas                         */
 /*********************************************************/
 function erpsil_modalBueno(){
-
-    var modal = ""
-+      "<div class='alert alert-success' role='alert'>Proceso correctamente</div>"
-    erpsil_setModal(modal);
-
-    calaApi_doSomethingAfter(function(){
-        $("#erpsil_modal").empty();
-    }, 5000);
+    swal({
+        position: 'center',
+        type: 'success',
+        title: 'Proceso correcto!',
+        showConfirmButton: false,
+        timer: 1500
+      });
 }
 
 function erpsil_modalMalo(){
 
-    var modal = ""
-+      "<div class='alert alert-danger' role='alert'>Error en el proceso</div>"
-    erpsil_setModal(modal);
+    swal({
+        position: 'center',
+        type: 'error',
+        title: 'Proceso incorrecto!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+}
 
-    calaApi_doSomethingAfter(function(){
-        $("#erpsil_modal").empty();
-    }, 5000);
+function erpsil_validacion(func){
+
+    const swalWithBootstrapButtons = swal.mixin({
+        confirmButtonClass: 'btn btn-success',
+        cancelButtonClass: 'btn btn-danger',
+        buttonsStyling: false,
+      })
+      
+      swalWithBootstrapButtons({
+        title: 'Estás seguro?',
+        text: "El dato seleccionado se eliminará permanentemente!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+            func();
+            swal({
+                position: 'central',
+                type: 'success',
+                title: 'Dato eliminado!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+            swal({
+                position: 'central',
+                type: 'success',
+                title: 'Dato no eliminado!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+
+        }
+      })
 }
 
 /*********************************************************/
@@ -166,24 +209,21 @@ function erpsil_modalMalo(){
 function erpsil_logout(){
 console.log("Salir");
 
-var logOut = {
-    w: "users",
-    r: "users_log_me_out"
-}
+    var logOut = {
+        w: "users",
+        r: "users_log_me_out"
+    }
 
-calaApi_postRequest(logOut, function (d) {
- console.log("si funcionó");
- $("#erpsil_content").empty();
- $("#erpsil_menu").empty();
- erpsil_loginWindow();
+    calaApi_postRequest(logOut, function (d) {
+        console.log("si funcionó");
+        $("#erpsil_content").empty();
+        $("#erpsil_menu").empty();
+        erpsil_loginWindow();
 
-}, function (d) {
-    erpsil_modalMalo();
-    console.log("No funcionó");
-});
-
-
-
+    }, function (d) {
+        erpsil_modalMalo();
+        console.log("No funcionó");
+    });
 }
 
 /*********************************************************/
@@ -370,8 +410,7 @@ function erpsil_eliminarPedido(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarPedido();
+        erpsil_validacion(erpsil_listarPedido);
     }, function(){
         erpsil_modalMalo();
         console.log("Pedido no eliminarado");
@@ -738,8 +777,8 @@ function erpsil_eliminarClienteTicket(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarClientesTickets();
+        erpsil_validacion(erpsil_listarClientesTickets);
+        //erpsil_listarClientesTickets();
     }, function(){
         erpsil_modalMalo();
         console.log("Cliente  ticket no eliminarado");
@@ -959,8 +998,9 @@ function erpsil_eliminarPermisoRol(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarPermisoRol();
+        erpsil_validacion(erpsil_listarPermisoRol);
+        //erpsil_modalBueno();
+        //erpsil_listarPermisoRol();
     }, function(){
         erpsil_modalMalo();
         console.log("Permiso rol no eliminarado");
@@ -1320,8 +1360,9 @@ function erpsil_eliminarCuentasPagar(id){
      };
  
      calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarCuentasPagar();
+        erpsil_validacion(erpsil_listarCuentasPagar);
+        //erpsil_modalBueno();
+        //erpsil_listarCuentasPagar();
     }, function(){
         erpsil_modalMalo();
         console.log("Cuentas pagar no eliminado");
@@ -1594,8 +1635,9 @@ function erpsil_eliminarHistorialPrecio(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarHistorialPrecio();
+        erpsil_validacion(erpsil_listarHistorialPrecio);
+        //erpsil_modalBueno();
+        //erpsil_listarHistorialPrecio();
    }, function(){
        erpsil_modalMalo();
        console.log("Historial precio no eliminarado");
@@ -1642,7 +1684,6 @@ function erpsil_guardarEditarHistorialPago(){
         console.log("Error!");
     }
 }
-
 
 /*********************************************************/
 /*             Gestion de tbl_Pagos                      */ 
@@ -1825,8 +1866,9 @@ function erpsil_eliminarPago(id){
      };
  
      calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarPagos();
+        erpsil_validacion(erpsil_listarPagos);
+        //erpsil_modalBueno();
+        //erpsil_listarPagos();
     }, function(){
         erpsil_modalMalo();
         console.log("Pago no agregado");
@@ -2303,8 +2345,9 @@ function erpsil_eliminarMovimientoInventario(id){
         id:id
      };
      calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarMovimientoInventario();
+        erpsil_validacion(erpsil_listarMovimientoInventario);
+        //erpsil_modalBueno();
+        //erpsil_listarMovimientoInventario();
     }, function(){
         erpsil_modalMalo();
         console.log("Movimiento de inventario no eliminado");
@@ -2439,8 +2482,9 @@ function erpsil_eliminarTipoCliente(id) {
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarTipoCliente();
+        erpsil_validacion(erpsil_listarTipoCliente);
+        //erpsil_modalBueno();
+        //erpsil_listarTipoCliente();
     }, function(){
         erpsil_modalMalo();
         console.log("Tipo cliente no eliminarado");
@@ -2701,8 +2745,9 @@ function erpsil_eliminarActivos(id) {
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarActivos();
+        erpsil_validacion(erpsil_listarActivos);
+        //erpsil_modalBueno();
+        //erpsil_listarActivos();
     }, function(){
         erpsil_modalMalo();
         console.log("Tipo cliente no eliminarado");
@@ -2900,8 +2945,9 @@ function erpsil_eliminarRoles(id) {
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_listarRoles();
-        erpsil_modalBueno();
+        erpsil_validacion(erpsil_listarRoles);
+        //erpsil_listarRoles();
+        //erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
         console.log("Roles no eliminarado");
@@ -3217,8 +3263,9 @@ function erpsil_eliminarInventario(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarInventario();
+        erpsil_validacion(erpsil_listarInventario);
+        //erpsil_modalBueno();
+        //erpsil_listarInventario();
         }, function(){
         erpsil_modalMalo();
         console.log("Inventario no eliminarado");
@@ -3522,8 +3569,9 @@ function erpsil_eliminarProveedor(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_listarProveedor();
-        erpsil_modalBueno();
+        erpsil_validacion(erpsil_listarProveedor);
+        //erpsil_listarProveedor();
+        //erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
         console.log("Proveedor no eliminarado");
@@ -3866,8 +3914,9 @@ function erpsil_eliminarCliente(id){
         id:id
     };
     calaApi_postRequest(req, function(){
-        erpsil_listarCliente();
-        erpsil_modalBueno();
+        erpsil_validacion(erpsil_listarCliente);
+        //erpsil_listarCliente();
+        //erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
         console.log("no eliminar");
@@ -3964,7 +4013,7 @@ function erpsil_agregarEmpleadoWindow(){
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Cedula</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='password' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
+    +            "<input type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Direccion</label>"
     +        "<div class='col-sm'>"
@@ -4157,7 +4206,7 @@ function erpsil_listarEmpleado() {
 MostrarEmpleadoWindow += ""
 +            "</tr>"
 +         "</table>"
-+                "<td> <div id='editar_activos' onclick='erpsil_menuWindow()' class='btn btn-success btn-sm'>Volver</div></td>"
++                "<td> <div id='editar_activos' onclick='erpsil_agregarEmpleadoWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarEmpleadoWindow);
@@ -4175,8 +4224,9 @@ function erpsil_eliminarEmpleado(id){
         id:id
     };
     calaApi_postRequest(req, function(){
-        erpsil_listarEmpleado();
-        erpsil_modalBueno();
+        erpsil_validacion(erpsil_listarEmpleado);
+        //erpsil_listarEmpleado();
+        //erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
         console.log("no eliminar");
@@ -4519,9 +4569,8 @@ function erpsil_eliminarPlanilla(id){
     };
 
     calaApi_postRequest(req, function(){
-        //console.log(req);
-        erpsil_modalbu();
-        erpsil_listarPlanilla();
+        erpsil_validacion(erpsil_listarPlanilla);
+        //erpsil_listarPlanilla();
     }, function(){
         erpsil_modalMalo();
         console.log("Planilla no eliminada");
@@ -4696,6 +4745,52 @@ function erpsil_agregarUsuarioWindow(){
     erpsil_setContent(agregarUsuarioWindow);
 }
 
+function erpsil_registrarUsuarioWindow(){
+    //var loginWindow = "Aca va la ventana de login";
+    var agregarUsuarioWindow = ""
+
+    +    "<div class='container centrarDivTxt'>"
+    +		"<h2 class='AgregarUsuarioTitulo'>Agregar usuario</h2><br><br>"
+
+    +		"<label class='col-sm-3 control-label'>Nombre</label>"
+    +		"<div class='form-group'>"
+    +			"<input type='text' class='form-control2' placeholder='Nombre' required='required' id='inputFullName'>"
+    +		"</div>"
+
+    +		"<label class='col-sm-3 control-label'>Nombre de usuario</label>"
+    +		"<div class='form-group'>"
+    +			"<input type='text' class='form-control2' placeholder='Nombre usuario' required='required' id='inputUserName'>"
+    +		"</div>"
+
+    +           "<label class='col-sm-3 control-label'>Email</label>"
+    +		"<div class='form-group'>"
+    +			"<input type='text' class='form-control2' placeholder='Email' required='required' id='inputUserEmail'>"
+    +		"</div>"
+
+    +		"<label class='col-sm-3 control-label'>Contraseña</label>"
+    + 		"<div class='form-group'>"
+    +			"<input type='password' class='form-control2' placeholder='Contraseña' required='required' id='inputPwd'>"
+    +		"</div>"
+
+    +		"<label class='col-sm-3 control-label'>Acerca de</label>"
+    +		"<div class='form-group'>"
+    +			"<input type='text' class='form-control2' placeholder='Acerca de' required='required' id='inputAbout'>"
+    +		"</div>"
+
+    +		"<label class='col-sm-3 control-label'>País</label>"
+    +		"<div class='form-group'>"
+    +			"<input type='text' class='form-control2' placeholder='País' required='required' id='inputUserCountry'>"
+    +		"</div>"
+
+    +        "<div class='col-sm centrarDivTxt'>"
+    +			"<div onClick='erpsil_registrarUsuario()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
+    //+			"<div onClick='erpsil_listarUsuario()' class='btn btn-sm btn-danger btn_central'>Volver</div>"
+    +		"</div>"
+    +	"</div>"
+                       
+    erpsil_setContent(agregarUsuarioWindow);
+}
+
 function erpsil_agregarUsuario(){
     var nombreUsuario = $("#inputFullName").val();
     var userUsuario = $("#inputUserName").val();
@@ -4721,6 +4816,42 @@ function erpsil_agregarUsuario(){
         calaApi_registerUser(usuarioData, function(d){
             erpsil_modalBueno(); 
             erpsil_listarUsuario();
+        }, function(d){
+            erpsil_modalMalo();
+            console.log("Error al agregar usuario" + d);
+        })
+
+    }else{
+        console.log("Error");
+    }
+
+}
+
+function erpsil_registrarUsuario(){
+    var nombreUsuario = $("#inputFullName").val();
+    var userUsuario = $("#inputUserName").val();
+    var emailUsuario = $("#inputUserEmail").val();
+    var pwdUsuario = $("#inputPwd").val();
+    var acercaUsuario = $("#inputAbout").val();
+    var countryUsuario = $("#inputUserCountry").val();
+
+    if(nombreUsuario != "" && userUsuario != "" && emailUsuario != "" && 
+    pwdUsuario != "" && acercaUsuario != "" && countryUsuario != ""){
+        
+        var usuarioData = {
+            //w: "erpsil_usuario", 
+            //r: "agregar_Usuario",
+            fullName:nombreUsuario, 
+            userName:userUsuario,
+            userEmail:emailUsuario,
+            pwd:pwdUsuario,
+            about:acercaUsuario,
+            userCountry:countryUsuario
+        };
+
+        calaApi_registerUser(usuarioData, function(d){
+            erpsil_modalBueno(); 
+            location.reload();
         }, function(d){
             erpsil_modalMalo();
             console.log("Error al agregar usuario" + d);
@@ -4795,8 +4926,9 @@ function erpsil_eliminarUsuario(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarUsuario();
+        erpsil_validacion(erpsil_listarUsuario);
+        //erpsil_modalBueno();
+        //erpsil_listarUsuario();
     }, function(){
         erpsil_modalMalo();
         console.log("Usuario no eliminarado");
