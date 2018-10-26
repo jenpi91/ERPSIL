@@ -395,7 +395,7 @@ function erpsil_agregarPedido(){
         calaApi_postRequest(pedidoData, function (d) {
             erpsil_listarPedido();
         }, function (d) {
-            erpsil_modalBueno();
+            erpsil_modalMalo();
             console.log("Pedido no agregado");
         });
     } else {
@@ -480,7 +480,6 @@ function erpsil_editarPedido(id){
     }
 
     calaApi_postRequest(req, function(d){
-        erpsil_modalBueno();
         erpsil_editarPedidoWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
@@ -955,7 +954,6 @@ function erpsil_editarPermisoRol(id) {
     }
 
     calaApi_postRequest(req, function (d) {
-        erpsil_modalBueno();
         erpsil_editarPermisoRolWindow(d.resp);
     }, function () {
         erpsil_modalMalo();
@@ -1307,7 +1305,6 @@ function erpsil_editarCuentasPagar(id){
      };
  
      calaApi_postRequest(req, function(d){
-        erpsil_modalBueno();
         erpsil_editarCuentasPagarWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
@@ -1885,7 +1882,6 @@ function erpsil_editarPagos(id){
     };
     
     calaApi_postRequest(req, function(d){
-        erpsil_modalBueno();
         erpsil_editarPagosWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
@@ -2288,7 +2284,6 @@ function erpsil_editarMovimientoInventario(id){
     };
    
     calaApi_postRequest(req, function(d){
-        erpsil_modalBueno();
         erpsil_editarMovimientoInventarioWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
@@ -2540,7 +2535,6 @@ function erpsil_editarTipoCliente(id){
     };
     
     calaApi_postRequest(req, function(d){
-        erpsil_modalBueno();
         erpsil_editarTipoClienteWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
@@ -2800,7 +2794,6 @@ function erpsil_editarActivos(id){
     };
     
     calaApi_postRequest(req, function(d){
-        erpsil_modalBueno();
         erpsil_editarActivosWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
@@ -2997,7 +2990,6 @@ function erpsil_editarRoles(id){
     
     calaApi_postRequest(req, function(d){
         erpsil_editarRolesWindow(d.resp);
-        erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
         console.log("Rol no editado");
@@ -3363,7 +3355,6 @@ function erpsil_editarInventario(id){
     };
 
     calaApi_postRequest(req, function(d){
-        erpsil_modalBueno();
         erpsil_editarInventarioWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
@@ -3589,7 +3580,6 @@ function erpsil_editarProveedor(id){
     };
     
     calaApi_postRequest(req, function(d){
-        erpsil_modalBueno();
         erpsil_editarProveedorWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
@@ -3937,7 +3927,6 @@ function erpsil_editarCliente(id){
 
     calaApi_postRequest(req, function(d){
         erpsil_editarClienteWindow(d.resp);
-        erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
         console.log("Cliente no editado");
@@ -4246,7 +4235,6 @@ function erpsil_editarEmpleado(id){
     $("#editar_empleado").append("Cargando...");
 
     calaApi_postRequest(req, function(d){
-        erpsil_modalBueno();
         erpsil_editarEmpleadoWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
@@ -4468,8 +4456,9 @@ function erpsil_eliminarFactura(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_modalBueno();
-        erpsil_listarFactura();
+        erpsil_validacion(erpsil_listarFactura);
+        //erpsil_modalBueno();
+        //erpsil_listarFactura();
     }, function(){
         erpsil_modalMalo();
         console.log("Factura no eliminarado");
@@ -4538,7 +4527,6 @@ function erpsil_editarFactura(id){
 
     calaApi_postRequest(req, function(d){
         erpsil_editarFacturaWindow(d.resp);
-        erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
         console.log("no eliminar");
@@ -4627,9 +4615,9 @@ function erpsil_listarPlanilla() {
     }
 }
 MostrarPlanillaWindow += ""
-+            "</tr>"
-+         "</table>"
-+                "<td> <div id='agregar_planilla' onclick='erpsil_agregarPlanillaWindow()' class='btn btn-success btn-sm'>agregar</div></td>"
+        +            "</tr>"
+        +         "</table>"
+        +                "<td> <div id='agregar_planilla' onclick='erpsil_agregarPlanillaWindow()' class='btn btn-success btn-sm'>agregar</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarPlanillaWindow);
@@ -4813,7 +4801,6 @@ function erpsil_editarPlanilla(id){
 
     calaApi_postRequest(req, function(d){
         erpsil_editarPlanillaWindow(d.resp);
-        erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
         console.log("no eliminar");
