@@ -120,6 +120,8 @@ function erpsil_setMenu() {
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPagos()'> Pagos</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPedido()'> Pedidos</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarMovimientoInventario()'> Movimiento Inventario</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPlanilla()'> Planilla</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarFactura()'> Factura</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_logout()'> Salir </div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()'> modal </div>"
     +             "</ul>"
@@ -4250,6 +4252,186 @@ function erpsil_guardarEditarEmpleado(){
 
 }
 
+/*********************************************************/
+/*           Gestion Factura                             */
+/*********************************************************/
+
+function erpsil_listarFactura(){
+
+    var facturaData = {
+        w:"erpsil_factura",
+        r:"mostrar_factura"
+    };
+
+    calaApi_postRequest(facturaData, function (d) {
+ 
+        var facturaWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +         "<h2 class='tituloTablas'>Lista de facturas</h2><br><br>"
+        +            "<tr>"
+        +                "<th>ID Factura</th>"
+        +                "<th>id cliente</th>"
+        +                "<th>Stamp</th>"
+        +                "<th>Cantidad</th>"
+        +                "<th>Descripcion</th>"
+        +                "<th>Total</th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            facturaWindow += ""
+
+        +            "<tr>"
+        +                "<td> "+ a.id_factura +" </td>"
+        +                "<td> "+ a.id_cliente +" </td>"
+        +                "<td> "+ a.stamp +" </td>"
+        +                "<td> "+ a.cantidad +" </td>"
+        +                "<td> "+ a.descripcion +" </td>"
+        +                "<td> "+ a.total +" </td>"
+
+        +                "<td> <div id='editar_factura' onclick='erpsil_editarFactura(" + a.id_factura + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+                }
+                facturaWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +                "<td> <div id='agregar_factura' onclick='erpsil_agregarFacturaWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +      "</div>";
+
+        erpsil_setContent(facturaWindow);
+
+    }, function (d) {
+        console.log(d);
+        erpsil_modalMalo();
+    });
+}
+
+function erpsil_agregarFacturaWindow() {
+
+    var facturaData = {
+        w: "erpsil_cliente",
+        r: "mostrar_cliente"
+    };
+
+    calaApi_postRequest(facturaData, function(d){
+
+        var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
+        var i = 1;
+        for(a in d.resp){ 
+            var x = d.resp[a];
+            selectD += "<option>" + i + " - Nombre del cliente: " + x.nombre + " - id = (" + x.id_cliente + ")</option>";
+            i++;
+        }
+
+        selectD += "</select>";
+
+        var agregarFacturaWindow = ""
+
+        +    "<div class='container centrarDivTxt'>"
+        +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Factura</h2>"
+
+        +        "<label class='col-sm-3 control-label'>Id cliente</label>"
+        +        "<div class='col-sm'>"
+        +        selectD
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>Fecha</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Fecha' required='required' id='inputStamp'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>Cantidad</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Cantidad' required='required' id='inputCantidad'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>Descripción</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Descripción' required='required' id='inputDescr'>"
+        +        "</div>"
+
+        +        "<label class='col-sm-3 control-label'>Total</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='text' class='form-control' placeholder='Total' required='required' id='inputTotal'>"
+        +        "</div>"
+
+        +        "<div class='col-sm centrarDivTxt'>"
+        +            "<div onClick='erpsil_agregarFactura()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
+        +            "<div onClick='erpsil_listarFactura()' class='btn btn-sm btn-danger btn_central'>Regresar</div>"
+        +         "</div>"
+        +   " </div>"
+        erpsil_setContent(agregarFacturaWindow);
+    }, function(){
+        erpsil_modalMalo();
+        console.log("Error!");
+    });
+
+}
+
+function erpsil_agregarFactura(){
+
+    var d = $("#inputDrow");
+    var id = d[0].value;
+    id = id.split("(")[1].split(")")[0];
+
+    var id_cliente = id;
+    var stamp = $("#inputStamp").val();
+    var cantidad = $("#inputCantidad").val();
+    var descripcion = $("#inputDescr").val();
+    var total = $("#inputTotal").val();
+    
+
+    if(id_cliente != "" && stamp != "" && cantidad != "" && descripcion != "" && total != ""){
+        
+        var facturaData = {
+            w: "erpsil_factura",
+            r: "agregar_factura",
+            id_cliente:id_cliente,
+            stamp:stamp,
+            cantidad:cantidad,
+            descripcion:descripcion,
+            total:total
+
+        };  
+        
+        calaApi_postRequest(facturaData, function (d) {
+            erpsil_listarFactura();
+        }, function (d) {
+            erpsil_modalBueno();
+            console.log("Factura no agregado");
+        });
+    } else {
+        erpsil_modalMalo();
+        console.log("Error!");
+    }
+}
+
+function erpsil_eliminarFactura(id){
+    var req = {
+        w: "erpsil_factura",
+        r: "eliminar_factura",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        erpsil_modalBueno();
+        erpsil_listarFactura();
+    }, function(){
+        erpsil_modalMalo();
+        console.log("Factura no eliminarado");
+    });
+    
+}
+
+
+/*************Trabajando*********************************/
+
+
+
 function erpsil_editarFacturaWindow(data) {
     
     var editarFacturaWindow = ""
@@ -4349,6 +4531,9 @@ function erpsil_guardarEditarFactura(){
 
 
 }
+/*********************************************************/
+/*             Fin de Gestion Factura                    */
+/*********************************************************/
 
 /*********************************************************/
 /*           Gestion Planilla                            */
@@ -4407,20 +4592,19 @@ MostrarPlanillaWindow += ""
 function erpsil_agregarPlanillaWindow() {
 
     var planillaData = {
-        w: "erpsil_planilla",
-        r: "mostrar_planilla"
+        w: "erpsil_empleado",
+        r: "mostrar_empleado"
     };
 
     calaApi_postRequest(planillaData, function(d){
 
-        var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
+       var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
         var i = 1;
         for(a in d.resp){ 
             var x = d.resp[a];
             selectD += "<option>" + i + " - Nombre de Empleado: " + x.nombre + " - id = (" + x.id_empleado + ")</option>";
             i++;
         }
-
         selectD += "</select>";
 
         console.log(d);
@@ -4429,13 +4613,9 @@ function erpsil_agregarPlanillaWindow() {
         +    "<div class='container centrarDivTxt'>"
         +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Planilla</h2>"
 
-        +        "<label class='col-sm-3 control-label'>Id Planilla</label>"
-        +        "<div class='col-sm'>"
-        +        selectD
-        +        "</div>"
         +        "<label class='col-sm-3 control-label'>Id Empleado</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Id Empleado' required='required' id='inputEmpleado'>"
+        +        selectD
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Salario Bruto</label>"
@@ -4477,15 +4657,14 @@ function erpsil_agregarPlanilla(){
     var id = d[0].value;
     id = id.split("(")[1].split(")")[0];
 
-    var id_planilla = id;
-    var idEmpleado = $("#inputEmpleado").val();
+    var idEmpleado = id;
     var salarioBruto = $("#inputSalaB").val();
     var ccss = $("#inputccss").val();
     var Rebaja = $("#inputRebaja").val();
     var SalarioNeto = $("#inputSalaN").val();
     
 
-    if(id_planilla != "" && idEmpleado != "" && salarioBruto != "" && ccss != "" && Rebaja != "" && SalarioNeto != ""  ){
+    if( idEmpleado != "" && salarioBruto != "" && ccss != "" && Rebaja != "" && SalarioNeto != ""  ){
         
         var planillaData = {
             w: "erpsil_planilla",
