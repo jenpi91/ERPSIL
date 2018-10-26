@@ -44,6 +44,29 @@ function erpsil_factura_init(){
 			),
 			'file' => 'erpsil_factura.php'
 		),
+		array(
+			'r' => 'agregar_factura',
+			'action' => 'agregarFactura',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			array(
+				array("key" => "id_cliente", "def" => "", "req" => true),
+				array("key" => "stamp", "def" => "", "req" => true),
+				array("key" => "cantidad", "def" => "", "req" => true),
+				array("key" => "descripcion", "def" => "", "req" => true),
+				array("key" => "total", "def" => "", "req" => true)
+			),
+			'file' => 'erpsil_factura.php'
+		),array(
+			'r' => 'eliminar_factura',
+			'action' => 'eliminarFactura',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			array(
+				array("key" => "id", "def" => "", "req" => true)  
+			),
+			'file' => 'erpsil_factura.php'
+		),
 		
 		array(
 			'r' => 'mostrar_factura',
