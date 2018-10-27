@@ -116,6 +116,7 @@ function erpsil_setMenu() {
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarClientesTickets()'>Listar Ticketes</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarUsuario()'>Usuario</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPermisoRol()'>Permisos Rol</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarContabilidad()'>Contabilidad</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarCuentasPagar()'>Cuentas Pagar</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPagos()'> Pagos</div>"
@@ -4572,7 +4573,46 @@ function erpsil_guardarEditarFactura(){
 /*********************************************************/
 /*             Fin de Gestion Factura                    */
 /*********************************************************/
+/*********************************************************/
+/*           Gestion Contabilidad                        */
+/*********************************************************/
+function erpsil_listarContabilidad() { 
+    var contabilidadData = {
+        w: "erpsil_contabilidad",
+        r: "mostrar_contabilidad"
+    };
+    calaApi_postRequest(contabilidadData, function (d) {
+ 
+        var MostrarContabilidadWindow = ""
 
+        +      "<div class='table-responsive'>"
+        +         "<table class='table table-striped table-hover'>"
+        +         "<h2 class='tituloTablas'>Contabilidad</h2><br><br>"
+        +            "<tr>"
+        +                "<th>ID </th>"
+        +                "<th>Total de facturas</th>"
+        +                "<th>Total a Pagar</th>"
+        +                "<th>Total en planillas </th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarContabilidadWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_contabilidad +" </td>"
+        +                "<td> "+ a.total_factura+" </td>"
+        +                "<td> "+ a.total_pagar+" </td>"
+        +                "<td> "+ a.total_planilla+" </td>"
+        +            "</tr>";
+    }
+}
+        erpsil_setContent(MostrarContabilidadWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
 /*********************************************************/
 /*           Gestion Planilla                            */
 /*********************************************************/
