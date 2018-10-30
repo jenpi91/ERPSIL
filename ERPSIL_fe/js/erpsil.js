@@ -5100,7 +5100,7 @@ function erpsil_registrarUsuarioWindow(){
 
     +        "<div class='col-sm centrarDivTxt'>"
     +			"<div onClick='erpsil_registrarUsuario()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
-    //+			"<div onClick='erpsil_listarUsuario()' class='btn btn-sm btn-danger btn_central'>Volver</div>"
+    +			"<div onClick='erpsil_loginWindow()' class='btn btn-sm btn-danger btn_central'>Volver</div>"
     +		"</div>"
     +	"</div>"
                        
