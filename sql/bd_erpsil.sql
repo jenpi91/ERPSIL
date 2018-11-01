@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 06, 2018 at 08:21 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Servidor: localhost
+-- Tiempo de generación: 01-11-2018 a las 06:26:12
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bd_erpsil`
+-- Base de datos: `bd_erpsil`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `conversations`
+-- Estructura de tabla para la tabla `conversations`
 --
 
 CREATE TABLE `conversations` (
@@ -39,7 +39,7 @@ CREATE TABLE `conversations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `files`
+-- Estructura de tabla para la tabla `files`
 --
 
 CREATE TABLE `files` (
@@ -56,7 +56,7 @@ CREATE TABLE `files` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lestatz_domains`
+-- Estructura de tabla para la tabla `lestatz_domains`
 --
 
 CREATE TABLE `lestatz_domains` (
@@ -69,7 +69,7 @@ CREATE TABLE `lestatz_domains` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lestatz_goals`
+-- Estructura de tabla para la tabla `lestatz_goals`
 --
 
 CREATE TABLE `lestatz_goals` (
@@ -83,7 +83,7 @@ CREATE TABLE `lestatz_goals` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lestatz_refs`
+-- Estructura de tabla para la tabla `lestatz_refs`
 --
 
 CREATE TABLE `lestatz_refs` (
@@ -97,7 +97,7 @@ CREATE TABLE `lestatz_refs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lestatz_visit_log`
+-- Estructura de tabla para la tabla `lestatz_visit_log`
 --
 
 CREATE TABLE `lestatz_visit_log` (
@@ -120,7 +120,7 @@ CREATE TABLE `lestatz_visit_log` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `msgs`
+-- Estructura de tabla para la tabla `msgs`
 --
 
 CREATE TABLE `msgs` (
@@ -138,7 +138,7 @@ CREATE TABLE `msgs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sessions`
+-- Estructura de tabla para la tabla `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -150,16 +150,18 @@ CREATE TABLE `sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `sessions`
+-- Volcado de datos para la tabla `sessions`
 --
 
 INSERT INTO `sessions` (`idSession`, `idUser`, `sessionKey`, `ip`, `lastAccess`) VALUES
-(33, 141, 'QjRmTFZFL2hFenRRSHdaYmVaNzBDdz09OjrkAbGBdXLJR4HobVooPWAE', '::1', 1537927807);
+(1, 141, 'emFDaDFvcDFYU0xTL21pclBPN3VpZz09OjpGSr6PGzP9BoZx+h4d0TJ6', '::1', 1540511939),
+(7, 146, 'Y2RraUd4eVdqejB1MjhGWEkwVWE3dz09OjoGb6MeTGZLHNKHUWnlfjfp', '::1', 1540513571),
+(13, 142, 'MlFCSUpqbVNyalJZczFsYm96dko0QT09OjrQid22mLkYDrj+95SY5Lvc', '::1', 1541049922);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_activo`
+-- Estructura de tabla para la tabla `tbl_activo`
 --
 
 CREATE TABLE `tbl_activo` (
@@ -170,19 +172,18 @@ CREATE TABLE `tbl_activo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_activo`
+-- Volcado de datos para la tabla `tbl_activo`
 --
 
 INSERT INTO `tbl_activo` (`id_activo`, `nombre`, `cantidad`, `vence`) VALUES
 (12, 'q', 'q', 'q'),
 (13, 'w', 'w', 'w'),
-(14, 'e', 'e', 'e'),
-(17, 'danielaaaa', '3', '5');
+(14, 'e', 'e', 'e');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_cliente`
+-- Estructura de tabla para la tabla `tbl_cliente`
 --
 
 CREATE TABLE `tbl_cliente` (
@@ -195,24 +196,22 @@ CREATE TABLE `tbl_cliente` (
   `descripcion` tinytext COLLATE utf8_spanish_ci NOT NULL,
   `saldo_maximo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `saldo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `tipo` int(10) NOT NULL
+  `tipo` varchar(100) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_cliente`
+-- Volcado de datos para la tabla `tbl_cliente`
 --
 
 INSERT INTO `tbl_cliente` (`id_cliente`, `nombre`, `cedula`, `email`, `direccion`, `telefono`, `descripcion`, `saldo_maximo`, `saldo`, `tipo`) VALUES
-(3, 'daniel', '2', '2', '2', '2', '2', '2', '2', 2),
-(4, 'daniel', '2', '2', '2', '2', '2', '2', '2', 2),
-(5, 'x', 'q', 'q', 'q', 'q', 'q', 'q', '1', 1),
-(6, 'lindo', 'q', 'q', 'q', 'q', 'q', 'q', '1', 1),
-(8, 'canelo', '2', '3', '2', '2', '2', '23', '2', 2);
+(3, 'daniel', '2', '2', '2', '2', '2', '2', '2', '2'),
+(4, 'daniel', '2', '2', '2', '2', '2', '2', '2', '2'),
+(6, 'lindo', 'q', 'q', 'q', 'q', 'q', 'q', '1', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_clientetickets`
+-- Estructura de tabla para la tabla `tbl_clientetickets`
 --
 
 CREATE TABLE `tbl_clientetickets` (
@@ -225,19 +224,17 @@ CREATE TABLE `tbl_clientetickets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_clientetickets`
+-- Volcado de datos para la tabla `tbl_clientetickets`
 --
 
 INSERT INTO `tbl_clientetickets` (`id_ticket`, `id_cliente`, `stamp`, `titulo`, `comentario`, `status`) VALUES
 (1, 2, 2, '2', '2', '4'),
-(2, 2, 2, '2', '2', '2'),
-(18, 5, 1533518172, 'nuevo', 'nuevo', 'n'),
-(21, 8, 1534394818, 'canelos', 'canelossssss', '9');
+(2, 2, 2, '2', '2', '2');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_contabilidad`
+-- Estructura de tabla para la tabla `tbl_contabilidad`
 --
 
 CREATE TABLE `tbl_contabilidad` (
@@ -250,7 +247,7 @@ CREATE TABLE `tbl_contabilidad` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_cuentaspagar`
+-- Estructura de tabla para la tabla `tbl_cuentaspagar`
 --
 
 CREATE TABLE `tbl_cuentaspagar` (
@@ -265,20 +262,19 @@ CREATE TABLE `tbl_cuentaspagar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_cuentaspagar`
+-- Volcado de datos para la tabla `tbl_cuentaspagar`
 --
 
 INSERT INTO `tbl_cuentaspagar` (`id_cuentasPagar`, `id_proveedor`, `codigo_referencia`, `saldo`, `estado`, `vence`, `descripcion`, `stampfecha`) VALUES
 (1, 1, '1', '1', '1', 1, '1', 1),
 (2, 1, '123', '10000', '1', 1, '1', 0),
-(3, 1, '123', '123', '3', 3, '3', 0),
-(5, 1, '123', '123', '3', 333, 'algos', 0),
-(6, 5, '158', '1200', '1', 0, 'algo', 1534627737);
+(3, 1, '123', '1234', '3', 3, '3', 0),
+(5, 1, '123', '123', '3', 333, 'algos', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_empleado`
+-- Estructura de tabla para la tabla `tbl_empleado`
 --
 
 CREATE TABLE `tbl_empleado` (
@@ -296,18 +292,17 @@ CREATE TABLE `tbl_empleado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_empleado`
+-- Volcado de datos para la tabla `tbl_empleado`
 --
 
 INSERT INTO `tbl_empleado` (`id_empleado`, `nombre`, `apellido1`, `apellido2`, `telefono`, `cedula`, `direccion`, `ingreso`, `observacion`, `puesto`, `jornada`) VALUES
 (1, 'daniel', 'olsen', 'yu', '123', '123', 'ad', 'asd', 'asd', 'asd', 'as'),
-(4, 'fqwe', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f'),
-(5, 'eE', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e');
+(4, 'fqwe', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_factura`
+-- Estructura de tabla para la tabla `tbl_factura`
 --
 
 CREATE TABLE `tbl_factura` (
@@ -322,7 +317,7 @@ CREATE TABLE `tbl_factura` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_historialprecios`
+-- Estructura de tabla para la tabla `tbl_historialprecios`
 --
 
 CREATE TABLE `tbl_historialprecios` (
@@ -334,17 +329,16 @@ CREATE TABLE `tbl_historialprecios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_historialprecios`
+-- Volcado de datos para la tabla `tbl_historialprecios`
 --
 
 INSERT INTO `tbl_historialprecios` (`id_historialPrecio`, `id_inventario`, `costo`, `fecha`, `id_proveedor`) VALUES
-(6, 1, '2', '1533519977', 1),
-(8, 1, '2', '1533619218', 1);
+(6, 1, '2', '1533519977', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_inventario`
+-- Estructura de tabla para la tabla `tbl_inventario`
 --
 
 CREATE TABLE `tbl_inventario` (
@@ -363,19 +357,17 @@ CREATE TABLE `tbl_inventario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_inventario`
+-- Volcado de datos para la tabla `tbl_inventario`
 --
 
 INSERT INTO `tbl_inventario` (`id_inventario`, `cantidad`, `unidad`, `codigo_interno`, `codigo_barras`, `categoria`, `cantidad_minima`, `descripcion`, `impuesto_venta`, `ganancia_minima`, `costo`, `status`) VALUES
 (1, '2', '3', '4', '5', '6', 7, '8', '9', '10', '11', '1'),
-(2, '11', '1', '1', '1', '1', 1, '1', '1', '1', '1', '1'),
-(3, '3', 'q', 'q', 'q', 'q', 1, 'q', 'q', 'q', 'q', '1'),
-(5, '1', '1', '12', '1', '1', 1, '1', '1', '1', '1', '1');
+(2, '11', '1', '1', '1', '1', 1, '1', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_movimientoinventario`
+-- Estructura de tabla para la tabla `tbl_movimientoinventario`
 --
 
 CREATE TABLE `tbl_movimientoinventario` (
@@ -390,20 +382,19 @@ CREATE TABLE `tbl_movimientoinventario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_movimientoinventario`
+-- Volcado de datos para la tabla `tbl_movimientoinventario`
 --
 
 INSERT INTO `tbl_movimientoinventario` (`id_movInv`, `id_usuario`, `id_caja`, `id_producto`, `fecha`, `razon`, `descripcion`, `costo`) VALUES
 (1, 106, 1, 1, 1534481368, '123', 'qwe', '123'),
 (2, 106, 1, 1, 1534481475, 'as', 'as', '1'),
 (3, 106, 1, 1, 1534481753, 'w', 'w', '1'),
-(4, 106, 1, 1, 1534481815, 'w', 'w', '1'),
 (7, 106, 1, 1, 1534651590, 'listo', 'listo', '123');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pagos`
+-- Estructura de tabla para la tabla `tbl_pagos`
 --
 
 CREATE TABLE `tbl_pagos` (
@@ -416,17 +407,16 @@ CREATE TABLE `tbl_pagos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_pagos`
+-- Volcado de datos para la tabla `tbl_pagos`
 --
 
 INSERT INTO `tbl_pagos` (`id_pago`, `id_cuenta`, `id_usuarios`, `fecha`, `pago`, `actual`) VALUES
-(1, 1, 1, 123, '123', '123'),
-(2, 1, 107, 123, '1234', '12355');
+(1, 1, 1, 123, '123', '123');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pedidos`
+-- Estructura de tabla para la tabla `tbl_pedidos`
 --
 
 CREATE TABLE `tbl_pedidos` (
@@ -441,17 +431,17 @@ CREATE TABLE `tbl_pedidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_pedidos`
+-- Volcado de datos para la tabla `tbl_pedidos`
 --
 
 INSERT INTO `tbl_pedidos` (`id_pedido`, `id_cliente`, `stamp_pedido`, `stamp_entrega`, `cant_rollos`, `status`, `descripcion`, `precio`) VALUES
 (1, 3, 3, 3, 3, 3, '3', '4000'),
-(3, 6, 123, 321, 123, 1, 'rosas', '10002');
+(8, 3, 6, 6, 6, 6, '6', '6');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_permisosrol`
+-- Estructura de tabla para la tabla `tbl_permisosrol`
 --
 
 CREATE TABLE `tbl_permisosrol` (
@@ -461,19 +451,17 @@ CREATE TABLE `tbl_permisosrol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_permisosrol`
+-- Volcado de datos para la tabla `tbl_permisosrol`
 --
 
 INSERT INTO `tbl_permisosrol` (`id_permiso`, `id_rol`, `estado`) VALUES
 (1, 1, '1'),
-(2, 1, '1'),
-(3, 0, '7'),
-(6, 1, 'buenos');
+(2, 1, '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_planilla`
+-- Estructura de tabla para la tabla `tbl_planilla`
 --
 
 CREATE TABLE `tbl_planilla` (
@@ -488,7 +476,7 @@ CREATE TABLE `tbl_planilla` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_proveedor`
+-- Estructura de tabla para la tabla `tbl_proveedor`
 --
 
 CREATE TABLE `tbl_proveedor` (
@@ -503,18 +491,17 @@ CREATE TABLE `tbl_proveedor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_proveedor`
+-- Volcado de datos para la tabla `tbl_proveedor`
 --
 
 INSERT INTO `tbl_proveedor` (`id_proveedor`, `nombre`, `apellido1`, `apellido2`, `cedula`, `direccion`, `telefono`, `descripcion`) VALUES
 (1, '$nombre', '$apellido1', '$apellido2', '$cedula', '$direccion', '$telefon', '$descripcion'),
-(3, '3', '3', '3', '3', '3', '3', '3'),
-(7, '3', '33', '3', '3', '3', '3', '3');
+(3, '3', '3', '3', '3', '3', '3', '3');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_roles`
+-- Estructura de tabla para la tabla `tbl_roles`
 --
 
 CREATE TABLE `tbl_roles` (
@@ -524,20 +511,17 @@ CREATE TABLE `tbl_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_roles`
+-- Volcado de datos para la tabla `tbl_roles`
 --
 
 INSERT INTO `tbl_roles` (`id_roles`, `nombre`, `descripcion`) VALUES
-(1, 'algo', 'algo'),
 (2, 'cosas', 'algoss'),
-(3, 'd', '3'),
-(5, 'd', 'd'),
-(6, 'd', '2');
+(3, 'd', '3');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_tipocliente`
+-- Estructura de tabla para la tabla `tbl_tipocliente`
 --
 
 CREATE TABLE `tbl_tipocliente` (
@@ -549,20 +533,17 @@ CREATE TABLE `tbl_tipocliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_tipocliente`
+-- Volcado de datos para la tabla `tbl_tipocliente`
 --
 
 INSERT INTO `tbl_tipocliente` (`id_tipoCliente`, `nombre`, `descripcion`, `ganancia_global`, `dias_credito`) VALUES
 (1, 'nombre', '1', 1, 1),
-(2, 'Daniel', '1', 1, 1),
-(3, '3', '3', 0, 0),
-(4, '3', '3', 3, 3),
-(5, 'd', 'd', 4, 4);
+(2, 'Daniel', '1', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_usuarios`
+-- Estructura de tabla para la tabla `tbl_usuarios`
 --
 
 CREATE TABLE `tbl_usuarios` (
@@ -575,7 +556,7 @@ CREATE TABLE `tbl_usuarios` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
@@ -594,56 +575,58 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`idUser`, `fullName`, `userName`, `email`, `about`, `country`, `status`, `timestamp`, `lastAccess`, `pwd`, `avatar`, `settings`) VALUES
-(141, 'Daniel', 'ol', 'algo@aa.com', 'abc', 'cr', '1', 1534828112, 1537927807, 'VkZFeE0zSnliM0ZZVkhwMlZHNWhNRGd5ZFdVdk4wODBjSEZ5YlZwS1dYVXlkRXBxWjBFeVVITnZRVFozVEdzNU9FaERRMWxsUkd0a1RreEpSRFYyUTBWUFlUbDBhRWwxVFRGb2VqSmhSbFZwT0ZoVVZYYzlQVG82cjd3YmpaOU1ETXlCZnE3cWswdm5zUT09', '0', '');
+(142, 'ol', 'ol', 'ol', 'ol', 'ol', '1', 1540511939, 1541049922, 'SzJveFNsSnhObWREVFhOaWQwaERhRGhGVkRGb01scHNWMDVUTjJsaEwzaHJTRFI2SzI1aFZEQlRMMXBDWms1aGExTkhUa0prVUcxMFJtbFdlbGs0YVZOeVJWaE5ZVXRyV210eU5sbEZOekozWm00NVRHYzlQVG82T0IyejlaZ1RCY1ltZFVtamtDUjlFdz09', '0', ''),
+(143, '4', '4', '4', '4', '4', '1', 1540512716, 1540513544, 'VFZOVVVtOUJTRkZzUm5ST2VXWXdUMGc1ZW1OcmVEbG1ka0o2UkZoVlNsUTFXamR4TW5rMmQyVllNbWhDTkU1WE9XZG9WemswUm1oUmQyZHVZMjFVUVhscllrUktORFZuZERSbFowNVlkMGs1YlZGeWVrRTlQVG82MmxTNDNMWkxsd0NhZlNML2IxSklqZz09', '0', ''),
+(144, '5', '5', '5', '5', '5', '1', 1540512757, 1540512810, 'UkdGeVdVOUZjV3BtZFc5cmJuUXlUWGg0TW5KVk1GZHFSVTFyZFhCdVMzTTVhMjlQT1ZaS1NVMDJTMlphUmpscFNGazJZbGxsWmtjeGIyTnNWVkp3UWxkMFZuVmpjMnBUYlRab00wWkNTelpDTmxBNWRFRTlQVG82bUJJT2lkYzNjeFpYWmJwN0MwbTRJUT09', '0', '');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `conversations`
+-- Indices de la tabla `conversations`
 --
 ALTER TABLE `conversations`
   ADD PRIMARY KEY (`idConversation`);
 
 --
--- Indexes for table `files`
+-- Indices de la tabla `files`
 --
 ALTER TABLE `files`
   ADD PRIMARY KEY (`idFile`);
 
 --
--- Indexes for table `lestatz_domains`
+-- Indices de la tabla `lestatz_domains`
 --
 ALTER TABLE `lestatz_domains`
   ADD PRIMARY KEY (`idDomain`),
   ADD UNIQUE KEY `idDomain` (`idDomain`);
 
 --
--- Indexes for table `lestatz_goals`
+-- Indices de la tabla `lestatz_goals`
 --
 ALTER TABLE `lestatz_goals`
   ADD PRIMARY KEY (`idGoal`),
   ADD UNIQUE KEY `idGoal` (`idGoal`);
 
 --
--- Indexes for table `lestatz_refs`
+-- Indices de la tabla `lestatz_refs`
 --
 ALTER TABLE `lestatz_refs`
   ADD PRIMARY KEY (`idRef`);
 
 --
--- Indexes for table `msgs`
+-- Indices de la tabla `msgs`
 --
 ALTER TABLE `msgs`
   ADD PRIMARY KEY (`idMsg`);
 
 --
--- Indexes for table `sessions`
+-- Indices de la tabla `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`idSession`),
@@ -651,238 +634,261 @@ ALTER TABLE `sessions`
   ADD KEY `sessionKey` (`sessionKey`(191));
 
 --
--- Indexes for table `tbl_activo`
+-- Indices de la tabla `tbl_activo`
 --
 ALTER TABLE `tbl_activo`
   ADD PRIMARY KEY (`id_activo`);
 
 --
--- Indexes for table `tbl_cliente`
+-- Indices de la tabla `tbl_cliente`
 --
 ALTER TABLE `tbl_cliente`
   ADD PRIMARY KEY (`id_cliente`);
 
 --
--- Indexes for table `tbl_clientetickets`
+-- Indices de la tabla `tbl_clientetickets`
 --
 ALTER TABLE `tbl_clientetickets`
   ADD PRIMARY KEY (`id_ticket`);
 
 --
--- Indexes for table `tbl_contabilidad`
+-- Indices de la tabla `tbl_contabilidad`
 --
 ALTER TABLE `tbl_contabilidad`
   ADD PRIMARY KEY (`id_contabilidad`);
 
 --
--- Indexes for table `tbl_cuentaspagar`
+-- Indices de la tabla `tbl_cuentaspagar`
 --
 ALTER TABLE `tbl_cuentaspagar`
   ADD PRIMARY KEY (`id_cuentasPagar`);
 
 --
--- Indexes for table `tbl_empleado`
+-- Indices de la tabla `tbl_empleado`
 --
 ALTER TABLE `tbl_empleado`
   ADD PRIMARY KEY (`id_empleado`);
 
 --
--- Indexes for table `tbl_factura`
+-- Indices de la tabla `tbl_factura`
 --
 ALTER TABLE `tbl_factura`
   ADD PRIMARY KEY (`id_factura`);
 
 --
--- Indexes for table `tbl_historialprecios`
+-- Indices de la tabla `tbl_historialprecios`
 --
 ALTER TABLE `tbl_historialprecios`
   ADD PRIMARY KEY (`id_historialPrecio`);
 
 --
--- Indexes for table `tbl_inventario`
+-- Indices de la tabla `tbl_inventario`
 --
 ALTER TABLE `tbl_inventario`
   ADD PRIMARY KEY (`id_inventario`);
 
 --
--- Indexes for table `tbl_movimientoinventario`
+-- Indices de la tabla `tbl_movimientoinventario`
 --
 ALTER TABLE `tbl_movimientoinventario`
   ADD PRIMARY KEY (`id_movInv`);
 
 --
--- Indexes for table `tbl_pagos`
+-- Indices de la tabla `tbl_pagos`
 --
 ALTER TABLE `tbl_pagos`
   ADD PRIMARY KEY (`id_pago`);
 
 --
--- Indexes for table `tbl_pedidos`
+-- Indices de la tabla `tbl_pedidos`
 --
 ALTER TABLE `tbl_pedidos`
   ADD PRIMARY KEY (`id_pedido`);
 
 --
--- Indexes for table `tbl_permisosrol`
+-- Indices de la tabla `tbl_permisosrol`
 --
 ALTER TABLE `tbl_permisosrol`
   ADD PRIMARY KEY (`id_permiso`);
 
 --
--- Indexes for table `tbl_planilla`
+-- Indices de la tabla `tbl_planilla`
 --
 ALTER TABLE `tbl_planilla`
   ADD PRIMARY KEY (`id_planilla`);
 
 --
--- Indexes for table `tbl_proveedor`
+-- Indices de la tabla `tbl_proveedor`
 --
 ALTER TABLE `tbl_proveedor`
   ADD PRIMARY KEY (`id_proveedor`);
 
 --
--- Indexes for table `tbl_roles`
+-- Indices de la tabla `tbl_roles`
 --
 ALTER TABLE `tbl_roles`
   ADD PRIMARY KEY (`id_roles`);
 
 --
--- Indexes for table `tbl_tipocliente`
+-- Indices de la tabla `tbl_tipocliente`
 --
 ALTER TABLE `tbl_tipocliente`
   ADD PRIMARY KEY (`id_tipoCliente`);
 
 --
--- Indexes for table `tbl_usuarios`
+-- Indices de la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
   ADD PRIMARY KEY (`id_usuarios`);
 
 --
--- Indexes for table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`idUser`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `conversations`
+-- AUTO_INCREMENT de la tabla `conversations`
 --
 ALTER TABLE `conversations`
   MODIFY `idConversation` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `files`
+-- AUTO_INCREMENT de la tabla `files`
 --
 ALTER TABLE `files`
   MODIFY `idFile` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `lestatz_domains`
+-- AUTO_INCREMENT de la tabla `lestatz_domains`
 --
 ALTER TABLE `lestatz_domains`
   MODIFY `idDomain` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `sessions`
+-- AUTO_INCREMENT de la tabla `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
--- AUTO_INCREMENT for table `tbl_activo`
+-- AUTO_INCREMENT de la tabla `tbl_activo`
 --
 ALTER TABLE `tbl_activo`
-  MODIFY `id_activo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_activo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
--- AUTO_INCREMENT for table `tbl_cliente`
+-- AUTO_INCREMENT de la tabla `tbl_cliente`
 --
 ALTER TABLE `tbl_cliente`
-  MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
--- AUTO_INCREMENT for table `tbl_clientetickets`
+-- AUTO_INCREMENT de la tabla `tbl_clientetickets`
 --
 ALTER TABLE `tbl_clientetickets`
-  MODIFY `id_ticket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_ticket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `tbl_contabilidad`
+-- AUTO_INCREMENT de la tabla `tbl_contabilidad`
 --
 ALTER TABLE `tbl_contabilidad`
   MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `tbl_cuentaspagar`
+-- AUTO_INCREMENT de la tabla `tbl_cuentaspagar`
 --
 ALTER TABLE `tbl_cuentaspagar`
-  MODIFY `id_cuentasPagar` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_cuentasPagar` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `tbl_empleado`
+-- AUTO_INCREMENT de la tabla `tbl_empleado`
 --
 ALTER TABLE `tbl_empleado`
-  MODIFY `id_empleado` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_empleado` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- AUTO_INCREMENT for table `tbl_factura`
+-- AUTO_INCREMENT de la tabla `tbl_factura`
 --
 ALTER TABLE `tbl_factura`
   MODIFY `id_factura` int(10) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `tbl_historialprecios`
+-- AUTO_INCREMENT de la tabla `tbl_historialprecios`
 --
 ALTER TABLE `tbl_historialprecios`
-  MODIFY `id_historialPrecio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_historialPrecio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
--- AUTO_INCREMENT for table `tbl_inventario`
+-- AUTO_INCREMENT de la tabla `tbl_inventario`
 --
 ALTER TABLE `tbl_inventario`
-  MODIFY `id_inventario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_inventario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `tbl_movimientoinventario`
+-- AUTO_INCREMENT de la tabla `tbl_movimientoinventario`
 --
 ALTER TABLE `tbl_movimientoinventario`
   MODIFY `id_movInv` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
--- AUTO_INCREMENT for table `tbl_pagos`
+-- AUTO_INCREMENT de la tabla `tbl_pagos`
 --
 ALTER TABLE `tbl_pagos`
-  MODIFY `id_pago` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pago` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `tbl_pedidos`
+-- AUTO_INCREMENT de la tabla `tbl_pedidos`
 --
 ALTER TABLE `tbl_pedidos`
-  MODIFY `id_pedido` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pedido` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
--- AUTO_INCREMENT for table `tbl_permisosrol`
+-- AUTO_INCREMENT de la tabla `tbl_permisosrol`
 --
 ALTER TABLE `tbl_permisosrol`
-  MODIFY `id_permiso` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_permiso` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `tbl_planilla`
+-- AUTO_INCREMENT de la tabla `tbl_planilla`
 --
 ALTER TABLE `tbl_planilla`
   MODIFY `id_planilla` int(10) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `tbl_proveedor`
+-- AUTO_INCREMENT de la tabla `tbl_proveedor`
 --
 ALTER TABLE `tbl_proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `tbl_roles`
+-- AUTO_INCREMENT de la tabla `tbl_roles`
 --
 ALTER TABLE `tbl_roles`
-  MODIFY `id_roles` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_roles` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `tbl_tipocliente`
+-- AUTO_INCREMENT de la tabla `tbl_tipocliente`
 --
 ALTER TABLE `tbl_tipocliente`
-  MODIFY `id_tipoCliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_tipoCliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `tbl_usuarios`
+-- AUTO_INCREMENT de la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
   MODIFY `id_usuarios` int(10) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUser` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;COMMIT;
+  MODIFY `idUser` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
