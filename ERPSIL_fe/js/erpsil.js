@@ -36,21 +36,6 @@ function boot_erpsil() {
 /*********************************************************/
 /*                 Gestion de Reportes                   */
 /*********************************************************/
-/*Funciona pero solo con las tablas
-function DescargarPDF(ContenidoID,nombre) {
-
-    var pdf = new jsPDF('p', 'pt', 'letter');
-	
-    html = $('#'+ContenidoID).html();
-	
-    specialElementHandlers = {};
-	
-    margins = {top: 0,bottom: 0,left: 0,width: 1000, height: 1000};
-	
-    pdf.fromHTML(html, margins.left, margins.top, {'width': margins.width},function (dispose) {pdf.save(nombre+'.pdf');}, margins);
-	
-}
-*/
 
 function PdfDescargar(id,nombre){
 
@@ -133,6 +118,8 @@ function erpsil_loginWindow() {
 +   " </div>"
      
     erpsil_setContent(loginWindow);
+    //Eliminar el grafico
+    erpsil_CleanChart();
 }
 
 function validacionLogin(){
@@ -188,7 +175,8 @@ function erpsil_setMenu() {
     +        "</div>"
 
     +   "</div>";
-
+        //Eliminar el grafico
+        erpsil_CleanChart();
     $("#erpsil_modal").empty();
     $("#erpsil_content").empty();
     $("#erpsil_menu").empty();
@@ -419,6 +407,8 @@ function erpsil_agregarPedidoWindow() {
         +   " </div>"
 
         erpsil_setContent(agregarPedidoWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
     }, function(){
         erpsil_modalMalo();
         console.log("Error!");
@@ -534,6 +524,8 @@ function erpsil_editarPedidoWindow(data) {
 
 
     erpsil_setContent(editarClienteTicketsWindow);
+    //Eliminar el grafico
+    erpsil_CleanChart();
 }
 
 function erpsil_editarPedido(id){
@@ -650,8 +642,8 @@ function erpsil_listarClientesTickets(){
 
 function erpsil_pdfClientesTickets(){
     /*console.log("debug");*/
-        PdfDescargar('ClientesTickets','Reporte de Clientes Tickets');
-    }
+    PdfDescargar('ClientesTickets','Reporte de Clientes Tickets');
+}
 
 function erpsil_agregarClientesTicketsWindow() {
 
@@ -702,8 +694,9 @@ function erpsil_agregarClientesTicketsWindow() {
         +            "<div onClick='erpsil_agregarClientesTickets()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
         +         "</div>"
         +   " </div>"
-        console.log(selectD);  
         erpsil_setContent(agregarClientesTicketsWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
     }, function(){
         console.log("Error!");
     });
@@ -788,8 +781,10 @@ function erpsil_editarClienteTicketsWindow(data) {
     +       "</div>"
     +       "</div>"
 
-
     erpsil_setContent(editarClienteTicketsWindow);
+    //Eliminar el grafico
+    erpsil_CleanChart();
+
 }
 
 function erpsil_editarClientesTickets(id){
@@ -953,6 +948,8 @@ function erpsil_agregarPermisoRolWindow() {
             + " </div>"
 
         erpsil_setContent(agregarPermisoRolWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
 
     }, function () {
         erpsil_modalMalo();
@@ -1019,8 +1016,10 @@ function erpsil_editarPermisoRolWindow(data) {
  +       "</div>"
  +       "</div>"
  
- 
     erpsil_setContent(editarPermisoRolWindow);
+    //Eliminar el grafico
+    erpsil_CleanChart();
+
 }
 
 function erpsil_editarPermisoRol(id) {
@@ -1088,58 +1087,6 @@ function erpsil_eliminarPermisoRol(id){
 /*********************************************************/
 /*                 Gestion de tbl_cuentasPagar           */ 
 /*********************************************************/
-/*
-function erpsil_listarCuentasPagar(){
-    var cuentasPagarData = {
-        w: "erpsil_cuentasPagar",
-        r: "mostrar_cuentasPagar"
-    };
-    calaApi_postRequest(cuentasPagarData, function (d) {
-        var MostrarCuentasPagarWindow = ""
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
-        +            "<tr>"
-        +                "<th>ID</th>"
-        +                "<th>ID Proveedor</th>"
-        +                "<th>Código de Referencia</th>"
-        +                "<th>Saldo</th>"
-        +                "<th>Estado</th>"
-        +                "<th>Vence</th>"
-        +                "<th>Descripción</th>"
-        +                "<th>StampFecha</th>"
-        +            "</tr>";
-        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
-                    for(x in d.resp){
-                            var a = d.resp[x];
-                            MostrarCuentasPagarWindow += ""
-  
-        +            "<tr>"
-        +                "<td> "+ a.id_cuentasPagar +" </td>"
-        +                "<td> "+ a.id_proveedor +" </td>"
-        +                "<td> "+ a.codigo_referencia +" </td>"
-        +                "<td> "+ a.saldo +" </td>"
-        +                "<td> "+ a.estado +" </td>"
-        +                "<td> "+ a.vence +" </td>"
-        +                "<td> "+ a.descripcion +" </td>"
-        +                "<td> "+ a.stampfecha +" </td>"
-      
-        +                "<td> <div id='editar_cuentasPagar' onclick='erpsil_editarCuentasPagar(" + a.id_cuentasPagar + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarCuentasPagar("+ a.id_cuentasPagar +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
-        +            "</tr>";
-                    }
-                }
-                MostrarCuentasPagarWindow += ""
-        +            "</tr>"
-        +         "</table>"
-        +          "<td> <div onclick='erpsil_agregarCuentasPagarWindow()' class='btn btn-danger btn-sm'>Agregar</div></td>"
-        +                "<td> <div id='editar_activos' onclick='erpsil_menuWindow()' class='btn btn-success btn-sm'>Volver</div></td>"
-        +      "</div>";
-        erpsil_setContent(MostrarCuentasPagarWindow);
-    }, function (d) {
-        console.log(d);
-    });
-}
-*/
 
 function erpsil_listarCuentasPagar(){
     var cuentasPagarData = {
@@ -1255,7 +1202,8 @@ function erpsil_agregarCuentasPagarWindow() {
         +   " </div>"
                          
         erpsil_setContent(agregarCuentasPagarWindow);
-        console.log(p);
+        //Eliminar el grafico
+        erpsil_CleanChart();
     },function(){
         erpsil_modalMalo();
         console.log("Cuentas pagar no agregado.");
@@ -1290,7 +1238,6 @@ function erpsil_agregarCuentasPagar(){
         };
  
         calaApi_postRequest(permisoCuentasPagar, function (d) {
-            console.log(permisoCuentasPagar);
             erpsil_modalBueno();
             erpsil_listarCuentasPagar();
         }, function (d) {
@@ -1374,7 +1321,8 @@ function erpsil_editarCuentasPagarWindow(data) {
        
                          
         erpsil_setContent(editarCuentasPagarWindow);
-        console.log(p);
+        //Eliminar el grafico
+        erpsil_CleanChart();
     },function(){
         erpsil_modalMalo();
         console.log("Cuentas pagar no actualizado.");
@@ -1573,8 +1521,9 @@ function erpsil_agregarHistorialPrecioWindow() {
           +         "</div>"
           +   " </div>"
                              
-           erpsil_setContent(agregarHistorialPreciosWindow);
-           console.log(d);
+        erpsil_setContent(agregarHistorialPreciosWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
         }, function(){
             erpsil_modalMalo();
             console.log("error");
@@ -1694,7 +1643,9 @@ function erpsil_editarHistorialPrecioWindow(data) {
             +       "</div>"
             +       "</div>"
             erpsil_setContent(editarHistorialPreciosWindow);
-            console.log(d);
+            //Eliminar el grafico
+            erpsil_CleanChart();
+
         }, function () {
             erpsil_modalMalo();
             console.log("Error!!");
@@ -1864,8 +1815,6 @@ function erpsil_agregarPagosWindow() {
         }
         selectCuentasPagar += "</select>";
 
-        console.log(d);
-
         calaApi_postRequest(usuarioData, function(p){
 
             var selectPUsuario= "<select class='custom-select' id='inputDown2'>"  
@@ -1912,7 +1861,8 @@ function erpsil_agregarPagosWindow() {
         +   " </div>"
                           
         erpsil_setContent(agregarPagosWindow);
-        console.log(d);
+        //Eliminar el grafico
+        erpsil_CleanChart();
     }, function(){
         erpsil_modalMalo();
         console.log("error");
@@ -2070,12 +2020,11 @@ function erpsil_editarPagosWindow(data) {
         +         "</form>"
         +        "</div>"
         +       "</div>"
-        +       "</div>"
-        
-        
-        erpsil_setContent(editarPagosWindow);
-                          
-        console.log(d);
+        +       "</div>"  
+        erpsil_setContent(editarPagosWindow);               
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
     }, function(){
         erpsil_modalMalo();
         console.log("error");
@@ -2252,7 +2201,10 @@ function erpsil_agregarMovimientoInventarioWindow() {
             +         "</div>"
             +   " </div>"
                              
-            erpsil_setContent(agregarMovimientoInventarioWindow);
+        erpsil_setContent(agregarMovimientoInventarioWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+           
         }, function(){
             console.log("error");
             erpsil_modalMalo();
@@ -2323,10 +2275,7 @@ function erpsil_editarMovimientoInventarioWindow(data) {
             selectIn += "<option>" + i + " - id del producto  = (" + v.id_inventario + ")</option>";
             i++;
         }
-        selectIn += "</select>";
- 
-        console.log(inv);
- 
+        selectIn += "</select>"; 
  
         calaApi_postRequest(usuarioData, function(usu){
             var selectUsu = "<select class='custom-select' id='inputDown2'>" 
@@ -2558,10 +2507,12 @@ function erpsil_agregarTipoClienteWindow() {
     +    " </div>"
                        
     erpsil_setContent(agregarTipoClienteWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_agregarTipoCliente(){
-
 
     var nombreTipoCliente = $("#inputNombre").val();
     var descripcionTipoCliente = $("#inputDescripcion").val();
@@ -2645,7 +2596,9 @@ function erpsil_editarTipoClienteWindow(data) {
     +        "</div>"
     +       "</div>"
     +       "</div>"
-    erpsil_setContent(editartipoClienteWindow);
+    erpsil_setContent(editartipoClienteWindow);        
+    //Eliminar el grafico
+    erpsil_CleanChart();
 }
 
 function erpsil_editarTipoCliente(id){
@@ -2724,6 +2677,9 @@ function erpsil_agregarActivosWindow() {
     +   " </div>"
                        
     erpsil_setContent(agregarActivosWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_agregarActivos(){
@@ -2744,7 +2700,6 @@ function erpsil_agregarActivos(){
         
         calaApi_postRequest(activosData, function (d) {
             erpsil_modalBueno();
-            console.log("Tipo de cliente agregado" + d);
             erpsil_listarActivos();
         }, function (d) {
             erpsil_modalMalo();
@@ -2803,7 +2758,7 @@ function erpsil_listarActivos(){
         var cantidad = a.cantidad;
         console.log(cantidad);
 
-        /*******************************************************/
+        /******************************************************
 
         var ctx = document.getElementById("myChart").getContext('2d');
         if (window.grafica) {
@@ -2911,6 +2866,9 @@ function erpsil_editarActivosWindow(data) {
     +       "</div>"
 
     erpsil_setContent(editarActivosWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_editarActivos(id){
@@ -2984,6 +2942,9 @@ function erpsil_agregarRolWindow(){
     +   " </div>"
                        
     erpsil_setContent(agregarRolesWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_agregarRoles(){
@@ -3111,6 +3072,9 @@ function erpsil_editarRolesWindow(data) {
 +       "</div>"
 
     erpsil_setContent(editarRolesWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_editarRoles(id){
@@ -3145,7 +3109,6 @@ function erpsil_guardarEditarRoles() {
         };  
         
         calaApi_postRequest(rolesData, function (d) {
-            console.log(rolesData);
             erpsil_modalBueno();
             erpsil_listarRoles();
         }, function (d) {
@@ -3222,6 +3185,7 @@ function erpsil_listarInventario(){
         +      "</div>";
         erpsil_setContent(MostrarInventarioWindow);
 
+        /*
         var ctx = document.getElementById("myChart").getContext('2d');
         if (window.grafica) {
             window.grafica.clear();
@@ -3267,7 +3231,7 @@ function erpsil_listarInventario(){
         var cantidad = a.cantidad;
         console.log(cantidad);
 
-        ////////////////////////////////////////
+        */
 
     }, function (d) {
         console.log(d);
@@ -3297,7 +3261,7 @@ function erpsil_agregarInventarioWindow(){
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Código de Barras</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='password' class='form-control' placeholder='Código de Barras' required='required' onkeyup = erpsil_validacionTxt('inputCodigoBarras'," + 2 +") id='inputCodigoBarra'>"
+    +            "<input type='text' class='form-control' placeholder='Código de Barras' required='required' onkeyup = erpsil_validacionTxt('inputCodigoBarras'," + 2 +") id='inputCodigoBarra'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Categoria</label>"
     +        "<div class='col-sm'>"
@@ -3334,6 +3298,9 @@ function erpsil_agregarInventarioWindow(){
     +   " </div>"
                        
     erpsil_setContent(agregarInventarioWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_agregarInventario(){
@@ -3371,7 +3338,6 @@ function erpsil_agregarInventario(){
             status:statusInventario
         };
     calaApi_postRequest(inventarioData, function (d) {
-        console.log("Inventario agregado" + d);
         erpsil_modalBueno();
         erpsil_listarInventario();
     }, function (d) {
@@ -3479,8 +3445,10 @@ function erpsil_editarInventarioWindow(data) {
     +       "</div>"
     +       "</div>"
 
-
     erpsil_setContent(editarInventarioWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_editarInventario(id){
@@ -3594,6 +3562,9 @@ function erpsil_agregarProveedorWindow() {
     +   " </div>"
                        
     erpsil_setContent(agregarProveedorWindow);
+    //Eliminar el grafico
+    erpsil_CleanChart();
+
 }
 
 function erpsil_agregarProveedor(){
@@ -3622,7 +3593,6 @@ function erpsil_agregarProveedor(){
         };
 
         calaApi_postRequest(proveedorData, function (d) {
-            console.log("nuevos agregado" + d);
             erpsil_modalBueno();
             erpsil_listarProveedor();
         }, function (d) {
@@ -3820,6 +3790,9 @@ function erpsil_editarProveedorWindow(data) {
     +       "</div>"
 
     erpsil_setContent(editarProveedorWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 /*********************************************************/
@@ -3875,6 +3848,9 @@ function erpsil_agregarClienteWindow() {
     +   " </div>"
 
     erpsil_setContent(agregarClienteWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_editarClienteWindow(data) {
@@ -3935,8 +3911,10 @@ function erpsil_editarClienteWindow(data) {
     +       "</div>"
     +       "</div>"
 
-
     erpsil_setContent(editarClienteWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_agregarCliente(){
@@ -3969,7 +3947,7 @@ function erpsil_agregarCliente(){
         };
     
         calaApi_postRequest(clienteData, function (d) {
-            console.log("agregado" + d);
+            //console.log("agregado" + d);
             erpsil_modalBueno();
             erpsil_listarCliente();
         }, function (d) {
@@ -4184,6 +4162,9 @@ function erpsil_agregarEmpleadoWindow(){
     +   " </div>"
     
     erpsil_setContent(agregarEmpleadoWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_editarEmpleadoWindow(data) {
@@ -4247,7 +4228,10 @@ function erpsil_editarEmpleadoWindow(data) {
     +       "</div>"
 
 
-erpsil_setContent(editarEmpleadoWindow);
+    erpsil_setContent(editarEmpleadoWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_agregarEmpleado(){
@@ -4570,6 +4554,8 @@ function erpsil_agregarFacturaWindow() {
         +         "</div>"
         +   " </div>"
         erpsil_setContent(agregarFacturaWindow);
+            //Eliminar el grafico
+            erpsil_CleanChart();
     }, function(){
         erpsil_modalMalo();
         console.log("Error!");
@@ -4600,7 +4586,6 @@ function erpsil_agregarFactura(){
             cantidad:cantidad,
             descripcion:descripcion,
             total:total
-
         };  
         
         calaApi_postRequest(facturaData, function (d) {
@@ -4673,11 +4658,14 @@ function erpsil_editarFacturaWindow(data) {
     +       "</div>"
     +       "</div>"
 
+    erpsil_setContent(editarFacturaWindow);
+    //Eliminar el grafico
+    erpsil_CleanChart();
 
-erpsil_setContent(editarFacturaWindow);
 }
 
 function erpsil_editarFactura(id){
+
     var req = {
         w: "erpsil_factura",
         r: "obtener_factura",
@@ -4735,6 +4723,7 @@ function erpsil_guardarEditarFactura(){
 /*********************************************************/
 /*           Gestion Contabilidad                        */
 /*********************************************************/
+
 function erpsil_listarContabilidad() { 
     var contabilidadData = {
         w: "erpsil_contabilidad",
@@ -4831,7 +4820,8 @@ MostrarPlanillaWindow += ""
         +      "</div>";
 
         erpsil_setContent(MostrarPlanillaWindow);
-
+        //Eliminar el grafico
+        erpsil_CleanChart();
     }, function (d) {
         console.log(d);
     });
@@ -4898,6 +4888,8 @@ function erpsil_agregarPlanillaWindow() {
         +   " </div>"
         //console.log(selectD);  
         erpsil_setContent(agregarPlanillaWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
     }, function(){
         console.log("Error!");
     });
@@ -5000,8 +4992,9 @@ function erpsil_editarPlanillaWindow(data) {
     +       "</div>"
     +       "</div>"
 
-
-erpsil_setContent(editarPlanillaWindow);
+    erpsil_setContent(editarPlanillaWindow);
+    //Eliminar el grafico
+    erpsil_CleanChart();
 }
 
 function erpsil_editarPlanilla(id){
@@ -5124,6 +5117,9 @@ function erpsil_agregarUsuarioWindow(){
     +	"</div>"
                        
     erpsil_setContent(agregarUsuarioWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+
 }
 
 function erpsil_registrarUsuarioWindow(){
@@ -5170,6 +5166,8 @@ function erpsil_registrarUsuarioWindow(){
     +	"</div>"
                        
     erpsil_setContent(agregarUsuarioWindow);
+    //Eliminar el grafico
+    erpsil_CleanChart();
 }
 
 function erpsil_agregarUsuario(){
