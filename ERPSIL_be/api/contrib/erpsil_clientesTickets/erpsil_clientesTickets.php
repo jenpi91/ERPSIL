@@ -9,7 +9,8 @@ function mostrarClienteTickets(){
 
 function agregarClienteTickets(){
 
-    $stamp = date("Y-m-d");
+    $stamp = time();
+
     $id_cliente = params_get("id_cliente");
     //$stamp = params_get("stamp");
     $titulo = params_get("titulo");

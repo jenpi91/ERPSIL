@@ -37,7 +37,6 @@ function erpsil_historialPrecios_init(){
             'params' => array(
                 array("key" => "id_inventario", "def" => "", "req" => true),
                 array("key" => "id_proveedor", "def" => "", "req" => true),
-                array("key" => "ingreso", "def" => "", "req" => true),
                 array("key" => "costo", "def" => "", "req" => true),
             ),
             'file' => 'erpsil_historialPrecios.php'
