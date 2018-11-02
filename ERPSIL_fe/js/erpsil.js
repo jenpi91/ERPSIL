@@ -4541,35 +4541,52 @@ function erpsil_agregarFacturaWindow() {
 
         +        "<label class='col-sm-3 control-label'>Fecha</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Fecha' required='required' id='inputStamp'>"
+        +           " <input type='date' class='form-control' placeholder='Fecha' required='required' id='inputStamp'>"
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Cantidad</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
+        +           " <input type='text' class='form-control' onChange='erpsil_sumaFactura()' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
         +        "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Descripción</label>"
+        +        "<label class='col-sm-3 control-label'>Precio(Antes era Descripcion)</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Descripción' required='required' id='inputDescr'>"
+        +           " <input type='text' class='form-control' onChange='erpsil_sumaFactura()' placeholder='Descripción' onkeyup = erpsil_validacionTxt('inputTotal'," + 2 +") required='required' id='inputDescr'>"
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Total</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Total' required='required' onkeyup = erpsil_validacionTxt('inputTotal'," + 2 +") id='inputTotal'>"
+        +           " <input type='text' class='form-control'  placeholder='Total' required='required' onkeyup = erpsil_validacionTxt('inputTotal'," + 2 +") id='inputTotal'>"
         +        "</div>"
 
         +        "<div class='col-sm centrarDivTxt'>"
         +            "<div onClick='erpsil_agregarFactura()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
         +            "<div onClick='erpsil_listarFactura()' class='btn btn-sm btn-danger btn_central'>Regresar</div>"
+        +            "<div onClick='erpsil_sumaFactura()' class='btn btn-sm btn-danger btn_central'>prueba</div>"
         +         "</div>"
         +   " </div>"
+        
         erpsil_setContent(agregarFacturaWindow);
     }, function(){
         erpsil_modalMalo();
         console.log("Error!");
     });
 
+}
+
+function erpsil_sumaFactura(){
+    var total = 0;
+    
+    var cantidad =  $("#inputCantidad").val();
+    var precio = $("#inputDescr").val();
+
+    if(cantidad == null || precio == null){
+        document.getElementById('inputCantidad').value = "Ingresar un valor";
+        document.getElementById('inputDescr').value = "Ingresar un valor";
+    }else{
+        total = cantidad * precio;
+        document.getElementById("inputTotal").value = total;
+    }
 }
 
 function erpsil_agregarFactura(){
@@ -4656,7 +4673,7 @@ function erpsil_editarFacturaWindow(data) {
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>stamp</label>"
     +        "<div class='col-sm'>"
-    +               "<input type='text' id='inputstamp' value='" + data.stamp + "' class='form-control' placeholder='stamp' required>"
+    +               "<input type='date' id='inputstamp' value='" + data.stamp + "' class='form-control' placeholder='stamp' required>"
     +        "</div>"
     +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
     +           " <div class='col-sm centrarDivTxt'>"
