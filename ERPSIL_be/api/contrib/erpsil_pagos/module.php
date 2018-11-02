@@ -60,6 +60,7 @@ function erpsil_pagos_init(){
 			array("key" => "id_cuenta", "def" => "", "req" => true),
 			array("key" => "id_usuarios", "def" => "", "req" => true),
 			array("key" => "pago", "def" => "", "req" => true),
+			array("key" => "fecha", "def" => "", "req" => true),
 			array("key" => "actual", "def" => "", "req" => true)
 			),
 			'file' => 'erpsil_pagos.php'
