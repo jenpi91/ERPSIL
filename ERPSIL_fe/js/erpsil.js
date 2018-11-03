@@ -4518,7 +4518,6 @@ function erpsil_agregarFacturaWindow() {
     };
 
     calaApi_postRequest(facturaData, function(d){
-
         var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
         var i = 1;
         for(a in d.resp){ 
@@ -4526,10 +4525,11 @@ function erpsil_agregarFacturaWindow() {
             selectD += "<option>" + i + " - Nombre del cliente: " + x.nombre + " - id = (" + x.id_cliente + ")</option>";
             i++;
         }
-
+        
         selectD += "</select>";
-
+        
         var agregarFacturaWindow = ""
+/*
 
         +    "<div class='container centrarDivTxt'>"
         +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Factura</h2>"
@@ -4565,13 +4565,219 @@ function erpsil_agregarFacturaWindow() {
         +            "<div onClick='erpsil_sumaFactura()' class='btn btn-sm btn-danger btn_central'>prueba</div>"
         +         "</div>"
         +   " </div>"
+*/
+        + "<hr />"
+
+        +       "<h1 class='h4 mb-0'>Lineas de detalle</h1>"
+
+        +         "<hr />"
+        +         "<div class='table-responsive'>"
+        +             "<table class='table' >"
+        +                 "<thead class='thead-dark'>"
+        +                     "<tr>"
+        +                         "<th>"
+        +                             "Producto"
+        +                         "</th>"
+        +                         "<th>Codigo Referencia</th>"
+        +                         "<th>Cantidad</th>"
+        +                         "<th>Precio Unitario</th>"
+        +                         "<th>Descuento</th>"
+        +                         "<th>I.V</th>"
+        +                         "<th>SubTotal</th>"
+        +                         "<th>Precio Total</th>"
+        +                         "<th class='text-right'>Action</th>"
+        +                     "</tr>"
+        +                 "</thead>"
+        +                 "<tbody id='tabla'>"
+  
+ 
+        +                 "</tbody>"
+        +                 "<tfoot>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle text-right'>"
+        +                     "<button onclick='erpsil_addRow();' class='btn btn-success btn-sm ' data-toggle='tooltip' data-placement='bottom' title='' data-original-title='Agregar'>"
+        +                         "<i class='material-icons md-12 align-middle'>add</i>"
+        +                     "</button>"
+        +                 "</td>"
+  
+        +                 "</tfoot>"
+        +             "</table>"
+        +         "</div>"
+
+        +        "<div class='row'>"
+        +        "<div class='col-md-6'>"
+        +            "<div class='form-group'>"
+        +                "<label for='note'>Descripcion</label>"
+        +                "<textarea name='note' id='note' cols='30' rows='7' class='form-control'></textarea>"
+        +            "</div>"
+        +        "</div>"
+        +        "<div class='col-md-6'>"
+
+        +            "<div class='card card-body card-subtotals bg-light'>"
+        +                "<ul class='list-unstyled'>"
+        +                    "<li>"
+        +                        "<div >Cantidad de productos</div>"
+        +                        "<div><input value='0' readonly type='text' id='cantidad' class='form-control' placeholder=''></div>"
+        +                    "</li>"                                                
+        +                    "<li>"
+        +                        "<div>Subtotal</div>"
+        +                        "<div><input value='0' readonly type='text' id='subTotal1' class='form-control'  placeholder=''></div>"
+        +                    "</li>"
+        +                    "<li>"
+        +                        "<div>Descuento Total</div>"
+        +                        "<div><input value='0' readonly type='text' id='descuenteTotal' class='form-control'  placeholder='></div>"
+        +                    "</li>"
+        +                    "<li>"
+        +                        "<div>Impuesto Total</div>"
+        +                        "<div><input value='0' readonly type='text' id='impuestoTotal' class='form-control'  placeholder='></div>"
+        +                    "</li>"
+        +                "</ul>"
+        +                "<hr />"
+        +                "<div class='d-flex align-items-center justify-content-between'>"
+        +                    "<strong>Total:</strong>"
+        +                    "<strong><input value='0' readonly type='text' id='total' class='form-control'  placeholder='></strong>"
+        +                "</div>"
         
+        +                "<div class='form-group'>"
+        +                    "<hr/>"
+        +                    "<input type='button' onclick='' class='btn btn-primary' value='Generar Factura'></input>"
+        +                "</div>"
+        +            "</div>"
+        +        "</div>"
+        +    "</div>"
+
         erpsil_setContent(agregarFacturaWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
     }, function(){
         erpsil_modalMalo();
         console.log("Error!");
     });
 
+}
+
+function erpsil_addRow() {
+    $("#tabla").append('<tr >' +
+            '          <td class="align-middle" onfocusout="erpsil_formUpdate()">' +
+            '              <input  onchange="erpsil_formUpdate();" type="text" class="form-control" placeholder="Camara">' +
+            '          </td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" onchange="erpsil_formUpdate();" type="text" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate();" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()"  value="0" onchange="erpsil_formUpdate();" type="number" class="form-control" placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()"  value="0" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle text-right">' +
+            '              <button onfocusout="erpsil_formUpdate()" onclick="$(this).parent().parent().remove();erpsil_formUpdate();" class="btn btn-danger btn-sm " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete">' +
+            '                  <i class="material-icons md-14 align-middle">delete</i>' +
+            '              </button>' +
+            '          </td>' +
+            '      </tr>');
+}
+
+//Esta funcion resive 3 parametros
+//table=tabla de donde vamos a contar
+//columna=columnas a sumar
+//id=id de html que vamos a remplazar
+function erpsil_sumar_call(table, columna, id) {
+    var cantidadLineas = document.getElementById(table).getElementsByTagName("tr").length;
+    var cantidadColumnas = document.getElementById(table).rows[0].getElementsByTagName("td").length - 1;
+    var data = [];
+    for (i = 0; i < cantidadLineas; i++) {
+        data[i] = [];
+        for (j = 0; j < cantidadColumnas; j++) {
+            data[i][j] = document.getElementById(table).rows[i].cells[j].getElementsByTagName('input')[0].value;
+        }
+    }
+    var total = 0;
+    var cantidad = 0;
+    columna = parseInt(columna);
+    for (r = 0; r < cantidadLineas; r++) {
+        total = parseInt(total) + parseInt(data[r][columna]);
+        cantidad = parseInt(cantidad) + parseInt(data[r][2]);
+    }
+
+    document.getElementById("total").value = total;
+    document.getElementById("cantidad").value = cantidad;
+
+}
+
+//Esta funcion resive 3 parametros
+//table=tabla de donde vamos a contar
+//columna=columnas a sumar
+//id=id de html que vamos a remplazar
+function erpsil_CalculaSubTotal(table, columna, id) {
+    var cantidadLineas = document.getElementById(table).getElementsByTagName("tr").length;
+    var cantidadColumnas = document.getElementById(table).rows[0].getElementsByTagName("td").length - 1;
+    var data = [];
+    for (i = 0; i < cantidadLineas; i++) {
+        data[i] = [];
+        for (j = 0; j < cantidadColumnas; j++) {
+            data[i][j] = document.getElementById(table).rows[i].cells[j].getElementsByTagName('input')[0].value;
+        }
+    }
+    var subTotal = 0;
+    columna = parseInt(columna);
+    for (r = 0; r < cantidadLineas; r++) {
+        var precioTotal = (data[r][2] * parseInt(data[r][3])); // cantidad * unidad
+        var descuento = precioTotal * (parseInt(data[r][4]) / 100);
+        var IV = precioTotal * parseInt(data[r][5]) / 100;
+        var subTotal = precioTotal - descuento + IV;
+    }
+    console.log("subtotal 1 ============"+subTotal);
+
+    document.getElementById("subTotal1").value = subTotal;
+    //document.getElementById("subTotal1").value = subTotal1;
+}
+
+function erpsil_CalculaLineas(table) {
+    var cantidadLineas = document.getElementById(table).getElementsByTagName("tr").length;
+    var cantidadColumnas = document.getElementById(table).rows[0].getElementsByTagName("td").length - 1;
+    var data = [];
+    for (i = 0; i < cantidadLineas; i++) {
+        data[i] = [];
+        for (j = 0; j < cantidadColumnas; j++) {
+            data[i][j] = document.getElementById(table).rows[i].cells[j].getElementsByTagName('input')[0].value;
+        }
+    }
+    var precioTotal = 0;
+    var subTotal = 0;
+    var subTotal1 = 0;
+    var subTotal2 = 0;
+    var descuento1 = 0;
+    
+    for (r = 0; r < cantidadLineas; r++) {
+        precioTotal = (data[r][2] * parseInt(data[r][3])); // cantidad * unidad
+        subTotal1 = parseInt(data[r][6]);
+        var descuento = precioTotal * (parseInt(data[r][4]) / 100);
+        var IV = precioTotal * parseInt(data[r][5]) / 100;
+        var subTotal = precioTotal - descuento + IV;
+        var subTotal2 = subTotal2 + subTotal1;
+        descuento1 = descuento1 + descuento; 
+
+        document.getElementById(table).rows[r].cells[6].getElementsByTagName('input')[0].value=precioTotal;
+        document.getElementById(table).rows[r].cells[7].getElementsByTagName('input')[0].value=subTotal;
+        document.getElementById("subTotal1").value = subTotal2;
+        document.getElementById("descuenteTotal").value = descuento1;
+    }
+    
+}
+
+function erpsil_formUpdate() {
+    erpsil_sumar_call('tabla', 2, 'cantidad');
+    erpsil_sumar_call('tabla', 4, 'descuenteTotal');
+    erpsil_sumar_call('tabla', 5, 'impuestoTotal');
+    erpsil_sumar_call('tabla', 6, 'subTotal');
+    erpsil_sumar_call('tabla', 7, 'total');
+    erpsil_CalculaLineas('tabla');
 }
 
 function erpsil_sumaFactura(){
