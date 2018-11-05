@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="css/vendor-bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+    <script>
+        window.onload = function () {
+            boot_erpsil();
+        };
+    </script>
+</head>
+<body>
+    <div id="erpsil_menu" class=""></div>
+    <div id="erpsil_modal" class="divCentral"></div>
+    <div id="erpsil_content" class="divCentral"></div>
+    <div class="div_canvas">
+        <canvas id="myChart" style="height:100; width:100"></canvas>
+    </div>
     <script src="js/Chart.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -21,23 +35,5 @@
     <script src="src/jspdf.min.js"></script>
     <script src="src/autotable.js"></script>
     <script src="src/jquery-printme.js"></script>
-
-
-
-
-    <script>
-        window.onload = function () {
-            boot_erpsil();
-        };
-    </script>
-</head>
-
-<body>
-    <div id="erpsil_menu" class=""></div>
-    <div id="erpsil_modal" class="divCentral"></div>
-    <div id="erpsil_content" class="divCentral"></div>
-    <div class="div_canvas">
-        <canvas id="myChart" style="height:100; width:100"></canvas>
-    </div>
 </body>
 </html>
