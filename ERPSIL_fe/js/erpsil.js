@@ -169,7 +169,6 @@ function erpsil_setMenu() {
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPlanilla()'> Planilla</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarFactura()'> Factura</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_logout()'> Salir </div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='PdfDescargar()'> modal </div>"
     +             "</ul>"
 
     +        "</div>"
@@ -1570,8 +1569,6 @@ function erpsil_agregarHistorialPrecio(){
         erpsil_modalMalo();
         console.log("Error!");
        }
-
-   
 }
 
 function erpsil_editarHistorialPrecioWindow(data) {
@@ -4454,10 +4451,10 @@ function erpsil_listarFactura(){
         +         "<h2 class='tituloTablas'>Lista de facturas</h2><br><br>"
         +            "<tr>"
         +                "<th>ID Factura</th>"
-        +                "<th>id cliente</th>"
-        +                "<th>Stamp</th>"
+        +                "<th>Nombre cliente</th>"
+        +                "<th>Fecha</th>"
         +                "<th>Cantidad</th>"
-        +                "<th>Descripcion</th>"
+        +                "<th>Detealle</th>"
         +                "<th>Total</th>"
         +            "</tr>";
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
@@ -4467,10 +4464,10 @@ function erpsil_listarFactura(){
 
         +            "<tr>"
         +                "<td> "+ a.id_factura +" </td>"
-        +                "<td> "+ a.id_cliente +" </td>"
+        +                "<td> "+ a.nom_cliente +" </td>"
         +                "<td> "+ a.stamp +" </td>"
-        +                "<td> "+ a.cantidad +" </td>"
-        +                "<td> "+ a.descripcion +" </td>"
+        +                "<td> "+ a.cantidad_productos +" </td>"
+        +                "<td> "+ a.detalle +" </td>"
         +                "<td> "+ a.total +" </td>"
 
         +                "<td> <div id='editar_factura' onclick='erpsil_editarFactura(" + a.id_factura + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
@@ -4511,50 +4508,27 @@ function erpsil_agregarFacturaWindow() {
         var i = 1;
         for(a in d.resp){ 
             var x = d.resp[a];
-            selectD += "<option>" + i + " - Nombre del cliente: " + x.nombre + " - id = (" + x.id_cliente + ")</option>";
+            selectD += "<option>" + x.nombre + "</option>";
             i++;
         }
         
         selectD += "</select>";
         
         var agregarFacturaWindow = ""
-/*
-
+        
         +    "<div class='container centrarDivTxt'>"
         +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Factura</h2>"
 
-        +        "<label class='col-sm-3 control-label'>Id cliente</label>"
+
+        +        "<label class='col-sm-3 control-label'>Nombre del cliente</label>"
         +        "<div class='col-sm'>"
         +        selectD
         +        "</div>"
-
         +        "<label class='col-sm-3 control-label'>Fecha</label>"
         +        "<div class='col-sm'>"
         +           " <input type='date' class='form-control' placeholder='Fecha' required='required' id='inputStamp'>"
         +        "</div>"
-
-        +        "<label class='col-sm-3 control-label'>Cantidad</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' onChange='erpsil_sumaFactura()' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
-        +        "</div>"
-
-        +        "<label class='col-sm-3 control-label'>Precio(Antes era Descripcion)</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' onChange='erpsil_sumaFactura()' placeholder='Descripción' onkeyup = erpsil_validacionTxt('inputTotal'," + 2 +") required='required' id='inputDescr'>"
-        +        "</div>"
-
-        +        "<label class='col-sm-3 control-label'>Total</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control'  placeholder='Total' required='required' onkeyup = erpsil_validacionTxt('inputTotal'," + 2 +") id='inputTotal'>"
-        +        "</div>"
-
-        +        "<div class='col-sm centrarDivTxt'>"
-        +            "<div onClick='erpsil_agregarFactura()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
-        +            "<div onClick='erpsil_listarFactura()' class='btn btn-sm btn-danger btn_central'>Regresar</div>"
-        +            "<div onClick='erpsil_sumaFactura()' class='btn btn-sm btn-danger btn_central'>prueba</div>"
-        +         "</div>"
-        +   " </div>"
-*/
+        
         + "<hr />"
 
         +       "<h1 class='h4 mb-0'>Lineas de detalle</h1>"
@@ -4608,7 +4582,6 @@ function erpsil_agregarFacturaWindow() {
         +            "</div>"
         +        "</div>"
         +        "<div class='col-md-6'>"
-
         +            "<div class='card card-body card-subtotals bg-light'>"
         +                "<ul class='list-unstyled'>"
         +                    "<li>"
@@ -4629,14 +4602,15 @@ function erpsil_agregarFacturaWindow() {
         +                    "</li>"
         +                "</ul>"
         +                "<hr />"
-        +                "<div class='d-flex align-items-center justify-content-between'>"
-        +                    "<strong>Total:</strong>"
+        +                "<div class='d-flex align-items-center '>"
+        +                "<br />"
+        +                    "<strong>Total:   </strong>"
         +                    "<strong><input value='0' readonly type='text' id='total' class='form-control'  placeholder='></strong>"
         +                "</div>"
         
         +                "<div class='form-group'>"
         +                    "<hr/>"
-        +                    "<input type='button' onclick='' class='btn btn-primary' value='Generar Factura'></input>"
+        +                    "<input onclick='erpsil_agregarFactura()' class='btn btn-primary' value='Generar Factura'></input>"
         +                "</div>"
         +            "</div>"
         +        "</div>"
@@ -4661,7 +4635,7 @@ function erpsil_addRow() {
             '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate();" type="number" class="form-control"  placeholder=""></td>' +
             '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()"  value="0" onchange="erpsil_formUpdate();" type="number" class="form-control" placeholder=""></td>' +
             '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
-            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()"  value="0" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()"  value="13" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
             '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
             '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
             '          <td class="align-middle text-right">' +
@@ -4721,8 +4695,6 @@ function erpsil_CalculaSubTotal(table, columna, id) {
         var IV = precioTotal * parseInt(data[r][5]) / 100;
         var subTotal = precioTotal - descuento + IV;
     }
-    console.log("subtotal 1 ============"+subTotal);
-
     document.getElementById("subTotal1").value = subTotal;
     //document.getElementById("subTotal1").value = subTotal1;
 }
@@ -4742,6 +4714,9 @@ function erpsil_CalculaLineas(table) {
     var subTotal1 = 0;
     var subTotal2 = 0;
     var descuento1 = 0;
+    var productos = new Array();
+
+
     
     for (r = 0; r < cantidadLineas; r++) {
         precioTotal = (data[r][2] * parseInt(data[r][3])); // cantidad * unidad
@@ -4752,15 +4727,22 @@ function erpsil_CalculaLineas(table) {
         var subTotal2 = subTotal2 + subTotal1;
         descuento1 = descuento1 + descuento; 
 
+
+        //productos = [data[r][0]];
+        productos.push(data[r][0]);
+        console.log("ACA está la jugada= "+ productos[1]);
+        
         document.getElementById(table).rows[r].cells[6].getElementsByTagName('input')[0].value=precioTotal;
         document.getElementById(table).rows[r].cells[7].getElementsByTagName('input')[0].value=subTotal;
         document.getElementById("subTotal1").value = subTotal2;
         document.getElementById("descuenteTotal").value = descuento1;
+        document.getElementById("note").value = productos;
+        
     }
-    
 }
 
 function erpsil_formUpdate() {
+    erpsil_sumar_call('tabla', 0, 'producto');
     erpsil_sumar_call('tabla', 2, 'cantidad');
     erpsil_sumar_call('tabla', 4, 'descuenteTotal');
     erpsil_sumar_call('tabla', 5, 'impuestoTotal');
@@ -4788,16 +4770,17 @@ function erpsil_agregarFactura(){
 
     var d = $("#inputDrow");
     var id = d[0].value;
-    id = id.split("(")[1].split(")")[0];
 
     var id_cliente = id;
     var stamp = $("#inputStamp").val();
-    var cantidad = $("#inputCantidad").val();
-    var descripcion = $("#inputDescr").val();
-    var total = $("#inputTotal").val();
+    var cantidad = $("#cantidad").val();
+    var descripcion = $("#note").val();
+    var subTotal = $("#subTotal1").val();
+    var descuentoTotal = $("#descuenteTotal").val();
+    var total = $("#total").val();
     
 
-    if(id_cliente != "" && stamp != "" && cantidad != "" && descripcion != "" && total != ""){
+    if(id_cliente != "" && stamp != "" && cantidad != "" && descripcion != "" && subTotal != "" && total != "" && descuentoTotal != ""){
         
         var facturaData = {
             w: "erpsil_factura",
@@ -4806,6 +4789,8 @@ function erpsil_agregarFactura(){
             stamp:stamp,
             cantidad:cantidad,
             descripcion:descripcion,
+            subTotal:subTotal,
+            descuentoTotal:descuentoTotal,
             total:total
         };  
         
@@ -5144,6 +5129,7 @@ function erpsil_agregarPlanilla(){
         };  
         
         calaApi_postRequest(planillaData, function (d) {
+            console.log(planillaData);
             erpsil_modalBueno();
             erpsil_listarPlanilla();
         }, function (d) {
