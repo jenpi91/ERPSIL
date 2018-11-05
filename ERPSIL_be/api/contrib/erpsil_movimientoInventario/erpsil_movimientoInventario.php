@@ -6,12 +6,9 @@ function mostrarMovimientoInventario(){
 }
 
 function agregarMovimientoInventario(){
-
-   //$fec = date("d-m-Y");
    $id_usuario = params_get("id_usuario");
    $id_producto = params_get("id_producto");
-   $fecha = date("Y-m-d");
-   //$fecha = $fec;
+   $fecha = time();
    $razon = params_get("razon");
    $descripcion = params_get("descripcion");
    $costo = params_get("costo");
@@ -19,7 +16,7 @@ function agregarMovimientoInventario(){
    $q = "INSERT INTO `tbl_movimientoinventario` (`id_usuario`, `id_caja`, `id_producto`,
    `fecha`, `razon`, `descripcion`, `costo`) VALUES ('$id_usuario', '1','$id_producto', '$fecha', '$razon', '$descripcion', '$costo')";
 
-   //return $fecha;
+    //return $q;
    return db_query($q, 0);
 }
 
