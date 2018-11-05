@@ -54,6 +54,8 @@ function erpsil_factura_init(){
 				array("key" => "stamp", "def" => "", "req" => true),
 				array("key" => "cantidad", "def" => "", "req" => true),
 				array("key" => "descripcion", "def" => "", "req" => true),
+				array("key" => "subTotal", "def" => "", "req" => true),
+				array("key" => "descuentoTotal", "def" => "", "req" => true),
 				array("key" => "total", "def" => "", "req" => true)
 			),
 			'file' => 'erpsil_factura.php'
