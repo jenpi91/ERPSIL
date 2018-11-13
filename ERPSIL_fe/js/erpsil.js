@@ -59,6 +59,7 @@ function erpsil_login(){
         //erpsil_agregarInventarioWindow();
 
     }, function(b){
+        erpsil_modalMalo();
         console.log(b);    
     });
 
@@ -103,7 +104,7 @@ function erpsil_setMenu() {
     +    	"<div class='menuNav' >"
 
     +        	 "<ul>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='' >Grafica (pronto)</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()' >Grafica (pronto)</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarCliente()'>Cliente</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarProveedor()'>Proveedor</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarEmpleado()'>Empleado</div>"
@@ -120,15 +121,43 @@ function erpsil_setMenu() {
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPedido()'> Pedidos</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarMovimientoInventario()'> Movimiento Inventario</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_logout()'> Salir </div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()'> modal </div>"
     +             "</ul>"
 
     +        "</div>"
 
     +   "</div>";
 
+    $("#erpsil_modal").empty();
     $("#erpsil_content").empty();
     $("#erpsil_menu").empty();
     $("#erpsil_menu").append(content);
+}
+
+
+/*********************************************************/
+/*                       Alertas                         */
+/*********************************************************/
+function erpsil_modalBueno(){
+
+    var modal = ""
++      "<div class='alert alert-success' role='alert'>Agregado correctamente</div>"
+    erpsil_setModal(modal);
+
+    calaApi_doSomethingAfter(function(){
+        $("#erpsil_modal").empty();
+    }, 5000);
+}
+
+function erpsil_modalMalo(){
+
+    var modal = ""
++      "<div class='alert alert-danger' role='alert'>Error en el proceso</div>"
+    erpsil_setModal(modal);
+
+    calaApi_doSomethingAfter(function(){
+        $("#erpsil_modal").empty();
+    }, 5000);
 }
 
 /*********************************************************/
@@ -145,8 +174,12 @@ var logOut = {
 
 calaApi_postRequest(logOut, function (d) {
  console.log("si funcionó");
+ $("#erpsil_content").empty();
+ $("#erpsil_menu").empty();
+ erpsil_loginWindow();
 
 }, function (d) {
+    erpsil_modalMalo();
     console.log("No funcionó");
 });
 
@@ -322,9 +355,11 @@ function erpsil_agregarPedido(){
             console.log(pedidoData);
             erpsil_listarPedido();
         }, function (d) {
+            erpsil_modalBueno();
             console.log("Pedido no agregado");
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -3005,51 +3040,6 @@ function erpsil_listarInventario(){
 });
 }
 
-function barra(){
-    
-    var ctx = document.getElementById("myChart").getContext('2d');
-    if (window.grafica) {
-        window.grafica.clear();
-        window.grafica.destroy();
-    }
-    window.grafica  = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["lunes", "martes", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-}
-
 function erpsil_agregarInventarioWindow(){
     var agregarInventarioWindow = ""
     +    "<div class='container centrarDivTxt'>"
@@ -4713,6 +4703,11 @@ function erpsil_eliminarUsuario(id){
 function erpsil_setContent(content) {
     $("#erpsil_content").empty();
     $("#erpsil_content").append(content);
+}
+
+function erpsil_setModal(content) {
+    $("#erpsil_modal").empty();
+    $("#erpsil_modal").append(content);
 }
 
 function erpsil_CleanChart(){
