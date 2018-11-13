@@ -194,7 +194,6 @@ function erpsil_setMenu() {
     +        "<ul>"
     +          "<li><a onClick='erpsil_listarUsuario()'>Usuarios</a></li>"
     +          "<li><a onClick='erpsil_listarRoles()'>Roles</a></li>"
-    +          "<li><a >Opción 3.2</a></li>"
     +        "</ul>"
     +      "</li>"
     +          "<li><a style='color:#fff;' onClick='erpsil_logout()'>Salir</a></li>"
