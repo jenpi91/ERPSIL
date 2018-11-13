@@ -1,0 +1,3587 @@
+[d] 18-10-22 06:10:52 @ Booting up V:0.1
+[d] 18-10-22 06:10:52 @ Loading all core modules
+[d] 18-10-22 06:10:52 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:52 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:52 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:52 @ Module was booted too
+[i] 18-10-22 06:10:52 @ Cala was booted...
+[d] 18-10-22 06:10:52 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:52 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:52 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:52 @ Module was booted too
+[d] 18-10-22 06:10:52 @ Connected to Db
+[d] 18-10-22 06:10:52 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:52 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:52 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:52 @ Module was booted too
+[d] 18-10-22 06:10:52 @ Loading user
+[d] 18-10-22 06:10:52 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:52 @ Unable to locate user
+[d] 18-10-22 06:10:52 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:52 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:52 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:53 @ Module was booted too
+[d] 18-10-22 06:10:53 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:53 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:53 @ Module was booted too
+[d] 18-10-22 06:10:53 @ Loading user
+[d] 18-10-22 06:10:53 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:53 @ Unable to locate user
+[d] 18-10-22 06:10:53 @ Function found
+[d] 18-10-22 06:10:53 @ Looking for path: users_get_my_details
+[d] 18-10-22 06:10:53 @ Found path: users_get_my_details
+[d] 18-10-22 06:10:53 @ Confirm that the user is logged in
+[d] 18-10-22 06:10:53 @ User id = 0, this can't be logged in
+[d] 18-10-22 06:10:53 @ Finished! Memory used: Mb0.326224<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:20 @ Booting up V:0.1
+[d] 18-10-22 06:10:20 @ Loading all core modules
+[d] 18-10-22 06:10:20 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[i] 18-10-22 06:10:20 @ Cala was booted...
+[d] 18-10-22 06:10:20 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Connected to Db
+[d] 18-10-22 06:10:20 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:20 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:20 @ Unable to locate user
+[d] 18-10-22 06:10:20 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Function found
+[d] 18-10-22 06:10:21 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:21 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:21 @ Log in this person
+[d] 18-10-22 06:10:21 @ username based login
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Booting up V:0.1
+[d] 18-10-22 06:10:21 @ Loading all core modules
+[d] 18-10-22 06:10:21 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[i] 18-10-22 06:10:21 @ Cala was booted...
+[d] 18-10-22 06:10:21 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Connected to Db
+[d] 18-10-22 06:10:21 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Function found
+[d] 18-10-22 06:10:21 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:21 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:21 @ Log in this person
+[d] 18-10-22 06:10:21 @ username based login
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Able to login
+[d] 18-10-22 06:10:21 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'ZHFIdDVhbkM3bjRuWHdFTzNRaVJVdz09Ojp3LWYhv5E0YJvEsmgjI9dh', '::1', '1540180941')
+[d] 18-10-22 06:10:21 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:22 @ Booting up V:0.1
+[d] 18-10-22 06:10:22 @ Loading all core modules
+[d] 18-10-22 06:10:22 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[i] 18-10-22 06:10:22 @ Cala was booted...
+[d] 18-10-22 06:10:22 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Connected to Db
+[d] 18-10-22 06:10:22 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Loading user
+[d] 18-10-22 06:10:22 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:22 @ Unable to locate user
+[d] 18-10-22 06:10:22 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Able to login
+[d] 18-10-22 06:10:22 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:22 @ Loading user
+[d] 18-10-22 06:10:22 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:22 @ Unable to locate user
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:22 @ Function found
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:22 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'WG94TjYrbEFtaE5Pb0dLSURzaXdNdz09Ojo6fqgpmnNixNG+5XEFKCas', '::1', '1540180942')
+[d] 18-10-22 06:10:22 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:22 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Loading user
+[d] 18-10-22 06:10:22 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:22 @ Unable to locate user
+[d] 18-10-22 06:10:22 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:22 @ Log in this person
+[d] 18-10-22 06:10:22 @ username based login
+[d] 18-10-22 06:10:22 @ Loading user
+[d] 18-10-22 06:10:22 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:23 @ Able to login
+[d] 18-10-22 06:10:23 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:23 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:23 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:23 @ Module was booted too
+[d] 18-10-22 06:10:23 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'U1F6TTdXdktrbytsSFMyaFlkMlRydz09Ojp9IlmfhalfiSZKn4C1Ss4S', '::1', '1540180943')
+[d] 18-10-22 06:10:23 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:26 @ Booting up V:0.1
+[d] 18-10-22 06:10:26 @ Loading all core modules
+[d] 18-10-22 06:10:26 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[i] 18-10-22 06:10:26 @ Cala was booted...
+[d] 18-10-22 06:10:26 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Connected to Db
+[d] 18-10-22 06:10:26 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Function found
+[d] 18-10-22 06:10:26 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:26 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:26 @ Log in this person
+[d] 18-10-22 06:10:26 @ username based login
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Booting up V:0.1
+[d] 18-10-22 06:10:26 @ Loading all core modules
+[d] 18-10-22 06:10:26 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[i] 18-10-22 06:10:26 @ Cala was booted...
+[d] 18-10-22 06:10:26 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Connected to Db
+[d] 18-10-22 06:10:26 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:27 @ Unable to locate user
+[d] 18-10-22 06:10:27 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Loading user
+[d] 18-10-22 06:10:27 @ Able to login
+[d] 18-10-22 06:10:27 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:27 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:27 @ Unable to locate user
+[d] 18-10-22 06:10:27 @ Function found
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:27 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'VzJVK1hPc29iNjllM1BCK1Zud0Q2dz09OjqpMXYJ5f/MpLTxx2HjCYfe', '::1', '1540180947')
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:27 @ Loading user
+[d] 18-10-22 06:10:27 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:27 @ Unable to locate user
+[d] 18-10-22 06:10:27 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:27 @ Log in this person
+[d] 18-10-22 06:10:27 @ username based login
+[d] 18-10-22 06:10:27 @ Loading user
+[d] 18-10-22 06:10:27 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Booting up V:0.1
+[d] 18-10-22 06:10:27 @ Loading all core modules
+[d] 18-10-22 06:10:27 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[i] 18-10-22 06:10:27 @ Cala was booted...
+[d] 18-10-22 06:10:27 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Connected to Db
+[d] 18-10-22 06:10:27 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Loading user
+[d] 18-10-22 06:10:27 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:27 @ Unable to locate user
+[d] 18-10-22 06:10:27 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Loading user
+[d] 18-10-22 06:10:27 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:27 @ Able to login
+[d] 18-10-22 06:10:27 @ Unable to locate user
+here idUser='141' and ip='::1'
+[d] 18-10-22 06:10:27 @ Function found
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:27 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'T1hBcENjN2pXQTVaUE4xdWVuNVR5QT09OjreTSFHWHNLRZtA4rWlT20B', '::1', '1540180947')
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:27 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Loading user
+[d] 18-10-22 06:10:28 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:28 @ Unable to locate user
+[d] 18-10-22 06:10:28 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:28 @ Log in this person
+[d] 18-10-22 06:10:28 @ username based login
+[d] 18-10-22 06:10:28 @ Loading user
+[d] 18-10-22 06:10:28 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:28 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:28 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:28 @ Module was booted too
+[d] 18-10-22 06:10:28 @ Able to login
+[d] 18-10-22 06:10:28 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:28 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:28 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:28 @ Module was booted too
+[d] 18-10-22 06:10:28 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'S0cyNHVlQXdFTGN2Y2tNaGljOFcwUT09OjoVVM5flxpHZALk/XNNXFAh', '::1', '1540180948')
+[d] 18-10-22 06:10:28 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:31 @ Booting up V:0.1
+[d] 18-10-22 06:10:31 @ Loading all core modules
+[d] 18-10-22 06:10:31 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[i] 18-10-22 06:10:31 @ Cala was booted...
+[d] 18-10-22 06:10:31 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Connected to Db
+[d] 18-10-22 06:10:31 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Loading user
+[d] 18-10-22 06:10:31 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:31 @ Unable to locate user
+[d] 18-10-22 06:10:31 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Loading user
+[d] 18-10-22 06:10:31 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:31 @ Unable to locate user
+[d] 18-10-22 06:10:31 @ Function found
+[d] 18-10-22 06:10:31 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:31 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Loading user
+[d] 18-10-22 06:10:31 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:31 @ Unable to locate user
+[d] 18-10-22 06:10:31 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:31 @ Log in this person
+[d] 18-10-22 06:10:31 @ username based login
+[d] 18-10-22 06:10:31 @ Loading user
+[d] 18-10-22 06:10:31 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Booting up V:0.1
+[d] 18-10-22 06:10:32 @ Loading all core modules
+[d] 18-10-22 06:10:32 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[i] 18-10-22 06:10:32 @ Cala was booted...
+[d] 18-10-22 06:10:32 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Connected to Db
+[d] 18-10-22 06:10:32 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading user
+[d] 18-10-22 06:10:32 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:32 @ Unable to locate user
+[d] 18-10-22 06:10:32 @ Able to login
+[d] 18-10-22 06:10:32 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:32 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'eWRsb3ZwWld3dGRLZXFUeHdnR1p1QT09OjoypI6FqUI0U8Oy0qEyW2rI', '::1', '1540180952')
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading user
+[d] 18-10-22 06:10:32 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:32 @ Unable to locate user
+[d] 18-10-22 06:10:32 @ Function found
+[d] 18-10-22 06:10:32 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:32 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading user
+[d] 18-10-22 06:10:32 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:32 @ Unable to locate user
+[d] 18-10-22 06:10:32 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:32 @ Log in this person
+[d] 18-10-22 06:10:32 @ username based login
+[d] 18-10-22 06:10:32 @ Loading user
+[d] 18-10-22 06:10:32 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:33 @ Booting up V:0.1
+[d] 18-10-22 06:10:33 @ Loading all core modules
+[d] 18-10-22 06:10:33 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:33 @ Module was booted too
+[i] 18-10-22 06:10:33 @ Cala was booted...
+[d] 18-10-22 06:10:33 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:33 @ Connected to Db
+[d] 18-10-22 06:10:33 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:33 @ Loading user
+[d] 18-10-22 06:10:33 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:33 @ Unable to locate user
+[d] 18-10-22 06:10:33 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:33 @ Loading user
+[d] 18-10-22 06:10:33 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:33 @ Unable to locate user
+[d] 18-10-22 06:10:33 @ Function found
+[d] 18-10-22 06:10:33 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:33 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:33 @ Loading user
+[d] 18-10-22 06:10:33 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:33 @ Unable to locate user
+[d] 18-10-22 06:10:33 @ Able to login
+[d] 18-10-22 06:10:33 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:33 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:33 @ Log in this person
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:33 @ username based login
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:33 @ Loading user
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:33 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'cWtZTWNPRGtEcVk4cEFoVVlZRzNVUT09OjoaYioEz5P2VaMHJITOYqph', '::1', '1540180953')
+[d] 18-10-22 06:10:33 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:33 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:34 @ Able to login
+[d] 18-10-22 06:10:34 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:34 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:34 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:34 @ Module was booted too
+[d] 18-10-22 06:10:34 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'Q0xqQVFpbG9oRm1SUnRFU1ZHa3FLZz09OjpPfAOKP0MfjLpJ6awqcLew', '::1', '1540180954')
+[d] 18-10-22 06:10:34 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:36 @ Booting up V:0.1
+[d] 18-10-22 06:10:36 @ Loading all core modules
+[d] 18-10-22 06:10:36 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:36 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:36 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:36 @ Module was booted too
+[i] 18-10-22 06:10:36 @ Cala was booted...
+[d] 18-10-22 06:10:36 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:36 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Connected to Db
+[d] 18-10-22 06:10:37 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Loading user
+[d] 18-10-22 06:10:37 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:37 @ Unable to locate user
+[d] 18-10-22 06:10:37 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Loading user
+[d] 18-10-22 06:10:37 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:37 @ Unable to locate user
+[d] 18-10-22 06:10:37 @ Function found
+[d] 18-10-22 06:10:37 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:37 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Loading user
+[d] 18-10-22 06:10:37 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:37 @ Unable to locate user
+[d] 18-10-22 06:10:37 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:37 @ Log in this person
+[d] 18-10-22 06:10:37 @ username based login
+[d] 18-10-22 06:10:37 @ Loading user
+[d] 18-10-22 06:10:37 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Booting up V:0.1
+[d] 18-10-22 06:10:37 @ Loading all core modules
+[d] 18-10-22 06:10:37 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[i] 18-10-22 06:10:37 @ Cala was booted...
+[d] 18-10-22 06:10:37 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Connected to Db
+[d] 18-10-22 06:10:37 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Loading user
+[d] 18-10-22 06:10:37 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:37 @ Unable to locate user
+[d] 18-10-22 06:10:37 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Loading user
+[d] 18-10-22 06:10:38 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:38 @ Unable to locate user
+[d] 18-10-22 06:10:38 @ Function found
+[d] 18-10-22 06:10:38 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:38 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:38 @ Able to login
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:38 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Loading user
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/crypto/crypto.php
+undefined' AND `status` > 0 
+[d] 18-10-22 06:10:38 @ Unable to locate user
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:38 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'Y01PeE1TSmtDd0gvSVd5M2NRZ09ydz09OjopU9qfoZ8vt//FaQLMd0L8', '::1', '1540180958')
+[d] 18-10-22 06:10:38 @ Log in this person
+[d] 18-10-22 06:10:38 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:38 @ username based login
+[d] 18-10-22 06:10:38 @ Loading user
+[d] 18-10-22 06:10:38 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Booting up V:0.1
+[d] 18-10-22 06:10:38 @ Loading all core modules
+[d] 18-10-22 06:10:38 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[i] 18-10-22 06:10:38 @ Cala was booted...
+[d] 18-10-22 06:10:38 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Connected to Db
+[d] 18-10-22 06:10:38 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Loading user
+[d] 18-10-22 06:10:38 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:38 @ Unable to locate user
+[d] 18-10-22 06:10:38 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Loading user
+[d] 18-10-22 06:10:38 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:38 @ Unable to locate user
+[d] 18-10-22 06:10:38 @ Function found
+[d] 18-10-22 06:10:38 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:38 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:38 @ Able to login
+[d] 18-10-22 06:10:38 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Loading user
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Unable to locate user
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'VWlnbklLbklzMU5BSDRSNVNydU4zUT09OjqP+R8Pvfk/tzyj87mA0coJ', '::1', '1540180958')
+[d] 18-10-22 06:10:38 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:38 @ Log in this person
+[d] 18-10-22 06:10:38 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:38 @ username based login
+[d] 18-10-22 06:10:38 @ Loading user
+[d] 18-10-22 06:10:38 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:39 @ Module was booted too
+[d] 18-10-22 06:10:39 @ Able to login
+[d] 18-10-22 06:10:39 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:39 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:39 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:39 @ Module was booted too
+[d] 18-10-22 06:10:39 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'NnJWUTFMU1lwamJrempKbG9qUkJ2dz09OjqbgWyAvIg7nygSi7yPnm4o', '::1', '1540180959')
+[d] 18-10-22 06:10:39 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:42 @ Booting up V:0.1
+[d] 18-10-22 06:10:42 @ Loading all core modules
+[d] 18-10-22 06:10:42 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[i] 18-10-22 06:10:42 @ Cala was booted...
+[d] 18-10-22 06:10:42 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Connected to Db
+[d] 18-10-22 06:10:42 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Loading user
+[d] 18-10-22 06:10:42 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:42 @ Unable to locate user
+[d] 18-10-22 06:10:42 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Loading user
+[d] 18-10-22 06:10:42 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:42 @ Unable to locate user
+[d] 18-10-22 06:10:42 @ Function found
+[d] 18-10-22 06:10:42 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:42 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Loading user
+[d] 18-10-22 06:10:42 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:42 @ Unable to locate user
+[d] 18-10-22 06:10:42 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:42 @ Log in this person
+[d] 18-10-22 06:10:42 @ username based login
+[d] 18-10-22 06:10:42 @ Loading user
+[d] 18-10-22 06:10:42 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Booting up V:0.1
+[d] 18-10-22 06:10:43 @ Loading all core modules
+[d] 18-10-22 06:10:43 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:43 @ Module was booted too
+[i] 18-10-22 06:10:43 @ Cala was booted...
+[d] 18-10-22 06:10:43 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:43 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Connected to Db
+[d] 18-10-22 06:10:43 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:43 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Loading user
+[d] 18-10-22 06:10:43 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:43 @ Unable to locate user
+[d] 18-10-22 06:10:43 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:43 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:43 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Loading user
+[d] 18-10-22 06:10:43 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:43 @ Unable to locate user
+[d] 18-10-22 06:10:43 @ Function found
+[d] 18-10-22 06:10:43 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:43 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:43 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Loading user
+[d] 18-10-22 06:10:43 @ Able to login
+[d] 18-10-22 06:10:43 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:43 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:43 @ Unable to locate user
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:43 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:43 @ Log in this person
+[d] 18-10-22 06:10:43 @ username based login
+[d] 18-10-22 06:10:43 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Loading user
+[d] 18-10-22 06:10:43 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'd3k5M0pRVE1uTmg3bkdGVGdsZzlrQT09OjogKw8/I2+yLYi7BQ/QGSz/', '::1', '1540180963')
+[d] 18-10-22 06:10:43 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:43 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:43 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Booting up V:0.1
+[d] 18-10-22 06:10:43 @ Loading all core modules
+[d] 18-10-22 06:10:43 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:43 @ Module was booted too
+[i] 18-10-22 06:10:43 @ Cala was booted...
+[d] 18-10-22 06:10:43 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:44 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:44 @ Module was booted too
+[d] 18-10-22 06:10:44 @ Connected to Db
+[d] 18-10-22 06:10:44 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:44 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:44 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:44 @ Module was booted too
+[d] 18-10-22 06:10:44 @ Loading user
+[d] 18-10-22 06:10:44 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:44 @ Unable to locate user
+[d] 18-10-22 06:10:44 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:44 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:44 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:44 @ Module was booted too
+[d] 18-10-22 06:10:44 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:44 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:44 @ Able to login
+[d] 18-10-22 06:10:44 @ Module was booted too
+[d] 18-10-22 06:10:44 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:44 @ Loading user
+[d] 18-10-22 06:10:44 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:44 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:44 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:44 @ Unable to locate user
+[d] 18-10-22 06:10:44 @ Module was booted too
+[d] 18-10-22 06:10:44 @ Function found
+[d] 18-10-22 06:10:44 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'RFhVMlM1ZHArOWZpTVBjcnBoVm9xQT09Ojp+lKEP9axZnd2bTcK7BjA9', '::1', '1540180964')
+[d] 18-10-22 06:10:44 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:44 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:44 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:44 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:44 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:44 @ Module was booted too
+[d] 18-10-22 06:10:44 @ Loading user
+[d] 18-10-22 06:10:44 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:44 @ Unable to locate user
+[d] 18-10-22 06:10:44 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:44 @ Log in this person
+[d] 18-10-22 06:10:44 @ username based login
+[d] 18-10-22 06:10:44 @ Loading user
+[d] 18-10-22 06:10:44 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:44 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:44 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:44 @ Module was booted too
+[d] 18-10-22 06:10:45 @ Able to login
+[d] 18-10-22 06:10:45 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:45 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:45 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:45 @ Module was booted too
+[d] 18-10-22 06:10:45 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'RnRvWFRaRnZXM3pZZG12dEZqaTZldz09OjqVmSLCRqgy8+x6Gpg0i5NQ', '::1', '1540180965')
+[d] 18-10-22 06:10:45 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:47 @ Booting up V:0.1
+[d] 18-10-22 06:10:47 @ Loading all core modules
+[d] 18-10-22 06:10:47 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[i] 18-10-22 06:10:47 @ Cala was booted...
+[d] 18-10-22 06:10:47 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[d] 18-10-22 06:10:47 @ Connected to Db
+[d] 18-10-22 06:10:47 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[d] 18-10-22 06:10:47 @ Loading user
+[d] 18-10-22 06:10:47 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:47 @ Unable to locate user
+[d] 18-10-22 06:10:47 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Unable to locate user
+[d] 18-10-22 06:10:48 @ Function found
+[d] 18-10-22 06:10:48 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:48 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Unable to locate user
+[d] 18-10-22 06:10:48 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:48 @ Log in this person
+[d] 18-10-22 06:10:48 @ username based login
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Booting up V:0.1
+[d] 18-10-22 06:10:48 @ Loading all core modules
+[d] 18-10-22 06:10:48 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[i] 18-10-22 06:10:48 @ Cala was booted...
+[d] 18-10-22 06:10:48 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Connected to Db
+[d] 18-10-22 06:10:48 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Unable to locate user
+[d] 18-10-22 06:10:48 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Able to login
+[d] 18-10-22 06:10:48 @ Unable to locate user
+[d] 18-10-22 06:10:48 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:48 @ Function found
+[d] 18-10-22 06:10:48 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:48 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'SEJidVVEcUtQVUVaTEtFNXU1a240UT09OjpRK/1X5nBfmNt6xT4JLteO', '::1', '1540180968')
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Unable to locate user
+[d] 18-10-22 06:10:48 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:48 @ Log in this person
+[d] 18-10-22 06:10:48 @ username based login
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:49 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Booting up V:0.1
+[d] 18-10-22 06:10:49 @ Loading all core modules
+[d] 18-10-22 06:10:49 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[i] 18-10-22 06:10:49 @ Cala was booted...
+[d] 18-10-22 06:10:49 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Connected to Db
+[d] 18-10-22 06:10:49 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Loading user
+[d] 18-10-22 06:10:49 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:49 @ Unable to locate user
+[d] 18-10-22 06:10:49 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Loading user
+[d] 18-10-22 06:10:49 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:49 @ Unable to locate user
+[d] 18-10-22 06:10:49 @ Function found
+[d] 18-10-22 06:10:49 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:49 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:49 @ Able to login
+[d] 18-10-22 06:10:49 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Loading user
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'eWI3dlQwV0tiWWxWQ1hjdmRCbmd1Zz09Ojpsi8ma3H6VXDz/XydENtX0', '::1', '1540180969')
+[d] 18-10-22 06:10:49 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:49 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:49 @ Log in this person
+[d] 18-10-22 06:10:49 @ username based login
+[d] 18-10-22 06:10:49 @ Loading user
+[d] 18-10-22 06:10:49 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:50 @ Able to login
+[d] 18-10-22 06:10:50 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:50 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:50 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:50 @ Module was booted too
+[d] 18-10-22 06:10:50 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'WnFPSUwrdHR5aENkQm04MFhSaW9LUT09Ojqf9a6+YN1JSrDFdrVa82p9', '::1', '1540180970')
+[d] 18-10-22 06:10:50 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:53 @ Booting up V:0.1
+[d] 18-10-22 06:10:53 @ Loading all core modules
+[d] 18-10-22 06:10:53 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:53 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:53 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:53 @ Module was booted too
+[i] 18-10-22 06:10:53 @ Cala was booted...
+[d] 18-10-22 06:10:53 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:53 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:53 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:53 @ Module was booted too
+[d] 18-10-22 06:10:53 @ Connected to Db
+[d] 18-10-22 06:10:53 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:53 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:53 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:53 @ Module was booted too
+[d] 18-10-22 06:10:53 @ Loading user
+[d] 18-10-22 06:10:53 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:53 @ Unable to locate user
+[d] 18-10-22 06:10:53 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:53 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:53 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:53 @ Module was booted too
+[d] 18-10-22 06:10:53 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:53 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:53 @ Module was booted too
+[d] 18-10-22 06:10:53 @ Loading user
+[d] 18-10-22 06:10:53 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:53 @ Unable to locate user
+[d] 18-10-22 06:10:53 @ Function found
+[d] 18-10-22 06:10:53 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:53 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:53 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:53 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:53 @ Module was booted too
+[d] 18-10-22 06:10:53 @ Loading user
+[d] 18-10-22 06:10:53 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:53 @ Unable to locate user
+[d] 18-10-22 06:10:53 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:53 @ Log in this person
+[d] 18-10-22 06:10:53 @ username based login
+[d] 18-10-22 06:10:53 @ Loading user
+[d] 18-10-22 06:10:53 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:53 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:53 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:53 @ Module was booted too
+[d] 18-10-22 06:10:53 @ Booting up V:0.1
+[d] 18-10-22 06:10:53 @ Loading all core modules
+[d] 18-10-22 06:10:53 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:53 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:53 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:53 @ Module was booted too
+[i] 18-10-22 06:10:53 @ Cala was booted...
+[d] 18-10-22 06:10:54 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:54 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:54 @ Module was booted too
+[d] 18-10-22 06:10:54 @ Connected to Db
+[d] 18-10-22 06:10:54 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:54 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:54 @ Module was booted too
+[d] 18-10-22 06:10:54 @ Loading user
+[d] 18-10-22 06:10:54 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:54 @ Unable to locate user
+[d] 18-10-22 06:10:54 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:54 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:54 @ Module was booted too
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:54 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:54 @ Module was booted too
+[d] 18-10-22 06:10:54 @ Loading user
+[d] 18-10-22 06:10:54 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:54 @ Unable to locate user
+[d] 18-10-22 06:10:54 @ Function found
+[d] 18-10-22 06:10:54 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:54 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:54 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:54 @ Module was booted too
+[d] 18-10-22 06:10:54 @ Loading user
+[d] 18-10-22 06:10:54 @ Able to login
+[d] 18-10-22 06:10:54 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:54 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:54 @ Unable to locate user
+[d] 18-10-22 06:10:54 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:54 @ Log in this person
+[d] 18-10-22 06:10:54 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:54 @ username based login
+[d] 18-10-22 06:10:54 @ Module was booted too
+[d] 18-10-22 06:10:54 @ Loading user
+[d] 18-10-22 06:10:54 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'THplRjYrLytQckk4L0NGNnVLK2Nsdz09OjrOd29J9tc4IKIGHXuobz8S', '::1', '1540180974')
+[d] 18-10-22 06:10:54 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:54 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:54 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:54 @ Module was booted too
+[d] 18-10-22 06:10:54 @ Booting up V:0.1
+[d] 18-10-22 06:10:54 @ Loading all core modules
+[d] 18-10-22 06:10:54 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:54 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:54 @ Module was booted too
+[i] 18-10-22 06:10:54 @ Cala was booted...
+[d] 18-10-22 06:10:54 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:54 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:54 @ Module was booted too
+[d] 18-10-22 06:10:54 @ Connected to Db
+[d] 18-10-22 06:10:54 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:54 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:54 @ Module was booted too
+[d] 18-10-22 06:10:54 @ Loading user
+[d] 18-10-22 06:10:54 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:54 @ Unable to locate user
+[d] 18-10-22 06:10:54 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:54 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:55 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:55 @ Module was booted too
+[d] 18-10-22 06:10:55 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:55 @ Able to login
+[d] 18-10-22 06:10:55 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:55 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:55 @ Module was booted too
+[d] 18-10-22 06:10:55 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:55 @ Loading user
+[d] 18-10-22 06:10:55 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:55 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:55 @ Module was booted too
+[d] 18-10-22 06:10:55 @ Unable to locate user
+[d] 18-10-22 06:10:55 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'bFIyZ0FJa1NRcWNGK0xXYnRzVXpoUT09OjqX72ZoR11wzphNiZqcYYWj', '::1', '1540180975')
+[d] 18-10-22 06:10:55 @ Function found
+[d] 18-10-22 06:10:55 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:55 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:55 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:55 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:55 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:55 @ Module was booted too
+[d] 18-10-22 06:10:55 @ Loading user
+[d] 18-10-22 06:10:55 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:55 @ Unable to locate user
+[d] 18-10-22 06:10:55 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:55 @ Log in this person
+[d] 18-10-22 06:10:55 @ username based login
+[d] 18-10-22 06:10:55 @ Loading user
+[d] 18-10-22 06:10:55 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:55 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:55 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:55 @ Module was booted too
+[d] 18-10-22 06:10:55 @ Able to login
+[d] 18-10-22 06:10:55 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:55 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:55 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:55 @ Module was booted too
+[d] 18-10-22 06:10:55 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'd1hYNUxFbU5ob3lGaTlpTC95MS9zUT09OjoT5kI+A+7vCOzdK45U3HF5', '::1', '1540180975')
+[d] 18-10-22 06:10:55 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:58 @ Booting up V:0.1
+[d] 18-10-22 06:10:58 @ Loading all core modules
+[d] 18-10-22 06:10:58 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:58 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:58 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:58 @ Module was booted too
+[i] 18-10-22 06:10:58 @ Cala was booted...
+[d] 18-10-22 06:10:58 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:58 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:58 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:58 @ Module was booted too
+[d] 18-10-22 06:10:58 @ Connected to Db
+[d] 18-10-22 06:10:58 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:58 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:58 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:58 @ Module was booted too
+[d] 18-10-22 06:10:58 @ Loading user
+[d] 18-10-22 06:10:58 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:58 @ Unable to locate user
+[d] 18-10-22 06:10:58 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:58 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:58 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:58 @ Module was booted too
+[d] 18-10-22 06:10:58 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:58 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:58 @ Module was booted too
+[d] 18-10-22 06:10:58 @ Loading user
+[d] 18-10-22 06:10:58 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:58 @ Unable to locate user
+[d] 18-10-22 06:10:58 @ Function found
+[d] 18-10-22 06:10:58 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:58 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:58 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:59 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:59 @ Module was booted too
+[d] 18-10-22 06:10:59 @ Loading user
+[d] 18-10-22 06:10:59 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:59 @ Unable to locate user
+[d] 18-10-22 06:10:59 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:59 @ Log in this person
+[d] 18-10-22 06:10:59 @ username based login
+[d] 18-10-22 06:10:59 @ Loading user
+[d] 18-10-22 06:10:59 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:59 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:59 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:59 @ Module was booted too
+[d] 18-10-22 06:10:59 @ Booting up V:0.1
+[d] 18-10-22 06:10:59 @ Loading all core modules
+[d] 18-10-22 06:10:59 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:59 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:59 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:59 @ Module was booted too
+[i] 18-10-22 06:10:59 @ Cala was booted...
+[d] 18-10-22 06:10:59 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:59 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:59 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:59 @ Module was booted too
+[d] 18-10-22 06:10:59 @ Connected to Db
+[d] 18-10-22 06:10:59 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:59 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:59 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:59 @ Module was booted too
+[d] 18-10-22 06:10:59 @ Loading user
+[d] 18-10-22 06:10:59 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:59 @ Unable to locate user
+[d] 18-10-22 06:10:59 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:59 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:59 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:59 @ Module was booted too
+[d] 18-10-22 06:10:59 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:59 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:59 @ Module was booted too
+[d] 18-10-22 06:10:59 @ Loading user
+[d] 18-10-22 06:10:59 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:59 @ Unable to locate user
+[d] 18-10-22 06:10:59 @ Function found
+[d] 18-10-22 06:10:59 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:59 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:59 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:59 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:59 @ Module was booted too
+[d] 18-10-22 06:10:59 @ Loading user
+[d] 18-10-22 06:10:59 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:59 @ Unable to locate user
+[d] 18-10-22 06:10:59 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:59 @ Able to login
+[d] 18-10-22 06:10:59 @ Log in this person
+[d] 18-10-22 06:10:59 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:59 @ username based login
+[d] 18-10-22 06:10:59 @ Loading user
+[d] 18-10-22 06:10:59 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:59 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:59 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:59 @ Module was booted too
+[d] 18-10-22 06:10:59 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:59 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'US9TRktuNS85TXJrT2NKRk1tUENiZz09Ojq0ty3/rLZnmopNnd1fH1lQ', '::1', '1540180979')
+[d] 18-10-22 06:10:59 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:59 @ Module was booted too
+[d] 18-10-22 06:10:59 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:00 @ Booting up V:0.1
+[d] 18-10-22 06:10:00 @ Loading all core modules
+[d] 18-10-22 06:10:00 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:00 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:00 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:00 @ Module was booted too
+[i] 18-10-22 06:10:00 @ Cala was booted...
+[d] 18-10-22 06:10:00 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:00 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:00 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:00 @ Module was booted too
+[d] 18-10-22 06:10:00 @ Connected to Db
+[d] 18-10-22 06:10:00 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:00 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:00 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:00 @ Module was booted too
+[d] 18-10-22 06:10:00 @ Loading user
+[d] 18-10-22 06:10:00 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:00 @ Unable to locate user
+[d] 18-10-22 06:10:00 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:00 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:00 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:00 @ Module was booted too
+[d] 18-10-22 06:10:00 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:00 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:00 @ Module was booted too
+[d] 18-10-22 06:10:00 @ Able to login
+[d] 18-10-22 06:10:00 @ Loading user
+[d] 18-10-22 06:10:00 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:00 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:00 @ Unable to locate user
+[d] 18-10-22 06:10:00 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:00 @ Function found
+[d] 18-10-22 06:10:00 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:00 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:00 @ Module was booted too
+[d] 18-10-22 06:10:00 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:00 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'MjEweG83ZEd1N3pOZjRPK2p1VlRGZz09OjqmO8eFZMjL/HsfHfEPFA6L', '::1', '1540180980')
+[d] 18-10-22 06:10:00 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:00 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:00 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:00 @ Module was booted too
+[d] 18-10-22 06:10:00 @ Loading user
+[d] 18-10-22 06:10:00 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:00 @ Unable to locate user
+[d] 18-10-22 06:10:00 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:00 @ Log in this person
+[d] 18-10-22 06:10:00 @ username based login
+[d] 18-10-22 06:10:00 @ Loading user
+[d] 18-10-22 06:10:00 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:00 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:00 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:00 @ Module was booted too
+[d] 18-10-22 06:10:01 @ Able to login
+[d] 18-10-22 06:10:01 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:01 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:01 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:01 @ Module was booted too
+[d] 18-10-22 06:10:01 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'ZmJsN3pROGY1eHBDZmlQNVVJek1uUT09OjrhIzcXZdBQN3QlUTAOC4OX', '::1', '1540180981')
+[d] 18-10-22 06:10:01 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:03 @ Booting up V:0.1
+[d] 18-10-22 06:10:04 @ Loading all core modules
+[d] 18-10-22 06:10:04 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:04 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:04 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:04 @ Module was booted too
+[i] 18-10-22 06:10:04 @ Cala was booted...
+[d] 18-10-22 06:10:04 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:04 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:04 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:04 @ Module was booted too
+[d] 18-10-22 06:10:04 @ Connected to Db
+[d] 18-10-22 06:10:04 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:04 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:04 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:04 @ Module was booted too
+[d] 18-10-22 06:10:04 @ Loading user
+[d] 18-10-22 06:10:04 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:04 @ Unable to locate user
+[d] 18-10-22 06:10:04 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:04 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:04 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:04 @ Module was booted too
+[d] 18-10-22 06:10:04 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:04 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:04 @ Module was booted too
+[d] 18-10-22 06:10:04 @ Loading user
+[d] 18-10-22 06:10:04 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:04 @ Unable to locate user
+[d] 18-10-22 06:10:04 @ Function found
+[d] 18-10-22 06:10:04 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:04 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:04 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:04 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:04 @ Module was booted too
+[d] 18-10-22 06:10:04 @ Loading user
+[d] 18-10-22 06:10:04 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:04 @ Unable to locate user
+[d] 18-10-22 06:10:04 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:04 @ Log in this person
+[d] 18-10-22 06:10:04 @ username based login
+[d] 18-10-22 06:10:04 @ Loading user
+[d] 18-10-22 06:10:04 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:04 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:04 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:04 @ Module was booted too
+[d] 18-10-22 06:10:04 @ Booting up V:0.1
+[d] 18-10-22 06:10:04 @ Loading all core modules
+[d] 18-10-22 06:10:04 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:04 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:04 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:04 @ Module was booted too
+[i] 18-10-22 06:10:04 @ Cala was booted...
+[d] 18-10-22 06:10:04 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:04 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:04 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:04 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Connected to Db
+[d] 18-10-22 06:10:05 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Loading user
+[d] 18-10-22 06:10:05 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:05 @ Unable to locate user
+[d] 18-10-22 06:10:05 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Loading user
+[d] 18-10-22 06:10:05 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:05 @ Able to login
+[d] 18-10-22 06:10:05 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:05 @ Unable to locate user
+[d] 18-10-22 06:10:05 @ Function found
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:05 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:05 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:05 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'RzN1M2c3YmdHcklOaExFYi9HZVlVZz09OjpjjATmS2YpAu/LgzhxH/wx', '::1', '1540180985')
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:05 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Loading user
+[d] 18-10-22 06:10:05 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:05 @ Unable to locate user
+[d] 18-10-22 06:10:05 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:05 @ Log in this person
+[d] 18-10-22 06:10:05 @ username based login
+[d] 18-10-22 06:10:05 @ Loading user
+[d] 18-10-22 06:10:05 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Booting up V:0.1
+[d] 18-10-22 06:10:05 @ Loading all core modules
+[d] 18-10-22 06:10:05 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:05 @ Module was booted too
+[i] 18-10-22 06:10:05 @ Cala was booted...
+[d] 18-10-22 06:10:05 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Connected to Db
+[d] 18-10-22 06:10:05 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Loading user
+[d] 18-10-22 06:10:05 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:05 @ Unable to locate user
+[d] 18-10-22 06:10:05 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Loading user
+[d] 18-10-22 06:10:05 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:05 @ Unable to locate user
+[d] 18-10-22 06:10:05 @ Function found
+[d] 18-10-22 06:10:05 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:05 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:05 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:05 @ Module was booted too
+[d] 18-10-22 06:10:05 @ Able to login
+[d] 18-10-22 06:10:05 @ Loading user
+[d] 18-10-22 06:10:05 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:05 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:05 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:05 @ Unable to locate user
+[d] 18-10-22 06:10:06 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:06 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:06 @ Module was booted too
+[d] 18-10-22 06:10:06 @ Log in this person
+[d] 18-10-22 06:10:06 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'aDljVW9QSTJHM3BNMHN6WjhBQTRoZz09OjrhiS8T9YHgUTE5UHHY/mp/', '::1', '1540180986')
+[d] 18-10-22 06:10:06 @ username based login
+[d] 18-10-22 06:10:06 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:06 @ Loading user
+[d] 18-10-22 06:10:06 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:06 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:06 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:06 @ Module was booted too
+[d] 18-10-22 06:10:06 @ Able to login
+[d] 18-10-22 06:10:06 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:06 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:06 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:06 @ Module was booted too
+[d] 18-10-22 06:10:06 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'WDZHNkhQY3hZdmJkdmVPN2FtamcyZz09OjqyhxaQ72YP4Id3z4L/xlpo', '::1', '1540180986')
+[d] 18-10-22 06:10:06 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:09 @ Booting up V:0.1
+[d] 18-10-22 06:10:09 @ Loading all core modules
+[d] 18-10-22 06:10:09 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:09 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:09 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:09 @ Module was booted too
+[i] 18-10-22 06:10:09 @ Cala was booted...
+[d] 18-10-22 06:10:09 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:09 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:09 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:09 @ Module was booted too
+[d] 18-10-22 06:10:09 @ Connected to Db
+[d] 18-10-22 06:10:09 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:09 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:09 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:09 @ Module was booted too
+[d] 18-10-22 06:10:09 @ Loading user
+[d] 18-10-22 06:10:09 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:09 @ Unable to locate user
+[d] 18-10-22 06:10:09 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:09 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:09 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:09 @ Module was booted too
+[d] 18-10-22 06:10:09 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:09 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:09 @ Module was booted too
+[d] 18-10-22 06:10:09 @ Loading user
+[d] 18-10-22 06:10:09 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:09 @ Unable to locate user
+[d] 18-10-22 06:10:09 @ Function found
+[d] 18-10-22 06:10:09 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:09 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:09 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:09 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:09 @ Module was booted too
+[d] 18-10-22 06:10:09 @ Loading user
+[d] 18-10-22 06:10:09 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:09 @ Unable to locate user
+[d] 18-10-22 06:10:09 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:09 @ Log in this person
+[d] 18-10-22 06:10:09 @ username based login
+[d] 18-10-22 06:10:09 @ Loading user
+[d] 18-10-22 06:10:09 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:09 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:09 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:09 @ Module was booted too
+[d] 18-10-22 06:10:10 @ Booting up V:0.1
+[d] 18-10-22 06:10:10 @ Loading all core modules
+[d] 18-10-22 06:10:10 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:10 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:10 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:10 @ Module was booted too
+[i] 18-10-22 06:10:10 @ Cala was booted...
+[d] 18-10-22 06:10:10 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:10 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:10 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:10 @ Module was booted too
+[d] 18-10-22 06:10:10 @ Connected to Db
+[d] 18-10-22 06:10:10 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:10 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:10 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:10 @ Module was booted too
+[d] 18-10-22 06:10:10 @ Loading user
+[d] 18-10-22 06:10:10 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:10 @ Unable to locate user
+[d] 18-10-22 06:10:10 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:10 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:10 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:10 @ Module was booted too
+[d] 18-10-22 06:10:10 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:10 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:10 @ Module was booted too
+[d] 18-10-22 06:10:10 @ Loading user
+[d] 18-10-22 06:10:10 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:10 @ Unable to locate user
+[d] 18-10-22 06:10:10 @ Function found
+[d] 18-10-22 06:10:10 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:10 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:10 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:10 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:10 @ Module was booted too
+[d] 18-10-22 06:10:10 @ Loading user
+[d] 18-10-22 06:10:10 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:10 @ Able to login
+[d] 18-10-22 06:10:10 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:10 @ Unable to locate user
+[d] 18-10-22 06:10:10 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:10 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:10 @ Log in this person
+[d] 18-10-22 06:10:10 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:10 @ username based login
+[d] 18-10-22 06:10:10 @ Module was booted too
+[d] 18-10-22 06:10:10 @ Loading user
+[d] 18-10-22 06:10:10 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'aUF3MHMrcVNoVUZZaWpCZjVjQ3dVQT09OjpStMZKBE2+bg+yhvGnTi9e', '::1', '1540180990')
+[d] 18-10-22 06:10:10 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:10 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:10 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:10 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:10 @ Module was booted too
+[d] 18-10-22 06:10:11 @ Booting up V:0.1
+[d] 18-10-22 06:10:11 @ Loading all core modules
+[d] 18-10-22 06:10:11 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:11 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:11 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:11 @ Module was booted too
+[i] 18-10-22 06:10:11 @ Cala was booted...
+[d] 18-10-22 06:10:11 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:11 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:11 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:11 @ Module was booted too
+[d] 18-10-22 06:10:11 @ Connected to Db
+[d] 18-10-22 06:10:11 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:11 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:11 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:11 @ Module was booted too
+[d] 18-10-22 06:10:11 @ Loading user
+[d] 18-10-22 06:10:11 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:11 @ Unable to locate user
+[d] 18-10-22 06:10:11 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:11 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:11 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:11 @ Module was booted too
+[d] 18-10-22 06:10:11 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:11 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:11 @ Module was booted too
+[d] 18-10-22 06:10:11 @ Loading user
+[d] 18-10-22 06:10:11 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:11 @ Unable to locate user
+[d] 18-10-22 06:10:11 @ Function found
+[d] 18-10-22 06:10:11 @ Able to login
+[d] 18-10-22 06:10:11 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:11 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:11 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:11 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:11 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:11 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:11 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:11 @ Module was booted too
+[d] 18-10-22 06:10:11 @ Module was booted too
+[d] 18-10-22 06:10:11 @ Loading user
+[d] 18-10-22 06:10:11 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'Yitxc0gzWXo0RHpVUHV6aFNZT0ZLZz09Ojr+FuXGjEJuywU897Q2RRGc', '::1', '1540180991')
+[d] 18-10-22 06:10:11 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:11 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:11 @ Unable to locate user
+[d] 18-10-22 06:10:11 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:11 @ Log in this person
+[d] 18-10-22 06:10:11 @ username based login
+[d] 18-10-22 06:10:11 @ Loading user
+[d] 18-10-22 06:10:11 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:11 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:11 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:11 @ Module was booted too
+[d] 18-10-22 06:10:12 @ Able to login
+[d] 18-10-22 06:10:12 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:12 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:12 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:12 @ Module was booted too
+[d] 18-10-22 06:10:12 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'S3ZmNWs5c0RzZ1lUV09rbVFlZGhyZz09Ojrdi6oXAkX4XZgNdoeoqcbS', '::1', '1540180992')
+[d] 18-10-22 06:10:12 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:14 @ Booting up V:0.1
+[d] 18-10-22 06:10:14 @ Loading all core modules
+[d] 18-10-22 06:10:14 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:14 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:14 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:14 @ Module was booted too
+[i] 18-10-22 06:10:14 @ Cala was booted...
+[d] 18-10-22 06:10:14 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:14 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:14 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:14 @ Module was booted too
+[d] 18-10-22 06:10:15 @ Connected to Db
+[d] 18-10-22 06:10:15 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:15 @ Module was booted too
+[d] 18-10-22 06:10:15 @ Loading user
+[d] 18-10-22 06:10:15 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:15 @ Unable to locate user
+[d] 18-10-22 06:10:15 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:15 @ Module was booted too
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:15 @ Module was booted too
+[d] 18-10-22 06:10:15 @ Loading user
+[d] 18-10-22 06:10:15 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:15 @ Unable to locate user
+[d] 18-10-22 06:10:15 @ Function found
+[d] 18-10-22 06:10:15 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:15 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:15 @ Module was booted too
+[d] 18-10-22 06:10:15 @ Loading user
+[d] 18-10-22 06:10:15 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:15 @ Unable to locate user
+[d] 18-10-22 06:10:15 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:15 @ Log in this person
+[d] 18-10-22 06:10:15 @ username based login
+[d] 18-10-22 06:10:15 @ Loading user
+[d] 18-10-22 06:10:15 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:15 @ Module was booted too
+[d] 18-10-22 06:10:15 @ Booting up V:0.1
+[d] 18-10-22 06:10:15 @ Loading all core modules
+[d] 18-10-22 06:10:15 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:15 @ Module was booted too
+[i] 18-10-22 06:10:15 @ Cala was booted...
+[d] 18-10-22 06:10:15 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:15 @ Module was booted too
+[d] 18-10-22 06:10:15 @ Connected to Db
+[d] 18-10-22 06:10:15 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:15 @ Module was booted too
+[d] 18-10-22 06:10:15 @ Loading user
+[d] 18-10-22 06:10:15 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:15 @ Unable to locate user
+[d] 18-10-22 06:10:15 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:15 @ Module was booted too
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:15 @ Module was booted too
+[d] 18-10-22 06:10:15 @ Loading user
+[d] 18-10-22 06:10:15 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:15 @ Unable to locate user
+[d] 18-10-22 06:10:15 @ Function found
+[d] 18-10-22 06:10:15 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:15 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:15 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:15 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:16 @ Module was booted too
+[d] 18-10-22 06:10:16 @ Loading user
+[d] 18-10-22 06:10:16 @ Able to login
+[d] 18-10-22 06:10:16 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:16 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:16 @ Unable to locate user
+[d] 18-10-22 06:10:16 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:16 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:16 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:16 @ Module was booted too
+[d] 18-10-22 06:10:16 @ Log in this person
+[d] 18-10-22 06:10:16 @ username based login
+[d] 18-10-22 06:10:16 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'bTZaTFc5N1FYSGlRMUtOalRMSHF2Zz09OjrrsQOFYTHMSSL/gJoGcMdY', '::1', '1540180996')
+[d] 18-10-22 06:10:16 @ Loading user
+[d] 18-10-22 06:10:16 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:16 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:16 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:16 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:16 @ Module was booted too
+[d] 18-10-22 06:10:16 @ Booting up V:0.1
+[d] 18-10-22 06:10:16 @ Loading all core modules
+[d] 18-10-22 06:10:16 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:16 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:16 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:16 @ Module was booted too
+[i] 18-10-22 06:10:16 @ Cala was booted...
+[d] 18-10-22 06:10:16 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:16 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:16 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:16 @ Module was booted too
+[d] 18-10-22 06:10:16 @ Connected to Db
+[d] 18-10-22 06:10:16 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:16 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:16 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:16 @ Module was booted too
+[d] 18-10-22 06:10:16 @ Loading user
+[d] 18-10-22 06:10:16 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:16 @ Unable to locate user
+[d] 18-10-22 06:10:16 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:16 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:16 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:16 @ Module was booted too
+[d] 18-10-22 06:10:16 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:16 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:16 @ Module was booted too
+[d] 18-10-22 06:10:16 @ Loading user
+[d] 18-10-22 06:10:16 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:16 @ Unable to locate user
+[d] 18-10-22 06:10:16 @ Function found
+[d] 18-10-22 06:10:16 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:16 @ Able to login
+[d] 18-10-22 06:10:16 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:16 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:16 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:16 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:16 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:16 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:16 @ Module was booted too
+[d] 18-10-22 06:10:16 @ Loading user
+[d] 18-10-22 06:10:16 @ Module was booted too
+[d] 18-10-22 06:10:16 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'TWtHbGlMeTZWUzBsa1V0cHI0QVdtdz09OjqoyPDtLcMtsWrowOsjrp1B', '::1', '1540180996')
+[d] 18-10-22 06:10:16 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:16 @ Unable to locate user
+[d] 18-10-22 06:10:16 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:16 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:16 @ Log in this person
+[d] 18-10-22 06:10:16 @ username based login
+[d] 18-10-22 06:10:16 @ Loading user
+[d] 18-10-22 06:10:16 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:16 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:16 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:16 @ Module was booted too
+[d] 18-10-22 06:10:17 @ Able to login
+[d] 18-10-22 06:10:17 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:17 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:17 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:17 @ Module was booted too
+[d] 18-10-22 06:10:17 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'bTFaNWdENi9sS01xZCtCOXJrRk13UT09OjrdJQevudT1SQ1tYtU/R51G', '::1', '1540180997')
+[d] 18-10-22 06:10:17 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:20 @ Booting up V:0.1
+[d] 18-10-22 06:10:20 @ Loading all core modules
+[d] 18-10-22 06:10:20 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[i] 18-10-22 06:10:20 @ Cala was booted...
+[d] 18-10-22 06:10:20 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Connected to Db
+[d] 18-10-22 06:10:20 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:20 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:20 @ Unable to locate user
+[d] 18-10-22 06:10:20 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:20 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:20 @ Unable to locate user
+[d] 18-10-22 06:10:20 @ Function found
+[d] 18-10-22 06:10:20 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:20 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:20 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:20 @ Unable to locate user
+[d] 18-10-22 06:10:20 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:20 @ Log in this person
+[d] 18-10-22 06:10:20 @ username based login
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:20 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Booting up V:0.1
+[d] 18-10-22 06:10:21 @ Loading all core modules
+[d] 18-10-22 06:10:21 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[i] 18-10-22 06:10:21 @ Cala was booted...
+[d] 18-10-22 06:10:21 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Connected to Db
+[d] 18-10-22 06:10:21 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Function found
+[d] 18-10-22 06:10:21 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:21 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Able to login
+[d] 18-10-22 06:10:21 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:21 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:21 @ Log in this person
+[d] 18-10-22 06:10:21 @ username based login
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'TDNBQlU0SXpIdjMzUWc3QWJsUlpNZz09Ojpseh/+sfsk62sw3yJ2qzgx', '::1', '1540181001')
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Booting up V:0.1
+[d] 18-10-22 06:10:21 @ Loading all core modules
+[d] 18-10-22 06:10:21 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[i] 18-10-22 06:10:21 @ Cala was booted...
+[d] 18-10-22 06:10:21 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Connected to Db
+[d] 18-10-22 06:10:21 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Loading user
+[d] 18-10-22 06:10:22 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:22 @ Unable to locate user
+[d] 18-10-22 06:10:22 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Loading user
+[d] 18-10-22 06:10:22 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:22 @ Able to login
+[d] 18-10-22 06:10:22 @ Unable to locate user
+[d] 18-10-22 06:10:22 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:22 @ Function found
+[d] 18-10-22 06:10:22 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:22 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'Z3FvRWFFdUZnMnpLRklXMFJ4QXhCUT09Ojo8ZQH0VnBPkEulkC+nHkEA', '::1', '1540181002')
+[d] 18-10-22 06:10:22 @ Loading user
+[d] 18-10-22 06:10:22 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:22 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:22 @ Unable to locate user
+[d] 18-10-22 06:10:22 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:22 @ Log in this person
+[d] 18-10-22 06:10:22 @ username based login
+[d] 18-10-22 06:10:22 @ Loading user
+[d] 18-10-22 06:10:22 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:22 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:22 @ Module was booted too
+[d] 18-10-22 06:10:22 @ Able to login
+[d] 18-10-22 06:10:22 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:22 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:23 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:23 @ Module was booted too
+[d] 18-10-22 06:10:23 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'dVlPcis3TGRqeFZpdlhPSkpkQkVkdz09OjpOGjCIE55s7RkDKoCHquB5', '::1', '1540181003')
+[d] 18-10-22 06:10:23 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:25 @ Booting up V:0.1
+[d] 18-10-22 06:10:25 @ Loading all core modules
+[d] 18-10-22 06:10:25 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[i] 18-10-22 06:10:25 @ Cala was booted...
+[d] 18-10-22 06:10:25 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Connected to Db
+[d] 18-10-22 06:10:25 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Loading user
+[d] 18-10-22 06:10:25 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:25 @ Unable to locate user
+[d] 18-10-22 06:10:25 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Function found
+[d] 18-10-22 06:10:26 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:26 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:26 @ Log in this person
+[d] 18-10-22 06:10:26 @ username based login
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Booting up V:0.1
+[d] 18-10-22 06:10:26 @ Loading all core modules
+[d] 18-10-22 06:10:26 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[i] 18-10-22 06:10:26 @ Cala was booted...
+[d] 18-10-22 06:10:26 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Connected to Db
+[d] 18-10-22 06:10:26 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Function found
+[d] 18-10-22 06:10:26 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:26 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Able to login
+[d] 18-10-22 06:10:26 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:26 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:26 @ Log in this person
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ username based login
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'em5jN3dtaitvUWVlMTBTcVIwZ1FnZz09OjpsCAfcW5U+w7oO104p91f1', '::1', '1540181006')
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Booting up V:0.1
+[d] 18-10-22 06:10:27 @ Loading all core modules
+[d] 18-10-22 06:10:27 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[i] 18-10-22 06:10:27 @ Cala was booted...
+[d] 18-10-22 06:10:27 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Connected to Db
+[d] 18-10-22 06:10:27 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Loading user
+[d] 18-10-22 06:10:27 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:27 @ Unable to locate user
+[d] 18-10-22 06:10:27 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Loading user
+[d] 18-10-22 06:10:27 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:27 @ Able to login
+[d] 18-10-22 06:10:27 @ Unable to locate user
+[d] 18-10-22 06:10:27 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:27 @ Function found
+[d] 18-10-22 06:10:27 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:27 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'aGxJWTR6R1lydjFmVUhHbWZiMlR5QT09Ojq+yOksE23R776gSD2ZjlyM', '::1', '1540181007')
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:27 @ Loading user
+[d] 18-10-22 06:10:27 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:27 @ Unable to locate user
+[d] 18-10-22 06:10:27 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:27 @ Log in this person
+[d] 18-10-22 06:10:27 @ username based login
+[d] 18-10-22 06:10:27 @ Loading user
+[d] 18-10-22 06:10:27 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:28 @ Able to login
+[d] 18-10-22 06:10:28 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:28 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:28 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:28 @ Module was booted too
+[d] 18-10-22 06:10:28 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'RnNrSmZlK3FVNXRjQnQ3VGF2b0dHQT09OjraVnh5uxchHb0oR5If+ckn', '::1', '1540181008')
+[d] 18-10-22 06:10:28 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:31 @ Booting up V:0.1
+[d] 18-10-22 06:10:31 @ Loading all core modules
+[d] 18-10-22 06:10:31 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[i] 18-10-22 06:10:31 @ Cala was booted...
+[d] 18-10-22 06:10:31 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Connected to Db
+[d] 18-10-22 06:10:31 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Loading user
+[d] 18-10-22 06:10:31 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:31 @ Unable to locate user
+[d] 18-10-22 06:10:31 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Loading user
+[d] 18-10-22 06:10:31 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:31 @ Unable to locate user
+[d] 18-10-22 06:10:31 @ Function found
+[d] 18-10-22 06:10:31 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:31 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Loading user
+[d] 18-10-22 06:10:31 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:31 @ Unable to locate user
+[d] 18-10-22 06:10:31 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:31 @ Log in this person
+[d] 18-10-22 06:10:31 @ username based login
+[d] 18-10-22 06:10:31 @ Loading user
+[d] 18-10-22 06:10:31 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[d] 18-10-22 06:10:31 @ Booting up V:0.1
+[d] 18-10-22 06:10:31 @ Loading all core modules
+[d] 18-10-22 06:10:31 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:31 @ Module was booted too
+[i] 18-10-22 06:10:31 @ Cala was booted...
+[d] 18-10-22 06:10:31 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:31 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:31 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Connected to Db
+[d] 18-10-22 06:10:32 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading user
+[d] 18-10-22 06:10:32 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:32 @ Unable to locate user
+[d] 18-10-22 06:10:32 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading user
+[d] 18-10-22 06:10:32 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:32 @ Unable to locate user
+[d] 18-10-22 06:10:32 @ Function found
+[d] 18-10-22 06:10:32 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:32 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading user
+[d] 18-10-22 06:10:32 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:32 @ Unable to locate user
+[d] 18-10-22 06:10:32 @ Able to login
+[d] 18-10-22 06:10:32 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:32 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:32 @ Log in this person
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:32 @ username based login
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading user
+[d] 18-10-22 06:10:32 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'MmlDMnNPekphemFsNGQvVW5heDA4Zz09OjqGyBvSAa3/mYRKpjpFRO/7', '::1', '1540181012')
+[d] 18-10-22 06:10:32 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:32 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Booting up V:0.1
+[d] 18-10-22 06:10:32 @ Loading all core modules
+[d] 18-10-22 06:10:32 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[i] 18-10-22 06:10:32 @ Cala was booted...
+[d] 18-10-22 06:10:32 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Connected to Db
+[d] 18-10-22 06:10:32 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading user
+[d] 18-10-22 06:10:32 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:32 @ Unable to locate user
+[d] 18-10-22 06:10:32 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:32 @ Module was booted too
+[d] 18-10-22 06:10:32 @ Loading user
+[d] 18-10-22 06:10:33 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:33 @ Unable to locate user
+[d] 18-10-22 06:10:33 @ Function found
+[d] 18-10-22 06:10:33 @ Able to login
+[d] 18-10-22 06:10:33 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:33 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:33 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:33 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'ZnUzZHliNTl0bEFXVW9IWUFhblBxdz09OjpGgxPBCnVzPayHujQkENPz', '::1', '1540181013')
+[d] 18-10-22 06:10:33 @ Loading user
+[d] 18-10-22 06:10:33 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:33 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:33 @ Unable to locate user
+[d] 18-10-22 06:10:33 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:33 @ Log in this person
+[d] 18-10-22 06:10:33 @ username based login
+[d] 18-10-22 06:10:33 @ Loading user
+[d] 18-10-22 06:10:33 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:33 @ Able to login
+[d] 18-10-22 06:10:33 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:33 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:33 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:33 @ Module was booted too
+[d] 18-10-22 06:10:33 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'U2Rnd3UxNEpuS1hrUUltaEYyaWJlZz09OjozxynerTJ0IROcnVJeFUAH', '::1', '1540181013')
+[d] 18-10-22 06:10:33 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:30 @ Booting up V:0.1
+[d] 18-10-22 06:10:30 @ Loading all core modules
+[d] 18-10-22 06:10:30 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:30 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:30 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:30 @ Module was booted too
+[i] 18-10-22 06:10:30 @ Cala was booted...
+[d] 18-10-22 06:10:30 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:30 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:30 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:30 @ Module was booted too
+[d] 18-10-22 06:10:30 @ Connected to Db
+[d] 18-10-22 06:10:30 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:30 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:30 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:30 @ Module was booted too
+[d] 18-10-22 06:10:30 @ Loading user
+[d] 18-10-22 06:10:30 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:30 @ Unable to locate user
+[d] 18-10-22 06:10:30 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:30 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:30 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:30 @ Module was booted too
+[d] 18-10-22 06:10:30 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:30 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:30 @ Module was booted too
+[d] 18-10-22 06:10:30 @ Loading user
+[d] 18-10-22 06:10:30 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:30 @ Unable to locate user
+[d] 18-10-22 06:10:30 @ Function found
+[d] 18-10-22 06:10:30 @ Looking for path: users_get_my_details
+[d] 18-10-22 06:10:30 @ Found path: users_get_my_details
+[d] 18-10-22 06:10:30 @ Confirm that the user is logged in
+[d] 18-10-22 06:10:30 @ User id = 0, this can't be logged in
+[d] 18-10-22 06:10:30 @ Finished! Memory used: Mb0.326272<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:36 @ Booting up V:0.1
+[d] 18-10-22 06:10:36 @ Loading all core modules
+[d] 18-10-22 06:10:36 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:36 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:36 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:36 @ Module was booted too
+[i] 18-10-22 06:10:36 @ Cala was booted...
+[d] 18-10-22 06:10:36 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:36 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:36 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:36 @ Module was booted too
+[d] 18-10-22 06:10:36 @ Connected to Db
+[d] 18-10-22 06:10:36 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:36 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:36 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:36 @ Module was booted too
+[d] 18-10-22 06:10:36 @ Loading user
+[d] 18-10-22 06:10:36 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:36 @ Unable to locate user
+[d] 18-10-22 06:10:36 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:36 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:36 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:36 @ Module was booted too
+[d] 18-10-22 06:10:36 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:36 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:36 @ Module was booted too
+[d] 18-10-22 06:10:36 @ Loading user
+[d] 18-10-22 06:10:36 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:36 @ Unable to locate user
+[d] 18-10-22 06:10:36 @ Function found
+[d] 18-10-22 06:10:36 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:36 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:36 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:36 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:36 @ Module was booted too
+[d] 18-10-22 06:10:36 @ Loading user
+[d] 18-10-22 06:10:36 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:36 @ Unable to locate user
+[d] 18-10-22 06:10:36 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:36 @ Log in this person
+[d] 18-10-22 06:10:36 @ username based login
+[d] 18-10-22 06:10:36 @ Loading user
+[d] 18-10-22 06:10:36 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:36 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:36 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:36 @ Module was booted too
+[d] 18-10-22 06:10:36 @ Booting up V:0.1
+[d] 18-10-22 06:10:36 @ Loading all core modules
+[d] 18-10-22 06:10:36 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:36 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:36 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:36 @ Module was booted too
+[i] 18-10-22 06:10:37 @ Cala was booted...
+[d] 18-10-22 06:10:37 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Connected to Db
+[d] 18-10-22 06:10:37 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Loading user
+[d] 18-10-22 06:10:37 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:37 @ Unable to locate user
+[d] 18-10-22 06:10:37 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Loading user
+[d] 18-10-22 06:10:37 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:37 @ Unable to locate user
+[d] 18-10-22 06:10:37 @ Function found
+[d] 18-10-22 06:10:37 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:37 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Loading user
+[d] 18-10-22 06:10:37 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:37 @ Unable to locate user
+[d] 18-10-22 06:10:37 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:37 @ Log in this person
+[d] 18-10-22 06:10:37 @ username based login
+[d] 18-10-22 06:10:37 @ Loading user
+[d] 18-10-22 06:10:37 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Able to login
+[d] 18-10-22 06:10:37 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'QktnZm0zS0NDOG94R3d2TFA4b0ozQT09Ojq/1a6eufBYt0DmojRg3Za5', '::1', '1540181197')
+[d] 18-10-22 06:10:37 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:37 @ Booting up V:0.1
+[d] 18-10-22 06:10:37 @ Loading all core modules
+[d] 18-10-22 06:10:37 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[i] 18-10-22 06:10:37 @ Cala was booted...
+[d] 18-10-22 06:10:37 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Connected to Db
+[d] 18-10-22 06:10:37 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:37 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:37 @ Module was booted too
+[d] 18-10-22 06:10:37 @ Loading user
+[d] 18-10-22 06:10:37 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:37 @ Unable to locate user
+[d] 18-10-22 06:10:38 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:38 @ Able to login
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Loading user
+[d] 18-10-22 06:10:38 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'eHZFeElWRHhBRzQwcnU2UWtqKzdxUT09OjrH7x3xY41oxJcfawhz31Fe', '::1', '1540181198')
+[d] 18-10-22 06:10:38 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:38 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:38 @ Unable to locate user
+[d] 18-10-22 06:10:38 @ Function found
+[d] 18-10-22 06:10:38 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:38 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Loading user
+[d] 18-10-22 06:10:38 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:38 @ Unable to locate user
+[d] 18-10-22 06:10:38 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:38 @ Log in this person
+[d] 18-10-22 06:10:38 @ username based login
+[d] 18-10-22 06:10:38 @ Loading user
+[d] 18-10-22 06:10:38 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ Able to login
+[d] 18-10-22 06:10:38 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:38 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:38 @ Module was booted too
+[d] 18-10-22 06:10:38 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'NGZHbUN2ekR1NkdhZnJIWktzVEI0QT09OjrsgyE2qKfYPfvrcYgGWDTE', '::1', '1540181198')
+[d] 18-10-22 06:10:38 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:41 @ Booting up V:0.1
+[d] 18-10-22 06:10:41 @ Loading all core modules
+[d] 18-10-22 06:10:41 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:41 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:41 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:41 @ Module was booted too
+[i] 18-10-22 06:10:41 @ Cala was booted...
+[d] 18-10-22 06:10:41 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:41 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:41 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:41 @ Module was booted too
+[d] 18-10-22 06:10:41 @ Connected to Db
+[d] 18-10-22 06:10:41 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:41 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:41 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:41 @ Module was booted too
+[d] 18-10-22 06:10:41 @ Loading user
+[d] 18-10-22 06:10:41 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:41 @ Unable to locate user
+[d] 18-10-22 06:10:41 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:41 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:41 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:41 @ Module was booted too
+[d] 18-10-22 06:10:41 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:41 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:41 @ Module was booted too
+[d] 18-10-22 06:10:41 @ Loading user
+[d] 18-10-22 06:10:41 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:41 @ Unable to locate user
+[d] 18-10-22 06:10:41 @ Function found
+[d] 18-10-22 06:10:41 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:41 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:41 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:41 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:41 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Loading user
+[d] 18-10-22 06:10:42 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:42 @ Unable to locate user
+[d] 18-10-22 06:10:42 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:42 @ Log in this person
+[d] 18-10-22 06:10:42 @ username based login
+[d] 18-10-22 06:10:42 @ Loading user
+[d] 18-10-22 06:10:42 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Booting up V:0.1
+[d] 18-10-22 06:10:42 @ Loading all core modules
+[d] 18-10-22 06:10:42 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[i] 18-10-22 06:10:42 @ Cala was booted...
+[d] 18-10-22 06:10:42 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Connected to Db
+[d] 18-10-22 06:10:42 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Loading user
+[d] 18-10-22 06:10:42 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:42 @ Unable to locate user
+[d] 18-10-22 06:10:42 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Loading user
+[d] 18-10-22 06:10:42 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:42 @ Unable to locate user
+[d] 18-10-22 06:10:42 @ Function found
+[d] 18-10-22 06:10:42 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:42 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ Loading user
+[d] 18-10-22 06:10:42 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:42 @ Unable to locate user
+[d] 18-10-22 06:10:42 @ Able to login
+[d] 18-10-22 06:10:42 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:42 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:42 @ Log in this person
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:42 @ username based login
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:42 @ Loading user
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:42 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+ 'QjMrQ0hSY1RMSWdxY2J3ME9Ec0l4QT09OjppQN9eaZsmXX2lfMUpmxNF', '::1', '1540181202')
+[d] 18-10-22 06:10:42 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:42 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:42 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:42 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Booting up V:0.1
+[d] 18-10-22 06:10:43 @ Loading all core modules
+[d] 18-10-22 06:10:43 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:43 @ Module was booted too
+[i] 18-10-22 06:10:43 @ Cala was booted...
+[d] 18-10-22 06:10:43 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:43 @ Able to login
+[d] 18-10-22 06:10:43 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:43 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:43 @ Connected to Db
+[d] 18-10-22 06:10:43 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:43 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:43 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'MGJqU0w5cnA4d0l3OEJNOHRKRHdCZz09OjoyyWIDn00+emEH6Cp0RYZk', '::1', '1540181203')
+[d] 18-10-22 06:10:43 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:43 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:43 @ Module was booted too
+[d] 18-10-22 06:10:43 @ Loading user
+[d] 18-10-22 06:10:44 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:44 @ Unable to locate user
+[d] 18-10-22 06:10:44 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:44 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:44 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:44 @ Module was booted too
+[d] 18-10-22 06:10:44 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:44 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:44 @ Module was booted too
+[d] 18-10-22 06:10:44 @ Loading user
+[d] 18-10-22 06:10:44 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:44 @ Unable to locate user
+[d] 18-10-22 06:10:44 @ Function found
+[d] 18-10-22 06:10:44 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:44 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:44 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:44 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:44 @ Module was booted too
+[d] 18-10-22 06:10:44 @ Loading user
+[d] 18-10-22 06:10:44 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:44 @ Unable to locate user
+[d] 18-10-22 06:10:45 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:45 @ Log in this person
+[d] 18-10-22 06:10:45 @ username based login
+[d] 18-10-22 06:10:45 @ Loading user
+[d] 18-10-22 06:10:45 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:45 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:45 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:45 @ Module was booted too
+[d] 18-10-22 06:10:46 @ Able to login
+[d] 18-10-22 06:10:46 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:46 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:46 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:46 @ Module was booted too
+[d] 18-10-22 06:10:46 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'WHAxaVpLVVpjVmNqMStDL3RaQVpGUT09OjpbGq7uqNTvAGb7Mvu8MRVp', '::1', '1540181206')
+[d] 18-10-22 06:10:46 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:46 @ Booting up V:0.1
+[d] 18-10-22 06:10:46 @ Loading all core modules
+[d] 18-10-22 06:10:47 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[i] 18-10-22 06:10:47 @ Cala was booted...
+[d] 18-10-22 06:10:47 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[d] 18-10-22 06:10:47 @ Connected to Db
+[d] 18-10-22 06:10:47 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[d] 18-10-22 06:10:47 @ Loading user
+[d] 18-10-22 06:10:47 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:47 @ Unable to locate user
+[d] 18-10-22 06:10:47 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[d] 18-10-22 06:10:47 @ Loading user
+[d] 18-10-22 06:10:47 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:47 @ Unable to locate user
+[d] 18-10-22 06:10:47 @ Function found
+[d] 18-10-22 06:10:47 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:47 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[d] 18-10-22 06:10:47 @ Loading user
+[d] 18-10-22 06:10:47 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:47 @ Unable to locate user
+[d] 18-10-22 06:10:47 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:47 @ Log in this person
+[d] 18-10-22 06:10:47 @ username based login
+[d] 18-10-22 06:10:47 @ Loading user
+[d] 18-10-22 06:10:47 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[d] 18-10-22 06:10:47 @ Booting up V:0.1
+[d] 18-10-22 06:10:47 @ Loading all core modules
+[d] 18-10-22 06:10:47 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[i] 18-10-22 06:10:47 @ Cala was booted...
+[d] 18-10-22 06:10:47 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:47 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:47 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:47 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Connected to Db
+[d] 18-10-22 06:10:48 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Unable to locate user
+[d] 18-10-22 06:10:48 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Unable to locate user
+[d] 18-10-22 06:10:48 @ Function found
+[d] 18-10-22 06:10:48 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:48 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Able to login
+[d] 18-10-22 06:10:48 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:48 @ Unable to locate user
+[d] 18-10-22 06:10:48 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:48 @ Log in this person
+/api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:48 @ username based login
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'a2YzaEw4cjZ1ZC9TVEtiaDlDRFR1Zz09OjpiDfTX7qSoaP5Hu8r2kqNC', '::1', '1540181208')
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:48 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Booting up V:0.1
+[d] 18-10-22 06:10:48 @ Loading all core modules
+[d] 18-10-22 06:10:48 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[i] 18-10-22 06:10:48 @ Cala was booted...
+[d] 18-10-22 06:10:48 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Connected to Db
+[d] 18-10-22 06:10:48 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Unable to locate user
+[d] 18-10-22 06:10:48 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:48 @ Module was booted too
+[d] 18-10-22 06:10:48 @ Loading user
+[d] 18-10-22 06:10:48 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:48 @ Unable to locate user
+[d] 18-10-22 06:10:48 @ Function found
+[d] 18-10-22 06:10:48 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:48 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:49 @ Able to login
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Loading user
+[d] 18-10-22 06:10:49 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:49 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Unable to locate user
+[d] 18-10-22 06:10:49 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Log in this person
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ username based login
+[d] 18-10-22 06:10:49 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'Y2Z6cDBmbWFLV3VYQlptekxFTlhodz09Ojp9jmoD+gJ6RoJlHevTOcTJ', '::1', '1540181209')
+[d] 18-10-22 06:10:49 @ Loading user
+[d] 18-10-22 06:10:49 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:49 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Booting up V:0.1
+[d] 18-10-22 06:10:49 @ Loading all core modules
+[d] 18-10-22 06:10:49 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[i] 18-10-22 06:10:49 @ Cala was booted...
+[d] 18-10-22 06:10:49 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Connected to Db
+[d] 18-10-22 06:10:49 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Loading user
+[d] 18-10-22 06:10:49 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:49 @ Unable to locate user
+[d] 18-10-22 06:10:49 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:49 @ Able to login
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/crypto/module.php
+:1'
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:49 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:49 @ Module was booted too
+[d] 18-10-22 06:10:49 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'ZUltaG5YNG1jdVl0bURkSTk0MHVBZz09OjrlSOAI3AVp1ayYNb9bwiaU', '::1', '1540181209')
+[d] 18-10-22 06:10:49 @ Loading user
+[d] 18-10-22 06:10:49 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:49 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:49 @ Unable to locate user
+[d] 18-10-22 06:10:49 @ Function found
+[d] 18-10-22 06:10:49 @ Looking for path: users_get_my_details
+[d] 18-10-22 06:10:49 @ Found path: users_get_my_details
+[d] 18-10-22 06:10:49 @ Confirm that the user is logged in
+[d] 18-10-22 06:10:49 @ User id = 0, this can't be logged in
+[d] 18-10-22 06:10:49 @ Finished! Memory used: Mb0.326272<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:19 @ Booting up V:0.1
+[d] 18-10-22 06:10:19 @ Loading all core modules
+[d] 18-10-22 06:10:19 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:19 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:19 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:19 @ Module was booted too
+[i] 18-10-22 06:10:19 @ Cala was booted...
+[d] 18-10-22 06:10:19 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:19 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:19 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:19 @ Module was booted too
+[d] 18-10-22 06:10:19 @ Connected to Db
+[d] 18-10-22 06:10:19 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:19 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:19 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:19 @ Module was booted too
+[d] 18-10-22 06:10:19 @ Loading user
+[d] 18-10-22 06:10:19 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:19 @ Unable to locate user
+[d] 18-10-22 06:10:19 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:19 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:19 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:19 @ Module was booted too
+[d] 18-10-22 06:10:19 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:19 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:19 @ Module was booted too
+[d] 18-10-22 06:10:19 @ Loading user
+[d] 18-10-22 06:10:19 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:19 @ Unable to locate user
+[d] 18-10-22 06:10:19 @ Function found
+[d] 18-10-22 06:10:19 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:19 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:19 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:19 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:19 @ Module was booted too
+[d] 18-10-22 06:10:19 @ Loading user
+[d] 18-10-22 06:10:19 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:19 @ Unable to locate user
+[d] 18-10-22 06:10:19 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:19 @ Log in this person
+[d] 18-10-22 06:10:19 @ username based login
+[d] 18-10-22 06:10:19 @ Loading user
+[d] 18-10-22 06:10:19 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:19 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:19 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:19 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Booting up V:0.1
+[d] 18-10-22 06:10:20 @ Loading all core modules
+[d] 18-10-22 06:10:20 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[i] 18-10-22 06:10:20 @ Cala was booted...
+[d] 18-10-22 06:10:20 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Connected to Db
+[d] 18-10-22 06:10:20 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:20 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:20 @ Unable to locate user
+[d] 18-10-22 06:10:20 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:20 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:20 @ Unable to locate user
+[d] 18-10-22 06:10:20 @ Function found
+[d] 18-10-22 06:10:20 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:20 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:20 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:20 @ Unable to locate user
+[d] 18-10-22 06:10:20 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:20 @ Log in this person
+[d] 18-10-22 06:10:20 @ username based login
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:20 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Able to login
+[d] 18-10-22 06:10:20 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'aXRWLzUwQTFmTUx6ZTF6OU1FL3UxUT09Ojp8IYTRJ2k5yLPxmV3eHP1m', '::1', '1540181240')
+[d] 18-10-22 06:10:20 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:20 @ Booting up V:0.1
+[d] 18-10-22 06:10:20 @ Loading all core modules
+[d] 18-10-22 06:10:20 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[i] 18-10-22 06:10:20 @ Cala was booted...
+[d] 18-10-22 06:10:20 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Connected to Db
+[d] 18-10-22 06:10:20 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:20 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:20 @ Module was booted too
+[d] 18-10-22 06:10:20 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Able to login
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Function found
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:21 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'MmRiRVZqaXVNdFhCRFozVEhmT202dz09OjrS49GfWBe2i63ywVxteWFY', '::1', '1540181241')
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:21 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Unable to locate user
+[d] 18-10-22 06:10:21 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:21 @ Log in this person
+[d] 18-10-22 06:10:21 @ username based login
+[d] 18-10-22 06:10:21 @ Loading user
+[d] 18-10-22 06:10:21 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:21 @ Able to login
+[d] 18-10-22 06:10:21 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:21 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:21 @ Module was booted too
+[d] 18-10-22 06:10:22 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'OXdLZ3FoKzRTaDhnek05UkNQMWFOQT09Ojo3QO0b9V6ojzrTzjK4hMw0', '::1', '1540181242')
+[d] 18-10-22 06:10:22 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:24 @ Booting up V:0.1
+[d] 18-10-22 06:10:24 @ Loading all core modules
+[d] 18-10-22 06:10:24 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:24 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:24 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:24 @ Module was booted too
+[i] 18-10-22 06:10:24 @ Cala was booted...
+[d] 18-10-22 06:10:24 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:24 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:24 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:24 @ Module was booted too
+[d] 18-10-22 06:10:24 @ Connected to Db
+[d] 18-10-22 06:10:24 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:24 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:24 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:24 @ Module was booted too
+[d] 18-10-22 06:10:24 @ Loading user
+[d] 18-10-22 06:10:24 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:24 @ Unable to locate user
+[d] 18-10-22 06:10:24 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:24 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:24 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:24 @ Module was booted too
+[d] 18-10-22 06:10:24 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Loading user
+[d] 18-10-22 06:10:25 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:25 @ Unable to locate user
+[d] 18-10-22 06:10:25 @ Function found
+[d] 18-10-22 06:10:25 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:25 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Loading user
+[d] 18-10-22 06:10:25 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:25 @ Unable to locate user
+[d] 18-10-22 06:10:25 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:25 @ Log in this person
+[d] 18-10-22 06:10:25 @ username based login
+[d] 18-10-22 06:10:25 @ Loading user
+[d] 18-10-22 06:10:25 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Booting up V:0.1
+[d] 18-10-22 06:10:25 @ Loading all core modules
+[d] 18-10-22 06:10:25 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[i] 18-10-22 06:10:25 @ Cala was booted...
+[d] 18-10-22 06:10:25 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Connected to Db
+[d] 18-10-22 06:10:25 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Loading user
+[d] 18-10-22 06:10:25 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:25 @ Unable to locate user
+[d] 18-10-22 06:10:25 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Loading user
+[d] 18-10-22 06:10:25 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:25 @ Unable to locate user
+[d] 18-10-22 06:10:25 @ Function found
+[d] 18-10-22 06:10:25 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:25 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Loading user
+[d] 18-10-22 06:10:25 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:25 @ Unable to locate user
+[d] 18-10-22 06:10:25 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:25 @ Log in this person
+[d] 18-10-22 06:10:25 @ username based login
+[d] 18-10-22 06:10:25 @ Loading user
+[d] 18-10-22 06:10:25 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:25 @ Module was booted too
+[d] 18-10-22 06:10:25 @ Able to login
+[d] 18-10-22 06:10:25 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:25 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:25 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'b0xnTmYvUlZqaWo0VmVibkFVWGVUdz09Ojq/bAGXawNfo7sZ8YOB5GmB', '::1', '1540181246')
+[d] 18-10-22 06:10:26 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:26 @ Booting up V:0.1
+[d] 18-10-22 06:10:26 @ Loading all core modules
+[d] 18-10-22 06:10:26 @ Loading module: >>(cala)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/cala/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[i] 18-10-22 06:10:26 @ Cala was booted...
+[d] 18-10-22 06:10:26 @ Loading module: >>(db)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/db/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/db/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Connected to Db
+[d] 18-10-22 06:10:26 @ Loading module: >>(users)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Loading module: >>(crypto)<<
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/crypto/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/module.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ Able to login
+[d] 18-10-22 06:10:26 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Function found
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Looking for path: users_log_me_in
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Found path: users_log_me_in
+[d] 18-10-22 06:10:26 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'NUdZNk83dWlrUXdITjFHbm5RcVIzUT09OjqQ6QM3IIu6Mq2X098aOHV7', '::1', '1540181246')
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/users/login.php
+[d] 18-10-22 06:10:26 @ Finished! Memory used: Mb0.342672<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/users/login.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'undefined' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Unable to locate user
+[d] 18-10-22 06:10:26 @ Found function: users_logMeIn
+[d] 18-10-22 06:10:26 @ Log in this person
+[d] 18-10-22 06:10:26 @ username based login
+[d] 18-10-22 06:10:26 @ Loading user
+[d] 18-10-22 06:10:26 @ SELECT *
+    FROM users
+     WHERE userName = 'ol' AND `status` > 0 
+[d] 18-10-22 06:10:26 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:26 @ Module was booted too
+[d] 18-10-22 06:10:27 @ Able to login
+[d] 18-10-22 06:10:27 @ delete from sessions where idUser='141' and ip='::1'
+[d] 18-10-22 06:10:27 @ Loading in path: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Including file: ../api/modules/crypto/crypto.php
+[d] 18-10-22 06:10:27 @ Module was booted too
+[d] 18-10-22 06:10:27 @ INSERT INTO sessions (idUser, sessionKey, ip, lastAccess) VALUES('141', 'ZVp6TlpaN3hHTk1TMStWZldXeWhFUT09OjqQZLoua5XWNWHzn5MapJFy', '::1', '1540181247')
+[d] 18-10-22 06:10:27 @ Finished! Memory used: Mb0.342736<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

@@ -34,6 +34,67 @@ function boot_erpsil() {
 }
 
 /*********************************************************/
+/*                 Gestion de Reportes                   */
+/*********************************************************/
+/*Funciona pero solo con las tablas
+function DescargarPDF(ContenidoID,nombre) {
+
+    var pdf = new jsPDF('p', 'pt', 'letter');
+	
+    html = $('#'+ContenidoID).html();
+	
+    specialElementHandlers = {};
+	
+    margins = {top: 0,bottom: 0,left: 0,width: 1000, height: 1000};
+	
+    pdf.fromHTML(html, margins.left, margins.top, {'width': margins.width},function (dispose) {pdf.save(nombre+'.pdf');}, margins);
+	
+}
+*/
+function PdfDescargar(id,nombre){
+
+    var doc = new jsPDF('p', 'pt');
+    
+    doc.text(nombre, 225, 50);
+    var res = doc.autoTableHtmlToJson(document.getElementById(id));
+    doc.autoTable(res.columns, res.data, {margin: {top: 80}});
+/*
+    var header = function(data) {
+        doc.setFontSize(18);
+        doc.setTextColor(40);
+        doc.setFontStyle('normal');
+
+        doc.text("Testing Report", data.settings.margin.left, 50);};
+
+        var options = {
+            beforePageContent: header,
+            margin: {
+              top: 80
+            },
+            startY: doc.autoTableEndPosY() + 20
+          };
+
+
+         doc.autoTable(res.columns, res.data, options);
+         */
+        
+          doc.save(nombre+".pdf");
+
+}
+
+
+
+/*********************************************************/
+/*              Fin de Gestion Reporte                   */
+/*********************************************************/
+
+
+
+
+
+
+
+/*********************************************************/
 /*                 Gestion login                         */
 /*********************************************************/
 
@@ -80,15 +141,26 @@ function erpsil_loginWindow() {
 +            "<input type='password' class='' placeholder='Password' required='required' id='inputPassword'>"
 +        "</div>"
 +        "<div class='col-sm'>"
-+            "<button onClick='erpsil_login()' class='btn btn-primary btn_central'>Log in</button>"
++            "<button onClick='validacionLogin()' class='btn btn-primary btn_central'>Log in</button>"
++            "<button onClick='erpsil_registrarUsuarioWindow()' class='btn btn-primary btn_central'>Registrarse</button>"
 +        "</div>"
 +   " </div>"
      
     erpsil_setContent(loginWindow);
 }
 
+function validacionLogin(){
+    var nick = $("#inputUser").val();
+    var pass = $("#inputPassword").val();
+    if(pass == "" || nick == ""){
+        erpsil_modalMalo();
+    }else{
+        erpsil_login();
+    }
+}
+
 function erpsil_setMenu() {
-    var content =   "<div class='contenedor'>"
+    var content =   "<div id='central' class='contenedor'>"
     +   	"<div class='header1'>" 
     +        	"<div class='header1-interno'>Sistema <b>ERPSIL</b></div>"
 
@@ -115,11 +187,14 @@ function erpsil_setMenu() {
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarClientesTickets()'>Listar Ticketes</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarUsuario()'>Usuario</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPermisoRol()'>Permisos Rol</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarContabilidad()'>Contabilidad</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarCuentasPagar()'>Cuentas Pagar</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPagos()'> Pagos</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPedido()'> Pedidos</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarMovimientoInventario()'> Movimiento Inventario</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPlanilla()'> Planilla</div>"
+    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarFactura()'> Factura</div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_logout()'> Salir </div>"
     +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()'> modal </div>"
     +             "</ul>"
@@ -161,15 +236,27 @@ function erpsil_modalMalo(){
 }
 
 /*********************************************************/
-/*                       logOut                          */
+/*                       Alertas                         */
 /*********************************************************/
+function erpsil_modalBueno(){
+    swal({
+        position: 'center',
+        type: 'success',
+        title: 'Proceso correcto!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+}
 
-function erpsil_logout(){
-console.log("Salir");
+function erpsil_modalMalo(){
 
-var logOut = {
-    w: "users",
-    r: "users_log_me_out"
+    swal({
+        position: 'center',
+        type: 'error',
+        title: 'Proceso incorrecto!',
+        showConfirmButton: false,
+        timer: 1500
+      });
 }
 
 calaApi_postRequest(logOut, function (d) {
@@ -183,8 +270,71 @@ calaApi_postRequest(logOut, function (d) {
     console.log("No funcionó");
 });
 
+function erpsil_validacion(func){
 
+    const swalWithBootstrapButtons = swal.mixin({
+        confirmButtonClass: 'btn btn-success',
+        cancelButtonClass: 'btn btn-danger',
+        buttonsStyling: false,
+      })
+      
+      swalWithBootstrapButtons({
+        title: 'Estás seguro?',
+        text: "El dato seleccionado se eliminará permanentemente!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+            func();
+            swal({
+                position: 'central',
+                type: 'success',
+                title: 'Dato eliminado!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+            swal({
+                position: 'central',
+                type: 'success',
+                title: 'Dato no eliminado!',
+                showConfirmButton: false,
+                timer: 1500
+              })
 
+        }
+      })
+}
+
+/*********************************************************/
+/*                       logOut                          */
+/*********************************************************/
+
+function erpsil_logout(){
+console.log("Salir");
+
+    var logOut = {
+        w: "users",
+        r: "users_log_me_out"
+    }
+
+    calaApi_postRequest(logOut, function (d) {
+        console.log("si funcionó");
+        $("#erpsil_content").empty();
+        $("#erpsil_menu").empty();
+        erpsil_loginWindow();
+
+    }, function (d) {
+        erpsil_modalMalo();
+        console.log("No funcionó");
+    });
 }
 
 /*********************************************************/
@@ -201,9 +351,8 @@ function erpsil_listarPedido(){
     calaApi_postRequest(pedidoData, function (d) {
  
         var pedidoWindow = ""
-
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='Pedidos'  class='TablaEspecial'>"
         +         "<h2 class='tituloTablas'>Lista de pedidos</h2><br><br>"
         +            "<tr>"
         +                "<th>ID pedido</th>"
@@ -229,7 +378,6 @@ function erpsil_listarPedido(){
         +                "<td> "+ a.status +" </td>"
         +                "<td> "+ a.descripcion +" </td>"
         +                "<td> "+ a.precio +" </td>"
-
         +                "<td> <div id='editar_activos' onclick='erpsil_editarPedido(" + a.id_pedido + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
         +                "<td> <div onclick='erpsil_eliminarPedido("+ a.id_pedido +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
         +            "</tr>";
@@ -239,14 +387,21 @@ function erpsil_listarPedido(){
         +            "</tr>"
         +         "</table>"
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarPedidoWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +                "<td> <div onclick='erpsil_pdfPedidos()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(pedidoWindow);
 
     }, function (d) {
         console.log(d);
+        erpsil_modalMalo();
     });
 }
+
+function erpsil_pdfPedidos(){
+    /*console.log("debug");*/
+        PdfDescargar('Pedidos','Reporte de Pedidos');
+    }
 
 function erpsil_agregarPedidoWindow() {
 
@@ -267,7 +422,6 @@ function erpsil_agregarPedidoWindow() {
 
         selectD += "</select>";
 
-        console.log(d);
         var agregarPedidoWindow = ""
 
         +    "<div class='container centrarDivTxt'>"
@@ -280,22 +434,22 @@ function erpsil_agregarPedidoWindow() {
 
         +        "<label class='col-sm-3 control-label'>Fecha del pedido</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Fecha del pedido' required='required' id='inputStampP'>"
+        +           " <input type='text' class='form-control' placeholder='Fecha del pedido' onkeyup=erpsil_validacionTxt('inputStampP'," + 2 + ") required='required' id='inputStampP'>"
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Fecha de entrega</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Fecha de entrega' required='required' id='inputStampE'>"
+        +           " <input type='text' class='form-control' placeholder='Fecha de entrega' onkeyup=erpsil_validacionTxt('inputStampE'," + 2 +") required='required' id='inputStampE'>"
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Cantidad</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Cantidad' required='required' id='inputCantidad'>"
+        +           " <input type='text' class='form-control' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Estado</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputStatus'>"
+        +           " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputStatus' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +")>"
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Descripción</label>"
@@ -305,17 +459,18 @@ function erpsil_agregarPedidoWindow() {
 
         +        "<label class='col-sm-3 control-label'>Precio</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Precio' required='required' id='inputPrecio'>"
+        +           " <input type='text' class='form-control' placeholder='Precio' required='required' id='inputPrecio' onkeyup = erpsil_validacionTxt('inputPrecio'," + 2 +")>"
         +        "</div>"
 
         +        "<div class='col-sm centrarDivTxt'>"
         +            "<div onClick='erpsil_agregarPedido()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
-        +            "<div onClick='erpsil_listarPedido()' class='btn btn-sm btn-danger btn_central'>Agregar</div>"
+        +            "<div onClick='erpsil_listarPedido()' class='btn btn-sm btn-danger btn_central'>Regresar</div>"
         +         "</div>"
         +   " </div>"
-        //console.log(selectD);  
+
         erpsil_setContent(agregarPedidoWindow);
     }, function(){
+        erpsil_modalMalo();
         console.log("Error!");
     });
 
@@ -352,10 +507,9 @@ function erpsil_agregarPedido(){
         };  
         
         calaApi_postRequest(pedidoData, function (d) {
-            console.log(pedidoData);
             erpsil_listarPedido();
         }, function (d) {
-            erpsil_modalBueno();
+            erpsil_modalMalo();
             console.log("Pedido no agregado");
         });
     } else {
@@ -372,9 +526,9 @@ function erpsil_eliminarPedido(id){
     };
 
     calaApi_postRequest(req, function(){
-        //console.log(req);
-        erpsil_listarPedido();
+        erpsil_validacion(erpsil_listarPedido);
     }, function(){
+        erpsil_modalMalo();
         console.log("Pedido no eliminarado");
     });
     
@@ -396,19 +550,19 @@ function erpsil_editarPedidoWindow(data) {
 +           "</div>"
 +           "<label class='col-sm-3 control-label'>Fecha de pedido</label>"
 +           "<div class='col-sm'>"
-+               "<input type='text' id='inputStampP' value='" + data.stamp_pedido  + "' class='form-control' placeholder='Fecha de pedido' required>"
++               "<input type='text' onkeyup = erpsil_validacionTxt('inputStampP'," + 2 +") id='inputStampP' value='" + data.stamp_pedido  + "' class='form-control' placeholder='Fecha de pedido' required onkeyup = erpsil_validacionTxt('inputStampP')>"
 +           "</div>"
 +       "<label class='col-sm-3 control-label'>Fecha de entrega</label>"
 +        "<div class='col-sm'>"
-+            "<input type='text' id='inputStampE' value='" +data.stamp_entrega  + "' class='form-control' placeholder='Fecha de entrega' required>"
++            "<input type='text' onkeyup = erpsil_validacionTxt('inputStampE'," + 2 +") id='inputStampE' onkeyup = erpsil_validacionTxt('inputStampE') value='" +data.stamp_entrega  + "' class='form-control' placeholder='Fecha de entrega' required>"
 +        "</div>"
 +       "<label class='col-sm-3 control-label'>Cantidad de rollos</label>"
 +        "<div class='col-sm'>"
-+            "<input type='text' id='inputCantidad' value='" +data.cant_rollos  + "' class='form-control' placeholder='Cantidad de rollos' required>"
++            "<input type='text' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad' onkeyup = erpsil_validacionTxt('inputCantidad') value='" +data.cant_rollos  + "' class='form-control' placeholder='Cantidad de rollos' required>"
 +        "</div>"
 +       "<label class='col-sm-3 control-label'>Status</label>"
 +        "<div class='col-sm'>"
-+            "<input type='text' id='inputStatus' value='" + data.status  + "' class='form-control' placeholder='Status' required>"
++            "<input type='text' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +") id='inputStatus') value='" + data.status  + "' class='form-control' placeholder='Status' required>"
 +        "</div>"
 +       "<label class='col-sm-3 control-label'>Descripción</label>"
 +        "<div class='col-sm'>"
@@ -416,7 +570,7 @@ function erpsil_editarPedidoWindow(data) {
 +        "</div>"
 +       "<label class='col-sm-3 control-label'>Precio</label>"
 +        "<div class='col-sm'>"
-+            "<input type='text' id='inputPrecio' value='" + data.precio  + "' class='form-control' placeholder='Precio' required>"
++            "<input type='text' onkeyup = erpsil_validacionTxt('inputinputPrecioStatus'," + 2 +") id='inputPrecio' onkeyup = erpsil_validacionTxt('inputPrecio') value='" + data.precio  + "' class='form-control' placeholder='Precio' required>"
 +        "</div>"
 +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
 +           " <div class='col-sm centrarDivTxt'>"
@@ -440,9 +594,9 @@ function erpsil_editarPedido(id){
     }
 
     calaApi_postRequest(req, function(d){
-        //console.log(req);
         erpsil_editarPedidoWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Pedidos no editado");
     });
 }
@@ -473,12 +627,13 @@ function erpsil_guadarEditarPedido(){
             precio:precio
         };
         calaApi_postRequest(editarPedido, function (d) {
-            //console.log(editarPedido);
+            erpsil_modalBueno();
             erpsil_listarPedido();
         }, function (d) {
             console.log("Pedido no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -498,8 +653,8 @@ function erpsil_listarClientesTickets(){
  
         var ClientesTicketsWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='ClientesTickets' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de tickets</h2><br><br>"
         +            "<tr>"
         +                "<th>ID ticket</th>"
@@ -531,14 +686,21 @@ function erpsil_listarClientesTickets(){
         +            "</tr>"
         +         "</table>"
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarClientesTicketsWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +                "<td> <div id='reportes_activos' onclick='erpsil_pdfClientesTickets()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(ClientesTicketsWindow);
 
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
+
+function erpsil_pdfClientesTickets(){
+    /*console.log("debug");*/
+        PdfDescargar('ClientesTickets','Reporte de Clientes Tickets');
+    }
 
 function erpsil_agregarClientesTicketsWindow() {
 
@@ -583,7 +745,7 @@ function erpsil_agregarClientesTicketsWindow() {
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Status</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Status' required='required' id='inputStatus'>"
+        +           " <input type='text' class='form-control' placeholder='Status' required='required' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +") id='inputStatus'>"
         +        "</div>"
         +        "<div class='col-sm centrarDivTxt'>"
         +            "<div onClick='erpsil_agregarClientesTickets()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
@@ -626,9 +788,11 @@ function erpsil_agregarClientesTickets(){
             console.log(tipoClientesTicketsData);
             erpsil_listarClientesTickets();
         }, function (d) {
+            erpsil_modalBueno();
             console.log("Tipo de cliente ticket no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -641,27 +805,27 @@ function erpsil_editarClienteTicketsWindow(data) {
     +       "<form class='form-horizontal' action='' method='post'>"
     +              "<label class='col-sm-3 control-label'>ID ticket</label>"
     +              "<div class='col-sm'>"
-    +                   "<input type='text' id='inputId_ticket' value='" + data.id_ticket + "' class='form-control' placeholder='ID' disabled>"
+    +                   "<input type='text' id='inputId_ticket' value='" + data.id_ticket + "' class='form-control' placeholder='Id ticket' disabled>"
     +             "</div>"
     +           "<label class='col-sm-3 control-label'>Id del cliente</label>"
     +           "<div class='col-sm'>"
-    +                "<input type='text' id='inputId_Cliente' value='" + data.id_cliente + "' class='form-control' placeholder='Nombre' disabled>"
+    +                "<input type='text' id='inputId_Cliente' value='" + data.id_cliente + "' class='form-control' placeholder='Id cliente' disabled>"
     +           "</div>"
     +           "<label class='col-sm-3 control-label'>Fecha</label>"
     +           "<div class='col-sm'>"
-    +               "<input type='text' id='inputStamp' value='" + data.stamp  + "' class='form-control' placeholder='Cedula' required>"
+    +               "<input type='text' id='inputStamp' value='" + data.stamp  + "' class='form-control' placeholder='Fecha' required>"
     +           "</div>"
     +       "<label class='col-sm-3 control-label'>Titulo</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputTitulo' value='" +data.titulo  + "' class='form-control' placeholder='Email' required>"
+    +            "<input type='text' id='inputTitulo' value='" +data.titulo  + "' class='form-control' placeholder='Titulo' required>"
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Comentario</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputComentario' value='" +data.comentario  + "' class='form-control' placeholder='Dirección' required>"
+    +            "<input type='text' id='inputComentario' value='" +data.comentario  + "' class='form-control' placeholder='Comentario' required>"
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Status</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputStatus' value='" + data.status  + "' class='form-control' placeholder='Telefono' required>"
+    +            "<input type='text' id='inputStatus' onkeyup = erpsil_validacionTxt('inputStatus'," + 1 +") value='" + data.status  + "' class='form-control' placeholder='Status' required>"
     +        "</div>"
     +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
     +           " <div class='col-sm centrarDivTxt'>"
@@ -685,9 +849,9 @@ function erpsil_editarClientesTickets(id){
     }
 
     calaApi_postRequest(req, function(d){
-        //console.log(req);
         erpsil_editarClienteTicketsWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Activos no editado");
     });
 }
@@ -714,12 +878,13 @@ function erpsil_guadarEditarClienteTicket(){
             status:status,
         };
         calaApi_postRequest(clienteTicket, function (d) {
-            //console.log(clienteTicket);
+            erpsil_modalBueno();
             erpsil_listarClientesTickets();
         }, function (d) {
             console.log("clienteTicket no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -732,9 +897,10 @@ function erpsil_eliminarClienteTicket(id){
     };
 
     calaApi_postRequest(req, function(){
-        //console.log(req);
-        erpsil_listarClientesTickets();
+        erpsil_validacion(erpsil_listarClientesTickets);
+        //erpsil_listarClientesTickets();
     }, function(){
+        erpsil_modalMalo();
         console.log("Cliente  ticket no eliminarado");
     });
     
@@ -754,8 +920,8 @@ function erpsil_listarPermisoRol(){
  
         var MostrarPermisoRolWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='PermisosRol' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de permisos de rol</h2><br><br>"
         +            "<tr>"
         +                "<th>Id permiso</th>"
@@ -781,14 +947,19 @@ function erpsil_listarPermisoRol(){
         +            "</tr>"
         +         "</table>"
         +          "<td> <div onclick='erpsil_agregarPermisoRolWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +          "<td> <div onclick='erpsil_pdfPermisosRol()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarPermisoRolWindow);
-
+        console.log("bueno POR ACA!!!");
     }, function (d) {
-        console.log(d);
+        erpsil_modalMalo();
     });
 }
+function erpsil_pdfPermisosRol(){
+    /*console.log("debug");*/
+        PdfDescargar('PermisosRol','Reportes');
+    }
 
 function erpsil_agregarPermisoRolWindow() {
 
@@ -831,6 +1002,7 @@ function erpsil_agregarPermisoRolWindow() {
         erpsil_setContent(agregarPermisoRolWindow);
 
     }, function () {
+        erpsil_modalMalo();
         console.log("Error!");
     });
 }
@@ -854,11 +1026,14 @@ function erpsil_agregarPermisoRol(){
         
         calaApi_postRequest(permosoRolData, function (d) {
             console.log(permosoRolData);
+            erpsil_modalBueno();
             erpsil_listarPermisoRol();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Tipo de cliente ticket no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -903,9 +1078,9 @@ function erpsil_editarPermisoRol(id) {
     }
 
     calaApi_postRequest(req, function (d) {
-        //console.log(req);
         erpsil_editarPermisoRolWindow(d.resp);
     }, function () {
+        erpsil_modalMalo();
         console.log("Rol no editado");
     });
 }
@@ -927,12 +1102,14 @@ function erpsil_guardarEditarPermisoRol(){
         };
 
         calaApi_postRequest(permisoRol, function (d) {
-            console.log(permisoRol);
+            erpsil_modalBueno();
             erpsil_listarPermisoRol();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("clienteTicket no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -945,10 +1122,12 @@ function erpsil_eliminarPermisoRol(id){
     };
 
     calaApi_postRequest(req, function(){
-        //console.log(req);
-        erpsil_listarPermisoRol();
+        erpsil_validacion(erpsil_listarPermisoRol);
+        //erpsil_modalBueno();
+        //erpsil_listarPermisoRol();
     }, function(){
-        console.log("Tipo cliente no eliminarado");
+        erpsil_modalMalo();
+        console.log("Permiso rol no eliminarado");
     });
 
 }
@@ -1019,8 +1198,8 @@ function erpsil_listarCuentasPagar(){
  
         var MostrarCuentasPagarWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='CuentasPorPagar' class='table table-striped table-hover'>"
 	    +         "<h2 class='tituloTablas'>Listar Cuentas por Pagar</h2><br><br>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -1057,14 +1236,21 @@ function erpsil_listarCuentasPagar(){
                 MostrarCuentasPagarWindow += ""
         +         "</table>"
         +          "<td> <div onclick='erpsil_agregarCuentasPagarWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +          "<td> <div onclick='erpsil_pdfCuentasPorPagar()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarCuentasPagarWindow);
 
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
+function erpsil_pdfCuentasPorPagar(){
+    /*console.log("debug");*/
+        PdfDescargar('CuentasPorPagar','Reporte de Cuentas por Pagar');
+    }
+
 
 function erpsil_agregarCuentasPagarWindow() {
     var  proveedorData = {
@@ -1084,25 +1270,26 @@ function erpsil_agregarCuentasPagarWindow() {
  
         var agregarCuentasPagarWindow = ""
         +    "<div class='container centrarDivTxt'>"
-        +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar cuentas por pagar</h2>"        +        "<label class='col-sm-3 control-label'>Id proveedor</label>"
+        +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar cuentas por pagar</h2>"        
+        +        "<label class='col-sm-3 control-label'>Id proveedor</label>"
         +        "<div class='col-sm'>"
         +          selectP
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Codigo referencia</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Codigo referencia' required='required' id='inputCodigo_Referencia'>"
+        +           " <input type='text' class='form-control' placeholder='Codigo referencia' required='required' onkeyup = erpsil_validacionTxt('inputCodigo_Referencia'," + 2 +") id='inputCodigo_Referencia'>"
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Saldo</label>"
         +        "<div class='col-sm'>"
-        +            "<input type='text' class='form-control' placeholder='Saldo' required='required' id='inputSaldo'>"
+        +            "<input type='text' class='form-control' placeholder='Saldo' required='required' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo'>"
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Estado</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputEstado'>"
+        +           " <input type='text' class='form-control' placeholder='Estado' required='required' onkeyup = erpsil_validacionTxt('inputEstado'," + 2 +") id='inputEstado'>"
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Vencimiento</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Vencimiento' required='required' id='inputVence'>"
+        +           " <input type='text' class='form-control' placeholder='Vencimiento' required='required' onkeyup = erpsil_validacionTxt('inputVence'," + 2 +") id='inputVence'>"
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Descripcion</label>"
         +        "<div class='col-sm'>"
@@ -1116,6 +1303,7 @@ function erpsil_agregarCuentasPagarWindow() {
         erpsil_setContent(agregarCuentasPagarWindow);
         console.log(p);
     },function(){
+        erpsil_modalMalo();
         console.log("Cuentas pagar no agregado.");
     });
  
@@ -1149,8 +1337,10 @@ function erpsil_agregarCuentasPagar(){
  
         calaApi_postRequest(permisoCuentasPagar, function (d) {
             console.log(permisoCuentasPagar);
+            erpsil_modalBueno();
             erpsil_listarCuentasPagar();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Historial precio no agregado" + d);
         });
     }
@@ -1181,7 +1371,7 @@ function erpsil_editarCuentasPagarWindow(data) {
 
         +              "<label class='col-sm-3 control-label'>Id cuenta a pagar</label>"
         +              "<div class='col-sm'>"
-        +                   "<input type='text' id='inputid_cuentasPagar' value='" + data.id_cuentasPagar + "' class='form-control' placeholder='ID' required  disabled>"
+        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputid_cuentasPagar'," + 2 +") id='inputid_cuentasPagar' value='" + data.id_cuentasPagar + "' class='form-control' placeholder='ID' required  disabled>"
         +             "</div>"
 
         +              "<label class='col-sm-3 control-label'>id proveedor</label>"
@@ -1190,22 +1380,22 @@ function erpsil_editarCuentasPagarWindow(data) {
         +             "</div>"
         +              "<label class='col-sm-3 control-label'>Codigo referencia</label>"
         +              "<div class='col-sm'>"
-        +                   "<input type='text' id='inputCodigo_Referencia' value='" + data.codigo_referencia + "' class='form-control' placeholder='ID' required>"
+        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputCodigo_Referencia'," + 2 +") id='inputCodigo_Referencia' value='" + data.codigo_referencia + "' class='form-control' placeholder='ID' required>"
         +             "</div>"
 
         +           "<label class='col-sm-3 control-label'>Saldo</label>"
         +           "<div class='col-sm'>"
-        +                "<input type='text' id='inputSaldo' value='" + data.saldo + "' class='form-control' placeholder='Saldo' required>"
+        +                "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo' value='" + data.saldo + "' class='form-control' placeholder='Saldo' required>"
         +           "</div>"
 
         +           "<label class='col-sm-3 control-label'>Estado</label>"
         +           "<div class='col-sm'>"
-        +               "<input type='text' id='inputEstado' value='" + data.estado + "' class='form-control' placeholder='Estado' required>"
+        +               "<input type='text' onkeyup = erpsil_validacionTxt('inputEstado'," + 2 +") id='inputEstado' value='" + data.estado + "' class='form-control' placeholder='Estado' required>"
         +           "</div>"
 
         +       "<label class='col-sm-3 control-label'>Vence</label>"
         +        "<div class='col-sm'>"
-        +            "<input type='text' id='inputVence' value='" + data.vence + "' class='form-control' placeholder='Vence' required>"
+        +            "<input type='text' onkeyup = erpsil_validacionTxt('inputVence'," + 2 +") id='inputVence' value='" + data.vence + "' class='form-control' placeholder='Vence' required>"
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Descripcion</label>"
@@ -1215,7 +1405,7 @@ function erpsil_editarCuentasPagarWindow(data) {
 
         +        "<label class='col-sm-3 control-label'>Fecha</label>"
         +        "<div class='col-sm'>"
-        +               "<input type='text' id='inputStampfecha' value='" + data.stampfecha + "' class='form-control' placeholder='Fecha' required>"
+        +               "<input type='text' onkeyup = erpsil_validacionTxt('inputStampfecha'," + 2 +") id='inputStampfecha' value='" + data.stampfecha + "' class='form-control' placeholder='Fecha' required>"
         +        "</div>"
 
         +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
@@ -1232,6 +1422,7 @@ function erpsil_editarCuentasPagarWindow(data) {
         erpsil_setContent(editarCuentasPagarWindow);
         console.log(p);
     },function(){
+        erpsil_modalMalo();
         console.log("Cuentas pagar no actualizado.");
     });
  
@@ -1247,6 +1438,7 @@ function erpsil_editarCuentasPagar(id){
      calaApi_postRequest(req, function(d){
         erpsil_editarCuentasPagarWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Cuentas pagar no editado");
     });
 }
@@ -1282,7 +1474,9 @@ function erpsil_guardarEditarCuentasPagar(){
  
         calaApi_postRequest(permisoCuentasPagar, function (d) {
             erpsil_listarCuentasPagar();
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Historial precio no actualizado" + d);
         });
     }
@@ -1296,9 +1490,11 @@ function erpsil_eliminarCuentasPagar(id){
      };
  
      calaApi_postRequest(req, function(){
-        //console.log(req);
-        erpsil_listarCuentasPagar();
+        erpsil_validacion(erpsil_listarCuentasPagar);
+        //erpsil_modalBueno();
+        //erpsil_listarCuentasPagar();
     }, function(){
+        erpsil_modalMalo();
         console.log("Cuentas pagar no eliminado");
     });
 }
@@ -1316,8 +1512,8 @@ function erpsil_listarHistorialPrecio(){
     calaApi_postRequest(historialPreciosData, function (d) {
         var MostrarHistorialPreciosWindow = ""
  
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='HistorialPrecios' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de Hitorial de precios</h2><br><br>"
         +            "<tr>"
         +                "<th>Id historial</th>"
@@ -1346,14 +1542,20 @@ function erpsil_listarHistorialPrecio(){
         +            "</tr>"
         +         "</table>"
         +          "<td> <div onclick='erpsil_agregarHistorialPrecioWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +          "<td> <div onclick='erpsil_pdfHistorialPrecios()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
  
         erpsil_setContent(MostrarHistorialPreciosWindow);
  
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
+function erpsil_pdfHistorialPrecios(){
+    /*console.log("debug");*/
+        PdfDescargar('HistorialPrecios','Reporte de Historial de Inventarios ');
+    }
  
 function erpsil_agregarHistorialPrecioWindow() {
     var historialPrecioData = {
@@ -1365,7 +1567,6 @@ function erpsil_agregarHistorialPrecioWindow() {
        r: "mostrar_proveedor"
     };
 
-   
     calaApi_postRequest(historialPrecioData, function(d){
        
        var selectH = "<select class='custom-select' id='inputDown1'>"  
@@ -1376,8 +1577,6 @@ function erpsil_agregarHistorialPrecioWindow() {
            i++;
        }
        selectH += "</select>";
-       console.log(d);
-
 
        calaApi_postRequest(proveedorData, function(p){
        
@@ -1401,7 +1600,7 @@ function erpsil_agregarHistorialPrecioWindow() {
            +        "</div>"
            +        "<label class='col-sm-3 control-label'>Costo</label>"
            +        "<div class='col-sm'>"
-           +           " <input type='text' class='form-control' placeholder='Costo' required='required' id='inputCosto'>"
+           +           " <input type='text' class='form-control' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
            +        "</div>"
           // +        "<label class='col-sm-3 control-label'>Fecha</label>"
           //+        "<div class='form-group'>"
@@ -1421,12 +1620,11 @@ function erpsil_agregarHistorialPrecioWindow() {
            erpsil_setContent(agregarHistorialPreciosWindow);
            console.log(d);
         }, function(){
+            erpsil_modalMalo();
             console.log("error");
         });
-
-       
-
     }, function(){
+        erpsil_modalMalo();
         console.log("error");
     });
 
@@ -1456,16 +1654,15 @@ function erpsil_agregarHistorialPrecio(){
            };
 
            calaApi_postRequest(permosoHistorialPrecio, function (d) {
-               console.log(permosoHistorialPrecio);
+               erpsil_modalBueno();
                erpsil_listarHistorialPrecio();
            }, function (d) {
                console.log("Historial precio no agregado" + d);
            });
        } else {
-           console.log("Error!");
+        erpsil_modalMalo();
+        console.log("Error!");
        }
-
-   
 }
 
 function erpsil_editarHistorialPrecioWindow(data) {
@@ -1489,9 +1686,7 @@ function erpsil_editarHistorialPrecioWindow(data) {
             i++;
         }
         selectH += "</select>";
-        console.log(d);
- 
- 
+
         calaApi_postRequest(proveedorData, function(p){
         
             var selectP = "<select class='custom-select' id='inputDown2'>"  
@@ -1518,7 +1713,7 @@ function erpsil_editarHistorialPrecioWindow(data) {
             +             "</div>"
             +           "<label class='col-sm-3 control-label'>Costo</label>"
             +           "<div class='col-sm'>"
-            +                "<input type='text' id='inputCosto' value='" + data.costo + "' class='form-control' placeholder='Fecha' required>"
+            +                "<input type='text' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto' value='" + data.costo + "' class='form-control' placeholder='Fecha' required>"
             +           "</div>"
             +           "<label class='col-sm-3 control-label'>Fecha</label>"
             +           "<div class='col-sm'>"
@@ -1538,16 +1733,16 @@ function erpsil_editarHistorialPrecioWindow(data) {
             +        "</div>"
             +       "</div>"
             +       "</div>"
-            
-            
-               erpsil_setContent(editarHistorialPreciosWindow);
+            erpsil_setContent(editarHistorialPreciosWindow);
             console.log(d);
-         }, function(){
-             console.log("error");
-         });
-     }, function(){
-         console.log("error");
-     });
+        }, function () {
+            erpsil_modalMalo();
+            console.log("Error!!");
+        });
+    }, function () {
+        erpsil_modalMalo();
+        console.log("Error!!");
+    });
 }
 
 function erpsil_editarHistorialPrecio(id){
@@ -1558,9 +1753,9 @@ function erpsil_editarHistorialPrecio(id){
      };
 
      calaApi_postRequest(req, function (d) {
-        console.log(req);
         erpsil_editarHistorialPrecioWindow(d.resp);
     }, function () {
+        erpsil_modalMalo();
         console.log("Historial Precio no editado");
     });
 }
@@ -1573,9 +1768,11 @@ function erpsil_eliminarHistorialPrecio(id){
     };
 
     calaApi_postRequest(req, function(){
-       //console.log(req);
-       erpsil_listarHistorialPrecio();
+        erpsil_validacion(erpsil_listarHistorialPrecio);
+        //erpsil_modalBueno();
+        //erpsil_listarHistorialPrecio();
    }, function(){
+       erpsil_modalMalo();
        console.log("Historial precio no eliminarado");
    });
 }
@@ -1609,15 +1806,17 @@ function erpsil_guardarEditarHistorialPago(){
         }
         calaApi_postRequest(historialPago, function (d) {
             console.log(historialPago);
+            erpsil_modalBueno();
             erpsil_listarHistorialPrecio();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Pago no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
-
 
 /*********************************************************/
 /*             Gestion de tbl_Pagos                      */ 
@@ -1632,8 +1831,8 @@ function erpsil_listarPagos(){
     calaApi_postRequest(pagosData, function (d) {
         var MostrarPagosWindow = ""
  
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='Pagos' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de pagos</h2><br><br>"
         +            "<tr>"
         +                "<th>ID Pago</th>"
@@ -1665,14 +1864,20 @@ function erpsil_listarPagos(){
         +            "</tr>"
         +         "</table>"
         +          "<td> <div onclick='erpsil_agregarPagosWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +          "<td> <div onclick='erpsil_pdfPagos()' class='btn btn-success btn-sm'>Reportes</div></td>"
         +      "</div>";
  
         erpsil_setContent(MostrarPagosWindow);
  
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
+function erpsil_pdfPagos(){
+    /*console.log("debug");*/
+        PdfDescargar('Pagos','Reporte de Pagos');
+    }
  
 function erpsil_agregarPagosWindow() {
 
@@ -1728,11 +1933,11 @@ function erpsil_agregarPagosWindow() {
 
         +        "<label class='col-sm-3 control-label'>Pago</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Pago' required='required' id='inputPago'>"
+        +           " <input type='text' class='form-control' placeholder='Pago' required='required' onkeyup = erpsil_validacionTxt('inputPago'," + 2 +") id='inputPago'>"
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Actual</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Actual' required='required' id='inputActual'>"
+        +           " <input type='text' class='form-control' placeholder='Actual' required='required' onkeyup = erpsil_validacionTxt('inputActual'," + 2 +") id='inputActual'>"
         +        "</div>"
         +        "<div class='col-sm'>"
         +            "<div onClick='erpsil_agregarPagos()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
@@ -1743,9 +1948,11 @@ function erpsil_agregarPagosWindow() {
         erpsil_setContent(agregarPagosWindow);
         console.log(d);
     }, function(){
+        erpsil_modalMalo();
         console.log("error");
     });
 }, function(){
+    erpsil_modalMalo();
     console.log("error");
 });
 }
@@ -1776,12 +1983,14 @@ function erpsil_agregarPagos(){
             actual:actual
         }
         calaApi_postRequest(pago, function (d) {
-            console.log(pago);
+            erpsil_modalBueno();
             erpsil_listarPagos();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Pago no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -1795,9 +2004,11 @@ function erpsil_eliminarPago(id){
      };
  
      calaApi_postRequest(req, function(){
-        //console.log(req);
-        erpsil_listarPagos();
+        erpsil_validacion(erpsil_listarPagos);
+        //erpsil_modalBueno();
+        //erpsil_listarPagos();
     }, function(){
+        erpsil_modalMalo();
         console.log("Pago no agregado");
     });
 }
@@ -1810,9 +2021,9 @@ function erpsil_editarPagos(id){
     };
     
     calaApi_postRequest(req, function(d){
-        //console.log(req);
         erpsil_editarPagosWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Pago no editado");
     });
 }
@@ -1877,11 +2088,11 @@ function erpsil_editarPagosWindow(data) {
         +           "</div>"
         +           "<label class='col-sm-3 control-label'>pago</label>"
         +           "<div class='col-sm'>"
-        +               "<input type='text' id='inputPago' value='" + data.pago + "' class='form-control' placeholder='pago' required>"
+        +               "<input type='text' onkeyup = erpsil_validacionTxt('inputPago'," + 2 +") id='inputPago' value='" + data.pago + "' class='form-control' placeholder='pago' required>"
         +           "</div>"
         +           "<label class='col-sm-3 control-label'>Actual</label>"
         +           "<div class='col-sm'>"
-        +               "<input type='text' id='inputActual' value='" + data.actual + "' class='form-control' placeholder='Actual' required>"
+        +               "<input type='text' onkeyup = erpsil_validacionTxt('inputActual'," + 2 +") id='inputActual' value='" + data.actual + "' class='form-control' placeholder='Actual' required>"
         +           "</div>"
         +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
         +           " <div class='col-sm'>"
@@ -1898,9 +2109,11 @@ function erpsil_editarPagosWindow(data) {
                           
         console.log(d);
     }, function(){
+        erpsil_modalMalo();
         console.log("error");
     });
 }, function(){
+    erpsil_modalMalo();
     console.log("error");
 });
 }
@@ -1935,12 +2148,14 @@ function erpsil_guardarEditarPago(){
             actual:actual
         }
         calaApi_postRequest(pago, function (d) {
-            console.log(pago);
+            erpsil_modalBueno();
             erpsil_listarPagos();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Pago no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -1956,8 +2171,8 @@ function erpsil_listarMovimientoInventario(){
     };
     calaApi_postRequest(movimientoInventarioData, function (d) {
         var MostrarMovimientoInventarioWindow = ""
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='MovimientoInventario' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de movimiento de inventario</h2><br><br>"
         +            "<tr>"
         +                "<th>ID movimiento inventario</th>"
@@ -1993,12 +2208,19 @@ function erpsil_listarMovimientoInventario(){
         +            "</tr>"
         +         "</table>"
         +          "<td> <div onclick='erpsil_agregarMovimientoInventarioWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +          "<td> <div onclick='erpsil_pdfMovimientosInventario()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
         erpsil_setContent(MostrarMovimientoInventarioWindow);
     }, function (d) {
         console.log(d);
     });
 }
+
+function erpsil_pdfMovimientosInventario(){
+    /*console.log("debug");*/
+        PdfDescargar('MovimientoInventario','Reporte de Movimientos de Inventario');
+    }
+
 
 function erpsil_agregarMovimientoInventarioWindow() {
     var productoData = {
@@ -2020,10 +2242,7 @@ function erpsil_agregarMovimientoInventarioWindow() {
             i++;
         }
         selectIn += "</select>";
- 
-        console.log(inv);
- 
- 
+
         calaApi_postRequest(usuarioData, function(usu){
             var selectUsu = "<select class='custom-select' id='inputDown2'>" 
             var i = 1;
@@ -2033,9 +2252,7 @@ function erpsil_agregarMovimientoInventarioWindow() {
             i++;
             }
             selectUsu += "</select>";
- 
-            console.log(usu);
- 
+
             var agregarMovimientoInventarioWindow = ""
         
             +    "<div class='container centrarDivTxt'>"
@@ -2050,7 +2267,7 @@ function erpsil_agregarMovimientoInventarioWindow() {
             +        "</div>"
             +        "<label class='col-sm-3 control-label'>Razon</label>"
             +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' placeholder='Razon' required='required' id='inputRazon'>"
+            +           " <input type='text' class='form-control' placeholder='Razon' required='required' onkeyup = erpsil_validacionTxt('inputRazon'," + 1 +") id='inputRazon'>"
             +        "</div>"
             +        "<label class='col-sm-3 control-label'>Descripcion</label>"
             +        "<div class='col-sm'>"
@@ -2058,7 +2275,7 @@ function erpsil_agregarMovimientoInventarioWindow() {
             +        "</div>"
             +        "<label class='col-sm-3 control-label'>Costo</label>"
             +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' placeholder='Costo' required='required' id='inputCosto'>"
+            +           " <input type='text' class='form-control' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
             +        "</div>"
             +        "<div class='col-sm'>"
             +            "<div onClick='erpsil_agregarMovimientoInventario()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
@@ -2069,11 +2286,11 @@ function erpsil_agregarMovimientoInventarioWindow() {
             erpsil_setContent(agregarMovimientoInventarioWindow);
         }, function(){
             console.log("error");
-            console.log(selectUsu);
+            erpsil_modalMalo();
         });
     }, function(){
         console.log("error");
-        console.log(selectUsu);
+        erpsil_modalMalo();
 
     });
 }
@@ -2106,11 +2323,14 @@ function erpsil_agregarMovimientoInventario(){
             costo:costo
         }
         calaApi_postRequest(movimientoInventario, function (d) {
+            erpsil_modalBueno();
             erpsil_listarMovimientoInventario();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("movimiento inventario no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2175,7 +2395,7 @@ function erpsil_editarMovimientoInventarioWindow(data) {
 
             +        "<label class='col-sm-3 control-label'>Razon</label>"
             +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' value = '"+ data.razon +"' placeholder='Razon' required='required' id='inputRazon'>"
+            +           " <input type='text' class='form-control' value = '"+ data.razon +"' placeholder='Razon' required='required' onkeyup = erpsil_validacionTxt('inputRazon'," + 1 +") id='inputRazon'>"
             +        "</div>"
             +        "<label class='col-sm-3 control-label'>Descripcion</label>"
             +        "<div class='col-sm'>"
@@ -2183,7 +2403,7 @@ function erpsil_editarMovimientoInventarioWindow(data) {
             +        "</div>"
             +        "<label class='col-sm-3 control-label'>Costo</label>"
             +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' value = '"+ data.costo+ "' placeholder='Costo' required='required' id='inputCosto'>"
+            +           " <input type='text' class='form-control' value = '"+ data.costo+ "' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
             +        "</div>"
             +           " <div class='col-sm centrarDivTxt'>"
             +            "<div onClick='erpsil_guardarEditarMovimientoInventario()' class='btn btn-primary btn-block'>Agregar</div>"
@@ -2193,9 +2413,11 @@ function erpsil_editarMovimientoInventarioWindow(data) {
                              
             erpsil_setContent(editarMovimientoInventarioWindow);
         }, function(){
+            erpsil_modalMalo();
             console.log("error");
         });
     }, function(){
+        erpsil_modalMalo();
         console.log("error");
     });
 }
@@ -2208,9 +2430,9 @@ function erpsil_editarMovimientoInventario(id){
     };
    
     calaApi_postRequest(req, function(d){
-        //console.log(req);
         erpsil_editarMovimientoInventarioWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Movimiento inventario no editado");
     });
 }
@@ -2248,10 +2470,12 @@ function erpsil_guardarEditarMovimientoInventario(){
         }
         calaApi_postRequest(movimientoInventario, function (d) {
             erpsil_listarMovimientoInventario();
+            erpsil_modalBueno();
         }, function (d) {
             console.log("movimiento inventario no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2264,9 +2488,11 @@ function erpsil_eliminarMovimientoInventario(id){
         id:id
      };
      calaApi_postRequest(req, function(){
-        //console.log(req);
-        erpsil_listarMovimientoInventario();
+        erpsil_validacion(erpsil_listarMovimientoInventario);
+        //erpsil_modalBueno();
+        //erpsil_listarMovimientoInventario();
     }, function(){
+        erpsil_modalMalo();
         console.log("Movimiento de inventario no eliminado");
     });
 }
@@ -2286,8 +2512,8 @@ function erpsil_listarTipoCliente(){
  
         var MostrarTipoClienteWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='TipoCliente' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de tipo de cliente</h2><br><br>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -2317,16 +2543,22 @@ function erpsil_listarTipoCliente(){
         +            "</tr>"
         +         "</table>"
         +          "<td> <div onclick='erpsil_agregarTipoClienteWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +          "<td> <div onclick='erpsil_pdfTipoCliente()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarTipoClienteWindow);
-
-                erpsil_CleanChart();
-
+        //Eliminar el grafico
+        erpsil_CleanChart();
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
+
+function erpsil_pdfTipoCliente(){
+    /*console.log("debug");*/
+        PdfDescargar('TipoCliente','Reporte de Pagos');
+    }
 
 function erpsil_agregarTipoClienteWindow() {
 
@@ -2344,11 +2576,11 @@ function erpsil_agregarTipoClienteWindow() {
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Ganancias</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' id='inputGanancia'>"
+    +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' onkeyup = erpsil_validacionTxt('inputGanancia'," + 2 +") id='inputGanancia'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Dias de Credito</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Dias de Credito' required='required' id='inputDiasCredito'>"
+    +           " <input type='text' class='form-control' placeholder='Dias de Credito' required='required' onkeyup = erpsil_validacionTxt('inputCredito'," + 2 +") id='inputDiasCredito'>"
     +        "</div>"
     +        "<div class='col-sm centrarDivTxt'>"
     +            "<div onClick='erpsil_agregarTipoCliente()' class='btn btn-primary btn-block'>Agregar</div>"
@@ -2379,12 +2611,14 @@ function erpsil_agregarTipoCliente(){
         };  
         
         calaApi_postRequest(tipoClienteData, function (d) {
-            console.log(tipoClienteData);
+            erpsil_modalBueno();
             erpsil_listarTipoCliente();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Tipo de cliente no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2397,8 +2631,11 @@ function erpsil_eliminarTipoCliente(id) {
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_listarTipoCliente();
+        erpsil_validacion(erpsil_listarTipoCliente);
+        //erpsil_modalBueno();
+        //erpsil_listarTipoCliente();
     }, function(){
+        erpsil_modalMalo();
         console.log("Tipo cliente no eliminarado");
     });
     
@@ -2424,11 +2661,11 @@ function erpsil_editarTipoClienteWindow(data) {
     +           "</div>"
     +       "<label class='col-sm-3 control-label'>Ganancia global</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputGanancia_global' value='" + data.ganancia_global + "' class='form-control' placeholder='Ganancia global' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputGanancia_global'," + 2 +") id='inputGanancia_global' value='" + data.ganancia_global + "' class='form-control' placeholder='Ganancia global' required>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Dias de credito</label>"
     +        "<div class='col-sm'>"
-    +               "<input type='text' id='inputDias_credito' value='" + data.dias_credito + "' class='form-control' placeholder='Dias de credito' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputGanancia_global'," + 2 +") id='inputGanancia_global' value='" + data.dias_credito + "' class='form-control' placeholder='Dias de credito' required>"
     +        "</div>"
     +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
     +           " <div class='col-sm centrarDivTxt'>"
@@ -2439,8 +2676,6 @@ function erpsil_editarTipoClienteWindow(data) {
     +        "</div>"
     +       "</div>"
     +       "</div>"
-
-
     erpsil_setContent(editartipoClienteWindow);
 }
 
@@ -2452,9 +2687,9 @@ function erpsil_editarTipoCliente(id){
     };
     
     calaApi_postRequest(req, function(d){
-        //console.log(req);
         erpsil_editarTipoClienteWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Tipo cliente no editado");
     });
 }
@@ -2481,11 +2716,13 @@ function erpsil_guardarEditarTipoCliente() {
         
         calaApi_postRequest(tipoClienteData, function (d) {
             erpsil_listarTipoCliente();
-            console.log(tipoClienteData);
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Tipo de cliente no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2501,11 +2738,11 @@ function erpsil_agregarActivosWindow() {
     +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<h2 class='text-center'>Agregr activo</h2>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNombre'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Cantidad</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' class='form-control' placeholder='Cantidad' required='required' id='inputCantidad'>"
+    +            "<input type='text' class='form-control' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +")id='inputCantidad'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Vencimiento</label>"
     +        "<div class='col-sm'>"
@@ -2537,10 +2774,11 @@ function erpsil_agregarActivos(){
         };  
         
         calaApi_postRequest(activosData, function (d) {
-            //console.log(activosData);
+            erpsil_modalBueno();
             console.log("Tipo de cliente agregado" + d);
             erpsil_listarActivos();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Tipo de cliente no agregado" + d);
         });
     } else {
@@ -2560,8 +2798,8 @@ function erpsil_listarActivos(){
  
         var MostrarActivosWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='Activos' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de activos</h2><br><br>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -2589,13 +2827,15 @@ function erpsil_listarActivos(){
         +            "</tr>"
         +         "</table>"
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarActivosWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +                "<td> <div id='reportes_activos' onclick='erpsil_pdfActivo()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarActivosWindow);
         var cantidad = a.cantidad;
         console.log(cantidad);
 
-        ////////////////////////////////////////
+        /*******************************************************/
+
         var ctx = document.getElementById("myChart").getContext('2d');
         if (window.grafica) {
             window.grafica.clear();
@@ -2638,13 +2878,17 @@ function erpsil_listarActivos(){
             }
         });
 
-        ////////////////////////////////////////
+        /*******************************************************/
             
 
     }, function (d) {
         console.log(d);
     });
 }
+function erpsil_pdfActivo(){
+    /*console.log("debug");*/
+        PdfDescargar('Activos','Reporte de Activos');
+    }
 
 function erpsil_eliminarActivos(id) {
     var req = {
@@ -2654,9 +2898,11 @@ function erpsil_eliminarActivos(id) {
     };
 
     calaApi_postRequest(req, function(){
-        //console.log(req);
-        erpsil_listarActivos();
+        erpsil_validacion(erpsil_listarActivos);
+        //erpsil_modalBueno();
+        //erpsil_listarActivos();
     }, function(){
+        erpsil_modalMalo();
         console.log("Tipo cliente no eliminarado");
     });
     
@@ -2674,11 +2920,11 @@ function erpsil_editarActivosWindow(data) {
     +             "</div>"
     +           "<label class='col-sm-3 control-label'>Nombre</label>"
     +           "<div class='col-sm'>"
-    +                "<input type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
+    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
     +           "</div>"
     +           "<label class='col-sm-3 control-label'>Cantidad</label>"
     +           "<div class='col-sm'>"
-    +               "<input type='text' id='inputCantidad' value='" + data.cantidad + "' class='form-control' placeholder='Cantidad' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad' value='" + data.cantidad + "' class='form-control' placeholder='Cantidad' required>"
     +           "</div>"
     +       "<label class='col-sm-3 control-label'>Ganancia global</label>"
     +        "<div class='col-sm'>"
@@ -2705,9 +2951,9 @@ function erpsil_editarActivos(id){
     };
     
     calaApi_postRequest(req, function(d){
-        //console.log(req);
         erpsil_editarActivosWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Activos no editado");
     });
 }
@@ -2732,10 +2978,13 @@ function erpsil_guardarEditarActivos() {
         
         calaApi_postRequest(tipoClienteData, function (d) {
             erpsil_listarActivos();
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Activo no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2751,7 +3000,7 @@ function erpsil_agregarRolWindow(){
     +        "<h2 class='text-center'>Agregar rol</h2>"
 
     +        "<div class='fcol-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre de Rol' required='required' id='inputNombre'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre de Rol' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre'>"
     +        "</div>"
 
     +        "<div class='col-sm'>"
@@ -2780,13 +3029,15 @@ function erpsil_agregarRoles(){
             descripcion:descripcionRoles,
         };  
         calaApi_postRequest(rolesData, function (d) {
-            //console.log(activosData);
+            erpsil_modalBueno();
             console.log("Rol agregado" + d);
             erpsil_listarRoles();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Rol no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2797,13 +3048,11 @@ function erpsil_listarRoles(){
         w: "erpsil_roles",
         r: "mostrar_roles"
     };
-
+    
     calaApi_postRequest(RolesData, function (d) {
- 
         var MostrarRolesWindow = ""
-
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='Roles' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de roles</h2><br><br>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -2828,14 +3077,21 @@ function erpsil_listarRoles(){
         +            "</tr>"
         +         "</table>"
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarRolWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +                "<td> <div id='Roles_Reporte' onclick='erpsil_pdfRoles()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarRolesWindow);
+        
 
     }, function (d) {
+        erpsil_modalMalo();
         console.log(d);
     });
 }
+function erpsil_pdfRoles(){
+    /*console.log("debug");*/
+        PdfDescargar('Roles','Reporte de Roles');
+    }
 
 function erpsil_eliminarRoles(id) {
     var req = {
@@ -2845,8 +3101,11 @@ function erpsil_eliminarRoles(id) {
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_listarRoles();
+        erpsil_validacion(erpsil_listarRoles);
+        //erpsil_listarRoles();
+        //erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("Roles no eliminarado");
     });
     
@@ -2864,7 +3123,7 @@ function erpsil_editarRolesWindow(data) {
 +             "</div>"
 +           "<label class='col-sm-3 control-label'>Nombre</label>"
 +           "<div class='col-sm'>"
-+                "<input type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
++                "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
 +           "</div>"
 +           "<label class='col-sm-3 control-label'>Cantidad</label>"
 +           "<div class='col-sm'>"
@@ -2893,6 +3152,7 @@ function erpsil_editarRoles(id){
     calaApi_postRequest(req, function(d){
         erpsil_editarRolesWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Rol no editado");
     });
 }
@@ -2915,11 +3175,14 @@ function erpsil_guardarEditarRoles() {
         
         calaApi_postRequest(rolesData, function (d) {
             console.log(rolesData);
+            erpsil_modalBueno();
             erpsil_listarRoles();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Activo no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -2939,8 +3202,8 @@ function erpsil_listarInventario(){
         
         var MostrarInventarioWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='Inventarios' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de inventario</h2><br><br>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -2984,6 +3247,7 @@ function erpsil_listarInventario(){
         +            "</tr>"
         +         "</table>"
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarInventarioWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +                "<td> <div  onclick='erpsil_pdfInventarios()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
         erpsil_setContent(MostrarInventarioWindow);
 
@@ -3039,6 +3303,10 @@ function erpsil_listarInventario(){
         console.log(d);
 });
 }
+function erpsil_pdfInventarios(){
+    /*console.log("debug");*/
+    PdfDescargar('Inventarios','Reporte de Inventario');
+}
 
 function erpsil_agregarInventarioWindow(){
     var agregarInventarioWindow = ""
@@ -3046,19 +3314,19 @@ function erpsil_agregarInventarioWindow(){
     +        "<h2 class='text-center'>Agregar Inventario</h2>"
     +        "<label class='col-sm-3 control-label'>Cantidad</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Cantidad' required='required' id='inputCantidad'>"
+    +           " <input type='text' class='form-control' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
     +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Unidad nombre</label>"
+    +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Unidad' required='required' id='inputUnidad'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputUnidad'," + 2 +") id='inputUnidad'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Interno</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Código Interno' required='required' id='inputCodigoInter'>"
+    +           " <input type='text' class='form-control' placeholder='Código Interno' required='required' onkeyup = erpsil_validacionTxt('inputCodigoInter'," + 2 +") id='inputCodigoInter'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Código de Barras</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='password' class='form-control' placeholder='Código de Barras' required='required' id='inputCodigoBarra'>"
+    +            "<input type='password' class='form-control' placeholder='Código de Barras' required='required' onkeyup = erpsil_validacionTxt('inputCodigoBarras'," + 2 +") id='inputCodigoBarra'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Categoria</label>"
     +        "<div class='col-sm'>"
@@ -3066,27 +3334,27 @@ function erpsil_agregarInventarioWindow(){
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Cantidad Minima</label>"
     +        "<div class='col-sm'>"
-    +           "<input type='text' class='form-control' placeholder='Cantidad Minima' required='required' id='inputCantidadMin'>"
+    +           "<input type='text' class='form-control' placeholder='Cantidad Minima' required='required' onkeyup = erpsil_validacionTxt('inputCantidadMin'," + 2 +") id='inputCantidadMin'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Descripción</label>"
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Descripción' required='required' id='inputDescripcion'>"
+    +           " <input type='text' class='form-control' placeholder='Descripción' required='required' onkeyup = erpsil_validacionTxt('inputDescripcion'," + 2 +") id='inputDescripcion'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Impuesto de Venta</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Impuesto Venta' required='required' id='inputImpuestoVenta'>"
+    +           " <input type='text' class='form-control' placeholder='Impuesto Venta' required='required' onkeyup = erpsil_validacionTxt('inputImpuestoVenta'," + 2 +") id='inputImpuestoVenta'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Ganacia Minima</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Ganacia Minima' required='required' id='inputGananciaMin'>"
+    +           " <input type='text' class='form-control' placeholder='Ganacia Minima' required='required' onkeyup = erpsil_validacionTxt('inputGananciaMin'," + 2 +") id='inputGananciaMin'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Costo</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Costo' required='required' id='inputCosto'>"
+    +           " <input type='text' class='form-control' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Estatus</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Estatus' required='required' id='inputStatus'>"
+    +           " <input type='text' class='form-control' placeholder='Estatus' required='required' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +") id='inputStatus'>"
     +        "</div>"
     +        "<div class='col-sm centrarDivTxt'>"
     +            "<div onclick='erpsil_agregarInventario()' class='btn btn-primary btn-block'>Agregar</div>"
@@ -3133,12 +3401,15 @@ function erpsil_agregarInventario(){
         };
     calaApi_postRequest(inventarioData, function (d) {
         console.log("Inventario agregado" + d);
+        erpsil_modalBueno();
         erpsil_listarInventario();
     }, function (d) {
+        erpsil_modalMalo();
         console.log("Inventario no agregado" + d);
 
     });
     }else{
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -3152,8 +3423,11 @@ function erpsil_eliminarInventario(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_listarInventario();
+        erpsil_validacion(erpsil_listarInventario);
+        //erpsil_modalBueno();
+        //erpsil_listarInventario();
         }, function(){
+        erpsil_modalMalo();
         console.log("Inventario no eliminarado");
     });
 }
@@ -3171,32 +3445,32 @@ function erpsil_editarInventarioWindow(data) {
 
     +           "<label class='col-sm-3 control-label'>Cantidad</label>"
     +           "<div class='col-sm'>"
-    +                "<input type='text' id='cantidad' value='" +data.cantidad+ "' class='form-control' placeholder='Cantidad' required>"
+    +                "<input type='text' onkeyup = erpsil_validacionTxt('cantidad'," + 2 +") id='cantidad' value='" +data.cantidad+ "' class='form-control' placeholder='Cantidad' required>"
     +           "</div>"
 
     +           "<label class='col-sm-3 control-label'>Unidad</label>"
     +           "<div class='col-sm'>"
-    +               "<input type='text' id='unidad'  value='" +data.unidad+ "' class='form-control' placeholder='Unidad' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('unidad'," + 1 +") id='unidad'  value='" +data.unidad+ "' class='form-control' placeholder='Nombre' required>"
     +           "</div>"
 
     +           "<label class='col-sm-3 control-label'>Codigo interno</label>"
     +            "<div class='col-sm'>"
-    +            "<input type='text' id='codigo_interno' value='" +data.codigo_interno+ "' class='form-control' placeholder='Codigo interno' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('codigo_interno'," + 2 +") id='codigo_interno' value='" +data.codigo_interno+ "' class='form-control' placeholder='Codigo interno' required>"
     +            "</div>"
 
     +         "<label class='col-sm-3 control-label'>Codigo de barras</label>"
     +         "<div class='col-sm'>"
-    +            "<input type='text' id='codigo_barras' value='" +data.codigo_barras+ "' class='form-control' placeholder='Codigo de barras' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('codigo_barras'," + 2 +") id='codigo_barras' value='" +data.codigo_barras+ "' class='form-control' placeholder='Codigo de barras' required>"
     +          "</div>"
 
     +         "<label class='col-sm-3 control-label'>Categoria</label>"
     +          "<div class='col-sm'>"
-    +               "<input type='text' id='categoria' value='" +data.categoria+ "' class='form-control' placeholder='Categoria' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('categoria'," + 2 +") id='categoria' value='" +data.categoria+ "' class='form-control' placeholder='Categoria' required>"
     +        "</div>"  
 
     +        "<label class='col-sm-3 control-label'>Cantidad minima</label>"
     +        "<div class='col-sm'>"
-    +               "<input type='text' id='cantidad_minima' value='" +data.cantidad_minima+ "' class='form-control' placeholder='Cantidad minima' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('cantidad_minima'," + 2 +") id='cantidad_minima' value='" +data.cantidad_minima+ "' class='form-control' placeholder='Cantidad minima' required>"
     +        "</div>"  
 
     +       "<label class='col-sm-3 control-label'>Descripcion</label>"
@@ -3206,12 +3480,12 @@ function erpsil_editarInventarioWindow(data) {
 
     +       "<label class='col-sm-3 control-label'>Impuesto de venta</label>"
     +        "<div class='col-sm'>"
-    +               "<input type='text' id='impuesto_venta' value='" +data.impuesto_venta+ "' class='form-control' placeholder='Impuesto de venta' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('impuesto_venta'," + 2 +") id='impuesto_venta' value='" +data.impuesto_venta+ "' class='form-control' placeholder='Impuesto de venta' required>"
     +        "</div>"
 
     +        "<label class='col-sm-3 control-label'>Ganancia minima</label>"
     +        "<div class='col-sm'>"
-    +               "<input type='text' id='ganancia_minima' value='" +data.ganancia_minima+ "' class='form-control' placeholder='Ganancia minima' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('ganancia_minima'," + 2 +") id='ganancia_minima' value='" +data.ganancia_minima+ "' class='form-control' placeholder='Ganancia minima' required>"
     +        "</div>"
 
     +       "<label class='col-sm-3 control-label'>Costo</label>"
@@ -3247,9 +3521,9 @@ function erpsil_editarInventario(id){
     };
 
     calaApi_postRequest(req, function(d){
-        //console.log(d.req);
         erpsil_editarInventarioWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Inventario no agregado");
     });
 }
@@ -3293,7 +3567,9 @@ function erpsil_guardarEditarInventario(){
 
         calaApi_postRequest(inventarioData, function (d) {
             erpsil_listarInventario();
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Inventario no agregado" + d);
         });
     } else {
@@ -3307,30 +3583,30 @@ function erpsil_guardarEditarInventario(){
 /*********************************************************/
 
 function erpsil_agregarProveedorWindow() {
-    //var loginWindow = "Aca va la ventana de login";
+
     var agregarProveedorWindow = ""
 
     +    "<div class='container centrarDivTxt'>"
     +        "<h2 class='text-center'>Agregar proveedor</h2>"
     +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Primer Apellido</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' id='inputApe1'>"
+    +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApe1'," + 1 +") id='inputApe1'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Segundo Apellido</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' id='inputApe2'>"
+    +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApe2'," + 1 +") id='inputApe2'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Cedula</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
+    +           " <input type='text' class='form-control' placeholder='Cedula' required='required' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Telefono</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
+    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Direccion</label>"
     +        "<div class='col-sm'>"
@@ -3376,11 +3652,14 @@ function erpsil_agregarProveedor(){
 
         calaApi_postRequest(proveedorData, function (d) {
             console.log("nuevos agregado" + d);
+            erpsil_modalBueno();
             erpsil_listarProveedor();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("No agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -3395,8 +3674,8 @@ function erpsil_listarProveedor(){
  
         var MostrarProveedorWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='Proveedor' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de proveedores</h2><br><br>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -3432,6 +3711,7 @@ function erpsil_listarProveedor(){
         +            "</tr>"
         +         "</table>"
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarProveedorWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +                "<td> <div onclick='erpsil_pdfProveedor()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarProveedorWindow);
@@ -3440,6 +3720,11 @@ function erpsil_listarProveedor(){
         console.log(d);
     });
 }
+function erpsil_pdfProveedor(){
+    /*console.log("debug");*/
+        PdfDescargar('Proveedor','Reporte de Proovedores');
+    }
+
 
 function erpsil_eliminarProveedor(id){
     var req = {
@@ -3449,8 +3734,11 @@ function erpsil_eliminarProveedor(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_listarProveedor();
+        erpsil_validacion(erpsil_listarProveedor);
+        //erpsil_listarProveedor();
+        //erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("Proveedor no eliminarado");
     });
 }
@@ -3464,9 +3752,9 @@ function erpsil_editarProveedor(id){
     };
     
     calaApi_postRequest(req, function(d){
-        //console.log(d.req);
         erpsil_editarProveedorWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Proveedor no editado");
     });
 }
@@ -3500,7 +3788,9 @@ function erpsil_guadarEditarProveedor(){
 
         calaApi_postRequest(proveedorData, function (d) {       
             erpsil_listarProveedor();
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("No agregado" + d);
         });
     } else {
@@ -3521,23 +3811,23 @@ function erpsil_editarProveedorWindow(data) {
     +             "</div>"
     +           "<label class='col-sm-3 control-label'>Nombre</label>"
     +           "<div class='col-sm'>"
-    +                "<input type='text' id='inputNombre' value='" +data.nombre+ "' class='form-control' placeholder='Nombre' required>"
+    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre' value='" +data.nombre+ "' class='form-control' placeholder='Nombre' required>"
     +           "</div>"
     +           "<label class='col-sm-3 control-label'>Primer Apellido</label>"
     +           "<div class='col-sm'>"
-    +               "<input type='text' id='inputApellido1' value='" +data.apellido1+ "' class='form-control' placeholder='Primer Apellido' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido1'," + 1 +") id='inputApellido1' value='" +data.apellido1+ "' class='form-control' placeholder='Primer Apellido' required>"
     +           "</div>"
     +       "<label class='col-sm-3 control-label'>Segudo Apellido</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputApellido2' value='" +data.apellido2+ "' class='form-control' placeholder='Segudo Apellido' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido2'," + 1 +") id='inputApellido2' value='" +data.apellido2+ "' class='form-control' placeholder='Segudo Apellido' required>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Cedula</label>"
     +        "<div class='col-sm'>"
-    +               "<input type='text' id='inputCedula' value='" +data.cedula+ "' class='form-control' placeholder='Cedula' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula' value='" +data.cedula+ "' class='form-control' placeholder='Cedula' required>"
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Telefono</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputTelefono' value='" +data.telefono+ "' class='form-control' placeholder='Telefono' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono' value='" +data.telefono+ "' class='form-control' placeholder='Telefono' required>"
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Direccion</label>"
     +        "<div class='col-sm'>"
@@ -3572,15 +3862,15 @@ function erpsil_agregarClienteWindow() {
     +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Cliente</h2>"
     +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Cedula</label>"
     +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
+    +           " <input type='text' class='form-control' placeholder='Cedula' required='required' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Email</label>"
     +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Email' required='required' id='inputEmail'>"
+    +           " <input type='email' class='form-control' placeholder='Email' required='required' id='inputEmail'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Direccion</label>"
     +        "<div class='col-smp'>"
@@ -3588,7 +3878,7 @@ function erpsil_agregarClienteWindow() {
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Telefono</label>"
     +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
+    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Descripcion</label>"
     +        "<div class='col-smp'>"
@@ -3596,11 +3886,11 @@ function erpsil_agregarClienteWindow() {
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Saldo Maximo</label>"
     +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Saldo Maximo' required='required' id='inputSaldoMa'>"
+    +           " <input type='text' class='form-control' placeholder='Saldo Maximo' required='required' onkeyup = erpsil_validacionTxt('inputSaldoMa'," + 2 +") id='inputSaldoMa'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Saldo</label>"
     +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Saldo' required='required' id='inputSaldo'>"
+    +           " <input type='text' class='form-control' placeholder='Saldo' required='required' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Tipo</label>"
     +        "<div class='col-smp'>"
@@ -3627,15 +3917,15 @@ function erpsil_editarClienteWindow(data) {
     +             "</div>"
     +           "<label class='col-sm-3 control-label'>Nombres</label>"
     +           "<div class='col-sm'>"
-    +                "<input type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
+    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 2 +") id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
     +           "</div>"
     +           "<label class='col-sm-3 control-label'>Cedula</label>"
     +           "<div class='col-sm'>"
-    +               "<input type='text' id='inputCedula' value='" + data.cedula  + "' class='form-control' placeholder='Cedula' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula' value='" + data.cedula  + "' class='form-control' placeholder='Cedula' required>"
     +           "</div>"
     +       "<label class='col-sm-3 control-label'>Email</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputEmail' value='" +data.email  + "' class='form-control' placeholder='Email' required>"
+    +            "<input type='email' id='inputEmail' value='" +data.email  + "' class='form-control' placeholder='Email' required>"
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Direccion</label>"
     +        "<div class='col-sm'>"
@@ -3643,7 +3933,7 @@ function erpsil_editarClienteWindow(data) {
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Telefono</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputTelefono' value='" + data.telefono  + "' class='form-control' placeholder='Telefono' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono' value='" + data.telefono  + "' class='form-control' placeholder='Telefono' required>"
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Descripcion</label>"
     +        "<div class='col-sm'>"
@@ -3652,12 +3942,12 @@ function erpsil_editarClienteWindow(data) {
 
     +        "<label class='col-sm-3 control-label'>Saldo Maximo</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputSaldo_maximo' value='" + data.saldo_maximo  + "' class='form-control' placeholder='Saldo Maximo'>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo_maximo'," + 2 +") id='inputSaldo_maximo' value='" + data.saldo_maximo  + "' class='form-control' placeholder='Saldo Maximo'>"
     +        "</div>"
 
     +        "<label class='col-sm-3 control-label'>Saldo</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputSaldo' value='" + data.saldo  + "' class='form-control' placeholder='Saldo' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo' value='" + data.saldo  + "' class='form-control' placeholder='Saldo' required>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Tipo</label>"
     +       " <div class='col-sm'>"           
@@ -3708,8 +3998,10 @@ function erpsil_agregarCliente(){
     
         calaApi_postRequest(clienteData, function (d) {
             console.log("agregado" + d);
+            erpsil_modalBueno();
             erpsil_listarCliente();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("No agregado" + d);
         });
     } else {
@@ -3727,8 +4019,8 @@ function erpsil_listarCliente() {
  
         var MostrarClienteWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div   class='table-responsive'>"
+        +         "<table id='Cliente' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de clientes</h2><br><br>"
         +            "<tr>"
         +                "<th>ID </th>"
@@ -3768,6 +4060,7 @@ function erpsil_listarCliente() {
         +            "</tr>"
         +         "</table>"
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarClienteWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +                "<td> <div onclick='erpsil_pdfCliente()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarClienteWindow);
@@ -3776,6 +4069,10 @@ function erpsil_listarCliente() {
         console.log(d);
     });
 }
+function erpsil_pdfCliente(){
+    /*console.log("debug");*/
+    PdfDescargar('Cliente','Reporte de Clientes');
+    }
 
 function erpsil_eliminarCliente(id){
     console.log(id);
@@ -3786,8 +4083,11 @@ function erpsil_eliminarCliente(id){
         id:id
     };
     calaApi_postRequest(req, function(){
-        erpsil_listarCliente();
+        erpsil_validacion(erpsil_listarCliente);
+        //erpsil_listarCliente();
+        //erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("no eliminar");
     });
 }
@@ -3805,6 +4105,7 @@ function erpsil_editarCliente(id){
     calaApi_postRequest(req, function(d){
         erpsil_editarClienteWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("Cliente no editado");
     });
 }
@@ -3843,7 +4144,9 @@ function erpsil_guadarEditarCliente(){
     
         calaApi_postRequest(clienteData, function (d) {
             erpsil_listarCliente();
+            erpsil_modalBueno();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("No agregado" + d);
         });
     } else {
@@ -3862,23 +4165,23 @@ function erpsil_agregarEmpleadoWindow(){
     +        "<h2 class='text-center'>Agregar empleado</h2>"
     +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputName'>"
+    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Primer Apellido</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' id='inputApellido1'>"
+    +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApellido1'," + 1 +") id='inputApellido1'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Segundo Apellido</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' id='inputApellido2'>"
+    +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApellido2'," + 1 +") id='inputApellido2'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Telefono</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' id='inputTelefono'>"
+    +           " <input type='text' class='form-control' placeholder='Telefono' required='required' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Cedula</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='password' class='form-control' placeholder='Cedula' required='required' id='inputCedula'>"
+    +            "<input type='text' class='form-control' placeholder='Cedula' required='required' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Direccion</label>"
     +        "<div class='col-sm'>"
@@ -3886,7 +4189,7 @@ function erpsil_agregarEmpleadoWindow(){
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Ingreso</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Ingreso' required='required' id='inputIngreso'>"
+    +           " <input type='text' class='form-control' placeholder='Ingreso' required='required' onkeyup = erpsil_validacionTxt('inputIngreso'," + 2 +") id='inputIngreso'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Observación</label>"
     +        "<div class='col-sm'>"
@@ -3894,11 +4197,11 @@ function erpsil_agregarEmpleadoWindow(){
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Puesto</label>"
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Puesto' required='required' id='inputPuesto'>"
+    +           " <input type='text' class='form-control' placeholder='Puesto' required='required' onkeyup = erpsil_validacionTxt('inputPuesto'," + 1 +") id='inputPuesto'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Jornada</label>"    
     +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Jornada' required='required' id='inputJornada'>"
+    +           " <input type='text' class='form-control' placeholder='Jornada' required='required' onkeyup = erpsil_validacionTxt('inputJornada'," + 1 +") id='inputJornada'>"
     +        "</div>"
     +        "<div class='col-sm centrarDivTxt'>"
     +        "</div>"
@@ -3921,23 +4224,23 @@ function erpsil_editarEmpleadoWindow(data) {
     +             "</div>"
     +           "<label class='col-sm-3 control-label'>Nombre</label>"
     +           "<div class='col-sm'>"
-    +                "<input type='text'  id='inputName' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
+    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputName'," + 1 +") id='inputName' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
     +           "</div>"
     +           "<label class='col-sm-3 control-label'>Primer Apellido</label>"
     +           "<div class='col-sm'>"
-    +               "<input type='text' id='inputApellido1' value='" + data.apellido1 + "' class='form-control' placeholder='Primer Apellido' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido1'," + 1 +") id='inputApellido1' value='" + data.apellido1 + "' class='form-control' placeholder='Primer Apellido' required>"
     +           "</div>"
     +       "<label class='col-sm-3 control-label'>Segudo Apellido</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputApellido2' value='" + data.apellido2 + "' class='form-control' placeholder='Segudo Apellido' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido2'," + 1 +") id='inputApellido2' value='" + data.apellido2 + "' class='form-control' placeholder='Segudo Apellido' required>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Telefono</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputTelefono' value='" + data.telefono + "' class='form-control' placeholder='Telefono' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono' value='" + data.telefono + "' class='form-control' placeholder='Telefono' required>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Cedula</label>"
     +        "<div class='col-sm'>"
-    +               "<input type='text' id='inputCedula' value='" + data.cedula + "' class='form-control' placeholder='Cedula' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula' value='" + data.cedula + "' class='form-control' placeholder='Cedula' required>"
     +        "</div>"     
     +       "<label class='col-sm-3 control-label'>Direccion</label>"
     +        "<div class='col-sm'>"
@@ -3945,7 +4248,7 @@ function erpsil_editarEmpleadoWindow(data) {
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Ingreso</label>"
     +        "<div class='col-sm'>"
-    +               "<input type='text' id='inputIngreso' value='" + data.ingreso + "' class='form-control' placeholder='Ingreso' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputIngreso'," + 2 +") id='inputIngreso' value='" + data.ingreso + "' class='form-control' placeholder='Ingreso' required>"
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Observaciones</label>"
     +        "<div class='col-sm'>"
@@ -3953,11 +4256,11 @@ function erpsil_editarEmpleadoWindow(data) {
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Puesto</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputPuesto' value='" + data.puesto + "' class='form-control' placeholder='Puesto' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputPuesto'," + 1 +") id='inputPuesto' value='" + data.puesto + "' class='form-control' placeholder='Puesto' required>"
     +        "</div>"
     +       "<label class='col-sm-3 control-label'>Jornada</label>"
     +        "<div class='col-sm'>"
-    +             "<input type='text' id='inputJornada' value='" + data.jornada + "' class='form-control' placeholder='Jornada' required>"
+    +             "<input type='text' onkeyup = erpsil_validacionTxt('inputJornada'," + 1 +")id='inputJornada' value='" + data.jornada + "' class='form-control' placeholder='Jornada' required>"
     +        "</div>"
     +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
     +           " <div class='col-sm centrarDivTxt'>"
@@ -4006,12 +4309,14 @@ function erpsil_agregarEmpleado(){
         };
     
         calaApi_postRequest(empleadoData, function (d) {
-            console.log("empleado agregado" + d);
+            erpsil_modalBueno();
             erpsil_listarEmpleado();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("empleado no agregado" + d);
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -4025,9 +4330,8 @@ function erpsil_listarEmpleado() {
     calaApi_postRequest(empleadoData, function (d) {
  
         var MostrarEmpleadoWindow = ""
-
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='Empleados' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de empleado</h2><br><br>"
         +            "<tr>"
         +                "<th>ID </th>"
@@ -4047,8 +4351,7 @@ function erpsil_listarEmpleado() {
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
-                            MostrarEmpleadoWindow += ""
-    
+                            MostrarEmpleadoWindow += "" 
         +            "<tr>"
         +                "<td> "+ a.id_empleado +" </td>"
         +                "<td> "+ a.nombre +" </td>"
@@ -4069,15 +4372,28 @@ function erpsil_listarEmpleado() {
 MostrarEmpleadoWindow += ""
 +            "</tr>"
 +         "</table>"
-+                "<td> <div id='editar_activos' onclick='erpsil_menuWindow()' class='btn btn-success btn-sm'>Volver</div></td>"
++                "<td> <div id='editar_activos' onclick='erpsil_agregarEmpleadoWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
++                "<td> <div id='Reporte' onclick='erpsil_pdfEmpleados()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
+
+
 
         erpsil_setContent(MostrarEmpleadoWindow);
 
     }, function (d) {
         console.log(d);
+
     });
+    
+    
 }
+
+
+function erpsil_pdfEmpleados(){
+/*console.log("debug");*/
+    PdfDescargar('Empleados','Reporte de Empleados');
+}
+
 
 function erpsil_eliminarEmpleado(id){
     console.log(id);
@@ -4087,8 +4403,11 @@ function erpsil_eliminarEmpleado(id){
         id:id
     };
     calaApi_postRequest(req, function(){
-        erpsil_listarEmpleado();
+        erpsil_validacion(erpsil_listarEmpleado);
+        //erpsil_listarEmpleado();
+        //erpsil_modalBueno();
     }, function(){
+        erpsil_modalMalo();
         console.log("no eliminar");
     });
 }
@@ -4106,6 +4425,7 @@ function erpsil_editarEmpleado(id){
     calaApi_postRequest(req, function(d){
         erpsil_editarEmpleadoWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("no eliminar");
     });
 }
@@ -4145,14 +4465,408 @@ function erpsil_guardarEditarEmpleado(){
     };
     calaApi_postRequest(empleadoData, function (d) {
         erpsil_listarEmpleado();
+        erpsil_modalBueno();
     }, function (d) {
+        erpsil_modalMalo();
         console.log("No agregado" + d);
     });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 
 
+}
+
+/*********************************************************/
+/*           Gestion Factura                             */
+/*********************************************************/
+
+function erpsil_listarFactura(){
+
+    var facturaData = {
+        w:"erpsil_factura",
+        r:"mostrar_factura"
+    };
+
+    calaApi_postRequest(facturaData, function (d) {
+ 
+        var facturaWindow = ""
+        +      "<div  class='table-responsive'>"
+        +         "<table id='Factura' class='table table-striped table-hover'>"
+        +         "<h2 class='tituloTablas'>Lista de facturas</h2><br><br>"
+        +            "<tr>"
+        +                "<th>ID Factura</th>"
+        +                "<th>Nombre cliente</th>"
+        +                "<th>Fecha</th>"
+        +                "<th>Cantidad</th>"
+        +                "<th>Detealle</th>"
+        +                "<th>Total</th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            facturaWindow += ""
+
+        +            "<tr>"
+        +                "<td> "+ a.id_factura +" </td>"
+        +                "<td> "+ a.nom_cliente +" </td>"
+        +                "<td> "+ a.stamp +" </td>"
+        +                "<td> "+ a.cantidad_productos +" </td>"
+        +                "<td> "+ a.detalle +" </td>"
+        +                "<td> "+ a.total +" </td>"
+
+        +                "<td> <div id='editar_factura' onclick='erpsil_editarFactura(" + a.id_factura + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +            "</tr>";
+                    }
+                }
+                facturaWindow += ""
+        +            "</tr>"
+        +         "</table>"
+        +                "<td> <div id='agregar_factura' onclick='erpsil_agregarFacturaWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +                "<td> <div onclick='erpsil_pdfFactura()' class='btn btn-success btn-sm'>Reporte</div></td>"
+        +      "</div>";
+
+        erpsil_setContent(facturaWindow);
+
+    }, function (d) {
+        console.log(d);
+        erpsil_modalMalo();
+    });
+}
+function erpsil_pdfFactura(){
+    console.log("debug");
+        PdfDescargar('Factura',"Reporte de Facturas");
+    }
+
+function erpsil_agregarFacturaWindow() {
+
+    var facturaData = {
+        w: "erpsil_cliente",
+        r: "mostrar_cliente"
+    };
+
+    calaApi_postRequest(facturaData, function(d){
+        var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
+        var i = 1;
+        for(a in d.resp){ 
+            var x = d.resp[a];
+            selectD += "<option>" + x.nombre + "</option>";
+            i++;
+        }
+        
+        selectD += "</select>";
+        
+        var agregarFacturaWindow = ""
+        
+        +    "<div class='container centrarDivTxt'>"
+        +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Factura</h2>"
+
+
+        +        "<label class='col-sm-3 control-label'>Nombre del cliente</label>"
+        +        "<div class='col-sm'>"
+        +        selectD
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Fecha</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='date' class='form-control' placeholder='Fecha' required='required' id='inputStamp'>"
+        +        "</div>"
+        
+        + "<hr />"
+
+        +       "<h1 class='h4 mb-0'>Lineas de detalle</h1>"
+
+        +         "<hr />"
+        +         "<div class='table-responsive'>"
+        +             "<table class='table' >"
+        +                 "<thead class='thead-dark'>"
+        +                     "<tr>"
+        +                         "<th>"
+        +                             "Producto"
+        +                         "</th>"
+        +                         "<th>Codigo Referencia</th>"
+        +                         "<th>Cantidad</th>"
+        +                         "<th>Precio Unitario</th>"
+        +                         "<th>Descuento</th>"
+        +                         "<th>I.V</th>"
+        +                         "<th>SubTotal</th>"
+        +                         "<th>Precio Total</th>"
+        +                         "<th class='text-right'>Action</th>"
+        +                     "</tr>"
+        +                 "</thead>"
+        +                 "<tbody id='tabla'>"
+  
+ 
+        +                 "</tbody>"
+        +                 "<tfoot>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle'></td>"
+        +                 "<td class='align-middle text-right'>"
+        +                     "<button onclick='erpsil_addRow();' class='btn btn-success btn-sm ' data-toggle='tooltip' data-placement='bottom' title='' data-original-title='Agregar'>"
+        +                         "<i class='material-icons md-12 align-middle'>add</i>"
+        +                     "</button>"
+        +                 "</td>"
+  
+        +                 "</tfoot>"
+        +             "</table>"
+        +         "</div>"
+
+        +        "<div class='row'>"
+        +        "<div class='col-md-6'>"
+        +            "<div class='form-group'>"
+        +                "<label for='note'>Descripcion</label>"
+        +                "<textarea name='note' id='note' cols='30' rows='7' class='form-control'></textarea>"
+        +            "</div>"
+        +        "</div>"
+        +        "<div class='col-md-6'>"
+        +            "<div class='card card-body card-subtotals bg-light'>"
+        +                "<ul class='list-unstyled'>"
+        +                    "<li>"
+        +                        "<div >Cantidad de productos</div>"
+        +                        "<div><input value='0' readonly type='text' id='cantidad' class='form-control' placeholder=''></div>"
+        +                    "</li>"                                                
+        +                    "<li>"
+        +                        "<div>Subtotal</div>"
+        +                        "<div><input value='0' readonly type='text' id='subTotal1' class='form-control'  placeholder=''></div>"
+        +                    "</li>"
+        +                    "<li>"
+        +                        "<div>Descuento Total</div>"
+        +                        "<div><input value='0' readonly type='text' id='descuenteTotal' class='form-control'  placeholder='></div>"
+        +                    "</li>"
+        +                    "<li>"
+        +                        "<div>Impuesto Total</div>"
+        +                        "<div><input value='0' readonly type='text' id='impuestoTotal' class='form-control'  placeholder='></div>"
+        +                    "</li>"
+        +                "</ul>"
+        +                "<hr />"
+        +                "<div class='d-flex align-items-center '>"
+        +                "<br />"
+        +                    "<strong>Total:   </strong>"
+        +                    "<strong><input value='0' readonly type='text' id='total' class='form-control'  placeholder='></strong>"
+        +                "</div>"
+        
+        +                "<div class='form-group'>"
+        +                    "<hr/>"
+        +                    "<input onclick='erpsil_agregarFactura()' class='btn btn-primary' value='Generar Factura'></input>"
+        +                "</div>"
+        +            "</div>"
+        +        "</div>"
+        +    "</div>"
+
+        erpsil_setContent(agregarFacturaWindow);
+        //Eliminar el grafico
+        erpsil_CleanChart();
+    }, function(){
+        erpsil_modalMalo();
+        console.log("Error!");
+    });
+
+}
+
+function erpsil_addRow() {
+    $("#tabla").append('<tr >' +
+            '          <td class="align-middle" onfocusout="erpsil_formUpdate()">' +
+            '              <input  onchange="erpsil_formUpdate();" type="text" class="form-control" placeholder="Camara">' +
+            '          </td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" onchange="erpsil_formUpdate();" type="text" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate();" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()"  value="0" onchange="erpsil_formUpdate();" type="number" class="form-control" placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()"  value="13" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="align-middle text-right">' +
+            '              <button onfocusout="erpsil_formUpdate()" onclick="$(this).parent().parent().remove();erpsil_formUpdate();" class="btn btn-danger btn-sm " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete">' +
+            '                  <i class="material-icons md-14 align-middle">delete</i>' +
+            '              </button>' +
+            '          </td>' +
+            '      </tr>');
+}
+
+//Esta funcion resive 3 parametros
+//table=tabla de donde vamos a contar
+//columna=columnas a sumar
+//id=id de html que vamos a remplazar
+function erpsil_sumar_call(table, columna, id) {
+    var cantidadLineas = document.getElementById(table).getElementsByTagName("tr").length;
+    var cantidadColumnas = document.getElementById(table).rows[0].getElementsByTagName("td").length - 1;
+    var data = [];
+    for (i = 0; i < cantidadLineas; i++) {
+        data[i] = [];
+        for (j = 0; j < cantidadColumnas; j++) {
+            data[i][j] = document.getElementById(table).rows[i].cells[j].getElementsByTagName('input')[0].value;
+        }
+    }
+    var total = 0;
+    var cantidad = 0;
+    columna = parseInt(columna);
+    for (r = 0; r < cantidadLineas; r++) {
+        total = parseInt(total) + parseInt(data[r][columna]);
+        cantidad = parseInt(cantidad) + parseInt(data[r][2]);
+    }
+
+    document.getElementById("total").value = total;
+    document.getElementById("cantidad").value = cantidad;
+
+}
+
+//Esta funcion resive 3 parametros
+//table=tabla de donde vamos a contar
+//columna=columnas a sumar
+//id=id de html que vamos a remplazar
+function erpsil_CalculaSubTotal(table, columna, id) {
+    var cantidadLineas = document.getElementById(table).getElementsByTagName("tr").length;
+    var cantidadColumnas = document.getElementById(table).rows[0].getElementsByTagName("td").length - 1;
+    var data = [];
+    for (i = 0; i < cantidadLineas; i++) {
+        data[i] = [];
+        for (j = 0; j < cantidadColumnas; j++) {
+            data[i][j] = document.getElementById(table).rows[i].cells[j].getElementsByTagName('input')[0].value;
+        }
+    }
+    var subTotal = 0;
+    columna = parseInt(columna);
+    for (r = 0; r < cantidadLineas; r++) {
+        var precioTotal = (data[r][2] * parseInt(data[r][3])); // cantidad * unidad
+        var descuento = precioTotal * (parseInt(data[r][4]) / 100);
+        var IV = precioTotal * parseInt(data[r][5]) / 100;
+        var subTotal = precioTotal - descuento + IV;
+    }
+    document.getElementById("subTotal1").value = subTotal;
+    //document.getElementById("subTotal1").value = subTotal1;
+}
+
+function erpsil_CalculaLineas(table) {
+    var cantidadLineas = document.getElementById(table).getElementsByTagName("tr").length;
+    var cantidadColumnas = document.getElementById(table).rows[0].getElementsByTagName("td").length - 1;
+    var data = [];
+    for (i = 0; i < cantidadLineas; i++) {
+        data[i] = [];
+        for (j = 0; j < cantidadColumnas; j++) {
+            data[i][j] = document.getElementById(table).rows[i].cells[j].getElementsByTagName('input')[0].value;
+        }
+    }
+    var precioTotal = 0;
+    var subTotal = 0;
+    var subTotal1 = 0;
+    var subTotal2 = 0;
+    var descuento1 = 0;
+    var productos = new Array();
+
+
+    
+    for (r = 0; r < cantidadLineas; r++) {
+        precioTotal = (data[r][2] * parseInt(data[r][3])); // cantidad * unidad
+        subTotal1 = parseInt(data[r][6]);
+        var descuento = precioTotal * (parseInt(data[r][4]) / 100);
+        var IV = precioTotal * parseInt(data[r][5]) / 100;
+        var subTotal = precioTotal - descuento + IV;
+        var subTotal2 = subTotal2 + subTotal1;
+        descuento1 = descuento1 + descuento; 
+
+
+        //productos = [data[r][0]];
+        productos.push(data[r][0]);
+        console.log("ACA está la jugada= "+ productos[1]);
+        
+        document.getElementById(table).rows[r].cells[6].getElementsByTagName('input')[0].value=precioTotal;
+        document.getElementById(table).rows[r].cells[7].getElementsByTagName('input')[0].value=subTotal;
+        document.getElementById("subTotal1").value = subTotal2;
+        document.getElementById("descuenteTotal").value = descuento1;
+        document.getElementById("note").value = productos;
+        
+    }
+}
+
+function erpsil_formUpdate() {
+    erpsil_sumar_call('tabla', 0, 'producto');
+    erpsil_sumar_call('tabla', 2, 'cantidad');
+    erpsil_sumar_call('tabla', 4, 'descuenteTotal');
+    erpsil_sumar_call('tabla', 5, 'impuestoTotal');
+    erpsil_sumar_call('tabla', 6, 'subTotal');
+    erpsil_sumar_call('tabla', 7, 'total');
+    erpsil_CalculaLineas('tabla');
+}
+
+function erpsil_sumaFactura(){
+    var total = 0;
+    
+    var cantidad =  $("#inputCantidad").val();
+    var precio = $("#inputDescr").val();
+
+    if(cantidad == null || precio == null){
+        document.getElementById('inputCantidad').value = "Ingresar un valor";
+        document.getElementById('inputDescr').value = "Ingresar un valor";
+    }else{
+        total = cantidad * precio;
+        document.getElementById("inputTotal").value = total;
+    }
+}
+
+function erpsil_agregarFactura(){
+
+    var d = $("#inputDrow");
+    var id = d[0].value;
+
+    var id_cliente = id;
+    var stamp = $("#inputStamp").val();
+    var cantidad = $("#cantidad").val();
+    var descripcion = $("#note").val();
+    var subTotal = $("#subTotal1").val();
+    var descuentoTotal = $("#descuenteTotal").val();
+    var total = $("#total").val();
+    
+
+    if(id_cliente != "" && stamp != "" && cantidad != "" && descripcion != "" && subTotal != "" && total != "" && descuentoTotal != ""){
+        
+        var facturaData = {
+            w: "erpsil_factura",
+            r: "agregar_factura",
+            id_cliente:id_cliente,
+            stamp:stamp,
+            cantidad:cantidad,
+            descripcion:descripcion,
+            subTotal:subTotal,
+            descuentoTotal:descuentoTotal,
+            total:total
+
+        };  
+        
+        calaApi_postRequest(facturaData, function (d) {
+            erpsil_listarFactura();
+        }, function (d) {
+            erpsil_modalBueno();
+            console.log("Factura no agregado");
+        });
+    } else {
+        erpsil_modalMalo();
+        console.log("Error!");
+    }
+}
+
+function erpsil_eliminarFactura(id){
+    var req = {
+        w: "erpsil_factura",
+        r: "eliminar_factura",
+        id:id
+    };
+
+    calaApi_postRequest(req, function(){
+        erpsil_validacion(erpsil_listarFactura);
+        //erpsil_modalBueno();
+        //erpsil_listarFactura();
+    }, function(){
+        erpsil_modalMalo();
+        console.log("Factura no eliminarado");
+    });
+    
 }
 
 function erpsil_editarFacturaWindow(data) {
@@ -4167,7 +4881,7 @@ function erpsil_editarFacturaWindow(data) {
     +             "</div>"
     +           "<label class='col-sm-3 control-label'>Cliente</label>"
     +           "<div class='col-sm'>"
-    +                "<input type='text'  id='inputCliente' value='" + data.id_cliente + "' class='form-control' placeholder='Cliente' required>"
+    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputCliente'," + 2 +") id='inputCliente' value='" + data.id_cliente + "' class='form-control' placeholder='Cliente' required>"
     +           "</div>"
     +           "<label class='col-sm-3 control-label'>Descripcion</label>"
     +           "<div class='col-sm'>"
@@ -4175,15 +4889,15 @@ function erpsil_editarFacturaWindow(data) {
     +           "</div>"
     +       "<label class='col-sm-3 control-label'>Cantidad</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputCantidad' value='" + data.cantidad + "' class='form-control' placeholder='Cantidad' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad' value='" + data.cantidad + "' class='form-control' placeholder='Cantidad' required>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Total</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputTotal' value='" + data.total + "' class='form-control' placeholder='Total' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputTotal'," + 2 +") id='inputTotal' value='" + data.total + "' class='form-control' placeholder='Total' required>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>stamp</label>"
     +        "<div class='col-sm'>"
-    +               "<input type='text' id='inputstamp' value='" + data.stamp + "' class='form-control' placeholder='stamp' required>"
+    +               "<input type='date' id='inputstamp' value='" + data.stamp + "' class='form-control' placeholder='stamp' required>"
     +        "</div>"
     +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
     +           " <div class='col-sm centrarDivTxt'>"
@@ -4212,6 +4926,7 @@ function erpsil_editarFactura(id){
     calaApi_postRequest(req, function(d){
         erpsil_editarFacturaWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("no eliminar");
     });
 }
@@ -4240,15 +4955,70 @@ function erpsil_guardarEditarFactura(){
     };
     calaApi_postRequest(facturaData, function (d) {
         erpsil_listarFactura();
+        erpsil_modalBueno();
     }, function (d) {
+        erpsil_modalMalo();
         console.log("No agregado" + d);
     });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 
 
 }
+
+/*********************************************************/
+/*           Gestion Contabilidad                        */
+/*********************************************************/
+function erpsil_listarContabilidad() { 
+    var contabilidadData = {
+        w: "erpsil_contabilidad",
+        r: "mostrar_contabilidad"
+    };
+    calaApi_postRequest(contabilidadData, function (d) {
+ 
+        var MostrarContabilidadWindow = ""
+
+        +      "<div class='table-responsive'>"
+        +         "<table id='Contabilidad' class='table table-striped table-hover'>"
+        +         "<h2 class='tituloTablas'>Contabilidad</h2><br><br>"
+        +            "<tr>"
+        +                "<th>ID </th>"
+        +                "<th>Total de facturas</th>"
+        +                "<th>Total a Pagar</th>"
+        +                "<th>Total en planillas </th>"
+        +            "</tr>";
+        if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
+                    for(x in d.resp){
+                            var a = d.resp[x];
+                            MostrarContabilidadWindow += ""
+    
+        +            "<tr>"
+        +                "<td> "+ a.id_contabilidad +" </td>"
+        +                "<td> "+ a.total_factura+" </td>"
+        +                "<td> "+ a.total_pagar+" </td>"
+        +                "<td> "+ a.total_planilla+" </td>"
+        +            "</tr>"      
+    }
+}
+MostrarContabilidadWindow += ""
++"</table>" 
++"<td> <div id='reporte_contabilidad' onclick='erpsil_pdfPlanilla()' class='btn btn-success btn-sm'>Reporte</div></td>" 
++ "</div>";
+        erpsil_setContent(MostrarContabilidadWindow);
+
+    }, function (d) {
+        console.log(d);
+    });
+}
+
+function erpsil_pdfContabilidad(){
+    //console.log("debug");
+        PdfDescargar('Contabilidad',"Reporte de Contabilidad");
+    }
+
+
 
 /*********************************************************/
 /*           Gestion Planilla                            */
@@ -4263,8 +5033,8 @@ function erpsil_listarPlanilla() {
  
         var MostrarPlanillaWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='Planilla' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de Planillas</h2><br><br>"
         +            "<tr>"
         +                "<th>ID </th>"
@@ -4292,9 +5062,10 @@ function erpsil_listarPlanilla() {
     }
 }
 MostrarPlanillaWindow += ""
-+            "</tr>"
-+         "</table>"
-+                "<td> <div id='agregar_planilla' onclick='erpsil_agregarPlanillaWindow()' class='btn btn-success btn-sm'>agregar</div></td>"
+        +            "</tr>"
+        +         "</table>"
+        +                "<td> <div id='agregar_planilla' onclick='erpsil_agregarPlanillaWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +                "<td> <div id='reporte_planilla' onclick='erpsil_pdfPlanilla()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarPlanillaWindow);
@@ -4303,24 +5074,27 @@ MostrarPlanillaWindow += ""
         console.log(d);
     });
 }
+function erpsil_pdfPlanilla(){
+    /*console.log("debug");*/
+        PdfDescargar('Planilla','Reporte de Planillas');
+    }
 
 function erpsil_agregarPlanillaWindow() {
 
     var planillaData = {
-        w: "erpsil_planilla",
-        r: "mostrar_planilla"
+        w: "erpsil_empleado",
+        r: "mostrar_empleado"
     };
 
     calaApi_postRequest(planillaData, function(d){
 
-        var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
+       var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
         var i = 1;
         for(a in d.resp){ 
             var x = d.resp[a];
             selectD += "<option>" + i + " - Nombre de Empleado: " + x.nombre + " - id = (" + x.id_empleado + ")</option>";
             i++;
         }
-
         selectD += "</select>";
 
         console.log(d);
@@ -4329,33 +5103,29 @@ function erpsil_agregarPlanillaWindow() {
         +    "<div class='container centrarDivTxt'>"
         +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Planilla</h2>"
 
-        +        "<label class='col-sm-3 control-label'>Id Planilla</label>"
-        +        "<div class='col-sm'>"
-        +        selectD
-        +        "</div>"
         +        "<label class='col-sm-3 control-label'>Id Empleado</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Id Empleado' required='required' id='inputEmpleado'>"
+        +        selectD
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Salario Bruto</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Salario Bruto' required='required' id='inputSalaB'>"
+        +           " <input type='text' class='form-control' placeholder='Salario Bruto' required='required' onkeyup = erpsil_validacionTxt('inputSalaB'," + 2 +") id='inputSalaB'>"
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>CCSS</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='CCSS' required='required' id='inputccss'>"
+        +           " <input type='text' class='form-control' placeholder='CCSS' required='required' onkeyup = erpsil_validacionTxt('inputccss'," + 2 +") id='inputccss'>"
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Rebaja</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Rebaja' required='required' id='inputRebaja'>"
+        +           " <input type='text' class='form-control' placeholder='Rebaja' required='required' onkeyup = erpsil_validacionTxt('inputRebaja'," + 2 +") id='inputRebaja'>"
         +        "</div>"
 
         +        "<label class='col-sm-3 control-label'>Salario Neto</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Salario Neto' required='required' id='inputSalaN'>"
+        +           " <input type='text' class='form-control' placeholder='Salario Neto' required='required' onkeyup = erpsil_validacionTxt('inputSalaN'," + 2 +") id='inputSalaN'>"
         +        "</div>"
 
         +        "<div class='col-sm centrarDivTxt'>"
@@ -4377,15 +5147,14 @@ function erpsil_agregarPlanilla(){
     var id = d[0].value;
     id = id.split("(")[1].split(")")[0];
 
-    var id_planilla = id;
-    var idEmpleado = $("#inputEmpleado").val();
+    var idEmpleado = id;
     var salarioBruto = $("#inputSalaB").val();
     var ccss = $("#inputccss").val();
     var Rebaja = $("#inputRebaja").val();
     var SalarioNeto = $("#inputSalaN").val();
     
 
-    if(id_planilla != "" && idEmpleado != "" && salarioBruto != "" && ccss != "" && Rebaja != "" && SalarioNeto != ""  ){
+    if( idEmpleado != "" && salarioBruto != "" && ccss != "" && Rebaja != "" && SalarioNeto != ""  ){
         
         var planillaData = {
             w: "erpsil_planilla",
@@ -4400,11 +5169,14 @@ function erpsil_agregarPlanilla(){
         
         calaApi_postRequest(planillaData, function (d) {
             console.log(planillaData);
+            erpsil_modalBueno();
             erpsil_listarPlanilla();
         }, function (d) {
+            erpsil_modalMalo();
             console.log("Planilla no agregada");
         });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 }
@@ -4417,9 +5189,10 @@ function erpsil_eliminarPlanilla(id){
     };
 
     calaApi_postRequest(req, function(){
-        //console.log(req);
-        erpsil_listarPlanilla();
+        erpsil_validacion(erpsil_listarPlanilla);
+        //erpsil_listarPlanilla();
     }, function(){
+        erpsil_modalMalo();
         console.log("Planilla no eliminada");
     });
     
@@ -4437,23 +5210,23 @@ function erpsil_editarPlanillaWindow(data) {
     +             "</div>"
     +           "<label class='col-sm-3 control-label'>Empleado</label>"
     +           "<div class='col-sm'>"
-    +                "<input type='text'  id='inputEmpleado' value='" + data.id_empleado + "' class='form-control' placeholder='Cliente' required>"
+    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputEmpleado'," + 2 +") id='inputEmpleado' value='" + data.id_empleado + "' class='form-control' placeholder='Cliente' required>"
     +           "</div>"
     +           "<label class='col-sm-3 control-label'>Salario Bruto</label>"
     +           "<div class='col-sm'>"
-    +               "<input type='text' id='inputSalariobruto' value='" + data.salario_bruto + "' class='form-control' placeholder='Descripcion' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputSalariobruto'," + 2 +") id='inputSalariobruto' value='" + data.salario_bruto + "' class='form-control' placeholder='Descripcion' required>"
     +           "</div>"
     +       "<label class='col-sm-3 control-label'>CCSS</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputCcss' value='" + data.ccss + "' class='form-control' placeholder='Cantidad' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputCcss'," + 2 +") id='inputCcss' value='" + data.ccss + "' class='form-control' placeholder='Cantidad' required>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Rebajas</label>"
     +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputRebaja' value='" + data.rebaja + "' class='form-control' placeholder='Total' required>"
+    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputRebaja'," + 2 +") id='inputRebaja' value='" + data.rebaja + "' class='form-control' placeholder='Total' required>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Salario neto</label>"
     +        "<div class='col-sm'>"
-    +               "<input type='text' id='inputSalarioneto' value='" + data.salario_neto + "' class='form-control' placeholder='stamp' required>"
+    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputSalarioneto'," + 2 +") id='inputSalarioneto' value='" + data.salario_neto + "' class='form-control' placeholder='stamp' required>"
     +        "</div>"
     +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
     +           " <div class='col-sm centrarDivTxt'>"
@@ -4482,6 +5255,7 @@ function erpsil_editarPlanilla(id){
     calaApi_postRequest(req, function(d){
         erpsil_editarPlanillaWindow(d.resp);
     }, function(){
+        erpsil_modalMalo();
         console.log("no eliminar");
     });
 }
@@ -4510,10 +5284,13 @@ function erpsil_guardarEditarPlanilla(){
     };
     calaApi_postRequest(planillaData, function (d) {
         erpsil_listarPlanilla();
+        erpsil_modalBueno();
     }, function (d) {
+        erpsil_modalMalo();
         console.log("No agregado" + d);
     });
     } else {
+        erpsil_modalMalo();
         console.log("Error!");
     }
 
@@ -4522,7 +5299,6 @@ function erpsil_guardarEditarPlanilla(){
 /*********************************************************/
 /*                 Gestion Usuario                       */ // Falta editar
 /*********************************************************/
-
 //Req directa
 function agregarUsuario(){
     var req = {
@@ -4543,6 +5319,52 @@ function agregarUsuario(){
 }
 
 function erpsil_agregarUsuarioWindow(){
+    //var loginWindow = "Aca va la ventana de login";
+    var agregarUsuarioWindow = ""
+
+    +    "<div class='container centrarDivTxt'>"
+    +		"<h2 class='AgregarUsuarioTitulo'>Agregar usuario</h2><br><br>"
+
+    +		"<label class='col-sm-3 control-label'>Nombre</label>"
+    +		"<div class='form-group'>"
+    +			"<input type='text' class='form-control2' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputFullName'," + 1 +") id='inputFullName'>"
+    +		"</div>"
+
+    +		"<label class='col-sm-3 control-label'>Nombre de usuario</label>"
+    +		"<div class='form-group'>"
+    +			"<input type='text' class='form-control2' placeholder='Nombre usuario' required='required' id='inputUserName'>"
+    +		"</div>"
+
+    +           "<label class='col-sm-3 control-label'>Email</label>"
+    +		"<div class='form-group'>"
+    +			"<input type='email' class='form-control2' placeholder='Email' required='required' id='inputUserEmail'>"
+    +		"</div>"
+
+    +		"<label class='col-sm-3 control-label'>Contraseña</label>"
+    + 		"<div class='form-group'>"
+    +			"<input type='password' class='form-control2' placeholder='Contraseña' required='required' id='inputPwd'>"
+    +		"</div>"
+
+    +		"<label class='col-sm-3 control-label'>Acerca de</label>"
+    +		"<div class='form-group'>"
+    +			"<input type='text' class='form-control2' placeholder='Acerca de' required='required' id='inputAbout'>"
+    +		"</div>"
+
+    +		"<label class='col-sm-3 control-label'>País</label>"
+    +		"<div class='form-group'>"
+    +			"<input type='text' class='form-control2' placeholder='País' required='required' onkeyup = erpsil_validacionTxt('inputUserCountry'," + 1 +") id='inputUserCountry'>"
+    +		"</div>"
+
+    +        "<div class='col-sm centrarDivTxt'>"
+    +			"<div onClick='erpsil_agregarUsuario()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
+    +			"<div onClick='erpsil_listarUsuario()' class='btn btn-sm btn-danger btn_central'>Volver</div>"
+    +		"</div>"
+    +	"</div>"
+                       
+    erpsil_setContent(agregarUsuarioWindow);
+}
+
+function erpsil_registrarUsuarioWindow(){
     //var loginWindow = "Aca va la ventana de login";
     var agregarUsuarioWindow = ""
 
@@ -4580,8 +5402,8 @@ function erpsil_agregarUsuarioWindow(){
     +		"</div>"
 
     +        "<div class='col-sm centrarDivTxt'>"
-    +			"<div onClick='erpsil_agregarUsuario()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
-    +			"<div onClick='erpsil_listarUsuario()' class='btn btn-sm btn-danger btn_central'>Volver</div>"
+    +			"<div onClick='erpsil_registrarUsuario()' class='btn btn-sm btn-primary btn_central'>Agregar</div>"
+    +			"<div onClick='erpsil_loginWindow()' class='btn btn-sm btn-danger btn_central'>Volver</div>"
     +		"</div>"
     +	"</div>"
                        
@@ -4611,12 +5433,46 @@ function erpsil_agregarUsuario(){
         };
 
         calaApi_registerUser(usuarioData, function(d){
-            console.log("***********************************************************"); 
-            //console.log(usuarioData); 
-            //console.log(d); 
+            erpsil_modalBueno(); 
             erpsil_listarUsuario();
-
         }, function(d){
+            erpsil_modalMalo();
+            console.log("Error al agregar usuario" + d);
+        })
+
+    }else{
+        console.log("Error");
+    }
+
+}
+
+function erpsil_registrarUsuario(){
+    var nombreUsuario = $("#inputFullName").val();
+    var userUsuario = $("#inputUserName").val();
+    var emailUsuario = $("#inputUserEmail").val();
+    var pwdUsuario = $("#inputPwd").val();
+    var acercaUsuario = $("#inputAbout").val();
+    var countryUsuario = $("#inputUserCountry").val();
+
+    if(nombreUsuario != "" && userUsuario != "" && emailUsuario != "" && 
+    pwdUsuario != "" && acercaUsuario != "" && countryUsuario != ""){
+        
+        var usuarioData = {
+            //w: "erpsil_usuario", 
+            //r: "agregar_Usuario",
+            fullName:nombreUsuario, 
+            userName:userUsuario,
+            userEmail:emailUsuario,
+            pwd:pwdUsuario,
+            about:acercaUsuario,
+            userCountry:countryUsuario
+        };
+
+        calaApi_registerUser(usuarioData, function(d){
+            erpsil_modalBueno(); 
+            location.reload();
+        }, function(d){
+            erpsil_modalMalo();
             console.log("Error al agregar usuario" + d);
         })
 
@@ -4636,8 +5492,8 @@ function erpsil_listarUsuario(){
  
         var MostrarUsuarioWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table class='table table-striped table-hover'>"
+        +      "<div  class='table-responsive'>"
+        +         "<table id='Usuario' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Lista de usuarios</h2><br><br>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -4672,6 +5528,7 @@ function erpsil_listarUsuario(){
         +            "</tr>"
         +         "</table>"
         +                "<td> <div id='editar_activos' onclick='erpsil_agregarUsuarioWindow()' class='btn btn-success btn-sm'>Agregar</div></td>"
+        +                "<td> <div onclick='erpsil_pdfUsuarios()' class='btn btn-success btn-sm'>Reporte</div></td>"
         +      "</div>";
 
         erpsil_setContent(MostrarUsuarioWindow);
@@ -4680,7 +5537,10 @@ function erpsil_listarUsuario(){
         console.log(d);
     });
 }
-
+function erpsil_pdfUsuarios(){
+    /*console.log("debug");*/
+        PdfDescargar('Usuario','Reporte de Usuarios');
+    }
 function erpsil_eliminarUsuario(id){
     var req = {
         w: "erpsil_usuario",
@@ -4689,9 +5549,11 @@ function erpsil_eliminarUsuario(id){
     };
 
     calaApi_postRequest(req, function(){
-        console.log(req);
-        erpsil_listarUsuario();
+        erpsil_validacion(erpsil_listarUsuario);
+        //erpsil_modalBueno();
+        //erpsil_listarUsuario();
     }, function(){
+        erpsil_modalMalo();
         console.log("Usuario no eliminarado");
     });
 }
@@ -4699,6 +5561,31 @@ function erpsil_eliminarUsuario(id){
 /*********************************************************/
 /*                 Otras funciones                       */
 /*********************************************************/
+
+function erpsil_validacionTxt(id, type = 1){
+    // 1 = Letras
+    // 2 = Numeros 
+    var string = $("#" + id).val();
+    var isNum = false;
+    var fString = "";
+    for(s in string){
+        var letra = string[s];
+        var scii = letra.charCodeAt(0);
+        if(scii >= 48 && scii <= 57){  
+            if(type != 2){
+                letra = "";
+            }
+        }else if(type != 1){
+            letra = "";
+        }
+
+        if(letra != ""){
+            fString += letra;
+        }
+    }
+    $("#" + id).empty();
+    $("#" + id).val(fString);
+}
 
 function erpsil_setContent(content) {
     $("#erpsil_content").empty();
@@ -4729,8 +5616,6 @@ function erpsil_CleanChart(){
        window.grafica.destroy();
    }
    window.grafica = new Chart(ctx, {});
-
-
 }
 
 function erpsil_debug(mensaje) {
@@ -4738,3 +5623,13 @@ function erpsil_debug(mensaje) {
         console.log("erpsil >> " + mensaje);
     }
 }
+
+
+
+
+
+
+
+
+
+

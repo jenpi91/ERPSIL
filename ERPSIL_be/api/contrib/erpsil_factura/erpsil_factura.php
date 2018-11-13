@@ -9,6 +9,36 @@ function mostrarFactura(){
 
 }
 
+function agregarFactura(){
+
+    $id_cliente = params_get("id_cliente");
+    $stamp = params_get("stamp");
+    $cantidad = params_get("cantidad");
+    $descripcion = params_get("descripcion");
+    $subTotal = params_get("subTotal");
+    $descuentoTotal = params_get("descuentoTotal");
+    $total = params_get("total");
+
+    $q = "INSERT INTO `tbl_factura` (`nom_cliente`, `detalle`, `cantidad_productos`, `stamp`, `subtotal`, `desc_total`, `total`) 
+    VALUES ('$id_cliente', '$descripcion', '$cantidad', '$stamp', '$subTotal', '$stamp', '$descuentoTotal', '$total')";
+
+    //return $q;    
+    return db_query($q, 0);
+
+}
+
+function eliminarFactura(){
+
+    $id = params_get("id");
+
+    $q = "DELETE FROM `tbl_factura` 
+          WHERE `id_factura` = $id";
+
+    return db_query($q, 0);
+}
+
+
+
 function obtenerFactura(){
     $id = params_get("id");
     $q = "SELECT * FROM `tbl_factura`
