@@ -82,18 +82,6 @@ function PdfDescargar(id,nombre){
 
 }
 
-
-
-/*********************************************************/
-/*              Fin de Gestion Reporte                   */
-/*********************************************************/
-
-
-
-
-
-
-
 /*********************************************************/
 /*                 Gestion login                         */
 /*********************************************************/
@@ -160,7 +148,7 @@ function validacionLogin(){
 }
 
 function erpsil_setMenu() {
-    var content =   "<div id='central' class='contenedor'>"
+    var content =  "<div id='central' class='contenedor'>"
     +   	"<div class='header1'>" 
     +        	"<div class='header1-interno'>Sistema <b>ERPSIL</b></div>"
 
@@ -173,31 +161,69 @@ function erpsil_setMenu() {
     +        	"<!--Barra de Búsqueda y Login-->"
     +       "</div>"
 
-    +    	"<div class='menuNav' >"
+    +    "<ul class='acorh'>"
+    +      "<li><a style='color:#fff;'>RRHH</a>"
+    +        "<ul>"
+    +          "<li><a onClick='erpsil_listarCliente()'>Clientes</a></li>"
+    +          "<li><a onClick='erpsil_listarProveedor()'>Proveedor</a></li>"
+    +          "<li><a onClick='erpsil_listarEmpleado()'>Empleado</a></li>"
+    +          "<li><a onClick='erpsil_listarEmpleado()'>Empleado</a></li>"
+    +          "<li><a onClick='erpsil_listarTipoCliente()'>Tipo Cliente</a></li>"
+    //+          "<li><a onClick='erpsil_listarClientesTickets()'>Tickets</a></li>"
+    +       " </ul>"
+    +      "</li>"
+    +      "<li><a style='color:#fff;'>Inventario</a>"
+    +        "<ul>"
+    +          "<li><a onClick='erpsil_listarInventario()'>Inventario</a></li>"
+    +          "<li><a onClick='erpsil_listarActivos()'>Activos</a></li>"
+    +          "<li><a onClick='erpsil_listarMovimientoInventario()'>Movimiento del inventario</a></li>"
+    +          "<li><a onClick='erpsil_listarMovimientoInventario()'>Historial de precios</a></li>"
+    +        "</ul>"
+    +      "</li>"
+    +      "<li><a style='color:#fff;'>Contabilidad</a>"
+    +        "<ul>"
+    +          "<li><a onClick='erpsil_listarContabilidad()'>Lista de Contabilidad</a></li>"
+    +          "<li><a onClick='erpsil_listarCuentasPagar()'>Cuentas por pagar</a></li>"
+    +          "<li><a onClick='erpsil_listarPagos()'>Pagos</a></li>"
+    +          "<li><a onClick='erpsil_listarPlanilla()'>Planilla</a></li>"
+    +          "<li><a onClick='erpsil_listarFactura()'>Factura</a></li>"
 
-    +        	 "<ul>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()' >Grafica (pronto)</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarCliente()'>Cliente</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarProveedor()'>Proveedor</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarEmpleado()'>Empleado</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarRoles()'>Roles</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarInventario()'>Inventario</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarActivos()'>Activos</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarClientesTickets()'>Listar Ticketes</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarUsuario()'>Usuario</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPermisoRol()'>Permisos Rol</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarContabilidad()'>Contabilidad</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarCuentasPagar()'>Cuentas Pagar</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPagos()'> Pagos</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPedido()'> Pedidos</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarMovimientoInventario()'> Movimiento Inventario</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPlanilla()'> Planilla</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarFactura()'> Factura</div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_logout()'> Salir </div>"
-    +                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()'> modal </div>"
-    +             "</ul>"
+    +        "</ul>"
+    +      "</li>"
+    +      "<li><a style='color:#fff;'>Sistema</a>"
+    +        "<ul>"
+    +          "<li><a onClick='erpsil_listarUsuario()'>Usuarios</a></li>"
+    +          "<li><a onClick='erpsil_listarRoles()'>Roles</a></li>"
+    +          "<li><a >Opción 3.2</a></li>"
+    +        "</ul>"
+    +      "</li>"
+    +          "<li><a style='color:#fff;' onClick='erpsil_logout()'>Salir</a></li>"
+    +    "</ul>"
+
+    //+    	"<div class='menuNav' >"
+    //+        	 "<ul>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()' >Grafica (pronto)</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarCliente()'>Cliente</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarProveedor()'>Proveedor</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarEmpleado()'>Empleado</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarRoles()'>Roles</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarInventario()'>Inventario</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarActivos()'>Activos</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarClientesTickets()'>Listar Ticketes</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarUsuario()'>Usuario</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPermisoRol()'>Permisos Rol</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarContabilidad()'>Contabilidad</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarCuentasPagar()'>Cuentas Pagar</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarHistorialPrecio()'>Historial Precio</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPagos()'> Pagos</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPedido()'> Pedidos</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarMovimientoInventario()'> Movimiento Inventario</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarPlanilla()'> Planilla</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_listarFactura()'> Factura</div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_logout()'> Salir </div>"
+    //+                "<div class='formato-MenuNav' style='cursor:pointer' onClick='erpsil_modalAgregado()'> modal </div>"
+    //+             "</ul>"
 
     +        "</div>"
 
