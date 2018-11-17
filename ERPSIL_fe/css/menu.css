@@ -9,9 +9,11 @@ padding: 0;
 list-style: none;
 width: 100%;
 font-size: 15px;
+transition: .3s all ease-in;
 }
 ul.acorh li {
 list-style: none;
+transition: .3s all ease-in;
 }
 ul.acorh li a {
 color: #fff;
@@ -20,9 +22,10 @@ display: block;
 padding: 10px 10px 10px 20px;
 background: #333;
 border-bottom: 1px solid #000;
-border-top: 1px solid #666;
+border-top: 1px solid #;
 text-decoration: none;
 box-sizing: border-box;
+transition: .3s all ease-in;
 }
 ul.acorh li ul {
 max-height: 0;
@@ -39,16 +42,22 @@ font-size: 12px;
 border: 0;
 border-bottom: 1px solid #ccc;
 box-sizing: border-box;
+transition: .3s all ease-in;
 }
+
 ul.acorc li li:last-child a {
 border-bottom: 0;
+transition: .3s all ease-in;
 }
 ul.acorh li:hover ul {
 max-height: 300px;
 transition: .3s all ease-in;
 }
+/* Efecto del Menu*/
 ul.acorh li a:hover {
-background: #666;
+background: #930;
 color: #fff;
+border-radius: 6px 6px 6px 6px;
+transition: .3s all ease-in;
 }
 
