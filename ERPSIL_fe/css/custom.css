@@ -17,13 +17,52 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-color: #930;
+
 }
 
 @media (max-width: 400px){
 	.login{
 		width: 90%;
 	}
+}
+
+.btn_central{
+    width: 40%;
+    margin: 13px;
+}
+.login-btnRojo, .registrarse-btnRojo{
+    width: 40%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #930; 
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: 13px;
+    cursor: pointer;
+}
+.login-btnRojo:hover, .registrarse-btnRojo:hover{
+    width: 40%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #F1948A; 
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: 13px;
+    cursor: pointer;
 }
 
 /*******************************/
@@ -62,54 +101,79 @@ input[type=text]:hover,[type=password]:hover, select:hover {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 13px;
     font-size: 24px;
+    background: #333;   
     color: #f1f1f1;
+    border-radius: 20px 20px 20px 20px;
 }
 .contenedorTitulo{
-    background: #333;
+    background: #930;
+    line-height: 28px;
     height: 60px;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 20px 20px 20px 20px;
 }
 
 /*******************************/
 /*            Botones          */
 /*******************************/
-.btn_central{
-    width: 40%;
-    margin: 13px;
-}
-.login-btnRojo, .registrarse-btnRojo{
-    width: 40%;
+
+.editar-Btn{
     font-family:Arial, Helvetica, sans-serif;
     font-size: 20px;
-    background-color: #930; 
+    background-color: #FFC300; 
     border: none;
     color: white;
-    padding: 15px 15px;
+    padding: 5px 22px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 8px;
-    margin: 13px;
     cursor: pointer;
+    font-style: initial;
 }
-.login-btnRojo:hover, .registrarse-btnRojo:hover{
-    width: 40%;
+
+.eliminar-Btn{
     font-family:Arial, Helvetica, sans-serif;
     font-size: 20px;
-    background-color: #F1948A; 
+    background-color: red; 
     border: none;
     color: white;
-    padding: 15px 15px;
+    padding: 5px 22px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 8px;
-    margin: 13px;
     cursor: pointer;
 }
 
+/*Efecto Botones*/
+.agregar-BtnVerde:hover,.editar-BtnAzul:hover,.eliminar-BtnRojo:hover,.volver-BtnMorado:hover,.guardar-BtnNaranja:hover,.cancelar-BtnAqua:hover {
+    background-color: #930; 
+}
+
+/*******************************/
+/*            Tablas           */
+/*******************************/
+
+th, td {
+    text-align: center;
+    padding: 6px;
+    border-style: solid;
+    border-color: white;
+    /*border-radius: 8px;*/
+    font-family:Arial, Helvetica, sans-serif;
+    
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #155E63;
+    color: white;
+    /*border-radius:8px;*/
+    font-size: 14px;	
+}
 
 /*******************************/
 /*             Modal           */
@@ -218,21 +282,7 @@ input[type=text]:hover,[type=password]:hover, select:hover {
     cursor: pointer;
 }
 
-.editar-BtnAzul{
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    background-color: blue; 
-    border: none;
-    color: white;
-    padding: 15px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    margin: 20px;
-    cursor: pointer;
-}
+
 
 .cancelar-BtnAqua{
     font-family:Arial, Helvetica, sans-serif;
@@ -267,21 +317,7 @@ input[type=text]:hover,[type=password]:hover, select:hover {
 }
 
 
-.eliminar-BtnRojo{
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    background-color: red; 
-    border: none;
-    color: white;
-    padding: 15px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    margin: 20px;
-    cursor: pointer;
-}
+
 
 .volver-BtnMorado{
     font-family:Arial, Helvetica, sans-serif;
@@ -299,27 +335,7 @@ input[type=text]:hover,[type=password]:hover, select:hover {
     cursor: pointer;
 }
 
-/*Efecto Botones*/
-.agregar-BtnVerde:hover,.editar-BtnAzul:hover,.eliminar-BtnRojo:hover,.volver-BtnMorado:hover,.guardar-BtnNaranja:hover,.cancelar-BtnAqua:hover {
-    background-color: #930; 
-}
 
-/*
-th, td {
-    text-align: center;
-    padding: 6px;
-    border-style: solid;
-    border-color: white;
-    /*border-radius: 8px;*/
-/*    font-family:Arial, Helvetica, sans-serif;
-    
-}
 
-tr:nth-child(even){background-color: #f2f2f2}
 
-th {
-    background-color: #155E63;
-    color: white;
-    /*border-radius:8px;*/
- /*   font-size: 18px;	
-}*/
+
