@@ -4951,10 +4951,10 @@ function erpsil_listarContabilidad() {
         +         "<table id='Contabilidad' class='table table-striped table-hover'>"
         +         "<h2 class='tituloTablas'>Contabilidad</h2><br><br>"
         +            "<tr>"
-        +                "<th>ID </th>"
         +                "<th>Total de facturas</th>"
         +                "<th>Total a Pagar</th>"
         +                "<th>Total en planillas </th>"
+        +                "<th>Total:</th>"
         +            "</tr>";
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
@@ -4962,10 +4962,10 @@ function erpsil_listarContabilidad() {
                             MostrarContabilidadWindow += ""
     
         +            "<tr>"
-        +                "<td> "+ a.id_contabilidad +" </td>"
         +                "<td> "+ a.total_factura+" </td>"
         +                "<td> "+ a.total_pagar+" </td>"
         +                "<td> "+ a.total_planilla+" </td>"
+        +                "<td> "+ a.total+" </td>"
         +            "</tr>"      
     }
 }
