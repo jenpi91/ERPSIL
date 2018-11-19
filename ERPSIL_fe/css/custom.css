@@ -19,6 +19,8 @@
 	left: 50%;
     transform: translate(-50%, -50%);
     border-color: #930;
+    text-align: center;
+    color: #930;
 
 }
 
@@ -111,6 +113,14 @@ input[type=text]:hover,[type=password]:hover, select:hover {
     height: 60px;
     border-radius: 20px 20px 20px 20px;
 }
+.tituloTablas{
+    color:#930;
+    margin-top: 2%;
+    text-align: center;
+    font-size: 28px;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
 
 /*******************************/
 /*            Botones          */
@@ -147,8 +157,23 @@ input[type=text]:hover,[type=password]:hover, select:hover {
     cursor: pointer;
 }
 
+.agregar-BtnVerde,.reporte-BtnVerde,.regresar-BtnVerde, .volver-BtnVerde{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 5px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 /*Efecto Botones*/
-.agregar-BtnVerde:hover,.editar-BtnAzul:hover,.eliminar-BtnRojo:hover,.volver-BtnMorado:hover,.guardar-BtnNaranja:hover,.cancelar-BtnAqua:hover {
+.agregar-BtnVerde:hover,.reporte-BtnVerde:hover,.volver-BtnVerde:hover,.regresar-BtnVerde:hover,.editar-Btn:hover,.eliminar-Btn:hover,.volver-BtnMorado:hover,.guardar-BtnNaranja:hover,.cancelar-BtnAqua:hover {
     background-color: #930; 
 }
 
@@ -169,10 +194,12 @@ th, td {
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
-    background-color: #155E63;
+    background-color: #930;
     color: white;
     /*border-radius:8px;*/
-    font-size: 14px;	
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;	
 }
 
 /*******************************/
@@ -266,21 +293,7 @@ th {
 
 
 /*CSS Botones Agregar/Editar/Eliminar/Volver/Cancelar/Guardar*/	
-.agregar-BtnVerde{
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    background-color: #4CAF50; 
-    border: none;
-    color: white;
-    padding: 15px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    margin: 20px;
-    cursor: pointer;
-}
+
 
 
 
