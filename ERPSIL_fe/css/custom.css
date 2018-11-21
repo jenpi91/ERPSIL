@@ -5,14 +5,214 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+/*******************************/
+/*             Login           */
+/*******************************/
+
+.login{
+	width: 300px;
+	border: 1px solid #E1E1E1;
+	border-radius: 4px;
+	padding: 15px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    transform: translate(-50%, -50%);
+    border-color: #930;
+    text-align: center;
+    color: #930;
+
+}
+
+@media (max-width: 400px){
+	.login{
+		width: 90%;
+	}
+}
+
+.btn_central{
+    width: 40%;
+    margin: 13px;
+}
+.login-btnRojo, .registrarse-btnRojo{
+    width: 40%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #930; 
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: 13px;
+    cursor: pointer;
+}
+.login-btnRojo:hover, .registrarse-btnRojo:hover{
+    width: 40%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #F1948A; 
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: 13px;
+    cursor: pointer;
+}
+
+/*******************************/
+/* Espacios de Campos de Texto */
+/*******************************/
+
+
+input[type=text],[type=password], select {
+    width: 92%;
+    padding: 15px;
+    margin: 10px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 8px;
+    opacity: 0.9;
+    font-family:Arial, Helvetica, sans-serif;
+}
+input[type=text]:hover,[type=password]:hover, select:hover {
+    width: 92%;
+    padding: 15px;
+    margin: 10px;
+    display: inline-block;
+    border: none;
+    background: #CCC;
+    border-radius: 8px;
+    opacity: 0.9;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+/*******************************/
+/*          Títulos            */
+/*******************************/
+.tituloFormularios{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 13px;
+    font-size: 24px;
+    background: #333;   
+    color: #f1f1f1;
+    border-radius: 20px 20px 20px 20px;
+}
+.contenedorTitulo{
+    background: #930;
+    line-height: 28px;
+    height: 60px;
+    border-radius: 20px 20px 20px 20px;
+}
+.tituloTablas{
+    color:#930;
+    margin-top: 2%;
+    text-align: center;
+    font-size: 28px;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+/*******************************/
+/*            Botones          */
+/*******************************/
+
+.editar-Btn{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #FFC300; 
+    border: none;
+    color: white;
+    padding: 5px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-style: initial;
+}
+
+.eliminar-Btn{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: red; 
+    border: none;
+    color: white;
+    padding: 5px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.agregar-BtnVerde,.reporte-BtnVerde,.regresar-BtnVerde, .volver-BtnVerde{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 5px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/*Efecto Botones*/
+.agregar-BtnVerde:hover,.reporte-BtnVerde:hover,.volver-BtnVerde:hover,.regresar-BtnVerde:hover,.editar-Btn:hover,.eliminar-Btn:hover,.volver-BtnMorado:hover,.guardar-BtnNaranja:hover,.cancelar-BtnAqua:hover {
+    background-color: #930; 
+}
+
+/*******************************/
+/*            Tablas           */
+/*******************************/
+
+th, td {
+    text-align: center;
+    padding: 6px;
+    border-style: solid;
+    border-color: white;
+    /*border-radius: 8px;*/
+    font-family:Arial, Helvetica, sans-serif;
+    
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #930;
+    color: white;
+    /*border-radius:8px;*/
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;	
+}
 
 /*******************************/
 /*             Modal           */
 /*******************************/
 
 .ventanaModal{
-    width: 99%;
-    text-align: center;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    color: white;
+    background-color: #000;
+    opacity: 0.5;
 }
 
 .cont{
@@ -43,11 +243,6 @@
     margin: auto;
 }
 
-.btn_central{
-    margin: 10px;
-
-}
-
 .dropdown{
     margin: auto;
     width: 50%;
@@ -59,14 +254,9 @@
 .contenedorPrincipal{
     width: 100%;
     height: 60px;
-    background: #333;
-    
-    /*FLEX*/
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
+    background: #333;  
 }
+
 @media screen and (max-width: 1000px){
     .main{width:100%;}
     .menuNav{width:100%;}
@@ -79,127 +269,11 @@
         
     }
 }
-/*CSS Titulo (header1)*/
-.tituloPrincipal{
-    width: 20%;
-    height: 60px;
-    color:#900;
-    margin: 0px;
-    padding: 5px;
-    font-size: 20px;
-    text-align:center;
-    font-family:Arial, Helvetica, sans-serif;
-    box-sizing:border-box;
-    
-}
 
 
-.formatoInterno-tituloPrincipal{
-    background: #456;
-    width: 100%;
-    height: 50px;
-    color:#FFF;
-    margin: 0px;
-    padding: 10px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px;
-    box-sizing:border-box;
-}
-
-/*CSS espacio despues del Titulo,(header2)*/
-.header2{
-    background: #333;
-    width: 80%;
-    height: 60px;
-    color:#fff;
-    margin: 0px;
-    padding: 20px;
-    font-size: 40px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px;
-    /*FLEX*/
-    display:flex;
-    flex-direction: row;
-    flex-wrap:wrap;
-    justify-content: flex-start;
-}
 
 
-/*CSS Contenedor del Menu de Navegacion*/
-.menuNav{
-    background: #333;
-    width: 10%;
-    height: 1000px;
-    color:#FFF;
-    margin: 0px;
-    padding-right: 5px;
-    font-size: 15px;
-    text-align: center;
-    /*FLEX*/
-    align-items: flex-start;
-    flex-direction:column;
-    flex-wrap:wrap;
-}
-
-/*CSS del menú de Navegación*/
-.formato-MenuNav{
-    width:100%;
-    height:40px;
-    margin-top:3%;
-    margin-bottom:3%;
-    background-color:#444;
-    font-family:Arial, Helvetica, sans-serif;
-    color:#FFF;
-    text-align:left;
-    border-radius: 4px 4px 4px 4px;
-    line-height:5%;
-    padding:20px;
-}
-
-/*CSS Efecto que se le da al formato del menú*/
-.formato-MenuNav:hover{
-        width:100%;
-        height:40px;
-        background-color:#930;
-        background-position:left;
-        font-family:Arial, Helvetica, sans-serif;
-        border-color:#F00;
-        text-align:left;
-        border-radius: 4px 4px 4px 4px;
-        
-}   
-
-/*CSS Contenedor Principal Parte Central*/
-
-.main{
-    background: #FFF;
-    width: 80%;
-    height: 845px;
-    color:#000;
-    margin: 0px;
-    padding: 18px;
-    font-size: 40px;
-    text-align: center;
-    
-    
-    /*FLEX*/
-}
-
-/*CSS contenido principal de la parte central*/
-.main-interno{
-    /*background: #456;*/
-    width: 103%;
-    height: 987px;
-    color:#000;
-    margin: -10px;
-    padding: 30px;
-    font-size: 40px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px;
- }	
-
-/*CSS formularios y tablas generales*/	
+/*CSS formularios y tablas generales	
 .formularios, .tablas{
     background: #FFF;
     width: 40%;
@@ -211,130 +285,17 @@
     text-align: center;
     border-radius: 4px 4px 4px 4px;	
     font-family:Arial, Helvetica, sans-serif;
-    /*FLEX*/
-}
-
-/*CSS formularios y tablas más grandes*/	
-.tablas2{
-    background: #FFF;
-    width: 100%;
-    height: 950px;
-    color:#000;
-    margin: -10px;
-    padding: 30px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px;	
-    font-family:Arial, Helvetica, sans-serif;
-    /*FLEX*/
-}
-
-/*Antiguo form-horizontal, aplicado a los <form>*/	
-.formularios2{
-    background: #FFF;
-    width: 40%;
-    height: 600px;
-    color:#000;
-    margin: -10px;
-    padding: 50px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px;	
-    font-family:Arial, Helvetica, sans-serif;
-    /*FLEX*/
-}
+    /*FLEX
+}*/
 
 
 
-/*CSS Titulos*/	
-.tituloFormularios, .tituloMenuNav, .tituloTablas{
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 35px;
-}
 
-
-/*CSS Espacio para campos de texto*/	
-input[type=text],[type=password], select {
-    width: 100px;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-    border-radius: 8px;
-    opacity: 0.9;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-.camposTexto{
-    width: 40%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-    border-radius: 8px;
-    opacity: 0.9;
-    font-family:Arial, Helvetica, sans-serif;
-}
-    
-
-/*Efecto campos de Texto*/
-.camposTexto:hover{
-    background-color: #CCC;
-}
-
-.label {
-    font-family:Arial, Helvetica, sans-serif;
-}	
-
-/* CSS para espaciado entre títulos y campos de imput con formularios pequeños*/
-.form-group{
-    padding: 2%;
-}		
-
-/* CSS para espaciado entre títulos y campos de imput con formularios medianos*/
-.form-group2{
-    padding: 1%;
-}
-
-/* CSS para espaciado entre títulos y campos de imput con formularios grandes*/
-.form-group3{
-    padding: 0.5%;
-}
 
 /*CSS Botones Agregar/Editar/Eliminar/Volver/Cancelar/Guardar*/	
-.agregar-BtnVerde{
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    background-color: #4CAF50; 
-    border: none;
-    color: white;
-    padding: 15px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    margin: 20px;
-    cursor: pointer;
-}
 
-.editar-BtnAzul{
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    background-color: blue; 
-    border: none;
-    color: white;
-    padding: 15px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    margin: 20px;
-    cursor: pointer;
-}
+
+
 
 .cancelar-BtnAqua{
     font-family:Arial, Helvetica, sans-serif;
@@ -369,21 +330,7 @@ input[type=text],[type=password], select {
 }
 
 
-.eliminar-BtnRojo{
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    background-color: red; 
-    border: none;
-    color: white;
-    padding: 15px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    margin: 20px;
-    cursor: pointer;
-}
+
 
 .volver-BtnMorado{
     font-family:Arial, Helvetica, sans-serif;
@@ -401,153 +348,7 @@ input[type=text],[type=password], select {
     cursor: pointer;
 }
 
-/*Efecto Botones*/
-.agregar-BtnVerde:hover,.editar-BtnAzul:hover,.eliminar-BtnRojo:hover,.volver-BtnMorado:hover,.guardar-BtnNaranja:hover,.cancelar-BtnAqua:hover {
-    background-color: #930; 
-}
-
-th, td {
-    text-align: center;
-    padding: 6px;
-    border-style: solid;
-    border-color: white;
-    /*border-radius: 8px;*/
-    font-family:Arial, Helvetica, sans-serif;
-    
-}
-
-tr:nth-child(even){background-color: #f2f2f2}
-
-th {
-    background-color: #155E63;
-    color: white;
-    /*border-radius:8px;*/
-    font-size: 18px;	
-}
-
-/****************Sofí*******************/
-
-
-/*Se utiliza en aquellas pantallas en el cual los formularios son muy largos: Agregar Empleados, */
-.main-interno-extendido{
-background: #456;
-    width: 103%;
-    height: 151%;
-    color:#000;
-    margin: -10px;
-    padding: 30px;
-    font-size: 40px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px; 
-}
-
-.formularios-extendido{
-background: #FFF;
-    width: 40%;
-    height: 102.5%;
-    color:#000;
-    margin: -10px;
-    padding: 50px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px;	
-    font-family:Arial, Helvetica, sans-serif;
-}
-.menuNav-extendido{
-background: #333;
-    width: 20%;
-    height: 136.5%;
-    color:#FFF;
-    margin: 0px;
-    padding: 20px;
-    font-size: 15px;
-    text-align: center;
-    /*FLEX*/
-    align-items: flex-start;
-    flex-direction:column;
-    flex-wrap:wrap;
-}
 
 
 
-/*Se utiliza en aquellas pantallas en el cual los formularios son mas largos que los extendidos largos: Agregar Proovedor, */
-.main-interno-extendido2{
-background: #456;
-    width: 103%;
-    height: 156.5%;
-    color:#000;
-    margin: -10px;
-    padding: 30px;
-    font-size: 40px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px; 
-}
-
-.formularios-extendido2{
-background: #FFF;
-    width: 40%;
-    height: 102.3%;
-    color:#000;
-    margin: -10px;
-    padding: 50px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px;	
-    font-family:Arial, Helvetica, sans-serif;
-}
-.menuNav-extendido2{
-background: #333;
-    width: 20%;
-    height: 141.3%;
-    color:#FFF;
-    margin: 0px;
-    padding: 20px;
-    font-size: 15px;
-    text-align: center;
-    /*FLEX*/
-    align-items: flex-start;
-    flex-direction:column;
-    flex-wrap:wrap;
-}
-
-
-/*Se utiliza en aquellas pantallas en el cual los formularios son mas largos que los extendidos 2 : Editar Empleado, */
-.main-interno-extendido3{
-background: #456;
-    width: 103%;
-    height: 201.5%;
-    color:#000;
-    margin: -10px;
-    padding: 30px;
-    font-size: 40px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px; 
-}
-
-.formularios-extendido3{
-background: #FFF;
-    width: 40%;
-    height: 101.5%;
-    color:#000;
-    margin: -10px;
-    padding: 50px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 4px 4px 4px 4px;	
-    font-family:Arial, Helvetica, sans-serif;
-}
-.menuNav-extendido3{
-background: #333;
-    width: 20%;
-    height: 182%;
-    color:#FFF;
-    margin: 0px;
-    padding: 20px;
-    font-size: 15px;
-    text-align: center;
-    /*FLEX*/
-    align-items: flex-start;
-    flex-direction:column;
-    flex-wrap:wrap;
-}
 
