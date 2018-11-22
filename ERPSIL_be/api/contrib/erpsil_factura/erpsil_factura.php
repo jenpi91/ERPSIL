@@ -1,9 +1,17 @@
 <?php
+/*
+function mostrarNombre(){
+    $id= params_get("id");
 
+    $q = "SELECT `nombre` from `tbl_cliente` where `id_cliente`=$id";
 
+    return db_query($q, 1);
+}
+
+*/
 function mostrarFactura(){
 
-    $q = "SELECT * FROM `tbl_factura`";
+    $q = "SELECT *  FROM `tbl_factura`";
 
     return db_query($q, 2);
 
@@ -19,8 +27,8 @@ function agregarFactura(){
     $descuentoTotal = params_get("descuentoTotal");
     $total = params_get("total");
 
-    $q = "INSERT INTO `tbl_factura` (`nom_cliente`, `detalle`, `cantidad_productos`, `stamp`, `subtotal`, `desc_total`, `total`) 
-    VALUES ('$id_cliente', '$descripcion', '$cantidad', '$stamp', '$subTotal', '$stamp', '$descuentoTotal', '$total')";
+    $q = "INSERT INTO `tbl_factura` (`id_cliente`, `detalle`, `cantidad_productos`, `stamp`, `subtotal`, `desc_total`, `total`) 
+    VALUES ('$id_cliente', '$descripcion', '$cantidad', '$stamp', '$subTotal', '$descuentoTotal', '$total')";
 
     //return $q;    
     return db_query($q, 0);

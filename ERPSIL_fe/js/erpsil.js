@@ -36,7 +36,7 @@ function boot_erpsil() {
 /*********************************************************/
 /*                 Gestion de Reportes                   */
 /*********************************************************/
-/*Funciona pero solo con las tablas
+/*Funciona pero solo con las tablas*/
 function DescargarPDF(ContenidoID,nombre) {
 
     var pdf = new jsPDF('p', 'pt', 'letter');
@@ -44,13 +44,14 @@ function DescargarPDF(ContenidoID,nombre) {
     html = $('#'+ContenidoID).html();
 	
     specialElementHandlers = {};
-	
+    
+    
     margins = {top: 0,bottom: 0,left: 0,width: 1000, height: 1000};
 	
     pdf.fromHTML(html, margins.left, margins.top, {'width': margins.width},function (dispose) {pdf.save(nombre+'.pdf');}, margins);
 	
 }
-*/
+
 function PdfDescargar(id,nombre){
 
     var doc = new jsPDF('p', 'pt');
@@ -1172,8 +1173,6 @@ function erpsil_listarCuentasPagar(){
         +                "<th>Vence</th>"
         +                "<th>Descripción</th>"
         +                "<th>Fecha</th>"
-                         "<th>Editar</th>"
-                         "<th>Eliminar</th>"
         +            "</tr>";
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
@@ -2495,7 +2494,6 @@ function erpsil_listarTipoCliente(){
         +                "<td> "+ a.descripcion +" </td>"
         +                "<td> "+ a.ganancia_global +" </td>"
         +                "<td> "+ a.dias_credito +" </td>"
-
         +                "<td> <div id='editar_tipoCliente' onclick='erpsil_editarTipoCliente(" + a.id_tipoCliente + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
         +                "<td> <div onclick='erpsil_eliminarTipoCliente("+ a.id_tipoCliente +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
         +            "</tr>";
@@ -4132,7 +4130,7 @@ function erpsil_agregarEmpleadoWindow(){
     +        "<h2 class='text-center'>Agregar empleado</h2>"
     +        "<label class='col-sm-3 control-label'>Nombre</label>"
     +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
+    +           "<input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
     +        "</div>"
     +        "<label class='col-sm-3 control-label'>Primer Apellido</label>"
     +        "<div class='col-sm'>"
@@ -4312,8 +4310,6 @@ function erpsil_listarEmpleado() {
         +                "<th>Obseracion</th>"
         +                "<th>Puesto</th>"
         +                "<th>Jornada</th>"
-        +                "<th>Editar</th>"
-        +                "<th>Eliminar</th>"
         +            "</tr>";
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
@@ -4350,17 +4346,13 @@ MostrarEmpleadoWindow += ""
     }, function (d) {
         console.log(d);
 
-    });
-    
-    
+    });   
 }
-
 
 function erpsil_pdfEmpleados(){
 /*console.log("debug");*/
     PdfDescargar('Empleados','Reporte de Empleados');
 }
-
 
 function erpsil_eliminarEmpleado(id){
     console.log(id);
@@ -4450,7 +4442,7 @@ function erpsil_guardarEditarEmpleado(){
 /*********************************************************/
 
 function erpsil_listarFactura(){
-
+    
     var facturaData = {
         w:"erpsil_factura",
         r:"mostrar_factura"
@@ -4464,26 +4456,24 @@ function erpsil_listarFactura(){
         +         "<h2 class='tituloTablas'>Lista de facturas</h2><br><br>"
         +            "<tr>"
         +                "<th>ID Factura</th>"
-        +                "<th>Nombre cliente</th>"
+        +                "<th>ID cliente</th>"
         +                "<th>Fecha</th>"
-        +                "<th>Cantidad</th>"
-        +                "<th>Detealle</th>"
+        +                "<th>Detalle</th>"
         +                "<th>Total</th>"
         +            "</tr>";
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
                             facturaWindow += ""
-
+    
         +            "<tr>"
         +                "<td> "+ a.id_factura +" </td>"
-        +                "<td> "+ a.nom_cliente +" </td>"
+        +                "<td> "+a.id_cliente+" </td>"
         +                "<td> "+ a.stamp +" </td>"
-        +                "<td> "+ a.cantidad_productos +" </td>"
         +                "<td> "+ a.detalle +" </td>"
         +                "<td> "+ a.total +" </td>"
 
-        +                "<td> <div id='editar_factura' onclick='erpsil_editarFactura(" + a.id_factura + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+//        +                "<td> <div id='editar_factura' onclick='erpsil_editarFactura(" + a.id_factura + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
         +                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
         +            "</tr>";
                     }
@@ -4496,12 +4486,12 @@ function erpsil_listarFactura(){
         +      "</div>";
 
         erpsil_setContent(facturaWindow);
-
     }, function (d) {
         console.log(d);
         erpsil_modalMalo();
     });
 }
+
 function erpsil_pdfFactura(){
     console.log("debug");
         PdfDescargar('Factura',"Reporte de Facturas");
@@ -4519,7 +4509,7 @@ function erpsil_agregarFacturaWindow() {
         var i = 1;
         for(a in d.resp){ 
             var x = d.resp[a];
-            selectD += "<option>" + x.nombre + "</option>";
+            selectD += "<option>" +i+"- Cliente:" + x.nombre +" - id =("+x.id_cliente+")</option>";
             i++;
         }
         
@@ -4527,9 +4517,8 @@ function erpsil_agregarFacturaWindow() {
         
         var agregarFacturaWindow = ""
         
-        +    "<div class='container centrarDivTxt'>"
+        +    "<div id='Prueba' class='container centrarDivTxt'>"
         +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Factura</h2>"
-
 
         +        "<label class='col-sm-3 control-label'>Nombre del cliente</label>"
         +        "<div class='col-sm'>"
@@ -4539,7 +4528,7 @@ function erpsil_agregarFacturaWindow() {
         +        "<div class='col-sm'>"
         +           " <input type='date' class='form-control' placeholder='Fecha' required='required' id='inputStamp'>"
         +        "</div>"
-        
+
         + "<hr />"
 
         +       "<h1 class='h4 mb-0'>Lineas de detalle</h1>"
@@ -4589,7 +4578,7 @@ function erpsil_agregarFacturaWindow() {
         +        "<div class='col-md-6'>"
         +            "<div class='form-group'>"
         +                "<label for='note'>Descripcion</label>"
-        +                "<textarea name='note' id='note' cols='30' rows='7' class='form-control'></textarea>"
+        +                "<textarea readonly name='note' id='note' cols='30' rows='7' class='form-control'></textarea>"
         +            "</div>"
         +        "</div>"
         +        "<div class='col-md-6'>"
@@ -4621,7 +4610,8 @@ function erpsil_agregarFacturaWindow() {
         
         +                "<div class='form-group'>"
         +                    "<hr/>"
-        +                    "<input onclick='erpsil_agregarFactura()' class='btn btn-primary' value='Generar Factura'></input>"
+        +                    "<button onclick='erpsil_agregarFactura()' class='btn btn-primary' >Generar Factura</button>"
+        +                    "<button onclick='erpsil_pdfFacturaInside()' class='btn btn-primary' >Factura</button>"
         +                "</div>"
         +            "</div>"
         +        "</div>"
@@ -4634,13 +4624,18 @@ function erpsil_agregarFacturaWindow() {
         erpsil_modalMalo();
         console.log("Error!");
     });
-
 }
 
+function erpsil_agregarRow(){
+
+
+
+    
+}
 function erpsil_addRow() {
     $("#tabla").append('<tr >' +
             '          <td class="align-middle" onfocusout="erpsil_formUpdate()">' +
-            '              <input  onchange="erpsil_formUpdate();" type="text" class="form-control" placeholder="Camara">' +
+            '              <input  onchange="erpsil_formUpdate();" type="text" class="form-control" placeholder="Producto">' +
             '          </td>' +
             '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" onchange="erpsil_formUpdate();" type="text" class="form-control"  placeholder=""></td>' +
             '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate();" type="number" class="form-control"  placeholder=""></td>' +
@@ -4708,6 +4703,7 @@ function erpsil_CalculaSubTotal(table, columna, id) {
     }
     document.getElementById("subTotal1").value = subTotal;
     //document.getElementById("subTotal1").value = subTotal1;
+
 }
 
 function erpsil_CalculaLineas(table) {
@@ -4781,7 +4777,8 @@ function erpsil_agregarFactura(){
 
     var d = $("#inputDrow");
     var id = d[0].value;
-
+    id = id.split("(")[1].split(")")[0];
+    
     var id_cliente = id;
     var stamp = $("#inputStamp").val();
     var cantidad = $("#cantidad").val();
@@ -4807,9 +4804,11 @@ function erpsil_agregarFactura(){
         };  
         
         calaApi_postRequest(facturaData, function (d) {
+            console.log(facturaData);
+            erpsil_modalBueno();
             erpsil_listarFactura();
         }, function (d) {
-            erpsil_modalBueno();
+            erpsil_modalMalo();
             console.log("Factura no agregado");
         });
     } else {
@@ -4817,6 +4816,11 @@ function erpsil_agregarFactura(){
         console.log("Error!");
     }
 }
+
+function erpsil_pdfFacturaInside(){
+    console.log("debug");
+        DescargarPDF('Prueba',"Factura");
+    }
 
 function erpsil_eliminarFactura(id){
     var req = {
@@ -4934,6 +4938,8 @@ function erpsil_guardarEditarFactura(){
 
 
 }
+
+
 
 /*********************************************************/
 /*           Gestion Contabilidad                        */

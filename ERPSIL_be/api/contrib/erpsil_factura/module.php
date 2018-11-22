@@ -87,6 +87,16 @@ function erpsil_factura_init(){
 			),
 			'file' => 'erpsil_factura.php'
 		),
+		array(
+			'r' => 'obtener_nombre',
+			'action' => 'mostrarNombre',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			'params' => array(
+				array("key" => "id", "def" => "", "req" => true)
+			),
+			'file' => 'erpsil_factura.php'
+		),
 	);
 
 return $paths;
