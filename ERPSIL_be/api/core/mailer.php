@@ -14,8 +14,8 @@ function mailer_sendEmail($info){
 	$headers = sprintf("From: %s \r\n" .
 		"Reply-To: %s \r\n" .
 		'X-Mailer: PHP/ %s',
-		conf_get('defaultMail', 'core', 'info@nneus.com'),
-		$info['replyTo'] != '' ? $info['replyTo'] : conf_get('defaultMail', 'core', 'info@nneus.com'),
+		conf_get('defaultMail', 'core', 'info@erpsil.com'),
+		$info['replyTo'] != '' ? $info['replyTo'] : conf_get('defaultMail', 'core', 'info@erpsil.com'),
 		phpversion());
 
 	return mail($info['to'], $info['subject'], $info['message'], $headers);
