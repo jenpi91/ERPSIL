@@ -66,3 +66,13 @@ function obtenerProveedor(){
 
     return db_query($q, 1);
 }
+
+function obtenerUsuario(){
+    $id = params_get("id");
+
+    $q = "SELECT * FROM `users`
+    WHERE `idUser` =  $id";
+            
+    return db_query($q, 1);
+}
+

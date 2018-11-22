@@ -451,6 +451,7 @@ function users_loadByName($userName) {
     return $user;
 }
 
+
 /**
  * Confirm the validity of a session
  */
@@ -712,13 +713,11 @@ function users_access($perm, $theUser = false) {
 /**
  * Generate a new temporary password for recovery
  */
+
 function users_recoverPwd() {
-
     global $user;
-
     # This call probably won't have the user via iam, so, I will load it
     $userName = params_get('userName', '');
-
     # Is it an email based login?
     if (strpos($userName, '@') > 0) {
         grace_debug("email based login");
@@ -727,28 +726,21 @@ function users_recoverPwd() {
         grace_debug("username based login");
         $user = users_load(array('userName' => $userName));
     }
-
     if ($user->idUser == 0) {
         return ERROR_BAD_REQUEST;
     }
-
     # Use mailer
     tools_loadLibrary('mailer.php');
-
     # Generate a new temporary password
-
-    modules_loader("crypto", "crypto.php");
-    $user->pwd = substr(crypto_encrypt(password_hash(rand(0, 1000) + time()), 0, 6));
-
+    $user->pwd = users_hash(rand(0, 1000) + time());
     grace_debug("New tmp pwd: " . $user->pwd);
-
     # Update account
     if (_users_update((array) $user) == SUCCESS_ALL_GOOD) {
         # Send email
         grace_debug("I will send the email");
         $resp = mailer_sendEmail(array(
             'to' => $user->email,
-            'subject' => 'Recuperación de Clave ' . conf_get('siteName', 'core', 'Mi Sitio'),
+            'subject' => 'Recuperación de Clave ' . conf_get('ERPSIL', 'core', 'ERPSIL'),
             'replyTo' => 'no-repy@' . conf_get("domain", "core", "example.net"),
             'message' => 'Su nueva clave es: ' . $user->pwd
         ));
@@ -756,11 +748,9 @@ function users_recoverPwd() {
             return SUCCESS_ALL_GOOD;
         }
     }
-
     # If I reached this place there was an error
     return ERROR_ERROR;
 }
-
 /**
  * Confirm the validity of this session
  */

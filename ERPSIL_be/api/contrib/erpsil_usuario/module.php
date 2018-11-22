@@ -102,7 +102,17 @@ function erpsil_usuario_init(){
 				array("key" => "descripcion", "def" => "", "req" => true),
 			),
 			'file' => 'erpsil_usuario.php'
-	),
+		),
+		array(
+			'r' => 'obtener_usuario',
+			'action' => 'obtenerUsuario',
+			'access' => 'users_loggedIn', 
+			'access_params' => 'accessName',
+			'params' => array(
+				array("key" => "id", "def" => "", "req" => true)
+			),
+			'file' => 'erpsil_usuario.php'
+		),
 	);
 
 return $paths;

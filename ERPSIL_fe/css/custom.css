@@ -24,6 +24,80 @@
 
 }
 
+.recPwd{
+    color:black;
+    cursor: pointer;
+}
+
+.recPwd:hover{
+    border-bottom: 1px solid black;
+}
+
+/*******************************/
+/*         dashboard           */
+/*******************************/
+
+.cont_Dash{
+    margin-left: 5%;
+    width: 89%;
+    height: 200px;
+    background-color: grey;
+    padding: 0px 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.t_factura{
+    margin-right: 10px;
+    width: 250px;
+    height: 100px;
+    background-color: green;
+    margin: auto;
+}
+
+.block_fact{
+    margin-left: 35%;
+    margin-top: 5%;
+    color: white;
+}
+
+.t_pagar{
+    margin-left: 10px;
+    width: 250px;
+    height: 100px;
+    background-color: yellow;
+    margin: auto;
+}
+
+.t_planilla{
+    
+    width: 250px;
+    height: 100px;
+    background-color: blue;
+    margin: auto;
+}
+
+.block_cantidad{
+    margin-top: 5%;
+    color: white;
+}
+
+.t_cantidad{
+    width: 250px;
+    height: 100px;
+    background-color: black;
+    margin: auto;
+}
+
+.div_canvas{
+    
+    margin-top: 20px;
+    margin-left: 65%;
+    width: 350px;
+    height: 350px;
+    border: 2px solid black;
+}
+
 @media (max-width: 400px){
 	.login{
 		width: 90%;
