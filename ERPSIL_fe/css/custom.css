@@ -56,7 +56,13 @@
 }
 
 .block_fact{
-    margin-left: 35%;
+    margin-left: 25%;
+    margin-top: 5%;
+    color: white;
+}
+
+.fact_num{
+    margin-left: 47%;
     margin-top: 5%;
     color: white;
 }
@@ -70,9 +76,15 @@
 }
 
 .block_pagar{
-    margin-left: 25%;
+    margin-left: 27%;
     margin-top: 5%;
     color: white;
+}
+
+.fact_pag{
+    margin-left: 47%;
+    margin-top: 5%;
+    color: white; 
 }
 
 .t_planilla{
@@ -83,6 +95,12 @@
 }
 
 .block_planilla{
+    margin-left: 25%;
+    margin-top: 5%;
+    color: white;
+}
+
+.block_plantilla{
     margin-left: 25%;
     margin-top: 5%;
     color: white;
@@ -101,30 +119,10 @@
     margin: auto;
 }
 
-.block_num_cant{
-    margin-left: 37%;
+.fact_cant{
+    margin-left: 45%;
     margin-top: 5%;
     color: white;
-
-}
-
-.block_num_fact{
-    margin-left: 47%;
-    margin-top: 5%;
-    color: white;
-}
-
-.block_num_pagar{
-    margin-left: 47%;
-    margin-top: 5%;
-    color: white;
-}
-
-.block_num_plat{
-    margin-left: 47%;
-    margin-top: 5%;
-    color: white;
-
 }
 
 .div_canvas{
@@ -132,8 +130,8 @@
     margin-top: 20px;
     margin-left: 65%;
     bottom: 10px;
-    width: 350px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
 }
 
 @media (max-width: 400px){

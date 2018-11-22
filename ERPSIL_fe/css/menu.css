@@ -4,6 +4,13 @@ margin: 0;
 padding: 0;
 border: 0;
 }
+
+.back_menu{
+width: 140px;
+height: 120vh;
+background-color: #333;
+}
+
 ul.acorh {
 padding: 0;
 list-style: none;
@@ -11,10 +18,12 @@ width: 100%;
 font-size: 15px;
 transition: .3s all ease-in;
 }
+
 ul.acorh li {
 list-style: none;
 transition: .3s all ease-in;
 }
+
 ul.acorh li a {
 color: #fff;
 width: 140px;
@@ -22,7 +31,7 @@ display: block;
 padding: 10px 10px 10px 20px;
 background: #333;
 border-bottom: 1px solid #000;
-border-top: 1px solid #;
+border-top: 1px solid #000;
 text-decoration: none;
 box-sizing: border-box;
 transition: .3s all ease-in;
