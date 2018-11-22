@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2018 a las 00:29:59
--- Versión del servidor: 10.1.32-MariaDB
--- Versión de PHP: 5.6.36
+-- Tiempo de generación: 21-11-2018 a las 03:21:15
+-- Versión del servidor: 10.1.34-MariaDB
+-- Versión de PHP: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -138,6 +138,16 @@ CREATE TABLE `msgs` (
 -- --------------------------------------------------------
 
 --
+-- Estructura Stand-in para la vista `ptueba`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `ptueba` (
+`SUM(total_factura+total_pagar+total_planilla)` decimal(34,0)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `sessions`
 --
 
@@ -157,7 +167,47 @@ INSERT INTO `sessions` (`idSession`, `idUser`, `sessionKey`, `ip`, `lastAccess`)
 (35, 142, 'OGp0b050eUZzQWVkZjJ6OGg2RHpOZz09Ojp8lDPUDHRRwpwccpBfVlNJ', '::1', 1540178070),
 (79, 143, 'RVhtcUdkZS8vL2JBaXNSZ3doOGFhdz09OjoTAbwQuAXkNNHLJoBdnqxf', '::1', 1540181105),
 (96, 144, 'Uk1od3B2K0hXYnY0STYyY2sxaTJoUT09Ojo2icYw22EmQ3FpbUupqrXx', '::1', 1540181271),
-(97, 141, 'djh4RExaMHpHVjlWRjU1dGNTVzFmZz09OjqIH+o4IhErHUpxtNYfJwYN', '::1', 1541114832);
+(102, 141, 'dkpGckhtd0ZYNmZqMDdEMHEyZjdEZz09OjppIdwFOOu52s3yjLqXXo65', '::1', 1542575396);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `suma_contabilidad`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `suma_contabilidad` (
+`contabilidad_total` decimal(34,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `suma_facturas`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `suma_facturas` (
+`facturas` decimal(65,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `suma_pagos`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `suma_pagos` (
+`pagos` double
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `suma_planilla`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `suma_planilla` (
+`planilla` decimal(32,0)
+);
 
 -- --------------------------------------------------------
 
@@ -249,8 +299,23 @@ CREATE TABLE `tbl_contabilidad` (
   `id_contabilidad` int(10) NOT NULL,
   `total_factura` int(10) NOT NULL,
   `total_pagar` int(10) NOT NULL,
-  `total_planilla` int(10) NOT NULL
+  `total_planilla` int(10) NOT NULL,
+  `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_contabilidad`
+--
+
+INSERT INTO `tbl_contabilidad` (`id_contabilidad`, `total_factura`, `total_pagar`, `total_planilla`, `total`) VALUES
+(1, 0, 4, 5, 0),
+(2, 4, 0, 5, 0),
+(41, 10000, 1368, 3500, 0),
+(42, 10000, 1368, 3500, 0),
+(43, 10000, 1368, 3500, 0),
+(44, 10000, 1368, 3500, 0),
+(45, 10000, 1368, 3500, 59490),
+(46, 10000, 1368, 3500, 14868);
 
 -- --------------------------------------------------------
 
@@ -326,6 +391,13 @@ CREATE TABLE `tbl_factura` (
   `descripcion` varchar(100) NOT NULL,
   `total` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_factura`
+--
+
+INSERT INTO `tbl_factura` (`id_factura`, `id_cliente`, `stamp`, `precio_unidad`, `cantidad`, `descripcion`, `total`) VALUES
+(1, 3, 'xxxx', 5000, 2, 'xxxx', 10000);
 
 -- --------------------------------------------------------
 
@@ -497,6 +569,13 @@ CREATE TABLE `tbl_planilla` (
   `salario_neto` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `tbl_planilla`
+--
+
+INSERT INTO `tbl_planilla` (`id_planilla`, `id_empleado`, `salario_bruto`, `ccss`, `rebaja`, `salario_neto`) VALUES
+(1, 1, 5000, '420', 100, 3500);
+
 -- --------------------------------------------------------
 
 --
@@ -610,10 +689,55 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUser`, `fullName`, `userName`, `email`, `about`, `country`, `status`, `timestamp`, `lastAccess`, `pwd`, `avatar`, `settings`) VALUES
-(141, 'Daniel', 'ol', 'algo@aa.com', 'abc', 'cr', '1', 1534828112, 1541114832, 'VkZFeE0zSnliM0ZZVkhwMlZHNWhNRGd5ZFdVdk4wODBjSEZ5YlZwS1dYVXlkRXBxWjBFeVVITnZRVFozVEdzNU9FaERRMWxsUkd0a1RreEpSRFYyUTBWUFlUbDBhRWwxVFRGb2VqSmhSbFZwT0ZoVVZYYzlQVG82cjd3YmpaOU1ETXlCZnE3cWswdm5zUT09', '0', ''),
+(141, 'Daniel', 'ol', 'algo@aa.com', 'abc', 'cr', '1', 1534828112, 1542575396, 'VkZFeE0zSnliM0ZZVkhwMlZHNWhNRGd5ZFdVdk4wODBjSEZ5YlZwS1dYVXlkRXBxWjBFeVVITnZRVFozVEdzNU9FaERRMWxsUkd0a1RreEpSRFYyUTBWUFlUbDBhRWwxVFRGb2VqSmhSbFZwT0ZoVVZYYzlQVG82cjd3YmpaOU1ETXlCZnE3cWswdm5zUT09', '0', ''),
 (142, 'qwe', 'eqweq', 'qweqwe', 'qwee', 'qwe', '1', 1540178070, 1540178070, 'T0RrdmFWUm1jR0o0VkdwUVFYa3pUR2xxTDBod1J6RkRZVFF5V0RRek1VNHhLeTlUUWs5WE0wd3pZWHBTVEM5NE1uUkhRblZKT1hKQ1VVMWpSVFp5YUVWQk5VcExPVEUwZWxFM1JVNXJkaTlsTkM5dFNYYzlQVG82N1F6M3BscldiOG5LL2paZW1rZnNjUT09', '0', ''),
 (143, 'w', 'rt', 'rt', 'rt', 'rt', '1', 1540181104, 1540181105, 'T0dKUVpFSnFWbFZIWW1vNVpVVnVaM0JEVGpsdloyMWxibEZ0YlU1WmJHSnpNRVZ2ZEVkak9XWjRVRWxMZFVKS1V6aDRNVEJxVUd0bGFIZEdUVWxZUmxCdFRXUjZZVGhxY0RRdlYySTFkR3BwY3pSU00xRTlQVG82Z1Q2Z2NocStuSnNBNEdXS24ydG5FQT09', '0', ''),
 (144, 'kk', 'kk', 'kk', 'kk', 'kk', '1', 1540181269, 1540181271, 'UkRsQ2QwUmxOVVZZTkU1NFlYSnhaWHBzTWtFcmJGRlplbFF4YlRWbWFEZHZSMUp3YjFaR1lVbG1WVzB4TmpCUmFXVnhZelJ0YjJKbmNXVktkbkpoVEZFd1RFVTVRMFp4WjB0M1dtaFlOak5xWXpWdFRFRTlQVG82ck82YWlFK3AwNWNHYWhETmtvZVZvQT09', '0', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `ptueba`
+--
+DROP TABLE IF EXISTS `ptueba`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ptueba`  AS  select sum(((`tbl_contabilidad`.`total_factura` + `tbl_contabilidad`.`total_pagar`) + `tbl_contabilidad`.`total_planilla`)) AS `SUM(total_factura+total_pagar+total_planilla)` from `tbl_contabilidad` ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `suma_contabilidad`
+--
+DROP TABLE IF EXISTS `suma_contabilidad`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `suma_contabilidad`  AS  select sum(((`tbl_contabilidad`.`total_factura` + `tbl_contabilidad`.`total_pagar`) + `tbl_contabilidad`.`total_planilla`)) AS `contabilidad_total` from `tbl_contabilidad` order by `tbl_contabilidad`.`id_contabilidad` desc limit 1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `suma_facturas`
+--
+DROP TABLE IF EXISTS `suma_facturas`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `suma_facturas`  AS  select sum(`tbl_factura`.`total`) AS `facturas` from `tbl_factura` ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `suma_pagos`
+--
+DROP TABLE IF EXISTS `suma_pagos`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `suma_pagos`  AS  select sum(`tbl_pagos`.`pago`) AS `pagos` from `tbl_pagos` ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `suma_planilla`
+--
+DROP TABLE IF EXISTS `suma_planilla`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `suma_planilla`  AS  select sum(`tbl_planilla`.`salario_neto`) AS `planilla` from `tbl_planilla` ;
 
 --
 -- Índices para tablas volcadas
@@ -805,7 +929,7 @@ ALTER TABLE `lestatz_domains`
 -- AUTO_INCREMENT de la tabla `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_activo`
@@ -829,7 +953,7 @@ ALTER TABLE `tbl_clientetickets`
 -- AUTO_INCREMENT de la tabla `tbl_contabilidad`
 --
 ALTER TABLE `tbl_contabilidad`
-  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_cuentaspagar`
@@ -847,7 +971,7 @@ ALTER TABLE `tbl_empleado`
 -- AUTO_INCREMENT de la tabla `tbl_factura`
 --
 ALTER TABLE `tbl_factura`
-  MODIFY `id_factura` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_factura` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_historialprecios`
@@ -865,7 +989,7 @@ ALTER TABLE `tbl_inventario`
 -- AUTO_INCREMENT de la tabla `tbl_movimientoinventario`
 --
 ALTER TABLE `tbl_movimientoinventario`
-  MODIFY `id_movInv` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_movInv` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_pagos`
@@ -889,7 +1013,7 @@ ALTER TABLE `tbl_permisosrol`
 -- AUTO_INCREMENT de la tabla `tbl_planilla`
 --
 ALTER TABLE `tbl_planilla`
-  MODIFY `id_planilla` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_planilla` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_proveedor`
