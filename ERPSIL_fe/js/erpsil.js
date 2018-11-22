@@ -119,6 +119,7 @@ function erpsil_login(){
 }
 
 function erpsil_loginWindow() {
+    erpsil_CleanChart();
     //var loginWindow = "Aca va la ventana de login";
     var loginWindow = ""
 +    "<div class='login'>"
@@ -381,7 +382,7 @@ function erpsil_logout(){
 /*********************************************************/
 
 function erpsil_listarPedido(){
-
+    erpsil_CleanChart();
     var pedidoData = {
         w:"erpsil_pedido",
         r:"mostrar_pedido"
@@ -445,7 +446,7 @@ function erpsil_pdfPedidos(){
 }
 
 function erpsil_agregarPedidoWindow() {
-
+    erpsil_CleanChart();
     var pedidoData = {
         w: "erpsil_cliente",
         r: "mostrar_cliente"
@@ -576,7 +577,7 @@ function erpsil_eliminarPedido(id){
 }
 
 function erpsil_editarPedidoWindow(data) {
-
+    erpsil_CleanChart();
     var editarClienteTicketsWindow = ""
 +        "<div class='container centrarDivTxt'>"
 +        "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Editar Pedidos</h2>"
@@ -684,7 +685,7 @@ function erpsil_guadarEditarPedido(){
 /*********************************************************/
 
 function erpsil_listarClientesTickets(){
-
+    erpsil_CleanChart();
     var ClientesTicketsData = {
         w:"erpsil_clientesTickets",
         r:"mostrar_clientesTickets"
@@ -746,7 +747,7 @@ function erpsil_pdfClientesTickets(){
 }
 
 function erpsil_agregarClientesTicketsWindow() {
-
+    erpsil_CleanChart();
     var clienteticketsData = {
         w: "erpsil_cliente",
         r: "mostrar_cliente"
@@ -841,7 +842,7 @@ function erpsil_agregarClientesTickets(){
 }
 
 function erpsil_editarClienteTicketsWindow(data) {
-
+    erpsil_CleanChart();
     var editarClienteTicketsWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Editar Ticket del Cliente</h2>"
@@ -954,6 +955,7 @@ function erpsil_eliminarClienteTicket(id){
 /*********************************************************/
 
 function erpsil_listarPermisoRol(){
+    erpsil_CleanChart();
     var permisoRolData = {
         w: "erpsil_permisosRol",
         r: "mostrar_permisosRol"
@@ -1006,7 +1008,7 @@ function erpsil_pdfPermisosRol(){
 }
 
 function erpsil_agregarPermisoRolWindow() {
-
+    erpsil_CleanChart();
     var permisoRolData = {
         w: "erpsil_roles",
         r: "mostrar_roles"
@@ -1083,7 +1085,7 @@ function erpsil_agregarPermisoRol(){
 }
 
 function erpsil_editarPermisoRolWindow(data) {
- 
+    erpsil_CleanChart();
     var editarPermisoRolWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Editar Permisos de Rol</h2>"
@@ -1235,6 +1237,7 @@ function erpsil_listarCuentasPagar(){
 */
 
 function erpsil_listarCuentasPagar(){
+    erpsil_CleanChart();
     var cuentasPagarData = {
         w: "erpsil_cuentasPagar",
         r: "mostrar_cuentasPagar"
@@ -1297,6 +1300,7 @@ function erpsil_pdfCuentasPorPagar(){
 }
 
 function erpsil_agregarCuentasPagarWindow() {
+    erpsil_CleanChart();
     var  proveedorData = {
         w: "erpsil_proveedor",
         r: "mostrar_proveedor"
@@ -1310,7 +1314,7 @@ function erpsil_agregarCuentasPagarWindow() {
             i++;
         }
         selectP += "</select>";
-        console.log(p);
+        //console.log(p);
  
         var agregarCuentasPagarWindow = ""
         +    "<div class='container centrarDivTxt'>"
@@ -1392,6 +1396,7 @@ function erpsil_agregarCuentasPagar(){
 }
  
 function erpsil_editarCuentasPagarWindow(data) {
+    erpsil_CleanChart();
     var  proveedorData = {
         w: "erpsil_proveedor",
         r: "mostrar_proveedor"
@@ -1548,6 +1553,7 @@ function erpsil_eliminarCuentasPagar(id){
 /*********************************************************/
  
 function erpsil_listarHistorialPrecio(){
+    erpsil_CleanChart();
     var historialPreciosData = {
         w: "erpsil_historialPrecios",
         r: "mostrar_historialPrecios"
@@ -1713,6 +1719,7 @@ function erpsil_agregarHistorialPrecio(){
 }
 
 function erpsil_editarHistorialPrecioWindow(data) {
+    erpsil_CleanChart();
  
     var historialPrecioData = {
         w: "erpsil_inventario",
@@ -1870,6 +1877,7 @@ function erpsil_guardarEditarHistorialPago(){
 /*********************************************************/
  
 function erpsil_listarPagos(){
+    erpsil_CleanChart();
     var pagosData = {
         w: "erpsil_pagos",
         r: "mostrar_pagos"
@@ -1930,7 +1938,7 @@ function erpsil_pdfPagos(){
 }
  
 function erpsil_agregarPagosWindow() {
-
+    erpsil_CleanChart();
     var cuentasPagarData = {
         w: "erpsil_cuentasPagar",
         r: "mostrar_cuentasPagar"
@@ -2079,7 +2087,7 @@ function erpsil_editarPagos(id){
 }
 
 function erpsil_editarPagosWindow(data) {
-
+    erpsil_CleanChart();
     var cuentasPagarData = {
         w: "erpsil_cuentasPagar",
         r: "mostrar_cuentasPagar"
@@ -2215,6 +2223,7 @@ function erpsil_guardarEditarPago(){
 /*********************************************************/
 
 function erpsil_listarMovimientoInventario(){
+    erpsil_CleanChart();
     var movimientoInventarioData = {
         w: "erpsil_movimientoInventario",
         r: "mostrar_movimientoInventario"
@@ -2274,6 +2283,7 @@ function erpsil_pdfMovimientosInventario(){
 }
 
 function erpsil_agregarMovimientoInventarioWindow() {
+    erpsil_CleanChart();
     var productoData = {
         w: "erpsil_inventario",
         r: "mostrar_inventario"
@@ -2553,7 +2563,7 @@ function erpsil_eliminarMovimientoInventario(id){
 /*********************************************************/
 
 function erpsil_listarTipoCliente(){
-
+    erpsil_CleanChart();
     var tipoClienteData = {
         w: "erpsil_tipoCliente",
         r: "mostrar_tipoCliente"
@@ -2614,7 +2624,7 @@ function erpsil_pdfTipoCliente(){
 }
 
 function erpsil_agregarTipoClienteWindow() {
-
+    erpsil_CleanChart();
     var agregarTipoClienteWindow = ""
 
     +    "<div class='container centrarDivTxt'>"
@@ -2645,7 +2655,6 @@ function erpsil_agregarTipoClienteWindow() {
 }
 
 function erpsil_agregarTipoCliente(){
-
 
     var nombreTipoCliente = $("#inputNombre").val();
     var descripcionTipoCliente = $("#inputDescripcion").val();
@@ -2695,7 +2704,7 @@ function erpsil_eliminarTipoCliente(id) {
 }
 
 function erpsil_editarTipoClienteWindow(data) {
-
+    erpsil_CleanChart();
     var editartipoClienteWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas'>Editar Tipo de Cliente</h2>"
@@ -2785,6 +2794,7 @@ function erpsil_guardarEditarTipoCliente() {
 /*********************************************************/
 
 function erpsil_agregarActivosWindow() {
+    erpsil_CleanChart();
     var agregarActivosWindow = ""
 
     +    "<div class='container centrarDivTxt'>"
@@ -2842,7 +2852,7 @@ function erpsil_agregarActivos(){
 
 function erpsil_listarActivos(){
 
-    //erpsil_CleanChart();
+    erpsil_CleanChart();
     var ActivosData = {
         w: "erpsil_activos",
         r: "mostrar_Activos"
@@ -2890,53 +2900,6 @@ function erpsil_listarActivos(){
         var cantidad = a.cantidad;
         console.log(cantidad);
 
-        /*******************************************************/
-
-        var ctx = document.getElementById("myChart").getContext('2d');
-        if (window.grafica) {
-            window.grafica.clear();
-            window.grafica.destroy();
-        }
-        window.grafica  = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["algo", "algo", "Yellow", "Green", "Purple", "Orange"],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-        /*******************************************************/
-            
-
     }, function (d) {
         console.log(d);
     });
@@ -2966,6 +2929,7 @@ function erpsil_eliminarActivos(id) {
 }
 
 function erpsil_editarActivosWindow(data) {
+    erpsil_CleanChart();
 
     var editarActivosWindow = ""
     +        "<div class='container centrarDivTxt'>"
@@ -3051,6 +3015,7 @@ function erpsil_guardarEditarActivos() {
 /*********************************************************/
 
 function erpsil_agregarRolWindow(){
+    erpsil_CleanChart();
     var agregarRolesWindow = ""
 
     +    "<div class='container centrarDivTxt'>"
@@ -3100,7 +3065,7 @@ function erpsil_agregarRoles(){
 }
 
 function erpsil_listarRoles(){
-
+    erpsil_CleanChart();
     var RolesData = {
         w: "erpsil_roles",
         r: "mostrar_roles"
@@ -3171,7 +3136,7 @@ function erpsil_eliminarRoles(id) {
 }
 
 function erpsil_editarRolesWindow(data) {
-
+    erpsil_CleanChart();
     var editarRolesWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas'>Editar Roles</h2>"
@@ -3251,7 +3216,7 @@ function erpsil_guardarEditarRoles() {
 /*********************************************************/
 
 function erpsil_listarInventario(){
-
+    erpsil_CleanChart();
     var inventarioData = {
         w: "erpsil_inventario",
         r: "mostrar_inventario"
@@ -3310,54 +3275,6 @@ function erpsil_listarInventario(){
         +      "</div>";
         erpsil_setContent(MostrarInventarioWindow);
 
-
-        var ctx = document.getElementById("myChart").getContext('2d');
-        if (window.grafica) {
-            window.grafica.clear();
-            window.grafica.destroy();
-        }
-        window.grafica  = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-        var cantidad = a.cantidad;
-        console.log(cantidad);
-
-        ////////////////////////////////////////
-
     }, function (d) {
         console.log(d);
 });
@@ -3369,6 +3286,7 @@ function erpsil_pdfInventarios(){
 }
 
 function erpsil_agregarInventarioWindow(){
+    erpsil_CleanChart();
     var agregarInventarioWindow = ""
     +    "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas'>Agregar Inventario</h2>"
@@ -3493,7 +3411,7 @@ function erpsil_eliminarInventario(id){
 }
 
 function erpsil_editarInventarioWindow(data) {
-
+    erpsil_CleanChart();
     var editarInventarioWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas'>Editar Inventario</h2>"
@@ -3643,7 +3561,7 @@ function erpsil_guardarEditarInventario(){
 /*********************************************************/
 
 function erpsil_agregarProveedorWindow() {
-
+    erpsil_CleanChart();
     var agregarProveedorWindow = ""
 
     +    "<div class='container centrarDivTxt'>"
@@ -3725,6 +3643,7 @@ function erpsil_agregarProveedor(){
 }
 
 function erpsil_listarProveedor(){
+    erpsil_CleanChart();
     var proveedorData = {
         w: "erpsil_proveedor",
         r: "mostrar_proveedor"
@@ -3862,7 +3781,7 @@ function erpsil_guadarEditarProveedor(){
 }
 
 function erpsil_editarProveedorWindow(data) {
-
+    erpsil_CleanChart();
     var editarProveedorWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='text-center'>Editar Proveedor</h2>"
@@ -3917,6 +3836,7 @@ function erpsil_editarProveedorWindow(data) {
 /*********************************************************/
 
 function erpsil_agregarClienteWindow() {
+    erpsil_CleanChart();
     //var loginWindow = "Aca va la ventana de login";
     var agregarClienteWindow = ""
 
@@ -3968,7 +3888,7 @@ function erpsil_agregarClienteWindow() {
 }
 
 function erpsil_editarClienteWindow(data) {
-
+    erpsil_CleanChart();
     var editarClienteWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas'>Editar Cliente</h2>"
@@ -4072,6 +3992,7 @@ function erpsil_agregarCliente(){
 }
 
 function erpsil_listarCliente() {
+    erpsil_CleanChart();
     var clienteData = {
         w: "erpsil_cliente",
         r: "mostrar_cliente"
@@ -4224,6 +4145,7 @@ function erpsil_guadarEditarCliente(){
 /*********************************************************/
 
 function erpsil_agregarEmpleadoWindow(){
+    erpsil_CleanChart();
     var agregarEmpleadoWindow = ""
     
     +    "<div class='container centrarDivTxt'>"
@@ -4278,7 +4200,7 @@ function erpsil_agregarEmpleadoWindow(){
 }
 
 function erpsil_editarEmpleadoWindow(data) {
-    
+    erpsil_CleanChart();
     var editarEmpleadoWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas'>Editar Empleado</h2>"
@@ -4387,6 +4309,7 @@ function erpsil_agregarEmpleado(){
 }
 
 function erpsil_listarEmpleado() {
+    erpsil_CleanChart();
     var empleadoData = {
         w: "erpsil_empleado",
         r: "mostrar_empleado"
@@ -4533,8 +4456,6 @@ function erpsil_guardarEditarEmpleado(){
         erpsil_modalMalo();
         console.log("Error!");
     }
-
-
 }
 
 /*********************************************************/
@@ -4542,7 +4463,7 @@ function erpsil_guardarEditarEmpleado(){
 /*********************************************************/
 
 function erpsil_listarFactura(){
-    
+    erpsil_CleanChart();
     var facturaData = {
         w:"erpsil_factura",
         r:"mostrar_factura"
@@ -4595,12 +4516,12 @@ function erpsil_listarFactura(){
 }
 
 function erpsil_pdfFactura(){
-    console.log("debug");
-        PdfDescargar('Factura',"Reporte de Facturas");
-    }
+    //console.log("debug");
+    PdfDescargar('Factura',"Reporte de Facturas");
+}
 
 function erpsil_agregarFacturaWindow() {
-
+    erpsil_CleanChart();
     var facturaData = {
         w: "erpsil_cliente",
         r: "mostrar_cliente"
@@ -4733,7 +4654,9 @@ function erpsil_agregarRow(){
 
     
 }
+
 function erpsil_addRow() {
+    erpsil_CleanChart();
     $("#tabla").append('<tr >' +
             '          <td class="align-middle" onfocusout="erpsil_formUpdate()">' +
             '              <input  onchange="erpsil_formUpdate();" type="text" class="form-control" placeholder="Producto">' +
@@ -4921,7 +4844,7 @@ function erpsil_agregarFactura(){
 function erpsil_pdfFacturaInside(){
     console.log("debug");
         DescargarPDF('Prueba',"Factura");
-    }
+}
 
 function erpsil_eliminarFactura(id){
     var req = {
@@ -4942,7 +4865,7 @@ function erpsil_eliminarFactura(id){
 }
 
 function erpsil_editarFacturaWindow(data) {
-    
+    erpsil_CleanChart();
     var editarFacturaWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas'>Editar Factura</h2>"
@@ -5040,12 +4963,11 @@ function erpsil_guardarEditarFactura(){
 
 }
 
-
-
 /*********************************************************/
 /*           Gestion Contabilidad                        */
 /*********************************************************/
 function erpsil_listarContabilidad() { 
+    erpsil_CleanChart();
     var contabilidadData = {
         w: "erpsil_contabilidad",
         r: "mostrar_contabilidad"
@@ -5097,6 +5019,7 @@ function erpsil_pdfContabilidad(){
 /*********************************************************/
 
 function erpsil_listarPlanilla() {
+    erpsil_CleanChart();
     var planillaData = {
         w: "erpsil_planilla",
         r: "mostrar_planilla"
@@ -5136,7 +5059,7 @@ function erpsil_listarPlanilla() {
         +            "</tr>";
     }
 }
-MostrarPlanillaWindow += ""
+    MostrarPlanillaWindow += ""
         +            "</tr>"
         +         "</table>"
         +                "<td> <div id='agregar_planilla' onclick='erpsil_agregarPlanillaWindow()' class='agregar-BtnVerde'>Agregar</div></td>"
@@ -5163,7 +5086,7 @@ function erpsil_agregarPlanillaWindow() {
     };
 
     calaApi_postRequest(planillaData, function(d){
-
+        erpsil_CleanChart();
        var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
         var i = 1;
         for(a in d.resp){ 
@@ -5173,7 +5096,7 @@ function erpsil_agregarPlanillaWindow() {
         }
         selectD += "</select>";
 
-        console.log(d);
+        //console.log(d);
         var agregarPlanillaWindow = ""
 
         +    "<div class='container centrarDivTxt'>"
@@ -5275,7 +5198,7 @@ function erpsil_eliminarPlanilla(id){
 }
 
 function erpsil_editarPlanillaWindow(data) {
-    
+    erpsil_CleanChart();
     var editarPlanillaWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas'>Editar ¨Planilla</h2>"
@@ -5395,6 +5318,7 @@ function agregarUsuario(){
 }
 
 function erpsil_agregarUsuarioWindow(){
+    erpsil_CleanChart();
     //var loginWindow = "Aca va la ventana de login";
     var agregarUsuarioWindow = ""
 
@@ -5441,6 +5365,7 @@ function erpsil_agregarUsuarioWindow(){
 }
 
 function erpsil_registrarUsuarioWindow(){
+    erpsil_CleanChart();
     //var loginWindow = "Aca va la ventana de login";
     var agregarUsuarioWindow = ""
 
@@ -5559,6 +5484,7 @@ function erpsil_registrarUsuario(){
 }
 
 function erpsil_listarUsuario(){
+    erpsil_CleanChart();
     var UsuarioData = {
         w: "erpsil_usuario",
         r: "mostrar_usuario"
@@ -5733,6 +5659,7 @@ function erpsil_guardarEditarUsuario(){
 }
 
 function erpsilRecoveryPwdWindow(){
+    erpsil_CleanChart();
         //var loginWindow = "Aca va la ventana de login";
         var recoveryPwdWindow = ""
 
@@ -5824,12 +5751,18 @@ function erpsil_CleanChart(){
     */
 
     //para clean el canavas
-   var ctx = document.getElementById('myChart').getContext('2d');
-   if (window.grafica) {
-       window.grafica.clear();
-       window.grafica.destroy();
-   }
-   window.grafica = new Chart(ctx, {});
+   //var ctx = document.getElementById('myChart').getContext('2d');
+   //if (window.grafica) {
+    //   window.grafica.clear();
+    //   window.grafica.destroy();
+   //}
+   //window.grafica = new Chart(ctx, {});
+   event.preventDefault();
+   var parent = document.getElementById('canvas_div');
+   var child = document.getElementById('myChart');          
+   parent.removeChild(child);            
+   parent.innerHTML ='<canvas id="myChart" width="350" height="99" ></canvas>';             
+   return;
 }
 
 function erpsil_debug(mensaje) {

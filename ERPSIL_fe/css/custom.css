@@ -65,19 +65,31 @@
     margin-left: 10px;
     width: 250px;
     height: 100px;
-    background-color: yellow;
+    background-color: green;
     margin: auto;
+}
+
+.block_pagar{
+    margin-left: 25%;
+    margin-top: 5%;
+    color: white;
 }
 
 .t_planilla{
-    
     width: 250px;
     height: 100px;
-    background-color: blue;
+    background-color: green;
     margin: auto;
 }
 
+.block_planilla{
+    margin-left: 25%;
+    margin-top: 5%;
+    color: white;
+}
+
 .block_cantidad{
+    margin-left: 25%;
     margin-top: 5%;
     color: white;
 }
@@ -85,17 +97,43 @@
 .t_cantidad{
     width: 250px;
     height: 100px;
-    background-color: black;
+    background-color: green;
     margin: auto;
+}
+
+.block_num_cant{
+    margin-left: 37%;
+    margin-top: 5%;
+    color: white;
+
+}
+
+.block_num_fact{
+    margin-left: 47%;
+    margin-top: 5%;
+    color: white;
+}
+
+.block_num_pagar{
+    margin-left: 47%;
+    margin-top: 5%;
+    color: white;
+}
+
+.block_num_plat{
+    margin-left: 47%;
+    margin-top: 5%;
+    color: white;
+
 }
 
 .div_canvas{
     
     margin-top: 20px;
     margin-left: 65%;
+    bottom: 10px;
     width: 350px;
     height: 350px;
-    border: 2px solid black;
 }
 
 @media (max-width: 400px){
