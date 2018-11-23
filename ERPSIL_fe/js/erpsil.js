@@ -157,8 +157,9 @@ function erpsil_setMenu() {
     +               "<div class='tituloFormularios'>Sistema <b>ERPSIL"
     +           "</div>"
     +       "</div>"
+    +       "<div class='back_menu'>"
     +       "<ul class='acorh'>"
-    +           "<li><a style='color:#fff;'>Dashboard</a></li>"
+    +           "<li><a style='color:#fff;' onClick='dashboard()'>Dashboard</a></li>"
     +           "<li><a style='color:#fff;'>RRHH</a>"
     +               "<ul>"
     +                   "<li><a style='color:#fff;' onClick='erpsil_listarCliente()'>Clientes</a></li>"
@@ -171,6 +172,7 @@ function erpsil_setMenu() {
     +           "<li><a style='color:#fff;'>Inventario</a>"
     +               "<ul>"
     +                   "<li><a style='color:#fff;' onClick='erpsil_listarInventario()'>Inventario</a></li>"
+    +                   "<li><a style='color:#fff;' onClick='erpsil_listarPedido()'>Pedido</a></li>"
     +                   "<li><a style='color:#fff;' onClick='erpsil_listarActivos()'>Activos</a></li>"
     +                   "<li><a style='color:#fff;' onClick='erpsil_listarMovimientoInventario()'>Movimiento del Inventario</a></li>"
     +                   "<li><a style='color:#fff;' onClick='erpsil_listarHistorialPrecio()'>Historial de Precios</a></li>"
@@ -189,12 +191,11 @@ function erpsil_setMenu() {
     +                   "<ul>"
     +                       "<li><a style='color:#fff;' onClick='erpsil_listarUsuario()'>Usuarios</a></li>"
     +                       "<li><a style='color:#fff;' onClick='erpsil_listarRoles()'>Roles</a></li>"
-    +                       "<li><a style='color:#fff;' onClick='erpsilRecoveryPwdWindow()'>pwd</a></li>"
     +                   "</ul>"
     +           "</li>"
     +           "<li><a style='color:#fff;' onClick='erpsil_logout()'>Salir</a></li>"
     +       "</ul>"
-
+    +       "</div>"
     +    "</div>";
 
     $("#erpsil_modal").empty();
@@ -206,34 +207,79 @@ function erpsil_setMenu() {
 
 function dashboard(){
 
-    var dash = ""
-    +      "<div>"
-    +           "<div class='cont_Dash'>"
-    +               "<div class='t_factura' style='margin-right: 10px';>"
-    +                   "<div class='block_fact'>Facturas</div>"
-    +               "</div>"
-    +               "<div class='t_pagar' style='margin-right: 10px';>"
-    +                   "<div class= 'block_pagar'></div>"
-    +               "</div>"
-    +               "<div class='t_planilla'></div>"
-    +               "<div class='t_cantidad' style='margin-left: 10px';>"
-    +                   "<div class='block_cantidad'>"
-    +               "</div>"
-    +            "</div>"
-    +       "</div>";
-    pie();
-    erpsil_setContent(dash);
+    var conta = {
+        w: "erpsil_contabilidad",
+        r: "mostrar_contabilidad"
+     };
+
+     calaApi_postRequest(conta, function(cont){
+         var contab_fact;
+         var contab_fact;
+         var contab_fact;
+         var contab_fact;
+        //var selectUsu = "<select class='custom-select' id='inputDown2'>" 
+        //var i = 1;
+        for(a in cont.resp){
+        var x = cont.resp[a];
+        contab_fact = x.total_factura;
+        contab_pagar = x.total_pagar;
+        contab_planilla = x.total_planilla;
+        contab_total = x.total;
+        //i++;
+        }
+        
+        //console.log(contab);
+
+        var dash = ""
+        +      "<div>"
+        +           "<div class='cont_Dash'>"
+    
+        +               "<div class='t_factura' style='margin-right: 10px';>"
+        +                   "<div class='block_fact'>Total de facturas</div>"
+        +                   "<div class='fact_num'>"+contab_fact+"</div>"
+        +               "</div>"
+    
+        +               "<div class='t_pagar' style='margin-right: 10px';>"
+        +                   "<div class= 'block_pagar'>Total a pagar</div>"
+        +                   "<div class='fact_pag'>"+contab_pagar+"</div>"
+        +               "</div>"
+    
+        +               "<div class='t_planilla' style='margin-right: 10px';>"
+        +                   "<div class= 'block_plantilla'>Total a planilla</div>"
+        +                   "<div class='fact_pag'>"+contab_planilla+"</div>"
+        +               "</div>"
+    
+        +               "<div class='t_cantidad' style='margin-left: 10px';>"
+        +                   "<div class='block_cantidad'>Cantidad total</div>"
+        +                   "<div class='fact_cant'>"+contab_total+"</div>"
+        +               "</div>"
+    
+        +            "</div>"
+        +       "</div>";
+    
+                         
+        erpsil_setContent(dash);
+        pie(contab_fact,contab_pagar,contab_planilla,contab_total);
+    }, function(){
+        console.log("error");
+        erpsil_modalMalo();
+    
+}, function(){
+    console.log("error");
+    erpsil_modalMalo();
+
+});
 }
 
-function pie(){
+function pie(a,b,c,d){
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green"],
+            labels: ["Total a factura", "Total a pagar", "Total Planilla", "Total"],
             datasets: [{
                 label: '# of Votes',
-                data: [12, 19, 3, 5],
+                data: [a, b, c, d],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -1333,11 +1379,15 @@ function erpsil_agregarCuentasPagarWindow() {
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Estado</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Estado' required='required' onkeyup = erpsil_validacionTxt('inputEstado'," + 2 +") id='inputEstado'>"
+        +           " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputEstado'>"
+        +        "</div>"
+        +        "<label class='col-sm-3 control-label'>Fecha</label>"
+        +        "<div class='col-sm'>"
+        +           " <input type='date' class='form-control' placeholder='Fecha' required='required' id='inputFecha'>"
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Vencimiento</label>"
         +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Vencimiento' required='required' onkeyup = erpsil_validacionTxt('inputVence'," + 2 +") id='inputVence'>"
+        +           " <input type='date' class='form-control' placeholder='Vencimiento' required='required' id='inputVence'>"
         +        "</div>"
         +        "<label class='col-sm-3 control-label'>Descripción</label>"
         +        "<div class='col-sm'>"
@@ -1367,6 +1417,7 @@ function erpsil_agregarCuentasPagar(){
     var saldo = $("#inputSaldo").val();
     var estado = $("#inputEstado").val();
     var vence = $("#inputVence").val();
+    var fecha = $("#inputFecha").val();
     var descripcion = $("#inputDescripcion").val();
    
  
@@ -1380,6 +1431,7 @@ function erpsil_agregarCuentasPagar(){
             saldo:saldo,
             estado:estado,
             vence:vence,
+            fecha:fecha,
             descripcion:descripcion
         };
  
@@ -1725,6 +1777,7 @@ function erpsil_editarHistorialPrecioWindow(data) {
         w: "erpsil_inventario",
         r: "mostrar_inventario"
      };
+
      var proveedorData = {
         w: "erpsil_proveedor",
         r: "mostrar_proveedor"
@@ -4481,8 +4534,8 @@ function erpsil_listarFactura(){
         +                "<th>Fecha</th>"
         +                "<th>Detalle</th>"
         +                "<th>Total</th>"
-        +                "<th>Editar</th>"
-        +                "<th>Eliminar</th>"
+        //+                "<th>Editar</th>"
+        //+                "<th>Eliminar</th>"
         +            "</tr>";
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
@@ -4496,7 +4549,7 @@ function erpsil_listarFactura(){
         +                "<td> "+ a.detalle +" </td>"
         +                "<td> "+ a.total +" </td>"
 
-//        +                "<td> <div id='editar_factura' onclick='erpsil_editarFactura(" + a.id_factura + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
+        //+                "<td> <div id='editar_factura' onclick='erpsil_editarFactura(" + a.id_factura + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
         +                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
         +            "</tr>";
                     }
@@ -5000,12 +5053,12 @@ function erpsil_listarContabilidad() {
         +                "<td> "+ a.total_cliente +" </td>"
         +                "<td> "+ a.total_articulos_vendidos +" </td>"
         +            "</tr>"      
-    }
-}
-MostrarContabilidadWindow += ""
-+"</table>" 
-+"<td> <div id='reporte_contabilidad' onclick='erpsil_pdfPlanilla()' class='reporte-BtnVerde'>Reporte</div></td>" 
-+ "</div>";
+                }
+            }
+        MostrarContabilidadWindow += ""
+        +            "</table>" 
+        +       "<td> <div id='reporte_contabilidad' onclick='erpsil_pdfPlanilla()' class='reporte-BtnVerde'>Reporte</div></td>" 
+        +   "</div>";
         erpsil_setContent(MostrarContabilidadWindow);
 
     }, function (d) {
@@ -5765,7 +5818,7 @@ function erpsil_CleanChart(){
    var parent = document.getElementById('canvas_div');
    var child = document.getElementById('myChart');          
    parent.removeChild(child);            
-   parent.innerHTML ='<canvas id="myChart" width="350" height="99" ></canvas>';             
+   parent.innerHTML ='<canvas id="myChart" style="height:100; width:100;"></canvas>';             
    return;
 }
 
@@ -5774,13 +5827,3 @@ function erpsil_debug(mensaje) {
         console.log("erpsil >> " + mensaje);
     }
 }
-
-
-
-
-
-
-
-
-
-

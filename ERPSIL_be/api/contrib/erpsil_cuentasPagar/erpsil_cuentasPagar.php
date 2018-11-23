@@ -13,7 +13,7 @@ function agregarCuentasPagar(){
    $estado = params_get("estado");
    $vence = params_get("vence");
    $descripcion = params_get("descripcion");
-   $stampfecha = time();
+   $stampfecha = params_get("fecha");
 
    $q = "INSERT INTO `tbl_cuentaspagar` (`id_proveedor`, `codigo_referencia`, `saldo`, `estado`, `vence`, `descripcion`, `stampfecha`)
     VALUES ('$id_proveedor', '$codigo_referencia', '$saldo', '$estado', '$vence', '$descripcion', '$stampfecha')";
