@@ -41,92 +41,108 @@
     margin-left: 5%;
     width: 89%;
     height: 200px;
-    background-color: grey;
+    background-color: #e3e5e8;
     padding: 0px 25px;
     display: flex;
     justify-content: space-around;
+    border-radius: 5px;
+
 }
 
 .t_factura{
     margin-right: 10px;
     width: 250px;
     height: 100px;
-    background-color: green;
+    background-color:rgb(95, 183, 96);
     margin: auto;
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: 5px;
 }
 
 .block_fact{
-    margin-left: 25%;
+    text-align: center;
     margin-top: 5%;
     color: white;
 }
 
 .fact_num{
-    margin-left: 47%;
     margin-top: 5%;
     color: white;
+    text-align: center;
+    font-size: 30px;
 }
 
 .t_pagar{
-    margin-left: 10px;
+    text-align: center;
     width: 250px;
     height: 100px;
-    background-color: green;
+    background-color:rgb(52, 117, 176);
     margin: auto;
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: 5px;
 }
 
 .block_pagar{
-    margin-left: 27%;
     margin-top: 5%;
     color: white;
+    text-align: center;
+    
 }
 
 .fact_pag{
-    margin-left: 47%;
     margin-top: 5%;
     color: white; 
+    text-align: center;
+    font-size: 30px;
 }
 
 .t_planilla{
     width: 250px;
     height: 100px;
-    background-color: green;
+    background-color:rgb(238, 172, 87);
     margin: auto;
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: 5px;
+    text-align: center;
 }
 
 .block_planilla{
     margin-left: 25%;
     margin-top: 5%;
     color: white;
+    text-align: center;
+    font-size: 30px;
 }
 
 .block_plantilla{
-    margin-left: 25%;
     margin-top: 5%;
     color: white;
+    text-align: center;
 }
 
 .block_cantidad{
-    margin-left: 25%;
     margin-top: 5%;
     color: white;
+    text-align: center;
 }
 
 .t_cantidad{
     width: 250px;
     height: 100px;
-    background-color: green;
+    background-color:rgb(215, 84, 82);
     margin: auto;
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: 5px;
 }
 
 .fact_cant{
-    margin-left: 45%;
     margin-top: 5%;
     color: white;
+    text-align: center;
+    font-size: 30px;
 }
 
 .div_canvas{
-    
     margin-top: 20px;
     margin-left: 65%;
     bottom: 10px;

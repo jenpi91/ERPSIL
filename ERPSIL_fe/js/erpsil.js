@@ -217,19 +217,16 @@ function dashboard(){
          var contab_fact;
          var contab_fact;
          var contab_fact;
-        //var selectUsu = "<select class='custom-select' id='inputDown2'>" 
-        //var i = 1;
+
         for(a in cont.resp){
         var x = cont.resp[a];
         contab_fact = x.total_factura;
         contab_pagar = x.total_pagar;
         contab_planilla = x.total_planilla;
         contab_total = x.total;
-        //i++;
-        }
-        
-        //console.log(contab);
 
+    }
+        
         var dash = ""
         +      "<div>"
         +           "<div class='cont_Dash'>"
@@ -278,19 +275,19 @@ function pie(a,b,c,d){
         data: {
             labels: ["Total a factura", "Total a pagar", "Total Planilla", "Total"],
             datasets: [{
-                label: '# of Votes',
+                label: 'ERPSIL',
                 data: [a, b, c, d],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(95, 183, 96, 0.2)',
+                    'rgba(52, 117, 176, 0.2)',
+                    'rgba(238, 172, 87, 0.2)',
+                    'rgba(215, 84, 82, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(95, 183, 96, 1)',
+                    'rgba(52, 117, 176, 1)',
+                    'rgba(238, 172, 87, 1)',
+                    'rgba(215, 84, 82, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -305,7 +302,6 @@ function pie(a,b,c,d){
             }
         }
     });
-
 }
 
 /*********************************************************/
@@ -5814,7 +5810,7 @@ function erpsil_CleanChart(){
     //   window.grafica.destroy();
    //}
    //window.grafica = new Chart(ctx, {});
-   event.preventDefault();
+   //event.preventDefault();
    var parent = document.getElementById('canvas_div');
    var child = document.getElementById('myChart');          
    parent.removeChild(child);            
