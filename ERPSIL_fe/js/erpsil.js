@@ -3,7 +3,7 @@ var cache = "";
 
 function boot_erpsil() {
     calaApi_checkLogin(function (d) {
-        erpsil_debug("Estamos log");
+        erpsil_debug("Estamos logueados");
         erpsil_setMenu();
         //erpsil_debug(d);
         //erpsil_agregarClienteWindow();
@@ -45,7 +45,6 @@ function DescargarPDF(ContenidoID,nombre) {
 	
     specialElementHandlers = {};
     
-    
     margins = {top: 0,bottom: 0,left: 0,width: 1000, height: 1000};
 	
     pdf.fromHTML(html, margins.left, margins.top, {'width': margins.width},function (dispose) {pdf.save(nombre+'.pdf');}, margins);
@@ -84,7 +83,7 @@ function PdfDescargar(id,nombre){
 }
 
 /*********************************************************/
-/*                 Gestion login                         */
+/*                 Gestión Login                         */
 /*********************************************************/
 
 function erpsil_login(){
@@ -120,21 +119,21 @@ function erpsil_login(){
 
 function erpsil_loginWindow() {
     erpsil_CleanChart();
-    //var loginWindow = "Aca va la ventana de login";
+    
     var loginWindow = ""
-+    "<div class='login'>"
-+        "<h2 class='tituloTablas' >Login</h2>"
-+        "<div class='camposTexto'>"
-+           " <input type='text'  placeholder='Username' required='required' id='inputUser'>"
-+        "</div>"
-+        "<div class='camposTexto'>"
-+            "<input type='password' placeholder='Password' required='required' id='inputPassword'>"
-+        "</div>"
-+        "<div>"
-+            "<button onClick='validacionLogin()' class='login-btnRojo'>Login</button>"
-+            "<label onClick='erpsilRecoveryPwdWindow()' class='recPwd' >Recuperar Contraseña</label>"
-+        "</div>"
-+   " </div>"
+    +    "<div class='login'>"
+    +        "<h2 class='tituloTablas' >Login</h2>"
+    +        "<div>"
+    +           " <input type='text'  placeholder='Username' required='required' id='inputUser'>"
+    +        "</div>"
+    +        "<div>"
+    +            "<input type='password' placeholder='Password' required='required' id='inputPassword'>"
+    +        "</div>"
+    +        "<div>"
+    +            "<button onClick='validacionLogin()' class='login-btnRojo'>Login</button>"
+    +            "<label onClick='erpsilRecoveryPwdWindow()' class='recPwd' >Recuperar Contraseña</label>"
+    +        "</div>"
+    +   " </div>"
      
     erpsil_setContent(loginWindow);
 }
@@ -152,12 +151,12 @@ function validacionLogin(){
 function erpsil_setMenu() {
     var content =  "<div id='central'>"
 
-    +       "<div class='contenedorPrincipal'>"
-    +           "<div class='contenedorTitulo'>"	    
-    +               "<div class='tituloFormularios'>Sistema <b>ERPSIL"
-    +           "</div>"
+    +   "<div class='contenedorPrincipal'>"
+    +       "<div class='contenedorTitulo'>"	    
+    +           "<div class='tituloFormularios'>Sistema <b>ERPSIL"
     +       "</div>"
-    +       "<div class='back_menu'>"
+    +   "</div>"
+    +   "<div class='back_menu'>"
     +       "<ul class='acorh'>"
     +           "<li><a style='color:#fff;' onClick='dashboard()'>Dashboard</a></li>"
     +           "<li><a style='color:#fff;'>RRHH</a>"
@@ -166,7 +165,7 @@ function erpsil_setMenu() {
     +                   "<li><a style='color:#fff;' onClick='erpsil_listarProveedor()'>Proveedor</a></li>"
     +                   "<li><a style='color:#fff;' onClick='erpsil_listarEmpleado()'>Empleado</a></li>"
     +                   "<li><a style='color:#fff;' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</a></li>"
-    //+                 "<li><a style='color:#fff;' onClick='erpsil_listarClientesTickets()'>Tickets</a></li>"
+  //+                   "<li><a style='color:#fff;' onClick='erpsil_listarClientesTickets()'>Tickets</a></li>"
     +               "</ul>"
     +           "</li>"
     +           "<li><a style='color:#fff;'>Inventario</a>"
@@ -228,41 +227,41 @@ function dashboard(){
     }
         
         var dash = ""
-        +      "<div>"
-        +           "<div class='cont_Dash'>"
+        +   "<div>"
+        +       "<div class='cont_Dash'>"
     
-        +               "<div class='t_factura' style='margin-right: 10px';>"
-        +                   "<div class='block_fact'>Total de facturas</div>"
-        +                   "<div class='fact_num'>"+contab_fact+"</div>"
-        +               "</div>"
+        +           "<div class='t_factura' style='margin-right: 10px';>"
+        +               "<div class='block_fact'>Total de facturas</div>"
+        +               "<div class='fact_num'>"+contab_fact+"</div>"
+        +           "</div>"
     
-        +               "<div class='t_pagar' style='margin-right: 10px';>"
-        +                   "<div class= 'block_pagar'>Total a pagar</div>"
-        +                   "<div class='fact_pag'>"+contab_pagar+"</div>"
-        +               "</div>"
+        +           "<div class='t_pagar' style='margin-right: 10px';>"
+        +               "<div class= 'block_pagar'>Total a pagar</div>"
+        +               "<div class='fact_pag'>"+contab_pagar+"</div>"
+        +           "</div>"
     
-        +               "<div class='t_planilla' style='margin-right: 10px';>"
-        +                   "<div class= 'block_plantilla'>Total a planilla</div>"
-        +                   "<div class='fact_pag'>"+contab_planilla+"</div>"
-        +               "</div>"
+        +           "<div class='t_planilla' style='margin-right: 10px';>"
+        +               "<div class= 'block_plantilla'>Total a planilla</div>"
+        +               "<div class='fact_pag'>"+contab_planilla+"</div>"
+        +           "</div>"
     
-        +               "<div class='t_cantidad' style='margin-left: 10px';>"
-        +                   "<div class='block_cantidad'>Cantidad total</div>"
-        +                   "<div class='fact_cant'>"+contab_total+"</div>"
-        +               "</div>"
+        +           "<div class='t_cantidad' style='margin-left: 10px';>"
+        +               "<div class='block_cantidad'>Cantidad total</div>"
+        +               "<div class='fact_cant'>"+contab_total+"</div>"
+        +           "</div>"
     
-        +            "</div>"
-        +       "</div>";
+        +       "</div>"
+        +   "</div>";
     
                          
         erpsil_setContent(dash);
         pie(contab_fact,contab_pagar,contab_planilla,contab_total);
     }, function(){
-        console.log("error");
+        console.log("Error!");
         erpsil_modalMalo();
     
 }, function(){
-    console.log("error");
+    console.log("Error!");
     erpsil_modalMalo();
 
 });
@@ -362,7 +361,7 @@ function erpsil_validacion(func){
       })
       
       swalWithBootstrapButtons({
-        title: 'Estás seguro?',
+        title: '¿Estás Seguro?',
         text: "El dato seleccionado se eliminará permanentemente!",
         type: 'warning',
         showCancelButton: true,
@@ -397,7 +396,7 @@ function erpsil_validacion(func){
 }
 
 /*********************************************************/
-/*                       logOut                          */
+/*                       LogOut                          */
 /*********************************************************/
 
 function erpsil_logout(){
@@ -408,14 +407,14 @@ function erpsil_logout(){
     }
 
     calaApi_postRequest(logOut, function (d) {
-        //console.log("Si funcionó");
+        //console.log("Si Funcionó");
         $("#erpsil_content").empty();
         $("#erpsil_menu").empty();
         erpsil_loginWindow();
 
     }, function (d) {
         erpsil_modalMalo();
-        //console.log("No funcionó");
+        //console.log("No Funcionó");
     });
 }
 
@@ -433,21 +432,24 @@ function erpsil_listarPedido(){
     calaApi_postRequest(pedidoData, function (d) {
  
         var pedidoWindow = ""
-        +      "<div  class='table-responsive'>"
-        +         "<table id='Pedidos'  class='TablaEspecial'>"
-        +         "<h2 class='tituloTablas'>Lista de Pedidos</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Pedidos</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='Pedidos' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID Pedido</th>"
         +                "<th>ID Cliente</th>"
         +                "<th>Fecha de Pedido</th>"
         +                "<th>Fecha de Entrega</th>"
         +                "<th>Cantidad</th>"
-        +                "<th>Status</th>"
+        +                "<th>Estatus</th>"
         +                "<th>Descripción</th>"
         +                "<th>Precio</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-        +            "</tr>";
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -496,7 +498,7 @@ function erpsil_agregarPedidoWindow() {
 
     calaApi_postRequest(pedidoData, function(d){
 
-        var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
+        var selectD = "<select class='select' id='inputDrow'> ";
         var i = 1;
         for(a in d.resp){ 
             var x = d.resp[a];
@@ -508,49 +510,51 @@ function erpsil_agregarPedidoWindow() {
 
         var agregarPedidoWindow = ""
 
-        +    "<div class='container centrarDivTxt'>"
-        +        "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Pedidos</h2>"
+        +   "<div class='container centrarDivTxt'>"
+        +       "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Pedidos</h2>"
+        +       "<div class='form-horizontal'>"
 
-        +        "<label class='col-sm-3 control-label'>ID Cliente</label>"
-        +        "<div class='col-sm'>"
-        +        selectD
-        +        "</div>"
+        +           "<label class='form'>ID Cliente</label>"
+        +           "<div class='col-sm'>"
+        +               selectD
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Fecha del Pedido</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Fecha del Pedido' onkeyup=erpsil_validacionTxt('inputStampP'," + 2 + ") required='required' id='inputStampP'>"
-        +        "</div>"
+        +           "<label class='form'>Fecha del Pedido</label>"
+        +           "<div class='col-sm'>"
+        +               "<input type='date' class='date' placeholder='Fecha del Pedido' onkeyup=erpsil_validacionTxt('inputStampP'," + 2 + ") required='required' id='inputStampP'>"
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Fecha de Entrega</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Fecha de Entrega' onkeyup=erpsil_validacionTxt('inputStampE'," + 2 +") required='required' id='inputStampE'>"
-        +        "</div>"
+        +           "<label class='form'>Fecha de Entrega</label>"
+        +           "<div class='col-sm'>"
+        +               "<input type='date' class='date' placeholder='Fecha de Entrega' onkeyup=erpsil_validacionTxt('inputStampE'," + 2 +") required='required' id='inputStampE'>"
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Cantidad</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
-        +        "</div>"
+        +           "<label class='form'>Cantidad</label>"
+        +           "<div class='col-sm'>"
+        +               "<input type='text' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Estado</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputStatus' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +")>"
-        +        "</div>"
+        +           "<label class='form'>Estado</label>"
+        +           "<div class='col-sm'>"
+        +               "<input type='text' placeholder='Estado' required='required' id='inputStatus' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +")>"
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Descripción</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Descripción' required='required' id='inputDescr'>"
-        +        "</div>"
+        +           "<label class='form'>Descripción</label>"
+        +           "<div class='col-sm'>"
+        +               "<input type='text' placeholder='Descripción' required='required' id='inputDescr'>"
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Precio</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Precio' required='required' id='inputPrecio' onkeyup = erpsil_validacionTxt('inputPrecio'," + 2 +")>"
-        +        "</div>"
+        +           "<label class='form'>Precio</label>"
+        +           "<div class='col-sm'>"
+        +               "<input type='text' placeholder='Precio' required='required' id='inputPrecio' onkeyup = erpsil_validacionTxt('inputPrecio'," + 2 +")>"
+        +           "</div>"
 
-        +        "<div class='col-sm centrarDivTxt'>"
-        +            "<div onClick='erpsil_agregarPedido()' class='agregar-BtnVerde'>Agregar</div>"
-        +            "<div onClick='erpsil_listarPedido()' class='regresar-BtnVerde'>Regresar</div>"
-        +         "</div>"
-        +   " </div>"
+        +           "<div class='col-sm centrarDivTxt'>"
+        +               "<div onClick='erpsil_agregarPedido()' class='agregar-BtnVerde' >Agregar</div>"
+        +               "<div onClick='erpsil_listarPedido()'  class='regresar-BtnVerde'>Regresar</div>"
+        +           "</div>"
+        +       "</div>"
+        +    "</div>"
 
         erpsil_setContent(agregarPedidoWindow);
     }, function(){
@@ -613,7 +617,7 @@ function erpsil_eliminarPedido(id){
         erpsil_validacion(erpsil_listarPedido);
     }, function(){
         erpsil_modalMalo();
-        console.log("Pedido no Eliminado");
+        console.log("Pedido No Eliminado");
     });
     
 }
@@ -621,51 +625,59 @@ function erpsil_eliminarPedido(id){
 function erpsil_editarPedidoWindow(data) {
     erpsil_CleanChart();
     var editarClienteTicketsWindow = ""
-+        "<div class='container centrarDivTxt'>"
-+        "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Editar Pedidos</h2>"
-+       "<form class='form-horizontal' action='' method='post'>"
-+              "<label class='col-sm-3 control-label'>ID del Pedido</label>"
-+              "<div class='col-sm'>"
-+                   "<input type='text' id='inputId_pedido' value='" + data.id_pedido + "' class='form-control' placeholder='ID Pedido' disabled>"
-+             "</div>"
-+           "<label class='col-sm-3 control-label'>ID del Cliente</label>"
-+           "<div class='col-sm'>"
-+                "<input type='text' id='inputId_Cliente' value='" + data.id_cliente + "' class='form-control' placeholder='ID Cliente' disabled>"
-+           "</div>"
-+           "<label class='col-sm-3 control-label'>Fecha de Pedido</label>"
-+           "<div class='col-sm'>"
-+               "<input type='text' onkeyup = erpsil_validacionTxt('inputStampP'," + 2 +") id='inputStampP' value='" + data.stamp_pedido  + "' class='form-control' placeholder='Fecha de Pedido' required onkeyup = erpsil_validacionTxt('inputStampP')>"
-+           "</div>"
-+       "<label class='col-sm-3 control-label'>Fecha de Entrega</label>"
-+        "<div class='col-sm'>"
-+            "<input type='text' onkeyup = erpsil_validacionTxt('inputStampE'," + 2 +") id='inputStampE' onkeyup = erpsil_validacionTxt('inputStampE') value='" +data.stamp_entrega  + "' class='form-control' placeholder='Fecha de Entrega' required>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Cantidad de Rollos</label>"
-+        "<div class='col-sm'>"
-+            "<input type='text' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad' onkeyup = erpsil_validacionTxt('inputCantidad') value='" +data.cant_rollos  + "' class='form-control' placeholder='Cantidad de Rollos' required>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Status</label>"
-+        "<div class='col-sm'>"
-+            "<input type='text' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +") id='inputStatus') value='" + data.status  + "' class='form-control' placeholder='Status' required>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Descripción</label>"
-+        "<div class='col-sm'>"
-+            "<input type='text' id='inputDescr' value='" + data.descripcion  + "' class='form-control' placeholder='Descripción' required>"
-+        "</div>"
-+       "<label class='col-sm-3 control-label'>Precio</label>"
-+        "<div class='col-sm'>"
-+            "<input type='text' onkeyup = erpsil_validacionTxt('inputinputPrecioStatus'," + 2 +") id='inputPrecio' onkeyup = erpsil_validacionTxt('inputPrecio') value='" + data.precio  + "' class='form-control' placeholder='Precio' required>"
-+        "</div>"
-+            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-+           " <div class='col-sm centrarDivTxt'>"
-+               "<div class='btn btn-sm btn-primary btn_central' onclick='erpsil_guadarEditarPedido()' >Guardar</div>"
-+                "<div class='btn btn-sm btn-danger btn_central' onclick='erpsil_listarPedido()'>Cancelar</div>"
-+                 "</div>"
-+          "</form>"
-+        "</div>"
-+       "</div>"
-+       "</div>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Editar Pedidos</h2>"
+    +       "<form action='' method='post'>"
+    +       "<div class='form-horizontal'>"
 
+    +           "<label class='form'>ID del Pedido</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' id='inputId_pedido' value='" + data.id_pedido + "' placeholder='ID Pedido' disabled>"
+    +           "</div>"
+
+    +           "<label class='form'>ID del Cliente</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' id='inputId_Cliente' value='" + data.id_cliente + "' placeholder='ID Cliente' disabled>"
+    +           "</div>"
+
+    +           "<label class='form'>Fecha de Pedido</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='date' class='date' onkeyup = erpsil_validacionTxt('inputStampP'," + 2 +") id='inputStampP' value='" + data.stamp_pedido  + "' placeholder='Fecha de Pedido' required onkeyup = erpsil_validacionTxt('inputStampP')>"
+    +           "</div>"
+
+    +           "<label class='form'>Fecha de Entrega</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='date' class='date' onkeyup = erpsil_validacionTxt('inputStampE'," + 2 +") id='inputStampE' onkeyup = erpsil_validacionTxt('inputStampE') value='" +data.stamp_entrega  + "' placeholder='Fecha de Entrega' required>"
+    +           "</div>"
+        
+    +           "<label class='form'>Cantidad de Rollos</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad' onkeyup = erpsil_validacionTxt('inputCantidad') value='" +data.cant_rollos  + "' placeholder='Cantidad de Rollos' required>"
+    +           "</div>"
+
+    +           "<label class='form'>Estatus</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +") id='inputStatus') value='" + data.status  + "' placeholder='Estatus' required>"
+    +           "</div>"
+
+    +           "<label class='form'>Descripción</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' id='inputDescr' value='" + data.descripcion  + "' placeholder='Descripción' required>"
+    +           "</div>"
+
+    +           "<label class='form'>Precio</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputinputPrecioStatus'," + 2 +") id='inputPrecio' onkeyup = erpsil_validacionTxt('inputPrecio') value='" + data.precio  + "' placeholder='Precio' required>"
+    +           "</div>"
+
+    +           "<label class='form'>&nbsp;</label>"
+    +           "<div class='col-sm centrarDivTxt'>"
+    +                   "<div onclick='erpsil_guadarEditarPedido()' class='guardar-BtnVerde' >Guardar</div>"
+    +                   "<div onclick='erpsil_listarPedido()' class='cancelar-BtnVerde'>Cancelar</div>"
+    +           "</div>"
+    +      "</div>"
+    +      "</form>"
+    +   "</div>"
 
     erpsil_setContent(editarClienteTicketsWindow);
 }
@@ -681,7 +693,7 @@ function erpsil_editarPedido(id){
         erpsil_editarPedidoWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
-        console.log("Pedidos no Editado");
+        console.log("Pedidos No Editado");
     });
 }
 
@@ -714,7 +726,7 @@ function erpsil_guadarEditarPedido(){
             erpsil_modalBueno();
             erpsil_listarPedido();
         }, function (d) {
-            console.log("Pedido no agregado" + d);
+            console.log("Pedido No Agregado" + d);
         });
     } else {
         erpsil_modalMalo();
@@ -723,7 +735,7 @@ function erpsil_guadarEditarPedido(){
 }
 
 /*********************************************************/
-/*           Gestion del tbl_clientesTickets             */
+/*           Gestión del tbl_clientesTickets             */
 /*********************************************************/
 
 function erpsil_listarClientesTickets(){
@@ -1129,30 +1141,35 @@ function erpsil_agregarPermisoRol(){
 function erpsil_editarPermisoRolWindow(data) {
     erpsil_CleanChart();
     var editarPermisoRolWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Editar Permisos de Rol</h2>"
- +       "<form class='form-horizontal' action='' method='post'>"
- +              "<label class='col-sm-3 control-label'>ID Permisos</label>"
- +              "<div class='col-sm'>"
- +                   "<input type='text' id='inputIdPermiso' value='" + data.id_permiso + "' class='form-control' placeholder='ID Permisos' required disabled>"
- +             "</div>"
- +           "<label class='col-sm-3 control-label'>ID Rol</label>"
- +           "<div class='col-sm'>"
- +                "<input type='text' id='inputIdRol' value='" + data.id_rol + "' class='form-control' placeholder='ID Rol' required disabled>"
- +           "</div>"
- +           "<label class='col-sm-3 control-label'>Estado</label>"
- +           "<div class='col-sm'>"
- +               "<input type='text' id='inputEstado' value='" + data.estado + "' class='form-control' placeholder='Estado' required>"
- +           "</div>"
- +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
- +           " <div class='col-sm centrarDivTxt'>"
- +               "<div  onclick='erpsil_guardarEditarPermisoRol()' class='btn btn-sm btn-primary' >Guardar</div>"
- +                "<div onclick='erpsil_listarPermisoRol()' class='btn btn-sm btn-danger'>Cancelar</div>"
- +           "</div>"
- +         "</form>"
- +        "</div>"
- +       "</div>"
- +       "</div>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Editar Permisos de Rol</h2>"
+    +       "<form class='form-horizontal' action='' method='post'>"
+    +           "<div class='col-sm'>"
+    
+    +               "<label class='form'>ID Permisos</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputIdPermiso' value='" + data.id_permiso + "' placeholder='ID Permisos' required disabled>"
+    +               "</div>"
+    
+    +               "<label class='form'>ID Rol</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputIdRol' value='" + data.id_rol + "' placeholder='ID Rol' required disabled>"
+    +               "</div>"
+    
+    +               "<label class='form'>Estado</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputEstado' value='" + data.estado + "' placeholder='Estado' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div  onclick='erpsil_guardarEditarPermisoRol()' class='guardar-BtnVerde' >Guardar</div>"
+    +                       "<div onclick='erpsil_listarPermisoRol()' class='cancelar-BtnVerde'>Cancelar</div>"
+    +               "</div>"
+    
+    +           "</div>"
+    +       "</form>"
+    +   "</div>"
  
  
     erpsil_setContent(editarPermisoRolWindow);
@@ -1289,9 +1306,10 @@ function erpsil_listarCuentasPagar(){
  
         var MostrarCuentasPagarWindow = ""
 
-        +      "<div  class='table-responsive'>"
-        +         "<table id='CuentasPorPagar' class='table table-striped table-hover'>"
-	    +         "<h2 class='tituloTablas'>Listar Cuentas por Pagar</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Cuentas por Pagar</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='CuentasPorPagar' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>ID Proveedor</th>"
@@ -1301,7 +1319,11 @@ function erpsil_listarCuentasPagar(){
         +                "<th>Vence</th>"
         +                "<th>Descripción</th>"
         +                "<th>Fecha</th>"
-        +            "</tr>";
+        +                "<th>Editar</th>"
+        +                "<th>Eliminar</th>"
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -1348,7 +1370,7 @@ function erpsil_agregarCuentasPagarWindow() {
         r: "mostrar_proveedor"
     }
     calaApi_postRequest(proveedorData, function(p){
-        var selectP = "<select class='custom-select dropdown' id='inputDown'>" 
+        var selectP = "<select class='select' id='inputDown'>" 
         var i = 1;
         for(a in p.resp){
             var y = p.resp[a];
@@ -1361,39 +1383,48 @@ function erpsil_agregarCuentasPagarWindow() {
         var agregarCuentasPagarWindow = ""
         +    "<div class='container centrarDivTxt'>"
         +        "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Cuentas Por Pagar</h2>"        
-        +        "<label class='col-sm-3 control-label'>ID Proveedor</label>"
-        +        "<div class='col-sm'>"
-        +          selectP
+        +        "<div class='form-horizontal'>"
+        +           "<label class='form'>ID Proveedor</label>"
+        +           "<div class='col-sm'>"
+        +                   selectP
+        +           "</div>"
+        
+        +           "<label class='form'>Código Referencia</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='text' placeholder='Código Referencia' required='required' onkeyup = erpsil_validacionTxt('inputCodigo_Referencia'," + 2 +") id='inputCodigo_Referencia'>"
+        +           "</div>"
+        
+        +           "<label class='form'>Saldo</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='text' placeholder='Saldo' required='required' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo'>"
+        +           "</div>"
+        
+        +           "<label class='form'>Estado</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='text' placeholder='Estado' required='required' onkeyup = erpsil_validacionTxt('inputEstado'," + 2 +") id='inputEstado'>"
+        +           "</div>"
+
+        +           "<label class='form'>Fecha</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='date' class='date' placeholder='Fecha' required='required' id='inputFecha'>"
+        +           "</div>"
+
+        +           "<label class='form'>Vencimiento</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='text' placeholder='Vencimiento' required='required' onkeyup = erpsil_validacionTxt('inputVence'," + 2 +") id='inputVence'>"
+        +           "</div>"
+        
+        +           "<label class='form'>Descripción</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='text' placeholder='Descripción' required='required' id='inputDescripcion'>"
+        +           "</div>"
+        
+        +           "<div class='col-sm centrarDivTxt'>"
+        +                   "<div onClick='erpsil_agregarCuentasPagar()' class='agregar-BtnVerde'>Agregar</div>"
+        +           "</div>"
+        
         +        "</div>"
-        +        "<label class='col-sm-3 control-label'>Código Referencia</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Código Referencia' required='required' onkeyup = erpsil_validacionTxt('inputCodigo_Referencia'," + 2 +") id='inputCodigo_Referencia'>"
-        +        "</div>"
-        +        "<label class='col-sm-3 control-label'>Saldo</label>"
-        +        "<div class='col-sm'>"
-        +            "<input type='text' class='form-control' placeholder='Saldo' required='required' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo'>"
-        +        "</div>"
-        +        "<label class='col-sm-3 control-label'>Estado</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Estado' required='required' id='inputEstado'>"
-        +        "</div>"
-        +        "<label class='col-sm-3 control-label'>Fecha</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='date' class='form-control' placeholder='Fecha' required='required' id='inputFecha'>"
-        +        "</div>"
-        +        "<label class='col-sm-3 control-label'>Vencimiento</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='date' class='form-control' placeholder='Vencimiento' required='required' id='inputVence'>"
-        +        "</div>"
-        +        "<label class='col-sm-3 control-label'>Descripción</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Descripción' required='required' id='inputDescripcion'>"
-        +        "</div>"
-        +        "<div class='col-sm centrarDivTxt'>"
-        +            "<div onClick='erpsil_agregarCuentasPagar()' class='agregar-BtnVerde'>Agregar</div>"
-        +         "</div>"
-        +   " </div>"
-                         
+
         erpsil_setContent(agregarCuentasPagarWindow);
         console.log(p);
     },function(){
@@ -1450,7 +1481,7 @@ function erpsil_editarCuentasPagarWindow(data) {
         r: "mostrar_proveedor"
     }
     calaApi_postRequest(proveedorData, function(p){
-        var selectP = "<select class='custom-select' id='inputDown'>" 
+        var selectP = "<select class='select' id='inputDown'>" 
         var i = 1;
         for(a in p.resp){
             var y = p.resp[a];
@@ -1462,58 +1493,59 @@ function erpsil_editarCuentasPagarWindow(data) {
  
         var editarCuentasPagarWindow = ""
  
-        +        "<div class='container centrarDivTxt'>"
-        +       "<form class='form-horizontal' action='' method='post'>"
-        +        "<h2 class='text-center'>Editar Cuentas por Pagar</h2>"
+        +   "<div class='container centrarDivTxt'>"
+        +       "<form action='' method='post'>"
+        +           "<h2 class='tituloTablas'>Editar Cuentas por Pagar</h2>"
+        +           "<div class='form-horizontal'>"
+        
+        +               "<label class='form'>ID Cuenta A Pagar</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputid_cuentasPagar'," + 2 +") id='inputid_cuentasPagar' value='" + data.id_cuentasPagar + "' placeholder='ID' required  disabled>"
+        +               "</div>"
 
-        +              "<label class='col-sm-3 control-label'>ID Cuenta A Pagar</label>"
-        +              "<div class='col-sm'>"
-        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputid_cuentasPagar'," + 2 +") id='inputid_cuentasPagar' value='" + data.id_cuentasPagar + "' class='form-control' placeholder='ID' required  disabled>"
-        +             "</div>"
+        +               "<label class='form'>ID Proveedor</label>"
+        +               "<div class='col-sm'>"
+        +                   selectP
+        +               "</div>"
 
-        +              "<label class='col-sm-3 control-label'>ID Proveedor</label>"
-        +              "<div class='col-sm'>"
-        +               selectP
-        +             "</div>"
-        +              "<label class='col-sm-3 control-label'>Código de Referencia</label>"
-        +              "<div class='col-sm'>"
-        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputCodigo_Referencia'," + 2 +") id='inputCodigo_Referencia' value='" + data.codigo_referencia + "' class='form-control' placeholder='ID' required>"
-        +             "</div>"
+        +               "<label class='form'>Código de Referencia</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputCodigo_Referencia'," + 2 +") id='inputCodigo_Referencia' value='" + data.codigo_referencia + "' placeholder='ID' required>"
+        +               "</div>"
 
-        +           "<label class='col-sm-3 control-label'>Saldo</label>"
-        +           "<div class='col-sm'>"
-        +                "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo' value='" + data.saldo + "' class='form-control' placeholder='Saldo' required>"
-        +           "</div>"
+        +               "<label class='form'>Saldo</label>"
+        +                   "<div class='col-sm'>"
+        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo' value='" + data.saldo + "' placeholder='Saldo' required>"
+        +               "</div>"
 
-        +           "<label class='col-sm-3 control-label'>Estado</label>"
-        +           "<div class='col-sm'>"
-        +               "<input type='text' onkeyup = erpsil_validacionTxt('inputEstado'," + 2 +") id='inputEstado' value='" + data.estado + "' class='form-control' placeholder='Estado' required>"
-        +           "</div>"
+        +               "<label class='form'>Estado</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputEstado'," + 2 +") id='inputEstado' value='" + data.estado + "' placeholder='Estado' required>"
+        +               "</div>"
 
-        +       "<label class='col-sm-3 control-label'>Vence</label>"
-        +        "<div class='col-sm'>"
-        +            "<input type='text' onkeyup = erpsil_validacionTxt('inputVence'," + 2 +") id='inputVence' value='" + data.vence + "' class='form-control' placeholder='Vence' required>"
-        +        "</div>"
+        +               "<label class='form'>Vence</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputVence'," + 2 +") id='inputVence' value='" + data.vence + "' placeholder='Vence' required>"
+        +               "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Descripción</label>"
-        +        "<div class='col-sm'>"
-        +               "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='form-control' placeholder='Descripción' required>"
-        +        "</div>"
+        +               "<label class='form'>Descripción</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' placeholder='Descripción' required>"
+        +               "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Fecha</label>"
-        +        "<div class='col-sm'>"
-        +               "<input type='text' onkeyup = erpsil_validacionTxt('inputStampfecha'," + 2 +") id='inputStampfecha' value='" + data.stampfecha + "' class='form-control' placeholder='Fecha' required>"
-        +        "</div>"
+        +               "<label class='form'>Fecha</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='date' class='date' onkeyup = erpsil_validacionTxt('inputStampfecha'," + 2 +") id='inputStampfecha' value='" + data.stampfecha + "' placeholder='Fecha' required>"
+        +               "</div>"
 
-        +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-        +           " <div class='col-sm centrarDivTxt'>"
-        +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarCuentasPagar()' >Guardar</div>"
-        +                "<div onclick='erpsil_listarCuentasPagar()' class='btn btn-sm btn-danger'>Cancelar</div>"
-        +           "</div>"
-        +         "</form>"
-        +        "</div>"
-        +       "</div>"
-        +       "</div>"
+        +               "<label class='form'>&nbsp;</label>"
+        +               "<div class='col-sm centrarDivTxt'>"
+        +                   "<div onclick='erpsil_guardarEditarCuentasPagar()' class='guardar-BtnVerde' >Guardar</div>"
+        +                   "<div onclick='erpsil_listarCuentasPagar()' class='cancelar-BtnVerde'>Cancelar</div>"
+        +               "</div>"
+        +           "</div>"       
+        +       "</form>"
+        +   "</div>"
        
                          
         erpsil_setContent(editarCuentasPagarWindow);
@@ -1610,9 +1642,10 @@ function erpsil_listarHistorialPrecio(){
     calaApi_postRequest(historialPreciosData, function (d) {
         var MostrarHistorialPreciosWindow = ""
  
-        +      "<div  class='table-responsive'>"
-        +         "<table id='HistorialPrecios' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Historial de Precios</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Historial de Precios</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='HistorialPrecios' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID Historial</th>"
         +                "<th>ID Inventario</th>"
@@ -1621,7 +1654,9 @@ function erpsil_listarHistorialPrecio(){
         +                "<th>ID Proveedor</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-        +            "</tr>";
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -1670,7 +1705,7 @@ function erpsil_agregarHistorialPrecioWindow() {
 
     calaApi_postRequest(historialPrecioData, function(d){
        
-       var selectH = "<select class='custom-select' id='inputDown1'>"  
+       var selectH = "<select class='select' id='inputDown1'>"  
        var i = 1;
        for(a in d.resp){
            var x = d.resp[a];
@@ -1681,7 +1716,7 @@ function erpsil_agregarHistorialPrecioWindow() {
 
        calaApi_postRequest(proveedorData, function(p){
        
-           var selectP = "<select class='custom-select' id='inputDown2'>"  
+           var selectP = "<select class='select' id='inputDown2'>"  
            var i = 1;
            for(a in p.resp){
                var y = p.resp[a];
@@ -1694,39 +1729,45 @@ function erpsil_agregarHistorialPrecioWindow() {
      
            +    "<div class='container centrarDivTxt'>"
            +        "<h2 class='tituloTablas'>Historial de Precios</h2>"
-           +        "<label class='col-sm-3 control-label'>ID Inventario</label>"
-           +        "<div class='col-sm'>"
-           +       selectH
-           
-           +        "</div>"
-           +        "<label class='col-sm-3 control-label'>Costo</label>"
-           +        "<div class='col-sm'>"
-           +           " <input type='text' class='form-control' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
-           +        "</div>"
-          // +        "<label class='col-sm-3 control-label'>Fecha</label>"
-          //+        "<div class='form-group'>"
-          // +            "<input type='text' class='form-control' placeholder='Fecha' required='required' id='inputFecha'>"
-          // +        "</div>"
-          +        "<label class='col-sm control-label'>ID Proveedor</label>"
-          +        "<div class='col-sm'>"
-          +            selectP
-          +        "</div>"
+           +        "<div class='form-horizontal'>"
 
-          +        "<div class='col-sm centrarDivTxt'>"
-          +            "<div onClick='erpsil_agregarHistorialPrecio()' class='agregar-BtnVerde'>Agregar</div>"
-          +            "<div onClick='erpsil_listarHistorialPrecio()' class='volver-BtnVerde'>Volver</div>"
-          +         "</div>"
-          +   " </div>"
+           +            "<label class='form'>ID Inventario</label>"
+           +            "<div class='col-sm'>"
+           +                selectH
+           +            "</div>"
+
+           +            "<label class='form'>Costo</label>"
+           +            "<div class='col-sm'>"
+           +                "<input type='text' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
+           +            "</div>"
+        
+        // +            "<label class='form'>Fecha</label>"
+        // +            "<div class='form'>"
+        // +                "<input type='date' class='date' placeholder='Fecha' required='required' id='inputFecha'>"
+        // +            "</div>"
+        
+           +            "<label class='form'>ID Proveedor</label>"
+           +            "<div class='col-sm'>"
+           +                selectP
+           +            "</div>"
+           
+           +            "<div class='col-sm centrarDivTxt'>"
+           +                "<div onClick='erpsil_agregarHistorialPrecio()' class='agregar-BtnVerde'>Agregar</div>"
+           +                "<div onClick='erpsil_listarHistorialPrecio()' class='regresar-BtnVerde'>Regresar</div>"
+           +            "</div>"
+
+           +        "</div>"
+           +    "</div>"  
                              
            erpsil_setContent(agregarHistorialPreciosWindow);
            console.log(d);
         }, function(){
             erpsil_modalMalo();
-            console.log("error");
+            console.log("Error!");
         });
     }, function(){
         erpsil_modalMalo();
-        console.log("error");
+        console.log("Error!");
     });
 
 }
@@ -1772,16 +1813,15 @@ function erpsil_editarHistorialPrecioWindow(data) {
     var historialPrecioData = {
         w: "erpsil_inventario",
         r: "mostrar_inventario"
-     };
-
-     var proveedorData = {
+    };
+    var proveedorData = {
         w: "erpsil_proveedor",
         r: "mostrar_proveedor"
-     };
+    };
  
      calaApi_postRequest(historialPrecioData, function(d){
         
-        var selectH = "<select class='custom-select' id='inputDown1'>"  
+        var selectH = "<select class='select' id='inputDown1'>"  
         var i = 1;
         for(a in d.resp){
             var x = d.resp[a];
@@ -1792,7 +1832,7 @@ function erpsil_editarHistorialPrecioWindow(data) {
 
         calaApi_postRequest(proveedorData, function(p){
         
-            var selectP = "<select class='custom-select' id='inputDown2'>"  
+            var selectP = "<select class='select' id='inputDown2'>"  
             var i = 1;
             for(a in p.resp){
                 var y = p.resp[a];
@@ -1802,40 +1842,46 @@ function erpsil_editarHistorialPrecioWindow(data) {
             selectP += "</select>";
  
             var editarHistorialPreciosWindow = ""
-            +        "<div class='container centrarDivTxt'>"
-            +        "<h2 class='tituloTablas'>Editar Historial de Precios</h2>"
-            +       "<form class='form-horizontal' action='' method='post'>"
-            +              "<label class='col-sm-3 control-label'>ID Historial</label>"
-            +              "<div class='col-sm'>"
-            +                   "<input type='text' id='inputIdHistorial' value='" + data.id_historialPrecio + "' class='form-control' placeholder='Costo' required disabled>"
-            +             "</div>"
-            +              "<label class='col-sm-3 control-label'>ID Inventario</label>"
-            +              "<div class='col-sm'>"
-            +               selectH
-            //+                   "<input type='text' id='inputInventario' value='" + data.id_inventario + "' class='form-control' placeholder='Costo' required>"
-            +             "</div>"
-            +           "<label class='col-sm-3 control-label'>Costo</label>"
-            +           "<div class='col-sm'>"
-            +                "<input type='text' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto' value='" + data.costo + "' class='form-control' placeholder='Fecha' required>"
-            +           "</div>"
-            +           "<label class='col-sm-3 control-label'>Fecha</label>"
-            +           "<div class='col-sm'>"
-            +                "<input type='text' id='inputFecha' value='" + data.fecha + "' class='form-control' placeholder='Fecha' required>"
-            +           "</div>"
-            +           "<label class='col-sm-3 control-label'>ID Proveedor</label>"
-            +           "<div class='col-sm'>"
-            +           selectP
-            //+               "<input type='text' id='inputId_proveedor' value='" + data.Id_proveedor + "' class='form-control' placeholder='ID proveedor' required>"
-            +           "</div>"
-            +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-            +           " <div class='col-sm centrarDivTxt'>"
-            +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarHistorialPago()' >Guardar</div>"
-            +                "<div onclick='erpsil_listarHistorialPrecio()' class='btn btn-sm btn-danger'>Cancelar</div>"
-            +           "</div>"
-            +         "</form>"
-            +        "</div>"
+            +   "<div class='container centrarDivTxt'>"
+            +       "<h2 class='tituloTablas'>Editar Historial de Precios</h2>"
+            +       "<div class='form-horizontal'>"
+            +           "<form action='' method='post'>"
+            +               "<label class='form'>ID Historial</label>"
+            +               "<div class='col-sm'>"
+            +                   "<input type='text' id='inputIdHistorial' value='" + data.id_historialPrecio + "' placeholder='Costo' required disabled>"
+            +               "</div>"
+            
+            +               "<label class='form'>ID Inventario</label>"
+            +               "<div class='col-sm'>"
+            +                   selectH
+        //  +                   "<input type='text' id='inputInventario' value='" + data.id_inventario + "' placeholder='Costo' required>"
+            +               "</div>"
+            
+            +               "<label class='form'>Costo</label>"
+            +               "<div class='col-sm'>"
+            +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto' value='" + data.costo + "' placeholder='Fecha' required>"
+            +               "</div>"
+            
+            +               "<label class='form'>Fecha</label>"
+            +               "<div class='col-sm'>"
+            +                   "<input type='date' class='date' id='inputFecha' value='" + data.fecha + "'  placeholder='Fecha' required>"
+            +               "</div>"
+            
+            +               "<label class='form'>ID Proveedor</label>"
+            +               "<div class='col-sm'>"
+            +                   selectP
+          //+                   "<input type='text' id='inputId_proveedor' value='" + data.Id_proveedor + "' placeholder='ID proveedor' required>"
+            +               "</div>"
+            
+            +               "<label class='form'>&nbsp;</label>"
+            +               "<div class='col-sm centrarDivTxt'>"
+            +                   "<div onclick='erpsil_guardarEditarHistorialPago()' class='guardar-BtnVerde' >Guardar</div>"
+            +                   "<div onclick='erpsil_listarHistorialPrecio()' class='cancelar-BtnVerde'>Cancelar</div>"
+            +               "</div>"
+            +           "</form>"
             +       "</div>"
-            +       "</div>"
+            +   "</div>"
+
             erpsil_setContent(editarHistorialPreciosWindow);
             console.log(d);
         }, function () {
@@ -1935,9 +1981,10 @@ function erpsil_listarPagos(){
     calaApi_postRequest(pagosData, function (d) {
         var MostrarPagosWindow = ""
  
-        +      "<div  class='table-responsive'>"
-        +         "<table id='Pagos' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Pagos</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Pagos</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='Pagos' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID Pago</th>"
         +                "<th>ID Cuenta</th>"
@@ -1947,7 +1994,9 @@ function erpsil_listarPagos(){
         +                "<th>Actual</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-        +            "</tr>";
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -2000,7 +2049,7 @@ function erpsil_agregarPagosWindow() {
 
     calaApi_postRequest(cuentasPagarData, function(d){
 
-        var selectCuentasPagar = "<select class='custom-select' id='inputDown1'>"  
+        var selectCuentasPagar = "<select class='select' id='inputDown1'>"  
         var i = 1;
         for(a in d.resp){
             var x = d.resp[a];
@@ -2013,7 +2062,7 @@ function erpsil_agregarPagosWindow() {
 
         calaApi_postRequest(usuarioData, function(p){
 
-            var selectPUsuario= "<select class='custom-select' id='inputDown2'>"  
+            var selectPUsuario= "<select class='select' id='inputDown2'>"  
             var i = 1;
             for(a in p.resp){
                 var y = p.resp[a];
@@ -2026,41 +2075,46 @@ function erpsil_agregarPagosWindow() {
         var agregarPagosWindow = ""
  
         +    "<div class='container centrarDivTxt'>"
-        +        "<h2 class='tituloTablas'>Pagos</h2>"
-        +        "<label class='col-sm-3 control-label'>ID Cuentas</label>"
-        +        "<div class='col-sm'>"
-        +         selectCuentasPagar
-        //+           " <input type='text' class='form-control' placeholder='ID cuenta' required='required' id='inputId_cuenta'>"
-        +        "</div>"
-        +        "<label class='col-sm-3 control-label'>ID Usuario</label>"
-        +        "<div class='col-sm'>"
-        +         selectPUsuario
-        //+           " <input type='text' class='form-control' placeholder='ID Usuarios' required='required' id='inputId_usuarios'>"
-        +        "</div>"
+        +       "<h2 class='tituloTablas'>Pagos</h2>"
+        +       "<div class='form-horizontal'>"
 
-        +        "<label class='col-sm-3 control-label'>Pago</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Pago' required='required' onkeyup = erpsil_validacionTxt('inputPago'," + 2 +") id='inputPago'>"
-        +        "</div>"
-        +        "<label class='col-sm-3 control-label'>Actual</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Actual' required='required' onkeyup = erpsil_validacionTxt('inputActual'," + 2 +") id='inputActual'>"
-        +        "</div>"
-        +        "<div class='col-sm'>"
-        +            "<div onClick='erpsil_agregarPagos()' class='agregar-BtnVerde'>Agregar</div>"
-        +            "<div onClick='erpsil_listarPagos()' class='volver-BtnVerde'>Volver</div>"
-        +         "</div>"
-        +   " </div>"
-                          
+        +           "<label class='form'>ID Cuentas</label>"
+        +           "<div class='col-sm'>"
+        +               selectCuentasPagar
+    //  +               "<input type='text' placeholder='ID cuenta' required='required' id='inputId_cuenta'>"
+        +           "</div>"
+        
+        +           "<label class='form'>ID Usuario</label>"
+        +           "<div class='col-sm'>"
+        +               selectPUsuario
+    //  +               "<input type='text' placeholder='ID Usuarios' required='required' id='inputId_usuarios'>"
+        +           "</div>"
+        
+        +           "<label class='form'>Pago</label>"
+        +           "<div class='col-sm'>"
+        +               "<input type='text' placeholder='Pago' required='required' onkeyup = erpsil_validacionTxt('inputPago'," + 2 +") id='inputPago'>"
+        +           "</div>"
+        
+        +           "<label class='form'>Saldo Actual</label>"
+        +           "<div class='col-sm'>"
+        +               "<input type='text' placeholder='Saldo Actual' required='required' onkeyup = erpsil_validacionTxt('inputActual'," + 2 +") id='inputActual'>"
+        +           "</div>"
+        
+        +           "<div class='col-sm'>"
+        +               "<div onClick='erpsil_agregarPagos()' class='agregar-BtnVerde'>Agregar</div>"
+        +               "<div onClick='erpsil_listarPagos()' class='regresar-BtnVerde'>Regresar</div>"
+        +           "</div>"
+        +       "</div>"
+        +    "</div>"    
         erpsil_setContent(agregarPagosWindow);
         console.log(d);
     }, function(){
         erpsil_modalMalo();
-        console.log("error");
+        console.log("Error!");
     });
 }, function(){
     erpsil_modalMalo();
-    console.log("error");
+    console.log("Error!");
 });
 }
 
@@ -2149,7 +2203,7 @@ function erpsil_editarPagosWindow(data) {
 
     calaApi_postRequest(cuentasPagarData, function(d){
 
-        var selectCuentasPagar = "<select class='custom-select' id='inputDown1'>"  
+        var selectCuentasPagar = "<select class='select' id='inputDown1'>"  
         var i = 1;
         for(a in d.resp){
             var x = d.resp[a];
@@ -2162,7 +2216,7 @@ function erpsil_editarPagosWindow(data) {
 
         calaApi_postRequest(usuarioData, function(p){
 
-            var selectPUsuario= "<select class='custom-select' id='inputDown2'>"  
+            var selectPUsuario= "<select class='select' id='inputDown2'>"  
             var i = 1;
             for(a in p.resp){
                 var y = p.resp[a];
@@ -2172,44 +2226,51 @@ function erpsil_editarPagosWindow(data) {
             selectPUsuario += "</select>";
 
         var editarPagosWindow = ""
-        +        "<div class='container centrarDivTxt'>"
-        +        "<h2 class='tituloTablas'>Editar Pago</h2>"
-        +       "<form class='form-horizontal' action='' method='post'>"
-        +           "<label class='col-sm-3 control-label'>ID Pago</label>"
-        +           "<div class='col-sm'>"
-        +               "<input type='text' id='inputId_Pago' value='" + data.id_pago + "' class='form-control' placeholder='ID Pago' required disabled>"
-        +           "</div>"
-        +              "<label class='col-sm-3 control-label'>ID Cuenta</label>"
-        +              "<div class='col-sm'>"
-        +         selectCuentasPagar
-        //+                   "<input type='text' id='inputId_cuenta' value='" + data.id_cuenta + "' class='form-control' placeholder='ID cuenta' required>"
-        +             "</div>"
-        +           "<label class='col-sm-3 control-label'>ID Usuario</label>"
-        +           "<div class='col-sm'>"
-        +         selectPUsuario
-        //+                "<input type='text' id='inpuId_usuarios' value='" + data.id_usuarios + "' class='form-control' placeholder='ID usuario' required>"
-        +           "</div>"
-        +           "<label class='col-sm-3 control-label'>Fecha</label>"
-        +           "<div class='col-sm'>"
-        +               "<input type='text' id='inputFecha' value='" + data.fecha + "' class='form-control' placeholder='Fecha' required>"
-        +           "</div>"
-        +           "<label class='col-sm-3 control-label'>Pago</label>"
-        +           "<div class='col-sm'>"
-        +               "<input type='text' onkeyup = erpsil_validacionTxt('inputPago'," + 2 +") id='inputPago' value='" + data.pago + "' class='form-control' placeholder='Pago' required>"
-        +           "</div>"
-        +           "<label class='col-sm-3 control-label'>Actual</label>"
-        +           "<div class='col-sm'>"
-        +               "<input type='text' onkeyup = erpsil_validacionTxt('inputActual'," + 2 +") id='inputActual' value='" + data.actual + "' class='form-control' placeholder='Actual' required>"
-        +           "</div>"
-        +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-        +           " <div class='col-sm'>"
-        +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarPago()' >Guardar</div>"
-        +                "<div onclick='erpsil_listarPagos()' class='btn btn-sm btn-danger'>Cancelar</div>"
-        +           "</div>"
-        +         "</form>"
-        +        "</div>"
+        +   "<div class='container centrarDivTxt'>"
+        +       "<h2 class='tituloTablas'>Editar Pago</h2>"
+        +       "<div class='form-horizontal'>"
+        +           "<form action='' method='post'>"
+
+        +               "<label class='form'>ID Pago</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='text' id='inputId_Pago' value='" + data.id_pago + "' placeholder='ID Pago' required disabled>"
+        +               "</div>"
+       
+        +               "<label class='form'>ID Cuenta</label>"
+        +               "<div class='col-sm'>"
+        +                    selectCuentasPagar
+    //  +                  "<input type='text' id='inputId_cuenta' value='" + data.id_cuenta + "' placeholder='ID cuenta' required>"
+        +               "</div>"
+        
+        +               "<label class='form'>ID Usuario</label>"
+        +               "<div class='col-sm'>"
+        +                   selectPUsuario
+      //+                   "<input type='text' id='inpuId_usuarios' value='" + data.id_usuarios + "' placeholder='ID usuario' required>"
+        +               "</div>"
+        
+        +               "<label class='form'>Fecha</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='date' class='date' id='inputFecha' value='" + data.fecha + " placeholder='Fecha' required>"
+        +               "</div>"
+        
+        +               "<label class='form'>Pago</label>"
+        +                   "<div class='col-sm'>"
+        +               "<input type='text' onkeyup = erpsil_validacionTxt('inputPago'," + 2 +") id='inputPago' value='" + data.pago + "' placeholder='Pago' required>"
+        +               "</div>"
+
+        +               "<label class='form'>Saldo Actual</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputActual'," + 2 +") id='inputActual' value='" + data.actual + "' placeholder='Saldo Actual' required>"
+        +               "</div>"
+
+        +               "<label class='col-sm'>&nbsp;</label>"
+        +               "<div class='col-sm'>"
+        +                   "<div class='guardar-BtnVerde' onclick='erpsil_guardarEditarPago()' >Guardar</div>"
+        +                   "<div onclick='erpsil_listarPagos()' class='cancelar-BtnVerde'>Cancelar</div>"
+        +               "</div>"
+        +           "</form>"
         +       "</div>"
-        +       "</div>"
+        +   "</div>"
         
         
         erpsil_setContent(editarPagosWindow);
@@ -2217,11 +2278,11 @@ function erpsil_editarPagosWindow(data) {
         console.log(d);
     }, function(){
         erpsil_modalMalo();
-        console.log("error");
+        console.log("Error!");
     });
 }, function(){
     erpsil_modalMalo();
-    console.log("error");
+    console.log("Error!");
 });
 }
 
@@ -2279,9 +2340,10 @@ function erpsil_listarMovimientoInventario(){
     };
     calaApi_postRequest(movimientoInventarioData, function (d) {
         var MostrarMovimientoInventarioWindow = ""
-        +      "<div  class='table-responsive'>"
-        +         "<table id='MovimientoInventario' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Movimiento de Inventario</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Movimiento de Inventario</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='MovimientoInventario' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID Movimiento Inventario</th>"
         +                "<th>ID Usuario</th>"
@@ -2293,7 +2355,9 @@ function erpsil_listarMovimientoInventario(){
         +                "<th>Costo</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-        +            "</tr>";
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -2344,7 +2408,7 @@ function erpsil_agregarMovimientoInventarioWindow() {
     };
  
     calaApi_postRequest(productoData, function(inv){
-        var selectIn = "<select class='custom-select' id='inputDown1'>" 
+        var selectIn = "<select class='select' id='inputDown1'>" 
         var i = 1;
         for(b in inv.resp){
             var v = inv.resp[b];
@@ -2354,7 +2418,7 @@ function erpsil_agregarMovimientoInventarioWindow() {
         selectIn += "</select>";
 
         calaApi_postRequest(usuarioData, function(usu){
-            var selectUsu = "<select class='custom-select' id='inputDown2'>" 
+            var selectUsu = "<select class='select' id='inputDown2'>" 
             var i = 1;
             for(a in usu.resp){
             var x = usu.resp[a];
@@ -2365,32 +2429,39 @@ function erpsil_agregarMovimientoInventarioWindow() {
 
             var agregarMovimientoInventarioWindow = ""
         
-            +    "<div class='container centrarDivTxt'>"
-            +        "<h2 class='tituloTablas'>Agregar Movimiento de Inventario</h2>"
-            +        "<label class='col-sm-3 control-label'>ID Usuario</label>"
-            +        "<div class='col-sm'>"
-            +           selectUsu
-            +        "</div>"
-            +        "<label class='col-sm-3 control-label'>ID Producto</label>"
-            +        "<div class='col-sm'>"
-            +            selectIn
-            +        "</div>"
-            +        "<label class='col-sm-3 control-label'>Razón</label>"
-            +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' placeholder='Razón' required='required' onkeyup = erpsil_validacionTxt('inputRazon'," + 1 +") id='inputRazon'>"
-            +        "</div>"
-            +        "<label class='col-sm-3 control-label'>Descripción</label>"
-            +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' placeholder='Descripción' required='required' id='inputDescripcion'>"
-            +        "</div>"
-            +        "<label class='col-sm-3 control-label'>Costo</label>"
-            +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
-            +        "</div>"
-            +        "<div class='col-sm'>"
-            +            "<div onClick='erpsil_agregarMovimientoInventario()' class='agregar-BtnVerde'>Agregar</div>"
-            +            "<div onClick='erpsil_listarMovimientoInventario()' class='volver-BtnVerde'>Volver</div>"
-            +         "</div>"
+            +   "<div class='container centrarDivTxt'>"
+            +       "<h2 class='tituloTablas'>Agregar Movimiento de Inventario</h2>"
+            +       "<div class='form-horizontal'>"
+
+            +           "<label class='form'>ID Usuario</label>"
+            +           "<div class='col-sm'>"
+            +                   selectUsu
+            +           "</div>"
+            
+            +           "<label class='form'>ID Producto</label>"
+            +           "<div class='col-sm'>"
+            +                   selectIn
+            +           "</div>"
+
+            +           "<label class='form'>Razón</label>"
+            +           "<div class='col-sm'>"
+            +                   "<input type='text' placeholder='Razón' required='required' onkeyup = erpsil_validacionTxt('inputRazon'," + 1 +") id='inputRazon'>"
+            +           "</div>"
+            
+            +           "<label class='form'>Descripción</label>"
+            +           "<div class='col-sm'>"
+            +                   "<input type='text'  placeholder='Descripción' required='required' id='inputDescripcion'>"
+            +           "</div>"
+            
+            +           "<label class='form'>Costo</label>"
+            +           "<div class='col-sm'>"
+            +                   "<input type='text' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
+            +           "</div>"
+            
+            +           "<div class='col-sm'>"
+            +                   "<div onClick='erpsil_agregarMovimientoInventario()' class='agregar-BtnVerde'>Agregar</div>"
+            +                   "<div onClick='erpsil_listarMovimientoInventario()' class='regresar-BtnVerde'>Regresar</div>"
+            +           "</div>"
             +   " </div>"
                              
             erpsil_setContent(agregarMovimientoInventarioWindow);
@@ -2457,7 +2528,7 @@ function erpsil_editarMovimientoInventarioWindow(data) {
     };
  
     calaApi_postRequest(productoData, function(inv){
-        var selectIn = "<select class='custom-select' id='inputDown1'>" 
+        var selectIn = "<select class='select' id='inputDown1'>" 
         var i = 1;
         for(b in inv.resp){
             var v = inv.resp[b];
@@ -2470,7 +2541,7 @@ function erpsil_editarMovimientoInventarioWindow(data) {
  
  
         calaApi_postRequest(usuarioData, function(usu){
-            var selectUsu = "<select class='custom-select' id='inputDown2'>" 
+            var selectUsu = "<select class='select' id='inputDown2'>" 
             var i = 1;
             for(a in usu.resp){
             var x = usu.resp[a];
@@ -2483,52 +2554,62 @@ function erpsil_editarMovimientoInventarioWindow(data) {
  
             var editarMovimientoInventarioWindow = ""
         
-            +        "<div class='container centrarDivTxt'>"
-            +        "<h2 class='tituloTablas'>Movimiento de Inventario</h2>"
-            +        "<label class='col-sm-3 control-label'>ID Movimiento de Inventario</label>"
-            +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' value = '"+ data.id_movInv +"' placeholder='Razón' required='required' id='inputIdMov' disabled>"
-            +        "</div>"
+            +   "<div class='container centrarDivTxt'>"
+            +       "<h2 class='tituloTablas'>Movimiento de Inventario</h2>"
+            +       "<form action='' method='post'>"
+            +           "<div class='form-horizontal'>"
+            
+            +               "<label class='form'>ID Movimiento de Inventario</label>"
+            +               "<div class='col-sm'>"
+            +                       "<input type='text' value = '"+ data.id_movInv +"' placeholder='ID' required='required' id='inputIdMov' disabled>"
+            +               "</div>"
 
-            +        "<label class='col-sm-3 control-label'>ID Usuario</label>"
-            +        "<div class='col-sm'>"
-            +           selectUsu
-            +        "</div>"
-            +        "<label class='col-sm-3 control-label'>ID Producto</label>"
-            +        "<div class='form-group'>"
-            +            selectIn
-            +        "</div>"
-            +        "<label class='col-sm-3 control-label'>Fecha</label>"
-            +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' value = '"+ data.fecha + "'p laceholder='Descripción' required='required' id='inputStamp'>"
-            +        "</div>"
+            +               "<label class='form'>ID Usuario</label>"
+            +               "<div class='col-sm'>"
+            +                       selectUsu
+            +               "</div>"
 
-            +        "<label class='col-sm-3 control-label'>Razón</label>"
-            +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' value = '"+ data.razon +"' placeholder='Razón' required='required' onkeyup = erpsil_validacionTxt('inputRazon'," + 1 +") id='inputRazon'>"
-            +        "</div>"
-            +        "<label class='col-sm-3 control-label'>Descripción</label>"
-            +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' value = '"+ data.descripcion + "'p laceholder='Descripcion' required='required' id='inputDescripcion'>"
-            +        "</div>"
-            +        "<label class='col-sm-3 control-label'>Costo</label>"
-            +        "<div class='col-sm'>"
-            +           " <input type='text' class='form-control' value = '"+ data.costo+ "' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
-            +        "</div>"
-            +           " <div class='col-sm centrarDivTxt'>"
-            +            "<div onClick='erpsil_guardarEditarMovimientoInventario()' class='agregar-BtnVerde'>Agregar</div>"
-            +            "<div onClick='erpsil_listarMovimientoInventario()' class='volver-BtnVerde'>Volver</div>"         
-            +         "</div>"
-            +   " </div>"
+            +               "<label class='form'>ID Producto</label>"
+            +               "<div class='col-sm'>"
+            +                       selectIn
+            +               "</div>"
+            
+            +               "<label class='form'>Fecha</label>"
+            +               "<div class='col-sm'>"
+            +                       "<input type='date' class='date' value = '"+ data.fecha + "' placeholder='Descripción' required='required' id='inputStamp'>"
+            +               "</div>"
+
+            +               "<label class='form'>Razón</label>"
+            +               "<div class='col-sm'>"
+            +                       "<input type='text' value = '"+ data.razon +"' placeholder='Razón' required='required' onkeyup = erpsil_validacionTxt('inputRazon'," + 1 +") id='inputRazon'>"
+            +               "</div>"
+            
+            +               "<label class='form'>Descripción</label>"
+            +               "<div class='col-sm'>"
+            +                       "<input type='text' value = '"+ data.descripcion + "'placeholder='Descripción' required='required' id='inputDescripcion'>"
+            +               "</div>"
+            
+            +               "<label class='form'>Costo</label>"
+            +               "<div class='col-sm'>"
+            +                       "<input type='text' value = '"+ data.costo+ "' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
+            +               "</div>"
+            
+            +               "<div class='col-sm centrarDivTxt'>"
+            +                       "<div onClick='erpsil_guardarEditarMovimientoInventario()' class='agregar-BtnVerde'>Agregar</div>"
+            +                       "<div onClick='erpsil_listarMovimientoInventario()' class='regresar-BtnVerde'>Regresar</div>"         
+            +               "</div>"
+            +           "</div>"                 
+            +       "</form>"
+            +   "</div>"
                              
             erpsil_setContent(editarMovimientoInventarioWindow);
         }, function(){
             erpsil_modalMalo();
-            console.log("error");
+            console.log("Error!");
         });
     }, function(){
         erpsil_modalMalo();
-        console.log("error");
+        console.log("Error!");
     });
 }
  
@@ -2608,7 +2689,7 @@ function erpsil_eliminarMovimientoInventario(id){
 }
 
 /*********************************************************/
-/*               Gestion del tipo cliente                */
+/*               Gestion del Tipo Cliente                */
 /*********************************************************/
 
 function erpsil_listarTipoCliente(){
@@ -2622,9 +2703,10 @@ function erpsil_listarTipoCliente(){
  
         var MostrarTipoClienteWindow = ""
 
-        +      "<div  class='table-responsive'>"
-        +         "<table id='TipoCliente' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Tipo de Cliente</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Tipo de Cliente</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='TipoCliente' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Nombre</th>"
@@ -2633,7 +2715,9 @@ function erpsil_listarTipoCliente(){
         +                "<th>Días de Crédito</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-        +            "</tr>";
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -2676,29 +2760,36 @@ function erpsil_agregarTipoClienteWindow() {
     erpsil_CleanChart();
     var agregarTipoClienteWindow = ""
 
-    +    "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Agregar Tipo de Cliente</h2>"
-    +        "<label class='col-sm-3 control-label'>Nombre</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' id='inputNombre'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Descripción</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='password' class='form-control' placeholder='Descripción' required='required' id='inputDescripcion'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Ganancias</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Ganancia Global' required='required' onkeyup = erpsil_validacionTxt('inputGanancia'," + 2 +") id='inputGanancia'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Días de Crédito</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Días de Crédito' required='required' onkeyup = erpsil_validacionTxt('inputCredito'," + 2 +") id='inputDiasCredito'>"
-    +        "</div>"
-    +        "<div class='col-sm centrarDivTxt'>"
-    +            "<div onClick='erpsil_agregarTipoCliente()' class='agregar-BtnVerde'>Agregar</div>"
-    +            "<div onClick='erpsil_listarTipoCliente()' class='volver-BtnVerde'>Volver</div>"
-    +        "</div>"
-    +    " </div>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Agregar Tipo de Cliente</h2>"
+    +       "<div class='form-horizontal'>" 
+    
+    +           "<label class='form'>Nombre</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Nombre' required='required' id='inputNombre'>"
+    +           "</div>"
+
+    +           "<label class='form'>Descripción</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Descripción' required='required' id='inputDescripcion'>"
+    +           "</div>"
+
+    +           "<label class='form'>Ganancias</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Ganancia Global' required='required' onkeyup = erpsil_validacionTxt('inputGanancia'," + 2 +") id='inputGanancia'>"
+    +           "</div>"
+
+    +           "<label class='form'>Días de Crédito</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Días de Crédito' required='required' onkeyup = erpsil_validacionTxt('inputCredito'," + 2 +") id='inputDiasCredito'>"
+    +           "</div>"
+
+    +           "<div class='col-sm centrarDivTxt'>"
+    +                   "<div onClick='erpsil_agregarTipoCliente()' class='agregar-BtnVerde'>Agregar</div>"
+    +                   "<div onClick='erpsil_listarTipoCliente()' class='regresar-BtnVerde'>Regresar</div>"
+    +           "</div>"
+    +       "</div>"
+    +   "</div>";
                        
     erpsil_setContent(agregarTipoClienteWindow);
 }
@@ -2747,7 +2838,7 @@ function erpsil_eliminarTipoCliente(id) {
         //erpsil_listarTipoCliente();
     }, function(){
         erpsil_modalMalo();
-        console.log("Tipo de Cliente no Eliminado");
+        console.log("Tipo de Cliente No Eliminado");
     });
     
 }
@@ -2755,38 +2846,45 @@ function erpsil_eliminarTipoCliente(id) {
 function erpsil_editarTipoClienteWindow(data) {
     erpsil_CleanChart();
     var editartipoClienteWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Editar Tipo de Cliente</h2>"
-    +       "<form class='form-horizontal' action='' method='post'>"
-    +              "<label class='col-sm-3 control-label'>ID</label>"
-    +              "<div class='col-sm'>"
-    +                   "<input type='text' id='inputId_tipoCliente' value='" + data.id_tipoCliente + "' class='form-control' placeholder='ID' disabled>"
-    +             "</div>"
-    +           "<label class='col-sm-3 control-label'>Nombre</label>"
-    +           "<div class='col-sm'>"
-    +                "<input type='text' id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Editar Tipo de Cliente</h2>"
+    +       "<form action='' method='post'>"
+    +           "<div class='form-horizontal'>"
+
+    +               "<label class='form'>ID Cliente</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputId_tipoCliente' value='" + data.id_tipoCliente + "' placeholder='ID Cliente' disabled>"
+    +               "</div>"
+
+    +               "<label class='form'>Nombre</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputNombre' value='" + data.nombre + "' placeholder='Nombre' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Descripción</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' placeholder='Descripción' required>"
+    +               "</div>"
+               
+    +               "<label class='form'>Ganancia Global</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputGanancia_global'," + 2 +") id='inputGanancia_global' value='" + data.ganancia_global + "' placeholder='Ganancia global' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Días de Crédito</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputGanancia_global'," + 2 +") id='inputGanancia_global' value='" + data.dias_credito + "' placeholder='Días de Crédito' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div onclick='erpsil_guardarEditarTipoCliente()' class='guardar-BtnVerde' >Guardar</div>"
+    +                       "<div onclick='erpsil_listarTipoCliente()' class='cancelar-BtnVerde'>Cancelar</div>"
+    +               "</div>"
     +           "</div>"
-    +           "<label class='col-sm-3 control-label'>Descripción</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='form-control' placeholder='Descripción' required>"
-    +           "</div>"
-    +       "<label class='col-sm-3 control-label'>Ganancia Global</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputGanancia_global'," + 2 +") id='inputGanancia_global' value='" + data.ganancia_global + "' class='form-control' placeholder='Ganancia global' required>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Días de Crédito</label>"
-    +        "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputGanancia_global'," + 2 +") id='inputGanancia_global' value='" + data.dias_credito + "' class='form-control' placeholder='Días de Crédito' required>"
-    +        "</div>"
-    +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-    +           " <div class='col-sm centrarDivTxt'>"
-    +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarTipoCliente()' >Guardar</div>"
-    +                "<div onclick='erpsil_listarTipoCliente()' class='btn btn-sm btn-danger'>Cancelar</div>"
-    +           "</div>"
-    +         "</form>"
-    +        "</div>"
-    +       "</div>"
-    +       "</div>"
+    +       "</form>"
+    +   "</div>"
+
     erpsil_setContent(editartipoClienteWindow);
 }
 
@@ -2801,7 +2899,7 @@ function erpsil_editarTipoCliente(id){
         erpsil_editarTipoClienteWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
-        console.log("Tipo cliente no editado");
+        console.log("Tipo de Cliente No Editado");
     });
 }
 
@@ -2839,33 +2937,38 @@ function erpsil_guardarEditarTipoCliente() {
 }
 
 /*********************************************************/
-/*                  Gestion activos                      */
+/*                  Gestión Activos                      */
 /*********************************************************/
 
 function erpsil_agregarActivosWindow() {
     erpsil_CleanChart();
     var agregarActivosWindow = ""
 
-    +    "<div class='container centrarDivTxt'>"
-    +        "<label class='col-sm-3 control-label'>Nombre</label>"
-    +        "<h2 class='tituloTablas'>Agregr Activo</h2>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Cantidad</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' class='form-control' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +")id='inputCantidad'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Vencimiento</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Vencimiento' required='required' id='inputVecimiento'>"
-    +        "</div>"
-    +        "<div class='col-sm'>"
-    +            "<div onClick='erpsil_agregarActivos()' class='agregar-BtnVerde'>Agregar</div>"
-    +            "<div onClick='erpsil_listarActivos()' class='volver-BtnVerde'>Volver</div>"
-    +        "</div>"
-    +   " </div>"
-                       
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Agregar Activo</h2>"
+    +       "<div class='form-horizontal'>"
+    
+    +           "<label class='form'>Nombre</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre'>"
+    +           "</div>"
+
+    +           "<label class='form'>Cantidad</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +")id='inputCantidad'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Vencimiento</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Vencimiento' required='required' id='inputVecimiento'>"
+    +           "</div>"
+    
+    +           "<div class='col-sm'>"
+    +                   "<div onClick='erpsil_agregarActivos()' class='agregar-BtnVerde'>Agregar</div>"
+    +                   "<div onClick='erpsil_listarActivos()' class='regresar-BtnVerde'>Regresar</div>"
+    +           "</div>"
+    +       "</div>"
+    +   "</div>"                                    
     erpsil_setContent(agregarActivosWindow);
 }
 
@@ -2911,9 +3014,10 @@ function erpsil_listarActivos(){
  
         var MostrarActivosWindow = ""
 
-        +      "<div  class='table-responsive'>"
-        +         "<table id='Activos' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Activos</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Activos</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='Activos' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Nombre</th>"
@@ -2921,7 +3025,9 @@ function erpsil_listarActivos(){
         +                "<th>Vencimiento</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-        +            "</tr>";
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -2981,34 +3087,40 @@ function erpsil_editarActivosWindow(data) {
     erpsil_CleanChart();
 
     var editarActivosWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Editar Activo</h2>"
-    +       "<form class='form-horizontal' action='' method='post'>"
-    +              "<label class='col-sm-3 control-label'>ID</label>"
-    +              "<div class='col-sm'>"
-    +                   "<input type='text' id='inputId_activos' value='" + data.id_activo + "' class='form-control' placeholder='ID' disabled>"
-    +             "</div>"
-    +           "<label class='col-sm-3 control-label'>Nombre</label>"
-    +           "<div class='col-sm'>"
-    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Editar Activo</h2>"
+    +       "<form action='' method='post'>"
+    +           "<div class='form-horizontal'>"
+
+    +               "<label class='form'>ID de Activo</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputId_activos' value='" + data.id_activo + "' placeholder='ID de Activo' disabled>"
+    +               "</div>"
+
+    +               "<label class='form'>Nombre</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre' value='" + data.nombre + "' placeholder='Nombre' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Cantidad</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad' value='" + data.cantidad + "' placeholder='Cantidad' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Ganancia Global</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputVencimiento' value='" + data.vence + "' placeholder='Vencimiento' required>"
+    +               "</div>"
+
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div onclick='erpsil_guardarEditarActivos()' class='guardar-BtnVerde' >Guardar</div>"
+    +                       "<div onclick='erpsil_listarActivos()' class='cancelar-BtnVerde'>Cancelar</div>"
+    +               "</div>"
+
     +           "</div>"
-    +           "<label class='col-sm-3 control-label'>Cantidad</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad' value='" + data.cantidad + "' class='form-control' placeholder='Cantidad' required>"
-    +           "</div>"
-    +       "<label class='col-sm-3 control-label'>Ganancia Global</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputVencimiento' value='" + data.vence + "' class='form-control' placeholder='Vencimiento' required>"
-    +        "</div>"
-    +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-    +           " <div class='col-sm centrarDivTxt'>"
-    +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarActivos()' >Guardar</div>"
-    +               "<div class='btn btn-sm btn-danger' onclick='erpsil_listarActivos()'>Cancelar</div>"
-    +           "</div>"
-    +         "</form>"
-    +        "</div>"
-    +       "</div>"
-    +       "</div>"
+    +       "</form>"
+    +   "</div>"
 
     erpsil_setContent(editarActivosWindow);
 }
@@ -3067,22 +3179,24 @@ function erpsil_agregarRolWindow(){
     erpsil_CleanChart();
     var agregarRolesWindow = ""
 
-    +    "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Agregar Rol</h2>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Agregar Rol</h2>"
+    +       "<div class='form-horizontal'>"
+    
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Nombre de Rol' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre'>"
+    +           "</div>"
 
-    +        "<div class='fcol-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre de Rol' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre'>"
-    +        "</div>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Descripción' required='required' id='inputDescripcion'>"
+    +           "</div>"
 
-    +        "<div class='col-sm'>"
-    +            "<input type='text' class='form-control' placeholder='Descripción' required='required' id='inputDescripcion'>"
-    +        "</div>"
-
-    +        "<div class='col-sm centrarDivTxt'>"
-    +            "<div onClick='erpsil_agregarRoles()' class='agregar-BtnVerde'>Agregar</div>"
-    +            "<div onClick='erpsil_listarRoles()' class='volver-BtnVerde'>Volver</div>"
-    +        "</div>"
-    +   " </div>"
+    +           "<div class='col-sm centrarDivTxt'>"
+    +                   "<div onClick='erpsil_agregarRoles()' class='agregar-BtnVerde'>Agregar</div>"
+    +                   "<div onClick='erpsil_listarRoles()' class='regresar-BtnVerde'>Regresar</div>"
+    +           "</div>"
+    +       "</div>"
+    +   "</div>"
                        
     erpsil_setContent(agregarRolesWindow);
 }
@@ -3122,16 +3236,19 @@ function erpsil_listarRoles(){
     
     calaApi_postRequest(RolesData, function (d) {
         var MostrarRolesWindow = ""
-        +      "<div  class='table-responsive'>"
-        +         "<table id='Roles' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Roles</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Roles</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='Roles' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Nombre</th>"
         +                "<th>Descripción</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-        +            "</tr>";
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -3187,30 +3304,34 @@ function erpsil_eliminarRoles(id) {
 function erpsil_editarRolesWindow(data) {
     erpsil_CleanChart();
     var editarRolesWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Editar Roles</h2>"
-+       "<form class='form-horizontal' action='' method='post'>"
-+              "<label class='col-sm-3 control-label'>ID Rol</label>"
-+              "<div class='col-sm'>"
-+                   "<input type='text' id='inputId_roles' value='" + data.id_roles + "' class='form-control' placeholder='ID Rol' disabled>"
-+             "</div>"
-+           "<label class='col-sm-3 control-label'>Nombre</label>"
-+           "<div class='col-sm'>"
-+                "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
-+           "</div>"
-+           "<label class='col-sm-3 control-label'>Cantidad</label>"
-+           "<div class='col-sm'>"
-+               "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='form-control' placeholder='Cantidad' required>"
-+           "</div>"
-+            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-+           " <div class='col-sm centrarDivTxt'>"
-+               "<div onclick='erpsil_guardarEditarRoles()' class='btn btn-sm btn-primary' >Guardar</div>"
-+               "<div onclick='erpsil_listarRoles()' class='volver-BtnVerde' >Volver</div>"
-+           "</div>"
-+         "</form>"
-+        "</div>"
-+       "</div>"
-+       "</div>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Editar Roles</h2>"
+    +       "<form action='' method='post'>"
+    +           "<div class='form-horizontal'>"    
+    
+    +               "<label class='form'>ID Rol</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputId_roles' value='" + data.id_roles + "' placeholder='ID Rol' disabled>"
+    +               "</div>"
+    
+    +               "<label class='form'>Nombre</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre' value='" + data.nombre + "' placeholder='Nombre' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Cantidad</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' placeholder='Cantidad' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div onclick='erpsil_guardarEditarRoles()' class='guardar-BtnVerde' >Guardar</div>"
+    +                       "<div onclick='erpsil_listarRoles()' class='regresar-BtnVerde'>Regresar</div>"
+    +               "</div>"
+    +           "<div>"
+    +       "</form>"
+    +   "</div>"
 
     erpsil_setContent(editarRolesWindow);
 }
@@ -3261,7 +3382,7 @@ function erpsil_guardarEditarRoles() {
 }
 
 /*********************************************************/
-/*                 Gestion inventario                    */
+/*                 Gestión Inventario                    */
 /*********************************************************/
 
 function erpsil_listarInventario(){
@@ -3275,23 +3396,28 @@ function erpsil_listarInventario(){
         
         var MostrarInventarioWindow = ""
 
-        +      "<div  class='table-responsive'>"
-        +         "<table id='Inventarios' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Inventario</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Inventario</h2><br><br>"
+        +   "<div  class='form-horizontal-6'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='Inventarios' class='table table-striped table-hover'>"
         +            "<tr>"
-        +                "<th>ID</th>"
+        +                "<th class='font-size:11px'>ID</th>"
         +                "<th>Cantidad</th>"
         +                "<th>Unidad (nombre)</th>"
         +                "<th>Código Interno</th>"
         +                "<th>Código Barras</th>"
         +                "<th>Categoría</th>"
-        +                "<th>Cantidad mínima</th>"
+        +                "<th>Cantidad Mínima</th>"
         +                "<th>Descripción</th>"
         +                "<th>I.V.</th>"
         +                "<th>Ganancia Mínima</th>"
         +                "<th>Costo</th>"
         +                "<th>Estatus</th>"
+        +                "<th>Editar</th>"
+        +                "<th>Eliminar</th>"
         +            "</tr>";
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
             for(x in d.resp){
                 var a = d.resp[x];
@@ -3337,57 +3463,71 @@ function erpsil_pdfInventarios(){
 function erpsil_agregarInventarioWindow(){
     erpsil_CleanChart();
     var agregarInventarioWindow = ""
-    +    "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Agregar Inventario</h2>"
-    +        "<label class='col-sm-3 control-label'>Cantidad</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Nombre</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputUnidad'," + 2 +") id='inputUnidad'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Código Interno</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Código Interno' required='required' onkeyup = erpsil_validacionTxt('inputCodigoInter'," + 2 +") id='inputCodigoInter'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Código de Barras</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='password' class='form-control' placeholder='Código de Barras' required='required' onkeyup = erpsil_validacionTxt('inputCodigoBarras'," + 2 +") id='inputCodigoBarra'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Categoría</label>"
-    +        "<div class='col-sm'>"
-    +           "<input type='text' class='form-control' placeholder='Categoría' required='required' id='inputCategoria'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Cantidad Mínima</label>"
-    +        "<div class='col-sm'>"
-    +           "<input type='text' class='form-control' placeholder='Cantidad Mínima' required='required' onkeyup = erpsil_validacionTxt('inputCantidadMin'," + 2 +") id='inputCantidadMin'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Descripción</label>"
-    +        "<div class='form-group'>"
-    +           " <input type='text' class='form-control' placeholder='Descripción' required='required' onkeyup = erpsil_validacionTxt('inputDescripcion'," + 2 +") id='inputDescripcion'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Impuesto de Venta</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Impuesto Venta' required='required' onkeyup = erpsil_validacionTxt('inputImpuestoVenta'," + 2 +") id='inputImpuestoVenta'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Ganacia Mínima</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Ganacia Mínima' required='required' onkeyup = erpsil_validacionTxt('inputGananciaMin'," + 2 +") id='inputGananciaMin'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Costo</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Estatus</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Estatus' required='required' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +") id='inputStatus'>"
-    +        "</div>"
-    +        "<div class='col-sm centrarDivTxt'>"
-    +            "<div onclick='erpsil_agregarInventario()' class='agregar-BtnVerde'>Agregar</div>"
-    +            "<div onclick='erpsil_listarInventario()' class='volver-BtnVerde'>Volver</div>"
-    +        "</div>"
-    +   " </div>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Agregar Inventario</h2>"
+    +       "<div class='form-horizontal'>"
+    
+    +           "<label class='form'>Cantidad</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
+    +           "</div>"
+
+    +           "<label class='form'>Nombre</label>"
+    +           "<div class='col-sm'>"
+    +               "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputUnidad'," + 2 +") id='inputUnidad'>"
+    +           "</div>"
+
+    +           "<label class='form'>Código Interno</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Código Interno' required='required' onkeyup = erpsil_validacionTxt('inputCodigoInter'," + 2 +") id='inputCodigoInter'>"
+    +           "</div>"
+
+    +           "<label class='form'>Código de Barras</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Código de Barras' required='required' onkeyup = erpsil_validacionTxt('inputCodigoBarras'," + 2 +") id='inputCodigoBarra'>"
+    +           "</div>"
+
+    +           "<label class='form'>Categoría</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Categoría' required='required' id='inputCategoria'>"
+    +           "</div>"
+
+    +           "<label class='form'>Cantidad Mínima</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Cantidad Mínima' required='required' onkeyup = erpsil_validacionTxt('inputCantidadMin'," + 2 +") id='inputCantidadMin'>"
+    +           "</div>"
+
+    +           "<label class='form'>Descripción</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Descripción' required='required' onkeyup = erpsil_validacionTxt('inputDescripcion'," + 2 +") id='inputDescripcion'>"
+    +           "</div>"
+
+    +           "<label class='form'>Impuesto de Venta</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Impuesto Venta' required='required' onkeyup = erpsil_validacionTxt('inputImpuestoVenta'," + 2 +") id='inputImpuestoVenta'>"
+    +           "</div>"
+
+    +           "<label class='form'>Ganacia Mínima</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Ganacia Mínima' required='required' onkeyup = erpsil_validacionTxt('inputGananciaMin'," + 2 +") id='inputGananciaMin'>"
+    +           "</div>"
+
+    +           "<label class='form'>Costo</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Estatus</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Estatus' required='required' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +") id='inputStatus'>"
+    +           "</div>"
+
+    +           "<div class='col-sm centrarDivTxt'>"
+    +                   "<div onclick='erpsil_agregarInventario()' class='agregar-BtnVerde'>Agregar</div>"
+    +                   "<div onclick='erpsil_listarInventario()' class='regresar-BtnVerde'>Regresar</div>"
+    +           "</div>"
+    +       "</div>"
+    +   "</div>"
                        
     erpsil_setContent(agregarInventarioWindow);
 }
@@ -3462,80 +3602,80 @@ function erpsil_eliminarInventario(id){
 function erpsil_editarInventarioWindow(data) {
     erpsil_CleanChart();
     var editarInventarioWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Editar Inventario</h2>"
-    +       "<form class='form-horizontal' action='' method='post'>"
-    +              "<label class='col-sm-3 control-label'>ID</label>"
-    +              "<div class='col-sm'>"
-    +                   "<input type='text' id='id_inventario' value='" +data.id_inventario+ "' class='form-control' placeholder='ID Inventario' disabled>"
-    +             "</div>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Editar Inventario</h2>"
+    +       "<form action='' method='post'>"
+    +           "<div class='form-horizontal'>"
 
-    +           "<label class='col-sm-3 control-label'>Cantidad</label>"
-    +           "<div class='col-sm'>"
-    +                "<input type='text' onkeyup = erpsil_validacionTxt('cantidad'," + 2 +") id='cantidad' value='" +data.cantidad+ "' class='form-control' placeholder='Cantidad' required>"
+    +               "<label class='form'>ID de Inventario</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='id_inventario' value='" +data.id_inventario+ "' placeholder='ID Inventario' disabled>"
+    +               "</div>"
+
+    +               "<label class='form'>Cantidad</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('cantidad'," + 2 +") id='cantidad' value='" +data.cantidad+ "' placeholder='Cantidad' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Unidad</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('unidad'," + 1 +") id='unidad'  value='" +data.unidad+ "' placeholder='Unidad' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Código Interno</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('codigo_interno'," + 2 +") id='codigo_interno' value='" +data.codigo_interno+ "' placeholder='Código Interno' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Código de Barras</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('codigo_barras'," + 2 +") id='codigo_barras' value='" +data.codigo_barras+ "' placeholder='Código de Barras' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Categoría</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('categoria'," + 2 +") id='categoria' value='" +data.categoria+ "' placeholder='Categoría' required>"
+    +               "</div>"  
+
+    +               "<label class='form'>Cantidad Mínima</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('cantidad_minima'," + 2 +") id='cantidad_minima' value='" +data.cantidad_minima+ "' placeholder='Cantidad Mínima' required>"
+    +               "</div>"  
+
+    +               "<label class='form'>Descripción</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='descripcion' value='" +data.descripcion+ "' placeholder='Descripción'></input>"
+    +               "</div>"
+
+    +               "<label class='form'>Impuesto de Venta</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('impuesto_venta'," + 2 +") id='impuesto_venta' value='" +data.impuesto_venta+ "' placeholder='Impuesto de Venta' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Ganancia Mínima</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('ganancia_minima'," + 2 +") id='ganancia_minima' value='" +data.ganancia_minima+ "' placeholder='Ganancia Mínima' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Costo</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='costo' value='" +data.costo+ "' placeholder='Costo' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Estatus</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='status' value='" + data.status + "' placeholder='Estatus' required>"
+    +               "</div>"
+
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div onclick='erpsil_guardarEditarInventario()' class='guardar-BtnVerde' >Guardar Inventario</div>"
+    +                       "<div onclick='erpsil_listarInventario()' class='cancelar-BtnVerde'>Cancelar</div>"
+    +               "</div>"
     +           "</div>"
-
-    +           "<label class='col-sm-3 control-label'>Unidad</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('unidad'," + 1 +") id='unidad'  value='" +data.unidad+ "' class='form-control' placeholder='Unidad' required>"
-    +           "</div>"
-
-    +           "<label class='col-sm-3 control-label'>Código Interno</label>"
-    +            "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('codigo_interno'," + 2 +") id='codigo_interno' value='" +data.codigo_interno+ "' class='form-control' placeholder='Código Interno' required>"
-    +            "</div>"
-
-    +         "<label class='col-sm-3 control-label'>Código de Barras</label>"
-    +         "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('codigo_barras'," + 2 +") id='codigo_barras' value='" +data.codigo_barras+ "' class='form-control' placeholder='Código de Barras' required>"
-    +          "</div>"
-
-    +         "<label class='col-sm-3 control-label'>Categoría</label>"
-    +          "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('categoria'," + 2 +") id='categoria' value='" +data.categoria+ "' class='form-control' placeholder='Categoría' required>"
-    +        "</div>"  
-
-    +        "<label class='col-sm-3 control-label'>Cantidad Mínima</label>"
-    +        "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('cantidad_minima'," + 2 +") id='cantidad_minima' value='" +data.cantidad_minima+ "' class='form-control' placeholder='Cantidad Mínima' required>"
-    +        "</div>"  
-
-    +       "<label class='col-sm-3 control-label'>Descripción</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' id='descripcion' value='" +data.descripcion+ "' class='form-control' placeholder='Descripción'></input>"
-    +        "</div>"
-
-    +       "<label class='col-sm-3 control-label'>Impuesto de Venta</label>"
-    +        "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('impuesto_venta'," + 2 +") id='impuesto_venta' value='" +data.impuesto_venta+ "' class='form-control' placeholder='Impuesto de Venta' required>"
-    +        "</div>"
-
-    +        "<label class='col-sm-3 control-label'>Ganancia Mínima</label>"
-    +        "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('ganancia_minima'," + 2 +") id='ganancia_minima' value='" +data.ganancia_minima+ "' class='form-control' placeholder='Ganancia Mínima' required>"
-    +        "</div>"
-
-    +       "<label class='col-sm-3 control-label'>Costo</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' id='costo' value='" +data.costo+ "' class='form-control' placeholder='Costo' required>"
-    +        "</div>"
-
-    +       "<label class='col-sm-3 control-label'>Estatus</label>"
-    +        "<div class='col-sm'>"
-    +             "<input type='text' id='status' value='" + data.status + "' class='form-control' placeholder='Estatus' required>"
-    +        "</div>"
-
-    +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
-    +           " <div class='col-sm centrarDivTxt'>"
-    +               "<div onclick='erpsil_guardarEditarInventario()' class='btn btn-sm btn-primary' >Guardar inventario</div>"
-    +                "<div onclick='erpsil_listarInventario()' class='btn btn-sm btn-danger btn_central'>Cancelar</div>"
-    +                 "</div>"
-    +            "</form>"
-    +        "</div>"
-    +       "</div>"
-    +       "</div>"
-
-
+    +       "</form>"
+    +   "</div>"
+   
     erpsil_setContent(editarInventarioWindow);
 }
 
@@ -3606,48 +3746,57 @@ function erpsil_guardarEditarInventario(){
 }
 
 /*********************************************************/
-/*                 Gestion proveedor                     */
+/*                 Gestión Proveedor                     */
 /*********************************************************/
 
 function erpsil_agregarProveedorWindow() {
     erpsil_CleanChart();
     var agregarProveedorWindow = ""
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Agregar Proveedor</h2>"
+    +       "<div class='form-horizontal'>"
 
-    +    "<div class='container centrarDivTxt'>"
-    +        "<h2 class='text-center'>Agregar Proveedor</h2>"
-    +        "<label class='col-sm-3 control-label'>Nombre</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Primer Apellido</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApe1'," + 1 +") id='inputApe1'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Segundo Apellido</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApe2'," + 1 +") id='inputApe2'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Cédula</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Cédula' required='required' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Teléfono</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Teléfono' required='required' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Dirección</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Dirección' required='required' id='inputDireccion'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Descripción</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='password' class='form-control' placeholder='Descripción' required='required' id='inputDescripcion'>"
-    +        "</div>"
-    +        "<div class='col-sm centrarDivTxt'>"
-    +            "<div onClick='erpsil_agregarProveedor()' class='agregar-BtnVerde'>Agregar</div>"
-    +            "<div onClick='erpsil_listarProveedor()' class='volver-BtnVerde'>Volver</div>"
-    +        "</div>"
-    +   " </div>"
+    +           "<label class='form'>Nombre</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
+    +           "</div>"
+
+    +           "<label class='form'>Primer Apellido</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Primer Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApe1'," + 1 +") id='inputApe1'>"
+    +           "</div>"
+
+    +           "<label class='form'>Segundo Apellido</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Segundo Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApe2'," + 1 +") id='inputApe2'>"
+    +           "</div>"
+
+    +           "<label class='form'>Cédula</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Cédula' required='required' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula'>"
+    +           "</div>"
+
+    +           "<label class='form'>Teléfono</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Teléfono' required='required' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono'>"
+    +           "</div>"
+
+    +           "<label class='form'>Dirección</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Dirección' required='required' id='inputDireccion'>"
+    +           "</div>"
+
+    +           "<label class='form'>Descripción</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='password' placeholder='Descripción' required='required' id='inputDescripcion'>"
+    +           "</div>"
+
+    +           "<div class='col-sm centrarDivTxt'>"
+    +                   "<div onClick='erpsil_agregarProveedor()' class='agregar-BtnVerde'>Agregar</div>"
+    +                   "<div onClick='erpsil_listarProveedor()' class='regresar-BtnVerde'>Regresar</div>"
+    +           "</div>"
+    +       "</div>"
+    +   "</div>"
                        
     erpsil_setContent(agregarProveedorWindow);
 }
@@ -3701,10 +3850,10 @@ function erpsil_listarProveedor(){
     calaApi_postRequest(proveedorData, function (d) {
  
         var MostrarProveedorWindow = ""
-
-        +      "<div  class='table-responsive'>"
+        +   "<h2 class='tituloTablas'>Lista de Proveedores</h2><br><br>"
+        +   "<div class='form-horizontal-4'>"
+        +       "<div class='table-responsive'>"
         +         "<table id='Proveedor' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Proveedores</h2><br><br>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Nombre</th>"
@@ -3716,7 +3865,9 @@ function erpsil_listarProveedor(){
         +                "<th>Descripción</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-        +            "</tr>";
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -3832,106 +3983,126 @@ function erpsil_guadarEditarProveedor(){
 function erpsil_editarProveedorWindow(data) {
     erpsil_CleanChart();
     var editarProveedorWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='text-center'>Editar Proveedor</h2>"
-    +       "<form class='form-horizontal' action='' method='post'>"
-    +              "<label class='col-sm-3 control-label'>ID</label>"
-    +              "<div class='col-sm'>"
-    +                   "<input type='text' id='inputIdProveedor' value='" +data.id_proveedor+ "' class='form-control' placeholder='ID' disabled>"
-    +             "</div>"
-    +           "<label class='col-sm-3 control-label'>Nombre</label>"
-    +           "<div class='col-sm'>"
-    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre' value='" +data.nombre+ "' class='form-control' placeholder='Nombre' required>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Editar Proveedor</h2>"
+    +       "<form action='' method='post'>"
+    +           "<div class='form-horizontal'>"
+    
+    +               "<label class='form'>ID de Proveedor</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputIdProveedor' value='" +data.id_proveedor+ "' placeholder='ID de Proveedor' disabled>"
+    +               "</div>"
+
+    +               "<label class='form'>Nombre</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputNombre' value='" +data.nombre+ "' placeholder='Nombre' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Primer Apellido</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido1'," + 1 +") id='inputApellido1' value='" +data.apellido1+ "' placeholder='Primer Apellido' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Segudo Apellido</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido2'," + 1 +") id='inputApellido2' value='" +data.apellido2+ "' placeholder='Segudo Apellido' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Cédula</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula' value='" +data.cedula+ "' placeholder='Cédula' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Teléfono</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono' value='" +data.telefono+ "' placeholder='Teléfono' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Dirección</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputDireccion' value='" +data.direccion+ "' placeholder='Dirección'></input>"
+    +               "</div>"
+
+    +               "<label class='form'>Descripción</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputDescripcion' value='" +data.descripcion + "' placeholder='Descripción'></input>"
+    +               "</div>"
+
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div class='guardar-BtnVerde' onclick='erpsil_guadarEditarProveedor()'>Guardar Proveedor</div>"
+    +                       "<div class='cancelar-BtnVerde' onclick='erpsil_listarProveedor()'>Cancelar</div>"
+    +               "</div>"
     +           "</div>"
-    +           "<label class='col-sm-3 control-label'>Primer Apellido</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido1'," + 1 +") id='inputApellido1' value='" +data.apellido1+ "' class='form-control' placeholder='Primer Apellido' required>"
-    +           "</div>"
-    +       "<label class='col-sm-3 control-label'>Segudo Apellido</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido2'," + 1 +") id='inputApellido2' value='" +data.apellido2+ "' class='form-control' placeholder='Segudo Apellido' required>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Cédula</label>"
-    +        "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula' value='" +data.cedula+ "' class='form-control' placeholder='Cédula' required>"
-    +        "</div>"
-    +       "<label class='col-sm-3 control-label'>Teléfono</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono' value='" +data.telefono+ "' class='form-control' placeholder='Teléfono' required>"
-    +        "</div>"
-    +       "<label class='col-sm-3 control-label'>Dirección</label>"
-    +        "<div class='col-sm'>"
-    +            "<input id='inputDireccion' class='form-control' value='" +data.direccion+ "' placeholder='Dirección'></input>"
-    +        "</div>"
-    +       "<label class='col-sm-3 control-label'>Descripción</label>"
-    +        "<div class='col-sm'>"
-    +            "<input id='inputDescripcion' class='form-control' value='" +data.descripcion + "' placeholder='Descripción'></input>"
-    +        "</div>"
-    +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-    +           " <div class='col-sm centrarDivTxt'>"
-    +               "<div class='btn btn-sm btn-primary' onclick='erpsil_guadarEditarProveedor()'>Guardar Proveedor</div>"
-    +                "<div class='btn btn-sm btn-danger btn_central' onclick='erpsil_listarProveedor()'>Cancelar</div>"
-    +                 "</div>"
-    +            "</form>"
-    +        "</div>"
-    +       "</div>"
-    +       "</div>"
+    +       "</form>"
+    +   "</div>"
 
     erpsil_setContent(editarProveedorWindow);
 }
 
 /*********************************************************/
-/*                 Gestion cliente                       */
+/*                 Gestión Cliente                       */
 /*********************************************************/
 
 function erpsil_agregarClienteWindow() {
     erpsil_CleanChart();
-    //var loginWindow = "Aca va la ventana de login";
     var agregarClienteWindow = ""
 
-    +    "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Cliente</h2>"
-    +        "<label class='col-sm-3 control-label'>Nombre</label>"
-    +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Cédula</label>"
-    +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Cédula' required='required' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Email</label>"
-    +        "<div class='col-smp'>"
-    +           " <input type='email' class='form-control' placeholder='Email' required='required' id='inputEmail'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Dirección</label>"
-    +        "<div class='col-smp'>"
-    +            "<input type='text' class='form-control' placeholder='Dirección' required='required' id='inputDireccion'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Teléfono</label>"
-    +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Teléfono' required='required' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Descripción</label>"
-    +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Descripción' required='required' id='inputDescripcion'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Saldo Máximo</label>"
-    +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Saldo Máximo' required='required' onkeyup = erpsil_validacionTxt('inputSaldoMa'," + 2 +") id='inputSaldoMa'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Saldo</label>"
-    +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Saldo' required='required' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Tipo</label>"
-    +        "<div class='col-smp'>"
-    +           " <input type='text' class='form-control' placeholder='Tipo' required='required' id='inputTipo'>"
-    +        "</div>"
-    +        "<div class='col-sm centrarDivTxt'>"
-    +            "<div onClick='erpsil_agregarCliente()' class='agregar-BtnVerde'>Agregar</div>"
-    +            "<div onClick='erpsil_listarCliente()' class='volver-BtnVerde'>Volver</div>"
-    +        "</div>"
-    +   " </div>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Cliente</h2>"
+    +       "<div class='form-horizontal'>"
+
+    +           "<label class='form'>Nombre</label>"
+    +           "<div class='col-smp'>"
+    +                   "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Cédula</label>"
+    +           "<div class='col-smp'>"
+    +                   "<input type='text' placeholder='Cédula' required='required' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Email</label>"
+    +           "<div class='email'>"
+    +                   "<input type='email' placeholder='Email' required='required' id='inputEmail'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Dirección</label>"
+    +           "<div class='col-smp'>"
+    +                   "<input type='text' placeholder='Dirección' required='required' id='inputDireccion'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Teléfono</label>"
+    +           "<div class='col-smp'>"
+    +               "<input type='text' placeholder='Teléfono' required='required' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Descripción</label>"
+    +           "<div class='col-smp'>"
+    +                   "<input type='text' placeholder='Descripción' required='required' id='inputDescripcion'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Saldo Máximo</label>"
+    +           "<div class='col-smp'>"
+    +                   "<input type='text' placeholder='Saldo Máximo' required='required' onkeyup = erpsil_validacionTxt('inputSaldoMa'," + 2 +") id='inputSaldoMa'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Saldo</label>"
+    +           "<div class='col-smp'>"
+    +                   "<input type='text' placeholder='Saldo' required='required' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Tipo</label>"
+    +           "<div class='col-smp'>"
+    +                   "<input type='text' placeholder='Tipo' required='required' id='inputTipo'>"
+    +           "</div>"
+    
+    +           "<div class='col-sm centrarDivTxt'><br><br>"
+    +                   "<div onClick='erpsil_agregarCliente()' class='agregar-BtnVerde'>Agregar</div>"
+    +                   "<div onClick='erpsil_listarCliente()' class='regresar-BtnVerde'>Regresar</div>"
+    +           "</div>"
+    +       "</div>"
+    +   "</div>"
 
     erpsil_setContent(agregarClienteWindow);
 }
@@ -3939,61 +4110,69 @@ function erpsil_agregarClienteWindow() {
 function erpsil_editarClienteWindow(data) {
     erpsil_CleanChart();
     var editarClienteWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Editar Cliente</h2>"
-    +       "<form class='form-horizontal' action='' method='post'>"
-    +              "<label class='col-sm-3 control-label'>ID</label>"
-    +              "<div class='col-sm'>"
-    +                   "<input type='text' id='inputId_cliente' value='" + data.id_cliente + "' class='form-control' placeholder='ID' disabled>"
-    +             "</div>"
-    +           "<label class='col-sm-3 control-label'>Nombre</label>"
-    +           "<div class='col-sm'>"
-    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 2 +") id='inputNombre' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Editar Cliente</h2>"
+    +       "<form action='' method='post'>"
+    +           "<div class='form-horizontal'>"
+
+    +               "<label class='form'>ID Cliente</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputId_cliente' value='" + data.id_cliente + "' placeholder='ID Cliente' disabled>"
+    +               "</div>"
+    
+    +               "<label class='form'>Nombre</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 2 +") id='inputNombre' value='" + data.nombre + "' placeholder='Nombre' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Cédula</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula' value='" + data.cedula  + "' placeholder='Cédula' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Email</label>"
+    +               "<div class='email'>"
+    +                       "<input type='email' id='inputEmail' value='" +data.email  + "' placeholder='Email' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Dirección</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputDireccion' value='" +data.direccion  + "' placeholder='Dirección' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Teléfono</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono' value='" + data.telefono  + "' placeholder='Teléfono' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Descripción</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputDescripcion' value='" + data.descripcion  + "' placeholder='Descripción' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Saldo Máximo</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo_maximo'," + 2 +") id='inputSaldo_maximo' value='" + data.saldo_maximo  + "' placeholder='Saldo Máximo'>"
+    +               "</div>"
+
+    +               "<label class='form'>Saldo</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo' value='" + data.saldo  + "' placeholder='Saldo' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Tipo</label>"
+    +               "<div class='col-sm'>"           
+    +                       "<input type='text' id='inputTipo' value='" + data.tipo  + "' placeholder='Tipo' required>"
+    +               "</div>"    
+    
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div onclick='erpsil_guadarEditarCliente()' class='guardar-BtnVerde' >Guardar</div>"
+    +                       "<div onclick='erpsil_listarCliente()' class='cancelar-BtnVerde'>Cancelar</div>"
+    +               "</div>"
     +           "</div>"
-    +           "<label class='col-sm-3 control-label'>Cédula</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula' value='" + data.cedula  + "' class='form-control' placeholder='Cédula' required>"
-    +           "</div>"
-    +       "<label class='col-sm-3 control-label'>Email</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='email' id='inputEmail' value='" +data.email  + "' class='form-control' placeholder='Email' required>"
-    +        "</div>"
-    +       "<label class='col-sm-3 control-label'>Dirección</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputDireccion' value='" +data.direccion  + "' class='form-control' placeholder='Dirección' required>"
-    +        "</div>"
-    +       "<label class='col-sm-3 control-label'>Teléfono</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono' value='" + data.telefono  + "' class='form-control' placeholder='Teléfono' required>"
-    +        "</div>"
-    +       "<label class='col-sm-3 control-label'>Descripción</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' id='inputDescripcion' value='" + data.descripcion  + "' class='form-control' placeholder='Descripción' required>"
-    +        "</div>"
-
-    +        "<label class='col-sm-3 control-label'>Saldo Máximo</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo_maximo'," + 2 +") id='inputSaldo_maximo' value='" + data.saldo_maximo  + "' class='form-control' placeholder='Saldo Máximo'>"
-    +        "</div>"
-
-    +        "<label class='col-sm-3 control-label'>Saldo</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo' value='" + data.saldo  + "' class='form-control' placeholder='Saldo' required>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Tipo</label>"
-    +       " <div class='col-sm'>"           
-    +            "<input type='text' id='inputTipo' value='" + data.tipo  + "' class='form-control' placeholder='Tipo' required>"
-    +        "</div>"    
-    +            "<label class='col-sm-3 control-label'>&nbsp;</label>"
-    +           " <div class='col-sm centrarDivTxt'>"
-    +               "<div onclick='erpsil_guadarEditarCliente()' class='btn btn-sm btn-primary' >Guardar</div>"
-    +                "<div onclick='erpsil_listarCliente()' class='btn btn-sm btn-danger btn_central'>Cancelar</div>"
-    +                 "</div>"
-    +          "</form>"
-    +        "</div>"
-    +       "</div>"
-    +       "</div>"
-
+    +       "</form>"
+    +   "</div>"
 
     erpsil_setContent(editarClienteWindow);
 }
@@ -4051,9 +4230,10 @@ function erpsil_listarCliente() {
  
         var MostrarClienteWindow = ""
 
-        +      "<div   class='table-responsive'>"
+        +   "<h2 class='tituloTablas'>Lista de Clientes</h2><br><br>"
+        +   "<div class='form-horizontal-4'>"
+        +       "<div class='table-responsive'>"
         +         "<table id='Cliente' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Clientes</h2><br><br>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Nombre</th>"
@@ -4067,8 +4247,9 @@ function erpsil_listarCliente() {
         +                "<th>Tipo</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-
-        +            "</tr>";
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -4190,123 +4371,147 @@ function erpsil_guadarEditarCliente(){
 }
 
 /*********************************************************/
-/*                 Gestion empleado                      */
+/*                 Gestión Empleado                      */
 /*********************************************************/
 
 function erpsil_agregarEmpleadoWindow(){
     erpsil_CleanChart();
     var agregarEmpleadoWindow = ""
     
-    +    "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Agregar Empleado</h2>"
-    +        "<label class='col-sm-3 control-label'>Nombre</label>"
-    +        "<div class='form-group'>"
-    +           "<input type='text' class='form-control' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Primer Apellido</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Primer Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApellido1'," + 1 +") id='inputApellido1'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Segundo Apellido</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Segundo Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApellido2'," + 1 +") id='inputApellido2'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Teléfono</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Teléfono' required='required' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Cédula</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' class='form-control' placeholder='Cédula' required='required' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Dirección</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Dirección' required='required' id='inputDireccion'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Ingreso</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Ingreso' required='required' onkeyup = erpsil_validacionTxt('inputIngreso'," + 2 +") id='inputIngreso'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Observación</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Observación' required='required' id='inputObservacion'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Puesto</label>"
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Puesto' required='required' onkeyup = erpsil_validacionTxt('inputPuesto'," + 1 +") id='inputPuesto'>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Jornada</label>"    
-    +        "<div class='col-sm'>"
-    +           " <input type='text' class='form-control' placeholder='Jornada' required='required' onkeyup = erpsil_validacionTxt('inputJornada'," + 1 +") id='inputJornada'>"
-    +        "</div>"
-    +        "<div class='col-sm centrarDivTxt'>"
-    +        "</div>"
-    +            "<button onClick='erpsil_agregarEmpleado()' class='agregar-BtnVerde'>Agregar</button>"
-    +            "<button onClick='erpsil_listarEmpleado()' class='volver-BtnVerde'>Volver</button>"
-    +   " </div>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Agregar Empleado</h2>"
+    +       "<div class='form-horizontal'>"
     
+    +           "<label class='form'>Nombre</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Primer Apellido</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Primer Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApellido1'," + 1 +") id='inputApellido1'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Segundo Apellido</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Segundo Apellido' required='required' onkeyup = erpsil_validacionTxt('inputApellido2'," + 1 +") id='inputApellido2'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Teléfono</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Teléfono' required='required' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Cédula</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Cédula' required='required' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Dirección</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Dirección' required='required' id='inputDireccion'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Ingreso</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Ingreso' required='required' onkeyup = erpsil_validacionTxt('inputIngreso'," + 2 +") id='inputIngreso'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Observación</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Observación' required='required' id='inputObservacion'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Puesto</label>"
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Puesto' required='required' onkeyup = erpsil_validacionTxt('inputPuesto'," + 1 +") id='inputPuesto'>"
+    +           "</div>"
+    
+    +           "<label class='form'>Jornada</label>"    
+    +           "<div class='col-sm'>"
+    +                   "<input type='text' placeholder='Jornada' required='required' onkeyup = erpsil_validacionTxt('inputJornada'," + 1 +") id='inputJornada'>"
+    +           "</div>"
+    
+    +           "<div class='col-sm centrarDivTxt'>"
+    +               "<button onClick='erpsil_agregarEmpleado()' class='agregar-BtnVerde'>Agregar</button>"
+    +               "<button onClick='erpsil_listarEmpleado()' class='regresar-BtnVerde'>Regresar</button>"
+    +           "</div>"
+    +       "</div>"
+    +   "</div>"    
     erpsil_setContent(agregarEmpleadoWindow);
 }
 
 function erpsil_editarEmpleadoWindow(data) {
     erpsil_CleanChart();
     var editarEmpleadoWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Editar Empleado</h2>"
-    +       "<form class='form-horizontal' action='' method='post'>"
-    +              "<label class='col-sm-3 control-label'>ID</label>"
-    +              "<div class='col-sm'>"
-    +                   "<input type='text' id='inputId_empleado' value='" + data.id_empleado + "'  class='form-control' placeholder='ID' disabled>"
-    +             "</div>"
-    +           "<label class='col-sm-3 control-label'>Nombre</label>"
-    +           "<div class='col-sm'>"
-    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputName'," + 1 +") id='inputName' value='" + data.nombre + "' class='form-control' placeholder='Nombre' required>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Editar Empleado</h2>"
+    +       "<form action='' method='post'>"
+    +           "<div class='form-horizontal'>"
+
+    +               "<label class='form'>ID del Empleado</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputId_empleado' value='" + data.id_empleado + "'  placeholder='ID del Empleado' disabled>"
+    +               "</div>"
+    
+    +               "<label class='form'>Nombre</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputName'," + 1 +") id='inputName' value='" + data.nombre + "' placeholder='Nombre' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Primer Apellido</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido1'," + 1 +") id='inputApellido1' value='" + data.apellido1 + "' placeholder='Primer Apellido' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Segudo Apellido</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido2'," + 1 +") id='inputApellido2' value='" + data.apellido2 + "' placeholder='Segudo Apellido' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Teléfono</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono' value='" + data.telefono + "' placeholder='Teléfono' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Cédula</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula' value='" + data.cedula + "' placeholder='Cédula' required>"
+    +               "</div>"     
+    
+    +               "<label class='form'>Dirección</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputDireccion' value='" + data.direccion + "' placeholder='Dirección'></textarea>"
+    +               "</div>"
+    
+    +               "<label class='form'>Ingreso</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputIngreso'," + 2 +") id='inputIngreso' value='" + data.ingreso + "' placeholder='Ingreso' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Observaciones</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputObservacion' value='" + data.observacion + "' placeholder='Observaciones'></textarea>"
+    +               "</div>"
+    
+    +               "<label class='form'>Puesto</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputPuesto'," + 1 +") id='inputPuesto' value='" + data.puesto + "' placeholder='Puesto' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Jornada</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputJornada'," + 1 +")id='inputJornada' value='" + data.jornada + "' placeholder='Jornada' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div type='submit' onclick='erpsil_guardarEditarEmpleado()' class='guardar-BtnVerde'>Guardar</div>"
+    +                       "<div onclick='erpsil_listarEmpleado()' class='cancelar-BtnVerde'>Cancelar</div>"
+    +               "</div>"
     +           "</div>"
-    +           "<label class='col-sm-3 control-label'>Primer Apellido</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido1'," + 1 +") id='inputApellido1' value='" + data.apellido1 + "' class='form-control' placeholder='Primer Apellido' required>"
-    +           "</div>"
-    +       "<label class='col-sm-3 control-label'>Segudo Apellido</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputApellido2'," + 1 +") id='inputApellido2' value='" + data.apellido2 + "' class='form-control' placeholder='Segudo Apellido' required>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Teléfono</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputTelefono'," + 2 +") id='inputTelefono' value='" + data.telefono + "' class='form-control' placeholder='Teléfono' required>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Cédula</label>"
-    +        "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputCedula'," + 2 +") id='inputCedula' value='" + data.cedula + "' class='form-control' placeholder='Cédula' required>"
-    +        "</div>"     
-    +       "<label class='col-sm-3 control-label'>Dirección</label>"
-    +        "<div class='col-sm'>"
-    +            "<input id='inputDireccion' value='" + data.direccion + "' class='form-control' placeholder='Dirección'></textarea>"
-    +        "</div>"
-    +       "<label class='col-sm-3 control-label'>Ingreso</label>"
-    +        "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputIngreso'," + 2 +") id='inputIngreso' value='" + data.ingreso + "' class='form-control' placeholder='Ingreso' required>"
-    +        "</div>"
-    +       "<label class='col-sm-3 control-label'>Observaciones</label>"
-    +        "<div class='col-sm'>"
-    +            "<input id='inputObservacion' value='" + data.observacion + "' class='form-control' placeholder='Observaciones'></textarea>"
-    +        "</div>"
-    +       "<label class='col-sm-3 control-label'>Puesto</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputPuesto'," + 1 +") id='inputPuesto' value='" + data.puesto + "' class='form-control' placeholder='Puesto' required>"
-    +        "</div>"
-    +       "<label class='col-sm-3 control-label'>Jornada</label>"
-    +        "<div class='col-sm'>"
-    +             "<input type='text' onkeyup = erpsil_validacionTxt('inputJornada'," + 1 +")id='inputJornada' value='" + data.jornada + "' class='form-control' placeholder='Jornada' required>"
-    +        "</div>"
-    +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
-    +           " <div class='col-sm centrarDivTxt'>"
-    +               "<div type='submit' class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarEmpleado()' >Guardar</div>"
-    +                "<div class='btn btn-sm btn-danger btn_central' onclick='erpsil_listarEmpleado()'>Cancelar</div>"
-    +                 "</div>"
-    +            "</form>"
-    +        "</div>"
-    +       "</div>"
-    +       "</div>"
+    +       "</form>"
+    +   "</div>"
 
 
 erpsil_setContent(editarEmpleadoWindow);
@@ -4349,7 +4554,7 @@ function erpsil_agregarEmpleado(){
             erpsil_listarEmpleado();
         }, function (d) {
             erpsil_modalMalo();
-            console.log("empleado no agregado" + d);
+            console.log("Empleado No Agregado" + d);
         });
     } else {
         erpsil_modalMalo();
@@ -4367,9 +4572,10 @@ function erpsil_listarEmpleado() {
     calaApi_postRequest(empleadoData, function (d) {
  
         var MostrarEmpleadoWindow = ""
-        +      "<div  class='table-responsive'>"
-        +         "<table id='Empleados' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Empleados</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Empleados</h2><br><br>"
+        +   "<div  class='form-horizontal-5'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='Empleados' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Nombre</th>"
@@ -4382,7 +4588,11 @@ function erpsil_listarEmpleado() {
         +                "<th>Obseración</th>"
         +                "<th>Puesto</th>"
         +                "<th>Jornada</th>"
-        +            "</tr>";
+        +                "<th>Editar</th>"
+        +                "<th>Eliminar</th>"
+        +            "</tr>"
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -4439,7 +4649,7 @@ function erpsil_eliminarEmpleado(id){
         //erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
-        console.log("No Eliminar");
+        console.log("No Eliminar!");
     });
 }
 
@@ -4457,7 +4667,7 @@ function erpsil_editarEmpleado(id){
         erpsil_editarEmpleadoWindow(d.resp);
     }, function(){
         erpsil_modalMalo();
-        console.log("No Eliminar");
+        console.log("No Eliminar!");
     });
 }
 
@@ -4508,7 +4718,7 @@ function erpsil_guardarEditarEmpleado(){
 }
 
 /*********************************************************/
-/*           Gestion Factura                             */
+/*           Gestión Factura                             */
 /*********************************************************/
 
 function erpsil_listarFactura(){
@@ -4521,18 +4731,22 @@ function erpsil_listarFactura(){
     calaApi_postRequest(facturaData, function (d) {
  
         var facturaWindow = ""
-        +      "<div  class='table-responsive'>"
-        +         "<table id='Factura' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Facturas</h2><br><br>"
-        +            "<tr>"
-        +                "<th>ID Factura</th>"
-        +                "<th>ID cliente</th>"
-        +                "<th>Fecha</th>"
-        +                "<th>Detalle</th>"
-        +                "<th>Total</th>"
-        //+                "<th>Editar</th>"
-        //+                "<th>Eliminar</th>"
+        +   "<h2 class='tituloTablas'>Lista de Facturas</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='Factura' class='table table-striped table-hover'>"
+        +           "<tr>"
+        +               "<th>ID Factura</th>"
+        +               "<th>Nombre Cliente</th>"
+        +               "<th>Fecha</th>"
+        +               "<th>Cantidad</th>"
+        +               "<th>Detalle</th>"
+        +               "<th>Total</th>"
+     // +               "<th>Editar</th>"
+     // +               "<th>Eliminar</th>"
         +            "</tr>";
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -4545,8 +4759,8 @@ function erpsil_listarFactura(){
         +                "<td> "+ a.detalle +" </td>"
         +                "<td> "+ a.total +" </td>"
 
-        //+                "<td> <div id='editar_factura' onclick='erpsil_editarFactura(" + a.id_factura + ")' class='btn btn-warning btn-sm'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        //+                "<td> <div id='editar_factura' onclick='erpsil_editarFactura(" + a.id_factura + ")' class='editar-Btn'>Editar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -4577,7 +4791,7 @@ function erpsil_agregarFacturaWindow() {
     };
 
     calaApi_postRequest(facturaData, function(d){
-        var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
+        var selectD = "<select class='select' id='inputDrow'> ";
         var i = 1;
         for(a in d.resp){ 
             var x = d.resp[a];
@@ -4589,104 +4803,105 @@ function erpsil_agregarFacturaWindow() {
         
         var agregarFacturaWindow = ""
         
-        +    "<div id='Prueba' class='container centrarDivTxt'>"
-        +        "<h2 class='text-center' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Factura</h2>"
+        +   "<div id='Prueba' class='container centrarDivTxt'>"
+        +       "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Factura</h2>"
+        +       "<div class='form-horizontal'>"
 
-        +        "<label class='col-sm-3 control-label'>Nombre del cliente</label>"
-        +        "<div class='col-sm'>"
-        +        selectD
-        +        "</div>"
-        +        "<label class='col-sm-3 control-label'>Fecha</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='date' class='form-control' placeholder='Fecha' required='required' id='inputStamp'>"
-        +        "</div>"
+        +           "<label class='form'>Nombre del Cliente</label>"
+        +           "<div class='col-sm'>"
+        +                   selectD
+        +           "</div>"
+        
+        +           "<label class='form'>Fecha</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='date' class='date' placeholder='Fecha' required='required' id='inputStamp'>"
+        +           "</div>"
+        +       "</div>"
 
-        + "<hr />"
+        +       "<hr/>"
+        +       "<h2 class='tituloTablas'>Líneas de Detalle</h2>"
+        +       "<hr/>"
 
-        +       "<h1 class='h4 mb-0'>Líneas de Detalle</h1>"
-        +         "<hr/>"
-        +         "<div class='table-responsive'>"
-        +             "<table class='table' >"
-        +                 "<thead class='thead-dark'>"
-        +                     "<tr>"
-        +                         "<th>"
-        +                             "Producto"
-        +                         "</th>"
-        +                         "<th>Código de Referencia</th>"
-        +                         "<th>Cantidad</th>"
-        +                         "<th>Precio Unitario</th>"
-        +                         "<th>Descuento</th>"
-        +                         "<th>I.V.</th>"
-        +                         "<th>SubTotal</th>"
-        +                         "<th>Precio Total</th>"
-        +                         "<th class='text-right'>Acción</th>"
-        +                     "</tr>"
-        +                 "</thead>"
-        +                 "<tbody id='tabla'>"
-  
- 
-        +                 "</tbody>"
-        +                 "<tfoot>"
-        +                 "<td class='align-middle'></td>"
-        +                 "<td class='align-middle'></td>"
-        +                 "<td class='align-middle'></td>"
-        +                 "<td class='align-middle'></td>"
-        +                 "<td class='align-middle'></td>"
-        +                 "<td class='align-middle'></td>"
-        +                 "<td class='align-middle'></td>"
-        +                 "<td class='align-middle'></td>"
-        +                 "<td class='align-middle text-right'>"
-        +                     "<button onclick='erpsil_addRow();' class='agregar-BtnVerde' data-toggle='tooltip' data-placement='bottom' title='' data-original-title='Agregar'>"
-        +                         "<i class='material-icons md-12 align-middle'>add</i>"
-        +                     "</button>"
-        +                 "</td>"
-  
++       "<div class='form-horizontal-2'>"
+        +           "<div class='table-responsive'>"
+        +               "<table class='' >"
+        +                   "<thead class='tituloTablas'>"
+        +                       "<tr>"
+        +                           "<th>Producto</th>"
+        +                           "<th>Código de Referencia</th>"
+        +                           "<th>Cantidad</th>"
+        +                           "<th>Precio Unitario</th>"
+        +                           "<th>Descuento</th>"
+        +                           "<th>I.V.</th>"
+        +                           "<th>SubTotal</th>"
+        +                           "<th>Precio Total</th>"
+        +                           "<th>Acción</th>"
+        +                       "</tr>"
+        +                   "</thead>"
+        +                   "<tbody id='tabla'></tbody>"
+        +                   "<tfoot>"
+        +                       "<td class='form-2'></td>"
+        +                       "<td class='form-2'></td>"
+        +                       "<td class='form-2'></td>"
+        +                       "<td class='form-2'></td>"
+        +                       "<td class='form-2'></td>"
+        +                       "<td class='form-2'></td>"
+        +                       "<td class='form-2'></td>"
+        +                       "<td class='form-2'></td>"
+        +                       "<td>"
+        +                           "<button onclick='erpsil_addRow();' class='agregar-BtnVerde' data-toggle='tooltip' data-placement='bottom' title='' data-original-title='Agregar'>"
+        +                                   "Agregar"
+        +                           "</button>"
+        +                       "</td>"
         +                 "</tfoot>"
         +             "</table>"
         +         "</div>"
-
-        +        "<div class='row'>"
-        +        "<div class='col-md-6'>"
-        +            "<div class='form-group'>"
-        +                "<label for='note'>Descripcion</label>"
-        +                "<textarea readonly name='note' id='note' cols='30' rows='7' class='form-control'></textarea>"
-        +            "</div>"
-        +        "</div>"
-        +        "<div class='col-md-6'>"
-        +            "<div class='card card-body card-subtotals bg-light'>"
-        +                "<ul class='list-unstyled'>"
-        +                    "<li>"
-        +                        "<div >Cantidad de Productos</div>"
-        +                        "<div><input value='0' readonly type='text' id='cantidad' class='form-control' placeholder=''></div>"
-        +                    "</li>"                                                
-        +                    "<li>"
-        +                        "<div>Subtotal</div>"
-        +                        "<div><input value='0' readonly type='text' id='subTotal1' class='form-control'  placeholder=''></div>"
-        +                    "</li>"
-        +                    "<li>"
-        +                        "<div>Descuento Total</div>"
-        +                        "<div><input value='0' readonly type='text' id='descuenteTotal' class='form-control'  placeholder='></div>"
-        +                    "</li>"
-        +                    "<li>"
-        +                        "<div>Impuesto Total</div>"
-        +                        "<div><input value='0' readonly type='text' id='impuestoTotal' class='form-control'  placeholder='></div>"
-        +                    "</li>"
-        +                "</ul>"
-        +                "<hr />"
-        +                "<div class='d-flex align-items-center '>"
-        +                "<br />"
-        +                    "<strong>Total:   </strong>"
-        +                    "<strong><input value='0' readonly type='text' id='total' class='form-control'  placeholder='></strong>"
-        +                "</div>"
+        +       "</div>"
+        +       "<hr/>"
+        +       "<div class='row'>"
+        +           "<div class='col-md-6'>"
+        +               "<div class='form'> "
+        +                   "<label class='tituloTablas' for='note'>Descripción:    </label>"
+        +                   "<hr/>"
+        +                   "<textarea readonly name='note' id='note' cols='50' rows='10'></textarea>"
+        +               "</div>"
+        +           "</div>"
+        +           "<div class='form-horizontal-3'>"
+        +               "<div class='card card-body card-subtotals bg-light'>"
+        +                   "<ul class='list-unstyled'>"
+        +                       "<li>"
+        +                           "<div class='form' >Cantidad de Productos</div>"
+        +                           "<div><input value='0' readonly type='text' id='cantidad' placeholder=''></div>"
+        +                       "</li>"                                                
+        +                       "<li>"
+        +                           "<div class='form'>Subtotal</div>"
+        +                           "<div><input value='0' readonly type='text' id='subTotal1'  placeholder=''></div>"
+        +                       "</li>"
+        +                       "<li>"
+        +                           "<div class='form'>Descuento Total</div>"
+        +                           "<div><input value='0' readonly type='text' id='descuenteTotal'  placeholder=''></div>"
+        +                       "</li>"
+        +                       "<li>"
+        +                           "<div class='form'>Impuesto Total</div>"
+        +                           "<div><input value='0' readonly type='text' id='impuestoTotal'  placeholder='></div>"
+        +                       "</li>"
+        +                   "</ul>"
+        +                   "<hr/>"
+        +                   "<div class='d-flex align-items-center '>"
+        +                       "<hr/>"
+        +                       "<strong class='form'>Total:   </strong>"
+        +                       "<strong><input value='0' readonly type='text' id='total'  placeholder='></strong>"
+        +                   "</div>" 
         
-        +                "<div class='form-group'>"
-        +                    "<hr/>"
-        +                    "<button onclick='erpsil_agregarFactura()' class='btn btn-primary' >Generar Factura</button>"
-        +                    "<button onclick='erpsil_pdfFacturaInside()' class='btn btn-primary' >Factura</button>"
-        +                "</div>"
-        +            "</div>"
-        +        "</div>"
-        +    "</div>"
+        +                   "<div class='form'>"
+        +                       "<hr/>"
+        +                       "<button onclick='erpsil_agregarFactura()' class='generarFactura-BtnVerde'' >Generar Factura</button>"
+        +                       "<button onclick='erpsil_pdfFacturaInside()' class='factura-BtnVerde' >Factura</button>"
+        +                   "</div>"
+        +               "</div>"
+        +           "</div>"
+        +       "</div>"
+        +   "</div>"
 
         erpsil_setContent(agregarFacturaWindow);
         //Eliminar el grafico
@@ -4700,26 +4915,25 @@ function erpsil_agregarFacturaWindow() {
 function erpsil_agregarRow(){
 
 
-
-    
+  
 }
 
 function erpsil_addRow() {
     erpsil_CleanChart();
     $("#tabla").append('<tr >' +
-            '          <td class="align-middle" onfocusout="erpsil_formUpdate()">' +
-            '              <input  onchange="erpsil_formUpdate();" type="text" class="form-control" placeholder="Producto">' +
+            '          <td onfocusout="erpsil_formUpdate()">' +
+            '              <input  onchange="erpsil_formUpdate();" type="text" class="form-control" placeholder="Cámara">' +
             '          </td>' +
-            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" onchange="erpsil_formUpdate();" type="text" class="form-control"  placeholder=""></td>' +
-            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate();" type="number" class="form-control"  placeholder=""></td>' +
-            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()"  value="0" onchange="erpsil_formUpdate();" type="number" class="form-control" placeholder=""></td>' +
-            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
-            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()"  value="13" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
-            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
-            '          <td class="align-middle"><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
-            '          <td class="align-middle text-right">' +
-            '              <button onfocusout="erpsil_formUpdate()" onclick="$(this).parent().parent().remove();erpsil_formUpdate();" class="btn btn-danger btn-sm " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete">' +
-            '                  <i class="material-icons md-14 align-middle">delete</i>' +
+            '          <td ><input onfocusout="erpsil_formUpdate()" onchange="erpsil_formUpdate();" type="text" class="form-control"  placeholder=""></td>' +
+            '          <td ><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate();" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td ><input onfocusout="erpsil_formUpdate()"  value="0" onchange="erpsil_formUpdate();" type="number" class="form-control" placeholder=""></td>' +
+            '          <td ><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td ><input onfocusout="erpsil_formUpdate()"  value="13" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td ><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td ><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
+            '          <td class="text-center">' +
+            '              <button style=onfocusout="erpsil_formUpdate()" onclick="$(this).parent().parent().remove();erpsil_formUpdate();" class="borrar-BtnVerde" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Borrar">' +
+            '                  Borrar'+
             '              </button>' +
             '          </td>' +
             '      </tr>');
@@ -4752,7 +4966,7 @@ function erpsil_sumar_call(table, columna, id) {
 
 }
 
-//Esta funcion resive 3 parametros
+//Esta funcion recibe 3 parametros
 //table=tabla de donde vamos a contar
 //columna=columnas a sumar
 //id=id de html que vamos a remplazar
@@ -4776,7 +4990,6 @@ function erpsil_CalculaSubTotal(table, columna, id) {
     }
     document.getElementById("subTotal1").value = subTotal;
     //document.getElementById("subTotal1").value = subTotal1;
-
 }
 
 function erpsil_CalculaLineas(table) {
@@ -4797,7 +5010,6 @@ function erpsil_CalculaLineas(table) {
     var productos = new Array();
 
 
-    
     for (r = 0; r < cantidadLineas; r++) {
         precioTotal = (data[r][2] * parseInt(data[r][3])); // cantidad * unidad
         subTotal1 = parseInt(data[r][6]);
@@ -4882,7 +5094,7 @@ function erpsil_agregarFactura(){
             erpsil_listarFactura();
         }, function (d) {
             erpsil_modalMalo();
-            console.log("Factura no agregado");
+            console.log("Factura No Agregada");
         });
     } else {
         erpsil_modalMalo();
@@ -4916,43 +5128,49 @@ function erpsil_eliminarFactura(id){
 function erpsil_editarFacturaWindow(data) {
     erpsil_CleanChart();
     var editarFacturaWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Editar Factura</h2>"
-    +       "<form class='form-horizontal' action='' method='post'>"
-    +              "<label class='col-sm-3 control-label'>ID</label>"
-    +              "<div class='col-sm'>"
-    +                   "<input type='text' id='inputId_factura' value='" + data.id_factura + "'  class='form-control' placeholder='ID' disabled>"
-    +             "</div>"
-    +           "<label class='col-sm-3 control-label'>Cliente</label>"
-    +           "<div class='col-sm'>"
-    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputCliente'," + 2 +") id='inputCliente' value='" + data.id_cliente + "' class='form-control' placeholder='Cliente' required>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Editar Factura</h2>"
+    +       "<form action='' method='post'>"
+    +           "<div class='form-horizontal'>"
+ 
+    +               "<label class='form'>ID Factura</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputId_factura' value='" + data.id_factura + "'  placeholder='ID Factura' disabled>"
+    +               "</div>"
+ 
+    +               "<label class='form'>Cliente</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputCliente'," + 2 +") id='inputCliente' value='" + data.id_cliente + "' placeholder='Cliente' required>"
+    +               "</div>"
+ 
+    +               "<label class='form'>Descripción</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' placeholder='Descripción' required>"
+    +               "</div>"
+ 
+    +               "<label class='form'>Cantidad</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad' value='" + data.cantidad + "' placeholder='Cantidad' required>"
+    +               "</div>"
+ 
+    +               "<label class='form'>Total</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputTotal'," + 2 +") id='inputTotal' value='" + data.total + "' placeholder='Total' required>"
+    +               "</div>"
+ 
+  //+               "<label class='form'>stamp</label>"
+  //+               "<div class='col-sm'>"
+  //+                       "<input type='date' id='inputstamp' value='" + data.stamp + "' placeholder='stamp' required>"
+  //+               "</div>"
+ 
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div type='submit' onclick='erpsil_guardarEditarFactura()' class='guardar-BtnVerde' >Guardar</div>"
+    +                       "<div onclick='erpsil_listarFactura()' class='cancelar-BtnVerde'>Cancelar</div>"
+    +               "</div>"
     +           "</div>"
-    +           "<label class='col-sm-3 control-label'>Descripción</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' class='form-control' placeholder='Descripción' required>"
-    +           "</div>"
-    +       "<label class='col-sm-3 control-label'>Cantidad</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad' value='" + data.cantidad + "' class='form-control' placeholder='Cantidad' required>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Total</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputTotal'," + 2 +") id='inputTotal' value='" + data.total + "' class='form-control' placeholder='Total' required>"
-    +        "</div>"
-    //+        "<label class='col-sm-3 control-label'>stamp</label>"
-    //+        "<div class='col-sm'>"
-   // +               "<input type='date' id='inputstamp' value='" + data.stamp + "' class='form-control' placeholder='stamp' required>"
-    //+        "</div>"
-    +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
-    +           " <div class='col-sm centrarDivTxt'>"
-    +               "<div type='submit' onclick='erpsil_guardarEditarFactura()' class='btn btn-sm btn-primary' >Guardar</div>"
-    +                "<div onclick='erpsil_listarFactura()' class='btn btn-sm btn-danger btn_central'>Cancelar</div>"
-    +                 "</div>"
-    +            "</form>"
-    +        "</div>"
-    +       "</div>"
-    +       "</div>"
-
+    +       "</form>"
+    +   "</div>"
 
 erpsil_setContent(editarFacturaWindow);
 }
@@ -5025,17 +5243,20 @@ function erpsil_listarContabilidad() {
  
         var MostrarContabilidadWindow = ""
 
-        +      "<div class='table-responsive'>"
-        +         "<table id='Contabilidad' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Contabilidad</h2><br><br>"
-        +            "<tr>"
-        +                "<th>Total de Facturas</th>"
-        +                "<th>Total a Pagar</th>"
-        +                "<th>Total en Planillas </th>"
-        +                "<th>Deuda total de la empresa (Pagos + Planilla) </th>"
-        +                "<th>Total de clientes </th>"
-        +                "<th>Total de articulos vendidos </th>"
-        +            "</tr>";
+        +   "<h2 class='tituloTablas'>Contabilidad</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='Contabilidad' class='table table-striped table-hover'>"
+        +                "<tr>"
+        +                    "<th>Total de Facturas</th>"
+        +                    "<th>Total a Pagar</th>"
+        +                    "<th>Total en Planillas </th>"
+        +                    "<th>Deuda Total de la Empresa (Pagos + Planilla) </th>"
+        +                    "<th>Total de Clientes </th>"
+        +                    "<th>Total de Articulos Vendidos </th>"
+        +               "</tr>"
+        +           "</div>"
+        +       "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -5068,7 +5289,7 @@ function erpsil_pdfContabilidad(){
 }
 
 /*********************************************************/
-/*           Gestion Planilla                            */
+/*           Gestión Planilla                            */
 /*********************************************************/
 
 function erpsil_listarPlanilla() {
@@ -5082,9 +5303,10 @@ function erpsil_listarPlanilla() {
  
         var MostrarPlanillaWindow = ""
 
-        +      "<div  class='table-responsive'>"
-        +         "<table id='Planilla' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Planillas</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Planillas</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='Planilla' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Empleado</th>"
@@ -5094,7 +5316,9 @@ function erpsil_listarPlanilla() {
         +                "<th>Salario Neto</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-        +            "</tr>";
+        +            "</tr>"
+        +       "</div>"
+
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -5140,7 +5364,7 @@ function erpsil_agregarPlanillaWindow() {
 
     calaApi_postRequest(planillaData, function(d){
         erpsil_CleanChart();
-       var selectD = "<select class='custom-select dropdown' id='inputDrow'> ";
+       var selectD = "<select class='select' id='inputDrow'> ";
         var i = 1;
         for(a in d.resp){ 
             var x = d.resp[a];
@@ -5152,39 +5376,41 @@ function erpsil_agregarPlanillaWindow() {
         //console.log(d);
         var agregarPlanillaWindow = ""
 
-        +    "<div class='container centrarDivTxt'>"
-        +        "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Planilla</h2>"
+        +   "<div class='container centrarDivTxt'>"
+        +       "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Agregar Planilla</h2>"
+        +       "<div class='form-horizontal'>"
+        
+        +           "<label class='form'>ID Empleado</label>"
+        +           "<div class='col-sm'>"
+        +                   selectD
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>ID Empleado</label>"
-        +        "<div class='col-sm'>"
-        +        selectD
-        +        "</div>"
+        +           "<label class='form'>Salario Bruto</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='text' placeholder='Salario Bruto' required='required' onkeyup = erpsil_validacionTxt('inputSalaB'," + 2 +") id='inputSalaB'>"
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Salario Bruto</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Salario Bruto' required='required' onkeyup = erpsil_validacionTxt('inputSalaB'," + 2 +") id='inputSalaB'>"
-        +        "</div>"
+        +           "<label class='form'>CCSS</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='text' placeholder='CCSS' required='required' onkeyup = erpsil_validacionTxt('inputccss'," + 2 +") id='inputccss'>"
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>CCSS</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='CCSS' required='required' onkeyup = erpsil_validacionTxt('inputccss'," + 2 +") id='inputccss'>"
-        +        "</div>"
+        +           "<label class='form'>Rebaja</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='text' placeholder='Rebaja' required='required' onkeyup = erpsil_validacionTxt('inputRebaja'," + 2 +") id='inputRebaja'>"
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Rebaja</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Rebaja' required='required' onkeyup = erpsil_validacionTxt('inputRebaja'," + 2 +") id='inputRebaja'>"
-        +        "</div>"
+        +           "<label class='form'>Salario Neto</label>"
+        +           "<div class='col-sm'>"
+        +                   "<input type='text' placeholder='Salario Neto' required='required' onkeyup = erpsil_validacionTxt('inputSalaN'," + 2 +") id='inputSalaN'>"
+        +           "</div>"
 
-        +        "<label class='col-sm-3 control-label'>Salario Neto</label>"
-        +        "<div class='col-sm'>"
-        +           " <input type='text' class='form-control' placeholder='Salario Neto' required='required' onkeyup = erpsil_validacionTxt('inputSalaN'," + 2 +") id='inputSalaN'>"
-        +        "</div>"
-
-        +        "<div class='col-sm centrarDivTxt'>"
-        +            "<div onClick='erpsil_agregarPlanilla()' class='agregar-BtnVerde'>Agregar</div>"
-        +            "<div onClick='erpsil_listarPlanilla()' class='regresar-BtnVerde'>Regresar</div>"
-        +         "</div>"
-        +   " </div>"
+        +           "<div class='col-sm centrarDivTxt'>"
+        +                   "<div onClick='erpsil_agregarPlanilla()' class='agregar-BtnVerde'>Agregar</div>"
+        +                   "<div onClick='erpsil_listarPlanilla()' class='regresar-BtnVerde'>Regresar</div>"
+        +           "</div>"
+        +       "</div>"
+        +   "</div>"
         //console.log(selectD);  
         erpsil_setContent(agregarPlanillaWindow);
     }, function(){
@@ -5253,42 +5479,49 @@ function erpsil_eliminarPlanilla(id){
 function erpsil_editarPlanillaWindow(data) {
     erpsil_CleanChart();
     var editarPlanillaWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Editar ¨Planilla</h2>"
-    +       "<form class='form-horizontal' action='' method='post'>"
-    +              "<label class='col-sm-3 control-label'>ID</label>"
-    +              "<div class='col-sm'>"
-    +                   "<input type='text' id='inputId_planilla' value='" + data.id_planilla + "'  class='form-control' placeholder='ID' disabled>"
-    +             "</div>"
-    +           "<label class='col-sm-3 control-label'>Empleado</label>"
-    +           "<div class='col-sm'>"
-    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputEmpleado'," + 2 +") id='inputEmpleado' value='" + data.id_empleado + "' class='form-control' placeholder='Cliente' required>"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Editar Planilla</h2>"
+    +       "<form  action='' method='post'>"
+    +           "<div class='form-horizontal'>"
+    
+    +               "<label class='form'>ID</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='inputId_planilla' value='" + data.id_planilla + "'  placeholder='ID' disabled>"
+    +               "</div>"
+    
+    +               "<label class='form'>Empleado</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputEmpleado'," + 2 +") id='inputEmpleado' value='" + data.id_empleado + "' placeholder='Cliente' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Salario Bruto</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputSalariobruto'," + 2 +") id='inputSalariobruto' value='" + data.salario_bruto + "' placeholder='Descripcion' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>CCSS</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputCcss'," + 2 +") id='inputCcss' value='" + data.ccss + "' placeholder='Cantidad' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Rebajas</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputRebaja'," + 2 +") id='inputRebaja' value='" + data.rebaja + "' placeholder='Rebajas' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>Salario Neto</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputSalarioneto'," + 2 +") id='inputSalarioneto' value='" + data.salario_neto + "' placeholder='Salario Neto' required>"
+    +               "</div>"
+    
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div type='submit' onclick='erpsil_guardarEditarPlanilla()' class='guardar-BtnVerde' >Guardar</div>"
+    +                       "<div onclick='erpsil_listarPlanilla()' class='cancelar-BtnVerde'>Cancelar</div>"
+    +               "</div>"
     +           "</div>"
-    +           "<label class='col-sm-3 control-label'>Salario Bruto</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputSalariobruto'," + 2 +") id='inputSalariobruto' value='" + data.salario_bruto + "' class='form-control' placeholder='Descripcion' required>"
-    +           "</div>"
-    +       "<label class='col-sm-3 control-label'>CCSS</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputCcss'," + 2 +") id='inputCcss' value='" + data.ccss + "' class='form-control' placeholder='Cantidad' required>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Rebajas</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputRebaja'," + 2 +") id='inputRebaja' value='" + data.rebaja + "' class='form-control' placeholder='Rebajas' required>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Salario Neto</label>"
-    +        "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputSalarioneto'," + 2 +") id='inputSalarioneto' value='" + data.salario_neto + "' class='form-control' placeholder='Salario Neto' required>"
-    +        "</div>"
-    +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
-    +           " <div class='col-sm centrarDivTxt'>"
-    +               "<div type='submit' class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarPlanilla()' >Guardar</div>"
-    +                "<div class='btn btn-sm btn-danger btn_central' onclick='erpsil_listarPlanilla()'>Cancelar</div>"
-    +                 "</div>"
-    +            "</form>"
-    +        "</div>"
-    +       "</div>"
-    +       "</div>"
+    +       "</form>"
+    +   "</div>"
 
 
 erpsil_setContent(editarPlanillaWindow);
@@ -5372,46 +5605,47 @@ function agregarUsuario(){
 
 function erpsil_agregarUsuarioWindow(){
     erpsil_CleanChart();
-    //var loginWindow = "Aca va la ventana de login";
+
     var agregarUsuarioWindow = ""
 
-    +    "<div class='container centrarDivTxt'>"
-    +		"<h2 class='tituloTablas'>Agregar Usuario</h2><br><br>"
+    +   "<div class='container centrarDivTxt'>"
+    +   	"<h2 class='tituloTablas'>Agregar Usuario</h2><br><br>"
+    +       "<div class='form-horizontal'>"
+    +	        "<label class='form'>Nombre</label>"
+    +		    "<div class='form'>"
+    +			        "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputFullName'," + 1 +") id='inputFullName'>"
+    +		    "</div>"
 
-    +		"<label class='col-sm-3 control-label'>Nombre</label>"
-    +		"<div class='form-group'>"
-    +			"<input type='text' class='form-control2' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputFullName'," + 1 +") id='inputFullName'>"
-    +		"</div>"
+    +		    "<label class='form'>Nombre de Usuario</label>"
+    +		    "<div class='form'>"
+    +			        "<input type='text' placeholder='Nombre de Usuario' required='required' id='inputUserName'>"
+    +		    "</div>"
 
-    +		"<label class='col-sm-3 control-label'>Nombre de Usuario</label>"
-    +		"<div class='form-group'>"
-    +			"<input type='text' class='form-control2' placeholder='Nombre de Usuario' required='required' id='inputUserName'>"
-    +		"</div>"
+    +           "<label class='form'>Email</label>"
+    +		    "<div class='email'>"
+    +			        "<input type='email' placeholder='Email' required='required' id='inputUserEmail'>"
+    +		    "</div>"
 
-    +           "<label class='col-sm-3 control-label'>Email</label>"
-    +		"<div class='form-group'>"
-    +			"<input type='email' class='form-control2' placeholder='Email' required='required' id='inputUserEmail'>"
-    +		"</div>"
+    +		    "<label class='form'>Contraseña</label>"
+    + 		    "<div class='form'>"
+    +			        "<input type='password' placeholder='Contraseña' required='required' id='inputPwd'>"
+    +		    "</div>"
 
-    +		"<label class='col-sm-3 control-label'>Contraseña</label>"
-    + 		"<div class='form-group'>"
-    +			"<input type='password' class='form-control2' placeholder='Contraseña' required='required' id='inputPwd'>"
-    +		"</div>"
+    +		    "<label class='form'>Acerca de: </label>"
+    +		    "<div class='form'>"
+    +			        "<input type='text' placeholder='Acerca de: ' required='required' id='inputAbout'>"
+    +		    "</div>"
 
-    +		"<label class='col-sm-3 control-label'>Acerca de: </label>"
-    +		"<div class='form-group'>"
-    +			"<input type='text' class='form-control2' placeholder='Acerca de: ' required='required' id='inputAbout'>"
-    +		"</div>"
+    +		    "<label class='form'>País</label>"
+    +		    "<div class='form'>"
+    +			        "<input type='text' placeholder='País' required='required' onkeyup = erpsil_validacionTxt('inputUserCountry'," + 1 +") id='inputUserCountry'>"
+    +		    "</div>"
 
-    +		"<label class='col-sm-3 control-label'>País</label>"
-    +		"<div class='form-group'>"
-    +			"<input type='text' class='form-control2' placeholder='País' required='required' onkeyup = erpsil_validacionTxt('inputUserCountry'," + 1 +") id='inputUserCountry'>"
-    +		"</div>"
-
-    +        "<div class='col-sm centrarDivTxt'>"
-    +			"<div onClick='erpsil_agregarUsuario()' class='agregar-BtnVerde'>Agregar</div>"
-    +			"<div onClick='erpsil_listarUsuario()' class='volver-BtnVerde'>Volver</div>"
-    +		"</div>"
+    +           "<div class='col-sm centrarDivTxt'>"
+    +			        "<div onClick='erpsil_agregarUsuario()' class='agregar-BtnVerde'>Agregar</div>"
+    +			        "<div onClick='erpsil_listarUsuario()' class='regresar-BtnVerde'>Regresar</div>"
+    +		    "</div>"
+    +       "</div>"
     +	"</div>"
                        
     erpsil_setContent(agregarUsuarioWindow);
@@ -5419,7 +5653,7 @@ function erpsil_agregarUsuarioWindow(){
 
 function erpsil_registrarUsuarioWindow(){
     erpsil_CleanChart();
-    //var loginWindow = "Aca va la ventana de login";
+
     var agregarUsuarioWindow = ""
 
     +    "<div class='container centrarDivTxt'>"
@@ -5547,9 +5781,11 @@ function erpsil_listarUsuario(){
  
         var MostrarUsuarioWindow = ""
 
-        +      "<div  class='table-responsive'>"
-        +         "<table id='Usuario' class='table table-striped table-hover'>"
-        +         "<h2 class='tituloTablas'>Lista de Usuarios</h2><br><br>"
+        +   "<h2 class='tituloTablas'>Lista de Usuarios</h2><br><br>"
+        +   "<div  class='form-horizontal-4'>"
+        +       "<div  class='table-responsive'>"
+        +           "<table id='Usuario' class='table table-striped table-hover'>"
+
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Nombre</th>"
@@ -5560,8 +5796,9 @@ function erpsil_listarUsuario(){
         //+                "<th>Estatus</th>"
         +                "<th>Editar</th>"
         +                "<th>Eliminar</th>"
-
         +            "</tr>";
+        +       "</div>"
+        +   "</div>"
         if(d.resp != ERROR_DB_NO_RESULTS_FOUND){
                     for(x in d.resp){
                             var a = d.resp[x];
@@ -5621,39 +5858,45 @@ function erpsil_editarUsuarioWindow(data){
     erpsil_CleanChart();
 
     var editarUsuarioWindow = ""
-    +        "<div class='container centrarDivTxt'>"
-    +        "<h2 class='text-center'>Editar Usuario</h2>"
-    +       "<form class='form-horizontal' name='formUsuario' action='' method='post'>"
-    +           "<label class='col-sm-3 control-label'>Id</label>"
-    +           "<div class='col-sm'>"
-    +                "<input type='text' onkeyup = erpsil_validacionTxt('inputName'," + 1 +") id='inputId' value='" + data.idUser + "' class='form-control' disabled >"
+    +   "<div class='container centrarDivTxt'>"
+    +       "<h2 class='tituloTablas'>Editar Usuario</h2>"
+    +       "<form  name='formUsuario' action='' method='post'>"
+    +           "<div class='form-horizontal'>"
+
+    +               "<label class='form'>Id</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputName'," + 1 +") id='inputId' value='" + data.idUser + "' disabled >"
+    +               "</div>"
+
+    +               "<label class='form'>Nombre</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputName'," + 1 +") id='inputName' value='" + data.fullName + "'  required>"
+    +               "</div>"
+
+    +               "<label class='form'>Nombre de usuario</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputUserName'," + 1 +") id='inputUserName' value='" + data.userName + "'  required>"
+    +               "</div>"
+
+    +               "<label class='form'>Email</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputEmail'," + 1 +") id='inputEmail' value='" + data.email + "' required>"
+    +               "</div>"
+
+    +               "<label class='form'>Contraseña</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='checkbox'name='opcion' onclick='habilitar()'> <label class='form-3'>Marque la casilla si desea cambiar la contraseña?</label><br>"
+    +                       "<input type='text' name ='campoPwd' id='inputPwd' value='' class='oculto form-control' placeholder='Este campo está deshabilitado' disabled>"
+    +               "</div>"
+
+    +               "<label class='form'>&nbsp;</label>"
+    +               "<div class='col-sm centrarDivTxt'>"
+    +                       "<div type='submit' onclick='erpsil_guardarEditarUsuario()' class='guardar-BtnVerde' >Guardar</div>"
+    +                       "<div onclick='erpsil_listarUsuario()' class='cancelar-BtnVerde'>Cancelar</div>"
+    +               "</div>"
     +           "</div>"
-    +           "<label class='col-sm-3 control-label'>Nombre</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputName'," + 1 +") id='inputName' value='" + data.fullName + "' class='form-control'  required>"
-    +           "</div>"
-    +           "<label class='col-sm-3 control-label'>Nombre de usuario</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' onkeyup = erpsil_validacionTxt('inputUserName'," + 1 +") id='inputUserName' value='" + data.userName + "' class='form-control'  required>"
-    +           "</div>"
-    +       "<label class='col-sm-3 control-label'>Email</label>"
-    +        "<div class='col-sm'>"
-    +            "<input type='text' onkeyup = erpsil_validacionTxt('inputEmail'," + 1 +") id='inputEmail' value='" + data.email + "' class='form-control' required>"
-    +        "</div>"
-    +        "<label class='col-sm-3 control-label'>Contraseña</label>"
-    +        "<div class='col-sm'>"
-    +       "<input type='checkbox'  name='opcion' onclick='habilitar()'> Cambiar contraseña?<br>"
-    +            "<input type='text' name ='campoPwd' id='inputPwd' value='' class='oculto form-control' placeholder='Este campo está deshabilitado' disabled>"
-    +        "</div>"
-    +           "<label class='col-sm-3 control-label'>&nbsp;</label>"
-    +           " <div class='col-sm centrarDivTxt'>"
-    +               "<div type='submit' class='btn btn-sm btn-primary' onclick='erpsil_guardarEditarUsuario()' >Guardar</div>"
-    +                "<div class='btn btn-sm btn-danger btn_central' onclick='erpsil_listarUsuario()'>Cancelar</div>"
-    +                 "</div>"
-    +            "</form>"
-    +        "</div>"
-    +       "</div>"
-    +       "</div>"
+    +       "</form>"
+    +   "</div>"
     
     erpsil_setContent(editarUsuarioWindow);
 
@@ -5716,19 +5959,20 @@ function erpsilRecoveryPwdWindow(){
         //var loginWindow = "Aca va la ventana de login";
         var recoveryPwdWindow = ""
 
-        +    "<div class='container centrarDivTxt'>"
-        +		"<h2 class='tituloTablas'>Recuperar Password</h2><br><br>"
+        +   "<div class='container centrarDivTxt'>"
+        +	    "<h2 class='tituloTablas'>Recuperar Password</h2><br><br>"
+        +		"<div class='form-horizontal'>"
+        
+        +		    "<label class='form'>Nombre de Usuario</label>"
+        +		    "<div class='form'>"
+        +			        "<input type='text' placeholder='Nombre de usuario' required='required' id='inputUserName'>"
+        +		    "</div>"
     
-        +		"<label class='col-sm-3 control-label'>Nombre de usuario</label>"
-        +		"<div class='form-group'>"
-        +			"<input type='text' class='form-control2' placeholder='Nombre de usuario' required='required' id='inputUserName'>"
-        +		"</div>"
-    
-        +        "<div class='col-sm centrarDivTxt'>"
-        +			"<div onClick='erpsilRecoveryPwd()' class='agregar-BtnVerde'>Agregar</div>"
-        +			"<div onClick='erpsil_loginWindow()' class='volver-BtnVerde'>Volver</div>"
-        +		"</div>"
-        +	"</div>"
+        +           "<div class='col-sm centrarDivTxt'>"
+        +			        "<div onClick='erpsilRecoveryPwd()' class='agregar-BtnVerde'>Agregar</div>"
+        +			        "<div onClick='erpsil_loginWindow()' class='regresar-BtnVerde'>Regresar</div>"
+        +		    "</div>"
+        +	    "</div>"
                            
         erpsil_setContent(recoveryPwdWindow);
 }
@@ -5742,7 +5986,7 @@ function erpsilRecoveryPwd(){
         console.log(userUsuario);
         erpsil_loginWindow();
     }, function(){
-        console.log("no funcionó");
+        console.log("No Funcionó");
     });
 }
 
@@ -5820,6 +6064,6 @@ function erpsil_CleanChart(){
 
 function erpsil_debug(mensaje) {
     if (debug) {
-        console.log("erpsil >> " + mensaje);
+        console.log("ERPSIL >> " + mensaje);
     }
 }
