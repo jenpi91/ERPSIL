@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2018 a las 02:14:21
+-- Tiempo de generación: 25-11-2018 a las 01:46:07
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.7
 
@@ -187,7 +187,7 @@ INSERT INTO `sessions` (`idSession`, `idUser`, `sessionKey`, `ip`, `lastAccess`)
 (35, 142, 'OGp0b050eUZzQWVkZjJ6OGg2RHpOZz09Ojp8lDPUDHRRwpwccpBfVlNJ', '::1', 1540178070),
 (79, 143, 'RVhtcUdkZS8vL2JBaXNSZ3doOGFhdz09OjoTAbwQuAXkNNHLJoBdnqxf', '::1', 1540181105),
 (96, 144, 'Uk1od3B2K0hXYnY0STYyY2sxaTJoUT09Ojo2icYw22EmQ3FpbUupqrXx', '::1', 1540181271),
-(104, 141, 'WHBDZC81bG05UDFrOElJNUZsZTNBdz09OjoekXvvjpFtgBNtAypJVAP9', '::1', 1542919666);
+(106, 141, 'L0hhZ1FndDdqNzhaVGFNdDY3RWZQQT09Ojpu00Lnb5Uio8SIJ85uFJRq', '::1', 1543106697);
 
 -- --------------------------------------------------------
 
@@ -207,6 +207,16 @@ CREATE TABLE `suma_contabilidad` (
 --
 CREATE TABLE `suma_facturas` (
 `facturas` decimal(65,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `suma_inventario`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `suma_inventario` (
+`stock` double
 );
 
 -- --------------------------------------------------------
@@ -322,22 +332,34 @@ CREATE TABLE `tbl_contabilidad` (
   `total_planilla` int(10) NOT NULL,
   `total` int(11) NOT NULL,
   `total_cliente` int(100) NOT NULL,
-  `total_articulos_vendidos` int(100) NOT NULL
+  `total_articulos_vendidos` int(100) NOT NULL,
+  `total_articulos_disponibles` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbl_contabilidad`
 --
 
-INSERT INTO `tbl_contabilidad` (`id_contabilidad`, `total_factura`, `total_pagar`, `total_planilla`, `total`, `total_cliente`, `total_articulos_vendidos`) VALUES
-(1, 0, 4, 5, 0, 0, 0),
-(2, 4, 0, 5, 0, 0, 0),
-(41, 10000, 1368, 3500, 0, 0, 0),
-(42, 10000, 1368, 3500, 0, 0, 0),
-(43, 10000, 1368, 3500, 0, 0, 0),
-(44, 10000, 1368, 3500, 0, 0, 0),
-(45, 10000, 1368, 3500, 59490, 0, 0),
-(46, 10000, 1368, 3500, 14868, 0, 0);
+INSERT INTO `tbl_contabilidad` (`id_contabilidad`, `total_factura`, `total_pagar`, `total_planilla`, `total`, `total_cliente`, `total_articulos_vendidos`, `total_articulos_disponibles`) VALUES
+(1, 0, 4, 5, 0, 0, 0, 0),
+(2, 4, 0, 5, 0, 0, 0, 0),
+(41, 10000, 1368, 3500, 0, 0, 0, 0),
+(42, 10000, 1368, 3500, 0, 0, 0, 0),
+(43, 10000, 1368, 3500, 0, 0, 0, 0),
+(44, 10000, 1368, 3500, 0, 0, 0, 0),
+(45, 10000, 1368, 3500, 59490, 0, 0, 0),
+(46, 10000, 1368, 3500, 14868, 0, 0, 0),
+(47, 10000, 1368, 3500, 4868, 5, 2, 0),
+(48, 10000, 1368, 3500, 4868, 5, 2, 0),
+(49, 10000, 1368, 3500, 4868, 5, 2, 0),
+(50, 10000, 1368, 3500, 4868, 5, 2, 0),
+(51, 10000, 1368, 7800, 9168, 5, 2, 0),
+(52, 10000, 1368, 7800, 9168, 5, 2, 0),
+(53, 10000, 1368, 7800, 9168, 5, 2, 17),
+(54, 10000, 1368, 7800, 9168, 5, 2, 17),
+(55, 10000, 1368, 7800, 9168, 5, 2, 17),
+(56, 10000, 1368, 7800, 9168, 5, 2, 17),
+(57, 10000, 1368, 7800, 9168, 5, 2, 17);
 
 -- --------------------------------------------------------
 
@@ -596,7 +618,8 @@ CREATE TABLE `tbl_planilla` (
 --
 
 INSERT INTO `tbl_planilla` (`id_planilla`, `id_empleado`, `salario_bruto`, `ccss`, `rebaja`, `salario_neto`) VALUES
-(1, 1, 5000, '420', 100, 3500);
+(1, 1, 5000, '420', 100, 3500),
+(2, 6, 5000, '600', 100, 4300);
 
 -- --------------------------------------------------------
 
@@ -711,7 +734,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUser`, `fullName`, `userName`, `email`, `about`, `country`, `status`, `timestamp`, `lastAccess`, `pwd`, `avatar`, `settings`) VALUES
-(141, 'Daniel', 'ol', 'algo@aa.com', 'abc', 'cr', '1', 1534828112, 1542919666, 'VkZFeE0zSnliM0ZZVkhwMlZHNWhNRGd5ZFdVdk4wODBjSEZ5YlZwS1dYVXlkRXBxWjBFeVVITnZRVFozVEdzNU9FaERRMWxsUkd0a1RreEpSRFYyUTBWUFlUbDBhRWwxVFRGb2VqSmhSbFZwT0ZoVVZYYzlQVG82cjd3YmpaOU1ETXlCZnE3cWswdm5zUT09', '0', ''),
+(141, 'Daniel', 'ol', 'algo@aa.com', 'abc', 'cr', '1', 1534828112, 1543106697, 'VkZFeE0zSnliM0ZZVkhwMlZHNWhNRGd5ZFdVdk4wODBjSEZ5YlZwS1dYVXlkRXBxWjBFeVVITnZRVFozVEdzNU9FaERRMWxsUkd0a1RreEpSRFYyUTBWUFlUbDBhRWwxVFRGb2VqSmhSbFZwT0ZoVVZYYzlQVG82cjd3YmpaOU1ETXlCZnE3cWswdm5zUT09', '0', ''),
 (142, 'qwe', 'eqweq', 'qweqwe', 'qwee', 'qwe', '1', 1540178070, 1540178070, 'T0RrdmFWUm1jR0o0VkdwUVFYa3pUR2xxTDBod1J6RkRZVFF5V0RRek1VNHhLeTlUUWs5WE0wd3pZWHBTVEM5NE1uUkhRblZKT1hKQ1VVMWpSVFp5YUVWQk5VcExPVEUwZWxFM1JVNXJkaTlsTkM5dFNYYzlQVG82N1F6M3BscldiOG5LL2paZW1rZnNjUT09', '0', ''),
 (143, 'w', 'rt', 'rt', 'rt', 'rt', '1', 1540181104, 1540181105, 'T0dKUVpFSnFWbFZIWW1vNVpVVnVaM0JEVGpsdloyMWxibEZ0YlU1WmJHSnpNRVZ2ZEVkak9XWjRVRWxMZFVKS1V6aDRNVEJxVUd0bGFIZEdUVWxZUmxCdFRXUjZZVGhxY0RRdlYySTFkR3BwY3pSU00xRTlQVG82Z1Q2Z2NocStuSnNBNEdXS24ydG5FQT09', '0', ''),
 (144, 'kk', 'kk', 'kk', 'kk', 'kk', '1', 1540181269, 1540181271, 'UkRsQ2QwUmxOVVZZTkU1NFlYSnhaWHBzTWtFcmJGRlplbFF4YlRWbWFEZHZSMUp3YjFaR1lVbG1WVzB4TmpCUmFXVnhZelJ0YjJKbmNXVktkbkpoVEZFd1RFVTVRMFp4WjB0M1dtaFlOak5xWXpWdFRFRTlQVG82ck82YWlFK3AwNWNHYWhETmtvZVZvQT09', '0', '');
@@ -760,6 +783,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `suma_facturas`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `suma_facturas`  AS  select sum(`tbl_factura`.`total`) AS `facturas` from `tbl_factura` ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `suma_inventario`
+--
+DROP TABLE IF EXISTS `suma_inventario`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `suma_inventario`  AS  select sum(`tbl_inventario`.`cantidad`) AS `stock` from `tbl_inventario` ;
 
 -- --------------------------------------------------------
 
@@ -969,7 +1001,7 @@ ALTER TABLE `lestatz_domains`
 -- AUTO_INCREMENT de la tabla `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_activo`
@@ -993,7 +1025,7 @@ ALTER TABLE `tbl_clientetickets`
 -- AUTO_INCREMENT de la tabla `tbl_contabilidad`
 --
 ALTER TABLE `tbl_contabilidad`
-  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_cuentaspagar`
@@ -1053,7 +1085,7 @@ ALTER TABLE `tbl_permisosrol`
 -- AUTO_INCREMENT de la tabla `tbl_planilla`
 --
 ALTER TABLE `tbl_planilla`
-  MODIFY `id_planilla` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_planilla` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_proveedor`

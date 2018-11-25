@@ -5253,6 +5253,7 @@ function erpsil_listarContabilidad() {
         +                    "<th>Total en Planillas </th>"
         +                    "<th>Deuda Total de la Empresa (Pagos + Planilla) </th>"
         +                    "<th>Total de Clientes </th>"
+        +                    "<th>Total de Articulos Disponibles </th>"
         +                    "<th>Total de Articulos Vendidos </th>"
         +               "</tr>"
         +           "</div>"
@@ -5268,6 +5269,7 @@ function erpsil_listarContabilidad() {
         +                "<td> "+ a.total_planilla+" </td>"
         +                "<td> "+ a.total+" </td>"
         +                "<td> "+ a.total_cliente +" </td>"
+        +                "<td> "+ a.total_articulos_disponibles+" </td>"
         +                "<td> "+ a.total_articulos_vendidos +" </td>"
         +            "</tr>"      
                 }
