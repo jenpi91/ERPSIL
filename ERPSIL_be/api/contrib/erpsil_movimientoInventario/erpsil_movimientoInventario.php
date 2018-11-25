@@ -8,7 +8,7 @@ function mostrarMovimientoInventario(){
 function agregarMovimientoInventario(){
    $id_usuario = params_get("id_usuario");
    $id_producto = params_get("id_producto");
-   $fecha = time();
+   $fecha = params_get("fecha");
    $razon = params_get("razon");
    $descripcion = params_get("descripcion");
    $costo = params_get("costo");

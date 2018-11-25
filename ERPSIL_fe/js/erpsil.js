@@ -118,7 +118,8 @@ function erpsil_login(){
 }
 
 function erpsil_loginWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     
     var loginWindow = ""
     +    "<div class='login'>"
@@ -158,41 +159,41 @@ function erpsil_setMenu() {
     +   "</div>"
     +   "<div class='back_menu'>"
     +       "<ul class='acorh'>"
-    +           "<li><a style='color:#fff;' onClick='dashboard()'>Dashboard</a></li>"
-    +           "<li><a style='color:#fff;'>RRHH</a>"
+    +           "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='dashboard()'>Dashboard</a></li>"
+    +           "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;'>RRHH</a>"
     +               "<ul>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarCliente()'>Clientes</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarProveedor()'>Proveedor</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarEmpleado()'>Empleado</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarCliente()'>Clientes</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarProveedor()'>Proveedor</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarEmpleado()'>Empleado</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarTipoCliente()'>Tipo Cliente</a></li>"
   //+                   "<li><a style='color:#fff;' onClick='erpsil_listarClientesTickets()'>Tickets</a></li>"
     +               "</ul>"
     +           "</li>"
-    +           "<li><a style='color:#fff;'>Inventario</a>"
+    +           "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;'>Inventario</a>"
     +               "<ul>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarInventario()'>Inventario</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarPedido()'>Pedido</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarActivos()'>Activos</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarMovimientoInventario()'>Movimiento del Inventario</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarHistorialPrecio()'>Historial de Precios</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarInventario()'>Inventario</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarPedido()'>Pedido</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarActivos()'>Activos</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarMovimientoInventario()'>Movimiento del Inventario</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarHistorialPrecio()'>Historial de Precios</a></li>"
     +               "</ul>"
     +           "</li>"
-    +           "<li><a style='color:#fff;'>Contabilidad</a>"
+    +           "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;'>Contabilidad</a>"
     +               "<ul>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarContabilidad()'>Lista de Contabilidad</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarCuentasPagar()'>Cuentas por Pagar</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarPagos()'>Pagos</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarPlanilla()'>Planilla</a></li>"
-    +                   "<li><a style='color:#fff;' onClick='erpsil_listarFactura()'>Factura</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarContabilidad()'>Lista de Contabilidad</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarCuentasPagar()'>Cuentas por Pagar</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarPagos()'>Pagos</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarPlanilla()'>Planilla</a></li>"
+    +                   "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarFactura()'>Factura</a></li>"
     +               "</ul>"
     +           "</li>"
-    +           "<li><a style='color:#fff;'>Sistema</a>"
+    +           "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;'>Sistema</a>"
     +                   "<ul>"
-    +                       "<li><a style='color:#fff;' onClick='erpsil_listarUsuario()'>Usuarios</a></li>"
-    +                       "<li><a style='color:#fff;' onClick='erpsil_listarRoles()'>Roles</a></li>"
+    +                       "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarUsuario()'>Usuarios</a></li>"
+    +                       "<li style='color:#fff; cursor: pointer;'><a style='color:#fff;' onClick='erpsil_listarRoles()'>Roles</a></li>"
     +                   "</ul>"
     +           "</li>"
-    +           "<li><a style='color:#fff;' onClick='erpsil_logout()'>Salir</a></li>"
+    +           "<li><a style='color:#fff; cursor: pointer;' onClick='erpsil_logout()'>Salir</a></li>"
     +       "</ul>"
     +       "</div>"
     +    "</div>";
@@ -223,39 +224,56 @@ function dashboard(){
         contab_pagar = x.total_pagar;
         contab_planilla = x.total_planilla;
         contab_total = x.total;
+        contab_cliente = x.total_cliente;
+        contab_artVendi = x.total_articulos_vendidos;
+        contab_artDisp = x.total_articulos_disponibles;
 
     }
-        
         var dash = ""
         +   "<div>"
         +       "<div class='cont_Dash'>"
     
         +           "<div class='t_factura' style='margin-right: 10px';>"
-        +               "<div class='block_fact'>Total de facturas</div>"
+        +               "<div class='block_fact'>Total facturas</div>"
         +               "<div class='fact_num'>"+contab_fact+"</div>"
         +           "</div>"
     
         +           "<div class='t_pagar' style='margin-right: 10px';>"
         +               "<div class= 'block_pagar'>Total a pagar</div>"
-        +               "<div class='fact_pag'>"+contab_pagar+"</div>"
+        +               "<div class='pagar_num_'>"+contab_pagar+"</div>"
         +           "</div>"
     
         +           "<div class='t_planilla' style='margin-right: 10px';>"
         +               "<div class= 'block_plantilla'>Total a planilla</div>"
-        +               "<div class='fact_pag'>"+contab_planilla+"</div>"
+        +               "<div class='plan_num'>"+contab_planilla+"</div>"
         +           "</div>"
     
-        +           "<div class='t_cantidad' style='margin-left: 10px';>"
-        +               "<div class='block_cantidad'>Cantidad total</div>"
-        +               "<div class='fact_cant'>"+contab_total+"</div>"
+        +           "<div class='t_cantidad' style='margin-right: 10px';>"
+        +               "<div class= 'block_cantidad'>Total</div>"
+        +               "<div class='plan_num'>"+contab_total+"</div>"
+        +           "</div>"
+    
+        +           "<div class='t_cliente' style='margin-right: 10px';>"
+        +               "<div class= 'block_cliente'>Clientes</div>"
+        +               "<div class='client_num'>"+contab_cliente+"</div>"
+        +           "</div>"
+    
+        +           "<div class='t_art_vend' style='margin-right: 10px';>"
+        +               "<div class= 'block_art_vend'>Art. vendidos</div>"
+        +               "<div class='art_vend_num'>"+contab_artVendi+"</div>"
+        +           "</div>"
+    
+        +           "<div class='t_art_stock' style='margin-left: 10px';>"
+        +               "<div class='block_art_stock'>Art. stock</div>"
+        +               "<div class='art_stock_num'>"+contab_artDisp+"</div>"
         +           "</div>"
     
         +       "</div>"
         +   "</div>";
-    
-                         
+        
         erpsil_setContent(dash);
-        pie(contab_fact,contab_pagar,contab_planilla,contab_total);
+        pie_bar(contab_fact,contab_pagar,contab_planilla,contab_total, contab_cliente, contab_artVendi,contab_artDisp);
+        
     }, function(){
         console.log("Error!");
         erpsil_modalMalo();
@@ -267,25 +285,22 @@ function dashboard(){
 });
 }
 
-function pie(a,b,c,d){
-    var ctx = document.getElementById("myChart").getContext('2d');
+function pie_bar(a,b,c,d,e,f,g){
+
+    var ctx = document.getElementById("myChartPie").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ["Total a factura", "Total a pagar", "Total Planilla", "Total"],
+            labels: ["Total a factura", "Total ganancias"],
             datasets: [{
-                label: 'ERPSIL',
-                data: [a, b, c, d],
+                label: 'Ganancias',
+                data: [a, d],
                 backgroundColor: [
                     'rgba(95, 183, 96, 0.2)',
-                    'rgba(52, 117, 176, 0.2)',
-                    'rgba(238, 172, 87, 0.2)',
                     'rgba(215, 84, 82, 0.2)'
                 ],
                 borderColor: [
                     'rgba(95, 183, 96, 1)',
-                    'rgba(52, 117, 176, 1)',
-                    'rgba(238, 172, 87, 1)',
                     'rgba(215, 84, 82, 1)'
                 ],
                 borderWidth: 1
@@ -301,6 +316,42 @@ function pie(a,b,c,d){
             }
         }
     });
+
+
+/*               Bar                 */
+
+var ctx = document.getElementById("myChartBar").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Artículos vendidos", "Artículos en stock"],
+        datasets: [{
+            label: 'Artículos',
+            data: [f,g],
+            backgroundColor: [
+                'rgba(72, 158, 126, 0.2)',
+                'rgba(150, 144, 112, 0.2)'
+            ],
+            borderColor: [
+                'rgba(72, 158, 126, 1)',
+                'rgba(150, 144, 112, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+
+
+
 }
 
 /*********************************************************/
@@ -423,7 +474,8 @@ function erpsil_logout(){
 /*********************************************************/
 
 function erpsil_listarPedido(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var pedidoData = {
         w:"erpsil_pedido",
         r:"mostrar_pedido"
@@ -488,7 +540,8 @@ function erpsil_pdfPedidos(){
 }
 
 function erpsil_agregarPedidoWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var pedidoData = {
         w: "erpsil_cliente",
         r: "mostrar_cliente"
@@ -621,7 +674,8 @@ function erpsil_eliminarPedido(id){
 }
 
 function erpsil_editarPedidoWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var editarClienteTicketsWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Editar Pedidos</h2>"
@@ -737,7 +791,8 @@ function erpsil_guadarEditarPedido(){
 /*********************************************************/
 
 function erpsil_listarClientesTickets(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var ClientesTicketsData = {
         w:"erpsil_clientesTickets",
         r:"mostrar_clientesTickets"
@@ -797,7 +852,8 @@ function erpsil_pdfClientesTickets(){
 }
 
 function erpsil_agregarClientesTicketsWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var clienteticketsData = {
         w: "erpsil_cliente",
         r: "mostrar_cliente"
@@ -892,7 +948,8 @@ function erpsil_agregarClientesTickets(){
 }
 
 function erpsil_editarClienteTicketsWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var editarClienteTicketsWindow = ""
     +        "<div class='container centrarDivTxt'>"
     +        "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Editar Ticket del Cliente</h2>"
@@ -1005,7 +1062,8 @@ function erpsil_eliminarClienteTicket(id){
 /*********************************************************/
 
 function erpsil_listarPermisoRol(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var permisoRolData = {
         w: "erpsil_permisosRol",
         r: "mostrar_permisosRol"
@@ -1054,11 +1112,12 @@ function erpsil_listarPermisoRol(){
 
 function erpsil_pdfPermisosRol(){
     /*console.log("debug");*/
-        PdfDescargar('PermisosRol','Reportes');
+    PdfDescargar('PermisosRol','Reportes');
 }
 
 function erpsil_agregarPermisoRolWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var permisoRolData = {
         w: "erpsil_roles",
         r: "mostrar_roles"
@@ -1135,7 +1194,8 @@ function erpsil_agregarPermisoRol(){
 }
 
 function erpsil_editarPermisoRolWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var editarPermisoRolWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas' style = 'margin-bottom: 40px; margin-top: 40px;'>Editar Permisos de Rol</h2>"
@@ -1292,7 +1352,8 @@ function erpsil_listarCuentasPagar(){
 */
 
 function erpsil_listarCuentasPagar(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var cuentasPagarData = {
         w: "erpsil_cuentasPagar",
         r: "mostrar_cuentasPagar"
@@ -1360,7 +1421,8 @@ function erpsil_pdfCuentasPorPagar(){
 }
 
 function erpsil_agregarCuentasPagarWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var  proveedorData = {
         w: "erpsil_proveedor",
         r: "mostrar_proveedor"
@@ -1471,7 +1533,8 @@ function erpsil_agregarCuentasPagar(){
 }
  
 function erpsil_editarCuentasPagarWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var  proveedorData = {
         w: "erpsil_proveedor",
         r: "mostrar_proveedor"
@@ -1629,7 +1692,8 @@ function erpsil_eliminarCuentasPagar(id){
 /*********************************************************/
  
 function erpsil_listarHistorialPrecio(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var historialPreciosData = {
         w: "erpsil_historialPrecios",
         r: "mostrar_historialPrecios"
@@ -1802,7 +1866,8 @@ function erpsil_agregarHistorialPrecio(){
 }
 
 function erpsil_editarHistorialPrecioWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
  
     var historialPrecioData = {
         w: "erpsil_inventario",
@@ -1966,7 +2031,8 @@ function erpsil_guardarEditarHistorialPago(){
 /*********************************************************/
  
 function erpsil_listarPagos(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var pagosData = {
         w: "erpsil_pagos",
         r: "mostrar_pagos"
@@ -2028,7 +2094,8 @@ function erpsil_pdfPagos(){
 }
  
 function erpsil_agregarPagosWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var cuentasPagarData = {
         w: "erpsil_cuentasPagar",
         r: "mostrar_cuentasPagar"
@@ -2182,7 +2249,8 @@ function erpsil_editarPagos(id){
 }
 
 function erpsil_editarPagosWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var cuentasPagarData = {
         w: "erpsil_cuentasPagar",
         r: "mostrar_cuentasPagar"
@@ -2325,7 +2393,8 @@ function erpsil_guardarEditarPago(){
 /*********************************************************/
 
 function erpsil_listarMovimientoInventario(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var movimientoInventarioData = {
         w: "erpsil_movimientoInventario",
         r: "mostrar_movimientoInventario"
@@ -2386,7 +2455,8 @@ function erpsil_pdfMovimientosInventario(){
 }
 
 function erpsil_agregarMovimientoInventarioWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var productoData = {
         w: "erpsil_inventario",
         r: "mostrar_inventario"
@@ -2443,6 +2513,11 @@ function erpsil_agregarMovimientoInventarioWindow() {
             +                   "<input type='text'  placeholder='Descripción' required='required' id='inputDescripcion'>"
             +           "</div>"
             
+            +           "<label class='form'>Fecha</label>"
+            +           "<div class='col-sm'>"
+            +                   "<input type='date' class='date' placeholder='Descripción' required='required' id='inputFecha'>"
+            +           "</div>"
+            
             +           "<label class='form'>Costo</label>"
             +           "<div class='col-sm'>"
             +                   "<input type='text' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
@@ -2480,9 +2555,10 @@ function erpsil_agregarMovimientoInventario(){
     var id_producto = id;
     var razon = $("#inputRazon").val();
     var descripcion = $("#inputDescripcion").val();
+    var fecha = $("#inputFecha").val();
     var costo = $("#inputCosto").val();
  
-    if(id_usuario != "" && id_producto != "" && razon != "" && descripcion != "" && costo != ""){
+    if(id_usuario != "" && id_producto != "" && razon != "" && fecha != "" && descripcion != "" && costo != ""){
  
         var movimientoInventario = {
             w: "erpsil_movimientoInventario",
@@ -2490,6 +2566,7 @@ function erpsil_agregarMovimientoInventario(){
             id_usuario:id_usuario,
             id_producto:id_producto,
             razon:razon,
+            fecha:fecha,
             descripcion:descripcion,
             costo:costo
         }
@@ -2683,7 +2760,8 @@ function erpsil_eliminarMovimientoInventario(id){
 /*********************************************************/
 
 function erpsil_listarTipoCliente(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var tipoClienteData = {
         w: "erpsil_tipoCliente",
         r: "mostrar_tipoCliente"
@@ -2731,8 +2809,7 @@ function erpsil_listarTipoCliente(){
         +      "</div>";
 
         erpsil_setContent(MostrarTipoClienteWindow);
-        //Eliminar el grafico
-        erpsil_CleanChart();
+
     }, function (d) {
         erpsil_modalMalo();
         console.log(d);
@@ -2745,7 +2822,8 @@ function erpsil_pdfTipoCliente(){
 }
 
 function erpsil_agregarTipoClienteWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var agregarTipoClienteWindow = ""
 
     +   "<div class='container centrarDivTxt'>"
@@ -2832,7 +2910,8 @@ function erpsil_eliminarTipoCliente(id) {
 }
 
 function erpsil_editarTipoClienteWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var editartipoClienteWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas'>Editar Tipo de Cliente</h2>"
@@ -2929,7 +3008,8 @@ function erpsil_guardarEditarTipoCliente() {
 /*********************************************************/
 
 function erpsil_agregarActivosWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var agregarActivosWindow = ""
 
     +   "<div class='container centrarDivTxt'>"
@@ -2992,7 +3072,8 @@ function erpsil_agregarActivos(){
 
 function erpsil_listarActivos(){
 
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var ActivosData = {
         w: "erpsil_activos",
         r: "mostrar_Activos"
@@ -3070,7 +3151,8 @@ function erpsil_eliminarActivos(id) {
 }
 
 function erpsil_editarActivosWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
 
     var editarActivosWindow = ""
     +   "<div class='container centrarDivTxt'>"
@@ -3162,7 +3244,8 @@ function erpsil_guardarEditarActivos() {
 /*********************************************************/
 
 function erpsil_agregarRolWindow(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var agregarRolesWindow = ""
 
     +   "<div class='container centrarDivTxt'>"
@@ -3214,7 +3297,8 @@ function erpsil_agregarRoles(){
 }
 
 function erpsil_listarRoles(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var RolesData = {
         w: "erpsil_roles",
         r: "mostrar_roles"
@@ -3262,6 +3346,7 @@ function erpsil_listarRoles(){
         console.log(d);
     });
 }
+
 function erpsil_pdfRoles(){
     /*console.log("debug");*/
     PdfDescargar('Roles','Reporte de Roles');
@@ -3286,7 +3371,8 @@ function erpsil_eliminarRoles(id) {
 }
 
 function erpsil_editarRolesWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var editarRolesWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas'>Editar Roles</h2>"
@@ -3370,7 +3456,8 @@ function erpsil_guardarEditarRoles() {
 /*********************************************************/
 
 function erpsil_listarInventario(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();    
     var inventarioData = {
         w: "erpsil_inventario",
         r: "mostrar_inventario"
@@ -3445,8 +3532,9 @@ function erpsil_pdfInventarios(){
 }
 
 function erpsil_agregarInventarioWindow(){
-    erpsil_CleanChart();
-    var agregarInventarioWindow = ""
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
+        var agregarInventarioWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas'>Agregar Inventario</h2>"
     +       "<div class='form-horizontal'>"
@@ -3584,7 +3672,9 @@ function erpsil_eliminarInventario(id){
 }
 
 function erpsil_editarInventarioWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
+    
     var editarInventarioWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas'>Editar Inventario</h2>"
@@ -3734,7 +3824,8 @@ function erpsil_guardarEditarInventario(){
 /*********************************************************/
 
 function erpsil_agregarProveedorWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var agregarProveedorWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas'>Agregar Proveedor</h2>"
@@ -3825,7 +3916,8 @@ function erpsil_agregarProveedor(){
 }
 
 function erpsil_listarProveedor(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var proveedorData = {
         w: "erpsil_proveedor",
         r: "mostrar_proveedor"
@@ -3963,7 +4055,8 @@ function erpsil_guadarEditarProveedor(){
 }
 
 function erpsil_editarProveedorWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();    
     var editarProveedorWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas'>Editar Proveedor</h2>"
@@ -4027,7 +4120,9 @@ function erpsil_editarProveedorWindow(data) {
 /*********************************************************/
 
 function erpsil_agregarClienteWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();    
+    
     var agregarClienteWindow = ""
 
     +   "<div class='container centrarDivTxt'>"
@@ -4090,7 +4185,8 @@ function erpsil_agregarClienteWindow() {
 }
 
 function erpsil_editarClienteWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var editarClienteWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas'>Editar Cliente</h2>"
@@ -4202,7 +4298,8 @@ function erpsil_agregarCliente(){
 }
 
 function erpsil_listarCliente() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var clienteData = {
         w: "erpsil_cliente",
         r: "mostrar_cliente"
@@ -4355,7 +4452,8 @@ function erpsil_guadarEditarCliente(){
 /*********************************************************/
 
 function erpsil_agregarEmpleadoWindow(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var agregarEmpleadoWindow = ""
     
     +   "<div class='container centrarDivTxt'>"
@@ -4422,7 +4520,8 @@ function erpsil_agregarEmpleadoWindow(){
 }
 
 function erpsil_editarEmpleadoWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var editarEmpleadoWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas'>Editar Empleado</h2>"
@@ -4543,7 +4642,8 @@ function erpsil_agregarEmpleado(){
 }
 
 function erpsil_listarEmpleado() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var empleadoData = {
         w: "erpsil_empleado",
         r: "mostrar_empleado"
@@ -4702,7 +4802,8 @@ function erpsil_guardarEditarEmpleado(){
 /*********************************************************/
 
 function erpsil_listarFactura(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var facturaData = {
         w:"erpsil_factura",
         r:"mostrar_factura"
@@ -4760,7 +4861,8 @@ function erpsil_pdfFactura(){
 }
 
 function erpsil_agregarFacturaWindow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var facturaData = {
         w: "erpsil_cliente",
         r: "mostrar_cliente"
@@ -4881,8 +4983,6 @@ function erpsil_agregarFacturaWindow() {
         + "</div>"
 
         erpsil_setContent(agregarFacturaWindow);
-        //Eliminar el grafico
-        erpsil_CleanChart();
     }, function(){
         erpsil_modalMalo();
         console.log("Error!");
@@ -4974,10 +5074,9 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     }
 }
 
-
-
 function erpsil_addRow() {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     $("#tabla").append('<tr >' +
             '          <td onfocusout="erpsil_formUpdate()">' +
             '              <input  onchange="erpsil_formUpdate();" type="text" class="form-control" placeholder="Producto">' +
@@ -5264,13 +5363,15 @@ function erpsil_datosFac(producto,codRef,cantidad,presUni,desc,impuesto,subtotal
                        
    erpsil_setContent(hacerFacWindow);
     
-
 }
+
 function erpsil_pdfPostFactura(){
     //console.log("debug");
     PdfDescargar('Fact',"Factura");
 }
+
 ////////////////////////////////Fin de Factura PDF////////////////////////////////////////////////
+
 function erpsil_formUpdate() {
     erpsil_sumar_call('tabla', 0, 'producto');
     erpsil_sumar_call('tabla', 2, 'cantidad');
@@ -5363,12 +5464,12 @@ function erpsil_eliminarFactura(id){
     
 }
 
-
 /*********************************************************/
 /*           Gestion Contabilidad                        */
 /*********************************************************/
 function erpsil_listarContabilidad() { 
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var contabilidadData = {
         w: "erpsil_contabilidad",
         r: "mostrar_contabilidad"
@@ -5429,8 +5530,8 @@ function erpsil_pdfContabilidad(){
 /*********************************************************/
 
 function erpsil_listarPlanilla() {
-    erpsil_CleanChart();
-    var planillaData = {
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();    var planillaData = {
         w: "erpsil_planilla",
         r: "mostrar_planilla"
     };
@@ -5490,6 +5591,8 @@ function erpsil_pdfPlanilla(){
 }
 
 function erpsil_agregarPlanillaWindow() {
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
 
     var planillaData = {
         w: "erpsil_empleado",
@@ -5497,13 +5600,12 @@ function erpsil_agregarPlanillaWindow() {
     };
 
     calaApi_postRequest(planillaData, function(d){
-        erpsil_CleanChart();
        var selectD = "<select class='select' id='inputDrow'> ";
         var i = 1;
         for(a in d.resp){ 
             var x = d.resp[a];
-            selectD += "<option>" + i + " - Nombre de Empleado: " + x.nombre + " - id = (" + x.id_empleado + ")</option>";
-            i++;
+            selectD += "<option> " + x.nombre + "</option>";
+            //i++;
         }
         selectD += "</select>";
 
@@ -5545,7 +5647,7 @@ function erpsil_agregarPlanillaWindow() {
         +           "</div>"
         +       "</div>"
         +   "</div>"
-        //console.log(selectD);  
+        console.log(selectD);  
         erpsil_setContent(agregarPlanillaWindow);
     }, function(){
         console.log("Error!");
@@ -5556,8 +5658,8 @@ function erpsil_agregarPlanillaWindow() {
 function erpsil_agregarPlanilla(){
 
     var d = $("#inputDrow");
-    var id = d[0].value;
-    id = id.split("(")[1].split(")")[0];
+    //var id = d[0].value;
+    id = d;
 
     var idEmpleado = id;
     var salarioBruto = $("#inputSalaB").val();
@@ -5611,7 +5713,8 @@ function erpsil_eliminarPlanilla(id){
 }
 
 function erpsil_editarPlanillaWindow(data) {
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var editarPlanillaWindow = ""
     +   "<div class='container centrarDivTxt'>"
     +       "<h2 class='tituloTablas'>Editar Planilla</h2>"
@@ -5738,7 +5841,8 @@ function agregarUsuario(){
 }
 
 function erpsil_agregarUsuarioWindow(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
 
     var agregarUsuarioWindow = ""
 
@@ -5786,7 +5890,8 @@ function erpsil_agregarUsuarioWindow(){
 }
 
 function erpsil_registrarUsuarioWindow(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
 
     var agregarUsuarioWindow = ""
 
@@ -5905,7 +6010,8 @@ function erpsil_registrarUsuario(){
 }
 
 function erpsil_listarUsuario(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
     var UsuarioData = {
         w: "erpsil_usuario",
         r: "mostrar_usuario"
@@ -5987,7 +6093,8 @@ function erpsil_eliminarUsuario(id){
 }
 
 function erpsil_editarUsuarioWindow(data){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
 
     var editarUsuarioWindow = ""
     +   "<div class='container centrarDivTxt'>"
@@ -6087,7 +6194,8 @@ function erpsil_guardarEditarUsuario(){
 }
 
 function erpsilRecoveryPwdWindow(){
-    erpsil_CleanChart();
+    erpsil_CleanChartPie();
+    erpsil_CleanChartBar();
         //var loginWindow = "Aca va la ventana de login";
         var recoveryPwdWindow = ""
 
@@ -6167,31 +6275,23 @@ function erpsil_setModal(content) {
     $("#erpsil_modal").append(content);
 }
 
-function erpsil_CleanChart(){
-    
-    /* para esconder y no clean
-    var pieChartContent = document.getElementById('myChart');
-    pieChartContent.innerHTML = '&nbsp;';
-    $("#myChart").empty();
-    $('#myChart').append('<canvas id="myChart" width="300" height="300"><canvas>');
-
-    ctx = $("#myChart").get(0).getContext("2d");        
-    var myPieChart = new Chart(ctx);
-    */
-
-    //para clean el canavas
-   //var ctx = document.getElementById('myChart').getContext('2d');
-   //if (window.grafica) {
-    //   window.grafica.clear();
-    //   window.grafica.destroy();
-   //}
-   //window.grafica = new Chart(ctx, {});
+function erpsil_CleanChartPie(){
    //event.preventDefault();
-   var parent = document.getElementById('canvas_div');
-   var child = document.getElementById('myChart');          
+   var parent = document.getElementById('canvas_div_pie');
+   var child = document.getElementById('myChartPie');          
    parent.removeChild(child);            
-   parent.innerHTML ='<canvas id="myChart" style="height:100; width:100;"></canvas>';             
+   parent.innerHTML ='<canvas id="myChartPie" ></canvas>';            
    return;
+}
+
+function erpsil_CleanChartBar(){
+    //event.preventDefault();
+    var parent = document.getElementById('canvas_div_bar');
+    var child = document.getElementById('myChartBar');          
+    parent.removeChild(child);            
+    parent.innerHTML =
+    '<canvas id="myChartBar"></canvas>';             
+    return;
 }
 
 function erpsil_debug(mensaje) {

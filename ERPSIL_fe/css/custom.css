@@ -21,7 +21,6 @@
     border-color: #930;
     text-align: center;
     color: #930;
-
 }
 
 @media (max-width: 400px){
@@ -34,6 +33,7 @@
     width: 40%;
     margin: 13px;
 }
+
 .login-btnRojo, .registrarse-btnRojo{
     width: 40%;
     font-family:Arial, Helvetica, sans-serif;
@@ -50,6 +50,7 @@
     margin: 13px;
     cursor: pointer;
 }
+
 .login-btnRojo:hover, .registrarse-btnRojo:hover{
     width: 40%;
     font-family:Arial, Helvetica, sans-serif;
@@ -89,114 +90,238 @@
     display: flex;
     justify-content: space-around;
     border-radius: 5px;
-
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3); 
 }
+
+/*              */
 
 .t_factura{
     margin-right: 10px;
-    width: 250px;
-    height: 100px;
+    width: 130px;
+    height: 80px;
     background-color:rgb(95, 183, 96);
     margin: auto;
     border: 2px solid rgb(245, 245, 245);
     border-radius: 5px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); 
+
 }
 
 .block_fact{
     text-align: center;
     margin-top: 5%;
     color: white;
+    font-size: 15px;
+    font-weight: bold;
+
 }
 
 .fact_num{
     margin-top: 5%;
     color: white;
     text-align: center;
-    font-size: 30px;
+    font-size: 15px;
 }
+/*              */
 
 .t_pagar{
     text-align: center;
-    width: 250px;
-    height: 100px;
+    width: 130px;
+    height: 80px;
     background-color:rgb(52, 117, 176);
     margin: auto;
     border: 2px solid rgb(245, 245, 245);
     border-radius: 5px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); 
+
 }
 
 .block_pagar{
     margin-top: 5%;
     color: white;
     text-align: center;
-    
+    font-weight: bold;
 }
 
-.fact_pag{
+.pagar_num_{
     margin-top: 5%;
     color: white; 
     text-align: center;
-    font-size: 30px;
+    font-size: 15px;
 }
+/*              */
 
 .t_planilla{
-    width: 250px;
-    height: 100px;
+    width: 130px;
+    height: 80px;
     background-color:rgb(238, 172, 87);
     margin: auto;
     border: 2px solid rgb(245, 245, 245);
     border-radius: 5px;
     text-align: center;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); 
 }
 
-.block_planilla{
+.plan_num{
     margin-left: 25%;
     margin-top: 5%;
     color: white;
     text-align: center;
-    font-size: 30px;
+    font-size: 15px;
 }
 
 .block_plantilla{
     margin-top: 5%;
     color: white;
     text-align: center;
+    font-weight: bold;
+}
+
+.plan_num{
+    margin-left: 0%;
+    margin-top: 5%;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+}
+
+/*              */
+
+.t_cantidad{
+    width: 130px;
+    height: 80px;
+    background-color:rgb(215, 84, 82);
+    margin: auto;
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: 5px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); 
 }
 
 .block_cantidad{
     margin-top: 5%;
     color: white;
     text-align: center;
+    font-weight: bold;
 }
 
-.t_cantidad{
-    width: 250px;
-    height: 100px;
-    background-color:rgb(215, 84, 82);
-    margin: auto;
-    border: 2px solid rgb(245, 245, 245);
-    border-radius: 5px;
-}
-
-.fact_cant{
+.cant_num{
+    margin-left: 25%;
     margin-top: 5%;
     color: white;
     text-align: center;
-    font-size: 30px;
+    font-size: 15px;
 }
 
-.div_canvas{
-    margin-top: 20px;
-    margin-left: 65%;
-    bottom: 10px;
-    width: 250px;
-    height: 250px;
+/*              */
+
+.t_cliente{
+    width: 130px;
+    height: 80px;
+    margin-left: 10%;
+    background-color: #5065ce;
+    margin: auto;
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: 5px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.block_cliente{
+    margin-top: 5%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.client_num{
+    margin-top: 5%;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+}
+
+/*              */
+
+.t_art_vend{
+    width: 130px;
+    height: 80px;
+    background-color:#489e7e;
+    margin: auto;
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: 5px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.block_art_vend{
+    margin-top: 5%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.art_vend_num{
+    margin-top: 5%;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+}
+
+/*              */
+
+.t_art_stock{
+    width: 130px;
+    height: 80px;
+    background-color:#969070;
+    margin: auto;
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: 5px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.block_art_stock{
+    margin-top: 5%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.art_stock_num{
+    margin-top: 5%;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+}
+
+/*              */
+
+.cont_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 55vh;
+    justify-content: space-around;
+}
+
+.div_canvas_pie{
+    margin-top: 55px;
+    margin-left: 140px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    height: 40vh;
+    width: 40vw;
+}
+
+.div_canvas_bar{
+    margin-top: 55px;
+    margin-right: 10px;
+    margin-left: 0px;
+    height: 40vh;
+    width: 40vw;
 }
 
 /*******************************/
 /* Espacios de Campos de Texto */
 /*******************************/
-
 
 input[type=text],[type=password]{
     width: 92%;
@@ -544,12 +669,6 @@ textarea{
 .divCentral{
     margin-left: 11%;
     top: 0;
-}
-
-.div_canvas{
-    margin-left: 11%;
-    width: 770px;
-    height: 485px;
 }
 
 .centrarDivTxt{

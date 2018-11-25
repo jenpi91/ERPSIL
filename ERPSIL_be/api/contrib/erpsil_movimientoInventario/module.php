@@ -38,6 +38,7 @@ function erpsil_movimientoInventario_init(){
                 array("key" => "id_usuario", "def" => "", "req" => true),
                 array("key" => "id_producto", "def" => "", "req" => true),
                 array("key" => "razon", "def" => "", "req" => true),
+                array("key" => "fecha", "def" => "", "req" => true),
                 array("key" => "descripcion", "def" => "", "req" => true),
                 array("key" => "costo", "def" => "", "req" => true)           
            ),

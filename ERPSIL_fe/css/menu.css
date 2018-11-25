@@ -7,8 +7,10 @@ border: 0;
 
 .back_menu{
 width: 140px;
-/*height: 120vh;*/
 background-color: #333;
+position: relative;
+height: 100%;
+
 }
 
 ul.acorh {
