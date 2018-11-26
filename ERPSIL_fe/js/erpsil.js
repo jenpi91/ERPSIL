@@ -291,7 +291,7 @@ function pie_bar(a,b,c,d,e,f,g){
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ["Total a factura", "Total ganancias"],
+            labels: ["Total a factura", "Total perdida"],
             datasets: [{
                 label: 'Ganancias',
                 data: [a, d],
@@ -550,11 +550,11 @@ function erpsil_agregarPedidoWindow() {
     calaApi_postRequest(pedidoData, function(d){
 
         var selectD = "<select class='select' id='inputDrow'> ";
-        var i = 1;
+        //var i = 1;
         for(a in d.resp){ 
             var x = d.resp[a];
-            selectD += "<option>" + i + " - Nombre del cliente: " + x.nombre + " - id = (" + x.id_cliente + ")</option>";
-            i++;
+            selectD += "<option id='name'>" + x.nombre + "</option>";
+            
         }
 
         selectD += "</select>";
@@ -587,7 +587,7 @@ function erpsil_agregarPedidoWindow() {
 
         +           "<label class='form'>Estado</label>"
         +           "<div class='col-sm'>"
-        +               "<input type='text' placeholder='Estado' required='required' id='inputStatus' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +")>"
+        +               "<input type='text' placeholder='Estado' required='required' id='inputStatus'>"
         +           "</div>"
 
         +           "<label class='form'>Descripción</label>"
@@ -617,9 +617,8 @@ function erpsil_agregarPedidoWindow() {
 
 function erpsil_agregarPedido(){
 
-    var d = $("#inputDrow");
-    var id = d[0].value;
-    id = id.split("(")[1].split(")")[0];
+    var d = $("#inputDrow").val();
+    var id = d;
 
     var id_cliente = id;
     var fechaPedido = $("#inputStampP").val();
@@ -1432,8 +1431,8 @@ function erpsil_agregarCuentasPagarWindow() {
         var i = 1;
         for(a in p.resp){
             var y = p.resp[a];
-            selectP += "<option>" + i + " - " + y.nombre + " id = (" + y.id_proveedor + ")</option>";
-            i++;
+            selectP += "<option>"+ y.nombre + "</option>";
+            //i++;
         }
         selectP += "</select>";
         //console.log(p);
@@ -1459,7 +1458,7 @@ function erpsil_agregarCuentasPagarWindow() {
         
         +           "<label class='form'>Estado</label>"
         +           "<div class='col-sm'>"
-        +                   "<input type='text' placeholder='Estado' required='required' onkeyup = erpsil_validacionTxt('inputEstado'," + 2 +") id='inputEstado'>"
+        +                   "<input type='text' placeholder='Estado' required='required' id='inputEstado'>"
         +           "</div>"
 
         +           "<label class='form'>Fecha</label>"
@@ -1469,7 +1468,7 @@ function erpsil_agregarCuentasPagarWindow() {
 
         +           "<label class='form'>Vencimiento</label>"
         +           "<div class='col-sm'>"
-        +                   "<input type='text' placeholder='Vencimiento' required='required' onkeyup = erpsil_validacionTxt('inputVence'," + 2 +") id='inputVence'>"
+        +                   "<input type='date' class='date' placeholder='Vencimiento' required='required' onkeyup = erpsil_validacionTxt('inputVence'," + 2 +") id='inputVence'>"
         +           "</div>"
         
         +           "<label class='form'>Descripción</label>"
@@ -1479,6 +1478,7 @@ function erpsil_agregarCuentasPagarWindow() {
         
         +           "<div class='col-sm centrarDivTxt'>"
         +                   "<div onClick='erpsil_agregarCuentasPagar()' class='agregar-BtnVerde'>Agregar</div>"
+        +                   "<div onClick='erpsil_listarCuentasPagar()' class='agregar-BtnVerde'>Volver</div>"
         +           "</div>"
         
         +        "</div>"
@@ -1493,9 +1493,9 @@ function erpsil_agregarCuentasPagarWindow() {
 }
 
 function erpsil_agregarCuentasPagar(){
-    var d = $("#inputDown");
-    var id = d[0].value;
-    id = id.split("(")[1].split(")")[0];
+    var d = $("#inputDown").val();
+    var id = d;
+    //id = id.split("(")[1].split(")")[0];
  
     var id_proveedor = id;
     var codigoReferencia = $("#inputCodigo_Referencia").val();
@@ -1540,15 +1540,14 @@ function erpsil_editarCuentasPagarWindow(data) {
         r: "mostrar_proveedor"
     }
     calaApi_postRequest(proveedorData, function(p){
-        var selectP = "<select class='select' id='inputDown'>" 
-        var i = 1;
-        for(a in p.resp){
-            var y = p.resp[a];
-            selectP += "<option>" + i + " - " + y.nombre + " id = (" + y.id_proveedor + ")</option>";
-            i++;
-        }
-        selectP += "</select>";
-        console.log(p);
+        // var selectP = "<select class='select' id='inputDown'>" 
+        // var i = 1;
+        // for(a in p.resp){
+        //     var y = p.resp[a];
+        //     selectP += "<option>" + y.nombre + "</option>";
+        //     i++;
+        // }
+        // selectP += "</select>";
  
         var editarCuentasPagarWindow = ""
  
@@ -1564,7 +1563,7 @@ function erpsil_editarCuentasPagarWindow(data) {
 
         +               "<label class='form'>ID Proveedor</label>"
         +               "<div class='col-sm'>"
-        +                   selectP
+        +                   "<input type='text' id='inputProve' value='" + data.id_proveedor + "' placeholder='ID' required disabled>"
         +               "</div>"
 
         +               "<label class='form'>Código de Referencia</label>"
@@ -1582,9 +1581,14 @@ function erpsil_editarCuentasPagarWindow(data) {
         +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputEstado'," + 2 +") id='inputEstado' value='" + data.estado + "' placeholder='Estado' required>"
         +               "</div>"
 
+        +               "<label class='form'>Fecha</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='date' class='date' id='inputStampfecha' value='" + data.stampfecha + "' placeholder='Fecha' required>"
+        +               "</div>"
+
         +               "<label class='form'>Vence</label>"
         +               "<div class='col-sm'>"
-        +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputVence'," + 2 +") id='inputVence' value='" + data.vence + "' placeholder='Vence' required>"
+        +                   "<input type='date' class='date' id='inputVence' value='" + data.vence + "' placeholder='Vence' required>"
         +               "</div>"
 
         +               "<label class='form'>Descripción</label>"
@@ -1592,10 +1596,6 @@ function erpsil_editarCuentasPagarWindow(data) {
         +                   "<input type='text' id='inputDescripcion' value='" + data.descripcion + "' placeholder='Descripción' required>"
         +               "</div>"
 
-        +               "<label class='form'>Fecha</label>"
-        +               "<div class='col-sm'>"
-        +                   "<input type='date' class='date' onkeyup = erpsil_validacionTxt('inputStampfecha'," + 2 +") id='inputStampfecha' value='" + data.stampfecha + "' placeholder='Fecha' required>"
-        +               "</div>"
 
         +               "<label class='form'>&nbsp;</label>"
         +               "<div class='col-sm centrarDivTxt'>"
@@ -1632,12 +1632,12 @@ function erpsil_editarCuentasPagar(id){
 }
  
 function erpsil_guardarEditarCuentasPagar(){
-    var d = $("#inputDown");
-    var id = d[0].value;
-    id_proveedor = id.split("(")[1].split(")")[0];
+    //var d = $("#inputDown").val();
+    //var id = d;
+    //id_proveedor = id.split("(")[1].split(")")[0];
  
     var id_cuentasPagar = $("#inputid_cuentasPagar ").val();
-    var id_proveedor = id_proveedor;
+    var id_proveedor = $("#inputProve").val();;
     var codigo_referencia = $("#inputCodigo_Referencia").val();
     var saldo = $("#inputSaldo").val();
     var estado = $("#inputEstado").val();
@@ -1645,7 +1645,7 @@ function erpsil_guardarEditarCuentasPagar(){
     var descripcion = $("#inputDescripcion").val();
     var stamp = $("#inputStampfecha").val();
  
-    if(id_cuentasPagar != "" && id_proveedor != "" && codigo_referencia != "" && saldo != "" &&
+    if(id_cuentasPagar != ""  && codigo_referencia != "" && saldo != "" &&
         estado != "" && vence != "" && descripcion != "" && stamp != ""){
         var permisoCuentasPagar = {
             w: "erpsil_cuentasPagar",
@@ -1752,6 +1752,7 @@ function erpsil_pdfHistorialPrecios(){
 }
  
 function erpsil_agregarHistorialPrecioWindow() {
+
     var historialPrecioData = {
        w: "erpsil_inventario",
        r: "mostrar_inventario"
@@ -1778,7 +1779,7 @@ function erpsil_agregarHistorialPrecioWindow() {
            var i = 1;
            for(a in p.resp){
                var y = p.resp[a];
-               selectP += "<option>" + i + " - " + y.nombre + " id = (" + y.id_proveedor + ")</option>";
+               selectP += "<option>"+ y.nombre + "</option>";
                i++;
            }
            selectP += "</select>";
@@ -1794,21 +1795,21 @@ function erpsil_agregarHistorialPrecioWindow() {
            +                selectH
            +            "</div>"
 
+           +            "<label class='form'>ID Proveedor</label>"
+           +            "<div class='col-sm'>"
+           +                selectP
+           +            "</div>"
+
            +            "<label class='form'>Costo</label>"
            +            "<div class='col-sm'>"
            +                "<input type='text' placeholder='Costo' required='required' onkeyup = erpsil_validacionTxt('inputCosto'," + 2 +") id='inputCosto'>"
            +            "</div>"
         
-        // +            "<label class='form'>Fecha</label>"
-        // +            "<div class='form'>"
-        // +                "<input type='date' class='date' placeholder='Fecha' required='required' id='inputFecha'>"
-        // +            "</div>"
+            +            "<label class='form'>Fecha</label>"
+            +            "<div class='form'>"
+            +                "<input type='date' class='date' placeholder='Fecha' required='required' id='inputFecha'>"
+            +            "</div>"
         
-           +            "<label class='form'>ID Proveedor</label>"
-           +            "<div class='col-sm'>"
-           +                selectP
-           +            "</div>"
-           
            +            "<div class='col-sm centrarDivTxt'>"
            +                "<div onClick='erpsil_agregarHistorialPrecio()' class='agregar-BtnVerde'>Agregar</div>"
            +                "<div onClick='erpsil_listarHistorialPrecio()' class='regresar-BtnVerde'>Regresar</div>"
@@ -1831,17 +1832,19 @@ function erpsil_agregarHistorialPrecioWindow() {
 }
 
 function erpsil_agregarHistorialPrecio(){
+
     var d = $("#inputDown1");
     var id = d[0].value;
    id = id.split("(")[1].split(")")[0];
 
-    var d2 = $("#inputDown2");
-    var id2 = d[0].value;
-   id2 = id2.split("(")[1].split(")")[0];
+    var d2 = $("#inputDown2").val();
+    var id2 = d2;
+    //id2 = id2.split("(")[1].split(")")[0];
 
    var id_inventario = id;
    var id_proveedor = id2;
    var costo = $("#inputCosto").val();
+   var fecha = $("#inputFecha").val();
 
        if(id_inventario != "" && id_proveedor != "" &&  costo != ""){
 
@@ -1850,7 +1853,8 @@ function erpsil_agregarHistorialPrecio(){
                r: "agregar_historialPrecio",
                id_inventario:id_inventario,
                id_proveedor:id_proveedor,
-               costo:costo,
+               fecha:fecha,
+               costo:costo
            };
 
            calaApi_postRequest(permosoHistorialPrecio, function (d) {
@@ -1895,7 +1899,7 @@ function erpsil_editarHistorialPrecioWindow(data) {
             var i = 1;
             for(a in p.resp){
                 var y = p.resp[a];
-                selectP += "<option>" + i + " - " + y.nombre + " id = (" + y.id_proveedor + ")</option>";
+                selectP += "<option>" + y.nombre +"</option>";
                 i++;
             }
             selectP += "</select>";
@@ -1991,9 +1995,9 @@ function erpsil_guardarEditarHistorialPago(){
     var id = d[0].value;
     id = id.split("(")[1].split(")")[0];
 
-    var d2 = $("#inputDown2");
-    var id2 = d2[0].value;
-    id2 = id2.split("(")[1].split(")")[0];
+    var d2 = $("#inputDown2").val();
+    var id2 = d2;
+    //id2 = id2.split("(")[1].split(")")[0];
 
     var id_historial = $("#inputIdHistorial").val();
     var id_inventario = id;
@@ -2408,7 +2412,7 @@ function erpsil_listarMovimientoInventario(){
         +            "<tr>"
         +                "<th>ID Movimiento Inventario</th>"
         +                "<th>ID Usuario</th>"
-        +                "<th>ID Caja</th>"
+        //+                "<th>ID Caja</th>"
         +                "<th>ID Producto</th>"
         +                "<th>Fecha</th>"
         +                "<th>Razon</th>"
@@ -2425,7 +2429,7 @@ function erpsil_listarMovimientoInventario(){
         +            "<tr>"
         +                "<td> "+ a.id_movInv+" </td>"
         +                "<td> "+ a.id_usuario +" </td>"
-        +                "<td> "+ a.id_caja +" </td>"
+        //+                "<td> "+ a.id_caja +" </td>"
         +                "<td> "+ a.id_producto +" </td>"
         +                "<td> "+ a.fecha +" </td>"
         +                "<td> "+ a.razon +" </td>"
@@ -2482,7 +2486,7 @@ function erpsil_agregarMovimientoInventarioWindow() {
             var i = 1;
             for(a in usu.resp){
             var x = usu.resp[a];
-            selectUsu += "<option>" + i + " - ID del Usuario  = (" + x.idUser + ")  Nombre del Usuario = ("+x.fullName+")</option>";
+            selectUsu += "<option>" + x.idUser + "</option>";
             i++;
             }
             selectUsu += "</select>";
@@ -2505,7 +2509,7 @@ function erpsil_agregarMovimientoInventarioWindow() {
 
             +           "<label class='form'>Razón</label>"
             +           "<div class='col-sm'>"
-            +                   "<input type='text' placeholder='Razón' required='required' onkeyup = erpsil_validacionTxt('inputRazon'," + 1 +") id='inputRazon'>"
+            +                   "<input type='text' placeholder='Razón' required='required' id='inputRazon'>"
             +           "</div>"
             
             +           "<label class='form'>Descripción</label>"
@@ -2547,9 +2551,9 @@ function erpsil_agregarMovimientoInventario(){
     var id = d[0].value;
     id = id.split("(")[1].split(")")[0];
  
-    var d2 = $("#inputDown2");
-    var id2 = d2[0].value;
-    id2 = id2.split("(")[1].split(")")[0];
+    var d2 = $("#inputDown2").val();
+    var id2 = d2;
+    //id2 = id2.split("(")[1].split(")")[0];
  
     var id_usuario = id2;
     var id_producto = id;
@@ -2648,7 +2652,7 @@ function erpsil_editarMovimientoInventarioWindow(data) {
 
             +               "<label class='form'>Razón</label>"
             +               "<div class='col-sm'>"
-            +                       "<input type='text' value = '"+ data.razon +"' placeholder='Razón' required='required' onkeyup = erpsil_validacionTxt('inputRazon'," + 1 +") id='inputRazon'>"
+            +                       "<input type='text' value = '"+ data.razon +"' placeholder='Razón' required='required' id='inputRazon'>"
             +               "</div>"
             
             +               "<label class='form'>Descripción</label>"
@@ -2847,7 +2851,7 @@ function erpsil_agregarTipoClienteWindow() {
 
     +           "<label class='form'>Días de Crédito</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' placeholder='Días de Crédito' required='required' onkeyup = erpsil_validacionTxt('inputCredito'," + 2 +") id='inputDiasCredito'>"
+    +                   "<input type='date' class='date' placeholder='Días de Crédito' required='required' id='inputDiasCredito'>"
     +           "</div>"
 
     +           "<div class='col-sm centrarDivTxt'>"
@@ -2940,7 +2944,7 @@ function erpsil_editarTipoClienteWindow(data) {
     
     +               "<label class='form'>Días de Crédito</label>"
     +               "<div class='col-sm'>"
-    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputGanancia_global'," + 2 +") id='inputGanancia_global' value='" + data.dias_credito + "' placeholder='Días de Crédito' required>"
+    +                       "<input type='date' class='date' id='inputGanancia_global' value='" + data.dias_credito + "' placeholder='Días de Crédito' required>"
     +               "</div>"
     
     +               "<label class='form'>&nbsp;</label>"
@@ -3023,12 +3027,12 @@ function erpsil_agregarActivosWindow() {
 
     +           "<label class='form'>Cantidad</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +")id='inputCantidad'>"
+    +                   "<input type='text' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
     +           "</div>"
     
     +           "<label class='form'>Vencimiento</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' placeholder='Vencimiento' required='required' id='inputVecimiento'>"
+    +                   "<input type='date' class='date' placeholder='Vencimiento' required='required' id='inputVecimiento'>"
     +           "</div>"
     
     +           "<div class='col-sm'>"
@@ -3056,7 +3060,7 @@ function erpsil_agregarActivos(){
             cantidad:cantidadActivos,
             vence:vencimientoActivos
         };  
-        
+
         calaApi_postRequest(activosData, function (d) {
             erpsil_modalBueno();
             console.log("Tipo de Cliente Agregado" + d);
@@ -3175,9 +3179,9 @@ function erpsil_editarActivosWindow(data) {
     +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad' value='" + data.cantidad + "' placeholder='Cantidad' required>"
     +               "</div>"
     
-    +               "<label class='form'>Ganancia Global</label>"
+    +               "<label class='form'>Vencimiento</label>"
     +               "<div class='col-sm'>"
-    +                       "<input type='text' id='inputVencimiento' value='" + data.vence + "' placeholder='Vencimiento' required>"
+    +                       "<input type='date' class='date' id='inputVencimiento' value='" + data.vence + "' placeholder='Vencimiento' required>"
     +               "</div>"
 
     +               "<label class='form'>&nbsp;</label>"
@@ -3484,8 +3488,8 @@ function erpsil_listarInventario(){
         +                "<th>Ganancia Mínima</th>"
         +                "<th>Costo</th>"
         +                "<th>Estatus</th>"
-        +                "<th>Editar</th>"
-        +                "<th>Eliminar</th>"
+        //+                "<th>Editar</th>"
+        //+                "<th>Eliminar</th>"
         +            "</tr>";
         +       "</div>"
         +   "</div>"
@@ -3539,19 +3543,19 @@ function erpsil_agregarInventarioWindow(){
     +       "<h2 class='tituloTablas'>Agregar Inventario</h2>"
     +       "<div class='form-horizontal'>"
     
+    +           "<label class='form'>Nombre</label>"
+    +           "<div class='col-sm'>"
+    +               "<input type='text' placeholder='Nombre' required='required' id='inputUnidad'>"
+    +           "</div>"
+     
     +           "<label class='form'>Cantidad</label>"
     +           "<div class='col-sm'>"
     +                   "<input type='text' placeholder='Cantidad' required='required' onkeyup = erpsil_validacionTxt('inputCantidad'," + 2 +") id='inputCantidad'>"
     +           "</div>"
 
-    +           "<label class='form'>Nombre</label>"
-    +           "<div class='col-sm'>"
-    +               "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputUnidad'," + 2 +") id='inputUnidad'>"
-    +           "</div>"
-
     +           "<label class='form'>Código Interno</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' placeholder='Código Interno' required='required' onkeyup = erpsil_validacionTxt('inputCodigoInter'," + 2 +") id='inputCodigoInter'>"
+    +                   "<input type='text' placeholder='Código Interno' required='required' id='inputCodigoInter'>"
     +           "</div>"
 
     +           "<label class='form'>Código de Barras</label>"
@@ -3571,7 +3575,7 @@ function erpsil_agregarInventarioWindow(){
 
     +           "<label class='form'>Descripción</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' placeholder='Descripción' required='required' onkeyup = erpsil_validacionTxt('inputDescripcion'," + 2 +") id='inputDescripcion'>"
+    +                   "<input type='text' placeholder='Descripción' required='required' id='inputDescripcion'>"
     +           "</div>"
 
     +           "<label class='form'>Impuesto de Venta</label>"
@@ -3591,7 +3595,7 @@ function erpsil_agregarInventarioWindow(){
     
     +           "<label class='form'>Estatus</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' placeholder='Estatus' required='required' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +") id='inputStatus'>"
+    +                   "<input type='text' placeholder='Estatus' required='required' id='inputStatus'>"
     +           "</div>"
 
     +           "<div class='col-sm centrarDivTxt'>"
@@ -3686,15 +3690,16 @@ function erpsil_editarInventarioWindow(data) {
     +                       "<input type='text' id='id_inventario' value='" +data.id_inventario+ "' placeholder='ID Inventario' disabled>"
     +               "</div>"
 
+    +               "<label class='form'>Nombre</label>"
+    +               "<div class='col-sm'>"
+    +                       "<input type='text' id='unidad'  value='" +data.unidad+ "' placeholder='Unidad' required>"
+    +               "</div>"
+
     +               "<label class='form'>Cantidad</label>"
     +               "<div class='col-sm'>"
     +                       "<input type='text' onkeyup = erpsil_validacionTxt('cantidad'," + 2 +") id='cantidad' value='" +data.cantidad+ "' placeholder='Cantidad' required>"
     +               "</div>"
 
-    +               "<label class='form'>Unidad</label>"
-    +               "<div class='col-sm'>"
-    +                       "<input type='text' onkeyup = erpsil_validacionTxt('unidad'," + 1 +") id='unidad'  value='" +data.unidad+ "' placeholder='Unidad' required>"
-    +               "</div>"
 
     +               "<label class='form'>Código Interno</label>"
     +               "<div class='col-sm'>"
@@ -3708,7 +3713,7 @@ function erpsil_editarInventarioWindow(data) {
 
     +               "<label class='form'>Categoría</label>"
     +               "<div class='col-sm'>"
-    +                       "<input type='text' onkeyup = erpsil_validacionTxt('categoria'," + 2 +") id='categoria' value='" +data.categoria+ "' placeholder='Categoría' required>"
+    +                       "<input type='text' id='categoria' value='" +data.categoria+ "' placeholder='Categoría' required>"
     +               "</div>"  
 
     +               "<label class='form'>Cantidad Mínima</label>"
@@ -3733,7 +3738,7 @@ function erpsil_editarInventarioWindow(data) {
 
     +               "<label class='form'>Costo</label>"
     +               "<div class='col-sm'>"
-    +                       "<input type='text' id='costo' value='" +data.costo+ "' placeholder='Costo' required>"
+    +                       "<input type='text'onkeyup = erpsil_validacionTxt('costo'," + 2 +") id='costo' value='" +data.costo+ "' placeholder='Costo' required>"
     +               "</div>"
 
     +               "<label class='form'>Estatus</label>"
@@ -3833,7 +3838,7 @@ function erpsil_agregarProveedorWindow() {
 
     +           "<label class='form'>Nombre</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
+    +                   "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputName'," + 1 +") id='inputName'>"
     +           "</div>"
 
     +           "<label class='form'>Primer Apellido</label>"
@@ -3863,7 +3868,7 @@ function erpsil_agregarProveedorWindow() {
 
     +           "<label class='form'>Descripción</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='password' placeholder='Descripción' required='required' id='inputDescripcion'>"
+    +                   "<input type='text' placeholder='Descripción' id='inputDescripcion'>"
     +           "</div>"
 
     +           "<div class='col-sm centrarDivTxt'>"
@@ -4131,7 +4136,7 @@ function erpsil_agregarClienteWindow() {
 
     +           "<label class='form'>Nombre</label>"
     +           "<div class='col-smp'>"
-    +                   "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
+    +                   "<input type='text' placeholder='Nombre' required='required' id='inputName'>"
     +           "</div>"
     
     +           "<label class='form'>Cédula</label>"
@@ -4159,20 +4164,20 @@ function erpsil_agregarClienteWindow() {
     +                   "<input type='text' placeholder='Descripción' required='required' id='inputDescripcion'>"
     +           "</div>"
     
-    +           "<label class='form'>Saldo Máximo</label>"
-    +           "<div class='col-smp'>"
-    +                   "<input type='text' placeholder='Saldo Máximo' required='required' onkeyup = erpsil_validacionTxt('inputSaldoMa'," + 2 +") id='inputSaldoMa'>"
-    +           "</div>"
+    //+           "<label class='form'>Saldo Máximo</label>"
+    //+           "<div class='col-smp'>"
+    //+                   "<input type='text' placeholder='Saldo Máximo' required='required' onkeyup = erpsil_validacionTxt('inputSaldoMa'," + 2 +") id='inputSaldoMa'>"
+    //+           "</div>"
     
-    +           "<label class='form'>Saldo</label>"
-    +           "<div class='col-smp'>"
-    +                   "<input type='text' placeholder='Saldo' required='required' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo'>"
-    +           "</div>"
+    //+           "<label class='form'>Saldo</label>"
+    //+           "<div class='col-smp'>"
+    //+                   "<input type='text' placeholder='Saldo' required='required' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo'>"
+    //+           "</div>"
     
-    +           "<label class='form'>Tipo</label>"
-    +           "<div class='col-smp'>"
-    +                   "<input type='text' placeholder='Tipo' required='required' id='inputTipo'>"
-    +           "</div>"
+    //+           "<label class='form'>Tipo</label>"
+    //+           "<div class='col-smp'>"
+    //+                   "<input type='text' placeholder='Tipo' required='required' id='inputTipo'>"
+    //+           "</div>"
     
     +           "<div class='col-sm centrarDivTxt'><br><br>"
     +                   "<div onClick='erpsil_agregarCliente()' class='agregar-BtnVerde'>Agregar</div>"
@@ -4200,7 +4205,7 @@ function erpsil_editarClienteWindow(data) {
     
     +               "<label class='form'>Nombre</label>"
     +               "<div class='col-sm'>"
-    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputNombre'," + 2 +") id='inputNombre' value='" + data.nombre + "' placeholder='Nombre' required>"
+    +                       "<input type='text' id='inputNombre' value='" + data.nombre + "' placeholder='Nombre' required>"
     +               "</div>"
     
     +               "<label class='form'>Cédula</label>"
@@ -4225,7 +4230,7 @@ function erpsil_editarClienteWindow(data) {
     
     +               "<label class='form'>Descripción</label>"
     +               "<div class='col-sm'>"
-    +                       "<input type='text' id='inputDescripcion' value='" + data.descripcion  + "' placeholder='Descripción' required>"
+    +                       "<input type='text' id='inputDescripcion' value='" + data.descripcion  + "' placeholder='Descripción'>"
     +               "</div>"
 
     +               "<label class='form'>Saldo Máximo</label>"
@@ -4235,12 +4240,12 @@ function erpsil_editarClienteWindow(data) {
 
     +               "<label class='form'>Saldo</label>"
     +               "<div class='col-sm'>"
-    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo' value='" + data.saldo  + "' placeholder='Saldo' required>"
+    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo' value='" + data.saldo  + "' placeholder='Saldo'>"
     +               "</div>"
     
     +               "<label class='form'>Tipo</label>"
     +               "<div class='col-sm'>"           
-    +                       "<input type='text' id='inputTipo' value='" + data.tipo  + "' placeholder='Tipo' required>"
+    +                       "<input type='text' id='inputTipo' value='" + data.tipo  + "' placeholder='Tipo'>"
     +               "</div>"    
     
     +               "<label class='form'>&nbsp;</label>"
@@ -4256,6 +4261,7 @@ function erpsil_editarClienteWindow(data) {
 }
 
 function erpsil_agregarCliente(){
+
     var nombreCliente = $("#inputName").val();
     var cedulaCliente = $("#inputCedula").val();
     var emailCliente = $("#inputEmail").val();
@@ -4321,9 +4327,9 @@ function erpsil_listarCliente() {
         +                "<th>Dirección</th>"
         +                "<th>Teléfono</th>"
         +                "<th>Descripción</th>"
-        +                "<th>Saldo Máximo</th>"
-        +                "<th>Saldo</th>"
-        +                "<th>Tipo</th>"
+        //+                "<th>Saldo Máximo</th>"
+        //+                "<th>Saldo</th>"
+        //+                "<th>Tipo</th>"
         +            "</tr>"
         +       "</div>"
         +   "</div>"
@@ -4340,9 +4346,9 @@ function erpsil_listarCliente() {
         +                "<td> "+ a.direccion +" </td>"
         +                "<td> "+ a.telefono +" </td>"
         +                "<td> "+ a.descripcion +" </td>"
-        +                "<td> "+ a.saldo_maximo +" </td>"
-        +                "<td> "+ a.saldo +" </td>"
-        +                "<td> "+ a.tipo +" </td>"
+        //+                "<td> "+ a.saldo_maximo +" </td>"
+        //+                "<td> "+ a.saldo +" </td>"
+        //+                "<td> "+ a.tipo +" </td>"
         +                "<td> <div id='editar_cliente' onclick='erpsil_editarCliente(" + a.id_cliente + ")' class='editar-Btn'>Editar</div></td>"
         +                "<td> <div onclick='erpsil_eliminarCliente("+ a.id_cliente +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
@@ -4462,7 +4468,7 @@ function erpsil_agregarEmpleadoWindow(){
     
     +           "<label class='form'>Nombre</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputNombre'," + 1 +") id='inputName'>"
+    +                   "<input type='text' placeholder='Nombre' required='required' onkeyup = erpsil_validacionTxt('inputName'," + 1 +") id='inputName'>"
     +           "</div>"
     
     +           "<label class='form'>Primer Apellido</label>"
@@ -4492,7 +4498,7 @@ function erpsil_agregarEmpleadoWindow(){
     
     +           "<label class='form'>Ingreso</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' placeholder='Ingreso' required='required' onkeyup = erpsil_validacionTxt('inputIngreso'," + 2 +") id='inputIngreso'>"
+    +                   "<input type='date' placeholder='Ingreso' class='date' required='required' id='inputIngreso'>"
     +           "</div>"
     
     +           "<label class='form'>Observación</label>"
@@ -4507,7 +4513,7 @@ function erpsil_agregarEmpleadoWindow(){
     
     +           "<label class='form'>Jornada</label>"    
     +           "<div class='col-sm'>"
-    +                   "<input type='text' placeholder='Jornada' required='required' onkeyup = erpsil_validacionTxt('inputJornada'," + 1 +") id='inputJornada'>"
+    +                   "<input type='text' placeholder='Jornada' required='required' id='inputJornada'>"
     +           "</div>"
     
     +           "<div class='col-sm centrarDivTxt'>"
@@ -4565,7 +4571,7 @@ function erpsil_editarEmpleadoWindow(data) {
     
     +               "<label class='form'>Ingreso</label>"
     +               "<div class='col-sm'>"
-    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputIngreso'," + 2 +") id='inputIngreso' value='" + data.ingreso + "' placeholder='Ingreso' required>"
+    +                       "<input type='date' class='date' id='inputIngreso' value='" + data.ingreso + "' placeholder='Ingreso' required>"
     +               "</div>"
     
     +               "<label class='form'>Observaciones</label>"
@@ -4668,8 +4674,8 @@ function erpsil_listarEmpleado() {
         +                "<th>Obseración</th>"
         +                "<th>Puesto</th>"
         +                "<th>Jornada</th>"
-        +                "<th>Editar</th>"
-        +                "<th>Eliminar</th>"
+        //+                "<th>Editar</th>"
+        //+                "<th>Eliminar</th>"
         +            "</tr>"
         +       "</div>"
         +   "</div>"
@@ -4900,7 +4906,7 @@ function erpsil_agregarFacturaWindow() {
         +       "<h2 class='tituloTablas'>Líneas de Detalle</h2>"
         +       "<hr/>"
 
-+       "<div class='form-horizontal-2'>"
+        +       "<div class='form-horizontal-2'>"
         +           "<div class='table-responsive'>"
         +               "<table class='' >"
         +                   "<thead class='tituloTablas'>"
@@ -4959,10 +4965,10 @@ function erpsil_agregarFacturaWindow() {
         +                           "<div class='form'>Descuento Total</div>"
         +                           "<div><input value='0' readonly type='text' id='descuenteTotal'  placeholder=''></div>"
         +                       "</li>"
-        +                       "<li>"
-        +                           "<div class='form'>Impuesto Total</div>"
-        +                           "<div><input value='0' readonly type='text' id='impuestoTotal'  placeholder='></div>"
-        +                       "</li>"
+        //+                       "<li>"
+        //+                           "<div class='form'>Impuesto Total</div>"
+        //+                           "<div><input value='0' readonly type='text' id='impuestoTotal'  placeholder='></div>"
+        //+                       "</li>"
         +                   "</ul>"
         +                   "<hr/>"
         +                   "<div class='d-flex align-items-center '>"
@@ -4990,7 +4996,7 @@ function erpsil_agregarFacturaWindow() {
 }
 
 function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Subtotal,cantL){
-    //erpsil_agregarFactura();
+    
     var _nombre = document.getElementById("inputDrow").value;
     var _inputStamp = document.getElementById("inputStamp").value;
     var _cantidad = document.getElementById("cantidad").value;
@@ -5069,6 +5075,7 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     console.log("Tamaño de Productos: "+productos.length+" Valor de X: "+x);
     if(productos.length==cantL){
     doc.save("Factura"+".pdf");
+    erpsil_agregarFactura();
     }else {
         console.log("No funciono");
     }
@@ -5254,7 +5261,7 @@ function erpsil_CalculaLineasFact(table) {
 
         // Cantidad de lineas para saber cuantos espacios va a tener el erray
         //cantidad, el segungo [] es la posicion en la tabla, buscar como sacar los datos de un array
-        productos.push(data[r][0]);
+        productos.push(" " + data[r][0]);
         CodRef.push(data[r][1]);
         cantidad.push(data[r][2]);
         PresUni.push(data[r][3]);
@@ -5647,7 +5654,7 @@ function erpsil_agregarPlanillaWindow() {
         +           "</div>"
         +       "</div>"
         +   "</div>"
-        console.log(selectD);  
+        console.log(d);  
         erpsil_setContent(agregarPlanillaWindow);
     }, function(){
         console.log("Error!");
@@ -5658,8 +5665,8 @@ function erpsil_agregarPlanillaWindow() {
 function erpsil_agregarPlanilla(){
 
     var d = $("#inputDrow");
-    //var id = d[0].value;
-    id = d;
+    var id = d[0].value;
+    id = id[0];
 
     var idEmpleado = id;
     var salarioBruto = $("#inputSalaB").val();
@@ -5728,7 +5735,7 @@ function erpsil_editarPlanillaWindow(data) {
     
     +               "<label class='form'>Empleado</label>"
     +               "<div class='col-sm'>"
-    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputEmpleado'," + 2 +") id='inputEmpleado' value='" + data.id_empleado + "' placeholder='Cliente' required>"
+    +                       "<input type='text' id='inputEmpleado' value='" + data.id_empleado + "' placeholder='Cliente' required>"
     +               "</div>"
     
     +               "<label class='form'>Salario Bruto</label>"

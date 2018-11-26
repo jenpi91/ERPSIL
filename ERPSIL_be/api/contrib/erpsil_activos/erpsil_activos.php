@@ -9,7 +9,7 @@ function agregarActivos(){
     $q = "INSERT INTO `tbl_activo` (`nombre`, `cantidad`, `vence`) 
           VALUES ('$nombre', '$cantidad', '$vencimiento')";
 
-    //return($q);
+    //return($cantidad);
     return db_query($q, 0);
 }
 

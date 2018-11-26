@@ -4,7 +4,6 @@
 function mostrarPlanilla(){
 
     $q = "SELECT * FROM `tbl_planilla`";
-
     return db_query($q, 2);
 
 }
@@ -21,21 +20,16 @@ function agregarPlanilla(){
     VALUES ('$id_empleado', '$salario_bruto', '$ccss', '$rebaja', '$salario_neto')";
 
     return db_query($q, 0);
-
 }
 
 function eliminarPlanilla(){
 
     $id = params_get("id");
-
     $q = "DELETE FROM `tbl_planilla` 
           WHERE `id_planilla` = $id";
 
     return db_query($q, 0);
 }
-
-
-
 
 function obtenerPlanilla(){
     $id = params_get("id");
@@ -44,6 +38,7 @@ function obtenerPlanilla(){
 
     return db_query($q, 1);
 }
+
 function editarPlanilla(){
     $id_empleado = params_get("id_empleado");
     $salario_bruto = params_get("salario_bruto");

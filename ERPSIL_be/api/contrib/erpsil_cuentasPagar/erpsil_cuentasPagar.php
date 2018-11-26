@@ -47,7 +47,7 @@ function agregarEditarCuentasPagar(){
    $estado = params_get("estado");
    $vence = params_get("vence");
    $descripcion = params_get("descripcion");
-   $stampfecha = params_get("stampfecha");
+   $stampfecha = params_get("stamp");
 
    $q = "UPDATE `tbl_cuentaspagar` 
    SET `id_proveedor` = '$id_proveedor',

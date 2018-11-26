@@ -58,7 +58,7 @@ function erpsil_cuentasPagar_init(){
                 array("key" => "estado", "def" => "", "req" => true),
                 array("key" => "vence", "def" => "", "req" => true),
                 array("key" => "descripcion", "def" => "", "req" => true),
-                array("key" => "stampfecha", "def" => "", "req" => true)
+                array("key" => "stamp", "def" => "", "req" => true)
             ),
             'file' => 'erpsil_cuentasPagar.php'
         ),
