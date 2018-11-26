@@ -685,7 +685,7 @@ function erpsil_editarPedidoWindow(data) {
 
     +           "<label class='form'>Precio</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputinputPrecioStatus'," + 2 +") id='inputPrecio' onkeyup = erpsil_validacionTxt('inputPrecio') value='" + data.precio  + "' placeholder='Precio' required>"
+    +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputPrecio'," + 2 +") id='inputPrecio' onkeyup = erpsil_validacionTxt('inputPrecio') value='" + data.precio  + "' placeholder='Precio' required>"
     +           "</div>"
 
     +           "<label class='form'>&nbsp;</label>"
@@ -1342,8 +1342,8 @@ function erpsil_listarCuentasPagar(){
         +                "<th>Vence</th>"
         +                "<th>Descripción</th>"
         +                "<th>Fecha</th>"
-        +                "<th>Editar</th>"
-        +                "<th>Eliminar</th>"
+        //+                "<th>Editar</th>"
+        //+                "<th>Eliminar</th>"
         +            "</tr>"
         +       "</div>"
         +   "</div>"
@@ -1678,7 +1678,7 @@ function erpsil_listarHistorialPrecio(){
         +                "<th>ID Inventario</th>"
         +                "<th>Costo</th>"
         +                "<th>Fecha</th>"
-        +                "<th>ID Proveedor</th>"
+        +                "<th>Proveedor</th>"
         +            "</tr>"
         +       "</div>"
         +   "</div>"
@@ -2019,7 +2019,7 @@ function erpsil_listarPagos(){
         +            "<tr>"
         +                "<th>ID Pago</th>"
         +                "<th>ID Cuenta</th>"
-        +                "<th>ID Usuarios</th>"
+        +                "<th>Usuarios</th>"
         +                "<th>Fecha</th>"
         +                "<th>Pago</th>"
         +                "<th>Actual</th>"
@@ -2118,6 +2118,12 @@ function erpsil_agregarPagosWindow() {
         +               selectPUsuario
     //  +               "<input type='text' placeholder='ID Usuarios' required='required' id='inputId_usuarios'>"
         +           "</div>"
+
+        +               "<label class='form'>Fecha</label>"
+        +               "<div class='col-sm'>"
+        +                   "<input type='date' class='date' id='inputFecha'  placeholder='Fecha' required>"
+        +               "</div>"
+
         
         +           "<label class='form'>Pago</label>"
         +           "<div class='col-sm'>"
@@ -2159,16 +2165,18 @@ function erpsil_agregarPagos(){
 
     var id_cuenta = id;
     var id_usuarios = id2;
+    var fecha = $("#inputFecha").val();
     var pago = $("#inputPago").val();
     var actual = $("#inputActual").val();
 
-    if(id_cuenta != "" && id_usuarios != "" && pago != "" && actual != "" ){
+    if(id_cuenta != "" && id_usuarios != "" && fecha != "" && pago != "" && actual != "" ){
 
         var pago = {
             w: "erpsil_pagos",
             r: "agregar_pagos",
             id_cuenta:id_cuenta,
             id_usuarios:id_usuarios,
+            fecha:fecha,
             pago:pago,
             actual:actual
         }
@@ -2909,7 +2917,7 @@ function erpsil_editarTipoClienteWindow(data) {
     
     +               "<label class='form'>Días de Crédito</label>"
     +               "<div class='col-sm'>"
-    +                       "<input type='date' class='date' id='inputGanancia_global' value='" + data.dias_credito + "' placeholder='Días de Crédito' required>"
+    +                       "<input type='date' class='date' id='inputDias_credito' value='" + data.dias_credito + "' placeholder='Días de Crédito' required>"
     +               "</div>"
     
     +               "<label class='form'>&nbsp;</label>"
@@ -4647,7 +4655,7 @@ function erpsil_listarEmpleado() {
         +                "<td> "+ a.id_empleado +" </td>"
         +                "<td> "+ a.nombre +" </td>"
         +                "<td> "+ a.apellido1 +" </td>"
-        +                "<td> "+ a.apellido1 +" </td>"
+        +                "<td> "+ a.apellido2 +" </td>"
         +                "<td> "+ a.telefono +" </td>"
         +                "<td> "+ a.cedula +" </td>"
         +                "<td> "+ a.direccion +" </td>"
@@ -4938,7 +4946,7 @@ function erpsil_agregarFacturaWindow() {
         +                "<div class='form'>"
         +                    "<hr/>"
         +                    "<button onclick='erpsil_formUpdateFact()' class='factura-BtnVerde' >Generar Factura</button>"
-        
+        +                   "<div onClick='erpsil_listarFactura()' class='regresar-BtnVerde'>Regresar</div>"
         +                "</div>"
         +            "</div>"
         +        "</div>"
@@ -5038,7 +5046,6 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     doc.text(140, _t,"Total: "+ _total);
 
     if(productos.length==cantL){
-    erpsil_agregarFactura();
     doc.save("Factura"+".pdf");
     erpsil_agregarFactura();
     }else {
@@ -5247,99 +5254,6 @@ function erpsil_CalculaLineasFact(table) {
     }
 }
 
-function prueba(){
-
-    var a =[1,2,3,4,5];
-
-    a.forEach(function(valor) {
-
-        document.getElementById("tablita").insertRow(-1).innerHTML = "<tr><td>"+valor+"</td></tr>";
-
-    });
-
-
-    +           "<table id='Fact' class='table table-striped table-hover'>"
-    +           "<thead>"
-    +              "<tr>"
-    +                   "<th>Producto</th>"
-    +              "</tr>"
-    +           "</thead>"
-    +           "<tbody id='tablita'>"
-    +           "</tbody>"
-    +           "</table>"
-}
-
-function erpsil_datosFac(producto,codRef,cantidad,presUni,desc,impuesto,subtotal){
-    //console.log("Numero de Producto "+producto.length); //cantidad de datos en un array
-    //console.log("Producto "+producto);
-  
-    var _nombre = document.getElementById("inputDrow").value;
-    var _inputStamp = document.getElementById("inputStamp").value;
-    var _cantidad = document.getElementById("cantidad").value;
-    var _subtotal = document.getElementById("subTotal1").value;
-    var _descuenteTotal = document.getElementById("descuenteTotal").value;
-    var _total = document.getElementById("total").value;
-    
-/*
-
-        producto.forEach(function(valor) {
-            //var fila ="<tr><td>"+valor+"</td><td>"+codRef[r]+"</td><td>"+cantidad[r]+"</td><td>"+presUni[r]+"</td><td>"+desc[r]+
-           // "</td><td>"+impuesto[r]+"</td><td>"+subtotal[r]+"</td></tr>";
-            document.getElementById("tablita").insertRow(-1).innerHTML = "<tr><td>"+valor+"</td><td>"+codRef[r]+"</td><td>"+cantidad[r]+"</td><td>"+presUni[r]+"</td><td>"+desc[r]+
-            "</td><td>"+impuesto[r]+"</td><td>"+subtotal[r]+"</td></tr>";
-            /*
-            var btn = document.createElement("TR");
-            btn.innerHTML=fila;
-            document.getElementById("tablita").appendChild(fila);
-            */
-       // });
-
-    
-
-    var hacerFacWindow = ""
-
-    +    "<div class='container centrarDivTxt'>"
-    +        "<h2 class='tituloTablas'>Factura</h2>"
-    +           "<table id='Fact' class='table table-striped table-hover'>"
-    +               "<tr>"
-    +                  "<th>Nombre</th>"
-    +                  "<th>Fecha</th>"
-    +                  "<th>Cantidad Total</th>"
-    +                  "<th>SubTotal</th>"
-    +                  "<th>Descuento Total</th>"
-    +                  "<th>Total</th>"
-    +               "</tr>"
-    +               "<tr>"
-    +                  "<td>"+_nombre+"</td>"
-    +                  "<td>"+_inputStamp+"</td>"
-    +                  "<td>"+_cantidad+"</td>"
-    +                  "<td>"+_subtotal+"</td>"
-    +                  "<td>"+_descuenteTotal+"</td>"
-    +                  "<td>"+_total+"</td>"
-    +               "</tr>"
-    +           "<thead>"
-    +              "<tr>"
-    +                   "<th>Producto</th>"
-    +                   "<th>Codigo de Referencia</th>"
-    +                   "<th>Cantidad</th>"
-    +                   "<th>Precio Unitario</th>"
-    +                   "<th>Descuento</th>"
-    +                   "<th>I.V</th>"
-    +                   "<th>SubTotal</th>"
-    +              "<tr>"
-    +           "</thead>"
-    +           "<tbody id='tablita'>"
-    +           "</tbody>"
-    +           "</table>"
-    +   " </div>"
-                       
-   erpsil_setContent(hacerFacWindow);
-    
-}
-
-function erpsil_pdfPostFactura(){
-    PdfDescargar('Fact',"Factura");
-}
 
 ////////////////////////////////Fin de Factura PDF////////////////////////////////////////////////
 
@@ -5370,9 +5284,9 @@ function erpsil_sumaFactura(){
 
 function erpsil_agregarFactura(){
 
-    var d = $("#inputDrow");
-    var id = d[0].value;
-    id = id[0];
+    var d = $("#inputDrow").val();
+    var id = d;
+    //id = id[0];
     
     var id_cliente = id;
     var stamp = $("#inputStamp").val();

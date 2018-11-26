@@ -10,7 +10,7 @@ function mostrarPagos(){
 function agregarPagos(){
     $id_cuenta = params_get("id_cuenta");
     $id_usuarios = params_get("id_usuarios");
-    $fecha = time();
+    $fecha = params_get("fecha");;
     $pago = params_get("pago");
     $actual = params_get("actual");
 
