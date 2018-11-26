@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 26-11-2018 a las 03:12:45
--- Versión del servidor: 10.1.34-MariaDB
--- Versión de PHP: 7.2.7
+-- Servidor: localhost
+-- Tiempo de generación: 26-11-2018 a las 15:52:36
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -187,7 +187,7 @@ INSERT INTO `sessions` (`idSession`, `idUser`, `sessionKey`, `ip`, `lastAccess`)
 (35, 142, 'OGp0b050eUZzQWVkZjJ6OGg2RHpOZz09Ojp8lDPUDHRRwpwccpBfVlNJ', '::1', 1540178070),
 (79, 143, 'RVhtcUdkZS8vL2JBaXNSZ3doOGFhdz09OjoTAbwQuAXkNNHLJoBdnqxf', '::1', 1540181105),
 (96, 144, 'Uk1od3B2K0hXYnY0STYyY2sxaTJoUT09Ojo2icYw22EmQ3FpbUupqrXx', '::1', 1540181271),
-(107, 141, 'SnM0QkRxcE14bSt0RkNXUnhTbHlZZz09OjrBBld+ErzWYmwu/11VRYsU', '::1', 1543198145);
+(108, 141, 'Q3d1UlEvQWRoYld3U1dML1paU1ZJUT09OjqoiT9XGmID7fsT9X0PzFeb', '::1', 1543211385);
 
 -- --------------------------------------------------------
 
@@ -706,7 +706,10 @@ INSERT INTO `tbl_contabilidad` (`id_contabilidad`, `total_factura`, `total_pagar
 (399, 28165, 2687, 10021, 12708, 6, 525, 1017),
 (400, 28165, 2688, 10021, 12709, 6, 525, 1017),
 (401, 28165, 2688, 10021, 12709, 6, 525, 1017),
-(402, 28165, 2689, 10022, 12711, 6, 525, 1017);
+(402, 28165, 2689, 10022, 12711, 6, 525, 1017),
+(403, 28165, 2689, 10012, 12701, 6, 525, 1017),
+(404, 28165, 2689, 10012, 12701, 6, 525, 1017),
+(405, 28165, 2689, 10012, 12701, 6, 525, 1017);
 
 -- --------------------------------------------------------
 
@@ -994,7 +997,7 @@ INSERT INTO `tbl_planilla` (`id_planilla`, `id_empleado`, `salario_bruto`, `ccss
 (4, '0', 1000, '10', 10, 1000),
 (5, '0', 10, '0', 10, 100),
 (6, '0', 1, '1', 1, 111),
-(8, 'daniel', 1, '1', 1, 1);
+(8, 'daniel', 10, '1', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1109,7 +1112,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUser`, `fullName`, `userName`, `email`, `about`, `country`, `status`, `timestamp`, `lastAccess`, `pwd`, `avatar`, `settings`) VALUES
-(141, 'Daniel', 'ol', 'doyolsen@gmail.com', 'abc', 'cr', '1', 1534828112, 1543198145, 'UVVsUVZYVllkakZCUWtveVpWZzRiazlLWm01dGMxZDZMM2RoWkdnelYyTlRkVFZsV0hWblVGVTRMMjkxUVhKNk9FRjZXV1YzVEcxbmVGSTRRME00UTJ0aFFrdGFRbUprYUhOVlpYTnhSa1ZyWWtGTlpuYzlQVG82M2laaUxkbndpWmpyL2R1OVIxVGc4UT09', '0', ''),
+(141, 'Daniel', 'ol', 'doyolsen@gmail.com', 'abc', 'cr', '1', 1534828112, 1543211385, 'UVVsUVZYVllkakZCUWtveVpWZzRiazlLWm01dGMxZDZMM2RoWkdnelYyTlRkVFZsV0hWblVGVTRMMjkxUVhKNk9FRjZXV1YzVEcxbmVGSTRRME00UTJ0aFFrdGFRbUprYUhOVlpYTnhSa1ZyWWtGTlpuYzlQVG82M2laaUxkbndpWmpyL2R1OVIxVGc4UT09', '0', ''),
 (142, 'qwe', 'eqweq', 'qweqwe', 'qwee', 'qwe', '1', 1540178070, 1540178070, 'T0RrdmFWUm1jR0o0VkdwUVFYa3pUR2xxTDBod1J6RkRZVFF5V0RRek1VNHhLeTlUUWs5WE0wd3pZWHBTVEM5NE1uUkhRblZKT1hKQ1VVMWpSVFp5YUVWQk5VcExPVEUwZWxFM1JVNXJkaTlsTkM5dFNYYzlQVG82N1F6M3BscldiOG5LL2paZW1rZnNjUT09', '0', ''),
 (143, 'w', 'rt', 'rt', 'rt', 'rt', '1', 1540181104, 1540181105, 'T0dKUVpFSnFWbFZIWW1vNVpVVnVaM0JEVGpsdloyMWxibEZ0YlU1WmJHSnpNRVZ2ZEVkak9XWjRVRWxMZFVKS1V6aDRNVEJxVUd0bGFIZEdUVWxZUmxCdFRXUjZZVGhxY0RRdlYySTFkR3BwY3pSU00xRTlQVG82Z1Q2Z2NocStuSnNBNEdXS24ydG5FQT09', '0', ''),
 (144, 'kk', 'kk', 'kk', 'kk', 'kk', '1', 1540181269, 1540181271, 'UkRsQ2QwUmxOVVZZTkU1NFlYSnhaWHBzTWtFcmJGRlplbFF4YlRWbWFEZHZSMUp3YjFaR1lVbG1WVzB4TmpCUmFXVnhZelJ0YjJKbmNXVktkbkpoVEZFd1RFVTVRMFp4WjB0M1dtaFlOak5xWXpWdFRFRTlQVG82ck82YWlFK3AwNWNHYWhETmtvZVZvQT09', '0', '');
@@ -1376,7 +1379,7 @@ ALTER TABLE `lestatz_domains`
 -- AUTO_INCREMENT de la tabla `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_activo`
@@ -1400,7 +1403,7 @@ ALTER TABLE `tbl_clientetickets`
 -- AUTO_INCREMENT de la tabla `tbl_contabilidad`
 --
 ALTER TABLE `tbl_contabilidad`
-  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=403;
+  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=406;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_cuentaspagar`
