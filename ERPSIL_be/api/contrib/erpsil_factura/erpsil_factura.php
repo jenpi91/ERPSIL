@@ -27,7 +27,7 @@ function agregarFactura(){
     $descuentoTotal = params_get("descuentoTotal");
     $total = params_get("total");
 
-    $q = "INSERT INTO `tbl_factura` (`id_cliente`, `detalle`, `cantidad_productos`, `stamp`, `subtotal`, `desc_total`, `total`) 
+    $q = "INSERT INTO `tbl_factura` (`id_cliente`, `detalle`, `cantidad`, `stamp`, `subtotal`, `desc_total`, `total`) 
     VALUES ('$id_cliente', '$descripcion', '$cantidad', '$stamp', '$subTotal', '$descuentoTotal', '$total')";
 
     //return $q;    
