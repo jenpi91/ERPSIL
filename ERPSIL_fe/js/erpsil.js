@@ -675,7 +675,7 @@ function erpsil_editarPedidoWindow(data) {
 
     +           "<label class='form'>Estatus</label>"
     +           "<div class='col-sm'>"
-    +                   "<input type='text' onkeyup = erpsil_validacionTxt('inputStatus'," + 2 +") id='inputStatus') value='" + data.status  + "' placeholder='Estatus' required>"
+    +                   "<input type='text'  id='inputStatus' value='" + data.status  + "' placeholder='Estatus' required>"
     +           "</div>"
 
     +           "<label class='form'>Descripción</label>"
@@ -2060,7 +2060,6 @@ function erpsil_listarPagos(){
 }
 
 function erpsil_pdfPagos(){
-    /*console.log("debug");*/
     PdfDescargar('Pagos','Reporte de Pagos');
 }
  
@@ -2096,7 +2095,7 @@ function erpsil_agregarPagosWindow() {
             var i = 1;
             for(a in p.resp){
                 var y = p.resp[a];
-                selectPUsuario += "<option>" + i + " - " + y.fullName +  " - "  + " id = (" + y.idUser + ")</option>";
+                selectPUsuario += "<option>"+ y.fullName +"</option>";
                 i++;
             }
             selectPUsuario += "</select>";
@@ -2114,7 +2113,7 @@ function erpsil_agregarPagosWindow() {
     //  +               "<input type='text' placeholder='ID cuenta' required='required' id='inputId_cuenta'>"
         +           "</div>"
         
-        +           "<label class='form'>ID Usuario</label>"
+        +           "<label class='form'>Nombre de Usuario</label>"
         +           "<div class='col-sm'>"
         +               selectPUsuario
     //  +               "<input type='text' placeholder='ID Usuarios' required='required' id='inputId_usuarios'>"
@@ -2154,9 +2153,9 @@ function erpsil_agregarPagos(){
     var id = d[0].value;
     id = id.split("(")[1].split(")")[0];
 
-    var d2 = $("#inputDown2");
-    var id2 = d2[0].value;
-    id2 = id2.split("(")[1].split(")")[0];
+    var d2 = $("#inputDown2").val();
+    var id2 = d2;
+    //id2 = id2.split("(")[1].split(")")[0];
 
     var id_cuenta = id;
     var id_usuarios = id2;
@@ -2243,8 +2242,6 @@ function erpsil_editarPagosWindow(data) {
         }
         selectCuentasPagar += "</select>";
 
-        console.log(d);
-
         calaApi_postRequest(usuarioData, function(p){
 
             var selectPUsuario= "<select class='select' id='inputDown2'>"  
@@ -2269,14 +2266,14 @@ function erpsil_editarPagosWindow(data) {
        
         +               "<label class='form'>ID Cuenta</label>"
         +               "<div class='col-sm'>"
-        +                    selectCuentasPagar
-    //  +                  "<input type='text' id='inputId_cuenta' value='" + data.id_cuenta + "' placeholder='ID cuenta' required>"
+    //  +                    selectCuentasPagar
+        +                  "<input type='text' id='inputId_cuenta' value='" + data.id_cuenta + "' placeholder='ID cuenta' required disabled>"
         +               "</div>"
         
         +               "<label class='form'>ID Usuario</label>"
         +               "<div class='col-sm'>"
-        +                   selectPUsuario
-      //+                   "<input type='text' id='inpuId_usuarios' value='" + data.id_usuarios + "' placeholder='ID usuario' required>"
+      //+                   selectPUsuario
+        +                   "<input type='text' id='inpuId_usuarios' value='" + data.id_usuarios + "' placeholder='ID usuario' required disabled>"
         +               "</div>"
         
         +               "<label class='form'>Fecha</label>"
@@ -2318,7 +2315,7 @@ function erpsil_editarPagosWindow(data) {
 }
 
 function erpsil_guardarEditarPago(){
-
+/*
     var d = $("#inputDown1");
     var id = d[0].value;
     id = id.split("(")[1].split(")")[0];
@@ -2326,10 +2323,12 @@ function erpsil_guardarEditarPago(){
     var d2 = $("#inputDown2");
     var id2 = d2[0].value;
     id2 = id2.split("(")[1].split(")")[0];
-
+*/
     var id_pagos = $("#inputId_Pago").val();
-    var id_cuenta = id;
-    var id_usuarios = id2;
+    var id_cuenta = $("#inputId_cuenta").val();
+  //  var id_cuenta = id;
+    var id_usuarios = $("#inpuId_usuarios").val();
+  //  var id_usuarios = id2;
     var pago = $("#inputPago").val();
     var fecha = $("#inputFecha").val();
     var actual = $("#inputActual").val();
@@ -5762,7 +5761,7 @@ function erpsil_guardarEditarPlanilla(){
 
     var planillaData = {
         w: "erpsil_planilla",
-        r: "agregarEditar_planilla",
+        r: "editar_planilla",
         id_planilla:idPlanilla,
         id_empleado:idEmpleado, 
         salario_bruto:salariobrutoPlanilla,

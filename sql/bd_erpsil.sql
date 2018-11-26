@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 26-11-2018 a las 02:23:24
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 5.6.38
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 26-11-2018 a las 03:12:45
+-- Versión del servidor: 10.1.34-MariaDB
+-- Versión de PHP: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -187,7 +187,7 @@ INSERT INTO `sessions` (`idSession`, `idUser`, `sessionKey`, `ip`, `lastAccess`)
 (35, 142, 'OGp0b050eUZzQWVkZjJ6OGg2RHpOZz09Ojp8lDPUDHRRwpwccpBfVlNJ', '::1', 1540178070),
 (79, 143, 'RVhtcUdkZS8vL2JBaXNSZ3doOGFhdz09OjoTAbwQuAXkNNHLJoBdnqxf', '::1', 1540181105),
 (96, 144, 'Uk1od3B2K0hXYnY0STYyY2sxaTJoUT09Ojo2icYw22EmQ3FpbUupqrXx', '::1', 1540181271),
-(106, 141, 'UXJIaXlUcXBSSmJKSUR1N2xmNHdjZz09OjracGe91acpcKy2jbDjb14f', '::1', 1543195249);
+(107, 141, 'SnM0QkRxcE14bSt0RkNXUnhTbHlZZz09OjrBBld+ErzWYmwu/11VRYsU', '::1', 1543198145);
 
 -- --------------------------------------------------------
 
@@ -698,7 +698,15 @@ INSERT INTO `tbl_contabilidad` (`id_contabilidad`, `total_factura`, `total_pagar
 (391, 28165, 2363, 10021, 12384, 6, 525, 1017),
 (392, 28165, 2363, 10021, 12384, 6, 525, 1017),
 (393, 28165, 2363, 10021, 12384, 6, 525, 1017),
-(394, 28165, 2363, 10021, 12384, 6, 525, 1017);
+(394, 28165, 2363, 10021, 12384, 6, 525, 1017),
+(395, 28165, 2363, 10021, 12384, 6, 525, 1017),
+(396, 28165, 2363, 10021, 12384, 6, 525, 1017),
+(397, 28165, 2363, 10021, 12384, 6, 525, 1017),
+(398, 28165, 2363, 10021, 12384, 6, 525, 1017),
+(399, 28165, 2687, 10021, 12708, 6, 525, 1017),
+(400, 28165, 2688, 10021, 12709, 6, 525, 1017),
+(401, 28165, 2688, 10021, 12709, 6, 525, 1017),
+(402, 28165, 2689, 10022, 12711, 6, 525, 1017);
 
 -- --------------------------------------------------------
 
@@ -886,7 +894,7 @@ INSERT INTO `tbl_movimientoinventario` (`id_movInv`, `id_usuario`, `id_caja`, `i
 CREATE TABLE `tbl_pagos` (
   `id_pago` int(10) NOT NULL,
   `id_cuenta` int(10) NOT NULL,
-  `id_usuarios` int(10) NOT NULL,
+  `id_usuarios` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `pago` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `actual` varchar(100) COLLATE utf8_spanish_ci NOT NULL
@@ -897,11 +905,13 @@ CREATE TABLE `tbl_pagos` (
 --
 
 INSERT INTO `tbl_pagos` (`id_pago`, `id_cuenta`, `id_usuarios`, `fecha`, `pago`, `actual`) VALUES
-(1, 1, 1, '123', '123', '123'),
-(2, 1, 107, '123', '1234', '12355'),
-(3, 1, 141, '1541111469', '1', '1'),
-(4, 1, 141, '', '5', '5'),
-(5, 1, 141, '2018-11-01', '1000', '5');
+(1, 1, '1', '123', '123', '123'),
+(2, 1, '107', '123', '1234', '12355'),
+(3, 1, '141', '1541111469', '1', '1'),
+(4, 1, '141', '', '5', '5'),
+(5, 1, '141', '2018-11-01', '1000', '5'),
+(6, 6, '0', '1543197176', '324', '4234'),
+(7, 2, 'qwe', '2018-11-25', '2', '2');
 
 -- --------------------------------------------------------
 
@@ -915,7 +925,7 @@ CREATE TABLE `tbl_pedidos` (
   `stamp_pedido` varchar(11) NOT NULL,
   `stamp_entrega` varchar(11) NOT NULL,
   `cant_rollos` int(5) NOT NULL,
-  `status` int(1) NOT NULL,
+  `status` varchar(40) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
   `precio` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -925,15 +935,16 @@ CREATE TABLE `tbl_pedidos` (
 --
 
 INSERT INTO `tbl_pedidos` (`id_pedido`, `id_cliente`, `stamp_pedido`, `stamp_entrega`, `cant_rollos`, `status`, `descripcion`, `precio`) VALUES
-(1, '3', '3', '3', 3, 3, '3', '4000'),
-(3, '6', '123', '321', 123, 1, 'rosas', '10002'),
-(4, '3', '2018-11-01', '2018-11-03', 100, 1, 'rosas', '1000'),
-(5, '0', '2018-11-25', '2018-11-25', 1, 1, '1', '1'),
-(6, '0', '2018-11-25', '2018-11-25', 1, 1, '1', '1'),
-(7, '0', '2018-11-25', '2018-11-25', 1, 1, '1', '1'),
-(8, '0', '2018-11-25', '2018-11-25', 1, 1, '1', '1'),
-(9, 'd', '2018-11-25', '2018-11-25', 1, 1, '1', '1'),
-(10, 'daniel', '2018-11-25', '2018-11-25', 1, 10, '1', '1');
+(1, '3', '3', '3', 3, '3', '3', '4000'),
+(3, '6', '123', '321', 123, '1', 'rosas', '10002'),
+(4, '3', '2018-11-01', '2018-11-03', 100, '1', 'rosas', '1000'),
+(5, '0', '2018-11-25', '2018-11-25', 1, '1', '1', '1'),
+(6, '0', '2018-11-25', '2018-11-25', 1, '1', '1', '1'),
+(7, '0', '2018-11-25', '2018-11-25', 1, '1', '1', '1'),
+(8, '0', '2018-11-25', '2018-11-25', 1, '1', '1', '1'),
+(9, 'd', '2018-11-25', '2018-11-25', 1, '1', '1', '1'),
+(10, 'daniel', '2018-11-25', '2018-11-25', 1, '10', '1', '1'),
+(11, 'qwe@g.com', '2018-11-15', '2018-11-09', 345, 'hfgdsfgf2342', '12dsaf|', '322');
 
 -- --------------------------------------------------------
 
@@ -965,7 +976,7 @@ INSERT INTO `tbl_permisosrol` (`id_permiso`, `id_rol`, `estado`) VALUES
 
 CREATE TABLE `tbl_planilla` (
   `id_planilla` int(10) NOT NULL,
-  `id_empleado` int(10) NOT NULL,
+  `id_empleado` varchar(40) NOT NULL,
   `salario_bruto` int(10) NOT NULL,
   `ccss` varchar(10) NOT NULL,
   `rebaja` int(10) NOT NULL,
@@ -977,13 +988,13 @@ CREATE TABLE `tbl_planilla` (
 --
 
 INSERT INTO `tbl_planilla` (`id_planilla`, `id_empleado`, `salario_bruto`, `ccss`, `rebaja`, `salario_neto`) VALUES
-(1, 1, 5000, '420', 100, 3500),
-(2, 6, 5000, '600', 100, 4300),
-(3, 0, 1000, '250', 100, 1000),
-(4, 0, 1000, '10', 10, 1000),
-(5, 0, 10, '0', 10, 100),
-(6, 0, 1, '1', 1, 111),
-(7, 0, 10, '10', 10, 10);
+(1, '1', 5000, '420', 100, 3500),
+(2, '6', 5000, '600', 100, 4300),
+(3, '0', 1000, '250', 100, 1000),
+(4, '0', 1000, '10', 10, 1000),
+(5, '0', 10, '0', 10, 100),
+(6, '0', 1, '1', 1, 111),
+(8, 'daniel', 1, '1', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1007,7 +1018,6 @@ CREATE TABLE `tbl_proveedor` (
 --
 
 INSERT INTO `tbl_proveedor` (`id_proveedor`, `nombre`, `apellido1`, `apellido2`, `cedula`, `direccion`, `telefono`, `descripcion`) VALUES
-(1, '$nombre', '$apellido1', '$apellido2', '$cedula', '$direccion', '$telefon', '$descripcion'),
 (3, '3', '3', '3', '3', '3', '3', '3'),
 (7, '3', '33', '3', '3', '3', '3', '3');
 
@@ -1099,7 +1109,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUser`, `fullName`, `userName`, `email`, `about`, `country`, `status`, `timestamp`, `lastAccess`, `pwd`, `avatar`, `settings`) VALUES
-(141, 'Daniel', 'ol', 'doyolsen@gmail.com', 'abc', 'cr', '1', 1534828112, 1543195249, 'UVVsUVZYVllkakZCUWtveVpWZzRiazlLWm01dGMxZDZMM2RoWkdnelYyTlRkVFZsV0hWblVGVTRMMjkxUVhKNk9FRjZXV1YzVEcxbmVGSTRRME00UTJ0aFFrdGFRbUprYUhOVlpYTnhSa1ZyWWtGTlpuYzlQVG82M2laaUxkbndpWmpyL2R1OVIxVGc4UT09', '0', ''),
+(141, 'Daniel', 'ol', 'doyolsen@gmail.com', 'abc', 'cr', '1', 1534828112, 1543198145, 'UVVsUVZYVllkakZCUWtveVpWZzRiazlLWm01dGMxZDZMM2RoWkdnelYyTlRkVFZsV0hWblVGVTRMMjkxUVhKNk9FRjZXV1YzVEcxbmVGSTRRME00UTJ0aFFrdGFRbUprYUhOVlpYTnhSa1ZyWWtGTlpuYzlQVG82M2laaUxkbndpWmpyL2R1OVIxVGc4UT09', '0', ''),
 (142, 'qwe', 'eqweq', 'qweqwe', 'qwee', 'qwe', '1', 1540178070, 1540178070, 'T0RrdmFWUm1jR0o0VkdwUVFYa3pUR2xxTDBod1J6RkRZVFF5V0RRek1VNHhLeTlUUWs5WE0wd3pZWHBTVEM5NE1uUkhRblZKT1hKQ1VVMWpSVFp5YUVWQk5VcExPVEUwZWxFM1JVNXJkaTlsTkM5dFNYYzlQVG82N1F6M3BscldiOG5LL2paZW1rZnNjUT09', '0', ''),
 (143, 'w', 'rt', 'rt', 'rt', 'rt', '1', 1540181104, 1540181105, 'T0dKUVpFSnFWbFZIWW1vNVpVVnVaM0JEVGpsdloyMWxibEZ0YlU1WmJHSnpNRVZ2ZEVkak9XWjRVRWxMZFVKS1V6aDRNVEJxVUd0bGFIZEdUVWxZUmxCdFRXUjZZVGhxY0RRdlYySTFkR3BwY3pSU00xRTlQVG82Z1Q2Z2NocStuSnNBNEdXS24ydG5FQT09', '0', ''),
 (144, 'kk', 'kk', 'kk', 'kk', 'kk', '1', 1540181269, 1540181271, 'UkRsQ2QwUmxOVVZZTkU1NFlYSnhaWHBzTWtFcmJGRlplbFF4YlRWbWFEZHZSMUp3YjFaR1lVbG1WVzB4TmpCUmFXVnhZelJ0YjJKbmNXVktkbkpoVEZFd1RFVTVRMFp4WjB0M1dtaFlOak5xWXpWdFRFRTlQVG82ck82YWlFK3AwNWNHYWhETmtvZVZvQT09', '0', '');
@@ -1366,7 +1376,7 @@ ALTER TABLE `lestatz_domains`
 -- AUTO_INCREMENT de la tabla `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_activo`
@@ -1390,7 +1400,7 @@ ALTER TABLE `tbl_clientetickets`
 -- AUTO_INCREMENT de la tabla `tbl_contabilidad`
 --
 ALTER TABLE `tbl_contabilidad`
-  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=395;
+  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=403;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_cuentaspagar`
@@ -1432,13 +1442,13 @@ ALTER TABLE `tbl_movimientoinventario`
 -- AUTO_INCREMENT de la tabla `tbl_pagos`
 --
 ALTER TABLE `tbl_pagos`
-  MODIFY `id_pago` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pago` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_pedidos`
 --
 ALTER TABLE `tbl_pedidos`
-  MODIFY `id_pedido` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pedido` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_permisosrol`
@@ -1450,7 +1460,7 @@ ALTER TABLE `tbl_permisosrol`
 -- AUTO_INCREMENT de la tabla `tbl_planilla`
 --
 ALTER TABLE `tbl_planilla`
-  MODIFY `id_planilla` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_planilla` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_proveedor`
