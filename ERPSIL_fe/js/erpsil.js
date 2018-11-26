@@ -5803,7 +5803,7 @@ function erpsil_guardarEditarPlanilla(){
 
     var planillaData = {
         w: "erpsil_planilla",
-        r: "agregarEditar_planilla",
+        r: "editar_planilla",
         id_planilla:idPlanilla,
         id_empleado:idEmpleado, 
         salario_bruto:salariobrutoPlanilla,
@@ -5811,6 +5811,7 @@ function erpsil_guardarEditarPlanilla(){
         rebaja:rebajaPlanilla,
         salario_neto:salarionetoPlanilla
     };
+
     calaApi_postRequest(planillaData, function (d) {
         erpsil_listarPlanilla();
         erpsil_modalBueno();
@@ -5821,7 +5822,7 @@ function erpsil_guardarEditarPlanilla(){
     } else {
         erpsil_modalMalo();
         console.log("Error!");
-    }
+     }
 
 
 }

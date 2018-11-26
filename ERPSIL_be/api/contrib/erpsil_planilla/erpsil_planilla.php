@@ -40,6 +40,7 @@ function obtenerPlanilla(){
 }
 
 function editarPlanilla(){
+    $id = params_get("id_planilla");
     $id_empleado = params_get("id_empleado");
     $salario_bruto = params_get("salario_bruto");
     $ccss = params_get("ccss");
@@ -54,7 +55,8 @@ function editarPlanilla(){
     `rebaja` = '$rebaja',
     `salario_neto` = '$salario_neto'
 
-     WHERE `id_planilla` = $id";
+    WHERE `id_planilla` = $id";
 
+    //print_r($q);
     return db_query($q, 0);
 }
