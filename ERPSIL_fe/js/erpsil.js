@@ -3451,7 +3451,7 @@ function erpsil_listarInventario(){
         +                "<th>Cantidad</th>"
         +                "<th>Unidad (nombre)</th>"
         +                "<th>Código Interno</th>"
-        +                "<th>Código Barras</th>"
+        ///+                "<th>Código Barras</th>"
         +                "<th>Categoría</th>"
         +                "<th>Cantidad Mínima</th>"
         +                "<th>Descripción</th>"
@@ -3474,7 +3474,7 @@ function erpsil_listarInventario(){
         +        "<td> "+ a.cantidad +" </td>"
         +        "<td> "+ a.unidad +" </td>"
         +        "<td> "+ a.codigo_interno +" </td>"
-        +        "<td> "+ a.codigo_barras +" </td>"
+        ///+        "<td> "+ a.codigo_barras +" </td>"
         +        "<td> "+ a.categoria +" </td>"
         +        "<td> "+ a.cantidad_minima +" </td>"
         +        "<td> "+ a.descripcion +" </td>"
@@ -3527,12 +3527,12 @@ function erpsil_agregarInventarioWindow(){
     +           "<div class='col-sm'>"
     +                   "<input type='text' placeholder='Código Interno' required='required' id='inputCodigoInter'>"
     +           "</div>"
-
+/*
     +           "<label class='form'>Código de Barras</label>"
     +           "<div class='col-sm'>"
     +                   "<input type='text' placeholder='Código de Barras' required='required' onkeyup = erpsil_validacionTxt('inputCodigoBarras'," + 2 +") id='inputCodigoBarra'>"
     +           "</div>"
-
+*/
     +           "<label class='form'>Categoría</label>"
     +           "<div class='col-sm'>"
     +                   "<input type='text' placeholder='Categoría' required='required' id='inputCategoria'>"
@@ -3583,7 +3583,7 @@ function erpsil_agregarInventario(){
     var cantidadInventario = $("#inputCantidad").val();
     var unidadInventario = $("#inputUnidad").val();
     var codigoIntInventario = $("#inputCodigoInter").val();
-    var codigoBarrasInventario = $("#inputCodigoBarra").val();
+    var codigoBarrasInventario = 1;
     var categoriaInventario = $("#inputCategoria").val();
     var cantidadMinimaInventario = $("#inputCantidadMin").val();
     var descripcionInventario = $("#inputDescripcion").val();
@@ -3675,12 +3675,12 @@ function erpsil_editarInventarioWindow(data) {
     +               "<div class='col-sm'>"
     +                       "<input type='text' onkeyup = erpsil_validacionTxt('codigo_interno'," + 2 +") id='codigo_interno' value='" +data.codigo_interno+ "' placeholder='Código Interno' required>"
     +               "</div>"
-
+/*
     +               "<label class='form'>Código de Barras</label>"
     +               "<div class='col-sm'>"
     +                       "<input type='text' onkeyup = erpsil_validacionTxt('codigo_barras'," + 2 +") id='codigo_barras' value='" +data.codigo_barras+ "' placeholder='Código de Barras' required>"
     +               "</div>"
-
+*/
     +               "<label class='form'>Categoría</label>"
     +               "<div class='col-sm'>"
     +                       "<input type='text' id='categoria' value='" +data.categoria+ "' placeholder='Categoría' required>"
@@ -3750,7 +3750,7 @@ function erpsil_guardarEditarInventario(){
     var cantidadInventario = $("#cantidad").val();
     var unidadInventario = $("#unidad").val();
     var codigoInternoInventario = $("#codigo_interno").val();
-    var codigoBarrasInventario = $("#codigo_barras").val();
+    var codigoBarrasInventario = 1;
     var categoriaInventario = $("#categoria").val();
     var cantidadMinimaInventario = $("#cantidad_minima").val();
     var descripcionInventario = $("#descripcion").val();
@@ -4939,7 +4939,8 @@ function erpsil_agregarFacturaWindow() {
         +                   "<hr/>"
         +                   "<div class='d-flex align-items-center '>"
         +                       "<hr/>"
-        +                       "<strong class='form'>Total:   </strong>"
+        +                       "<strong class='form' style='margin-bottom:60px;'>Total:   </strong>"
+
         +                       "<strong><input value='0' readonly type='text' id='total'  placeholder='></strong>"
         +                   "</div>" 
         
@@ -5753,12 +5754,12 @@ function erpsil_agregarUsuarioWindow(){
     +		    "<div class='form'>"
     +			        "<input type='text' placeholder='Acerca de: ' required='required' id='inputAbout'>"
     +		    "</div>"
-
+/*
     +		    "<label class='form'>País</label>"
     +		    "<div class='form'>"
     +			        "<input type='text' placeholder='País' required='required' onkeyup = erpsil_validacionTxt('inputUserCountry'," + 1 +") id='inputUserCountry'>"
     +		    "</div>"
-
+*/
     +           "<div class='col-sm centrarDivTxt'>"
     +			        "<div onClick='erpsil_agregarUsuario()' class='agregar-BtnVerde'>Agregar</div>"
     +			        "<div onClick='erpsil_listarUsuario()' class='regresar-BtnVerde'>Regresar</div>"
@@ -5802,12 +5803,12 @@ function erpsil_registrarUsuarioWindow(){
     +		"<div class='form-group'>"
     +			"<input type='text' class='form-control2' placeholder='Acerca de: ' required='required' id='inputAbout'>"
     +		"</div>"
-
+/*
     +		"<label class='col-sm-3 control-label'>País</label>"
     +		"<div class='form-group'>"
     +			"<input type='text' class='form-control2' placeholder='País' required='required' id='inputUserCountry'>"
     +		"</div>"
-
+*/
     +        "<div class='col-sm centrarDivTxt'>"
     +			"<div onClick='erpsil_registrarUsuario()' class='agregar-BtnVerde'>Agregar</div>"
     +			"<div onClick='erpsil_loginWindow()' class='volver-BtnVerde'>Volver</div>"
@@ -5823,7 +5824,7 @@ function erpsil_agregarUsuario(){
     var emailUsuario = $("#inputUserEmail").val();
     var pwdUsuario = $("#inputPwd").val();
     var acercaUsuario = $("#inputAbout").val();
-    var countryUsuario = $("#inputUserCountry").val();
+    var countryUsuario = "CR";
 
     if(nombreUsuario != "" && userUsuario != "" && emailUsuario != "" && 
     pwdUsuario != "" && acercaUsuario != "" && countryUsuario != ""){
@@ -5912,7 +5913,7 @@ function erpsil_listarUsuario(){
         +                "<th>Username</th>"
         +                "<th>Email</th>"
         +                "<th>Acerca de:</th>"
-        +                "<th>País</th>"
+        //+                "<th>País</th>"
         //+                "<th>Estatus</th>"
         +            "</tr>";
         +       "</div>"
@@ -5928,7 +5929,7 @@ function erpsil_listarUsuario(){
         +                "<td> "+ a.userName +" </td>"
         +                "<td> "+ a.email +" </td>"
         +                "<td> "+ a.about +" </td>"
-        +                "<td> "+ a.country +" </td>"
+        //+                "<td> "+ a.country +" </td>"
         //+                "<td> "+ a.status +" </td>"
 
         +                "<td> <div id='editar_activos' onclick='erpsil_editarUsuario(" + a.idUser + ")' class='editar-Btn'>Editar</div></td>"

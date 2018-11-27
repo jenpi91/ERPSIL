@@ -10,7 +10,7 @@ function agregarInventario(){
     $cantidad = params_get("cantidad");
     $unidad = params_get("unidad");
     $codigoInt = params_get("codigo_interno");
-    $codigoBar = params_get("codigo_barras");
+    $codigoBar = 1;
     $categoria = params_get("categoria");
     $cantidadMinima = params_get("cantidad_minima");
     $descripcion = params_get("descripcion");
@@ -44,7 +44,7 @@ function editarInventario(){
     $cantidad = params_get("cantidad");
     $unidad = params_get("unidad");
     $codigo_interno = params_get("codigo_interno");
-    $codgo_barras = params_get("codigo_barras");
+    $codgo_barras = 1;
     $categoria = params_get("categoria");
     $cantidad_minima = params_get("cantidad_minima");
     $descripcion = params_get("descripcion");
