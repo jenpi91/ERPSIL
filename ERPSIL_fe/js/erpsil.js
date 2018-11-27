@@ -5074,7 +5074,7 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     if(productos.length==cantL){
     
         doc.save("Factura"+".pdf");
-    //erpsil_agregarFactura();
+        erpsil_agregarFactura();
     }else {
         console.log("No funciono");
     }
