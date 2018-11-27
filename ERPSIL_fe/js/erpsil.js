@@ -4973,24 +4973,31 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     var doc = new jsPDF();
     doc.setFontSize(30);
     doc.text(10, 10,"Factura");
+    doc.setFontSize(20);
+    doc.text(10, 20,"ERPSIL");
     doc.setFontSize(10);
     doc.text(10, 30,"Nombre de Cliente: "+ _nombre);
     doc.text(10, 40,"Fecha: "+ _inputStamp);
 
 
     doc.text(7, 60,"Productos");
+    doc.setLineWidth(1)
+    doc.line(5, 62, 200, 62)
     var a=70;
+    var y=72;
     productos.forEach(function(valor) {
-
-        doc.text(10, a, valor);
+        doc.setLineWidth(0.3)
+        doc.line(5, y, 200, y)
+        doc.text(6, a, valor);
         a = a+10;
+        y = y+10;
     });
 
     doc.text(60, 60,"Codigo");
     var b=70;
     CodRef.forEach(function(valor) {
 
-        doc.text(70, b, valor);
+        doc.text(60, b, valor);
         b = b+10;
     });
 
@@ -4998,7 +5005,7 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     var c=70;
     cantidad.forEach(function(valor) {
 
-        doc.text(100, c, valor);
+        doc.text(93, c, valor);
         c = c+10;
     });
 
@@ -5006,7 +5013,7 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     var d=70;
     PresUni.forEach(function(valor) {
 
-        doc.text(120, d, valor);
+        doc.text(115, d, valor);
         d = d+10;
     });
 
@@ -5014,7 +5021,7 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     var f=70;
     Desc.forEach(function(valor) {
 
-        doc.text(150, f, valor+"%");
+        doc.text(145, f, valor+"%");
         f = f+10;
     });
 
@@ -5022,16 +5029,20 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     var g=70;
     Impuesto.forEach(function(valor) {
 
-        doc.text(170, g, valor+"%");
+        doc.text(165, g, valor+"%");
         g = g+10;
     });
     
     doc.text(180, 60,"SubTotal");
     var h=70;
-    var _c=90;
-    var _s=100;
-    var _d=110;
-    var _t=120;
+    var _c=80;
+    var _s=90;
+    var _d=100;
+    var _t=110;
+    var _var1=83;
+    var _var2=93;
+    var _var3=103;
+    var _var4=113;
     Subtotal.forEach(function(valor) {
 
         doc.text(180, h, valor);
@@ -5040,15 +5051,30 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
         _s = _s + 10;
         _d = _d + 10;
         _t = _t + 10;
+
+        _var1 = _var1 + 10;
+        _var2 = _var2 + 10;
+        _var3 = _var3 + 10;
+        _var4 = _var4 + 10;
+    
+    
     });
+    
+    doc.setLineWidth(0.5)
+    doc.line(138, _var1, 200, _var1)
+    doc.line(138, _var2, 200, _var2)
+    doc.line(138, _var3, 200, _var3)
+    doc.line(138, _var4, 200, _var4)
+
     doc.text(140, _c,"Cantidad Total de productos: "+ _cantidad);
     doc.text(140, _s,"SubTotal: "+ _subtotal);
     doc.text(140, _d,"Descuento Total: "+ _descuenteTotal);
     doc.text(140, _t,"Total: "+ _total);
 
     if(productos.length==cantL){
-    doc.save("Factura"+".pdf");
-    erpsil_agregarFactura();
+    
+        doc.save("Factura"+".pdf");
+    //erpsil_agregarFactura();
     }else {
         console.log("No funciono");
     }
