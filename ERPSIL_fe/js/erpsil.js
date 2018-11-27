@@ -201,17 +201,17 @@ function dashboard(){
         +       "<div class='cont_Dash'>"
     
         +           "<div class='t_factura' style='margin-right: 10px';>"
-        +               "<div class='block_fact'>Total facturas</div>"
+        +               "<div class='block_fact'>Total Facturas</div>"
         +               "<div class='fact_num'>"+contab_fact+"</div>"
         +           "</div>"
     
         +           "<div class='t_pagar' style='margin-right: 10px';>"
-        +               "<div class= 'block_pagar'>Total a pagar</div>"
+        +               "<div class= 'block_pagar'>Total a Pagar</div>"
         +               "<div class='pagar_num_'>"+contab_pagar+"</div>"
         +           "</div>"
     
         +           "<div class='t_planilla' style='margin-right: 10px';>"
-        +               "<div class= 'block_plantilla'>Total a planilla</div>"
+        +               "<div class= 'block_plantilla'>Total Planilla</div>"
         +               "<div class='plan_num'>"+contab_planilla+"</div>"
         +           "</div>"
     
@@ -226,12 +226,12 @@ function dashboard(){
         +           "</div>"
     
         +           "<div class='t_art_vend' style='margin-right: 10px';>"
-        +               "<div class= 'block_art_vend'>Art. vendidos</div>"
+        +               "<div class= 'block_art_vend'>Art. Vendidos</div>"
         +               "<div class='art_vend_num'>"+contab_artVendi+"</div>"
         +           "</div>"
     
         +           "<div class='t_art_stock' style='margin-left: 10px';>"
-        +               "<div class='block_art_stock'>Art. stock</div>"
+        +               "<div class='block_art_stock'>Art. Stock</div>"
         +               "<div class='art_stock_num'>"+contab_artDisp+"</div>"
         +           "</div>"
     
@@ -453,7 +453,7 @@ function erpsil_listarPedido(){
         var pedidoWindow = ""
         +   "<h2 class='tituloTablas'>Lista de Pedidos</h2><br><br>"
         +   "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='Pedidos' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID Pedido</th>"
@@ -1331,7 +1331,7 @@ function erpsil_listarCuentasPagar(){
 
         +   "<h2 class='tituloTablas'>Lista de Cuentas por Pagar</h2><br><br>"
         +   "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='CuentasPorPagar' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -1671,7 +1671,7 @@ function erpsil_listarHistorialPrecio(){
  
         +   "<h2 class='tituloTablas'>Lista de Historial de Precios</h2><br><br>"
         +   "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='HistorialPrecios' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID Historial</th>"
@@ -2014,7 +2014,7 @@ function erpsil_listarPagos(){
  
         +   "<h2 class='tituloTablas'>Lista de Pagos</h2><br><br>"
         +   "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='Pagos' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID Pago</th>"
@@ -2184,7 +2184,7 @@ function erpsil_agregarPagos(){
             erpsil_modalBueno();
             erpsil_listarPagos();
         }, function (d) {
-            erpsil_modalMalo();
+          erpsil_modalMalo();
             console.log("Pago No Agregado" + d);
         });
     } else {
@@ -2381,7 +2381,7 @@ function erpsil_listarMovimientoInventario(){
         var MostrarMovimientoInventarioWindow = ""
         +   "<h2 class='tituloTablas'>Lista de Movimiento de Inventario</h2><br><br>"
         +   "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='MovimientoInventario' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID Movimiento Inventario</th>"
@@ -2389,7 +2389,7 @@ function erpsil_listarMovimientoInventario(){
         //+                "<th>ID Caja</th>"
         +                "<th>ID Producto</th>"
         +                "<th>Fecha</th>"
-        +                "<th>Razon</th>"
+        +                "<th>Razón</th>"
         +                "<th>Descripción</th>"
         +                "<th>Costo</th>"
         +            "</tr>"
@@ -2750,7 +2750,7 @@ function erpsil_listarTipoCliente(){
 
         +   "<h2 class='tituloTablas'>Lista de Tipo de Cliente</h2><br><br>"
         +   "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='TipoCliente' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -3061,7 +3061,7 @@ function erpsil_listarActivos(){
 
         +   "<h2 class='tituloTablas'>Lista de Activos</h2><br><br>"
         +   "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='Activos' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -3284,7 +3284,7 @@ function erpsil_listarRoles(){
         var MostrarRolesWindow = ""
         +   "<h2 class='tituloTablas'>Lista de Roles</h2><br><br>"
         +   "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='Roles' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -3444,7 +3444,7 @@ function erpsil_listarInventario(){
 
         +   "<h2 class='tituloTablas'>Lista de Inventario</h2><br><br>"
         +   "<div  class='form-horizontal-6'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='Inventarios' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th class='font-size:11px'>ID</th>"
@@ -3902,14 +3902,14 @@ function erpsil_listarProveedor(){
  
         var MostrarProveedorWindow = ""
         +   "<h2 class='tituloTablas'>Lista de Proveedores</h2><br><br>"
-        +   "<div class='form-horizontal-4'>"
-        +       "<div class='table-responsive'>"
+        +   "<div class='form-horizontal-7'>"
+        +       "<div>"
         +         "<table id='Proveedor' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
         +                "<th>Nombre</th>"
-        +                "<th>Primer apellido</th>"
-        +                "<th>Segundo apellido</th>"
+        +                "<th>Primer Apellido</th>"
+        +                "<th>Segundo Apellido</th>"
         +                "<th>Cédula</th>"
         +                "<th>Teléfono</th>"
         +                "<th>Dirección</th>"
@@ -4285,8 +4285,8 @@ function erpsil_listarCliente() {
         var MostrarClienteWindow = ""
 
         +   "<h2 class='tituloTablas'>Lista de Clientes</h2><br><br>"
-        +   "<div class='form-horizontal-4'>"
-        +       "<div class='table-responsive'>"
+        +   "<div class='form-horizontal-5'>"
+        +       "<div>"
         +         "<table id='Cliente' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -4628,7 +4628,7 @@ function erpsil_listarEmpleado() {
         var MostrarEmpleadoWindow = ""
         +   "<h2 class='tituloTablas'>Lista de Empleados</h2><br><br>"
         +   "<div  class='form-horizontal-5'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='Empleados' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -4639,7 +4639,7 @@ function erpsil_listarEmpleado() {
         +                "<th>Cédula</th>"
         +                "<th>Dirección</th>"
         +                "<th>Ingreso</th>"
-        +                "<th>Obseración</th>"
+        +                "<th>Observación</th>"
         +                "<th>Puesto</th>"
         +                "<th>Jornada</th>"
         //+                "<th>Editar</th>"
@@ -4787,7 +4787,7 @@ function erpsil_listarFactura(){
         var facturaWindow = ""
         +   "<h2 class='tituloTablas'>Lista de Facturas</h2><br><br>"
         +      "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +         "<table id='Factura' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID Factura</th>"
@@ -4810,7 +4810,7 @@ function erpsil_listarFactura(){
         +                "<td> "+ a.detalle +" </td>"
         +                "<td> "+ a.total +" </td>"
 
-        +                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='btn btn-danger btn-sm'>Eliminar</div></td>"
+        +                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -4873,19 +4873,19 @@ function erpsil_agregarFacturaWindow() {
         +       "<hr/>"
 
         +       "<div class='form-horizontal-2'>"
-        +           "<div class='table-responsive'>"
+        +           "<div>"
         +               "<table class='' >"
         +                   "<thead class='tituloTablas'>"
         +                       "<tr>"
-        +                           "<th>Producto</th>"
-        +                           "<th>Código de Referencia</th>"
-        +                           "<th>Cantidad</th>"
-        +                           "<th>Precio Unitario</th>"
-        +                           "<th>Descuento</th>"
-        +                           "<th>I.V.</th>"
-        +                           "<th>SubTotal</th>"
-        +                           "<th>Precio Total</th>"
-        +                           "<th>Acción</th>"
+        +                           "<th class='th-2' style='width:20%'>Producto</th>"
+        +                           "<th class='th-2' style='width:20%'>Código de Referencia</th>"
+        +                           "<th class='th-2' style='width:20%'>Cantidad</th>"
+        +                           "<th class='th-2' style='width:20%'>Precio Unitario</th>"
+        +                           "<th class='th-2' style='width:20%'>Descuento</th>"
+        +                           "<th class='th-2' style='width:20%'>I.V.</th>"
+        +                           "<th class='th-2' style='width:20%'>SubTotal</th>"
+        +                           "<th class='th-2' style='width:20%'>Precio Total</th>"
+        +                           "<th class='th-2' style='width:20%'>Acción</th>"
         +                       "</tr>"
         +                   "</thead>"
         +                   "<tbody id='tabla'></tbody>"
@@ -5423,7 +5423,7 @@ function erpsil_listarPlanilla() {
 
         +   "<h2 class='tituloTablas'>Lista de Planillas</h2><br><br>"
         +   "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='Planilla' class='table table-striped table-hover'>"
         +            "<tr>"
         +                "<th>ID</th>"
@@ -5904,7 +5904,7 @@ function erpsil_listarUsuario(){
 
         +   "<h2 class='tituloTablas'>Lista de Usuarios</h2><br><br>"
         +   "<div  class='form-horizontal-4'>"
-        +       "<div  class='table-responsive'>"
+        +       "<div>"
         +           "<table id='Usuario' class='table table-striped table-hover'>"
 
         +            "<tr>"
