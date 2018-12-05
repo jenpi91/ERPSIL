@@ -202,14 +202,14 @@ function dashboard(){
     
         +           "<div class='t_factura' style='margin-right: 10px';>"
         +               "<div class='block_fact'>Total Facturas</div>"
-        +               "<div class='fact_num'>"+contab_fact+"</div>"
+        +               "<div class='fact_num'>"+ contab_fact+"</div>"
         +           "</div>"
     
         +           "<div class='t_pagar' style='margin-right: 10px';>"
         +               "<div class= 'block_pagar'>Total a Pagar</div>"
         +               "<div class='pagar_num_'>"+contab_pagar+"</div>"
         +           "</div>"
-    
+
         +           "<div class='t_planilla' style='margin-right: 10px';>"
         +               "<div class= 'block_plantilla'>Total Planilla</div>"
         +               "<div class='plan_num'>"+contab_planilla+"</div>"
@@ -4921,15 +4921,15 @@ function erpsil_agregarFacturaWindow() {
         +                   "<ul class='list-unstyled'>"
         +                       "<li>"
         +                           "<div class='form' >Cantidad de Productos</div>"
-        +                           "<div><input value='0' readonly type='text' id='cantidad' placeholder=''></div>"
+        +                           "<div><input value='0' readonly type='text' id='cantidad' placeholder='' style='text-align: right;'></div>"
         +                       "</li>"                                                
         +                       "<li>"
         +                           "<div class='form'>Subtotal</div>"
-        +                           "<div><input value='0' readonly type='text' id='subTotal1'  placeholder=''></div>"
+        +                           "<div><input value='0' readonly type='text' id='subTotal1'  placeholder='' style='text-align: right;'></div>"
         +                       "</li>"
         +                       "<li>"
         +                           "<div class='form'>Descuento Total</div>"
-        +                           "<div><input value='0' readonly type='text' id='descuenteTotal'  placeholder=''></div>"
+        +                           "<div><input value='0' readonly type='text' id='descuenteTotal'  placeholder='' style='text-align: right;'></div>"
         +                       "</li>"
         //+                       "<li>"
         //+                           "<div class='form'>Impuesto Total</div>"
@@ -4939,9 +4939,9 @@ function erpsil_agregarFacturaWindow() {
         +                   "<hr/>"
         +                   "<div class='d-flex align-items-center '>"
         +                       "<hr/>"
-        +                       "<strong class='form' style='margin-bottom:60px;'>Total:   </strong>"
+        +                       "<strong class='form'>Total:   </strong>"
 
-        +                       "<strong><input value='0' readonly type='text' id='total'  placeholder='></strong>"
+        +                       "<strong><input value='0' readonly type='text' id='total'  placeholder='' style='text-align: right;'></strong>"
         +                   "</div>" 
         
         +                "<div class='form'>"
@@ -5124,6 +5124,9 @@ function erpsil_sumar_call(table, columna, id) {
         cantidad = parseInt(cantidad) + parseInt(data[r][2]);
     }
 
+    var simbolo = "₡";
+    var total1 = simbolo.concat(total);
+    
     document.getElementById("total").value = total;
     document.getElementById("cantidad").value = cantidad;
 
