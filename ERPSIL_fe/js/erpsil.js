@@ -368,6 +368,17 @@ function erpsil_modalBueno(){
       });
 }
 
+function erpsil_modalMaloFactura(){
+
+    swal({
+        position: 'center',
+        type: 'error',
+        title: 'Completa los campos faltantes!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+}
+
 function erpsil_modalMalo(){
 
     swal({
@@ -489,7 +500,7 @@ function erpsil_listarPedido(){
         +                "<td> "+ a.cant_rollos +" </td>"
         +                "<td> "+ a.status +" </td>"
         +                "<td> "+ a.descripcion +" </td>"
-        +                "<td> "+ a.precio +" </td>"
+        +                "<td> "+ decimales(a.precio) +" </td>"
         +                "<td> <div id='editar_activos' onclick='erpsil_editarPedido(" + a.id_pedido + ")' class='editar-Btn'>Editar</div></td>"
         +                "<td> <div onclick='erpsil_eliminarPedido("+ a.id_pedido +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
@@ -1365,7 +1376,7 @@ function erpsil_listarCuentasPagar(){
         +                "<td> "+ a.id_cuentasPagar +" </td>"
         +                "<td> "+ a.id_proveedor +" </td>"
         +                "<td> "+ a.codigo_referencia +" </td>"
-        +                "<td> "+ a.saldo +" </td>"
+        +                "<td> "+ decimales(a.saldo) +" </td>"
         +                "<td> "+ a.estado +" </td>"
         +                "<td> "+ a.vence +" </td>"
         +                "<td> "+ a.descripcion +" </td>"
@@ -1699,7 +1710,7 @@ function erpsil_listarHistorialPrecio(){
         +            "<tr>"
         +                "<td> "+ a.id_historialPrecio +" </td>"
         +                "<td> "+ a.id_inventario +" </td>"
-        +                "<td> "+ a.costo +" </td>"
+        +                "<td> "+ decimales(a.costo) +" </td>"
         +                "<td> "+ a.fecha +" </td>"
         +                "<td> "+ a.id_proveedor +" </td>"
        
@@ -2045,8 +2056,8 @@ function erpsil_listarPagos(){
         +                "<td> "+ a.id_cuenta +" </td>"
         +                "<td> "+ a.id_usuarios +" </td>"
         +                "<td> "+ a.fecha +" </td>"
-        +                "<td> "+ a.pago +" </td>"
-        +                "<td> "+ a.actual +" </td>"
+        +                "<td> "+ decimales(a.pago) +" </td>"
+        +                "<td> "+ decimales(a.actual) +" </td>"
        
         +                "<td> <div id='editar_pagos' onclick='erpsil_editarPagos(" + a.id_pago + ")' class='editar-Btn'>Editar</div></td>"
         +                "<td> <div onclick='erpsil_eliminarPago("+ a.id_pago +")' class='eliminar-Btn'>Eliminar</div></td>"
@@ -2417,7 +2428,7 @@ function erpsil_listarMovimientoInventario(){
         +                "<td> "+ a.fecha +" </td>"
         +                "<td> "+ a.razon +" </td>"
         +                "<td> "+ a.descripcion +" </td>"
-        +                "<td> "+ a.costo +" </td>"
+        +                "<td> "+ decimales(a.costo) +" </td>"
       
         +                "<td> <div id='editar_movimientoInventario' onclick='erpsil_editarMovimientoInventario(" + a.id_movInv + ")' class='editar-Btn'>Editar</div></td>"
         +                "<td> <div onclick='erpsil_eliminarMovimientoInventario("+ a.id_movInv +")' class='eliminar-Btn'>Eliminar</div></td>"
@@ -2765,7 +2776,7 @@ function erpsil_listarTipoCliente(){
         +                "<th>ID</th>"
         +                "<th>Nombre</th>"
         +                "<th>Descripción</th>"
-        +                "<th>Ganancia Global</th>"
+        +                "<th>Ganancia</th>"
         +                "<th>Días de Crédito</th>"
         +            "</tr>"
         +       "</div>"
@@ -2779,7 +2790,7 @@ function erpsil_listarTipoCliente(){
         +                "<td> "+ a.id_tipoCliente +" </td>"
         +                "<td> "+ a.nombre +" </td>"
         +                "<td> "+ a.descripcion +" </td>"
-        +                "<td> "+ a.ganancia_global +" </td>"
+        +                "<td> "+ decimales(a.ganancia_global) +" </td>"
         +                "<td> "+ a.dias_credito +" </td>"
 
         +                "<td> <div id='editar_tipoCliente' onclick='erpsil_editarTipoCliente(" + a.id_tipoCliente + ")' class='editar-Btn'>Editar</div></td>"
@@ -3487,9 +3498,9 @@ function erpsil_listarInventario(){
         +        "<td> "+ a.categoria +" </td>"
         +        "<td> "+ a.cantidad_minima +" </td>"
         +        "<td> "+ a.descripcion +" </td>"
-        +        "<td> "+ a.impuesto_venta +" </td>"
-        +        "<td> "+ a.ganancia_minima +" </td>"
-        +        "<td> "+ a.costo +" </td>"
+        +        "<td> "+ a.impuesto_venta +"%"+"</td>"
+        +        "<td> "+ decimales(a.ganancia_minima) +" </td>"
+        +        "<td> "+ decimales(a.costo) +" </td>"
         +        "<td> "+ a.status +" </td>"
 
         +        "<td> <div id='editar_cliente' onclick='erpsil_editarInventario(" + a.id_inventario + ")' class='editar-Btn'>Editar</div></td>"
@@ -4971,7 +4982,8 @@ function erpsil_agregarFacturaWindow() {
         
         +                "<div class='form'>"
         +                    "<hr/>"
-        +                    "<button onclick='erpsil_formUpdateFact()' class='factura-BtnVerde' >Generar Factura</button>"
+        //+                    "<button onclick='erpsil_formUpdateFact()' class='factura-BtnVerde' >Generar Factura</button>"
+        +                    "<button onclick='erpsil_agregarFactura()' class='factura-BtnVerde' >Generar Factura</button>"
         +                   "<div onClick='erpsil_listarFactura()' class='regresar-BtnVerde'>Regresar</div>"
         +                "</div>"
         +            "</div>"
@@ -5094,12 +5106,11 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     doc.text(140, _c,"Cantidad Total de productos: "+ _cantidad);
     doc.text(140, _s,"SubTotal: "+ _subtotal);
     doc.text(140, _d,"Descuento Total: "+ _descuenteTotal);
-    doc.text(140, _t,"Total: "+ _total);
+    doc.text(140, _t,"Total: "+ decimales(_total));
 
     if(productos.length==cantL){
     
         doc.save("Factura"+".pdf");
-        erpsil_agregarFactura();
     }else {
         console.log("No funciono");
     }
@@ -5236,7 +5247,6 @@ function erpsil_CalculaLineas(table) {
         document.getElementById("descuenteTotal").value = decimales(descuento1);
         document.getElementById("note").value = productos;
 
-       console.log(subTotal);
         
     }
 }
@@ -5372,12 +5382,13 @@ function erpsil_agregarFactura(){
             //console.log(facturaData);
             erpsil_modalBueno();
             erpsil_listarFactura();
+            erpsil_formUpdateFact();
         }, function (d) {
-            erpsil_modalMalo();
+            erpsil_modalMaloFactura();
             console.log("Factura No Agregada");
         });
     } else {
-        erpsil_modalMalo();
+        erpsil_modalMaloFactura();
         console.log("Error!");
     }
 }
@@ -5507,10 +5518,10 @@ function erpsil_listarPlanilla() {
         +            "<tr>"
         +                "<td> "+ a.id_planilla +" </td>"
         +                "<td> "+ a.id_empleado +" </td>"
-        +                "<td> "+ a.salario_bruto +" </td>"
-        +                "<td> "+ a.ccss +" </td>"
-        +                "<td> "+ a.rebaja +" </td>"
-        +                "<td> "+ a.salario_neto +" </td>"
+        +                "<td> "+ decimales(a.salario_bruto) +" </td>"
+        +                "<td> "+ decimales(a.ccss) +" </td>"
+        +                "<td> "+ decimales(a.rebaja) +" </td>"
+        +                "<td> "+ decimales(a.salario_neto) +" </td>"
         +                "<td> <div id='editar_planilla' onClick='erpsil_editarPlanilla(" + a.id_planilla + ")' class='editar-Btn'>Editar</div></td>"
         +                "<td> <div onClick='erpsil_eliminarPlanilla("+ a.id_planilla +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";

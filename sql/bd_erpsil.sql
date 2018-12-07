@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-12-2018 a las 18:56:51
+-- Tiempo de generación: 07-12-2018 a las 19:54:13
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.7
 
@@ -188,7 +188,7 @@ INSERT INTO `sessions` (`idSession`, `idUser`, `sessionKey`, `ip`, `lastAccess`)
 (79, 143, 'RVhtcUdkZS8vL2JBaXNSZ3doOGFhdz09OjoTAbwQuAXkNNHLJoBdnqxf', '::1', 1540181105),
 (96, 144, 'Uk1od3B2K0hXYnY0STYyY2sxaTJoUT09Ojo2icYw22EmQ3FpbUupqrXx', '::1', 1540181271),
 (114, 145, 'WENQaUJQWnFybDNUSjZWallSVENPQT09Ojp8ujMTrj7PmFHKdAub2Skl', '::1', 1543280763),
-(121, 141, 'UUNzczVVL3RqTVUxM2Z6RlhxZm1rZz09OjrG42TRcJisBG554fFEu15l', '::1', 1544204818);
+(122, 141, 'SjVKcGo2STVaRlpQRjd6U0dBeVlSZz09Ojoi9Fz0C99b+gn6zIyNQy9M', '::1', 1544208727);
 
 -- --------------------------------------------------------
 
@@ -809,7 +809,32 @@ INSERT INTO `tbl_contabilidad` (`id_contabilidad`, `total_factura`, `total_pagar
 (505, '102767.30', '10096.00', '49001.00', '59097.00', 6, 135, 608),
 (506, '102810.77', '10096.00', '49001.00', '59097.00', 6, 159, 608),
 (507, '102810.00', '10096.00', '49001.00', '59097.00', 6, 159, 608),
-(508, '102452.00', '10096.00', '49001.00', '59097.00', 6, 116, 608);
+(508, '102452.00', '10096.00', '49001.00', '59097.00', 6, 116, 608),
+(509, '175452.00', '10096.00', '49001.00', '59097.00', 6, 117, 608),
+(510, '868452.00', '10096.00', '49001.00', '59097.00', 6, 128, 608),
+(511, '1398452.00', '10096.00', '49001.00', '59097.00', 6, 129, 608),
+(512, '1650452.00', '10096.00', '49001.00', '59097.00', 6, 149, 608),
+(513, '110610.00', '10096.00', '49001.00', '59097.00', 6, 113, 608),
+(514, '110610.00', '10096.00', '49001.00', '59097.00', 6, 113, 608),
+(515, '204360.00', '10096.00', '49001.00', '59097.00', 6, 1363, 608),
+(516, '204360.00', '10096.00', '49001.00', '59097.00', 6, 1363, 608),
+(517, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(518, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(519, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(520, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(521, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(522, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(523, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(524, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(525, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(526, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(527, '315260.00', '10096.00', '49001.00', '59097.00', 6, 1403, 608),
+(528, '43100.00', '10096.00', '49001.00', '59097.00', 6, 70, 608),
+(529, '43101.00', '10096.00', '49001.00', '59097.00', 6, 71, 608),
+(530, '43109.00', '10096.00', '49001.00', '59097.00', 6, 75, 608),
+(531, '43106.00', '10096.00', '49001.00', '59097.00', 6, 74, 608),
+(532, '43100.00', '10096.00', '49001.00', '59097.00', 6, 70, 608),
+(533, '43100.00', '10096.00', '49001.00', '59097.00', 6, 70, 608);
 
 -- --------------------------------------------------------
 
@@ -879,8 +904,8 @@ CREATE TABLE `tbl_factura` (
   `precio_unidad` decimal(65,2) NOT NULL,
   `cantidad` int(10) NOT NULL,
   `detalle` varchar(100) NOT NULL,
-  `subtotal` decimal(65,2) NOT NULL,
-  `desc_total` decimal(65,2) NOT NULL,
+  `subtotal` int(65) NOT NULL,
+  `desc_total` int(65) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `total` decimal(65,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -890,12 +915,7 @@ CREATE TABLE `tbl_factura` (
 --
 
 INSERT INTO `tbl_factura` (`id_factura`, `id_cliente`, `stamp`, `precio_unidad`, `cantidad`, `detalle`, `subtotal`, `desc_total`, `descripcion`, `total`) VALUES
-(7, 'P', '2018-11-26', '0.00', 70, ' Roca Lisa, Roca Negra', '45000.00', '7750.00', '', '43100'),
-(8, 'Sakura Chan', '2018-11-26', '0.00', 40, ' Kunai , Shuikens', '65000.00', '16500.00', '', '56950'),
-(10, 'Pedro Picapiedra', '2018-12-04', '0.00', 2, ' a, b', '2000.00', '0.00', '', '2260'),
-(15, 'Pedro Picapiedra', '2018-12-03', '0.00', 3, ' A, B', '110.00', '45.00', '', '79'),
-(20, 'Pedro Picapiedra', '2018-12-20', '0.00', 1, ' A', '100.00', '50.00', '', '63'),
-(21, 'Pedro Picapiedra', '2018-12-07', '0.00', 1, ' A', '100.00', '40.00', '', '73000');
+(7, 'P', '2018-11-26', '0.00', 70, ' Roca Lisa, Roca Negra', 45000, 7750, '', '43100');
 
 -- --------------------------------------------------------
 
@@ -1182,7 +1202,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUser`, `fullName`, `userName`, `email`, `about`, `country`, `status`, `timestamp`, `lastAccess`, `pwd`, `avatar`, `settings`) VALUES
-(141, 'Daniel', 'ol', 'doyolsen@gmail.com', 'abc', 'cr', '1', 1534828112, 1544204818, 'YlVGc1FWRnlhMGx3TTI1TVkxcHdVWE5TTmtWU1kyUTBSWEEzU2l0UWF6bGpiRXR0TmlzNGVqaFllVTV3UTFGMGF6SjBXa3cxVjIxa1UwbGpNRXBPY25aSU1HaHROREJEUjBOYVdFeFhWVmQ0UVZkMFMzYzlQVG82TnhLbnUzNjBKL0JpS3ZoMUFzYTJXQT09', '0', ''),
+(141, 'Daniel', 'ol', 'doyolsen@gmail.com', 'abc', 'cr', '1', 1534828112, 1544208727, 'YlVGc1FWRnlhMGx3TTI1TVkxcHdVWE5TTmtWU1kyUTBSWEEzU2l0UWF6bGpiRXR0TmlzNGVqaFllVTV3UTFGMGF6SjBXa3cxVjIxa1UwbGpNRXBPY25aSU1HaHROREJEUjBOYVdFeFhWVmQ0UVZkMFMzYzlQVG82TnhLbnUzNjBKL0JpS3ZoMUFzYTJXQT09', '0', ''),
 (142, 'qwe', 'eqweq', 'qweqwe', 'qwee', 'qwe', '1', 1540178070, 1540178070, 'T0RrdmFWUm1jR0o0VkdwUVFYa3pUR2xxTDBod1J6RkRZVFF5V0RRek1VNHhLeTlUUWs5WE0wd3pZWHBTVEM5NE1uUkhRblZKT1hKQ1VVMWpSVFp5YUVWQk5VcExPVEUwZWxFM1JVNXJkaTlsTkM5dFNYYzlQVG82N1F6M3BscldiOG5LL2paZW1rZnNjUT09', '0', ''),
 (143, 'w', 'rt', 'rt', 'rt', 'rt', '1', 1540181104, 1540181105, 'T0dKUVpFSnFWbFZIWW1vNVpVVnVaM0JEVGpsdloyMWxibEZ0YlU1WmJHSnpNRVZ2ZEVkak9XWjRVRWxMZFVKS1V6aDRNVEJxVUd0bGFIZEdUVWxZUmxCdFRXUjZZVGhxY0RRdlYySTFkR3BwY3pSU00xRTlQVG82Z1Q2Z2NocStuSnNBNEdXS24ydG5FQT09', '0', ''),
 (144, 'kk', 'kk', 'kk', 'kk', 'kk', '1', 1540181269, 1540181271, 'UkRsQ2QwUmxOVVZZTkU1NFlYSnhaWHBzTWtFcmJGRlplbFF4YlRWbWFEZHZSMUp3YjFaR1lVbG1WVzB4TmpCUmFXVnhZelJ0YjJKbmNXVktkbkpoVEZFd1RFVTVRMFp4WjB0M1dtaFlOak5xWXpWdFRFRTlQVG82ck82YWlFK3AwNWNHYWhETmtvZVZvQT09', '0', ''),
@@ -1450,7 +1470,7 @@ ALTER TABLE `lestatz_domains`
 -- AUTO_INCREMENT de la tabla `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_activo`
@@ -1474,7 +1494,7 @@ ALTER TABLE `tbl_clientetickets`
 -- AUTO_INCREMENT de la tabla `tbl_contabilidad`
 --
 ALTER TABLE `tbl_contabilidad`
-  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=509;
+  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=534;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_cuentaspagar`
@@ -1492,7 +1512,7 @@ ALTER TABLE `tbl_empleado`
 -- AUTO_INCREMENT de la tabla `tbl_factura`
 --
 ALTER TABLE `tbl_factura`
-  MODIFY `id_factura` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_factura` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_historialprecios`
