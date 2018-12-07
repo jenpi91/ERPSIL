@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 05-12-2018 a las 00:59:13
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 5.6.38
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-12-2018 a las 18:56:51
+-- Versión del servidor: 10.1.34-MariaDB
+-- Versión de PHP: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -188,7 +188,7 @@ INSERT INTO `sessions` (`idSession`, `idUser`, `sessionKey`, `ip`, `lastAccess`)
 (79, 143, 'RVhtcUdkZS8vL2JBaXNSZ3doOGFhdz09OjoTAbwQuAXkNNHLJoBdnqxf', '::1', 1540181105),
 (96, 144, 'Uk1od3B2K0hXYnY0STYyY2sxaTJoUT09Ojo2icYw22EmQ3FpbUupqrXx', '::1', 1540181271),
 (114, 145, 'WENQaUJQWnFybDNUSjZWallSVENPQT09Ojp8ujMTrj7PmFHKdAub2Skl', '::1', 1543280763),
-(119, 141, 'dWxxbkhJSkx3dWhwZWRBNnQrVjFrQT09OjpLNPLQ69J6jh2iWGohmyZJ', '::1', 1543967213);
+(121, 141, 'UUNzczVVL3RqTVUxM2Z6RlhxZm1rZz09OjrG42TRcJisBG554fFEu15l', '::1', 1544204818);
 
 -- --------------------------------------------------------
 
@@ -207,7 +207,7 @@ CREATE TABLE `suma_contabilidad` (
 -- (Véase abajo para la vista actual)
 --
 CREATE TABLE `suma_facturas` (
-`facturas` decimal(65,2)
+`facturas` decimal(65,0)
 );
 
 -- --------------------------------------------------------
@@ -749,7 +749,67 @@ INSERT INTO `tbl_contabilidad` (`id_contabilidad`, `total_factura`, `total_pagar
 (445, '100050.00', '10096.00', '49001.00', '59097.00', 6, 110, 608),
 (446, '100050.00', '10096.00', '49001.00', '59097.00', 6, 110, 608),
 (447, '100050.00', '10096.00', '49001.00', '59097.00', 6, 113, 608),
-(448, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608);
+(448, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(449, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(450, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(451, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(452, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(453, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(454, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(455, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(456, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(457, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(458, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(459, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(460, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(461, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(462, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(463, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(464, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(465, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(466, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(467, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(468, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(469, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(470, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(471, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(472, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(473, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(474, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(475, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(476, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(477, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(478, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(479, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(480, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(481, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(482, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(483, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(484, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(485, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(486, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(487, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(488, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(489, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(490, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(491, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(492, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(493, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(494, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(495, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(496, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(497, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(498, '102875.00', '10096.00', '49001.00', '59097.00', 6, 117, 608),
+(499, '103505.00', '10096.00', '49001.00', '59097.00', 6, 118, 608),
+(500, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(501, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(502, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(503, '102310.00', '10096.00', '49001.00', '59097.00', 6, 112, 608),
+(504, '102830.30', '10096.00', '49001.00', '59097.00', 6, 136, 608),
+(505, '102767.30', '10096.00', '49001.00', '59097.00', 6, 135, 608),
+(506, '102810.77', '10096.00', '49001.00', '59097.00', 6, 159, 608),
+(507, '102810.00', '10096.00', '49001.00', '59097.00', 6, 159, 608),
+(508, '102452.00', '10096.00', '49001.00', '59097.00', 6, 116, 608);
 
 -- --------------------------------------------------------
 
@@ -822,7 +882,7 @@ CREATE TABLE `tbl_factura` (
   `subtotal` decimal(65,2) NOT NULL,
   `desc_total` decimal(65,2) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
-  `total` decimal(65,2) NOT NULL
+  `total` decimal(65,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -830,9 +890,12 @@ CREATE TABLE `tbl_factura` (
 --
 
 INSERT INTO `tbl_factura` (`id_factura`, `id_cliente`, `stamp`, `precio_unidad`, `cantidad`, `detalle`, `subtotal`, `desc_total`, `descripcion`, `total`) VALUES
-(7, 'P', '2018-11-26', '0.00', 70, ' Roca Lisa, Roca Negra', '45000.00', '7750.00', '', '43100.00'),
-(8, 'Sakura Chan', '2018-11-26', '0.00', 40, ' Kunai , Shuikens', '65000.00', '16500.00', '', '56950.00'),
-(10, 'Pedro Picapiedra', '2018-12-04', '0.00', 2, ' a, b', '2000.00', '0.00', '', '2260.00');
+(7, 'P', '2018-11-26', '0.00', 70, ' Roca Lisa, Roca Negra', '45000.00', '7750.00', '', '43100'),
+(8, 'Sakura Chan', '2018-11-26', '0.00', 40, ' Kunai , Shuikens', '65000.00', '16500.00', '', '56950'),
+(10, 'Pedro Picapiedra', '2018-12-04', '0.00', 2, ' a, b', '2000.00', '0.00', '', '2260'),
+(15, 'Pedro Picapiedra', '2018-12-03', '0.00', 3, ' A, B', '110.00', '45.00', '', '79'),
+(20, 'Pedro Picapiedra', '2018-12-20', '0.00', 1, ' A', '100.00', '50.00', '', '63'),
+(21, 'Pedro Picapiedra', '2018-12-07', '0.00', 1, ' A', '100.00', '40.00', '', '73000');
 
 -- --------------------------------------------------------
 
@@ -1119,7 +1182,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUser`, `fullName`, `userName`, `email`, `about`, `country`, `status`, `timestamp`, `lastAccess`, `pwd`, `avatar`, `settings`) VALUES
-(141, 'Daniel', 'ol', 'doyolsen@gmail.com', 'abc', 'cr', '1', 1534828112, 1543967213, 'YlVGc1FWRnlhMGx3TTI1TVkxcHdVWE5TTmtWU1kyUTBSWEEzU2l0UWF6bGpiRXR0TmlzNGVqaFllVTV3UTFGMGF6SjBXa3cxVjIxa1UwbGpNRXBPY25aSU1HaHROREJEUjBOYVdFeFhWVmQ0UVZkMFMzYzlQVG82TnhLbnUzNjBKL0JpS3ZoMUFzYTJXQT09', '0', ''),
+(141, 'Daniel', 'ol', 'doyolsen@gmail.com', 'abc', 'cr', '1', 1534828112, 1544204818, 'YlVGc1FWRnlhMGx3TTI1TVkxcHdVWE5TTmtWU1kyUTBSWEEzU2l0UWF6bGpiRXR0TmlzNGVqaFllVTV3UTFGMGF6SjBXa3cxVjIxa1UwbGpNRXBPY25aSU1HaHROREJEUjBOYVdFeFhWVmQ0UVZkMFMzYzlQVG82TnhLbnUzNjBKL0JpS3ZoMUFzYTJXQT09', '0', ''),
 (142, 'qwe', 'eqweq', 'qweqwe', 'qwee', 'qwe', '1', 1540178070, 1540178070, 'T0RrdmFWUm1jR0o0VkdwUVFYa3pUR2xxTDBod1J6RkRZVFF5V0RRek1VNHhLeTlUUWs5WE0wd3pZWHBTVEM5NE1uUkhRblZKT1hKQ1VVMWpSVFp5YUVWQk5VcExPVEUwZWxFM1JVNXJkaTlsTkM5dFNYYzlQVG82N1F6M3BscldiOG5LL2paZW1rZnNjUT09', '0', ''),
 (143, 'w', 'rt', 'rt', 'rt', 'rt', '1', 1540181104, 1540181105, 'T0dKUVpFSnFWbFZIWW1vNVpVVnVaM0JEVGpsdloyMWxibEZ0YlU1WmJHSnpNRVZ2ZEVkak9XWjRVRWxMZFVKS1V6aDRNVEJxVUd0bGFIZEdUVWxZUmxCdFRXUjZZVGhxY0RRdlYySTFkR3BwY3pSU00xRTlQVG82Z1Q2Z2NocStuSnNBNEdXS24ydG5FQT09', '0', ''),
 (144, 'kk', 'kk', 'kk', 'kk', 'kk', '1', 1540181269, 1540181271, 'UkRsQ2QwUmxOVVZZTkU1NFlYSnhaWHBzTWtFcmJGRlplbFF4YlRWbWFEZHZSMUp3YjFaR1lVbG1WVzB4TmpCUmFXVnhZelJ0YjJKbmNXVktkbkpoVEZFd1RFVTVRMFp4WjB0M1dtaFlOak5xWXpWdFRFRTlQVG82ck82YWlFK3AwNWNHYWhETmtvZVZvQT09', '0', ''),
@@ -1387,7 +1450,7 @@ ALTER TABLE `lestatz_domains`
 -- AUTO_INCREMENT de la tabla `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_activo`
@@ -1411,7 +1474,7 @@ ALTER TABLE `tbl_clientetickets`
 -- AUTO_INCREMENT de la tabla `tbl_contabilidad`
 --
 ALTER TABLE `tbl_contabilidad`
-  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=449;
+  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=509;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_cuentaspagar`
@@ -1429,7 +1492,7 @@ ALTER TABLE `tbl_empleado`
 -- AUTO_INCREMENT de la tabla `tbl_factura`
 --
 ALTER TABLE `tbl_factura`
-  MODIFY `id_factura` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_factura` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_historialprecios`

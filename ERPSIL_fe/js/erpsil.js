@@ -181,9 +181,12 @@ function dashboard(){
 
      calaApi_postRequest(conta, function(cont){
          var contab_fact;
-         var contab_fact;
-         var contab_fact;
-         var contab_fact;
+         var contab_pagar;
+         var contab_planilla;
+         var contab_total;
+         var contab_cliente;
+         var contab_artVendi;
+         var contab_artDisp;
 
         for(a in cont.resp){
         var x = cont.resp[a];
@@ -194,7 +197,13 @@ function dashboard(){
         contab_cliente = x.total_cliente;
         contab_artVendi = x.total_articulos_vendidos;
         contab_artDisp = x.total_articulos_disponibles;
-
+            
+        var cantidad_fact=parseInt(contab_fact);
+        var cantidad_pagar=parseInt(contab_pagar);
+        var cantidad_planilla=parseInt(contab_planilla);
+        var cantidad_total=parseInt(contab_total);
+        
+       
     }
         var dash = ""
         +   "<div>"
@@ -202,22 +211,22 @@ function dashboard(){
     
         +           "<div class='t_factura' style='margin-right: 10px';>"
         +               "<div class='block_fact'>Total Facturas</div>"
-        +               "<div class='fact_num'>"+ contab_fact+"</div>"
+        +               "<div class='fact_num'>"+ cantidad_fact.toLocaleString()+".00"+"</div>"
         +           "</div>"
     
         +           "<div class='t_pagar' style='margin-right: 10px';>"
         +               "<div class= 'block_pagar'>Total a Pagar</div>"
-        +               "<div class='pagar_num_'>"+contab_pagar+"</div>"
+        +               "<div class='pagar_num_'>"+cantidad_pagar.toLocaleString()+".00"+"</div>"
         +           "</div>"
 
         +           "<div class='t_planilla' style='margin-right: 10px';>"
         +               "<div class= 'block_plantilla'>Total Planilla</div>"
-        +               "<div class='plan_num'>"+contab_planilla+"</div>"
+        +               "<div class='plan_num'>"+cantidad_planilla.toLocaleString()+".00"+"</div>"
         +           "</div>"
     
         +           "<div class='t_cantidad' style='margin-right: 10px';>"
         +               "<div class= 'block_cantidad'>Total</div>"
-        +               "<div class='plan_num'>"+contab_total+"</div>"
+        +               "<div class='plan_num'>"+cantidad_total.toLocaleString()+".00"+"</div>"
         +           "</div>"
     
         +           "<div class='t_cliente' style='margin-right: 10px';>"
@@ -4808,7 +4817,7 @@ function erpsil_listarFactura(){
         +                "<td> "+a.id_cliente+" </td>"
         +                "<td> "+ a.stamp +" </td>"
         +                "<td> "+ a.detalle +" </td>"
-        +                "<td> "+ a.total +" </td>"
+        +                "<td> "+ decimales(a.total) +" </td>"
 
         +                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
@@ -4832,6 +4841,21 @@ function erpsil_pdfFactura(){
     PdfDescargar('Factura',"Reporte de Facturas");
 }
 
+/*
+const number = document.querySelector('.number');
+
+function formatNumber (n) {
+	n = String(n).replace(/\D/g, "");
+  return n === '' ? n : Number(n).toLocaleString();
+}
+number.addEventListener('keyup', (e) => {
+	const element = e.target;
+	const value = element.value;
+  element.value = formatNumber(value);
+
+});
+*/
+
 function erpsil_agregarFacturaWindow() {
     erpsil_CleanChartPie();
     erpsil_CleanChartBar();
@@ -4839,6 +4863,7 @@ function erpsil_agregarFacturaWindow() {
         w: "erpsil_cliente",
         r: "mostrar_cliente"
     };
+
 
     calaApi_postRequest(facturaData, function(d){
         var selectD = "<select class='select' id='inputDrow'> ";
@@ -4921,7 +4946,7 @@ function erpsil_agregarFacturaWindow() {
         +                   "<ul class='list-unstyled'>"
         +                       "<li>"
         +                           "<div class='form' >Cantidad de Productos</div>"
-        +                           "<div><input value='0' readonly type='text' id='cantidad' placeholder='' style='text-align: right;'></div>"
+        +                           "<div><input  value='0' readonly type='text' id='cantidad' placeholder='' style='text-align: right;'></div>"
         +                       "</li>"                                                
         +                       "<li>"
         +                           "<div class='form'>Subtotal</div>"
@@ -5033,7 +5058,7 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
         g = g+10;
     });
     
-    doc.text(180, 60,"SubTotal");
+    doc.text(180, 60,"Precio Total");
     var h=70;
     var _c=80;
     var _s=90;
@@ -5089,7 +5114,7 @@ function erpsil_addRow() {
             '          </td>' +
             '          <td ><input onfocusout="erpsil_formUpdate()" onchange="erpsil_formUpdate();" type="text" class="form-control"  placeholder=""></td>' +
             '          <td ><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate();" type="number" class="form-control"  placeholder=""></td>' +
-            '          <td ><input onfocusout="erpsil_formUpdate()"  value="0" onchange="erpsil_formUpdate();" type="number" class="form-control" placeholder=""></td>' +
+            '          <td ><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate();" type="number" class="form-control" placeholder=""></td>' +
             '          <td ><input onfocusout="erpsil_formUpdate()" value="0" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
             '          <td ><input onfocusout="erpsil_formUpdate()"  value="13" onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
             '          <td ><input onfocusout="erpsil_formUpdate()" value="0" readonly onchange="erpsil_formUpdate()" type="number" class="form-control"  placeholder=""></td>' +
@@ -5191,6 +5216,8 @@ function erpsil_CalculaLineas(table) {
         var subTotal = precioTotal - descuento + IV;
         var subTotal2 = subTotal2 + subTotal1;
         descuento1 = descuento1 + descuento; 
+        //var total = decimales(subTotal);
+        //console.log(total);
 
         // Cantidad de lineas para saber cuantos espacios va a tener el erray
         //cantidad, el segungo [] es la posicion en la tabla, buscar como sacar los datos de un array
@@ -5203,14 +5230,13 @@ function erpsil_CalculaLineas(table) {
         Subtotal.push(data[r][6]);
         //console.log("ACÁ está la jugada= "+ productos[1]);
         
-        document.getElementById(table).rows[r].cells[6].getElementsByTagName('input')[0].value=precioTotal;
+        document.getElementById(table).rows[r].cells[6].getElementsByTagName('input')[0].value= precioTotal;
         document.getElementById(table).rows[r].cells[7].getElementsByTagName('input')[0].value=subTotal;
-        document.getElementById("subTotal1").value = subTotal2;
-        document.getElementById("descuenteTotal").value = descuento1;
+        document.getElementById("subTotal1").value = decimales(subTotal2);
+        document.getElementById("descuenteTotal").value = decimales(descuento1);
         document.getElementById("note").value = productos;
 
-       // erpsil_datosFac(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Subtotal);
-       
+       console.log(subTotal);
         
     }
 }
@@ -5269,13 +5295,13 @@ function erpsil_CalculaLineasFact(table) {
         PresUni.push(data[r][3]);
         Desc.push(data[r][4]);
         Impuesto.push(data[r][5]);
-        Subtotal.push(data[r][6]);
+        Subtotal.push(data[r][7]);
         //console.log("ACÁ está la jugada= "+ productos[1]);
         
         document.getElementById(table).rows[r].cells[6].getElementsByTagName('input')[0].value=precioTotal;
         document.getElementById(table).rows[r].cells[7].getElementsByTagName('input')[0].value=subTotal;
-        document.getElementById("subTotal1").value = subTotal2;
-        document.getElementById("descuenteTotal").value = descuento1;
+        document.getElementById("subTotal1").value = decimales(subTotal2);
+        document.getElementById("descuenteTotal").value = decimales(descuento1);
         document.getElementById("note").value = productos;
 
         //erpsil_datosFac(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Subtotal);
@@ -5377,6 +5403,15 @@ function erpsil_eliminarFactura(id){
 /*********************************************************/
 /*           Gestion Contabilidad                        */
 /*********************************************************/
+
+function decimales(numero){
+
+    numero = parseInt(numero);
+    t_numero = numero.toLocaleString()+".00";
+
+    return t_numero;
+}
+
 function erpsil_listarContabilidad() { 
     erpsil_CleanChartPie();
     erpsil_CleanChartBar();
@@ -5407,12 +5442,12 @@ function erpsil_listarContabilidad() {
                     for(x in d.resp){
                             var a = d.resp[x];
                             MostrarContabilidadWindow += ""
-    
+                                 
         +            "<tr>"
-        +                "<td> "+ a.total_factura+" </td>"
-        +                "<td> "+ a.total_pagar+" </td>"
-        +                "<td> "+ a.total_planilla+" </td>"
-        +                "<td> "+ a.total+" </td>"
+        +                "<td> "+ decimales(a.total_factura)+" </td>"
+        +                "<td> "+ decimales(a.total_pagar)+" </td>"
+        +                "<td> "+ decimales(a.total_planilla)+" </td>"
+        +                "<td> "+ decimales(a.total)+" </td>"
         +                "<td> "+ a.total_cliente +" </td>"
         +                "<td> "+ a.total_articulos_disponibles+" </td>"
         +                "<td> "+ a.total_articulos_vendidos +" </td>"
