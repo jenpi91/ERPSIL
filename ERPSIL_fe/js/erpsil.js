@@ -359,80 +359,44 @@ function erpsil_modalMalo(){
 /*                       Alertas                         */
 /*********************************************************/
 function erpsil_modalBueno(){
-    swal({
-        position: 'center',
-        type: 'success',
-        title: 'Proceso correcto!',
-        showConfirmButton: false,
-        timer: 1500
-      });
+    swal("Correcto!", "Proceso correcto!", "success");
 }
 
 function erpsil_modalMaloFactura(){
 
-    swal({
-        position: 'center',
-        type: 'error',
-        title: 'Completa los campos faltantes!',
-        showConfirmButton: false,
-        timer: 1500
-      });
+    swal("Error!!", "Completa los campos faltantes!", "error");
 }
 
 function erpsil_modalMalo(){
 
+    swal("Error!!", "Proceso incorrecto!", "error");
+}
+
+function erpsil_validacion(id,f){
     swal({
-        position: 'center',
-        type: 'error',
-        title: 'Proceso incorrecto!',
-        showConfirmButton: false,
-        timer: 1500
-      });
-}
-
-function erpsil_validacion(func){
-
-    const swalWithBootstrapButtons = swal.mixin({
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false,
+        title: "Está seguro?",
+        text: "El dato se eliminará para siempre",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
       })
-      
-      swalWithBootstrapButtons({
-        title: '¿Estás Seguro?',
-        text: "El dato seleccionado se eliminará permanentemente!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Si',
-        cancelButtonText: 'No',
-        reverseButtons: true
-      }).then((result) => {
-        if (result.value) {
-            func();
-            swal({
-                position: 'central',
-                type: 'success',
-                title: 'Dato eliminado!',
-                showConfirmButton: false,
-                timer: 1500
-              })
-            
-        } else if (
-          // Read more about handling dismissals
-          result.dismiss === swal.DismissReason.cancel
-        ) {
-            swal({
-                position: 'central',
-                type: 'success',
-                title: 'Dato no eliminado!',
-                showConfirmButton: false,
-                timer: 1500
-              })
-
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("El dato ha sido eliminado", {
+            icon: "success",
+          });
+          var a = 1;
+          console.log("Bien"+a);
+          a = a+1;
+          f(id);
+        } else {
+            var b = 1;
+            console.log("mal"+b);
+            b = b+1;
+          swal("El dato no fue eliminado");
         }
-      })
+      }); 
 }
-
 /*********************************************************/
 /*                       LogOut                          */
 /*********************************************************/
@@ -502,7 +466,7 @@ function erpsil_listarPedido(){
         +                "<td> "+ a.descripcion +" </td>"
         +                "<td> "+ decimales(a.precio) +" </td>"
         +                "<td> <div id='editar_activos' onclick='erpsil_editarPedido(" + a.id_pedido + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarPedido("+ a.id_pedido +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_pedido + "," + "erpsil_eliminarPedido" + ")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -4363,7 +4327,6 @@ function erpsil_pdfCliente(){
 
 function erpsil_eliminarCliente(id){
     //console.log(id);
-
     var req = {
         w: "erpsil_cliente",
         r: "eliminar_cliente",
@@ -4378,6 +4341,12 @@ function erpsil_eliminarCliente(id){
         console.log("No Eliminar");
     });
 }
+
+
+
+
+
+
 
 function erpsil_editarCliente(id){
     var req = {
@@ -4684,7 +4653,8 @@ function erpsil_listarEmpleado() {
         +                "<td> "+ a.puesto +" </td>"
         +                "<td> "+ a.jornada +" </td>"
         +                "<td> <div id='editar_empleado' onClick='erpsil_editarEmpleado(" + a.id_empleado + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onClick='erpsil_eliminarEmpleado("+ a.id_empleado +")' class='eliminar-Btn'>Eliminar</div></td>"
+       // +                "<td> <div onClick='erpsil_eliminarEmpleado("+ a.id_empleado +")' class='eliminar-Btn'>Eliminar</div></td>"
+       +                "<td> <div onClick='erpsil_validacion("+ a.id_empleado + "," + "erpsil_eliminarEmpleado" + ")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
     }
 }
@@ -4711,19 +4681,20 @@ function erpsil_pdfEmpleados(){
 
 function erpsil_eliminarEmpleado(id){
     //console.log(id);
-    var req = {
-        w: "erpsil_empleado",
-        r: "eliminar_empleado",
-        id:id
-    };
-    calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarEmpleado);
-        //erpsil_listarEmpleado();
-        //erpsil_modalBueno();
-    }, function(){
-        erpsil_modalMalo();
-        console.log("No Eliminar!");
-    });
+          var req = {
+            w: "erpsil_empleado",
+            r: "eliminar_empleado",
+            id:id
+        };
+    
+        calaApi_postRequest(req, function(){
+            //erpsil_validacion(erpsil_listarEmpleado);
+            erpsil_listarEmpleado();
+            //erpsil_modalBueno();
+        }, function(){
+            erpsil_modalMalo();
+            console.log("No Eliminar!");
+        });   
 }
 
 function erpsil_editarEmpleado(id){
@@ -4813,7 +4784,7 @@ function erpsil_listarFactura(){
         +                "<th>ID Factura</th>"
         +                "<th>ID cliente</th>"
         +                "<th>Fecha</th>"
-        +                "<th>Detalle</th>"
+        +                "<th>Cantidad de articulos</th>"
         +                "<th>Total</th>"
         +            "</tr>";
         +       "</div>"
@@ -5106,7 +5077,7 @@ function erpsil_ImprimirFact(productos,CodRef,cantidad,PresUni,Desc,Impuesto,Sub
     doc.text(140, _c,"Cantidad Total de productos: "+ _cantidad);
     doc.text(140, _s,"SubTotal: "+ _subtotal);
     doc.text(140, _d,"Descuento Total: "+ _descuenteTotal);
-    doc.text(140, _t,"Total: "+ decimales(_total));
+    doc.text(140, _t,"Total: "+ _total);
 
     if(productos.length==cantL){
     
@@ -5163,7 +5134,7 @@ function erpsil_sumar_call(table, columna, id) {
     var simbolo = "₡";
     var total1 = simbolo.concat(total);
     
-    document.getElementById("total").value = total;
+    document.getElementById("total").value = decimales(total);
     document.getElementById("cantidad").value = cantidad;
 
 }
