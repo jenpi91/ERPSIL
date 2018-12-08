@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-12-2018 a las 00:24:35
--- Versión del servidor: 10.1.34-MariaDB
--- Versión de PHP: 7.2.7
+-- Servidor: localhost
+-- Tiempo de generación: 08-12-2018 a las 02:28:08
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -188,7 +188,7 @@ INSERT INTO `sessions` (`idSession`, `idUser`, `sessionKey`, `ip`, `lastAccess`)
 (79, 143, 'RVhtcUdkZS8vL2JBaXNSZ3doOGFhdz09OjoTAbwQuAXkNNHLJoBdnqxf', '::1', 1540181105),
 (96, 144, 'Uk1od3B2K0hXYnY0STYyY2sxaTJoUT09Ojo2icYw22EmQ3FpbUupqrXx', '::1', 1540181271),
 (114, 145, 'WENQaUJQWnFybDNUSjZWallSVENPQT09Ojp8ujMTrj7PmFHKdAub2Skl', '::1', 1543280763),
-(124, 141, 'bUlzRzlmY2FiREZJV0R5YVRTbHBCQT09OjqSjoxLUveVv7VcVTnpnJ7I', '::1', 1544224940);
+(129, 141, 'NTlQU3h1L1dQOUVwcHE4c1I0RWIrUT09OjoKowsqO76oXl5SKDMx6YaH', '::1', 1544232467);
 
 -- --------------------------------------------------------
 
@@ -258,8 +258,8 @@ CREATE TABLE `tbl_activo` (
 --
 
 INSERT INTO `tbl_activo` (`id_activo`, `nombre`, `cantidad`, `vence`) VALUES
-(19, 'qwe', '111', '2018-11-25'),
-(20, 'Personas', '200', '2024-01-01');
+(19, 'Herbicida', '111', '2018-11-25'),
+(20, 'Plagicida', '200', '2018-01-01');
 
 -- --------------------------------------------------------
 
@@ -285,7 +285,8 @@ CREATE TABLE `tbl_cliente` (
 --
 
 INSERT INTO `tbl_cliente` (`id_cliente`, `nombre`, `cedula`, `email`, `direccion`, `telefono`, `descripcion`, `saldo_maximo`, `saldo`, `tipo`) VALUES
-(1, 'Panchito', '1', 'Pancha@gmail.com', 'El rancho mas lejos de la ciudad', '0', 'hombre viejo con sombrero de paja', 'undefined', 'undefined', 0);
+(1, 'Pablo', '123456789', 'Pablo@gmail.com', 'San Pedro', '88888888', 'Flores y ademas', 'undefined', 'undefined', 0),
+(2, 'Jorge', '123456789', 'jorge@gmail.com', 'San José', '88888888', 'Girasoles', 'undefined', 'undefined', 0);
 
 -- --------------------------------------------------------
 
@@ -335,7 +336,7 @@ CREATE TABLE `tbl_contabilidad` (
 --
 
 INSERT INTO `tbl_contabilidad` (`id_contabilidad`, `total_factura`, `total_pagar`, `total_planilla`, `total`, `total_cliente`, `total_articulos_vendidos`, `total_articulos_disponibles`) VALUES
-(582, '84.00', '1.00', '49001.00', '49002.00', 1, 9, 200);
+(595, '33900.00', '10000.00', '440000.00', '450000.00', 2, 20, 400);
 
 -- --------------------------------------------------------
 
@@ -359,7 +360,7 @@ CREATE TABLE `tbl_cuentaspagar` (
 --
 
 INSERT INTO `tbl_cuentaspagar` (`id_cuentasPagar`, `id_proveedor`, `codigo_referencia`, `saldo`, `estado`, `vence`, `descripcion`, `stampfecha`) VALUES
-(8, 'Jose Luis', '999', '9999', 'Sin Pagar', '2018-12-31', 'Un velero llamado libertad', '2018-11-26');
+(8, 'Jose Luis', '999', '9999', 'Sin Pagar', '2018-12-31', 'Semillas', '2018-11-26');
 
 -- --------------------------------------------------------
 
@@ -386,7 +387,8 @@ CREATE TABLE `tbl_empleado` (
 --
 
 INSERT INTO `tbl_empleado` (`id_empleado`, `nombre`, `apellido1`, `apellido2`, `telefono`, `cedula`, `direccion`, `ingreso`, `observacion`, `puesto`, `jornada`) VALUES
-(10, '1', '2', '3', '4', '4', '5', '2018-12-13', 'gdgsfg', 'gdsfgsd', 'fsgfgsf');
+(10, 'Pedro', 'Mora', 'Rojas', '88888888', '12345678', '50m N del parque central', '2018-12-13', 'Ninguno', 'Peon', 'Día'),
+(12, 'Daniel', 'Olsen', 'Yu', '88888888', '12345678', 'San Pedro', '2018-11-25', 'Ninguna', 'Peon', 'Día');
 
 -- --------------------------------------------------------
 
@@ -412,7 +414,7 @@ CREATE TABLE `tbl_factura` (
 --
 
 INSERT INTO `tbl_factura` (`id_factura`, `id_cliente`, `stamp`, `precio_unidad`, `cantidad`, `detalle`, `subtotal`, `desc_total`, `descripcion`, `total`) VALUES
-(14, 'Carlitos', '2018-12-07', '0.00', 9, '9', 81, 7, '', 84);
+(15, 'Jorge', '2018-11-25', '0.00', 20, 'Rosas,Girasol', 30000, 0, '', 33900);
 
 -- --------------------------------------------------------
 
@@ -433,8 +435,8 @@ CREATE TABLE `tbl_historialprecios` (
 --
 
 INSERT INTO `tbl_historialprecios` (`id_historialPrecio`, `id_inventario`, `costo`, `fecha`, `id_proveedor`) VALUES
-(12, 2, '123456', '2018-11-30', 'Jose Luis'),
-(13, 7, '200000', '2018-11-25', 'Shakira');
+(12, 10, '123456', '2018-11-30', 'Jose'),
+(13, 10, '200000', '2018-11-25', 'Carlos');
 
 -- --------------------------------------------------------
 
@@ -462,7 +464,8 @@ CREATE TABLE `tbl_inventario` (
 --
 
 INSERT INTO `tbl_inventario` (`id_inventario`, `cantidad`, `unidad`, `codigo_interno`, `codigo_barras`, `categoria`, `cantidad_minima`, `descripcion`, `impuesto_venta`, `ganancia_minima`, `costo`, `status`) VALUES
-(10, '200', 'Rollos de Flores', 'R42R', '1', 'Rollos', 100, 'rollos de rosas ', '13', '500000', '100000', 'Para vender ');
+(10, '200', 'Rollos de Flores', 'R42R', '1', 'Rollos', 100, 'rollos de rosas ', '13', '500000', '100000', 'Para vender '),
+(11, '200', 'Girasol', 'G1', '1', 'Rollos', 100, 'Rollos de girasoles', '13', '1000', '1000', 'Para vender');
 
 -- --------------------------------------------------------
 
@@ -486,10 +489,9 @@ CREATE TABLE `tbl_movimientoinventario` (
 --
 
 INSERT INTO `tbl_movimientoinventario` (`id_movInv`, `id_usuario`, `id_caja`, `id_producto`, `fecha`, `razon`, `descripcion`, `costo`) VALUES
-(1, 144, 1, 7, '2022-06-15', 'tengo muchas razones', 'Se llenaron las bodegas ', '9999'),
-(2, 106, 1, 1, '2018-11-25', 'as', 'as', '1'),
-(5, 141, 1, 1, '2018-11-25', 'algo', 'rosas', '1000'),
-(6, 141, 1, 2, '2018-11-26', 'Porque quise jaja', 'No te voy a decir jaja', '213');
+(1, 141, 1, 10, '2018-06-15', 'Pedido Especial', 'Rollos de rosas', '100000'),
+(2, 141, 1, 10, '2018-11-25', 'Muestras', 'Muestras', '0'),
+(5, 141, 1, 10, '2018-11-25', 'Varios', 'Girasoles', '1000');
 
 -- --------------------------------------------------------
 
@@ -511,7 +513,7 @@ CREATE TABLE `tbl_pagos` (
 --
 
 INSERT INTO `tbl_pagos` (`id_pago`, `id_cuenta`, `id_usuarios`, `fecha`, `pago`, `actual`) VALUES
-(12, 7, 'Daniel', '2018-11-25', '1', '2');
+(12, 7, 'Daniel', '2018-11-25', '10000', '20000');
 
 -- --------------------------------------------------------
 
@@ -529,6 +531,13 @@ CREATE TABLE `tbl_pedidos` (
   `descripcion` varchar(200) NOT NULL,
   `precio` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_pedidos`
+--
+
+INSERT INTO `tbl_pedidos` (`id_pedido`, `id_cliente`, `stamp_pedido`, `stamp_entrega`, `cant_rollos`, `status`, `descripcion`, `precio`) VALUES
+(1, 'Pablo', '2018-12-07', '2018-12-08', 10, 'Pendiente', 'Rollos para decorar', '100000');
 
 -- --------------------------------------------------------
 
@@ -572,8 +581,8 @@ CREATE TABLE `tbl_planilla` (
 --
 
 INSERT INTO `tbl_planilla` (`id_planilla`, `id_empleado`, `salario_bruto`, `ccss`, `rebaja`, `salario_neto`) VALUES
-(8, 'daniel', 10, '1', 1, 1),
-(9, 'Pato', 99000, '20', 30, 49000);
+(8, 'Daniel', 250000, '13', 30000, 220000),
+(9, 'Pedro', 250000, '13', 30000, 220000);
 
 -- --------------------------------------------------------
 
@@ -597,7 +606,8 @@ CREATE TABLE `tbl_proveedor` (
 --
 
 INSERT INTO `tbl_proveedor` (`id_proveedor`, `nombre`, `apellido1`, `apellido2`, `cedula`, `direccion`, `telefono`, `descripcion`) VALUES
-(7, 'Jose Luis ', 'perales', 'No tiene', '321654987', 'Un velero llamado libertad ', '87654332', 'tipo mayor que canta ');
+(7, 'Jose', 'Perales', 'Rojas', '123456789', 'San José', '87654332', 'Rosas'),
+(8, 'Carlos', 'Rojas', 'Perez', '123456789', 'San José', '88888888', 'Semillas');
 
 -- --------------------------------------------------------
 
@@ -616,11 +626,8 @@ CREATE TABLE `tbl_roles` (
 --
 
 INSERT INTO `tbl_roles` (`id_roles`, `nombre`, `descripcion`) VALUES
-(1, 'algo', 'algo'),
-(2, 'cosas', 'algoss'),
-(3, 'd', '3'),
-(5, 'd', 'd'),
-(6, 'd', '2');
+(1, 'Admin', 'Administrador'),
+(7, 'Peón', 'Peón');
 
 -- --------------------------------------------------------
 
@@ -641,10 +648,8 @@ CREATE TABLE `tbl_tipocliente` (
 --
 
 INSERT INTO `tbl_tipocliente` (`id_tipoCliente`, `nombre`, `descripcion`, `ganancia_global`, `dias_credito`) VALUES
-(1, 'Corta cabezas empres ', 'Empresa', 2147483647, '2018-11-20'),
-(2, 'Daniel', '1', 1, '1'),
-(6, '123qwe', '123qwe', 123, '2018-11-25'),
-(7, 'CEO', 'Controlar y ganar todo', 999999, '2018-11-20');
+(1, 'Girasoles Mundiales', 'Empresa', 500000, '2018-11-20'),
+(2, 'Daniel', 'Empresa local', 100000, '2018-11-25');
 
 -- --------------------------------------------------------
 
@@ -685,11 +690,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUser`, `fullName`, `userName`, `email`, `about`, `country`, `status`, `timestamp`, `lastAccess`, `pwd`, `avatar`, `settings`) VALUES
-(141, 'Daniel', 'ol', 'doyolsen@gmail.com', 'abc', 'cr', '1', 1534828112, 1544224940, 'YlVGc1FWRnlhMGx3TTI1TVkxcHdVWE5TTmtWU1kyUTBSWEEzU2l0UWF6bGpiRXR0TmlzNGVqaFllVTV3UTFGMGF6SjBXa3cxVjIxa1UwbGpNRXBPY25aSU1HaHROREJEUjBOYVdFeFhWVmQ0UVZkMFMzYzlQVG82TnhLbnUzNjBKL0JpS3ZoMUFzYTJXQT09', '0', ''),
-(142, 'qwe', 'eqweq', 'qweqwe', 'qwee', 'qwe', '1', 1540178070, 1540178070, 'T0RrdmFWUm1jR0o0VkdwUVFYa3pUR2xxTDBod1J6RkRZVFF5V0RRek1VNHhLeTlUUWs5WE0wd3pZWHBTVEM5NE1uUkhRblZKT1hKQ1VVMWpSVFp5YUVWQk5VcExPVEUwZWxFM1JVNXJkaTlsTkM5dFNYYzlQVG82N1F6M3BscldiOG5LL2paZW1rZnNjUT09', '0', ''),
-(143, 'w', 'rt', 'rt', 'rt', 'rt', '1', 1540181104, 1540181105, 'T0dKUVpFSnFWbFZIWW1vNVpVVnVaM0JEVGpsdloyMWxibEZ0YlU1WmJHSnpNRVZ2ZEVkak9XWjRVRWxMZFVKS1V6aDRNVEJxVUd0bGFIZEdUVWxZUmxCdFRXUjZZVGhxY0RRdlYySTFkR3BwY3pSU00xRTlQVG82Z1Q2Z2NocStuSnNBNEdXS24ydG5FQT09', '0', ''),
-(144, 'kk', 'kk', 'kk', 'kk', 'kk', '1', 1540181269, 1540181271, 'UkRsQ2QwUmxOVVZZTkU1NFlYSnhaWHBzTWtFcmJGRlplbFF4YlRWbWFEZHZSMUp3YjFaR1lVbG1WVzB4TmpCUmFXVnhZelJ0YjJKbmNXVktkbkpoVEZFd1RFVTVRMFp4WjB0M1dtaFlOak5xWXpWdFRFRTlQVG82ck82YWlFK3AwNWNHYWhETmtvZVZvQT09', '0', ''),
-(145, 'Cocoa Reaining ', 'Coca', 'cocodrilor@gmail.com', 'Le gusta el chocolate', 'CR', '1', 1543280740, 1543280763, 'YTFSRlpFRlZhbVpEY21KS2VHTm5NM0ZxTlhSbVNWVTViM0JZTDFGMkswSlJUalZTVUVKUWVXMU9ibEpDU3pSUVZrdEtZazVpWld0dWRIVnpWamhTY2xCcFJHOW5ibHB3VkROcWJFUktRV2c1Y3pSNmRtYzlQVG82emJmeUdyTW9aMFZMcHc3OFNmRFd3Zz09', '0', '');
+(141, 'Daniel', 'ol', 'doyolsen@gmail.com', 'Admin', 'cr', '1', 1534828112, 1544232467, 'Y0VsM1JYazFZbEkxV0ZweGQzWnhUME5WT1ZkWmR6azNhMU14YjI1M0swSnlhRmhRUmtGNmJIWk9Wa1Z6U1VZM1Z6bFFiMlZMYkVwc1VtNDNjMjkwVWtwd1ZqUlZTbU5ZVkRKck1GUTRSbHBWVDNCelJGRTlQVG82dXMxSWhTbGhZMDhDUHFoTGIwWEtrQT09', '0', '');
 
 -- --------------------------------------------------------
 
@@ -953,7 +954,7 @@ ALTER TABLE `lestatz_domains`
 -- AUTO_INCREMENT de la tabla `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `idSession` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_activo`
@@ -965,7 +966,7 @@ ALTER TABLE `tbl_activo`
 -- AUTO_INCREMENT de la tabla `tbl_cliente`
 --
 ALTER TABLE `tbl_cliente`
-  MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_clientetickets`
@@ -977,7 +978,7 @@ ALTER TABLE `tbl_clientetickets`
 -- AUTO_INCREMENT de la tabla `tbl_contabilidad`
 --
 ALTER TABLE `tbl_contabilidad`
-  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=583;
+  MODIFY `id_contabilidad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=596;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_cuentaspagar`
@@ -989,13 +990,13 @@ ALTER TABLE `tbl_cuentaspagar`
 -- AUTO_INCREMENT de la tabla `tbl_empleado`
 --
 ALTER TABLE `tbl_empleado`
-  MODIFY `id_empleado` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_empleado` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_factura`
 --
 ALTER TABLE `tbl_factura`
-  MODIFY `id_factura` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_factura` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_historialprecios`
@@ -1007,7 +1008,7 @@ ALTER TABLE `tbl_historialprecios`
 -- AUTO_INCREMENT de la tabla `tbl_inventario`
 --
 ALTER TABLE `tbl_inventario`
-  MODIFY `id_inventario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_inventario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_movimientoinventario`
@@ -1025,7 +1026,7 @@ ALTER TABLE `tbl_pagos`
 -- AUTO_INCREMENT de la tabla `tbl_pedidos`
 --
 ALTER TABLE `tbl_pedidos`
-  MODIFY `id_pedido` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pedido` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_permisosrol`
@@ -1043,13 +1044,13 @@ ALTER TABLE `tbl_planilla`
 -- AUTO_INCREMENT de la tabla `tbl_proveedor`
 --
 ALTER TABLE `tbl_proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_roles`
 --
 ALTER TABLE `tbl_roles`
-  MODIFY `id_roles` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_roles` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_tipocliente`

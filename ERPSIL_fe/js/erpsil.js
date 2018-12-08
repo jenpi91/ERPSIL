@@ -331,31 +331,6 @@ var myChart = new Chart(ctx, {
 }
 
 /*********************************************************/
-/*                       Alertas   malas                 */
-/*********************************************************
-function erpsil_modalBueno(){
-
-    var modal = ""
-+      "<div class='alert alert-success' role='alert'>Agregado correctamente</div>"
-    erpsil_setModal(modal);
-
-    calaApi_doSomethingAfter(function(){
-        $("#erpsil_modal").empty();
-    }, 5000);
-}
-
-function erpsil_modalMalo(){
-
-    var modal = ""
-+      "<div class='alert alert-danger' role='alert'>Error en el proceso</div>"
-    erpsil_setModal(modal);
-
-    calaApi_doSomethingAfter(function(){
-        $("#erpsil_modal").empty();
-    }, 5000);
-}*/
-
-/*********************************************************/
 /*                       Alertas                         */
 /*********************************************************/
 function erpsil_modalBueno(){
@@ -363,12 +338,10 @@ function erpsil_modalBueno(){
 }
 
 function erpsil_modalMaloFactura(){
-
     swal("Error!!", "Completa los campos faltantes!", "error");
 }
 
 function erpsil_modalMalo(){
-
     swal("Error!!", "Proceso incorrecto!", "error");
 }
 
@@ -615,7 +588,7 @@ function erpsil_eliminarPedido(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarPedido);
+        erpsil_listarPedido();
     }, function(){
         erpsil_modalMalo();
         console.log("Pedido No Eliminado");
@@ -777,7 +750,8 @@ function erpsil_listarClientesTickets(){
         +                "<td> "+ a.status +" </td>"
 
         +                "<td> <div id='editar_activos' onclick='erpsil_editarClientesTickets(" + a.id_ticket + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarClienteTicket("+ a.id_ticket +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_ticket + "," + "erpsil_eliminarClienteTicket" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarClienteTicket("+ a.id_ticket +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -998,8 +972,8 @@ function erpsil_eliminarClienteTicket(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarClientesTickets);
-        //erpsil_listarClientesTickets();
+        //erpsil_validacion(erpsil_listarClientesTickets);
+        erpsil_listarClientesTickets();
     }, function(){
         erpsil_modalMalo();
         console.log("Ticket de Cliente No Eliminado");
@@ -1042,7 +1016,8 @@ function erpsil_listarPermisoRol(){
         +                "<td> "+ a.estado +" </td>"
 
         +                "<td> <div id='editar_tipoCliente' onclick='erpsil_editarPermisoRol(" + a.id_permiso + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarPermisoRol("+ a.id_permiso +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_permiso + "," + "erpsil_eliminarPermisoRol" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarPermisoRol("+ a.id_permiso +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -1233,9 +1208,9 @@ function erpsil_eliminarPermisoRol(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarPermisoRol);
+        //erpsil_validacion(erpsil_listarPermisoRol);
         //erpsil_modalBueno();
-        //erpsil_listarPermisoRol();
+        erpsil_listarPermisoRol();
     }, function(){
         erpsil_modalMalo();
         console.log("Permiso de Rol No Eliminado");
@@ -1347,7 +1322,8 @@ function erpsil_listarCuentasPagar(){
         +                "<td> "+ a.stampfecha +" </td>"
         
         +                "<td> <div id='editar_cuentasPagar' onclick='erpsil_editarCuentasPagar(" + a.id_cuentasPagar + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarCuentasPagar("+ a.id_cuentasPagar +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_cuentasPagar + "," + "erpsil_eliminarCuentasPagar" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarCuentasPagar("+ a.id_cuentasPagar +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -1629,9 +1605,9 @@ function erpsil_eliminarCuentasPagar(id){
      };
  
      calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarCuentasPagar);
+        //erpsil_validacion(erpsil_listarCuentasPagar);
         //erpsil_modalBueno();
-        //erpsil_listarCuentasPagar();
+        erpsil_listarCuentasPagar();
     }, function(){
         erpsil_modalMalo();
         console.log("Cuentas por Pagar No Eliminado");
@@ -1679,7 +1655,8 @@ function erpsil_listarHistorialPrecio(){
         +                "<td> "+ a.id_proveedor +" </td>"
        
         +                "<td> <div id='editar_historialPrecios' onclick='erpsil_editarHistorialPrecio(" + a.id_historialPrecio + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarHistorialPrecio("+ a.id_historialPrecio +")' class='eliminar-Btn'>Eliminar</div></td>"        +            "</tr>";
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_historialPrecio + "," + "erpsil_eliminarHistorialPrecio" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarHistorialPrecio("+ a.id_historialPrecio +")' class='eliminar-Btn'>Eliminar</div></td>"        +            "</tr>";
                     }
                 }
                 MostrarHistorialPreciosWindow += ""
@@ -1931,9 +1908,9 @@ function erpsil_eliminarHistorialPrecio(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarHistorialPrecio);
+        //erpsil_validacion(erpsil_listarHistorialPrecio);
         //erpsil_modalBueno();
-        //erpsil_listarHistorialPrecio();
+        erpsil_listarHistorialPrecio();
    }, function(){
        erpsil_modalMalo();
        console.log("Historial de Precio No Eliminado");
@@ -2024,7 +2001,8 @@ function erpsil_listarPagos(){
         +                "<td> "+ decimales(a.actual) +" </td>"
        
         +                "<td> <div id='editar_pagos' onclick='erpsil_editarPagos(" + a.id_pago + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarPago("+ a.id_pago +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_pago + "," + "erpsil_eliminarPago" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarPago("+ a.id_pago +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -2186,9 +2164,9 @@ function erpsil_eliminarPago(id){
      };
  
      calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarPagos);
+        //erpsil_validacion(erpsil_listarPagos);
         //erpsil_modalBueno();
-        //erpsil_listarPagos();
+        erpsil_listarPagos();
     }, function(){
         erpsil_modalMalo();
         console.log("Pago No Agregado");
@@ -2270,7 +2248,7 @@ function erpsil_editarPagosWindow(data) {
         
         +               "<label class='form'>Fecha</label>"
         +               "<div class='col-sm'>"
-        +                   "<input type='date' class='date' id='inputFecha' value='" + data.fecha + " placeholder='Fecha' required>"
+        +                   "<input type='date' class='date' id='inputFecha' value='" + data.fecha + "' placeholder='Fecha' required>"
         +               "</div>"
         
         +               "<label class='form'>Pago</label>"
@@ -2395,7 +2373,8 @@ function erpsil_listarMovimientoInventario(){
         +                "<td> "+ decimales(a.costo) +" </td>"
       
         +                "<td> <div id='editar_movimientoInventario' onclick='erpsil_editarMovimientoInventario(" + a.id_movInv + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarMovimientoInventario("+ a.id_movInv +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_movInv + "," + "erpsil_eliminarMovimientoInventario" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarMovimientoInventario("+ a.id_movInv +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -2707,9 +2686,9 @@ function erpsil_eliminarMovimientoInventario(id){
         id:id
      };
      calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarMovimientoInventario);
+        //erpsil_validacion(erpsil_listarMovimientoInventario);
         //erpsil_modalBueno();
-        //erpsil_listarMovimientoInventario();
+        erpsil_listarMovimientoInventario();
     }, function(){
         erpsil_modalMalo();
         console.log("Movimiento de Inventario No Eliminado");
@@ -2758,7 +2737,8 @@ function erpsil_listarTipoCliente(){
         +                "<td> "+ a.dias_credito +" </td>"
 
         +                "<td> <div id='editar_tipoCliente' onclick='erpsil_editarTipoCliente(" + a.id_tipoCliente + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarTipoCliente("+ a.id_tipoCliente +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_tipoCliente + "," + "erpsil_eliminarTipoCliente" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarTipoCliente("+ a.id_tipoCliente +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -2860,9 +2840,9 @@ function erpsil_eliminarTipoCliente(id) {
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarTipoCliente);
+        //erpsil_validacion(erpsil_listarTipoCliente);
         //erpsil_modalBueno();
-        //erpsil_listarTipoCliente();
+        erpsil_listarTipoCliente();
     }, function(){
         erpsil_modalMalo();
         console.log("Tipo de Cliente No Eliminado");
@@ -3067,7 +3047,8 @@ function erpsil_listarActivos(){
         +                "<td> "+ a.vence +" </td>"
 
         +                "<td> <div id='editar_activos' onclick='erpsil_editarActivos(" + a.id_activo + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarActivos("+ a.id_activo +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_activo + "," + "erpsil_eliminarActivos" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarActivos("+ a.id_activo +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -3100,9 +3081,9 @@ function erpsil_eliminarActivos(id) {
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarActivos);
+        //erpsil_validacion(erpsil_listarActivos);
         //erpsil_modalBueno();
-        //erpsil_listarActivos();
+        erpsil_listarActivos();
     }, function(){
         erpsil_modalMalo();
         console.log("Tipo Cliente No Eliminado");
@@ -3287,7 +3268,8 @@ function erpsil_listarRoles(){
         +                "<td> "+ a.nombre +" </td>"
         +                "<td> "+ a.descripcion +" </td>"
         +                "<td> <div id='editar_activos' onclick='erpsil_editarRoles(" + a.id_roles + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarRoles("+ a.id_roles +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_roles + "," + "erpsil_eliminarRoles" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarRoles("+ a.id_roles +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -3319,8 +3301,8 @@ function erpsil_eliminarRoles(id) {
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarRoles);
-        //erpsil_listarRoles();
+        //erpsil_validacion(erpsil_listarRoles);
+        erpsil_listarRoles();
         //erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
@@ -3468,7 +3450,8 @@ function erpsil_listarInventario(){
         +        "<td> "+ a.status +" </td>"
 
         +        "<td> <div id='editar_cliente' onclick='erpsil_editarInventario(" + a.id_inventario + ")' class='editar-Btn'>Editar</div></td>"
-        +        "<td> <div onclick='erpsil_eliminarInventario("+ a.id_inventario +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +        "<td> <div onClick='erpsil_validacion("+ a.id_inventario + "," + "erpsil_eliminarInventario" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+        "<td> <div onclick='erpsil_eliminarInventario("+ a.id_inventario +")' class='eliminar-Btn'>Eliminar</div></td>"
         +    "</tr>";        
             }
         }
@@ -3620,9 +3603,9 @@ function erpsil_eliminarInventario(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarInventario);
+        //erpsil_validacion(erpsil_listarInventario);
         //erpsil_modalBueno();
-        //erpsil_listarInventario();
+        erpsil_listarInventario();
         }, function(){
         erpsil_modalMalo();
         console.log("Inventario No Eliminado");
@@ -3917,7 +3900,8 @@ function erpsil_listarProveedor(){
         +                "<td> "+ a.descripcion +" </td>"
 
         +                "<td> <div id='editar_cliente' onclick='erpsil_editarProveedor(" + a.id_proveedor + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarProveedor("+ a.id_proveedor +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_proveedor + "," + "erpsil_eliminarProveedor" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarProveedor("+ a.id_proveedor +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -3947,8 +3931,8 @@ function erpsil_eliminarProveedor(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarProveedor);
-        //erpsil_listarProveedor();
+        //erpsil_validacion(erpsil_listarProveedor);
+        erpsil_listarProveedor();
         //erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
@@ -4186,20 +4170,20 @@ function erpsil_editarClienteWindow(data) {
     +                       "<input type='text' id='inputDescripcion' value='" + data.descripcion  + "' placeholder='Descripción'>"
     +               "</div>"
 
-    +               "<label class='form'>Saldo Máximo</label>"
-    +               "<div class='col-sm'>"
-    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo_maximo'," + 2 +") id='inputSaldo_maximo' value='" + data.saldo_maximo  + "' placeholder='Saldo Máximo'>"
-    +               "</div>"
+    //+               "<label class='form'>Saldo Máximo</label>"
+    //+               "<div class='col-sm'>"
+    //+                       "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo_maximo'," + 2 +") id='inputSaldo_maximo' value='" + data.saldo_maximo  + "' placeholder='Saldo Máximo'>"
+    //+               "</div>"
 
-    +               "<label class='form'>Saldo</label>"
-    +               "<div class='col-sm'>"
-    +                       "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo' value='" + data.saldo  + "' placeholder='Saldo'>"
-    +               "</div>"
+    //+               "<label class='form'>Saldo</label>"
+    //+               "<div class='col-sm'>"
+    //+                       "<input type='text' onkeyup = erpsil_validacionTxt('inputSaldo'," + 2 +") id='inputSaldo' value='" + data.saldo  + "' placeholder='Saldo'>"
+    //+               "</div>"
     
-    +               "<label class='form'>Tipo</label>"
-    +               "<div class='col-sm'>"           
-    +                       "<input type='text' id='inputTipo' value='" + data.tipo  + "' placeholder='Tipo'>"
-    +               "</div>"    
+    //+               "<label class='form'>Tipo</label>"
+    //+               "<div class='col-sm'>"           
+    //+                       "<input type='text' id='inputTipo' value='" + data.tipo  + "' placeholder='Tipo'>"
+    //+               "</div>"    
     
     +               "<label class='form'>&nbsp;</label>"
     +               "<div class='col-sm centrarDivTxt'>"
@@ -4303,7 +4287,8 @@ function erpsil_listarCliente() {
         //+                "<td> "+ a.saldo +" </td>"
         //+                "<td> "+ a.tipo +" </td>"
         +                "<td> <div id='editar_cliente' onclick='erpsil_editarCliente(" + a.id_cliente + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarCliente("+ a.id_cliente +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_cliente + "," + "erpsil_eliminarCliente" + ")' class='eliminar-Btn'>Eliminar</div></td>"        
+        //+                "<td> <div onclick='erpsil_eliminarCliente("+ a.id_cliente +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
         }
@@ -4333,20 +4318,14 @@ function erpsil_eliminarCliente(id){
         id:id
     };
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarCliente);
-        //erpsil_listarCliente();
+        //erpsil_validacion(erpsil_listarCliente);
+        erpsil_listarCliente();
         //erpsil_modalBueno();
     }, function(){
         erpsil_modalMalo();
         console.log("No Eliminar");
     });
 }
-
-
-
-
-
-
 
 function erpsil_editarCliente(id){
     var req = {
@@ -4801,7 +4780,8 @@ function erpsil_listarFactura(){
         +                "<td> "+ a.detalle +" </td>"
         +                "<td> "+ decimales(a.total) +" </td>"
 
-        +                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_factura + "," + "erpsil_eliminarFactura" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarFactura("+ a.id_factura +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -5372,9 +5352,9 @@ function erpsil_eliminarFactura(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarFactura);
+        //erpsil_validacion(erpsil_listarFactura);
         //erpsil_modalBueno();
-        //erpsil_listarFactura();
+        erpsil_listarFactura();
     }, function(){
         erpsil_modalMalo();
         console.log("Factura No Eliminada");
@@ -5494,7 +5474,8 @@ function erpsil_listarPlanilla() {
         +                "<td> "+ decimales(a.rebaja) +" </td>"
         +                "<td> "+ decimales(a.salario_neto) +" </td>"
         +                "<td> <div id='editar_planilla' onClick='erpsil_editarPlanilla(" + a.id_planilla + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onClick='erpsil_eliminarPlanilla("+ a.id_planilla +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.id_planilla + "," + "erpsil_eliminarPlanilla" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onClick='erpsil_eliminarPlanilla("+ a.id_planilla +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
     }
 }
@@ -5629,8 +5610,8 @@ function erpsil_eliminarPlanilla(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarPlanilla);
-        //erpsil_listarPlanilla();
+        //erpsil_validacion(erpsil_listarPlanilla);
+        erpsil_listarPlanilla();
     }, function(){
         erpsil_modalMalo();
         console.log("Planilla No Eliminada");
@@ -5979,7 +5960,8 @@ function erpsil_listarUsuario(){
         //+                "<td> "+ a.status +" </td>"
 
         +                "<td> <div id='editar_activos' onclick='erpsil_editarUsuario(" + a.idUser + ")' class='editar-Btn'>Editar</div></td>"
-        +                "<td> <div onclick='erpsil_eliminarUsuario("+ a.idUser +")' class='eliminar-Btn'>Eliminar</div></td>"
+        +                "<td> <div onClick='erpsil_validacion("+ a.idUser + "," + "erpsil_eliminarUsuario" + ")' class='eliminar-Btn'>Eliminar</div></td>"
+        //+                "<td> <div onclick='erpsil_eliminarUsuario("+ a.idUser +")' class='eliminar-Btn'>Eliminar</div></td>"
         +            "</tr>";
                     }
                 }
@@ -6009,9 +5991,9 @@ function erpsil_eliminarUsuario(id){
     };
 
     calaApi_postRequest(req, function(){
-        erpsil_validacion(erpsil_listarUsuario);
+        //erpsil_validacion(erpsil_listarUsuario);
         //erpsil_modalBueno();
-        //erpsil_listarUsuario();
+        erpsil_listarUsuario();
     }, function(){
         erpsil_modalMalo();
         console.log("Usuario No Eliminado");
