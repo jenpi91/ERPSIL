@@ -1676,7 +1676,7 @@ function erpsil_listarHistorialPrecio(){
 
 function erpsil_pdfHistorialPrecios(){
     /*console.log("debug");*/
-    PdfDescargar('HistorialPrecios','Reporte de Historial de Inventarios ');
+    PdfDescargar('HistorialPrecios','Reporte de Historial de precios ');
 }
  
 function erpsil_agregarHistorialPrecioWindow() {
